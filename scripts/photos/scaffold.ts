@@ -37,6 +37,10 @@ export async function scaffoldGallery(opts: ScaffoldOptions): Promise<string> {
   if (!names.length) throw new Error(`no images in ${folder}`);
   const photos = names.map((name) => ({ from: join(folder, name), name: uploadName(name) })).sort((a, b) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0));
 
+  console.log(
+    'Originals are uploaded unchanged: the lightbox opens the 1600 px variant, but the original is what the no-JS link ' +
+      'and old /wp-content/uploads/ links serve. Export large camera files at 2400 px or less first.',
+  );
   const month = `${date.getFullYear()}/${pad(date.getMonth() + 1)}`;
   mkdirSync(join(uploadsDir, month), { recursive: true });
   for (const { from, name } of photos) {
