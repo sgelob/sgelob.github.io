@@ -85,6 +85,12 @@ describe('post page', () => {
     expect(html).toMatch(/\.prose\[[\w-]+\] img\{width:auto;max-width:100%;height:auto\}/);
   });
 
+  test('the old About #books anchor points at the Books page', () => {
+    const html = read('dist/2016/05/mia-raccolta-citazioni-preferite-vita-design-lavoro/index.html');
+    expect(html).toContain('<a href="/books/">una lista di libri</a>');
+    expect(html).not.toContain('olegs.be/#books');
+  });
+
   test('raw script embeds survive', () => {
     const html = read('dist/2016/11/note-impressioni-conferenza-webperfdays-amsterdam/index.html');
     expect(html).toContain('class="speakerdeck-embed"');

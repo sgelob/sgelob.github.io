@@ -22,6 +22,6 @@ A oggi, sono presenti in questa raccolta 122 frasi e citazioni.
 
 Enjoy 😉
 
-P.S. Se ti interessa, qui c’è [una lista di libri](https://olegs.be/#books) che ho letto e che vorrei leggere.
+P.S. Se ti interessa, qui c’è [una lista di libri](/books/) che ho letto e che vorrei leggere.
 
 *Fai anche tu una raccolta di frasi e citazioni e l’hai condivisa con tutti? Lasciami il link nei commenti e la andrò sicuramente a leggere. Grazie* 😉
