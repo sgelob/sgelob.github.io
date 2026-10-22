@@ -4,6 +4,8 @@ date: "2016-02-02T16:19:41"
 genre: abstract
 country: world
 cover: 2016/02/sky-clouds-12.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 seoTitle: Sky and Clouds – Shapes and Surreal Colors Photography
 seoDescription: In my sky and clouds photography you can spot some human body parts, animals, ugly monsters and just strange shapes and surreal colors.

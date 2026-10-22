@@ -4,6 +4,8 @@ date: "2011-08-04T22:00:32"
 genre: world-places
 country: germany
 cover: 2011/08/hamburg-germany-49.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:

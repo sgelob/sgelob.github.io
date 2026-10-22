@@ -4,6 +4,8 @@ date: "2012-08-06T15:48:41"
 genre: world-places
 country: italy
 cover: 2012/08/pisa-italy-21.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:

@@ -5,6 +5,8 @@ date: "2010-05-08T17:15:48"
 genre: old-film-cameras
 country: russia
 cover: 2015/09/zenit-e-soviet-35mm-reflex-film-camera-cover.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: true
 oldSlugs: []
 photos:

@@ -5,6 +5,8 @@ date: "2010-11-04T12:00:45"
 genre: old-film-cameras
 country: russia
 cover: 2010/11/smena2-soviet-35mm-compact-film-camera-triplet22-lens.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:

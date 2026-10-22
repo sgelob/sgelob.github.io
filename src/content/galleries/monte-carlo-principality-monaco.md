@@ -5,6 +5,8 @@ date: "2010-08-03T13:00:06"
 genre: world-places
 country: monaco
 cover: 2016/04/monte-carlo-monaco-25.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:

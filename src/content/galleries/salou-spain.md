@@ -4,6 +4,8 @@ date: "2011-08-18T11:20:13"
 genre: world-places
 country: spain
 cover: 2025/03/salou-spain-6.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:

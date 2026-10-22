@@ -5,6 +5,8 @@ date: "2007-06-10T12:00:07"
 genre: abandoned-places
 country: italy
 cover: 2007/06/abandoned-ceat-electrical-cables-factory-turin-italy-18.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:

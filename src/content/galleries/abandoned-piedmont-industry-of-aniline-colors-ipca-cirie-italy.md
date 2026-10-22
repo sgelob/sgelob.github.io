@@ -5,6 +5,8 @@ date: "2009-04-11T12:00:16"
 genre: abandoned-places
 country: italy
 cover: 2009/04/ipca-piedmont-industry-aniline-colors-cirie-italy-70.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:

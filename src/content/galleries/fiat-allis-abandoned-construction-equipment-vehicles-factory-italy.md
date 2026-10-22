@@ -5,6 +5,8 @@ date: "2007-04-01T12:00:35"
 genre: abandoned-places
 country: italy
 cover: 2015/05/fiat-allis-abandoned-construction-equipment-vehicles-factory-italy-17.jpg
+coverWidth: 1440
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:

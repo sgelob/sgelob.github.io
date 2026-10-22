@@ -5,6 +5,8 @@ date: "2005-03-01T08:00:22"
 genre: world-places
 country: france
 cover: 2005/03/grenoble-france-city-air-panorama.jpg
+coverWidth: 1440
+coverHeight: 1080
 darkHeader: true
 oldSlugs:
   - grenoble-france

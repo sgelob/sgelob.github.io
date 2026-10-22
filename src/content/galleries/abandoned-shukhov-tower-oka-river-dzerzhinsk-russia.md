@@ -5,6 +5,8 @@ date: "2009-05-19T20:00:14"
 genre: abandoned-places
 country: russia
 cover: 2017/01/abandoned-shukhov-tower-oka-river-dzerzhinsk-russia-04.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:

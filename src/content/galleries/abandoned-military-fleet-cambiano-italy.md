@@ -5,6 +5,8 @@ date: "2009-10-11T18:00:14"
 genre: abandoned-places
 country: italy
 cover: 2009/10/abandoned-military-fleet-cambiano-italy-12-0.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:

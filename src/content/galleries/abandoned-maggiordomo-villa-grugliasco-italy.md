@@ -5,6 +5,8 @@ date: "2007-10-27T08:00:42"
 genre: abandoned-places
 country: italy
 cover: 2007/10/abandoned-maggiordomo-villa-grugliasco-italy-spheric-panorama-04.jpg
+coverWidth: 2160
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:

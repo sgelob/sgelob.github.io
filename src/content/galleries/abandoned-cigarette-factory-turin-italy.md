@@ -5,6 +5,8 @@ date: "2007-08-26T11:00:59"
 genre: abandoned-places
 country: italy
 cover: 2007/08/abandoned-cigarette-factory-turin-italy-08.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:

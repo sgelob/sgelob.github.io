@@ -5,6 +5,8 @@ date: "2009-04-10T12:00:07"
 genre: abandoned-places
 country: italy
 cover: 2009/04/abandoned-mill-brandizzo-italy-01.jpg
+coverWidth: 1621
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:

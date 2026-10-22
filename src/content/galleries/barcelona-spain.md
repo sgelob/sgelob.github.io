@@ -4,6 +4,8 @@ date: "2009-07-25T13:00:10"
 genre: world-places
 country: spain
 cover: 2009/07/barcelona-spain-64.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: true
 oldSlugs: []
 photos:

@@ -5,6 +5,8 @@ date: "2008-08-31T18:00:40"
 genre: abandoned-places
 country: italy
 cover: 2008/08/abandoned-marxer-pharmaceutical-laboratory-research-institute-loranze-italy-58.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: true
 oldSlugs: []
 photos:

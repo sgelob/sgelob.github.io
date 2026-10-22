@@ -5,6 +5,8 @@ date: "2012-05-12T10:40:41"
 genre: world-places
 country: italy
 cover: 2012/05/between-como-lugano-lakes-italy-03.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:

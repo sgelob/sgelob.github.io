@@ -5,6 +5,8 @@ date: "2009-04-19T14:00:58"
 genre: abandoned-places
 country: italy
 cover: 2009/04/abandoned-wood-processing-factory-sipav-italy-04.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:

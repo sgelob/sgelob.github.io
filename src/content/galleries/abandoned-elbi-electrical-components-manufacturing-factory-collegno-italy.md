@@ -5,6 +5,8 @@ date: "2008-10-05T19:00:58"
 genre: abandoned-places
 country: italy
 cover: 2008/10/abandoned-elbi-electrical-components-manufacturing-factory-collegno-italy-19.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: true
 oldSlugs: []
 photos:

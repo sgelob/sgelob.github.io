@@ -5,6 +5,8 @@ date: "2016-10-08T12:26:57"
 genre: old-film-cameras
 country: russia
 cover: 2016/10/sokol-automat-soviet-35mm-rangefinder-vintage-film-camera-05.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 seoTitle: Sokol Automat (Сокол Автомат) – Soviet 35mm Rangefinder Film Camera
 oldSlugs: []

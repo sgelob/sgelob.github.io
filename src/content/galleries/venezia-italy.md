@@ -4,6 +4,8 @@ date: "2012-08-11T09:00:31"
 genre: world-places
 country: italy
 cover: 2012/08/venezia-italy-02.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: true
 oldSlugs: []
 photos:

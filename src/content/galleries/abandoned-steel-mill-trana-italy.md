@@ -5,6 +5,8 @@ date: "2008-03-24T09:00:33"
 genre: abandoned-places
 country: italy
 cover: 2008/03/trana-abandoned-steel-mill-italy-25.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:

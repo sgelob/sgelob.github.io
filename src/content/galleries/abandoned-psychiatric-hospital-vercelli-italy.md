@@ -5,6 +5,8 @@ date: "2008-03-16T09:00:15"
 genre: abandoned-places
 country: italy
 cover: 2008/03/abandoned-mental-hospital-vercelli-italy-19.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 oldSlugs:
   - abandoned-mental-hospital-vercelli-italy
