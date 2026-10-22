@@ -8,7 +8,7 @@ const page = await getEntry('pages', 'quotes');
 if (!page) throw new Error('src/content/pages/quotes.md is missing');
 ---
 
-<Reading
+<Reading section
   title={page.data.seoTitle ?? `${page.data.title} — olegs`}
   heading="Favourite quotes"
   description={page.data.seoDescription ?? 'Inspirational quotes on life, design and work, collected by author.'}
@@ -19,5 +19,5 @@ if (!page) throw new Error('src/content/pages/quotes.md is missing');
 </Reading>
 
 <style>
-  .lead { color: var(--muted); margin: 0 0 32px; }
+  .lead { color: var(--muted); margin: 0 0 40px; }
 </style>
