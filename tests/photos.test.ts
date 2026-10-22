@@ -176,6 +176,20 @@ describe('scaffoldGallery', () => {
     await expect(scaffoldGallery({ slug: 's', folder, store, contentDir: tmp(), uploadsDir: uploads, date: new Date(2024, 4, 3) })).rejects.toThrow(/already exists/);
   });
 
+  test('refuses to overwrite an existing gallery file, before copying or uploading anything', async () => {
+    const folder = tmp();
+    put(folder, 'a.jpg', fixture('sample-900x600.jpg'));
+    const contentDir = tmp();
+    writeFileSync(join(contentDir, 'lake-como-italy.md'), 'edited by hand');
+    const before = store.objects.size;
+    await expect(
+      scaffoldGallery({ slug: 'lake-como-italy', folder, store, contentDir, uploadsDir: uploads, date: new Date(2023, 0, 9) }),
+    ).rejects.toThrow(/lake-como-italy\.md already exists/);
+    expect(readFileSync(join(contentDir, 'lake-como-italy.md'), 'utf8')).toBe('edited by hand');
+    expect(existsSync(join(uploads, '2023/01'))).toBe(false);
+    expect(store.objects.size).toBe(before);
+  });
+
   test('rejects a folder without images', async () => {
     const folder = tmp();
     put(folder, 'notes.txt');
