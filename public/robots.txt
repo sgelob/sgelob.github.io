@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://olegs.be/sitemap-index.xml
