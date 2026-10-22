@@ -58,6 +58,7 @@ export class WpDb {
     private readonly allPosts: WpPost[],
     private readonly postsById: Map<number, WpPost>,
     private readonly metaByKey: Map<string, Map<number, string>>,
+    private readonly metaListByKey: Map<string, Map<number, string[]>>,
     private readonly termsByPost: Map<number, WpTerm[]>,
     private readonly termsByTaxonomy: Map<string, WpTerm[]>,
     private readonly options: Map<string, string>,
@@ -72,6 +73,7 @@ export class WpDb {
 
     // WordPress returns the first row when a key repeats, so keep the first one.
     const metaByKey = new Map<string, Map<number, string>>();
+    const metaListByKey = new Map<string, Map<number, string[]>>();
     for (const r of rows('yo_postmeta')) {
       if (r.meta_value === null || r.meta_value === undefined) continue;
       const key = str(r.meta_key);
@@ -79,6 +81,11 @@ export class WpDb {
       if (!byPost) metaByKey.set(key, (byPost = new Map()));
       const postId = num(r.post_id);
       if (!byPost.has(postId)) byPost.set(postId, str(r.meta_value));
+      let listByPost = metaListByKey.get(key);
+      if (!listByPost) metaListByKey.set(key, (listByPost = new Map()));
+      const values = listByPost.get(postId);
+      if (values) values.push(str(r.meta_value));
+      else listByPost.set(postId, [str(r.meta_value)]);
     }
 
     const termById = new Map(rows('yo_terms').map((r) => [num(r.term_id), r]));
@@ -120,7 +127,7 @@ export class WpDb {
     const options = new Map<string, string>();
     for (const r of rows('yo_options')) options.set(str(r.option_name), str(r.option_value));
 
-    return new WpDb(allPosts, postsById, metaByKey, termsByPost, termsByTaxonomy, options);
+    return new WpDb(allPosts, postsById, metaByKey, metaListByKey, termsByPost, termsByTaxonomy, options);
   }
 
   /** Posts of a type, newest first. Omitting `status` matches every status. */
@@ -137,6 +144,11 @@ export class WpDb {
 
   meta(postId: number, key: string): string | undefined {
     return this.metaByKey.get(key)?.get(postId);
+  }
+
+  /** Every value stored under a repeated key, in row order (`meta` returns only the first). */
+  metaValues(postId: number, key: string): string[] {
+    return [...(this.metaListByKey.get(key)?.get(postId) ?? [])];
   }
 
   metaAll(key: string): Map<number, string> {

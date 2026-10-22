@@ -67,6 +67,14 @@ describe('WpDb (mini fixture)', () => {
     expect(db.terms(2, 'genre')).toEqual([]);
   });
 
+  test('metaValues returns every row of a repeated key', async () => {
+    const db = await WpDb.fromDump('tests/fixtures/wp-galleries.sql');
+    expect(db.metaValues(10, '_wp_old_slug')).toEqual(['lubitel-%d0%bb%d1%8e%d0%b1%d0%b8%d1%82%d0%b5%d0%bb%d1%8c', 'venice']);
+    expect(db.meta(10, '_wp_old_slug')).toBe('lubitel-%d0%bb%d1%8e%d0%b1%d0%b8%d1%82%d0%b5%d0%bb%d1%8c');
+    expect(db.metaValues(12, '_wp_old_slug')).toEqual([]);
+    expect(db.metaValues(10, 'nope')).toEqual([]);
+  });
+
   test('allTerms sorted by name and option', async () => {
     const db = await WpDb.fromDump(MINI);
     expect(db.allTerms('quote-author').map((t) => t.name)).toEqual(['Aristotle', 'Zeno']);
