@@ -1,0 +1,21 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Base from '../../layouts/Base.astro';
+import PostList from '../../components/PostList.astro';
+import { getPostsBy } from '../../lib/collections';
+import { categories, type Term } from '../../lib/taxonomies';
+
+// From taxonomies.yaml, not from the posts, so a category without posts still gets a page.
+export const getStaticPaths = (() => categories.map((category) => ({ params: { slug: category.slug }, props: { category } }))) satisfies GetStaticPaths;
+
+interface Props {
+  category: Term;
+}
+
+const { category } = Astro.props;
+const posts = await getPostsBy(category.slug);
+---
+
+<Base title={`${category.name} — Blog — olegs`} description={category.description} lang="it">
+  <PostList posts={posts} heading={category.name} />
+</Base>

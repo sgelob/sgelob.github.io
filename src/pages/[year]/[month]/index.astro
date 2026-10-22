@@ -1,0 +1,32 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Base from '../../../layouts/Base.astro';
+import PostList from '../../../components/PostList.astro';
+import { getPosts, type Post } from '../../../lib/collections';
+import { formatMonthYear } from '../../../lib/site';
+
+export const getStaticPaths = (async () => {
+  const posts = await getPosts();
+  const byMonth = new Map<string, Post[]>();
+  for (const post of posts) {
+    const d = post.data.date;
+    const key = `${d.getFullYear()}/${String(d.getMonth() + 1).padStart(2, '0')}`;
+    byMonth.set(key, [...(byMonth.get(key) ?? []), post]);
+  }
+  return [...byMonth].map(([key, monthPosts]) => {
+    const [year, month] = key.split('/');
+    return { params: { year, month }, props: { posts: monthPosts } };
+  });
+}) satisfies GetStaticPaths;
+
+interface Props {
+  posts: Post[];
+}
+
+const { posts } = Astro.props;
+const heading = formatMonthYear(posts[0]!.data.date, 'it');
+---
+
+<Base title={`${heading} — Blog — olegs`} lang="it">
+  <PostList posts={posts} heading={heading} />
+</Base>

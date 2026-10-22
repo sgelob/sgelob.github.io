@@ -1,0 +1,82 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { render } from 'astro:content';
+import Reading from '../../../layouts/Reading.astro';
+import Redirect from '../../../components/Redirect.astro';
+import { getPosts, neighbours, postPath, type Post } from '../../../lib/collections';
+import { originalUrl } from '../../../lib/images';
+import { redirectsUnder } from '../../../lib/redirects';
+import { formatDate, isoDate } from '../../../lib/site';
+import { categoryName } from '../../../lib/taxonomies';
+
+// getStaticPaths runs isolated from the rest of the frontmatter: everything it uses lives inside it.
+export const getStaticPaths = (async () => {
+  const POST_URL = /^\/(\d{4})\/(\d{2})\/([^/]+)\/$/;
+  const paramsOf = (path: string) => {
+    const [, year, month, slug] = POST_URL.exec(path) ?? [];
+    return year && month && slug ? { year, month, slug } : undefined;
+  };
+  const posts = await getPosts();
+  // Old slugs are written as WordPress served them, raw Unicode included.
+  const redirects = redirectsUnder('/').flatMap(({ from, to }) => {
+    const params = paramsOf(from);
+    return params ? [{ params, props: { redirectTo: to } }] : [];
+  });
+  return [
+    ...posts.map((post) => ({ params: paramsOf(postPath(post))!, props: { post, ...neighbours(posts, post.id) } })),
+    ...redirects,
+  ];
+}) satisfies GetStaticPaths;
+
+type Props =
+  | { post: Post; prev?: Post; next?: Post; redirectTo?: undefined }
+  | { redirectTo: string; post?: undefined };
+
+const props = Astro.props as Props;
+const post = props.post;
+const { Content } = post ? await render(post) : { Content: undefined };
+---
+
+{props.redirectTo !== undefined ? (
+  <Redirect to={props.redirectTo} />
+) : post && Content && (
+  <Reading
+    title={`${post.data.seoTitle ?? post.data.title} — olegs`}
+    heading={post.data.title}
+    description={post.data.seoDescription ?? post.data.excerpt}
+    lang={post.data.lang}
+    ogImage={post.data.cover && originalUrl(post.data.cover)}
+  >
+    <Fragment slot="meta">
+      <time datetime={isoDate(post.data.date)}>{formatDate(post.data.date, post.data.lang)}</time>
+      {post.data.categories.map((slug) => (
+        <> · <a href={`/category/${slug}/`}>{categoryName(slug)}</a></>
+      ))}
+    </Fragment>
+    <Content />
+    <nav class="pager mono" aria-label="More posts" slot="after">
+      {props.next ? <a href={postPath(props.next)} rel="next">← {props.next.data.title}</a> : <span></span>}
+      {props.prev && <a href={postPath(props.prev)} rel="prev">{props.prev.data.title} →</a>}
+    </nav>
+  </Reading>
+)}
+
+<style>
+  .pager {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    margin-top: 72px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+  }
+
+  .pager a {
+    max-width: 48%;
+    transition: color 120ms ease;
+  }
+
+  .pager a:hover { color: var(--muted); }
+
+  .pager [rel='prev'] { text-align: right; }
+</style>
