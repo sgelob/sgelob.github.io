@@ -1,0 +1,25 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Base from '../../layouts/Base.astro';
+import PostList from '../../components/PostList.astro';
+import { getPosts, type Post } from '../../lib/collections';
+
+// Only 4-digit years: the single-segment pages route ([page].astro) must never yield the same path.
+export const getStaticPaths = (async () => {
+  const posts = await getPosts();
+  const yearOf = (post: Post) => String(post.data.date.getFullYear());
+  const years = [...new Set(posts.map(yearOf))].filter((year) => /^\d{4}$/.test(year));
+  return years.map((year) => ({ params: { year }, props: { year, posts: posts.filter((p) => yearOf(p) === year) } }));
+}) satisfies GetStaticPaths;
+
+interface Props {
+  year: string;
+  posts: Post[];
+}
+
+const { year, posts } = Astro.props;
+---
+
+<Base title={`${year} — Blog — olegs`} lang="it">
+  <PostList posts={posts} heading={year} />
+</Base>
