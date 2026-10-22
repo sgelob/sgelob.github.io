@@ -105,8 +105,4 @@ photos:
     height: 1080
 ---
 
-## Mugnaia 2008 – Storico Carnevale di Ivrea
-
-## Mugnaia 2014 – Storico Carnevale di Ivrea
-
-Read more on Wikipedia: [Battle of the Oranges](https://en.wikipedia.org/wiki/Battle_of_the_Oranges)
+Two editions of the historic carnival of Ivrea, the Mugnaia of 2008 and of 2014, and its famous Battle of the Oranges. Read more on Wikipedia: [Battle of the Oranges](https://en.wikipedia.org/wiki/Battle_of_the_Oranges).

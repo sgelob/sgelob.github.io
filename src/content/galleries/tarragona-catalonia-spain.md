@@ -73,30 +73,8 @@ photos:
     height: 1080
 ---
 
-The tree-lined main pedestrian street of Tarragona called Rambla Nova, is animated and full of people who take shelter in the shade.
+Tarragona, on the Catalan coast. Most of the walk follows the Rambla Nova, the tree-lined pedestrian street where people stroll and take shelter in the shade, and ends at the Roman amphitheatre, still in good shape and big enough to impress.
 
-The buildings along the Rambla Nova are very rich in architectural decorations.
+The buildings along the Rambla are rich in decoration, on the facades and on the roofs: look up and you find hidden details, and a few palaces with a very minimal, clean look (some remind me of faces with a moustache). The “Monumento a los Castellers”, a complex construction of many figures, is the symbol of the city. There are contrasts of new and old, like the Medical Center next to the Chamber of Commerce, benches everywhere for deciding which way to go, and the choice between the tourist sights and the narrow streets of the old town.
 
-There are so many details on the facades of the buildings but also on the roofs, looking up and having eye you can see hidden beauties.
-
-Besides the very rich architecture of Tarragona, you can also find in some palaces with very minimal and clean aspect. Some forms remind me of the faces with a mustache :{
-
-Human-centered architecture :)
-
-I think that this monument “Monumento a los Castellers” is the symbol of the city and one of the most popular tourist attractions. The construction is very complex with many figures and details.
-
-Some contrast between new and old, Medical Center VS Chamber of Commerce.
-
-If you are lost and do not know the way you can always sit on one of the many benches and decide how to proceed.
-
-It's up to you to decide if you want to stay to see the tourists sights or penetrate the narrow streets of Tarragona to explore the city and its wonders.
-
-You should definitely walk along the Rambla Nova to get to see this Roman amphitheater, which is really in good structural condition and big enough to impress you.
-
-I have not seen the beaches of Tarragona, but by far the sea and the coast seem beautiful.
-
-Even monuments sometimes get tired and need to rest a moment :)
-
-Another interesting monument… what this sadistic child is doing to this poor animal? The old man from the previous picture is too tired to say something and to help?
-
-And finally some less artistic urban landscapes of Tarragona.
+Some monuments look tired and need a rest, one child seems to be doing something unkind to a poor animal, and the series closes with a few less artistic urban landscapes. I did not see the beaches, but from a distance the sea and the coast look beautiful.

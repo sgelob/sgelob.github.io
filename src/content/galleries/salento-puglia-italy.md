@@ -85,36 +85,8 @@ photos:
     height: 1080
 ---
 
-The food and drinks in Puglia are very delicious. Home-made products are very widespread, mostly the homemade pasta, olive oil and wine.
+Salento, the heel of Italy, also called the “Scorched Land”. You should absolutely visit it.
 
-Typical street in the old town of Alberobello, with the very special roofs on dry stone houses called “[Trulli](http://en.wikipedia.org/wiki/Trullo "Trullo on Wikipedia").”
+The food and drinks are delicious and home-made products are everywhere: fresh pasta, wine and the olive oil pressed from centuries-old olive trees, some twisted into shapes where you can see human or animal figures, depending on your imagination. The coast is vast, with rocky shores, old fortifications and the remains of past wars, watchtowers from the 15th and 16th centuries arranged all along the shoreline, and beaches of very fine sand that are, in my opinion, the most beautiful in Europe, or at least in Italy. The sunsets on the rocky coast are worth the wait.
 
-“The White Town” of Ostuni and the famous architectural jewels – the “Trulli” houses.
-
-The coastal watchtowers in Puglia are arranged along all the coast in Salento. The remaining towers are mostly from the 15th and 16th centuries.
-
-I met many old cars in Puglia, which are well kept and still in use.
-
-I really enjoyed to watch the sunsets on the desert and rocky coasts of Salento.
-
-At the area of Salento in Puglia, there are many rocky shores with the fortifications and the remains of past wars.
-
-I saw also some animals, mostly underwater life. This snail is not a really good example of the wild life :)
-
-In Puglia you can meet different buildings, very simple architecture and also the real architectural masterpieces.
-
-In smaller villages of Puglia transport and water supply is done by trucks.
-
-The coasts of Puglia are very vast, there are rocks and also beaches with very fine sand. In my opinion there are the most beautiful beaches in Europe, or at least in Italy.
-
-Certain cities in Puglia are very small so the habitants don't really need a car, a bike is just fine.
-
-Fireworks on the beach in the night of the feast of San Lorenzo. Tradition says to bathe in the sea at midnight.
-
-The plantations of olive trees are many widespread in Puglia and their olive oil is yummy! There are many centuries-old olive trees. Sometimes there are strange shapes, and you can see human or animal forms, it depends on your imagination :)
-
-The best way to get to Lecce is by train, there are high-speed trains which are very efficient.
-
-I was in Lecce several times but I especially like it before Christmas, the decorations in the city are very nice in my opinion.
-
-“A gate to the sea.” in Santa Maria di Leuca. You should absolutely visit Puglia, also called “Scorched Land.”
+Inland there are Alberobello with its dry-stone “[Trulli](http://en.wikipedia.org/wiki/Trullo "Trullo on Wikipedia")” houses, the white town of Ostuni, and villages so small that nobody needs a car: a bike is just fine, water and goods arrive by truck, and the old cars that remain are well kept and still in use. Lecce is best reached by high-speed train, and best seen before Christmas, when the decorations are up. On the night of San Lorenzo there are fireworks on the beach, and tradition says to bathe in the sea at midnight. The last picture is “a gate to the sea” in Santa Maria di Leuca.

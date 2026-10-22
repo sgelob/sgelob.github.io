@@ -141,6 +141,4 @@ photos:
     height: 1080
 ---
 
-## Light Painting Experiments
-
-This was my first improvised experiment of light painting. I had not gone to OGR willing to do it, but I had only brought a flashlight for safety and it happened all in freestyle.
+Some of these pictures are my first improvised experiment of light painting. I had not gone to the OGR intending to do it: I had only brought a flashlight for safety, and it all happened freestyle.
