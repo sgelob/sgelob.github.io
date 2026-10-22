@@ -26,8 +26,8 @@ const size = coverSize(gallery);
   <div class="caption wrap">
     <h1 class="title">{title}</h1>
     <p class="meta mono">
-      <span>{countryName(country)}</span>
-      <span>{genreName(genre)}</span>
+      <a href={`/photos/country/${country}/`}>{countryName(country)}</a>
+      <a href={`/photos/genre/${genre}/`}>{genreName(genre)}</a>
       <span>{formatMonthYear(date, 'en')}</span>
       <span>{photos.length} photos</span>
     </p>
@@ -85,6 +85,11 @@ const size = coverSize(gallery);
     line-height: 1.1;
     letter-spacing: -0.025em;
   }
+
+  .meta a { border-bottom: 1px solid transparent; }
+
+  .meta a:hover,
+  .meta a:focus-visible { border-bottom-color: currentColor; }
 
   .meta {
     display: flex;
