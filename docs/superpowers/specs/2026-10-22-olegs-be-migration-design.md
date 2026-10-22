@@ -162,6 +162,8 @@ Tutti gli URL con slash finale, come oggi. GitHub Pages serve `/<path>/index.htm
 
 Regola per tutto il resto. Si conserva ciò che sta nella sitemap di oggi (post, pagine, gallerie, generi) più categorie, paesi e autori delle citazioni, che non sono in sitemap ma rispondono 200. Possono dare 404: la paginazione (`/blog/page/N/`, oggi inutile perché la pagina mostra tutti i post), i feed per categoria e per genere, la ricerca, le pagine allegato (`/gallery/<slug>/<foto>/`, che oggi rimandano già al file e Google indicizza il file, non la pagina). La verifica del passo 5 in sezione 7 usa la sitemap attuale più le liste di categorie, paesi e autori.
 
+Amended 2026-10-22: About moved to `/about/`; the old keyword slug redirects to it.
+
 ### 6.2 Redirect
 
 Cloudflare free consente circa 10 Single Redirects e pochi Bulk Redirects per zona, quindi su Cloudflare vanno solo le regole con wildcard:

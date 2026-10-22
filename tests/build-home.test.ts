@@ -3,7 +3,12 @@ import { describe, expect, test } from 'vitest';
 import { count, read } from './helpers/dist';
 
 test('home has intro, 4 gallery cards, 3 posts', () => { const html = read('dist/index.html'); expect(html).toContain('Hi, I’m Oleg'); expect(count(html,'class="gallery-card"')).toBe(4); expect(count(html,'class="post-item"')).toBe(3); expect(html).toContain('All 85 galleries'); });
-test('about keeps its slug, events and books exist', () => { for (const p of ['dist/agile-scrum-product-owner-manager-turin-italy/index.html','dist/events/index.html','dist/books/index.html']) expect(existsSync(p)).toBe(true); expect(read('dist/events/index.html')).toContain('2026'); });
+test('about lives at /about/ and the old slug redirects', () => {
+  expect(existsSync('dist/about/index.html')).toBe(true);
+  expect(read('dist/about/index.html')).toMatch(/<title>[^<]*Olegs Belousovs[^<]*<\/title>/);
+  expect(read('dist/agile-scrum-product-owner-manager-turin-italy/index.html')).toContain('http-equiv="refresh" content="0; url=/about/"');
+});
+test('events and books exist', () => { for (const p of ['dist/events/index.html','dist/books/index.html']) expect(existsSync(p)).toBe(true); expect(read('dist/events/index.html')).toContain('2026'); });
 test('quotes page and 141 author pages', () => { expect(count(read('dist/my-favourite-inspirational-quotes-life-design/index.html'), 'class="quote"')).toBe(188); expect(readdirSync('dist/quote-author').length).toBe(141); });
 
 describe('home', () => {
@@ -23,7 +28,7 @@ describe('home', () => {
 
 describe('pages', () => {
   test('about renders its body in the reading column', () => {
-    const html = read('dist/agile-scrum-product-owner-manager-turin-italy/index.html');
+    const html = read('dist/about/index.html');
     expect(html).toMatch(/<h1[^>]*>Olegs Belousovs<\/h1>/);
     expect(html).toContain('How May I Help You?');
     expect(html).toContain('class="reading');

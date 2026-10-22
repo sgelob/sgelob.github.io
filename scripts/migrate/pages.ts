@@ -19,6 +19,9 @@ export type BookSection = { title: string; entries: string[] };
 export type AboutPage = PageDoc & { events: EventYear[]; books: BookSection[] };
 
 export const ABOUT_ID = 9;
+/** The About page lives at `/about/`; its old WordPress keyword slug redirects there (amended 2026-10-22). */
+export const ABOUT_PATH = '/about/';
+export const ABOUT_OLD_PATH = '/agile-scrum-product-owner-manager-turin-italy/';
 /** Pages whose content-file slug differs from `post_name`, by post ID. */
 const SLUG_OVERRIDES: ReadonlyMap<number, string> = new Map([
   [ABOUT_ID, 'about'],
@@ -81,7 +84,7 @@ function baseDoc(db: WpDb, post: WpPost, body: string): PageDoc {
   const slug = SLUG_OVERRIDES.get(post.ID) ?? post.post_name;
   const doc: PageDoc = {
     slug,
-    path: `/${post.post_name}/`,
+    path: post.ID === ABOUT_ID ? ABOUT_PATH : `/${post.post_name}/`,
     title: post.post_title,
     lang: 'en',
     body,

@@ -18,7 +18,7 @@ describe('Base', () => {
     const html = await render(Base, { props: { title: 'T' }, slots: { default: '<p>slot-body</p>' } });
     expect(html).toMatch(/<main[^>]*>[\s\S]*<p>slot-body<\/p>[\s\S]*<\/main>/);
     expect(html).toContain('href="/blog/"');
-    expect(html).toContain('href="/agile-scrum-product-owner-manager-turin-italy/"');
+    expect(html).toContain('href="/about/"');
     expect(html).toContain(`© ${new Date().getFullYear()} Olegs Belousovs`);
     expect(html).toContain('href="mailto:44_tildes_agog@icloud.com"');
     expect(html).toContain('href="/feed.xml"');
@@ -38,7 +38,7 @@ describe('Base', () => {
     ['/blog/', '/blog/', 'page'],
     ['/category/agile/', '/blog/', 'true'],
     ['/2019/05/some-post/', '/blog/', 'true'],
-    ['/agile-scrum-product-owner-manager-turin-italy/', '/agile-scrum-product-owner-manager-turin-italy/', 'page'],
+    ['/about/', '/about/', 'page'],
   ])('marks the current section at %s', async (path, href, value) => {
     const html = await render(Base, { props: { title: 'T' }, slots: { default: 'X' }, path });
     expect(html).toMatch(new RegExp(`href="${href}" aria-current="${value}"`));
@@ -77,7 +77,7 @@ test('404 page repeats the three section links', async () => {
   const html = await render(NotFound, { path: '/404/' });
   expect(html).toContain('<title>Page not found — olegs</title>');
   expect(html).toContain('This page does not exist.');
-  for (const href of ['/photos/', '/blog/', '/agile-scrum-product-owner-manager-turin-italy/']) {
+  for (const href of ['/photos/', '/blog/', '/about/']) {
     expect(html.split(`href="${href}"`).length - 1).toBe(2);
   }
 });
