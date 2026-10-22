@@ -12,7 +12,7 @@ test('Pic: webp srcset, plain jpg fallback at the largest width under maxWidth, 
   expect(html).toMatch(/width="1620" height="1080"/);
   expect(html).toContain('alt="A photo"');
   expect(html).toContain('loading="lazy"');
-  expect(html).toContain('decoding="async"');
+  expect(html).not.toContain('decoding='); // left out: 17 bytes per photo against the 50 KB gallery budget
 });
 
 test('Pic: maxWidth defaults to the image width, never upscales', async () => {

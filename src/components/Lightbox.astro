@@ -33,6 +33,14 @@
       loadStyle(),
     ]);
     const lightbox = new PhotoSwipeLightbox({ gallery: '.justified', children: 'a.ph', pswpModule: PhotoSwipe });
+    // The photo's size comes from its grid img, which declares it anyway: a data-pswp-width/height
+    // pair on every link as well would push an 80-photo gallery past its 50 KB budget.
+    lightbox.addFilter('domItemData', (item, _element, link) => {
+      const img = link.querySelector('img');
+      item.width = item.w = Number(img?.getAttribute('width')) || 0;
+      item.height = item.h = Number(img?.getAttribute('height')) || 0;
+      return item;
+    });
     lightbox.init();
     return lightbox;
   }

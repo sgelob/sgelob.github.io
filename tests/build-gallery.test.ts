@@ -1,7 +1,7 @@
 import { describe, expect, test } from 'vitest';
 import { count, exists, read } from './helpers/dist';
 
-test('venezia gallery renders 81 photos, hero, neighbours', () => { const html = read('dist/gallery/venezia-italy/index.html'); expect(count(html, 'class="ph"')).toBe(81); expect(html).toContain('data-pswp-width="1620"'); expect(html).toContain('81 photos'); expect(html).toMatch(/href="\/gallery\/[a-z0-9-]+\/"[^>]*rel="prev"/); });
+test('venezia gallery renders 81 photos, hero, neighbours', () => { const html = read('dist/gallery/venezia-italy/index.html'); expect(count(html, 'class="ph"')).toBe(81); expect(html).toContain('width="1620" height="1080"'); expect(html).toContain('81 photos'); expect(html).toMatch(/href="\/gallery\/[a-z0-9-]+\/"[^>]*rel="prev"/); });
 test('gallery html stays under 50 KB and has no inline photoswipe', () => { const html = read('dist/gallery/berlin-germany/index.html'); expect(Buffer.byteLength(html)).toBeLessThan(50 * 1024); expect(html).not.toContain('PhotoSwipeLightbox'); });
 test('old gallery slug builds a redirect page', () => { expect(read('dist/gallery/tarragona-spain/index.html')).toContain('http-equiv="refresh" content="0; url=/gallery/tarragona-catalonia-spain/"'); });
 
@@ -24,9 +24,10 @@ describe('gallery page', () => {
     expect(html).toMatch(/Italy<\/span>\s*<span[^>]*>World Places<\/span>\s*<span[^>]*>August 2012<\/span>\s*<span[^>]*>81 photos<\/span>/);
   });
 
-  test('grid: photos in frontmatter order, linking to the originals, with their ratio', () => {
+  test('grid: photos in frontmatter order, linking to the originals, the lightbox at 1600, with their ratio', () => {
     const html = venezia();
-    expect(html).toContain('<a class="ph" href="https://img.olegs.be/uploads/2012/08/venezia-italy-01.jpg" data-pswp-width="1620" data-pswp-height="1080" style="--r: 1.5"');
+    expect(html).toContain('<a class="ph" href="https://img.olegs.be/uploads/2012/08/venezia-italy-01.jpg" data-pswp-src="https://img.olegs.be/uploads/2012/08/venezia-italy-01-1600.jpg" style="--r:1.5"');
+    expect(html).not.toContain('data-pswp-width'); // the lightbox reads the size from the img
     expect(html.indexOf('venezia-italy-01.jpg"')).toBeLessThan(html.indexOf('venezia-italy-81.jpg"'));
     expect(html).toContain('class="spacer"');
     expect(html).toContain('sizes="(min-width: 1100px) 33vw, 50vw"');
@@ -51,6 +52,7 @@ describe('gallery page', () => {
     // PhotoSwipe is not left to import it lazily (an uncaught rejection after preventDefault).
     expect(entry).toMatch(/import\([`"']\.\/photoswipe\.esm\.[\w-]+\.js[`"']\)/);
     expect(entry).not.toMatch(/pswpModule:\s*\(\)\s*=>/);
+    expect(entry).toContain('domItemData'); // sizes from the grid img, not data-pswp-width/height
   });
 
   test('grid basis sits below the target row height: 280px desktop, 150px mobile', () => {
