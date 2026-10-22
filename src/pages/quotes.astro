@@ -6,13 +6,12 @@ import { groupByAuthor, quotes } from '../lib/quotes';
 
 const page = await getEntry('pages', 'quotes');
 if (!page) throw new Error('src/content/pages/quotes.md is missing');
-const authors = groupByAuthor(quotes).length;
 ---
 
 <Reading
   title={page.data.seoTitle ?? `${page.data.title} — olegs`}
   heading="Favourite quotes"
-  description={page.data.seoDescription ?? `${quotes.length} inspirational quotes on life, design and work, from ${authors} authors.`}
+  description={page.data.seoDescription ?? 'Inspirational quotes on life, design and work, collected by author.'}
   lang={page.data.lang}
 >
   <p class="lead">Words on life, design and work that stayed with me over the years, collected by author.</p>
