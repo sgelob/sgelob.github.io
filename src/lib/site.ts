@@ -19,3 +19,9 @@ export function formatMonthYear(d: Date, lang: Lang): string {
 export function formatDate(d: Date, lang: Lang): string {
   return new Intl.DateTimeFormat(LOCALES[lang], { day: 'numeric', month: 'long', year: 'numeric' }).format(d);
 }
+
+/** `YYYY-MM-DD` in the build's timezone, for `<time datetime>` (toISOString would shift to UTC). */
+export function isoDate(d: Date): string {
+  const pad = (n: number) => String(n).padStart(2, '0');
+  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+}

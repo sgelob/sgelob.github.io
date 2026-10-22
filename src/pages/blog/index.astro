@@ -1,0 +1,25 @@
+---
+import { getEntry } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PostList from '../../components/PostList.astro';
+import { getPosts } from '../../lib/collections';
+
+const page = await getEntry('pages', 'blog');
+const posts = await getPosts();
+---
+
+<Base title="Blog — olegs" description={page?.data.seoDescription} lang="it">
+  <h1 class="visually-hidden">Blog</h1>
+  <PostList posts={posts} />
+</Base>
+
+<style>
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+</style>
