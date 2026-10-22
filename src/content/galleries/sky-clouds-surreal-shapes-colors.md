@@ -234,4 +234,4 @@ photos:
 
 Watch this video about the clouds and their naming by Richard Hamblyn. Can you understand what are the names of the clouds in my photos? 🌩
 
-<iframe src="https://www.youtube.com/embed/UuW1jhxCgx0" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://www.youtube.com/embed/UuW1jhxCgx0" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>

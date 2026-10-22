@@ -29,7 +29,7 @@ Contenuti, SEO, marketing e business.
 
 How can you truly create an experience without knowing who you are creating it for? Why does so much get made without user research? Why do so many creating experiences not run user tests or engage with their users at any point? It isn’t a privilege of the wealthy agency or invested company. In this talk I’ll show why knowing your users matters and how you can start truly understanding them to make a better experience.
 
-<iframe src="https://videopress.com/embed/06cSoNri" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://videopress.com/embed/06cSoNri" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 [Slide](https://speakerdeck.com/tammielis/know-your-users)
 
@@ -41,7 +41,7 @@ Essere una “product person” è una mentalità, e non necessariamente si rife
 
 Questo talk è per chiunque nella comunità di WordPress voglia migliorare i propri processi o diventare una miglior «product person».
 
-<iframe src="https://videopress.com/embed/Arg4rZhB" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://videopress.com/embed/Arg4rZhB" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 [Slide](https://speakerdeck.com/franzvitulli/oltre-il-prodotto-costruire-uno-stile-di-vita)
 
@@ -69,7 +69,7 @@ Da poco ho celebrato il mio primo anno di lavoro con WP Media e quasi non ricono
 
 Siete curiosi di conoscere il resto della storia?
 
-<iframe src="https://videopress.com/embed/RFHMLVM1" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://videopress.com/embed/RFHMLVM1" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 [Slide](https://wptv.files.wordpress.com/2017/04/alice-orru-di-come-ho-iniziato-a-lavorare-per-un-popolare-plugin-wordpress-pur-essendo-una-principiante-totale.pdf)
 
@@ -77,7 +77,7 @@ Siete curiosi di conoscere il resto della storia?
 
 Perché è importante avere un contratto? Quali sono le clausole indispensabili e gli errori da evitare? Dai tempi di pagamento alla consegna dei materiali, dal diritto di autore alla manutenzione del sito: come avere un contratto che soddisfi te ed il tuo cliente.
 
-<iframe src="https://videopress.com/v/NGqUafDO" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://videopress.com/v/NGqUafDO" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 [Slide](https://wptv.files.wordpress.com/2017/04/giorgio-trono-il-contratto-di-sviluppo-di-un-sito-wordpress.pdf)
 
@@ -89,7 +89,7 @@ La mia ricetta per far crescere un blog verticale con WP: i plugin necessari, le
 
 Obiettivo: raggiungere la soglia di 100 mila pv/mese per iniziare a monetizzare il blog.
 
-<iframe src="https://videopress.com/v/wOj6nVkO" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://videopress.com/v/wOj6nVkO" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 [Slide](https://wptv.files.wordpress.com/2017/04/barbara-damiano-da-0-a-100mila-pageviews-mese-in-sei-mesi-con-wp.pdf)
 
@@ -105,7 +105,7 @@ Let’s find a definition of “testable code” that applies to both WordPress 
 
 I will present real-world examples of new and existing code, the tools used to write and maintain testable code and some simple rule-of-thumbs to keep in mind when developing for our beloved CMS.
 
-<iframe src="https://videopress.com/v/TUxAwfSH" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://videopress.com/v/TUxAwfSH" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 ### Dario Paschetta: Creazione di un sito di e-commerce: prontuario giuridico – pratico
 
@@ -115,13 +115,13 @@ Verranno illustrate le informazioni e i contratti che deve predisporre uno svilu
 
 Si discuterà delle proposte (speriamo approvate) sulle nuove regole dell’Unione europea per la creazione del «mercato unico digitale per l’Europa».
 
-<iframe src="https://videopress.com/v/GVQT8cEG" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://videopress.com/v/GVQT8cEG" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 ### Dana Donato: Etichetta i tuoi contenuti – come progettare un menu efficace
 
 Come organizzare il menu di un sito sulla base dei suoi contenuti, dall’architettura delle informazioni alla scelta della tipologia di menù. Un’introduzione alle strategie di mapping—concettuali, tecniche e grafiche—che sono alla base di un sito che raggiunge i propri obiettivi.
 
-<iframe src="https://videopress.com/v/uwW3VTFs" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://videopress.com/v/uwW3VTFs" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 [Slide](https://wptv.files.wordpress.com/2017/04/dana-donato-etichetta-i-tuoi-contenuti.pdf)
 
@@ -129,7 +129,7 @@ Come organizzare il menu di un sito sulla base dei suoi contenuti, dall’archit
 
 Tra i tanti tipi di contenuto che si valutano nelle strategie di marketing quello enciclopedico viene preso sempre troppo poco in considerazione, spesso per paura di non poter competere con i giganteschi contenitori generalisti. Se pensate che Wikipedia sia insuperabile in SERP dopo questo intervento uscirete dalla sala con la voglia e i mezzi per provare a battere l’enciclopedia più grande al mondo al suo stesso gioco, ovviamente impiegando il nostro amato CMS WordPress.
 
-<iframe src="https://videopress.com/v/CvnGTTbE" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://videopress.com/v/CvnGTTbE" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 ## Sabato 2 aprile – Sala B
 
@@ -143,7 +143,7 @@ Oggi, invece, “DevOps”, “Continuos Delivery”, “Continuos integration�
 
 Questo talk espone una serie di strumenti e strategie per implementare un strategia di Continuous Delivery per moderni siti web basati su WordPress.
 
-<iframe src="https://videopress.com/v/ATDeS71k" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://videopress.com/v/ATDeS71k" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 [Slide](https://speakerdeck.com/gmazzap/continuously-deploying-wordpress-1)
 
@@ -151,7 +151,7 @@ Questo talk espone una serie di strumenti e strategie per implementare un strate
 
 La nostra amata piattaforma è cresciuta molto negli ultimi anni e ci sono caratteristiche che richiedono la nostra attenzione per poter creare temi accattivanti e che sfruttano le ultime novità di WordPress. Con questo talk sarai in grado di comprendere come sia possibile creare un tema compatibile con il Customizr, con la possibilità di includere i Post Template, includere file inline grazie alle funzioni dedicate e molte altre succose caratteristiche che ci permettono di diventare sviluppatori WordPress migliori!
 
-<iframe src="https://videopress.com/v/XMszS3ov" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://videopress.com/v/XMszS3ov" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 [Slide](https://www.slideshare.net/AndreaBarghigiani/crea-un-tema-compatibile-con-le-ultime-novit-wordpress)
 
@@ -159,7 +159,7 @@ La nostra amata piattaforma è cresciuta molto negli ultimi anni e ci sono carat
 
 WordPress Plugins are powerful tools that let us extend WordPress and turn it into whatever we want. What’s their secret? Join me if you want to know more about them and get started developing your own Plugin! I’ll tell you a story about magic, dangerous pirates, brave bowmen and ancient castles…
 
-<iframe src="https://videopress.com/v/oUXpztuJ" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://videopress.com/v/oUXpztuJ" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 Slide
 
@@ -167,7 +167,7 @@ Slide
 
 The user roles and capabilities API is one of the most powerful APIs in WordPress. With it you can allow, deny, and customise access to features in WordPress to a fine grained level. In this presentation, I’ll talk through the basics and go on to explain some of the more interesting and advanced use cases of working with roles and capabilities.
 
-<iframe src="https://videopress.com/v/eYDM07Ov" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://videopress.com/v/eYDM07Ov" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 [Slide](https://wptv.files.wordpress.com/2017/04/john-blackbourn-a-deep-dive-into-the-user-roles.pdf)
 
@@ -175,7 +175,7 @@ The user roles and capabilities API is one of the most powerful APIs in WordPres
 
 WP-CLI è un ottimo strumento per abbattere i tempi di sviluppo e per automatizzare i task ripetitivi ed è un vero e proprio coltellino svizzero a disposizione dello sviluppatore. In questo talk parlerò di alcuni utilizzi avanzati e di come è possibile comandare i plugin realizzati attraverso WP-CLI.
 
-<iframe src="https://videopress.com/v/K7Ny3p8L" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://videopress.com/v/K7Ny3p8L" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 [Slide](https://www.slideshare.net/AndreaCardinali/gestione-avanzata-di-wordpress-con-wpcli-wordcamp-torino-2017-andrea-cardinali)
 
@@ -211,7 +211,7 @@ I read books and articles about elephants and unicorns, and how that elephant po
 
 There is a filthy big little shame sitting in WordPress’ localized user interfaces, in many languages with grammatical genders: Women are discriminated by default. This talk addresses the need to solve that dilemma—and examples how it possibly can be solved.
 
-<iframe src="https://videopress.com/v/YidSHUC2" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://videopress.com/v/YidSHUC2" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 Slide
 
@@ -223,7 +223,7 @@ With WordPress 4.7, the REST API content endpoints were merged into core – how
 
 In his session, Felix will talk about the efforts of bringing Multisite endpoints to the REST API and the challenges that arise as a result.
 
-<iframe src="https://videopress.com/v/ic8RMDp0" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://videopress.com/v/ic8RMDp0" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 [Slide](https://wptv.files.wordpress.com/2017/04/felix-arntz-getting-the-rest-api-ready-for-multisite.pdf)
 
@@ -231,7 +231,7 @@ In his session, Felix will talk about the efforts of bringing Multisite endpoint
 
 Come costruire un tema con tecnologia AMP-project per WordPress, i passaggi di automazione fondamentali con esempi di codice php ed un confronto con l’uso dei plugin più diffusi.
 
-<iframe src="https://videopress.com/v/AG18FkM6" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://videopress.com/v/AG18FkM6" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 ### Pascal Birchler: Decluttering WordPress (in inglese)
 
@@ -239,7 +239,7 @@ As a developer working at a UX and WordPress agency, I’ve learnt a lot about c
 
 From user registration to email notifications, I will highlight a few areas in WordPress that we thought were difficult to use, and how we solved these issues. This will include helpful advice for developers who want to learn more about UX and designers who want to start contributing to WordPress core.
 
-<iframe src="https://videopress.com/v/vdnzVu7s" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://videopress.com/v/vdnzVu7s" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 [Slide](https://speakerdeck.com/swissspidy/wordcamp-torino-decluttering-wordpress)
 

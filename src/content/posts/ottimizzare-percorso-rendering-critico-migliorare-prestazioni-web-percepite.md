@@ -22,7 +22,7 @@ Un modo per vedere quanto ci mette un sito web ad iniziare a mostrare e renderiz
 
 Per esempio, in questa immagine si vede un test sintetico eseguito con WebPagetest.org del sito web della banca Intesa Sanpaolo. Le impostazioni scelte sono Google Chrome con una connessione a fibra da Francoforte (purtroppo in Italia non c’è ancora nessun server di test). Per circa 3 secondi e mezzo lo schermo rimane completamente bianco e anche dopo, il sito web non viene renderizzato subito, lasciando passare ben altri 6 secondi di tempo prima di poter vedere qualcosa di leggibile… puoi vedere l’effetto del rendering in azione in questo video:
 
-<iframe src="https://www.youtube.com/embed/axw-YllBIz0" width="420" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://www.youtube.com/embed/axw-YllBIz0" width="420" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 Prima il tuo visitatore riuscirà a vedere dei contenuti sul tuo sito web e prima sentirà che è veloce e vivrà una bella esperienza, restandoci più a lungo volentieri (dipende ovviamente se offri dei contenuti originali e di valore 😎).
 

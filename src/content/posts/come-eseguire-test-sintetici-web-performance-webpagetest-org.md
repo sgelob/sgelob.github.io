@@ -409,11 +409,11 @@ Leggi spesso i nuovi case studies su [wpostats.com](https://wpostats.com/), pe
 
 ## Il video intero del mio talk
 
-<iframe src="https://www.youtube.com/embed/1Jp9_0YJI7I" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://www.youtube.com/embed/1Jp9_0YJI7I" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 ## Le slide del mio talk
 
-<iframe src="//www.slideshare.net/slideshow/embed_code/key/n0E5sn7QDO52gM" width="320" height="180" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="//www.slideshare.net/slideshow/embed_code/key/n0E5sn7QDO52gM" width="320" height="180" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowfullscreen="allowfullscreen"></iframe>
 
 Grazie per la tua attenzione! Se hai delle domande da farmi o vuoi aggiungere qualcosa, scrivimi tutto nei commenti qui sotto.
 
