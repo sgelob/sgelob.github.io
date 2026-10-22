@@ -15,6 +15,7 @@ const REDIRECT_PATHS = new Set(redirects.map((r) => r.from));
 export default defineConfig({
   site: 'https://olegs.be',
   trailingSlash: 'always',
-  build: { format: 'directory' },
+  // The shared stylesheet is ~8 KB: inlined, it no longer blocks first paint behind a second request.
+  build: { format: 'directory', inlineStylesheets: 'always' },
   integrations: [sitemap({ filter: (page) => !REDIRECT_PATHS.has(decodeURI(new URL(page).pathname)) })],
 });

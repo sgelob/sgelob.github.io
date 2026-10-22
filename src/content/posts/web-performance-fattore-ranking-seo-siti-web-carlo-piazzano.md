@@ -17,7 +17,7 @@ Analizzeremo gli strumenti da utilizzare per valutare le web performance e i par
 
 In totale copriremo circa venti aspetti diversi, con esempi di codice «plug and play» per WordPress.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/5Wb-UslB04c" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen=""></iframe>
+<iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/5Wb-UslB04c" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen=""></iframe>
 
 ## Speaker – Carlo Piazzano
 

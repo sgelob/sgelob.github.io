@@ -15,7 +15,7 @@ Spesso capita di creare un’animazione in CSS che sembra svolgersi fluida sul P
 
 In realtà, una bella animazione CSS a 60fps sul web è possibile, anche su mobile. Si tratta semplicemente di animare le proprietà «giuste»: esatto, in CSS tutte le proprietà sono uguali, ma alcune sono più uguali delle altre.
 
-<iframe src="https://www.youtube.com/embed/TELXILcGyIg" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://www.youtube.com/embed/TELXILcGyIg" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 In questo talk, Alessandro condivide la propria esperienza su:
 

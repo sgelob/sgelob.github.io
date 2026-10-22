@@ -16,7 +16,7 @@ Immersive experiences are often centered around images. With thousands of differ
 
 In this presentation, we’ll discuss the latest strategies to deliver images on the mobile web so that they render quickly and look beautiful.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/d4Y4iV8jfRU" frameborder="0" allowfullscreen=""></iframe>
+<iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/d4Y4iV8jfRU" frameborder="0" allowfullscreen=""></iframe>
 
 ## Speaker – Doug Sillars
 

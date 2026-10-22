@@ -15,7 +15,7 @@ Hai sentito molto parlare di queste Web Performance, forse da Alessandro, da me 
 
 Lo scopo di questo talk sarebbe quello di darti 5 passi semplici e immediatamente utilizzabili che funzionano il 100% delle volte. Come lo sa Alessandro? Perché sono step fondamentali che lui stesso segue ogni volta che prendo in mano un sito e non lo hanno mai deluso.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/EJc39ku9WYU" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen=""></iframe>
+<iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/EJc39ku9WYU" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen=""></iframe>
 
 L’intervento si dividerà in tre parti:
 
