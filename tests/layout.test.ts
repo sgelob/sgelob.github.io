@@ -20,7 +20,7 @@ describe('Base', () => {
     expect(html).toContain('href="/blog/"');
     expect(html).toContain('href="/about/"');
     expect(html).toContain(`© ${new Date().getFullYear()} Olegs Belousovs`);
-    expect(html).toContain('href="mailto:44_tildes_agog@icloud.com"');
+    expect(html).toContain('href="mailto:44_tildes_agog@icloud.com?subject=Message%20from%20olegs.be"');
     expect(html).toContain('href="/feed.xml"');
     expect(html).not.toContain('privacy'); // the site sets no cookies: no policy pages
   });
@@ -80,4 +80,19 @@ test('404 page repeats the three section links', async () => {
   for (const href of ['/photos/', '/blog/', '/about/']) {
     expect(html.split(`href="${href}"`).length - 1).toBe(2);
   }
+});
+
+describe('accessibility in the layout', () => {
+  test('skip link is the first focusable element, pointing at main', async () => {
+    const html = await render(Base, { props: { title: 'T' }, slots: { default: 'X' } });
+    expect(html).toMatch(/<body[^>]*>\s*<a class="skip-link" href="#main">Skip to content<\/a>/);
+    expect(html).toMatch(/<main id="main" tabindex="-1"/);
+    expect(html).not.toMatch(/<ul class="links[^"]*" lang=/); // English page: no lang on the chrome
+  });
+
+  test('on an Italian page the chrome is marked English and the skip link is Italian', async () => {
+    const html = await render(Base, { props: { title: 'T', lang: 'it' }, slots: { default: 'X' } });
+    expect(html).toContain('>Vai al contenuto</a>');
+    expect(html.split(' lang="en"').length - 1).toBe(2); // the nav list and the footer links
+  });
 });
