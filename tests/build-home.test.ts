@@ -76,3 +76,16 @@ test('sitemap leaves out redirect pages', () => {
   expect(xml).toContain('/gallery/tarragona-catalonia-spain/');
   expect(xml).toContain('/events/');
 });
+
+test('the WordPress sitemap URLs serve the index of the sitemap Astro writes', () => {
+  const generated = read('dist/sitemap-index.xml');
+  for (const path of ['dist/sitemap.xml', 'dist/sitemap_index.xml']) {
+    const xml = read(path);
+    expect(xml).toBe(generated);
+    const locs = [...xml.matchAll(/<loc>https:\/\/olegs\.be\/([^<]+)<\/loc>/g)].map((m) => m[1]);
+    expect(locs, path).toEqual(['sitemap-0.xml']);
+    for (const loc of locs) expect(existsSync(`dist/${loc}`), loc).toBe(true);
+  }
+  expect(read('dist/sitemap-0.xml')).not.toMatch(/<loc>[^<]*sitemap/); // the index endpoints are not pages
+  expect(read('dist/robots.txt')).toContain('Sitemap: https://olegs.be/sitemap.xml');
+});
