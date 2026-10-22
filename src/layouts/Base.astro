@@ -38,11 +38,12 @@ const beaconToken: unknown = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   </head>
   <body>
-    <Nav current={current} overlay={overlayNav} />
-    <main>
+    <a class="skip-link" href="#main">{lang === 'it' ? 'Vai al contenuto' : 'Skip to content'}</a>
+    <Nav current={current} overlay={overlayNav} lang={lang} />
+    <main id="main" tabindex="-1">
       <slot />
     </main>
-    <Footer />
+    <Footer lang={lang} />
     {typeof beaconToken === 'string' && beaconToken !== '' && (
       <script
         is:inline
