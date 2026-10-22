@@ -25,7 +25,7 @@ Buona visione! 😉
 
 Contenuti, SEO, marketing e business.
 
-### Tammie Lister: Know your users (in inglese)
+### Tammie Lister: <span lang="en">Know your users</span> (in inglese)
 
 How can you truly create an experience without knowing who you are creating it for? Why does so much get made without user research? Why do so many creating experiences not run user tests or engage with their users at any point? It isn’t a privilege of the wealthy agency or invested company. In this talk I’ll show why knowing your users matters and how you can start truly understanding them to make a better experience.
 
@@ -93,7 +93,7 @@ Obiettivo: raggiungere la soglia di 100 mila pv/mese per iniziare a monetizzare 
 
 [Slide](https://wptv.files.wordpress.com/2017/04/barbara-damiano-da-0-a-100mila-pageviews-mese-in-sei-mesi-con-wp.pdf)
 
-### Luca Tumedei: Writing testable code in WordPress (in inglese)
+### Luca Tumedei: <span lang="en">Writing testable code in WordPress</span> (in inglese)
 
 If “WordPress is not testable” then why bother about testable code at all?
 
@@ -155,7 +155,7 @@ La nostra amata piattaforma è cresciuta molto negli ultimi anni e ci sono carat
 
 [Slide](https://www.slideshare.net/AndreaBarghigiani/crea-un-tema-compatibile-con-le-ultime-novit-wordpress)
 
-### Thomas Vitale: Getting Started With WordPress Plugin Development (in inglese)
+### Thomas Vitale: <span lang="en">Getting Started With WordPress Plugin Development</span> (in inglese)
 
 WordPress Plugins are powerful tools that let us extend WordPress and turn it into whatever we want. What’s their secret? Join me if you want to know more about them and get started developing your own Plugin! I’ll tell you a story about magic, dangerous pirates, brave bowmen and ancient castles…
 
@@ -163,7 +163,7 @@ WordPress Plugins are powerful tools that let us extend WordPress and turn it in
 
 Slide
 
-### John Blackbourn: A Deep Dive into the User Roles and Capabilities API (in inglese)
+### John Blackbourn: <span lang="en">A Deep Dive into the User Roles and Capabilities API</span> (in inglese)
 
 The user roles and capabilities API is one of the most powerful APIs in WordPress. With it you can allow, deny, and customise access to features in WordPress to a fine grained level. In this presentation, I’ll talk through the basics and go on to explain some of the more interesting and advanced use cases of working with roles and capabilities.
 
@@ -179,7 +179,7 @@ WP-CLI è un ottimo strumento per abbattere i tempi di sviluppo e per automatizz
 
 [Slide](https://www.slideshare.net/AndreaCardinali/gestione-avanzata-di-wordpress-con-wpcli-wordcamp-torino-2017-andrea-cardinali)
 
-### Caspar Hübinger: Big little shame – A story of empowered user experience through localization (in inglese)
+### Caspar Hübinger: <span lang="en">Big little shame – A story of empowered user experience through localization</span> (in inglese)
 
 About half a year ago I gave a talk at a WordCamp in my country.
 
@@ -215,7 +215,7 @@ There is a filthy big little shame sitting in WordPress’ localized user interf
 
 Slide
 
-### Felix Arntz: Getting the REST API ready for Multisite (in inglese)
+### Felix Arntz: <span lang="en">Getting the REST API ready for Multisite</span> (in inglese)
 
 The REST API is one of the three major focuses that Matt Mullenweg announced for this year. On the other hand, Multisite has always been a minor focus on the WordPress project, as the number of its users is relatively low. However, those few who maintain larger WordPress setups usually activate Multisite and need its functionality as much as ever.
 
@@ -233,7 +233,7 @@ Come costruire un tema con tecnologia AMP-project per WordPress, i passaggi di a
 
 <iframe loading="lazy" src="https://videopress.com/v/AG18FkM6" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
-### Pascal Birchler: Decluttering WordPress (in inglese)
+### Pascal Birchler: <span lang="en">Decluttering WordPress</span> (in inglese)
 
 As a developer working at a UX and WordPress agency, I’ve learnt a lot about common UI and UX mistakes. In this presentation, I will talk about how this knowledge helped us eliminate many pain points in WordPress itself and how this benefits the whole WordPress community thanks to open source.
 

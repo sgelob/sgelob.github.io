@@ -32,7 +32,32 @@
       import('photoswipe'),
       loadStyle(),
     ]);
-    const lightbox = new PhotoSwipeLightbox({ gallery: '.justified', children: 'a.ph', pswpModule: PhotoSwipe });
+    const lightbox = new PhotoSwipeLightbox({
+      gallery: '.justified',
+      children: 'a.ph',
+      pswpModule: PhotoSwipe,
+      // Become each button's title and aria-label.
+      arrowPrevTitle: 'Previous photo',
+      arrowNextTitle: 'Next photo',
+      closeTitle: 'Close (Esc)',
+      zoomTitle: 'Zoom',
+    });
+    // PhotoSwipe's role="dialog" has no name: `uiRegister` fires once the root element exists,
+    // before it is added to the page, so the dialog is named when focus moves into it.
+    lightbox.on('uiRegister', () => {
+      const root = lightbox.pswp?.element;
+      root?.setAttribute('aria-label', 'Photo viewer');
+      root?.setAttribute('aria-modal', 'true');
+    });
+    // The counter ("3 / 81") is updated on every `change`: as a live region, ← and → are announced.
+    // `uiElement` filters each UI element as PhotoSwipe adds it to the dialog.
+    lightbox.addFilter('uiElement', (element, data) => {
+      if (data.name === 'counter') {
+        element.setAttribute('aria-live', 'polite');
+        element.setAttribute('aria-atomic', 'true');
+      }
+      return element;
+    });
     // The photo's size comes from its grid img, which declares it anyway: a data-pswp-width/height
     // pair on every link as well would push an 80-photo gallery past its 50 KB budget.
     lightbox.addFilter('domItemData', (item, _element, link) => {

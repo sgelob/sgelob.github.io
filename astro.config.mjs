@@ -2,7 +2,9 @@
 import { readFileSync } from 'node:fs';
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import { satteri } from '@astrojs/markdown-satteri';
 import { parse } from 'yaml';
+import { iframeTitles } from './src/lib/iframe-titles.ts';
 
 // Redirect stubs are noindex pages, so they stay out of the sitemap. Read with fs: the `?raw`
 // import of src/lib/redirects.ts does not work here. `from` keeps raw Unicode; sitemap URLs are
@@ -17,5 +19,7 @@ export default defineConfig({
   trailingSlash: 'always',
   // The shared stylesheet is ~8 KB: inlined, it no longer blocks first paint behind a second request.
   build: { format: 'directory', inlineStylesheets: 'always' },
+  // Every embedded <iframe> gets a title from its host, so none is announced as a bare "frame".
+  markdown: { processor: satteri({ hastPlugins: [iframeTitles] }) },
   integrations: [sitemap({ filter: (page) => !REDIRECT_PATHS.has(decodeURI(new URL(page).pathname)) })],
 });
