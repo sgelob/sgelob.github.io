@@ -1,0 +1,87 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import GalleryHero from '../../components/GalleryHero.astro';
+import JustifiedGrid from '../../components/JustifiedGrid.astro';
+import Lightbox from '../../components/Lightbox.astro';
+import Redirect from '../../components/Redirect.astro';
+import { galleryPath, getGalleries, neighbours, type Gallery } from '../../lib/collections';
+import { coverSize } from '../../lib/paths';
+import { largestVariantUrl } from '../../lib/images';
+import { redirectsUnder } from '../../lib/redirects';
+
+// getStaticPaths runs isolated from the rest of the frontmatter: everything it uses lives inside it.
+export const getStaticPaths = (async () => {
+  const PREFIX = '/gallery/';
+  const galleries = await getGalleries();
+  // Old slugs are written as WordPress served them, raw Cyrillic included.
+  const redirects = redirectsUnder(PREFIX).map(({ from, to }) => ({
+    params: { slug: from.slice(PREFIX.length).replace(/\/$/, '') },
+    props: { redirectTo: to },
+  }));
+  return [
+    ...galleries.map((gallery) => ({ params: { slug: gallery.id }, props: { gallery, ...neighbours(galleries, gallery.id) } })),
+    ...redirects,
+  ];
+}) satisfies GetStaticPaths;
+
+type Props =
+  | { gallery: Gallery; prev?: Gallery; next?: Gallery; redirectTo?: undefined }
+  | { redirectTo: string; gallery?: undefined };
+
+const props = Astro.props as Props;
+const gallery = props.gallery;
+const { Content } = gallery ? await render(gallery) : { Content: undefined };
+---
+
+{props.redirectTo !== undefined ? (
+  <Redirect to={props.redirectTo} />
+) : gallery && (
+  <Base
+    title={`${gallery.data.title} — Photos — olegs`}
+    description={gallery.data.seoDescription ?? `Photos from ${gallery.data.title}: ${gallery.data.photos.length} photos.`}
+    ogImage={largestVariantUrl(gallery.data.cover, Math.min(1600, coverSize(gallery)?.width ?? 0))}
+    overlayNav
+  >
+    <GalleryHero gallery={gallery} />
+    {gallery.body?.trim() && Content && (
+      <div class="body wrap"><Content /></div>
+    )}
+    <JustifiedGrid photos={gallery.data.photos} galleryTitle={gallery.data.title} />
+    <nav class="pager wrap mono" aria-label="More galleries">
+      {props.next ? <a href={galleryPath(props.next)} rel="next">← {props.next.data.title}</a> : <span></span>}
+      {props.prev && <a href={galleryPath(props.prev)} rel="prev">{props.prev.data.title} →</a>}
+    </nav>
+    <Lightbox />
+  </Base>
+)}
+
+<style>
+  .body {
+    max-width: calc(680px + 2 * var(--gutter));
+    padding-block: 56px 8px;
+    color: var(--muted);
+  }
+
+  .body :global(* + *) { margin-top: 1em; }
+
+  .body :global(:is(ul, ol)) { padding-left: 1.25em; }
+
+  .body :global(li + li) { margin-top: 0.25em; }
+
+  .body :global(:is(strong, a)) { color: var(--fg); }
+
+  .body :global(a) { text-decoration: underline; text-underline-offset: 3px; }
+
+  .pager {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    padding-block: 48px 0;
+  }
+
+  .pager a { transition: color 120ms ease; }
+
+  .pager a:hover { color: var(--muted); }
+</style>

@@ -23,3 +23,9 @@ export function srcset(path: string, format: ImageFormat, maxWidth: number): str
     .map((w) => `${variantUrl(path, w, format)} ${w}w`)
     .join(', ');
 }
+
+/** The widest jpg variant not above `maxWidth`; the original when even the smallest is too wide. */
+export function largestVariantUrl(path: string, maxWidth: number): string {
+  const width = WIDTHS.filter((w) => w <= maxWidth).at(-1);
+  return width === undefined ? originalUrl(path) : variantUrl(path, width, 'jpg');
+}

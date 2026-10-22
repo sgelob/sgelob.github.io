@@ -3,13 +3,14 @@ import { NAV_LINKS, type Section } from '../lib/nav';
 
 interface Props {
   current?: Section;
+  overlay?: boolean;
 }
 
-const { current } = Astro.props;
+const { current, overlay = false } = Astro.props;
 const pathname = Astro.url.pathname;
 ---
 
-<header class="nav wrap">
+<header class:list={['nav wrap', { overlay }]}>
   <a class="home" href="/">olegs</a>
   <nav aria-label="Main">
     <ul class="links mono">
@@ -31,6 +32,12 @@ const pathname = Astro.url.pathname;
     justify-content: space-between;
     gap: 24px;
     padding-block: 28px;
+  }
+
+  .overlay {
+    position: absolute;
+    inset: 0 0 auto;
+    z-index: 1;
   }
 
   .home {
