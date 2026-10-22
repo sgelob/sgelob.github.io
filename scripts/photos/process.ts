@@ -3,7 +3,7 @@ import { join } from 'node:path';
 import { WIDTHS } from '../../src/lib/images';
 import { contentTypeFor, isRaster, listUploadFiles } from './files';
 import type { ObjectStore } from './r2';
-import { imageSize, resizeVariants, variantKeys, type Size } from './resize';
+import { imageSize, resizeVariants, variantKeys, variantStem, type Size } from './resize';
 
 const CONCURRENCY = 4;
 
@@ -37,12 +37,47 @@ async function runPool<T>(items: readonly T[], limit: number, work: (item: T) =>
   await Promise.all(Array.from({ length: Math.min(limit, items.length) }, worker));
 }
 
+/**
+ * The variant key scheme drops the extension, so `a.jpg` and `a.png` map to the same variant keys.
+ * The first file (in path order) keeps them; a later file whose keys collide gets an error and no variants.
+ * Only files that share a stem can collide, so only those are measured up front.
+ */
+async function findCollisions(uploadsDir: string, files: readonly string[], widths: readonly number[]): Promise<{ skip: Set<string>; errors: string[] }> {
+  const byStem = new Map<string, string[]>();
+  for (const path of files.filter(isRaster)) {
+    const stem = variantStem(`uploads/${path}`);
+    byStem.set(stem, [...(byStem.get(stem) ?? []), path]);
+  }
+  const skip = new Set<string>();
+  const errors: string[] = [];
+  for (const group of byStem.values()) {
+    if (group.length < 2) continue;
+    const owners = new Map<string, string>();
+    for (const path of [...group].sort()) {
+      let width: number;
+      try {
+        ({ width } = await imageSize(readFileSync(join(uploadsDir, path))));
+      } catch {
+        continue; // unreadable: the main pass reports it
+      }
+      const keys = variantKeys(`uploads/${path}`, width, widths);
+      const clashes = keys.filter((k) => owners.has(k));
+      const byOwner = Map.groupBy(clashes, (k) => owners.get(k));
+      for (const [owner, ks] of byOwner) errors.push(`${path}: variant keys ${ks.join(', ')} are already produced by ${owner}; variants of ${path} skipped`);
+      if (clashes.length) skip.add(path);
+      else for (const k of keys) owners.set(k, path);
+    }
+  }
+  return { skip, errors };
+}
+
 /** Uploads every original under `uploadsDir` plus webp/jpg variants of the raster images, skipping keys the store already has. */
 export async function processUploads(opts: ProcessOptions): Promise<ProcessResult> {
   const { uploadsDir, store, widths = WIDTHS, dryRun = false, log } = opts;
   const files = [...(opts.files ?? listUploadFiles(uploadsDir))];
   const existing = await store.listKeys('uploads/');
-  const result: ProcessResult = { files: files.length, uploaded: 0, skipped: 0, planned: 0, sizes: new Map(), errors: [] };
+  const collisions = await findCollisions(uploadsDir, files, widths);
+  const result: ProcessResult = { files: files.length, uploaded: 0, skipped: 0, planned: 0, sizes: new Map(), errors: [...collisions.errors] };
 
   const send = async (key: string, body: Buffer, contentType: string) => {
     if (existing.has(key)) {
@@ -67,6 +102,7 @@ export async function processUploads(opts: ProcessOptions): Promise<ProcessResul
       if (isRaster(path)) {
         const size = await imageSize(original);
         result.sizes.set(path, size);
+        if (collisions.skip.has(path)) return;
         if (variantKeys(key, size.width, widths).some((k) => !existing.has(k))) {
           const { variants } = await resizeVariants(original, key, widths);
           for (const v of variants) await send(v.key, v.body, contentTypeFor(v.key));

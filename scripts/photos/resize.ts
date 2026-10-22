@@ -14,7 +14,10 @@ export async function imageSize(input: Buffer): Promise<Size> {
 }
 
 /** `uploads/2012/08/a.jpg` -> `uploads/2012/08/a-960.webp`; must agree with `variantUrl` in src/lib/images.ts. */
-export const variantKey = (key: string, width: number, format: Variant['format']): string => `${key.replace(/\.[^./]+$/, '')}-${width}.${format}`;
+export const variantKey = (key: string, width: number, format: Variant['format']): string => `${variantStem(key)}-${width}.${format}`;
+
+/** The key without its extension: files that share a stem (`a.jpg`, `a.png`) share variant keys. */
+export const variantStem = (key: string): string => key.replace(/\.[^./]+$/, '');
 
 /** The variant keys `resizeVariants` produces for an image of the given width (never upscaled), webp before jpg. */
 export function variantKeys(key: string, imageWidth: number, widths: readonly number[] = WIDTHS): string[] {
