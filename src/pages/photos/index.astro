@@ -1,0 +1,16 @@
+---
+import { getEntry } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PhotosHeader from '../../components/PhotosHeader.astro';
+import GalleryGrid from '../../components/GalleryGrid.astro';
+import { getGalleries } from '../../lib/collections';
+import { home } from '../../lib/home';
+
+const page = await getEntry('pages', 'photos');
+const galleries = await getGalleries();
+---
+
+<Base title="Photos — olegs" description={page?.data.seoDescription}>
+  <PhotosHeader intro={home.photosIntro} active="all" />
+  <GalleryGrid galleries={galleries} />
+</Base>
