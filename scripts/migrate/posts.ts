@@ -21,7 +21,7 @@ const EXCERPT_MAX = 200;
 const NAMED_ENTITIES: Record<string, string> = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'" };
 
 /** WordPress stores some titles HTML-escaped (`&amp;`, `&#x1f4a9;`); Astro escapes on output, so store plain text. */
-function decodeEntities(text: string): string {
+export function decodeEntities(text: string): string {
   return text.replace(/&(?:#x([0-9a-f]+)|#(\d+)|([a-z]+));/gi, (whole, hex?: string, dec?: string, name?: string) => {
     if (name) return NAMED_ENTITIES[name.toLowerCase()] ?? whole;
     const code = hex ? parseInt(hex, 16) : Number(dec);

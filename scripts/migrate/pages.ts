@@ -17,7 +17,7 @@ export type EventYear = { year: number; entries: string[] };
 export type BookSection = { title: string; entries: string[] };
 export type AboutPage = PageDoc & { events: EventYear[]; books: BookSection[] };
 
-const ABOUT_ID = 9;
+export const ABOUT_ID = 9;
 /** Pages whose content-file slug differs from `post_name`, by post ID. */
 const SLUG_OVERRIDES: ReadonlyMap<number, string> = new Map([
   [ABOUT_ID, 'about'],
