@@ -5,3 +5,4 @@ dist
 .env
 .photos-cache/
 .gstack/
+.claude/
