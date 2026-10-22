@@ -1,6 +1,7 @@
 import { copyFileSync, existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import sharp from 'sharp';
 import { parse } from 'yaml';
 import { beforeEach, describe, expect, test } from 'vitest';
 import { fixSizes } from '../scripts/photos/fill-sizes';
@@ -14,11 +15,13 @@ const fixture = (name: string) => new URL(`./fixtures/${name}`, import.meta.url)
 class MemoryStore implements ObjectStore {
   objects = new Map<string, { body: Buffer; contentType: string }>();
   listed: string[] = [];
+  puts: string[] = [];
   async listKeys(prefix: string) {
     this.listed.push(prefix);
     return new Set([...this.objects.keys()].filter((k) => k.startsWith(prefix)));
   }
   async put(key: string, body: Buffer, contentType: string) {
+    this.puts.push(key);
     this.objects.set(key, { body, contentType });
   }
 }
@@ -92,6 +95,27 @@ describe('processUploads', () => {
     expect(store.objects.size).toBe(0);
     expect(store.listed).toEqual(['uploads/']);
     expect(r).toMatchObject({ files: 1, uploaded: 0, planned: 7 });
+  });
+
+  test('reports variant-key collisions between files that differ only by extension', async () => {
+    put(uploads, '2026/01/x.jpg', fixture('sample-900x600.jpg'));
+    const png = await sharp(readFileSync(fixture('sample-900x600.jpg'))).png().toBuffer();
+    mkdirSync(join(uploads, '2026/01'), { recursive: true });
+    writeFileSync(join(uploads, '2026/01/x.png'), png);
+
+    const r = await processUploads({ uploadsDir: uploads, store, log });
+
+    expect(r.errors).toHaveLength(1);
+    expect(r.errors[0]).toContain('2026/01/x.png');
+    expect(r.errors[0]).toContain('2026/01/x.jpg');
+    expect(r.errors[0]).toContain('uploads/2026/01/x-480.webp');
+    expect(store.objects.has('uploads/2026/01/x.jpg')).toBe(true);
+    expect(store.objects.has('uploads/2026/01/x.png')).toBe(true);
+    expect(store.puts.filter((k) => k.includes('x-480'))).toEqual(['uploads/2026/01/x-480.webp', 'uploads/2026/01/x-480.jpg']); // generated once
+    expect(r.uploaded).toBe(4);
+
+    const dry = await processUploads({ uploadsDir: uploads, store: new MemoryStore(), dryRun: true, log });
+    expect(dry.planned).toBe(4); // two originals + one set of variants
   });
 
   test('an extra width produces extra variants', async () => {
