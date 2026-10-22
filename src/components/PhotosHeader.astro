@@ -1,0 +1,88 @@
+---
+import { genres } from '../lib/taxonomies';
+
+interface Props {
+  intro?: string;
+  heading?: string;
+  description?: string;
+  /** `all`, a genre slug, or nothing (country pages). */
+  active?: string;
+}
+
+const { intro, heading, description, active } = Astro.props;
+const filters = [{ slug: 'all', name: 'All', href: '/photos/' }, ...genres.map((g) => ({ ...g, href: `/photos/genre/${g.slug}/` }))];
+---
+
+<header class="photos-header wrap">
+  {heading ? <h1 class="heading">{heading}</h1> : <h1 class="visually-hidden">Photos</h1>}
+  {intro && <p class="intro">{intro}</p>}
+  {description && <p class="description">{description}</p>}
+  <nav aria-label="Genres">
+    <ul class="filters mono">
+      {filters.map(({ slug, name, href }) => (
+        <li>
+          <a href={href} aria-current={slug === active ? 'page' : undefined}>{name}</a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</header>
+
+<style>
+  .photos-header {
+    padding-block: 72px 48px;
+  }
+
+  .heading,
+  .intro {
+    max-width: 900px;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+
+  .description {
+    max-width: 900px;
+    margin-top: 16px;
+    color: var(--muted);
+  }
+
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 28px;
+    margin-top: 48px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .filters a {
+    display: inline-block;
+    padding-bottom: 3px;
+    border-bottom: 1px solid transparent;
+    color: var(--muted);
+    transition: color 120ms ease;
+  }
+
+  .filters a:hover,
+  .filters a[aria-current] { color: var(--fg); }
+
+  .filters a[aria-current] { border-bottom-color: currentColor; }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  @media (max-width: 719px) {
+    .photos-header { padding-block: 40px 32px; }
+    .heading,
+    .intro { font-size: 22px; }
+    .filters { margin-top: 32px; gap: 10px 20px; }
+  }
+</style>

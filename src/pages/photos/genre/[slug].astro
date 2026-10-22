@@ -1,0 +1,23 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Base from '../../../layouts/Base.astro';
+import PhotosHeader from '../../../components/PhotosHeader.astro';
+import GalleryGrid from '../../../components/GalleryGrid.astro';
+import { getGalleriesBy } from '../../../lib/collections';
+import { genres, type Term } from '../../../lib/taxonomies';
+
+// From taxonomies.yaml, not from the galleries, so a genre without galleries still gets a page.
+export const getStaticPaths = (() => genres.map((genre) => ({ params: { slug: genre.slug }, props: { genre } }))) satisfies GetStaticPaths;
+
+interface Props {
+  genre: Term;
+}
+
+const { genre } = Astro.props;
+const galleries = await getGalleriesBy('genre', genre.slug);
+---
+
+<Base title={`${genre.name} — Photos — olegs`} description={genre.description}>
+  <PhotosHeader heading={genre.name} description={genre.description} active={genre.slug} />
+  <GalleryGrid galleries={galleries} />
+</Base>
