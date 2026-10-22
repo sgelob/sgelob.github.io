@@ -7,17 +7,20 @@ interface Props {
   posts: Post[];
   /** Rendered as the page's h1. */
   heading?: string;
+  /** One-line introduction under the heading (muted). */
+  lead?: string;
   /** Inside another page's section (the home): no page padding, no heading, post titles as h3. */
   embedded?: boolean;
 }
 
-const { posts, heading, embedded = false } = Astro.props;
+const { posts, heading, lead, embedded = false } = Astro.props;
 // Embedded, the list sits under its section's h2.
 const Title = embedded ? 'h3' : 'h2';
 ---
 
 <section class:list={['post-list wrap', { embedded }]}>
   {heading && !embedded && <h1 class="heading">{heading}</h1>}
+  {lead && !embedded && <p class="lead">{lead}</p>}
   {posts.length === 0 ? (
     <p class="mono">No posts yet.</p>
   ) : (
@@ -43,6 +46,8 @@ const Title = embedded ? 'h3' : 'h2';
   .embedded { padding-block: 0; }
 
   .embedded .post-item:first-child { border-top: 0; padding-top: 0; }
+
+  .lead { margin: -24px 0 40px; color: var(--muted); font-size: 17px; line-height: 1.5; max-width: 60ch; }
 
   .heading {
     margin-bottom: 40px;
