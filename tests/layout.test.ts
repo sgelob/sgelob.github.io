@@ -6,7 +6,7 @@ import { render } from './helpers/render';
 
 afterEach(() => { vi.unstubAllEnvs(); });
 
-test('Base renders nav links and no beacon without token', async () => { const html = await render(Base, { props: { title: 'T' }, slots: { default: 'X' } }); expect(html).toContain('href="/photos/"'); expect(html).not.toContain('cloudflareinsights'); expect(html).toContain('<html lang="en"'); });
+test('Base renders nav links and no beacon without token', async () => { vi.stubEnv('PUBLIC_CF_BEACON_TOKEN', ''); const html = await render(Base, { props: { title: 'T' }, slots: { default: 'X' } }); expect(html).toContain('href="/photos/"'); expect(html).not.toContain('cloudflareinsights'); expect(html).toContain('<html lang="en"'); });
 
 describe('Base', () => {
   test('sets the html lang from the lang prop', async () => {
