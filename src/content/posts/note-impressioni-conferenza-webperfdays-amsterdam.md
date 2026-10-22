@@ -24,7 +24,7 @@ Denys parla russo, quindi ho detto tutto 🙂 Abbiamo discusso molto con lui, si
 
 ### Metrics of Joy di Steve Souders
 
-Che dire, talk affascinante con molti spunti e riflessioni. Parlato molto di metriche lato UX e cosa tracciare quando misuriamo i nostri siti web. Ne parlerò meglio nella recensione del suo talk che ho seguito a Velocity (per la seconda volta 🙃). ![Steve Souders speaking at WebPerfDays Amsterdam 2016](https://img.olegs.be/uploads/2016/11/steve-souders-webperfdays-amsterdam-2016-960.jpg)<iframe style="border: 1px solid #CCC; border-width: 1px; margin-bottom: 5px; max-width: 100%;" src="//www.slideshare.net/slideshow/embed_code/key/fy6YtZv7ql0tAn" width="800" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowfullscreen="allowfullscreen"></iframe>
+Che dire, talk affascinante con molti spunti e riflessioni. Parlato molto di metriche lato UX e cosa tracciare quando misuriamo i nostri siti web. Ne parlerò meglio nella recensione del suo talk che ho seguito a Velocity (per la seconda volta 🙃). ![Steve Souders speaking at WebPerfDays Amsterdam 2016](https://img.olegs.be/uploads/2016/11/steve-souders-webperfdays-amsterdam-2016-960.jpg)<iframe loading="lazy" style="border: 1px solid #CCC; border-width: 1px; margin-bottom: 5px; max-width: 100%;" src="//www.slideshare.net/slideshow/embed_code/key/fy6YtZv7ql0tAn" width="800" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowfullscreen="allowfullscreen"></iframe>
 
 Durante la giornata, ci sono anche stati dei tavoli di discussione, tra un talk e l’altro e ho partecipato a questi:
 
@@ -36,7 +36,7 @@ Discussione aperta sugli user agent detection.
 
 ### «Prestazioni di terzi: quanto è costoso questo spazio pubblicitario?» di Jean Pierre Vincent
 
-Dli adv e gli script di terze parti… quando davvero ci fanno guadagnare e quanto invece ci danneggiano? Riflessioni e spunti sul come gestire questo wild west di script incontrollabili direttamente da noi.<iframe style="border: 1px solid #CCC; border-width: 1px; margin-bottom: 5px; max-width: 100%;" src="//www.slideshare.net/slideshow/embed_code/key/44rWPCR9viPe1W" width="800" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowfullscreen="allowfullscreen"></iframe>
+Dli adv e gli script di terze parti… quando davvero ci fanno guadagnare e quanto invece ci danneggiano? Riflessioni e spunti sul come gestire questo wild west di script incontrollabili direttamente da noi.<iframe loading="lazy" style="border: 1px solid #CCC; border-width: 1px; margin-bottom: 5px; max-width: 100%;" src="//www.slideshare.net/slideshow/embed_code/key/44rWPCR9viPe1W" width="800" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowfullscreen="allowfullscreen"></iframe>
 
 ### CriticalCSS nei progetti di larga scala
 

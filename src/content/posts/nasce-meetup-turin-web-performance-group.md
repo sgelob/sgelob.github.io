@@ -45,7 +45,7 @@ Dopo la fine del talk c’è stato **spazio alle domande e risposte** e abbiamo 
 
 Se non hai potuto partecipare a questo incontro, **puoi rivedere il video sul nostro canale YouTube**. I video saranno registrati ogni volta e l’audio sarà migliore, perché questa volta abbiamo dovuto tenere aperte le finestre e la strada ha purtroppo influito sulla qualità del suono.
 
-<iframe src="https://www.youtube.com/embed/aXQQXSxIyQU" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://www.youtube.com/embed/aXQQXSxIyQU" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 Mi raccomando, iscriviti al [nostro canale YouTube](https://www.youtube.com/channel/UChBvPFsYGZUu5aPkyCCXCHQ) e condividi il video se lo ritenti interessante e utile. 😉
 

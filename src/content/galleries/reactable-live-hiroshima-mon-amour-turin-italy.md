@@ -29,6 +29,6 @@ photos:
 
 ## Reactable Live Performance at Sub Mix Pro Studio – Torino
 
-<iframe width="320" height="180" src="https://www.youtube.com/embed/ltjQJz2uz2E" frameborder="0" allowfullscreen=""></iframe>
+<iframe loading="lazy" width="320" height="180" src="https://www.youtube.com/embed/ltjQJz2uz2E" frameborder="0" allowfullscreen=""></iframe>
 
 Read more about the Reactable music instrument project on [mtg.upf.edu](http://mtg.upf.edu/project/reactable "Reactable")

@@ -21,7 +21,7 @@ Dopo questo talk potrai, in completa autonomia e al costo praticamente di qualch
 > 
 > — Peter Drucker
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/nyD54NEn0ac" frameborder="0" allowfullscreen=""></iframe>
+<iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/nyD54NEn0ac" frameborder="0" allowfullscreen=""></iframe>
 
 - Slide: [https://www.slideshare.net/Xtraboy/real-user-monitoring-con-navigation-timing-api-tag-manager-e-google-analytics](https://www.slideshare.net/slideshow/real-user-monitoring-con-navigation-timing-api-tag-manager-e-google-analytics/116535641)
 - Evento: https://www.meetup.com/it-IT/Turin-Web-Performance-Group/events/254370450/

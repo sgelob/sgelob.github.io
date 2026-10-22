@@ -14,7 +14,7 @@ Il tuo hosting soffre di downtime, il tuo blog si carica lentamente e i tempi di
 
 In questo talk vedremo come sia possibile avere un sito performante con un piccolo investimento mensile, sfruttando le funzionalità di micro caching di NGINX e alcuni plugin WordPress.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/_0LI7Phkf1w" frameborder="0" allowfullscreen=""></iframe>
+<iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/_0LI7Phkf1w" frameborder="0" allowfullscreen=""></iframe>
 
 ## Speaker – Paolo Tonin
 
