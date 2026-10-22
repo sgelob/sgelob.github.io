@@ -21,7 +21,7 @@ describe('gallery page', () => {
     expect(html).toContain('venezia-italy-02-1600.webp 1600w" sizes="100vw">');
     expect(html).toMatch(/<img src="https:\/\/img\.olegs\.be\/uploads\/2012\/08\/venezia-italy-02-1600\.jpg"[^>]*loading="eager"/);
     expect(html).toMatch(/<h1[^>]*>Venezia – Italy<\/h1>/);
-    expect(html).toMatch(/Italy<\/span>\s*<span[^>]*>World Places<\/span>\s*<span[^>]*>August 2012<\/span>\s*<span[^>]*>81 photos<\/span>/);
+    expect(html).toMatch(/<a href="\/photos\/country\/italy\/"[^>]*>Italy<\/a>\s*<a href="\/photos\/genre\/world-places\/"[^>]*>World Places<\/a>\s*<span[^>]*>August 2012<\/span>\s*<span[^>]*>81 photos<\/span>/);
   });
 
   test('grid: photos in frontmatter order, linking to the originals, the lightbox at 1600, with their ratio', () => {
