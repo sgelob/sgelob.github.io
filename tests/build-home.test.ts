@@ -3,7 +3,7 @@ import { describe, expect, test } from 'vitest';
 import { count, read } from './helpers/dist';
 
 test('home has intro, 4 gallery cards, 3 posts', () => { const html = read('dist/index.html'); expect(html).toContain('Hi, I’m Oleg'); expect(count(html,'class="gallery-card"')).toBe(4); expect(count(html,'class="post-item"')).toBe(3); expect(html).toContain('All 85 galleries'); });
-test('about keeps its slug, events and books exist', () => { for (const p of ['dist/agile-scrum-product-owner-manager-turin-italy/index.html','dist/events/index.html','dist/books/index.html','dist/privacy-policy/index.html','dist/cookie-policy/index.html']) expect(existsSync(p)).toBe(true); expect(read('dist/events/index.html')).toContain('2026'); });
+test('about keeps its slug, events and books exist', () => { for (const p of ['dist/agile-scrum-product-owner-manager-turin-italy/index.html','dist/events/index.html','dist/books/index.html']) expect(existsSync(p)).toBe(true); expect(read('dist/events/index.html')).toContain('2026'); });
 test('quotes page and 141 author pages', () => { expect(count(read('dist/my-favourite-inspirational-quotes-life-design/index.html'), 'class="quote"')).toBe(188); expect(readdirSync('dist/quote-author').length).toBe(141); });
 
 describe('home', () => {
@@ -30,9 +30,14 @@ describe('pages', () => {
     expect(html).toContain('<title>Olegs Belousovs – Product Manager</title>'); // Yoast seoTitle
   });
 
-  test('policies keep their language', () => {
-    expect(read('dist/privacy-policy/index.html')).toContain('<html lang="it"');
-    expect(read('dist/cookie-policy/index.html')).toContain('<title>Cookie Policy — olegs</title>');
+  test('the dropped privacy and cookie policies redirect to the home, out of the sitemap', () => {
+    for (const slug of ['privacy-policy', 'cookie-policy']) {
+      const html = read(`dist/${slug}/index.html`);
+      expect(html).toContain('http-equiv="refresh" content="0; url=/"');
+      expect(html).toContain('<meta name="robots" content="noindex">');
+      expect(html).not.toContain('class="reading');
+      expect(read('dist/sitemap-0.xml')).not.toContain(`/${slug}/`);
+    }
   });
 
   test('events: a heading per year, Markdown links and italics rendered', () => {

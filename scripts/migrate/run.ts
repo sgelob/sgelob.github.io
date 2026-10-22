@@ -6,7 +6,7 @@ import { WpDb, type WpPost } from '../lib/wp';
 import { applyPathFixups } from './fixups';
 import { draftFrontmatter, galleryFrontmatter, pageFrontmatter, postFrontmatter } from './frontmatter-order';
 import { buildGallery, type GalleryDoc } from './galleries';
-import { ABOUT_ID, buildAboutPage, buildPage, type BookSection, type EventYear, type PageDoc } from './pages';
+import { ABOUT_ID, buildAboutPage, buildPage, isDroppedPage, type BookSection, type EventYear, type PageDoc } from './pages';
 import { buildPost } from './posts';
 import { buildQuotes } from './quotes';
 import { buildRedirects } from './redirects';
@@ -49,13 +49,13 @@ export const EXPECTED: Counts = {
   galleries: 85,
   photos: 3638,
   posts: 39,
-  pages: 6,
+  pages: 4,
   quotes: 188,
   quoteAuthors: 141,
   genres: 6,
   countries: 13,
   categories: 9,
-  redirects: 15,
+  redirects: 17,
 };
 
 const PHOTOS_PAGE_SLUG = 'photos';
@@ -161,6 +161,7 @@ export async function runMigration(opts: Options): Promise<Summary> {
   let events: EventYear[] = [];
   let books: BookSection[] = [];
   for (const post of db.posts({ type: 'page', status: 'publish' })) {
+    if (isDroppedPage(post)) continue;
     if (post.ID === ABOUT_ID) {
       const { events: e, books: b, ...about } = buildAboutPage(db, post);
       pages.push(about);

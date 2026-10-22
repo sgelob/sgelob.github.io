@@ -130,6 +130,8 @@ Quotes (`/my-favourite-inspirational-quotes-life-design/`): le 188 citazioni rag
 
 Privacy Policy e Cookie Policy: testo di oggi, colonna di lettura. La Cookie Policy resta anche se non ci sono più cookie: costa zero e i link esterni non si rompono.
 
+Amended 2026-10-22: the site sets no cookies, so both pages were dropped; their URLs redirect to the home.
+
 404: pagina scura con una riga e i tre link principali.
 
 ### 5.3 Fuori

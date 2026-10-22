@@ -95,6 +95,8 @@ describe('buildRedirects', () => {
       { from: '/gallery/venice/', to: '/gallery/venezia/' },
       { from: '/gallery/lubitel-любитель/', to: '/gallery/venezia/' },
       { from: '/2019/03/old-post/', to: '/2019/03/post/' },
+      { from: '/privacy-policy/', to: '/' }, // dropped pages go to the home
+      { from: '/cookie-policy/', to: '/' },
     ]);
   });
 });
@@ -105,7 +107,7 @@ describe('runMigration (fixture)', () => {
 
     expect(ls(join(out, 'content/galleries'))).toEqual(['abandoned-one.md', 'venezia-italy.md']);
     expect(ls(join(out, 'content/posts'))).toEqual(['primo-post.md', 'secondo-post.md']);
-    expect(ls(join(out, 'content/pages'))).toEqual(['about.md', 'blog.md', 'cookie-policy.md', 'photos.md', 'privacy-policy.md', 'quotes.md']);
+    expect(ls(join(out, 'content/pages'))).toEqual(['about.md', 'blog.md', 'photos.md', 'quotes.md']);
     expect(ls(join(out, 'data'))).toEqual(['books.yaml', 'events.yaml', 'home.yaml', 'quotes.yaml', 'redirects.yaml', 'taxonomies.yaml']);
     expect(ls(join(drafts, 'posts'))).toEqual(['bozza-due.md', 'draft-103.md']);
     expect(ls(join(drafts, 'galleries'))).toEqual(['draft-gallery.md']);
@@ -113,8 +115,8 @@ describe('runMigration (fixture)', () => {
     expect(read(drafts, 'posts/bozza-due.md')).toMatch(/^---\ndraft: true\ntitle: Bozza due\n/);
 
     expect(summary).toMatchObject({
-      galleries: 2, photos: 4, posts: 2, pages: 6, quotes: 4, quoteAuthors: 2, genres: 2, countries: 2, categories: 2,
-      redirects: 4, draftPosts: 2, draftGalleries: 1,
+      galleries: 2, photos: 4, posts: 2, pages: 4, quotes: 4, quoteAuthors: 2, genres: 2, countries: 2, categories: 2,
+      redirects: 6, draftPosts: 2, draftGalleries: 1,
     });
   });
 
@@ -149,6 +151,8 @@ describe('runMigration (fixture)', () => {
       { from: '/gallery/venice/', to: '/gallery/venezia-italy/' },
       { from: '/2019/03/vecchio-slug/', to: '/2019/03/primo-post/' },
       { from: '/2019/03/altro-vecchio/', to: '/2019/03/primo-post/' },
+      { from: '/privacy-policy/', to: '/' },
+      { from: '/cookie-policy/', to: '/' },
     ]);
   });
 
@@ -235,15 +239,15 @@ describe('runMigration (fixture)', () => {
 
 describe('mismatches', () => {
   const ok: Summary = {
-    galleries: 85, photos: 3638, posts: 39, pages: 6, quotes: 188, quoteAuthors: 141, genres: 6, countries: 13, categories: 9, redirects: 15,
+    galleries: 85, photos: 3638, posts: 39, pages: 4, quotes: 188, quoteAuthors: 141, genres: 6, countries: 13, categories: 9, redirects: 17,
     draftPosts: 78, draftGalleries: 4, warnings: [], skippedDrafts: [],
   };
   test('EXPECTED pins the migration counts', () => {
-    expect(EXPECTED).toEqual({ galleries: 85, photos: 3638, posts: 39, pages: 6, quotes: 188, quoteAuthors: 141, genres: 6, countries: 13, categories: 9, redirects: 15 });
+    expect(EXPECTED).toEqual({ galleries: 85, photos: 3638, posts: 39, pages: 4, quotes: 188, quoteAuthors: 141, genres: 6, countries: 13, categories: 9, redirects: 17 });
     expect(mismatches(ok)).toEqual([]);
   });
   test('lists every count that differs', () => {
-    expect(mismatches({ ...ok, galleries: 84, redirects: 14 })).toEqual(['galleries: expected 85, got 84', 'redirects: expected 15, got 14']);
+    expect(mismatches({ ...ok, galleries: 84, redirects: 14 })).toEqual(['galleries: expected 85, got 84', 'redirects: expected 17, got 14']);
   });
 });
 

@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
 import { WpDb } from '../scripts/lib/wp';
-import { buildAboutPage, buildPage, splitAbout } from '../scripts/migrate/pages';
+import { buildAboutPage, buildPage, DROPPED_PAGES, isDroppedPage, splitAbout } from '../scripts/migrate/pages';
 
 const FIXTURE = 'tests/fixtures/wp-posts.sql';
 
@@ -91,12 +91,21 @@ describe('pages (fixture)', () => {
     return { db, page: (id: number) => buildPage(db, db.post(id)!) };
   }
 
-  test('page cookie-policy lang is it, about lang is en', async () => {
+  test('pages are in English', async () => {
     const { db, page } = await load();
-    expect(page(634).lang).toBe('it');
-    expect(page(3727).lang).toBe('it');
     expect(page(11).lang).toBe('en');
+    expect(page(743).lang).toBe('en');
     expect(buildAboutPage(db, db.post(9)!).lang).toBe('en');
+  });
+
+  test('the privacy and cookie policies are dropped, nothing else', async () => {
+    const { db } = await load();
+    expect(DROPPED_PAGES).toEqual(['privacy-policy', 'cookie-policy']);
+    const pages = db.posts({ type: 'page', status: 'publish' });
+    expect(pages.filter(isDroppedPage).map((p) => p.ID).sort((a, b) => a - b)).toEqual([634, 3727]);
+    expect(pages.filter((p) => !isDroppedPage(p)).map((p) => p.post_name).sort()).toEqual([
+      'agile-scrum-product-owner-manager-turin-italy', 'blog', 'my-favourite-inspirational-quotes-life-design', 'photos',
+    ]);
   });
 
   test('slugs and public paths', async () => {
@@ -105,13 +114,11 @@ describe('pages (fixture)', () => {
     expect(page(743)).toMatchObject({ slug: 'quotes', path: '/my-favourite-inspirational-quotes-life-design/' });
     expect(page(11)).toMatchObject({ slug: 'photos', path: '/photos/' });
     expect(page(13)).toMatchObject({ slug: 'blog', path: '/blog/' });
-    expect(page(3727)).toMatchObject({ slug: 'privacy-policy', path: '/privacy-policy/' });
-    expect(page(634)).toMatchObject({ slug: 'cookie-policy', path: '/cookie-policy/' });
   });
 
   test('page body is converted Markdown with upload links rewritten; seo meta mapped, empty omitted', async () => {
     const { page } = await load();
-    const cookie = page(634);
+    const cookie = page(634); // buildPage still converts any page; the migration skips this one
     expect(cookie.body).toBe('Questo sito usa [cookie](https://img.olegs.be/uploads/2020/05/doc.pdf).');
     expect(cookie.seoTitle).toBe('Cookie SEO');
     expect(cookie).not.toHaveProperty('seoDescription');
@@ -141,7 +148,7 @@ describe('pages (fixture)', () => {
 });
 
 describe('pages (real dump)', () => {
-  test.skipIf(!process.env.DUMP_PATH)('39 posts, 6 pages, 12 event years, 2 book sections', async () => {
+  test.skipIf(!process.env.DUMP_PATH)('39 posts, 6 WordPress pages (4 kept), 12 event years, 2 book sections', async () => {
     const db = await WpDb.fromDump(process.env.DUMP_PATH!);
     const posts = db.posts({ type: 'post', status: 'publish' });
     const pages = db.posts({ type: 'page', status: 'publish' });
@@ -149,7 +156,8 @@ describe('pages (real dump)', () => {
     expect(pages).toHaveLength(6);
 
     const about = buildAboutPage(db, db.post(9)!);
-    const others = pages.filter((p) => p.ID !== 9).map((p) => buildPage(db, p));
+    expect(pages.filter((p) => !isDroppedPage(p))).toHaveLength(4);
+    const others = pages.filter((p) => p.ID !== 9 && !isDroppedPage(p)).map((p) => buildPage(db, p));
     console.log(
       `pages: ${pages.length}, event years: ${about.events.length} (${about.events.map((e) => e.year)}), ` +
         `event entries: ${about.events.reduce((n, e) => n + e.entries.length, 0)}, ` +
@@ -162,6 +170,6 @@ describe('pages (real dump)', () => {
     expect(about.body).toContain('(/events/)');
     expect(about.body).toContain('(/books/)');
     expect(about.body).not.toContain('#events');
-    expect(others.map((p) => p.slug).sort()).toEqual(['blog', 'cookie-policy', 'photos', 'privacy-policy', 'quotes']);
+    expect(others.map((p) => p.slug).sort()).toEqual(['blog', 'photos', 'quotes']);
   });
 });

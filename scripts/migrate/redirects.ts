@@ -1,10 +1,14 @@
 import { cleanOldSlugs } from './frontmatter-order';
 import type { GalleryDoc } from './galleries';
+import { DROPPED_PAGES } from './pages';
 import type { PostDoc } from './posts';
 
 export type Redirect = { from: string; to: string };
 
-/** Old slugs are already percent-decoded by the builders and are written as-is. Quotes have no public URL. */
+/**
+ * Old slugs are already percent-decoded by the builders and are written as-is. Quotes have no public URL.
+ * The dropped pages (`DROPPED_PAGES`) redirect to the home.
+ */
 export function buildRedirects(
   galleries: readonly Pick<GalleryDoc, 'slug' | 'oldSlugs'>[],
   posts: readonly Pick<PostDoc, 'slug' | 'date' | 'oldSlugs'>[],
@@ -21,5 +25,6 @@ export function buildRedirects(
     const month = `/${p.date.slice(0, 4)}/${p.date.slice(5, 7)}`;
     for (const old of cleanOldSlugs(p.oldSlugs)) add(`${month}/${old}/`, `${month}/${p.slug}/`);
   }
+  for (const slug of DROPPED_PAGES) add(`/${slug}/`, '/');
   return [...redirects.values()];
 }

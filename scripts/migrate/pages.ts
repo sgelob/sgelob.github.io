@@ -24,7 +24,13 @@ const SLUG_OVERRIDES: ReadonlyMap<number, string> = new Map([
   [ABOUT_ID, 'about'],
   [743, 'quotes'],
 ]);
-const ITALIAN_PAGES: ReadonlySet<string> = new Set(['privacy-policy', 'cookie-policy']);
+/**
+ * WordPress pages the site no longer has: it sets no cookies, so the Privacy and Cookie policies were dropped
+ * (spec §5.2, amended 2026-10-22). Their URLs redirect to the home.
+ */
+export const DROPPED_PAGES: readonly string[] = ['privacy-policy', 'cookie-policy'];
+
+export const isDroppedPage = (post: Pick<WpPost, 'post_name'>): boolean => DROPPED_PAGES.includes(post.post_name);
 
 const EXCERPT_DIV = /<div\s+class=["']excerpt["']\s*>\s*<\/div>/gi;
 const EVENTS_HEADING = /<h2\b[^>]*\bid=["']events["'][^>]*>[\s\S]*?<\/h2>/i;
@@ -77,7 +83,7 @@ function baseDoc(db: WpDb, post: WpPost, body: string): PageDoc {
     slug,
     path: `/${post.post_name}/`,
     title: post.post_title,
-    lang: ITALIAN_PAGES.has(slug) ? 'it' : 'en',
+    lang: 'en',
     body,
   };
   const seoTitle = optionalMeta(db, post.ID, '_yoast_wpseo_title');
