@@ -102,6 +102,4 @@ photos:
     height: 1080
 ---
 
-## Scanned 35mm Black and White Negatives
-
-## Photographs Made by Night and Using the Light Painting
+Part of this series was shot on 35mm black-and-white film and scanned from the negatives; the rest was made at night using light painting.

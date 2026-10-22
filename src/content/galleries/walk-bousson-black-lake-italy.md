@@ -69,30 +69,8 @@ photos:
     height: 1080
 ---
 
-We have only begun to go up and there are those who already goes down, even on fours. Who knows if we’ll also go down on all fours 🙂
+A winter walk from Bousson up to the Black Lake, in the mountains above Sestriere. Without snowmobiles paving the way you would need snowshoes to climb.
 
-The higher you climb, the more you start to see Sestriere and its towers which are hotels.
+Going up you see Sestriere and its tower hotels getting smaller, trees with signs for the various paths so you do not get lost, cones of all shapes and sizes, and the tracks that off-piste skiers leave in the fresh snow, which look like paintings. The higher you get, the closer the sky, and even the planes seem nearer. Then the refuges appear, just in time: lunch and a warm-up with these views is a wonderful experience, better in the company of friends or loved ones, and a Punsch after lunch is in order. Be careful on the way down though, the shortcuts are smooth, and we had already seen people descending on all fours before we even started.
 
-There are many trees with various signs of the various paths, which serve for better orientation and for not get lost.
-
-Going up I met different kinds of trees and cones of various shapes and sizes.
-
-Many skiers go up to the Black Lake and then do the downhill off-piste. Skiers leave the trails in the fresh snow that look like real paintings.
-
-Going up you get closer and closer to the sky and even the planes that pass now seems to be closer to you.
-
-If there were no snowmobiles paving the way you'd need the snowshoes to climb.
-
-Finally we are beginning to see some refugees, we are already hungry and we need to rest and recharge our energies.
-
-Have lunch and warm up at the refuge with these views is really a very wonderful experience (preferably in the company of friends or your loved ones).
-
-These other views become showcased on the way to the Black Lake.
-
-Here are just in time for a good Punsch after lunch and ready to go, but be careful not to overdo it with shorts, which go down smooth. Remember about going down on all fours?
-
-Other great mountain views of the valley during the descent…
-
-…and certainly some inevitable side effects of Punsch 🙂
-
-I know, you thought: “but where’s the Black Lake? It’s all white on your pictures.” Unfortunately, the lake is completely frozen and covered by snow during the winter, to see it you would be going there in the warm seasons.
+And yes, you were probably wondering where the Black Lake is, since everything is white: in winter the lake is completely frozen and covered by snow. To see it you have to come back in the warm season.

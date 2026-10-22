@@ -108,14 +108,6 @@ photos:
     height: 1080
 ---
 
-In Benidorm there are beaches for all tastes.
+Benidorm, on the Costa Blanca. There are beaches for all tastes, and on the streets and squares plenty of exhibitionists and artists creating live art: metal sculptures, human sculptures, and the sand artists who guard their pieces all day and keep them alive with water vapour.
 
-On the streets and squares of Benidorm there are so many exhibitionists and also artists who create live art.
-
-Some metal and some human sculptures.
-
-A bit of contrast between modern architecture and the architecture of the 18th century Church of San Jaime.
-
-Balcón del Mediterráneo is a very fresh place with a lot of decorations and from here you can enjoy the beautiful view on both beach sides of Benidorm.
-
-Artists and custodians of their pieces of art made with sand. Even during the day they guard them and bathe with water vapor.
+The skyline of modern towers contrasts with the 18th-century Church of San Jaime, and the Balcón del Mediterráneo, a cool spot full of decorations, gives the best view over both sides of the beach.

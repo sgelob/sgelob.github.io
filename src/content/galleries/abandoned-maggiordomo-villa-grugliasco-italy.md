@@ -132,4 +132,4 @@ photos:
     height: 1080
 ---
 
-## 360° Panoramic Images
+The series includes a few 360° panoramic images of the rooms.

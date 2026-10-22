@@ -275,4 +275,4 @@ photos:
     height: 1080
 ---
 
-## Las Ramblas Street Performers in Barcelona
+Barcelona, with a long stop among the street performers of Las Ramblas.

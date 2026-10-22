@@ -310,14 +310,4 @@ photos:
     height: 1080
 ---
 
-These photographs are from a wide range of different cameras and years. I used an Olympus SP-500 UZ, Canon 400D, Canon 500D, Canon 7D and lenses like 24-105mm and 100mm. Some photos are made with the “Reversed Lens” technique and others with the smartphone camera with a DVD lens attached to it. Enjoy ;)
-
-- [Abstract 💭](#abstract)
-- [Animals 🐼 and Bugs 🐞](#animals-bugs)
-- [Flowers 🌻 and Plants 🌴](#flowers-plants)
-
-## Abstract
-
-## Animals and Bugs
-
-## Flowers and Plants
+These photographs are from a wide range of different cameras and years: an Olympus SP-500 UZ, Canon 400D, 500D and 7D, with lenses like the 24-105mm and the 100mm macro. Some were made with the “reversed lens” technique, others with a smartphone camera and a DVD lens attached to it. Abstract shapes, animals and bugs, flowers and plants. Enjoy ;)

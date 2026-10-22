@@ -73,32 +73,8 @@ photos:
     height: 1080
 ---
 
-The architecture of this strange building looks like a UFO. In reality it is the “Lucie Aubrac” Middle School with the Alps in the background.
+A few days in Grenoble, the city that sits in a bowl between the Alps. The snow-capped peaks are the backdrop to almost everything here: to the UFO-shaped “Lucie Aubrac” middle school, to a mother and child crossing the street in Saint-Martin-d'Hères, to the sunsets.
 
-The modern “TAG” tramway system was very efficient for moving around.
+I moved around on the modern “TAG” tramway, very efficient, and went up to the mountain fortress of “La Bastille” in the bubble-shaped cable car to see the city from above, by day and by night. Down in the streets there were people socialising, playing music and drinking beer at the “City Garden”, a Ferris wheel set up for the fair, and young people taking advantage of the first warm days of spring to play and bathe in the many fountains, like the one in “Grenette Square”.
 
-People socializing, playing music and drinking some beers at the “City Garden.”
-
-Ferris wheel installed during carousels in the city.
-
-Some houses of the “La Villeneuve” neighborhood.
-
-Parking of shopping carts at the “Carrefour” Supermarket.
-
-The view of the city from above, at day and by night.
-
-“Grand’Place” tram stop by night.
-
-Bubble styled cable car, running between the city and the mountain fortress “La Bastille.”
-
-The fountain at the “Grenette Square” by night.
-
-There are many fountains in the city and young people took advantage of the beautiful days of spring to play and bathe.
-
-View of the fireworks from the bridge over the river “Isère.”
-
-Mother and child crossing the street at Saint-Martin-d'Hères. In the background are the snow-capped Alps.
-
-Benches of the Olympic Village at “Quartier Villeneuve” by night. The Winter Olympics were in 1968.
-
-Sunset behind the Alps.
+There are also the ordinary corners: the houses of “La Villeneuve”, a row of shopping carts at the “Carrefour” supermarket, the “Grand’Place” tram stop at night, and the benches of the Olympic Village in “Quartier Villeneuve”, built for the 1968 Winter Olympics. The series ends with fireworks seen from the bridge over the river “Isère”.
