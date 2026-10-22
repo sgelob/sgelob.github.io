@@ -5,6 +5,8 @@ date: "2016-10-08T13:09:14"
 genre: old-film-cameras
 country: russia
 cover: 2016/10/lubitel-twin-lens-reflex-soviet-vintage-film-camera-05.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 oldSlugs:
   - lubitel-любитель-first-twin-lens-reflex-soviet-film-camera

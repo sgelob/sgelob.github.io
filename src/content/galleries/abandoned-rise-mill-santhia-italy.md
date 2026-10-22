@@ -5,6 +5,8 @@ date: "2008-05-25T10:00:14"
 genre: abandoned-places
 country: italy
 cover: 2008/05/abandoned-rise-mill-santhia-italy-fisheye.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:

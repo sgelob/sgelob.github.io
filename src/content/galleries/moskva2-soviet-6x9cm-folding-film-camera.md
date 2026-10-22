@@ -5,6 +5,8 @@ date: "2010-09-27T12:00:14"
 genre: old-film-cameras
 country: russia
 cover: 2010/09/moskva2-soviet-6x9cm-folding-film-camera-industar23-lens-00.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:

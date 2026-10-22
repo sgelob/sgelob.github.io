@@ -5,6 +5,8 @@ date: "2007-04-25T12:00:22"
 genre: abandoned-places
 country: italy
 cover: 2007/04/unknown-abandoned-factory-nichelino-italy-07.jpg
+coverWidth: 1440
+coverHeight: 1080
 darkHeader: true
 oldSlugs: []
 photos:

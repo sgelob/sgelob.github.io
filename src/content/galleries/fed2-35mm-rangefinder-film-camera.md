@@ -5,6 +5,8 @@ date: "2008-12-29T12:00:26"
 genre: old-film-cameras
 country: russia
 cover: 2009/03/fed2-35mm-old-soviet-film-camera-115523-lens-01.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: true
 oldSlugs: []
 photos:

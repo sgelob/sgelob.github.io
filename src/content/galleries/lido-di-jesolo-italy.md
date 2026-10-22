@@ -4,6 +4,8 @@ date: "2009-08-02T15:00:10"
 genre: world-places
 country: italy
 cover: 2009/08/lido-di-jesolo-italy-11.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:

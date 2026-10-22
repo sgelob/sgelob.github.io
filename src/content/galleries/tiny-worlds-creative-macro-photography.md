@@ -5,6 +5,8 @@ date: "2016-02-14T15:01:56"
 genre: abstract
 country: world
 cover: 2016/02/bugs-macro-photography-71.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 seoDescription: I love macro photography and shooting bugs, flowers and all the things around us from a close distance. We are living in a tiny world.
 oldSlugs: []

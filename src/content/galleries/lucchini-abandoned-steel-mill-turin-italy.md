@@ -5,6 +5,8 @@ date: "2007-03-31T22:00:07"
 genre: abandoned-places
 country: italy
 cover: 2007/03/abandoned-steel-mill-lucchini-turin-italy-night-05.jpg
+coverWidth: 1440
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:

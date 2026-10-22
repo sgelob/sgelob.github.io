@@ -4,6 +4,8 @@ date: "2011-12-28T17:21:51"
 genre: world-places
 country: russia
 cover: 2011/12/nizhny-novgorod-russia-24.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: true
 seoTitle: Nizhny Novgorod (Нижний Новгород) – Russia
 oldSlugs: []

@@ -5,6 +5,8 @@ date: "2007-09-16T22:00:12"
 genre: music-events
 country: italy
 cover: 2007/09/boschetto-crew-2-music-party-villaggio-stelle-north-italy-2007-21.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:

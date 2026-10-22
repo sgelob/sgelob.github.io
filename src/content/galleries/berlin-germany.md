@@ -4,6 +4,8 @@ date: "2009-12-30T14:32:08"
 genre: world-places
 country: germany
 cover: 2009/12/berlin-germany-61.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:

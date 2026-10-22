@@ -4,6 +4,8 @@ date: "2010-08-06T16:00:43"
 genre: world-places
 country: italy
 cover: 2010/08/alassio-italy-10.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:

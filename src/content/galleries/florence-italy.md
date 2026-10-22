@@ -4,6 +4,8 @@ date: "2012-08-06T21:58:49"
 genre: world-places
 country: italy
 cover: 2012/08/florence-italy-52.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:

@@ -4,6 +4,8 @@ date: "2008-07-18T17:00:37"
 genre: people
 country: italy
 cover: 2008/07/bearder-line-barile_gocce.jpg
+coverWidth: 800
+coverHeight: 1079
 darkHeader: false
 oldSlugs: []
 photos:

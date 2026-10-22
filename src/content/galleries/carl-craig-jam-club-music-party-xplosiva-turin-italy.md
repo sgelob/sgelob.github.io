@@ -5,6 +5,8 @@ date: "2007-11-23T23:00:25"
 genre: music-events
 country: italy
 cover: 2007/11/carl-craig-jam-club-music-party-xplosiva-turin-italy-15.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:

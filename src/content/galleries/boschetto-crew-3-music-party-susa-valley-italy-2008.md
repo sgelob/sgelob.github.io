@@ -5,6 +5,8 @@ date: "2008-06-22T22:00:50"
 genre: music-events
 country: italy
 cover: 0208/06/boschetto-crew-3-music-party-susa-valley-italy-2008-04.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:

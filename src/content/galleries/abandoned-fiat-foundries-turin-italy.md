@@ -5,6 +5,8 @@ date: "2007-05-20T08:00:22"
 genre: abandoned-places
 country: italy
 cover: 2007/05/abandoned-fiat-foundries-turin-italy-02.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:

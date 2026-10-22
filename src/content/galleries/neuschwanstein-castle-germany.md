@@ -5,6 +5,8 @@ date: "2012-12-31T14:40:48"
 genre: world-places
 country: germany
 cover: 2012/12/neuschwanstein-castle-germany-13.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:

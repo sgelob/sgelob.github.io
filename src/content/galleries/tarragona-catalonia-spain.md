@@ -5,6 +5,8 @@ date: "2007-08-06T08:00:35"
 genre: world-places
 country: spain
 cover: 2007/08/street-tarragona-spain.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 oldSlugs:
   - tarragona-spain

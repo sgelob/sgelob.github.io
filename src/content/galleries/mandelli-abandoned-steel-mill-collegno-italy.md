@@ -5,6 +5,8 @@ date: "2007-06-03T09:00:14"
 genre: abandoned-places
 country: italy
 cover: 2007/06/mandelli-abandoned-steel-mill-collegno-turin-italy-53.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: true
 oldSlugs: []
 photos:

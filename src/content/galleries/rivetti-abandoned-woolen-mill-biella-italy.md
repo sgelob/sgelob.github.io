@@ -5,6 +5,8 @@ date: "2007-07-01T16:00:38"
 genre: abandoned-places
 country: italy
 cover: 2007/07/rivetti-abandoned-woolen-mill-biella-italy-50.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:

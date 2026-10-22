@@ -5,6 +5,8 @@ date: "2014-03-02T12:00:32"
 genre: world-places
 country: italy
 cover: 2014/03/ivrea-italy-carnival-battle-oranges-19.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: true
 oldSlugs: []
 photos:

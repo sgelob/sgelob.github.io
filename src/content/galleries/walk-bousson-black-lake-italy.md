@@ -5,6 +5,8 @@ date: "2007-01-05T08:00:28"
 genre: world-places
 country: italy
 cover: 2007/01/walk-path-snow-bousson-black-lake-alps-italy.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:
