@@ -7,7 +7,11 @@ const IMG_SRC = /<img\b[^>]*?\bsrc\s*=\s*(?:"([^"]*)"|'([^']*)')[^>]*>/gi;
 const IMG_TAG = /<img\b[^>]*>/gi;
 const CLEARFIX = /<div\s+class=["']clearfix["']\s*>\s*<\/div>/gi;
 const A_HREF = /(<a\b[^>]*?\bhref\s*=\s*)(?:"([^"]*)"|'([^']*)')/gi;
-const BLOCK_START = /^<(?:h[1-6]|ul|ol|li|div|blockquote|pre|table|iframe|script|figure|img|p|hr)\b/i;
+const BLOCK_START = /^(?:<(?:h[1-6]|ul|ol|li|div|blockquote|pre|table|iframe|script|figure|img|p|hr)\b|[\uE000\uE002])/i;
+const RAW_SPAN = /<(pre|script)\b[\s\S]*?<\/\1>/gi;
+const SCRIPT_SPAN = /<script\b[\s\S]*?<\/script>/gi;
+// Markdown fenced code block (as turndown emits it) or a <script> element.
+const VERBATIM_MD = /^(`{3,}|~{3,})[^\n]*\n[\s\S]*?\n\1[ \t]*$|<script\b[\s\S]*?<\/script>/gm;
 
 /** Upload paths of every <img src> that points at an upload, in document order (duplicates kept). */
 export function extractImages(html: string): string[] {
@@ -38,14 +42,41 @@ export function rewriteUploadUrls(html: string): string {
     });
 }
 
-/** Simplified WordPress wpautop: blank-line separated chunks that do not start with a block tag become <p>. */
+/**
+ * Swaps every match of `span` for a placeholder (`marker` + index + `marker`) so later steps cannot touch the
+ * content; `restore` puts the original text back byte for byte.
+ */
+function protect(text: string, span: RegExp, marker: string): { text: string; restore: (t: string) => string } {
+  const saved: string[] = [];
+  const masked = text.replace(span, (m) => `${marker}${saved.push(m) - 1}${marker}`);
+  const placeholder = new RegExp(`${marker}(\\d+)${marker}`, 'g');
+  return { text: masked, restore: (t) => t.replace(placeholder, (_, i: string) => saved[Number(i)]) };
+}
+
+/**
+ * Simplified WordPress wpautop: blank-line separated chunks that do not start with a block tag become <p>.
+ * <pre> and <script> spans are never split or modified.
+ */
 export function autop(html: string): string {
-  return html
+  const raw = protect(html, RAW_SPAN, '');
+  const wrapped = raw.text
     .split(/\n\s*\n/)
     .map((chunk) => chunk.trim())
     .filter(Boolean)
     .map((chunk) => (BLOCK_START.test(chunk) ? chunk : `<p>${chunk}</p>`))
     .join('\n\n');
+  return raw.restore(wrapped);
+}
+
+/** Collapse 3+ newlines to 2, except inside fenced code blocks and <script> elements. */
+function collapseBlankRuns(md: string): string {
+  let out = '';
+  let last = 0;
+  for (const m of md.matchAll(VERBATIM_MD)) {
+    out += md.slice(last, m.index).replace(/\n{3,}/g, '\n\n') + m[0];
+    last = m.index + m[0].length;
+  }
+  return out + md.slice(last).replace(/\n{3,}/g, '\n\n');
 }
 
 function createTurndown(): TurndownService {
@@ -57,14 +88,11 @@ function createTurndown(): TurndownService {
   });
   td.use(gfm);
   td.keep(['iframe', 'script']);
-  // Turndown pads bullets to "-   item"; use the compact "- item" form.
+  // Turndown pads bullets to "-   item"; use the compact "- item" form. Nested content is indented by the
+  // marker width ("1. " = 3, "10. " = 4) so CommonMark treats it as a child of the item.
   td.addRule('compactListItem', {
     filter: 'li',
     replacement(content, node, options) {
-      const body = content
-        .replace(/^\n+/, '')
-        .replace(/\n+$/, '\n')
-        .replace(/\n/gm, '\n  ');
       const parent = node.parentNode as HTMLElement;
       let prefix = `${options.bulletListMarker} `;
       if (parent.nodeName === 'OL') {
@@ -72,7 +100,14 @@ function createTurndown(): TurndownService {
         const index = Array.prototype.indexOf.call(parent.children, node);
         prefix = `${(start ? Number(start) : 1) + index}. `;
       }
-      return prefix + body + (node.nextSibling && !/\n$/.test(body) ? '\n' : '');
+      const pad = ' '.repeat(prefix.length);
+      const body = content
+        .replace(/^\n+/, '')
+        .replace(/\n+$/, '')
+        .replace(/\n(?=[^\n])/g, `\n${pad}`);
+      // An item with a blank line inside makes the list loose: keep a blank line before the next item too.
+      const gap = /\n\n/.test(body) ? '\n\n' : '\n';
+      return prefix + body + (node.nextSibling ? gap : '');
     },
   });
   return td;
@@ -81,8 +116,7 @@ function createTurndown(): TurndownService {
 const turndown = createTurndown();
 
 export function htmlToMarkdown(html: string): string {
-  return turndown
-    .turndown(autop(html))
-    .replace(/\n{3,}/g, '\n\n')
-    .trim();
+  // Scripts bypass turndown (it would collapse their whitespace) and come back verbatim at the end.
+  const scripts = protect(html, SCRIPT_SPAN, '');
+  return scripts.restore(collapseBlankRuns(turndown.turndown(autop(scripts.text)))).trim();
 }

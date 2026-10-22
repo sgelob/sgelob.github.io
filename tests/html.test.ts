@@ -109,3 +109,49 @@ describe('htmlToMarkdown lists', () => {
     expect(htmlToMarkdown('<ul><li>A<ul><li>B</li></ul></li><li>C</li></ul>')).toBe('- A\n  - B\n- C');
   });
 });
+
+describe('raw-text blocks pass through untouched', () => {
+  test('autop keeps blank lines inside pre', () => {
+    expect(autop('<pre>a\n\nb</pre>')).toBe('<pre>a\n\nb</pre>');
+    expect(autop('Intro\n\n<pre>a\n\nb</pre>\n\nOutro')).toBe('<p>Intro</p>\n\n<pre>a\n\nb</pre>\n\n<p>Outro</p>');
+  });
+
+  test('autop keeps blank lines inside script', () => {
+    const script = '<script>\nvar a=1;\n\nvar b=2;\n</script>';
+    expect(autop(script)).toBe(script);
+  });
+
+  test('htmlToMarkdown keeps every line of a code block', () => {
+    expect(htmlToMarkdown('<pre><code>a\n\nb</code></pre>')).toBe('```\na\n\nb\n```');
+  });
+
+  test('htmlToMarkdown keeps script content byte for byte', () => {
+    const script = '<script>\nvar a=1;\n\nvar b=2;\n</script>';
+    expect(htmlToMarkdown(script)).toBe(script);
+    expect(htmlToMarkdown(`Prima\n\n${script}\n\nDopo`)).toBe(`Prima\n\n${script}\n\nDopo`);
+  });
+
+  test('blank-line runs inside fenced code are not collapsed', () => {
+    expect(htmlToMarkdown('<pre><code>a\n\n\n\nb</code></pre>')).toBe('```\na\n\n\n\nb\n```');
+    expect(htmlToMarkdown('<script>\nx\n\n\n\ny\n</script>')).toBe('<script>\nx\n\n\n\ny\n</script>');
+  });
+});
+
+describe('list indentation follows the marker width', () => {
+  test('ul inside ol', () => {
+    expect(htmlToMarkdown('<ol><li>A<ul><li>B</li></ul></li><li>C</li></ol>')).toBe('1. A\n   - B\n2. C');
+  });
+
+  test('ol inside ol', () => {
+    expect(htmlToMarkdown('<ol><li>A<ol><li>B</li></ol></li><li>C</li></ol>')).toBe('1. A\n   1. B\n2. C');
+  });
+
+  test('two-digit markers indent by four', () => {
+    expect(htmlToMarkdown('<ol start="10"><li>A<ul><li>B</li></ul></li></ol>')).toBe('10. A\n    - B');
+  });
+
+  test('multi-paragraph list item', () => {
+    expect(htmlToMarkdown('<ol><li><p>A</p><p>B</p></li><li><p>C</p></li></ol>')).toBe('1. A\n\n   B\n\n2. C');
+    expect(htmlToMarkdown('<ul><li><p>A</p><p>B</p></li></ul>')).toBe('- A\n\n  B');
+  });
+});
