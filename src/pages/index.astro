@@ -1,8 +1,128 @@
 ---
+import { getEntry } from 'astro:content';
 import Base from '../layouts/Base.astro';
+import GalleryGrid from '../components/GalleryGrid.astro';
+import PostList from '../components/PostList.astro';
+import { getGalleries, getPosts } from '../lib/collections';
+import { home, leadParagraphs, pickFeatured } from '../lib/home';
+import { renderInline } from '../lib/markdown';
 import { SITE } from '../lib/site';
+
+const about = await getEntry('pages', 'about');
+if (!about) throw new Error('src/content/pages/about.md is missing: the home intro is read from it');
+const intro = leadParagraphs(about.body ?? '').map(renderInline);
+
+const galleries = await getGalleries();
+const posts = await getPosts();
+const featured = pickFeatured(galleries, home.featuredGalleries);
+
+const links = [
+  { label: 'Events', href: '/events/' },
+  { label: 'Books', href: '/books/' },
+  { label: 'Quotes', href: '/my-favourite-inspirational-quotes-life-design/' },
+  { label: 'Email', href: `mailto:${SITE.email}` },
+];
 ---
 
-<Base title="olegs" description={SITE.description}>
-  <h1 class="wrap">olegs</h1>
+<Base title={about.data.seoTitle ?? `${SITE.author} — ${SITE.description}`} description={about.data.seoDescription} lang="en">
+  <section class="intro wrap">
+    <h1 class="visually-hidden">{SITE.author}</h1>
+    {intro.map((html) => <p class="lead" set:html={html} />)}
+    <ul class="links mono">
+      {links.map(({ label, href }) => <li><a href={href}>{label} ↗</a></li>)}
+    </ul>
+  </section>
+
+  <section aria-labelledby="home-photos">
+    <div class="lab mono">
+      <h2 id="home-photos">Photos</h2>
+      <a href="/photos/">All {galleries.length} galleries ↗</a>
+    </div>
+    <GalleryGrid galleries={featured} />
+  </section>
+
+  <section class="blog" aria-labelledby="home-blog">
+    <div class="lab mono">
+      <h2 id="home-blog">Blog</h2>
+      <a href="/blog/">All {posts.length} posts ↗</a>
+    </div>
+    <PostList posts={posts.slice(0, 3)} embedded />
+  </section>
 </Base>
+
+<style>
+  .intro { padding-block: 72px 96px; }
+
+  .lead {
+    max-width: 900px;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 1.22;
+    letter-spacing: -0.015em;
+  }
+
+  .lead + .lead {
+    margin-top: 0.6em;
+    color: var(--muted);
+  }
+
+  .lead :global(a) {
+    border-bottom: 1px solid currentColor;
+    transition: color 120ms ease;
+  }
+
+  .lead :global(a:hover) { color: var(--fg); }
+
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 32px;
+    margin-top: 48px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .links a {
+    padding-bottom: 3px;
+    border-bottom: 1px solid var(--rule);
+    transition: border-color 120ms ease;
+  }
+
+  .links a:hover { border-bottom-color: currentColor; }
+
+  .lab {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 24px;
+    margin: 0 var(--gutter) 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--rule);
+  }
+
+  .lab h2 { font: inherit; }
+
+  .lab a {
+    color: var(--muted);
+    transition: color 120ms ease;
+  }
+
+  .lab a:hover { color: var(--fg); }
+
+  .blog { padding-bottom: 96px; }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  @media (max-width: 719px) {
+    .intro { padding-block: 40px 64px; }
+    .lead { font-size: 22px; }
+    .links { margin-top: 32px; gap: 10px 20px; }
+  }
+</style>

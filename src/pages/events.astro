@@ -1,0 +1,55 @@
+---
+import Reading from '../layouts/Reading.astro';
+import { events } from '../lib/events';
+import { renderInline } from '../lib/markdown';
+---
+
+<Reading title="Events — olegs" heading="Events and conferences" description="Tech, product and design events and conferences Olegs Belousovs attended, by year." lang="en">
+  <div class="events">
+    {events.map(({ year, entries }) => (
+      <section class="group">
+        <h2 class="year mono">{year}</h2>
+        <ul class="entries">
+          {entries.map((entry) => <li set:html={renderInline(entry)} />)}
+        </ul>
+      </section>
+    ))}
+  </div>
+</Reading>
+
+<style>
+  .events .group { padding-block: 24px; border-top: 1px solid var(--rule); }
+
+  .events .group:last-child { border-bottom: 1px solid var(--rule); }
+
+  .events h2.year {
+    margin: 0;
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: 0.08em;
+  }
+
+  .events .entries {
+    margin-top: 16px;
+    padding: 0;
+    list-style: none;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .events .entries li + li { margin-top: 8px; }
+
+  .events .entries :global(a) {
+    border-bottom: 1px solid var(--muted);
+    transition: border-color 120ms ease;
+  }
+
+  .events .entries :global(a:hover) { border-bottom-color: var(--fg); }
+
+  .events .entries :global(em) {
+    color: var(--muted);
+    font-style: normal;
+  }
+</style>
