@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
 import { WpDb } from '../scripts/lib/wp';
-import { buildPost } from '../scripts/migrate/posts';
+import { buildPost, uploadWidths } from '../scripts/migrate/posts';
 
 const FIXTURE = 'tests/fixtures/wp-posts.sql';
 
@@ -58,6 +58,25 @@ describe('buildPost (fixture)', () => {
   });
 });
 
+test('uploadWidths reads the original widths from the attachment rows, once per dump', () => {
+  let reads = 0;
+  const db = {
+    attachments: () => {
+      reads += 1;
+      return new Map([
+        ['2016/06/a.jpg', { path: '2016/06/a.jpg', width: 854, height: 600, mime: 'image/jpeg' }],
+        ['2016/06/b.jpg', { path: '2016/06/b.jpg', width: null, height: null, mime: 'image/jpeg' }],
+      ]);
+    },
+  } as unknown as WpDb;
+  const widthOf = uploadWidths(db);
+  expect(widthOf('2016/06/a.jpg')).toBe(854);
+  expect(widthOf('2016/06/b.jpg')).toBeUndefined();
+  expect(widthOf('2016/06/missing.jpg')).toBeUndefined();
+  expect(uploadWidths(db)).toBe(widthOf);
+  expect(reads).toBe(1);
+});
+
 describe('buildPost title and seo title', () => {
   test('entities in the title are decoded', async () => {
     expect((await build(103)).title).toBe('Post lungo \u{1f4a9} & co');
@@ -84,6 +103,17 @@ describe('buildPost (real dump)', () => {
       expect(p.title, p.slug).not.toMatch(/&[#a-z0-9]+;/i);
       expect(p.seoTitle ?? '', p.slug).not.toContain('%%');
       expect(p.lang).toBe('it');
+    }
+  });
+
+  test.skipIf(!process.env.DUMP_PATH)('inline images never point at a variant wider than the original', async () => {
+    const db = await WpDb.fromDump(process.env.DUMP_PATH!);
+    const bodies = new Map(db.posts({ type: 'post', status: 'publish' }).map((p) => [p.post_name, buildPost(db, p).body]));
+    expect(bodies.get('fattori-prestazioni-velocita-web-non-sempre-sotto-nostro-controllo')).toContain(
+      'https://img.olegs.be/uploads/2016/06/9-top-browser-utilizzati-mondo-maggio-2015-2016-statcounter-480.jpg)',
+    );
+    for (const slug of ['cosa-sono-web-performance-perche-devi-preoccupartene', 'come-eseguire-test-sintetici-web-performance-webpagetest-org']) {
+      expect(bodies.get(slug), slug).toContain('https://img.olegs.be/uploads/2016/09/mobile-web-is-slow-phone-rage-throw-wall.gif)');
     }
   });
 });

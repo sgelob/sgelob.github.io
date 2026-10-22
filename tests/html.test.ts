@@ -40,6 +40,27 @@ describe('rewriteUploadUrls', () => {
     );
   });
 
+  test('with known widths: the widest variant within the original, capped at 960', () => {
+    const widths: Record<string, number> = { '2016/05/big.jpg': 2400, '2016/05/mid.jpg': 854, '2016/05/edge.jpg': 960 };
+    const html = ['big', 'mid', 'edge'].map((n) => `<img src="${UP}/2016/05/${n}-300x200.jpg">`).join('');
+    expect(rewriteUploadUrls(html, (path) => widths[path])).toBe(
+      '<img src="https://img.olegs.be/uploads/2016/05/big-960.jpg">' +
+        '<img src="https://img.olegs.be/uploads/2016/05/mid-480.jpg">' +
+        '<img src="https://img.olegs.be/uploads/2016/05/edge-960.jpg">',
+    );
+  });
+
+  test('an image narrower than every variant, or a GIF, stays the original', () => {
+    expect(rewriteUploadUrls(`<img src="${UP}/2016/05/tiny.png">`, () => 413)).toBe('<img src="https://img.olegs.be/uploads/2016/05/tiny.png">');
+    // Variants of a GIF would drop the animation, whatever its width (known or not).
+    expect(rewriteUploadUrls(`<img src="${UP}/2016/09/rage.gif">`, () => 1200)).toBe('<img src="https://img.olegs.be/uploads/2016/09/rage.gif">');
+    expect(rewriteUploadUrls(`<img src="${UP}/2016/09/rage.GIF">`)).toBe('<img src="https://img.olegs.be/uploads/2016/09/rage.GIF">');
+  });
+
+  test('unknown width falls back to the 960 variant', () => {
+    expect(rewriteUploadUrls(`<img src="${UP}/2016/05/c.jpg">`, () => undefined)).toBe('<img src="https://img.olegs.be/uploads/2016/05/c-960.jpg">');
+  });
+
   test('everything else is untouched', () => {
     const html = '<a href="https://example.com/x.jpg"><img src="https://example.com/x.jpg"></a><a href="https://olegs.be/about">a</a>';
     expect(rewriteUploadUrls(html)).toBe(html);

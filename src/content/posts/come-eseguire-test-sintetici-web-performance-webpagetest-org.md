@@ -405,7 +405,7 @@ Leggi spesso i nuovi case studies su [wpostats.com](https://wpostats.com/), pe
 
 …perché altrimenti, se non misuri e non ottimizzi i siti che realizzi, questo è quello che le persone probabilmente faranno mentre visiteranno questi siti lenti, soprattutto da mobile… 😡
 
-![Uomo incazzato lancia il suo telefono contro il muro](https://img.olegs.be/uploads/2016/09/mobile-web-is-slow-phone-rage-throw-wall-960.jpg)
+![Uomo incazzato lancia il suo telefono contro il muro](https://img.olegs.be/uploads/2016/09/mobile-web-is-slow-phone-rage-throw-wall.gif)
 
 ## Il video intero del mio talk
 

@@ -1,4 +1,4 @@
-import { htmlToMarkdown, rewriteUploadUrls } from '../lib/html';
+import { htmlToMarkdown, rewriteUploadUrls, type WidthOf } from '../lib/html';
 import type { WpDb, WpPost } from '../lib/wp';
 import { decodeSlug, optionalMeta, thumbnailPath } from './galleries';
 
@@ -17,6 +17,19 @@ export type PostDoc = {
 };
 
 const EXCERPT_MAX = 200;
+
+const widthsByDb = new WeakMap<WpDb, WidthOf>();
+
+/** Original widths of the uploads, from the attachment rows (read once per dump). */
+export function uploadWidths(db: WpDb): WidthOf {
+  let widthOf = widthsByDb.get(db);
+  if (!widthOf) {
+    const attachments = db.attachments();
+    widthOf = (path) => attachments.get(path)?.width ?? undefined;
+    widthsByDb.set(db, widthOf);
+  }
+  return widthOf;
+}
 
 const NAMED_ENTITIES: Record<string, string> = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'" };
 
@@ -56,7 +69,7 @@ function firstParagraph(markdown: string): string {
 }
 
 export function buildPost(db: WpDb, post: WpPost): PostDoc {
-  const body = htmlToMarkdown(rewriteUploadUrls(post.post_content));
+  const body = htmlToMarkdown(rewriteUploadUrls(post.post_content, uploadWidths(db)));
   const oldSlugs = [...new Set(db.metaValues(post.ID, '_wp_old_slug').filter(Boolean).map(decodeSlug))];
 
   const title = decodeEntities(post.post_title);

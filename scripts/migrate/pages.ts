@@ -1,6 +1,7 @@
 import { htmlToMarkdown, rewriteUploadUrls } from '../lib/html';
 import type { WpDb, WpPost } from '../lib/wp';
 import { optionalMeta } from './galleries';
+import { uploadWidths } from './posts';
 
 export type PageDoc = {
   slug: string;
@@ -99,5 +100,5 @@ export function buildPage(db: WpDb, post: WpPost): PageDoc {
     const { events: _events, books: _books, ...doc } = buildAboutPage(db, post);
     return doc;
   }
-  return baseDoc(db, post, htmlToMarkdown(rewriteUploadUrls(post.post_content)));
+  return baseDoc(db, post, htmlToMarkdown(rewriteUploadUrls(post.post_content, uploadWidths(db))));
 }

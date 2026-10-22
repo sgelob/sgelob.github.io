@@ -1,6 +1,6 @@
 import TurndownService from 'turndown';
 import { gfm } from 'turndown-plugin-gfm';
-import { originalUrl, variantUrl } from '../../src/lib/images';
+import { largestVariantUrl, originalUrl, variantUrl } from '../../src/lib/images';
 import { uploadPath } from './uploads';
 
 const IMG_SRC = /<img\b[^>]*?\bsrc\s*=\s*(?:"([^"]*)"|'([^']*)')[^>]*>/gi;
@@ -27,13 +27,30 @@ export function stripImages(html: string): string {
   return html.replace(IMG_TAG, '').replace(CLEARFIX, '');
 }
 
-/** <img src> to an upload becomes the 960px jpg variant, <a href> to an upload the original. */
-export function rewriteUploadUrls(html: string): string {
+/** Width of the reading column's image: wider variants would only add weight. */
+const POST_IMAGE_WIDTH = 960;
+
+/** Original width of an upload path (relative to wp-content/uploads), when known. */
+export type WidthOf = (path: string) => number | undefined;
+
+/**
+ * The URL an inline image is served from. Variants are never upscaled, so the widest one not above the original
+ * (capped at the column's 960) is picked; a GIF (variants would lose the animation) or an image narrower than every
+ * variant is served as the original. Of unknown width, the 960 variant is assumed.
+ */
+export function inlineImageUrl(path: string, width: number | undefined): string {
+  if (/\.gif$/i.test(path)) return originalUrl(path);
+  if (width === undefined) return variantUrl(path, POST_IMAGE_WIDTH, 'jpg');
+  return largestVariantUrl(path, Math.min(width, POST_IMAGE_WIDTH));
+}
+
+/** <img src> to an upload becomes a jpg variant (see `inlineImageUrl`), <a href> to an upload the original. */
+export function rewriteUploadUrls(html: string, widthOf: WidthOf = () => undefined): string {
   return html
     .replace(IMG_SRC, (tag, dq?: string, sq?: string) => {
       const src = dq ?? sq ?? '';
       const path = uploadPath(src);
-      return path ? tag.replace(src, variantUrl(path, 960, 'jpg')) : tag;
+      return path ? tag.replace(src, inlineImageUrl(path, widthOf(path))) : tag;
     })
     .replace(A_HREF, (whole, head: string, dq?: string, sq?: string) => {
       const href = dq ?? sq ?? '';
