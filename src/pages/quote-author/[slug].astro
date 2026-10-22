@@ -1,0 +1,27 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Reading from '../../layouts/Reading.astro';
+import QuoteList from '../../components/QuoteList.astro';
+import { groupByAuthor, quotes, type Quote, type QuoteAuthor } from '../../lib/quotes';
+
+export const getStaticPaths = (() =>
+  groupByAuthor(quotes).map(({ author, quotes }) => ({ params: { slug: author.slug }, props: { author, quotes } }))
+) satisfies GetStaticPaths;
+
+interface Props {
+  author: QuoteAuthor;
+  quotes: Quote[];
+}
+
+const { author, quotes: authorQuotes } = Astro.props;
+---
+
+<Reading
+  title={`${author.name} — Quotes — olegs`}
+  heading={author.name}
+  description={`Inspirational quotes by ${author.name}.`}
+  lang="en"
+>
+  <a slot="meta" href="/my-favourite-inspirational-quotes-life-design/">← All quotes</a>
+  <QuoteList quotes={authorQuotes} headingLevel={false} />
+</Reading>

@@ -7,13 +7,15 @@ interface Props {
   posts: Post[];
   /** Rendered as the page's h1. */
   heading?: string;
+  /** Inside another page's section (the home): no page padding, no heading. */
+  embedded?: boolean;
 }
 
-const { posts, heading } = Astro.props;
+const { posts, heading, embedded = false } = Astro.props;
 ---
 
-<section class="post-list wrap">
-  {heading && <h1 class="heading">{heading}</h1>}
+<section class:list={['post-list wrap', { embedded }]}>
+  {heading && !embedded && <h1 class="heading">{heading}</h1>}
   {posts.length === 0 ? (
     <p class="mono">No posts yet.</p>
   ) : (
@@ -35,6 +37,10 @@ const { posts, heading } = Astro.props;
     max-width: calc(760px + 2 * var(--gutter));
     padding-block: 72px 96px;
   }
+
+  .embedded { padding-block: 0; }
+
+  .embedded .post-item:first-child { border-top: 0; padding-top: 0; }
 
   .heading {
     margin-bottom: 40px;

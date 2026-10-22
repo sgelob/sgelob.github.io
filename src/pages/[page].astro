@@ -1,0 +1,30 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import Reading from '../layouts/Reading.astro';
+
+// Single-segment pages from the `pages` collection, at their WordPress path. Photos, blog and quotes
+// have their own templates. [year]/index.astro yields only 4-digit years, so the two never collide.
+export const getStaticPaths = (async () => {
+  const OWN_TEMPLATES = new Set(['photos', 'blog', 'quotes']);
+  const pages = (await getCollection('pages')).filter((page) => !OWN_TEMPLATES.has(page.id));
+  return pages.map((page) => {
+    const param = page.data.path.replace(/^\/|\/$/g, '');
+    if (!/^[^/]+$/.test(param) || /^\d{4}$/.test(param)) {
+      throw new Error(`pages/${page.id}: path "${page.data.path}" must be one segment and not a year`);
+    }
+    return { params: { page: param }, props: { page } };
+  });
+}) satisfies GetStaticPaths;
+
+interface Props {
+  page: CollectionEntry<'pages'>;
+}
+
+const { page } = Astro.props;
+const { Content } = await render(page);
+---
+
+<Reading title={`${page.data.title} — olegs`} heading={page.data.title} description={page.data.seoDescription} lang={page.data.lang}>
+  <Content />
+</Reading>
