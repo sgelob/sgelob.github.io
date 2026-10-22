@@ -9,7 +9,6 @@ const posts = await getPosts();
 ---
 
 <Base title={page?.data.seoTitle ?? 'Blog — olegs'} description={page?.data.seoDescription} lang="it">
-  <h1 class="visually-hidden">Blog</h1>
-  <PostList posts={posts} />
+  <PostList posts={posts} heading="Blog" lead="Appunti su web performance, meetup e prodotto, dal 2016." />
 </Base>
 
