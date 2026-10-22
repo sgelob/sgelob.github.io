@@ -67,6 +67,13 @@ describe('frontmatter key order', () => {
     expect(galleryFrontmatter(gallery).oldSlugs).toEqual(['x', 'y']);
   });
 
+  test('gallery photos: src, width, height, then an optional alt', () => {
+    const photos = [{ alt: 'A red tram', height: 2, src: 'a.jpg', width: 1 }, { src: 'b.jpg', width: 3, height: 4, alt: undefined }];
+    const written = galleryFrontmatter({ ...gallery, photos }).photos;
+    expect(written.map((photo) => Object.keys(photo))).toEqual([['src', 'width', 'height', 'alt'], ['src', 'width', 'height']]);
+    expect(written[0]).toEqual({ src: 'a.jpg', width: 1, height: 2, alt: 'A red tram' });
+  });
+
   test('posts', () => {
     writeMarkdown(dir, 'p', postFrontmatter(post), '');
     expect(keysOf(join(dir, 'p.md'))).toEqual(['title', 'date', 'categories', 'cover', 'lang', 'seoTitle', 'seoDescription', 'oldSlugs', 'excerpt']);

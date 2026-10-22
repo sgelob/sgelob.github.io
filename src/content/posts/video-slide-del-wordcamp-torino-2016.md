@@ -25,7 +25,7 @@ Enjoy 😉
 
 Traccia per gli sviluppatori.
 
-### Luca Tumedei: The WordPress Way, the Modern Way – Developing As if It Were 2016 (in inglese)
+### Luca Tumedei: <span lang="en">The WordPress Way, the Modern Way – Developing As if It Were 2016</span> (in inglese)
 
 Too often the idea of WordPress as an old and bloated framework and its PHP 5.2 back-compatibility minimum requirement will hide implementation mistakes and a “spaghetti” code approach. Let’s take responsibility for our code and stop writing it the “old way.” I will talk about test-driven development, dependency-injection, template engines and other techniques and tools that will allow for modern and efficient code while maintaining PHP 5.2 compatibility.
 
@@ -41,7 +41,7 @@ MariaDB è un fork di MySQL il database relazionale, sviluppato da una community
 
 [Slide](https://wptv.files.wordpress.com/2016/04/maria-luisa-raviol-mariadb-database-migliorare-performance-applicazioni-wp-wctrn-2016.pdf)
 
-### Piero Bellomo: Responsive Images – Beyond max-width: 100% (in inglese)
+### Piero Bellomo: <span lang="en">Responsive Images – Beyond max-width: 100%</span> (in inglese)
 
 Through a series of increasingly complex requests from an imaginary, albeit very demanding client, we will review the most effective methods of rendering truly responsive images, and learn how to embed them — right from the start — in your WordPress workflow. You will walk away safe in the knowledge you own all the right tools to achieve bulletproof responsive art-directed seo-friendly lazy-loading images. (phew!)
 
@@ -65,7 +65,7 @@ Questo talk è rivolto sia a chi ha appena iniziato a sviluppare con WordPress, 
 
 [Slide](https://wptv.files.wordpress.com/2016/04/danilo-ercoli-migliorare-performance-wp-caching-esecuzione-differita-codice-wctrn-2016.pdf)
 
-### John Blackbourn: Moving Forward with a Mature Platform (in inglese)
+### John Blackbourn: <span lang="en">Moving Forward with a Mature Platform</span> (in inglese)
 
 WordPress is over twelve years old now. How does the software and the project as a whole continue to move forward, maintain relevance, push boundaries, and assert influence when it has to compete with much leaner, cooler, and more modern alternatives? I’ll attempt to answer these points in this presentation.
 
@@ -89,7 +89,7 @@ La complessità uccide la creatività e rallenta lo sviluppo del software. Avere
 
 [Slide](https://wptv.files.wordpress.com/2016/04/luigi-maselli-controllare-wp-rest-api-tramite-javascript-react-wctrn-2016.pdf)
 
-### Hristo Pandjarov: Speed Up WordPress – The Latest Performance Technologies (in inglese)
+### Hristo Pandjarov: <span lang="en">Speed Up WordPress – The Latest Performance Technologies</span> (in inglese)
 
 Having a fast website is essential but not many people know how to optimize their WordPress or don’t feel the need to. Learn how to tackle speed optimizations of your site and get control over your pages performance.
 
@@ -145,7 +145,7 @@ Prima ancora di iniziare a sviluppare un sito in WordPress bisogna scegliere il 
 
 [Slide](https://wptv.files.wordpress.com/2016/04/alice-gallerani-scegliere-hosting-wordpress-regole-oro-wctrn-2016.pdf)
 
-### Karim Marucchi: 10 Best Project Management Practices for Working with Clients (in inglese)
+### Karim Marucchi: <span lang="en">10 Best Project Management Practices for Working with Clients</span> (in inglese)
 
 We all want to keep our clients having the best possible experience, that starts with project management basics. In this session, whether you’re a freelancer, a small agency, or an established enterprise grade agency, we will cover the 10 best practices I have seen and learned through 20 years of mistakes while learning from Some of the best professional service companies in the world. We will cover tactical examples and best-of-breed tools available today.
 
@@ -169,7 +169,7 @@ Quando scriviamo un articolo sul nostro blog WordPress non possiamo più solo pe
 
 [Slide](https://www.slideshare.net/JuliusDesign/abc-come-rendere-un-post-blog-su-wordpress-ottimizzato-per-i-social-media)
 
-### Luca Sartoni: Growth Methodologies in a Distributed Environment (in inglese)
+### Luca Sartoni: <span lang="en">Growth Methodologies in a Distributed Environment</span> (in inglese)
 
 Testing activities are effective only under strict circumstances. When I started my adventure at Automattic, the welcome message was: “Welcome to the chaos.” This presentation narrates the journey we had to conduct to implement strict growth methodologies in a distributed environment.
 
@@ -215,7 +215,7 @@ In questo intervento fornirò una panoramica sui nuovi modi di fare business att
 
 [Slide](https://wptv.files.wordpress.com/2016/04/nando-pappalardo-wp-strumento-lavoro-wctrn-2016.pdf)
 
-### Petya Raykovska: Gone with the Wind – Lessons Learned From a Year of Location Independence (in inglese)
+### Petya Raykovska: <span lang="en">Gone with the Wind – Lessons Learned From a Year of Location Independence</span> (in inglese)
 
 In January 2015 I landed a dream job that allowed me to work from anywhere in the world. This talk is an honest take on remote work and explores the best and the worst about location independence. It provides useful insights and tips on how to go about organising your work when there are no limitations on work hours and places to work from.
 
@@ -223,7 +223,7 @@ In January 2015 I landed a dream job that allowed me to work from anywhere in th
 
 [Slide](https://speakerdeck.com/petya/gone-with-he-wind-lessons-learned-from-a-year-of-location-independence)
 
-### Taco Verdonschot: Your Local Meetup is Only a Few Steps Away (in inglese)
+### Taco Verdonschot: <span lang="en">Your Local Meetup is Only a Few Steps Away</span> (in inglese)
 
 This talk consist of two parts.
 

@@ -8,6 +8,8 @@ export interface QuoteAuthor {
 
 export interface Quote {
   text: string;
+  /** BCP 47 tag, set only when the quote is not in English (the language of the pages that list it). */
+  lang?: string;
   author: QuoteAuthor;
 }
 

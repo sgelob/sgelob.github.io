@@ -14,12 +14,12 @@ test('quotes page at /quotes/ with title, old slug redirects, and 141 author pag
 describe('home', () => {
   test('title, description, link row and section links', () => {
     const html = read('dist/index.html');
-    expect(html).toContain('<title>Olegs Belousovs – Product Manager</title>');
+    expect(html).toContain('<title>Olegs Belousovs – Product Management and Photography</title>'); // not About's
     expect(html).toContain('<meta name="description" content="Product Manager in Italy');
     expect(html).toContain('<html lang="en"');
     expect(html).toContain('<a href="/events/">tech events</a>'); // intro Markdown link rendered
     expect(html).not.toContain('Creative Mornings'); // third paragraph stays on the About page
-    for (const href of ['/events/', '/books/', '/quotes/', 'mailto:44_tildes_agog@icloud.com', '/photos/', '/blog/']) {
+    for (const href of ['/events/', '/books/', '/quotes/', 'mailto:44_tildes_agog@icloud.com?subject=Message%20from%20olegs.be', '/photos/', '/blog/']) {
       expect(html).toContain(`href="${href}"`);
     }
     expect(html).toContain('All 39 posts');
@@ -99,4 +99,32 @@ test('the WordPress sitemap URLs serve the index of the sitemap Astro writes', (
   }
   expect(read('dist/sitemap-0.xml')).not.toMatch(/<loc>[^<]*sitemap/); // the index endpoints are not pages
   expect(read('dist/robots.txt')).toContain('Sitemap: https://olegs.be/sitemap.xml');
+});
+
+describe('home accessibility', () => {
+  test('arrow glyphs are hidden from assistive tech', () => {
+    const html = read('dist/index.html');
+    expect(html).toMatch(/Events <span aria-hidden="true"[^>]*>↗<\/span><\/a>/);
+    expect(html).toMatch(/All 85 galleries <span aria-hidden="true"[^>]*>↗<\/span>/);
+    expect(html.replace(/<span aria-hidden="true"[^>]*>[↗←→]<\/span>/g, '')).not.toMatch(/[↗←→]/);
+  });
+
+  test('embedded post titles are h3 under the Blog h2, each item in its own language', () => {
+    const html = read('dist/index.html');
+    expect(count(html, '<h3 class="title"')).toBe(3);
+    expect(html).not.toContain('<h2 class="title"');
+    expect(count(html, '<article class="post-item" lang="it"')).toBe(3);
+  });
+
+  test('the Email link carries the site subject', () => {
+    expect(read('dist/index.html')).toContain('href="mailto:44_tildes_agog@icloud.com?subject=Message%20from%20olegs.be"');
+  });
+
+  test('Italian and Russian quotes are marked with their language', () => {
+    const html = read('dist/quotes/index.html');
+    expect(count(html, '<blockquote class="quote" lang="it"')).toBe(12);
+    expect(count(html, '<blockquote class="quote" lang="ru"')).toBe(1);
+    expect(html).toMatch(/<blockquote class="quote" lang="it"[^>]*><p[^>]*>Senza crisi non ci sono sfide/);
+    expect(html).toMatch(/<blockquote class="quote" data-astro-cid-\w+><p[^>]*>The best way to predict your future/);
+  });
 });

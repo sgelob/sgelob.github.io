@@ -38,8 +38,8 @@ describe('gallery page', () => {
 
   test('neighbours: "← older" is rel="next", "newer →" is rel="prev"', () => {
     const html = venezia(); // 2012-08: Florence is the older neighbour, Munich the newer
-    expect(html).toMatch(/<a href="\/gallery\/florence-italy\/" rel="next"[^>]*>← Florence – Italy<\/a>/);
-    expect(html).toMatch(/<a href="\/gallery\/munich-germany\/" rel="prev"[^>]*>Munich – Germany →<\/a>/);
+    expect(html).toMatch(/<a href="\/gallery\/florence-italy\/" rel="next"[^>]*><span aria-hidden="true"[^>]*>←<\/span> <span class="visually-hidden"[^>]*>Older gallery: <\/span>Florence – Italy<\/a>/);
+    expect(html).toMatch(/<a href="\/gallery\/munich-germany\/" rel="prev"[^>]*><span class="visually-hidden"[^>]*>Newer gallery: <\/span>Munich – Germany <span aria-hidden="true"[^>]*>→<\/span><\/a>/);
   });
 
   test('the lightbox is a small module that imports PhotoSwipe on demand', () => {
@@ -56,6 +56,10 @@ describe('gallery page', () => {
     expect(entry).toMatch(/import\([`"']\.\/photoswipe\.esm\.[\w-]+\.js[`"']\)/);
     expect(entry).not.toMatch(/pswpModule:\s*\(\)\s*=>/);
     expect(entry).toContain('domItemData'); // sizes from the grid img, not data-pswp-width/height
+    // An accessible name for the dialog and an announced counter (PhotoSwipe has neither).
+    expect(entry).toContain('Photo viewer');
+    expect(entry).toContain('aria-live');
+    expect(entry).toContain('Previous photo');
   });
 
   test('grid basis sits below the target row height: 280px desktop, 150px mobile', () => {
@@ -117,7 +121,7 @@ describe('core web vitals', () => {
   test('every embedded iframe on the site loads lazily', () => {
     const pages = readdirSync('dist', { recursive: true, encoding: 'utf8' }).filter((f) => f.endsWith('.html'));
     const eager = pages.filter((f) => /<iframe(?![^>]*loading="lazy")/.test(read(`dist/${f}`)));
-    expect(read('dist/gallery/abandoned-beldi-furnace-novara-italy/index.html')).toContain('<iframe loading="lazy"');
+    expect(read('dist/gallery/abandoned-beldi-furnace-novara-italy/index.html')).toMatch(/<iframe [^>]*loading="lazy"/); // after the a11y title
     expect(eager).toEqual([]);
   });
 
@@ -126,5 +130,33 @@ describe('core web vitals', () => {
     const href = html.match(/<link rel="preload" href="([^"]+inter-latin-wght-normal[^"]+\.woff2)" as="font" type="font\/woff2" crossorigin>/)?.[1];
     expect(href).toBeDefined();
     expect(html).toContain(`url(${href})`);
+  });
+});
+
+describe('gallery accessibility', () => {
+  test('grid photos fall back to a short "Photo N" alt, without the gallery title', () => {
+    const html = read('dist/gallery/venezia-italy/index.html');
+    expect(html).toMatch(/<img [^>]*alt="Photo 1"[^>]*>/);
+    expect(html).toMatch(/<img [^>]*alt="Photo 81"[^>]*>/);
+    expect(html).not.toContain('Venezia – Italy, photo');
+  });
+
+  test('the hero cover is decorative when the grid repeats it, named after the gallery when not', () => {
+    const heroImg = (slug: string) => /<header class="hero"[\s\S]*?<img [^>]*>/.exec(read(`dist/gallery/${slug}/index.html`))?.[0] ?? '';
+    expect(heroImg('venezia-italy')).toMatch(/\salt(="")?[\s>]/); // empty alt, which Astro writes as a bare `alt`
+    expect(heroImg('the-bearder-line')).toContain('alt="The Bearder Line"');
+  });
+
+  test('gallery cards: decorative image, the caption names the link', () => {
+    const html = read('dist/photos/index.html');
+    const card = /<a class="gallery-card"[\s\S]*?<\/a>/.exec(html)?.[0] ?? '';
+    expect(card).toMatch(/<img [^>]*\salt(="")?[\s>]/);
+    expect(card).toContain('class="title"');
+  });
+
+  test('skip link first, to the main landmark', () => {
+    const html = read('dist/gallery/venezia-italy/index.html');
+    expect(html).toMatch(/<body[^>]*>\s*<a class="skip-link" href="#main">Skip to content<\/a>/);
+    expect(html).toMatch(/<main id="main" tabindex="-1"/);
   });
 });

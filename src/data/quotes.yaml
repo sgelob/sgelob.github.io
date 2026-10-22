@@ -11,6 +11,7 @@
     name: African Proverb
     slug: african-proverb
 - text: È meglio essere primi che meglio degli altri.
+  lang: it
   author:
     name: Al Ries
     slug: al-ries
@@ -31,6 +32,7 @@
     name: Albert Einstein
     slug: albert-einstein
 - text: Senza crisi non ci sono sfide, senza sfide la vita è una routine, una lenta agonia.
+  lang: it
   author:
     name: Albert Einstein
     slug: albert-einstein
@@ -59,6 +61,7 @@
     name: Alison Bechdel
     slug: alison-bechdel
 - text: Diciamo di ammazzare il tempo come se, purtroppo, non fosse il tempo ad ammazzare noi.
+  lang: it
   author:
     name: Alphonse Allais
     slug: alphonse-allais
@@ -91,6 +94,7 @@
     name: Anne Isabella Thackeray Ritchie
     slug: anne-isabella-thackeray-ritchie
 - text: Meglio vivere d’istanti e d’istinti che distanti e distinti.
+  lang: it
   author:
     name: Anonim*
     slug: anonim
@@ -99,6 +103,7 @@
     name: Anthony J. D’Angelo
     slug: anthony-j-dangelo
 - text: Come il ferro è consumato dalla ruggine, così gli invidiosi sono consumati dalla loro stessa passione.
+  lang: it
   author:
     name: Antistene
     slug: antistene
@@ -155,10 +160,12 @@
     name: Bill Cosby
     slug: bill-cosby
 - text: Non lo so quale sia la chiave del successo, ma la chiave per il fallimento è nel cercare di accontentare tutti.
+  lang: it
   author:
     name: Bill Cosby
     slug: bill-cosby
 - text: La conoscenza non è sufficiente, dobbiamo applicarla. La volontà non è abbastanza, dobbiamo agire.
+  lang: it
   author:
     name: Bruce Lee
     slug: bruce-lee
@@ -207,6 +214,7 @@
     name: Dalai Lama
     slug: dalai-lama
 - text: Gran parte dello stress deriva da impegni – presi con se stessi o con gli altri – gestiti in modo non adeguato.
+  lang: it
   author:
     name: David Allen
     slug: david-allen
@@ -219,6 +227,7 @@
     name: David Allen
     slug: david-allen
 - text: Finché la gente accetterà la spazzatura, sarà redditizio venderla.
+  lang: it
   author:
     name: Dick Cavett
     slug: dick-cavett
@@ -271,6 +280,7 @@
     name: Frank Zappa
     slug: frank-zappa
 - text: Dovete andare fieri del vostro nemico; allora i successi del vostro nemico saranno anche i vostri successi.
+  lang: it
   author:
     name: Friedrich Nietzsche
     slug: friedrich-nietzsche
@@ -427,6 +437,7 @@
     name: John Maeda
     slug: john-maeda
 - text: Ciò che conta è quello che impari quando sai già tutto.
+  lang: it
   author:
     name: John Wooden
     slug: john-wooden
@@ -607,6 +618,7 @@
     name: Russian Proverb
     slug: russian-proverb
 - text: Не имей сто рублей, а имей сто друзей.
+  lang: ru
   author:
     name: Russian Proverb
     slug: russian-proverb
@@ -679,6 +691,7 @@
     name: Unknown
     slug: unknown
 - text: La motivazione è il carburante del lavoro intellettuale.
+  lang: it
   author:
     name: Unknown
     slug: unknown

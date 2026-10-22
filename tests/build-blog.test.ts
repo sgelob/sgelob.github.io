@@ -116,3 +116,59 @@ test('PostList renders a placeholder for an empty list', async () => {
   expect(html).toMatch(/<h1[^>]*>Product Management<\/h1>/);
   expect(html).not.toContain('post-item');
 });
+
+describe('post accessibility', () => {
+  const wordcamp = () => read('dist/2017/04/video-slide-wordpress-wordcamp-torino-2017/index.html');
+
+  test('every iframe has a title (the WordCamp 2017 post embeds 18)', () => {
+    const html = wordcamp();
+    const frames = html.match(/<iframe\b[^>]*>/g) ?? [];
+    expect(frames).toHaveLength(18);
+    expect(frames.filter((tag) => !/\stitle=/.test(tag))).toEqual([]);
+    expect(frames[0]).toContain('title="VideoPress video"');
+    expect(frames[0]).toContain('loading="lazy"');
+  });
+
+  test('no built page has an untitled iframe', () => {
+    const untitled: string[] = [];
+    const walk = (dir: string): void => {
+      for (const entry of readdirSync(dir, { withFileTypes: true })) {
+        const path = `${dir}/${entry.name}`;
+        if (entry.isDirectory()) walk(path);
+        else if (entry.name.endsWith('.html') && /<iframe\b(?![^>]*\stitle=)[^>]*>/.test(readFileSync(path, 'utf8'))) untitled.push(path);
+      }
+    };
+    walk('dist');
+    expect(untitled).toEqual([]);
+  });
+
+  test('English talk titles are marked inside the Italian post', () => {
+    expect(wordcamp()).toContain('<span lang="en">Know your users</span> (in inglese)');
+  });
+
+  test('on an Italian post the English chrome is marked and the pager speaks Italian', () => {
+    const html = wordcamp();
+    expect(html).toContain('<html lang="it"');
+    expect(html).toMatch(/<ul class="links mono" lang="en"/);
+    expect(html).toMatch(/<footer[\s\S]*<ul class="links" lang="en"/);
+    expect(html).toContain('aria-label="Altri articoli"');
+    expect(html).toMatch(/<span class="visually-hidden"[^>]*>Articolo (precedente|successivo): <\/span>/);
+    expect(html).toContain('Vai al contenuto');
+  });
+
+  test('the meetup posts no longer skip from h1 to h3', () => {
+    for (const path of [
+      '2017/04/webperf-meetup-torino-performance-esperienza-religiosa',
+      '2017/06/webperf-meetup-torino-utilizzo-chrome-devtools-audit-web-performance',
+      '2018/05/quiz-interattivo-quanto-ne-sai-di-web-performance',
+      '2018/09/web-performance-real-user-monitoring-navigation-timing-api-google-tag-manager-analytics',
+    ]) {
+      const levels = [...read(`dist/${path}/index.html`).matchAll(/<h([1-6])[\s>]/g)].map((m) => Number(m[1]));
+      expect(levels.every((level, i) => i === 0 || level <= levels[i - 1]! + 1), path).toBe(true);
+    }
+  });
+
+  test('blog list items carry their post language', () => {
+    expect(count(read('dist/blog/index.html'), '<article class="post-item" lang="')).toBe(39);
+  });
+});
