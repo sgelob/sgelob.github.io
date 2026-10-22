@@ -1,3 +1,5 @@
+import { render } from './helpers/render';
+import JustifiedGrid from '../src/components/JustifiedGrid.astro';
 import { readdirSync } from 'node:fs';
 import { describe, expect, test } from 'vitest';
 import { count, exists, read } from './helpers/dist';
@@ -134,11 +136,16 @@ describe('core web vitals', () => {
 });
 
 describe('gallery accessibility', () => {
-  test('grid photos fall back to a short "Photo N" alt, without the gallery title', () => {
-    const html = read('dist/gallery/venezia-italy/index.html');
-    expect(html).toMatch(/<img [^>]*alt="Photo 1"[^>]*>/);
-    expect(html).toMatch(/<img [^>]*alt="Photo 81"[^>]*>/);
-    expect(html).not.toContain('Venezia – Italy, photo');
+  test('grid photos use their alt when present, else a short "Photo N" fallback without the gallery title', async () => {
+    const html = await render(JustifiedGrid, { props: { photos: [
+      { src: '2012/08/a.jpg', width: 1620, height: 1080, alt: 'Gondolas moored at striped poles' },
+      { src: '2012/08/b.jpg', width: 1620, height: 1080 },
+    ] } });
+    expect(html).toMatch(/<img [^>]*alt="Gondolas moored at striped poles"[^>]*>/);
+    expect(html).toMatch(/<img [^>]*alt="Photo 2"[^>]*>/);
+    expect(html).not.toContain(', photo ');
+    const venezia = read('dist/gallery/venezia-italy/index.html');
+    expect(venezia).toContain('alt="Water taxis and vaporetti on green lagoon water under heavy clouds"');
   });
 
   test('the hero cover is decorative when the grid repeats it, named after the gallery when not', () => {
