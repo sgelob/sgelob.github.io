@@ -23,18 +23,18 @@ Prova a verificare il tuo livello di conoscenza con le web performance.
 - Quiz interattivo: [https://play.kahoot.it/#/?quizId=d26f117a-93d4-49d7-b958-2a4d2d2c46b5](https://play.kahoot.it/#/?quizId=d26f117a-93d4-49d7-b958-2a4d2d2c46b5)
 - Evento: https://www.meetup.com/it-IT/Turin-Web-Performance-Group/events/250204555/
 
-### Vuoi fare o proporre una presentazione a uno dei Meetup di Turin Web Performance Group?!
+## Vuoi fare o proporre una presentazione a uno dei Meetup di Turin Web Performance Group?!
 
 Siamo sempre alla ricerca di nuovi speaker provenienti da tutti i settori inerenti alle web performance e di ogni livello di preparazione. Se ti interessa a fare una presentazione al Meetup di Turin Web Performance Group, scrivi un messaggio a uno dei nostri organizzatori.
 
 *Cerchiamo sponsor per stampare dello swag e offrire cibo e bevande ai partecipanti dopo i talk.*
 
-### Come contattarci
+## Come contattarci
 
 - trnwebperf \[at\] gmail.com
 - [twitter.com/trnwebperf](https://x.com/trnwebperf)
 
-### La community online
+## La community online
 
 - [Gruppo Web Performance Italia su Facebook](https://www.facebook.com/groups/webperformanceitalia/)
 - Web Performance Group on Slack (in inglese)

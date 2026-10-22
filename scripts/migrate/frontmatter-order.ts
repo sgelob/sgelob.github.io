@@ -6,6 +6,7 @@ import type { PostDoc } from './posts';
 const GALLERY_KEYS = ['title', 'shortTitle', 'date', 'genre', 'country', 'cover', 'coverWidth', 'coverHeight', 'darkHeader', 'seoTitle', 'seoDescription', 'oldSlugs', 'photos'] as const;
 const POST_KEYS = ['title', 'date', 'categories', 'cover', 'lang', 'seoTitle', 'seoDescription', 'oldSlugs', 'excerpt'] as const;
 const PAGE_KEYS = ['title', 'path', 'lang', 'seoTitle', 'seoDescription'] as const;
+const PHOTO_KEYS = ['src', 'width', 'height', 'alt'] as const;
 
 /** The listed keys of `doc`, in that order; keys that are undefined are left out. */
 function pick<T extends object, K extends keyof T>(doc: T, keys: readonly K[]): Pick<T, K> {
@@ -17,7 +18,11 @@ function pick<T extends object, K extends keyof T>(doc: T, keys: readonly K[]): 
 /** `_wp_old_slug` rows can be empty or repeated. */
 export const cleanOldSlugs = (slugs: readonly string[]): string[] => [...new Set(slugs.filter(Boolean))];
 
-export const galleryFrontmatter = (doc: GalleryDoc) => ({ ...pick(doc, GALLERY_KEYS), oldSlugs: cleanOldSlugs(doc.oldSlugs) });
+export const galleryFrontmatter = (doc: GalleryDoc) => ({
+  ...pick(doc, GALLERY_KEYS),
+  oldSlugs: cleanOldSlugs(doc.oldSlugs),
+  photos: doc.photos.map((photo) => pick(photo, PHOTO_KEYS)),
+});
 export const postFrontmatter = (doc: PostDoc) => ({ ...pick(doc, POST_KEYS), oldSlugs: cleanOldSlugs(doc.oldSlugs) });
 export const pageFrontmatter = (doc: PageDoc) => pick(doc, PAGE_KEYS);
 

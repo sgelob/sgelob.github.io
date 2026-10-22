@@ -7,11 +7,13 @@ interface Props {
   posts: Post[];
   /** Rendered as the page's h1. */
   heading?: string;
-  /** Inside another page's section (the home): no page padding, no heading. */
+  /** Inside another page's section (the home): no page padding, no heading, post titles as h3. */
   embedded?: boolean;
 }
 
 const { posts, heading, embedded = false } = Astro.props;
+// Embedded, the list sits under its section's h2.
+const Title = embedded ? 'h3' : 'h2';
 ---
 
 <section class:list={['post-list wrap', { embedded }]}>
@@ -20,12 +22,12 @@ const { posts, heading, embedded = false } = Astro.props;
     <p class="mono">No posts yet.</p>
   ) : (
     posts.map((post) => (
-      <article class="post-item">
+      <article class="post-item" lang={post.data.lang}>
         <p class="meta mono">
           <time datetime={isoDate(post.data.date)}>{formatDate(post.data.date, 'it')}</time>
           {post.data.categories.length > 0 && <span> · {post.data.categories.map(categoryName).join(', ')}</span>}
         </p>
-        <h2 class="title"><a href={postPath(post)}>{post.data.title}</a></h2>
+        <Title class="title"><a href={postPath(post)}>{post.data.title}</a></Title>
         <p class="excerpt">{post.data.excerpt}</p>
       </article>
     ))

@@ -2,7 +2,8 @@ import { extractImages, htmlToMarkdown, stripImages } from '../lib/html';
 import { uploadPath } from '../lib/uploads';
 import type { WpDb, WpPost, WpTerm } from '../lib/wp';
 
-export type Photo = { src: string; width: number; height: number };
+/** `alt` is never set by the migration (WordPress had none); galleries written by hand can carry it. */
+export type Photo = { src: string; width: number; height: number; alt?: string };
 
 export type GalleryDoc = {
   slug: string;

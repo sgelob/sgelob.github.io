@@ -15,28 +15,30 @@ const intro = leadParagraphs(about.body ?? '').map(renderInline);
 const galleries = await getGalleries();
 const posts = await getPosts();
 const featured = pickFeatured(galleries, home.featuredGalleries);
+// Not About's seoTitle: the home and /about/ need different titles.
+const title = `${SITE.author} – ${SITE.description}`;
 
 const links = [
   { label: 'Events', href: '/events/' },
   { label: 'Books', href: '/books/' },
   { label: 'Quotes', href: '/quotes/' },
-  { label: 'Email', href: `mailto:${SITE.email}` },
+  { label: 'Email', href: SITE.mailto },
 ];
 ---
 
-<Base title={about.data.seoTitle ?? `${SITE.author} — ${SITE.description}`} description={about.data.seoDescription} lang="en">
+<Base title={title} description={about.data.seoDescription} lang="en">
   <section class="intro wrap">
     <h1 class="visually-hidden">{SITE.author}</h1>
     {intro.map((html) => <p class="lead" set:html={html} />)}
     <ul class="links mono">
-      {links.map(({ label, href }) => <li><a href={href}>{label} ↗</a></li>)}
+      {links.map(({ label, href }) => <li><a href={href}>{label} <span aria-hidden="true">↗</span></a></li>)}
     </ul>
   </section>
 
   <section aria-labelledby="home-photos">
     <div class="lab mono">
       <h2 id="home-photos">Photos</h2>
-      <a href="/photos/">All {galleries.length} galleries ↗</a>
+      <a href="/photos/">All {galleries.length} galleries <span aria-hidden="true">↗</span></a>
     </div>
     <GalleryGrid galleries={featured} />
   </section>
@@ -44,7 +46,7 @@ const links = [
   <section class="blog" aria-labelledby="home-blog">
     <div class="lab mono">
       <h2 id="home-blog">Blog</h2>
-      <a href="/blog/">All {posts.length} posts ↗</a>
+      <a href="/blog/">All {posts.length} posts <span aria-hidden="true">↗</span></a>
     </div>
     <PostList posts={posts.slice(0, 3)} embedded />
   </section>
@@ -82,8 +84,11 @@ const links = [
     list-style: none;
   }
 
+  /* 6 px above the text, cancelled by the margin, makes a 24 px target without moving the row. */
   .links a {
-    padding-bottom: 3px;
+    display: inline-block;
+    padding: 6px 0 3px;
+    margin-top: -6px;
     border-bottom: 1px solid var(--rule);
     transition: border-color 120ms ease;
   }
@@ -103,6 +108,8 @@ const links = [
   .lab h2 { font: inherit; }
 
   .lab a {
+    padding-block: 5px;
+    margin-block: -5px;
     color: var(--muted);
     transition: color 120ms ease;
   }
@@ -110,15 +117,6 @@ const links = [
   .lab a:hover { color: var(--fg); }
 
   .blog { padding-bottom: 96px; }
-
-  .visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
-  }
 
   @media (max-width: 719px) {
     .intro { padding-block: 40px 64px; }
