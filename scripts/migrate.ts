@@ -3,7 +3,7 @@ import { resolve } from 'node:path';
 import { parseArgs } from 'node:util';
 import { formatSummary, mismatches, runMigration } from './migrate/run';
 
-const USAGE = 'usage: npm run migrate -- --dump <path> [--out src] [--drafts ~/olegs-be-drafts] [--dry-run] [--no-assert]';
+const USAGE = 'usage: npm run migrate -- --dump <path> [--out src] [--drafts ~/olegs-be-drafts] [--dry-run] [--no-assert] [--force]';
 
 const expandHome = (path: string): string => (path === '~' || path.startsWith('~/') ? resolve(homedir(), path.slice(2)) : resolve(path));
 
@@ -15,6 +15,7 @@ async function main(): Promise<number> {
       drafts: { type: 'string', default: '~/olegs-be-drafts' },
       'dry-run': { type: 'boolean', default: false },
       'no-assert': { type: 'boolean', default: false },
+      force: { type: 'boolean', default: false },
     },
   });
   if (!values.dump) {
@@ -27,6 +28,7 @@ async function main(): Promise<number> {
     out: expandHome(values.out),
     drafts: expandHome(values.drafts),
     dryRun: values['dry-run'],
+    force: values.force,
   });
 
   console.log(formatSummary(summary));

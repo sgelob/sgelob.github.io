@@ -40,6 +40,8 @@ export type Options = {
   /** Where draft posts and galleries go: outside the repository. */
   drafts: string;
   dryRun: boolean;
+  /** Replace content files that already exist; without it, a non-dry run on a populated `out` is refused. */
+  force?: boolean;
 };
 
 /** What the real dump must produce. */
@@ -97,14 +99,21 @@ function draftSlug(post: WpPost, taken: Set<string>): string {
   return slug;
 }
 
-function removeMarkdown(dir: string): void {
-  let names: string[];
+function markdownIn(dir: string): string[] {
   try {
-    names = readdirSync(dir);
+    return readdirSync(dir).filter((name) => name.endsWith('.md'));
   } catch {
-    return;
+    return [];
   }
-  for (const name of names) if (name.endsWith('.md')) rmSync(join(dir, name));
+}
+
+/** Content files a run would delete: the migration must not discard hand edits by accident. */
+export function existingContent(out: string): string[] {
+  return CONTENT_DIRS.flatMap((dir) => markdownIn(join(out, 'content', dir)).map((name) => join('content', dir, name)));
+}
+
+function removeMarkdown(dir: string): void {
+  for (const name of markdownIn(dir)) rmSync(join(dir, name));
 }
 
 function writeYaml(dir: string, file: string, value: unknown): void {
@@ -112,8 +121,20 @@ function writeYaml(dir: string, file: string, value: unknown): void {
   writeFileSync(join(dir, file), stringify(value, { lineWidth: 0 }));
 }
 
-/** Reads the dump, builds everything in memory, then (unless `dryRun`) replaces the files this migration owns. */
+/**
+ * Reads the dump, builds everything in memory, then (unless `dryRun`) replaces the files this migration owns.
+ * Refuses to write over existing content files unless `force` is set.
+ */
 export async function runMigration(opts: Options): Promise<Summary> {
+  if (!opts.dryRun && !opts.force) {
+    const existing = existingContent(opts.out);
+    if (existing.length) {
+      throw new Error(
+        `${join(opts.out, 'content')} already has ${existing.length} content files (${existing.slice(0, 3).join(', ')}${existing.length > 3 ? ', …' : ''}): ` +
+          're-running the migration would replace them and discard hand edits. Pass --force to do it anyway.',
+      );
+    }
+  }
   const db = await WpDb.fromDump(opts.dump);
   const warnings: string[] = [];
   const skippedDrafts: string[] = [];

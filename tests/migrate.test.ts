@@ -202,13 +202,27 @@ describe('runMigration (fixture)', () => {
     for (const d of ['content/galleries', 'content/posts', 'content/pages', 'content/other', 'data']) mkdirSync(join(out, d), { recursive: true });
     for (const f of ['content/galleries/stale.md', 'content/posts/stale.md', 'content/pages/stale.md', 'data/quotes.yaml', 'content/galleries/notes.txt', 'content/other/keep.md', 'data/keep.yaml'])
       writeFileSync(join(out, f), 'old');
-    await runMigration({ dump: FIXTURE, out, drafts: join(tmp(), 'd'), dryRun: false });
+    await runMigration({ dump: FIXTURE, out, drafts: join(tmp(), 'd'), dryRun: false, force: true });
     expect(ls(join(out, 'content/galleries'))).toEqual(['abandoned-one.md', 'notes.txt', 'venezia-italy.md']);
     expect(ls(join(out, 'content/posts'))).toEqual(['primo-post.md', 'secondo-post.md']);
     expect(ls(join(out, 'content/pages'))).not.toContain('stale.md');
     expect(ls(join(out, 'content/other'))).toEqual(['keep.md']);
     expect(ls(join(out, 'data'))).toContain('keep.yaml');
     expect(read(out, 'data/quotes.yaml')).not.toBe('old');
+  });
+
+  test('refuses to replace existing content files without force, and touches nothing', async () => {
+    const out = join(tmp(), 'src');
+    mkdirSync(join(out, 'content/posts'), { recursive: true });
+    writeFileSync(join(out, 'content/posts/hand-edited.md'), 'mine');
+    await expect(runMigration({ dump: FIXTURE, out, drafts: join(tmp(), 'd'), dryRun: false })).rejects.toThrow(
+      /already has 1 content files \(content\/posts\/hand-edited\.md\).*--force/,
+    );
+    expect(ls(join(out, 'content/posts'))).toEqual(['hand-edited.md']);
+    expect(read(out, 'content/posts/hand-edited.md')).toBe('mine');
+    expect(existsSync(join(out, 'data'))).toBe(false);
+    // A dry run only reads, so it is allowed.
+    expect((await runMigration({ dump: FIXTURE, out, drafts: join(tmp(), 'd'), dryRun: true })).posts).toBe(2);
   });
 
   test('dry run reports the summary and writes nothing', async () => {
