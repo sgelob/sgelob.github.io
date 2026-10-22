@@ -1,0 +1,29 @@
+---
+import { SITE, type Lang } from '../lib/site';
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+  canonical?: string;
+  lang: Lang;
+}
+
+const { title, description, ogImage, canonical, lang } = Astro.props;
+const url = canonical ?? SITE.url + Astro.url.pathname;
+const locale = lang === 'it' ? 'it_IT' : 'en_US';
+---
+
+<title>{title}</title>
+{description && <meta name="description" content={description} />}
+<link rel="canonical" href={url} />
+<meta property="og:title" content={title} />
+{description && <meta property="og:description" content={description} />}
+<meta property="og:type" content="website" />
+<meta property="og:url" content={url} />
+{ogImage && <meta property="og:image" content={ogImage} />}
+<meta property="og:site_name" content={SITE.name} />
+<meta property="og:locale" content={locale} />
+<meta name="twitter:card" content={ogImage ? 'summary_large_image' : 'summary'} />
+<link rel="alternate" type="application/rss+xml" title="olegs — blog" href="/feed.xml" />
+<meta name="generator" content={Astro.generator} />

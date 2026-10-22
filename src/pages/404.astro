@@ -1,0 +1,47 @@
+---
+import Base from '../layouts/Base.astro';
+import { NAV_LINKS } from '../lib/nav';
+---
+
+<Base title="Page not found — olegs">
+  <section class="not-found wrap">
+    <p class="mono code">404</p>
+    <h1>This page does not exist.</h1>
+    <ul class="mono links">
+      {NAV_LINKS.map(({ label, href }) => (
+        <li><a href={href}>{label}</a></li>
+      ))}
+    </ul>
+  </section>
+</Base>
+
+<style>
+  .not-found { padding-block: clamp(80px, 18vh, 200px) 0; }
+
+  .code { color: var(--muted); }
+
+  h1 {
+    margin-top: 24px;
+    max-width: 18ch;
+    font-size: clamp(28px, 4.5vw, 52px);
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+  }
+
+  .links {
+    display: flex;
+    gap: 32px;
+    margin-top: 48px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .links a {
+    padding-bottom: 3px;
+    border-bottom: 1px solid var(--rule);
+    transition: border-color 120ms ease;
+  }
+
+  .links a:hover { border-bottom-color: currentColor; }
+</style>

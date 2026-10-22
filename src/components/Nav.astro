@@ -1,0 +1,65 @@
+---
+import { NAV_LINKS, type Section } from '../lib/nav';
+
+interface Props {
+  current?: Section;
+}
+
+const { current } = Astro.props;
+const pathname = Astro.url.pathname;
+---
+
+<header class="nav wrap">
+  <a class="home" href="/">olegs</a>
+  <nav aria-label="Main">
+    <ul class="links mono">
+      {NAV_LINKS.map(({ section, label, href }) => (
+        <li>
+          <a href={href} aria-current={section === current ? (pathname === href ? 'page' : 'true') : undefined}>
+            {label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</header>
+
+<style>
+  .nav {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
+    padding-block: 28px;
+  }
+
+  .home {
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  .links {
+    display: flex;
+    gap: 32px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .links a {
+    display: inline-block;
+    padding-bottom: 3px;
+    border-bottom: 1px solid transparent;
+    transition: color 120ms ease;
+  }
+
+  .links a:hover { color: var(--muted); }
+
+  .links a[aria-current] { border-bottom-color: currentColor; }
+
+  @media (max-width: 719px) {
+    .nav { padding-block: 20px; }
+    .links { gap: 20px; }
+  }
+</style>

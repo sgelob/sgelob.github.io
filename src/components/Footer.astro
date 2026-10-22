@@ -1,0 +1,39 @@
+---
+import { SITE } from '../lib/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="footer wrap mono">
+  <p>© {year} {SITE.author}</p>
+  <ul class="links">
+    <li><a href={`mailto:${SITE.email}`}>Email</a></li>
+    <li><a href="/feed.xml">RSS</a></li>
+    <li><a href="/privacy-policy/">Privacy</a></li>
+  </ul>
+</footer>
+
+<style>
+  .footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px 24px;
+    margin-top: 120px;
+    padding-block: 24px 32px;
+    border-top: 1px solid var(--rule);
+    color: var(--muted);
+  }
+
+  .links {
+    display: flex;
+    gap: 24px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .links a { transition: color 120ms ease; }
+
+  .links a:hover { color: var(--fg); }
+</style>

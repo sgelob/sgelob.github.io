@@ -1,0 +1,49 @@
+---
+import '@fontsource-variable/inter';
+import '@fontsource/ibm-plex-mono/400.css';
+import '@fontsource/ibm-plex-mono/500.css';
+import '../styles/global.css';
+import Seo from '../components/Seo.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { sectionFor } from '../lib/nav';
+import type { Lang } from '../lib/site';
+
+interface Props {
+  title: string;
+  description?: string;
+  lang?: Lang;
+  ogImage?: string;
+  canonical?: string;
+}
+
+const { title, description, lang = 'en', ogImage, canonical } = Astro.props;
+const current = sectionFor(Astro.url.pathname);
+const beaconToken: unknown = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0c0c0c" />
+    <Seo title={title} description={description} ogImage={ogImage} canonical={canonical} lang={lang} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <Nav current={current} />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+    {typeof beaconToken === 'string' && beaconToken !== '' && (
+      <script
+        is:inline
+        defer
+        src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon={JSON.stringify({ token: beaconToken })}
+      ></script>
+    )}
+  </body>
+</html>
