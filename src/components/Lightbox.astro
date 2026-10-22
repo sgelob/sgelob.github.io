@@ -8,19 +8,31 @@
 
   type Lightbox = import('photoswipe/lightbox').default;
 
+  /** Adds the stylesheet once; a link that failed is removed, so a later click tries again. */
   function loadStyle(): Promise<unknown> {
+    const existing = document.querySelector<HTMLLinkElement>(`link[href="${styleUrl}"]`);
+    if (existing?.sheet) return Promise.resolve();
+    existing?.remove();
     const link = Object.assign(document.createElement('link'), { rel: 'stylesheet', href: styleUrl });
     const loaded = new Promise((resolve, reject) => {
       link.onload = resolve;
-      link.onerror = reject;
+      link.onerror = () => {
+        link.remove();
+        reject(new Error(`stylesheet ${styleUrl} failed to load`));
+      };
     });
     document.head.append(link);
     return loaded;
   }
 
+  /** Both PhotoSwipe chunks and the stylesheet, all fetched before anything opens. */
   async function load(): Promise<Lightbox> {
-    const [{ default: PhotoSwipeLightbox }] = await Promise.all([import('photoswipe/lightbox'), loadStyle()]);
-    const lightbox = new PhotoSwipeLightbox({ gallery: '.justified', children: 'a.ph', pswpModule: () => import('photoswipe') });
+    const [{ default: PhotoSwipeLightbox }, { default: PhotoSwipe }] = await Promise.all([
+      import('photoswipe/lightbox'),
+      import('photoswipe'),
+      loadStyle(),
+    ]);
+    const lightbox = new PhotoSwipeLightbox({ gallery: '.justified', children: 'a.ph', pswpModule: PhotoSwipe });
     lightbox.init();
     return lightbox;
   }
@@ -43,7 +55,9 @@
         lightbox.loadAndOpen(index);
       },
       () => {
-        // Offline or a failed chunk: fall back to the plain link.
+        // Any of the three requests in load() failed (offline, a missing chunk or stylesheet): nothing
+        // has opened, so follow the plain link to the original. Photos that fail inside the open
+        // lightbox are PhotoSwipe's to report.
         state = 'idle';
         window.location.href = link.href;
       },
