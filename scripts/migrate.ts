@@ -3,7 +3,7 @@ import { resolve } from 'node:path';
 import { parseArgs } from 'node:util';
 import { formatSummary, mismatches, runMigration } from './migrate/run';
 
-const USAGE = 'usage: npm run migrate -- --dump <path> [--out src] [--drafts ~/olegs-be-drafts] [--dry-run] [--no-assert] [--force]';
+const USAGE = 'usage: npm run migrate -- --dump <path> [--out src] [--drafts ./olegs-be-drafts] [--dry-run] [--no-assert] [--force]';
 
 const expandHome = (path: string): string => (path === '~' || path.startsWith('~/') ? resolve(homedir(), path.slice(2)) : resolve(path));
 
@@ -12,7 +12,7 @@ async function main(): Promise<number> {
     options: {
       dump: { type: 'string' },
       out: { type: 'string', default: 'src' },
-      drafts: { type: 'string', default: '~/olegs-be-drafts' },
+      drafts: { type: 'string', default: './olegs-be-drafts' },
       'dry-run': { type: 'boolean', default: false },
       'no-assert': { type: 'boolean', default: false },
       force: { type: 'boolean', default: false },
