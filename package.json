@@ -16,7 +16,8 @@
     "migrate": "tsx scripts/migrate.ts",
     "photos": "tsx scripts/photos.ts",
     "fetch-uploads": "tsx scripts/fetch-uploads.ts",
-    "check-urls": "tsx scripts/check-urls.ts"
+    "check-urls": "tsx scripts/check-urls.ts",
+    "thumbs": "tsx scripts/thumbs.ts"
   },
   "dependencies": {
     "@astrojs/markdown-satteri": "^0.4.5",
