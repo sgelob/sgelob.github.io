@@ -98,6 +98,7 @@ describe('buildRedirects', () => {
       { from: '/privacy-policy/', to: '/' }, // dropped pages go to the home
       { from: '/cookie-policy/', to: '/' },
       { from: '/agile-scrum-product-owner-manager-turin-italy/', to: '/about/' }, // the old About slug
+      { from: '/my-favourite-inspirational-quotes-life-design/', to: '/quotes/' },
     ]);
   });
 });
@@ -117,7 +118,7 @@ describe('runMigration (fixture)', () => {
 
     expect(summary).toMatchObject({
       galleries: 2, photos: 4, posts: 2, pages: 4, quotes: 4, quoteAuthors: 2, genres: 2, countries: 2, categories: 2,
-      redirects: 7, draftPosts: 2, draftGalleries: 1,
+      redirects: 8, draftPosts: 2, draftGalleries: 1,
     });
   });
 
@@ -141,7 +142,7 @@ describe('runMigration (fixture)', () => {
   test('pages carry their public path; about lives at /about/', async () => {
     const { out } = await migrate();
     expect(read(out, 'content/pages/about.md')).toContain('path: /about/');
-    expect(read(out, 'content/pages/quotes.md')).toContain('path: /my-favourite-inspirational-quotes-life-design/');
+    expect(read(out, 'content/pages/quotes.md')).toContain('path: /quotes/');
     expect(read(out, 'content/pages/about.md')).toContain('[events](/events/)');
   });
 
@@ -155,6 +156,7 @@ describe('runMigration (fixture)', () => {
       { from: '/privacy-policy/', to: '/' },
       { from: '/cookie-policy/', to: '/' },
       { from: '/agile-scrum-product-owner-manager-turin-italy/', to: '/about/' }, // the old About slug
+      { from: '/my-favourite-inspirational-quotes-life-design/', to: '/quotes/' },
     ]);
   });
 
@@ -241,15 +243,15 @@ describe('runMigration (fixture)', () => {
 
 describe('mismatches', () => {
   const ok: Summary = {
-    galleries: 85, photos: 3638, posts: 39, pages: 4, quotes: 188, quoteAuthors: 141, genres: 6, countries: 13, categories: 9, redirects: 18,
+    galleries: 85, photos: 3638, posts: 39, pages: 4, quotes: 188, quoteAuthors: 141, genres: 6, countries: 13, categories: 9, redirects: 19,
     draftPosts: 78, draftGalleries: 4, warnings: [], skippedDrafts: [],
   };
   test('EXPECTED pins the migration counts', () => {
-    expect(EXPECTED).toEqual({ galleries: 85, photos: 3638, posts: 39, pages: 4, quotes: 188, quoteAuthors: 141, genres: 6, countries: 13, categories: 9, redirects: 18 });
+    expect(EXPECTED).toEqual({ galleries: 85, photos: 3638, posts: 39, pages: 4, quotes: 188, quoteAuthors: 141, genres: 6, countries: 13, categories: 9, redirects: 19 });
     expect(mismatches(ok)).toEqual([]);
   });
   test('lists every count that differs', () => {
-    expect(mismatches({ ...ok, galleries: 84, redirects: 14 })).toEqual(['galleries: expected 85, got 84', 'redirects: expected 18, got 14']);
+    expect(mismatches({ ...ok, galleries: 84, redirects: 14 })).toEqual(['galleries: expected 85, got 84', 'redirects: expected 19, got 14']);
   });
 });
 

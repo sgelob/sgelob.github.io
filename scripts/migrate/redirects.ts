@@ -1,13 +1,13 @@
 import { cleanOldSlugs } from './frontmatter-order';
 import type { GalleryDoc } from './galleries';
-import { ABOUT_OLD_PATH, ABOUT_PATH, DROPPED_PAGES } from './pages';
+import { ABOUT_OLD_PATH, ABOUT_PATH, DROPPED_PAGES, QUOTES_OLD_PATH, QUOTES_PATH } from './pages';
 import type { PostDoc } from './posts';
 
 export type Redirect = { from: string; to: string };
 
 /**
  * Old slugs are already percent-decoded by the builders and are written as-is. Quotes have no public URL.
- * The dropped pages (`DROPPED_PAGES`) redirect to the home, the old About slug to `/about/`.
+ * The dropped pages (`DROPPED_PAGES`) redirect to the home, the old About and Quotes slugs to their new paths.
  */
 export function buildRedirects(
   galleries: readonly Pick<GalleryDoc, 'slug' | 'oldSlugs'>[],
@@ -27,5 +27,6 @@ export function buildRedirects(
   }
   for (const slug of DROPPED_PAGES) add(`/${slug}/`, '/');
   add(ABOUT_OLD_PATH, ABOUT_PATH);
+  add(QUOTES_OLD_PATH, QUOTES_PATH);
   return [...redirects.values()];
 }

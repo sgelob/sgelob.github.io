@@ -22,10 +22,19 @@ export const ABOUT_ID = 9;
 /** The About page lives at `/about/`; its old WordPress keyword slug redirects there (amended 2026-10-22). */
 export const ABOUT_PATH = '/about/';
 export const ABOUT_OLD_PATH = '/agile-scrum-product-owner-manager-turin-italy/';
+export const QUOTES_ID = 743;
+/** Quotes moved to `/quotes/` the same day; the old WordPress slug redirects there. */
+export const QUOTES_PATH = '/quotes/';
+export const QUOTES_OLD_PATH = '/my-favourite-inspirational-quotes-life-design/';
 /** Pages whose content-file slug differs from `post_name`, by post ID. */
 const SLUG_OVERRIDES: ReadonlyMap<number, string> = new Map([
   [ABOUT_ID, 'about'],
-  [743, 'quotes'],
+  [QUOTES_ID, 'quotes'],
+]);
+/** Pages whose public path differs from their WordPress `post_name`, by post ID. */
+const MOVED_PATHS: ReadonlyMap<number, string> = new Map([
+  [ABOUT_ID, ABOUT_PATH],
+  [QUOTES_ID, QUOTES_PATH],
 ]);
 /**
  * WordPress pages the site no longer has: it sets no cookies, so the Privacy and Cookie policies were dropped
@@ -84,7 +93,7 @@ function baseDoc(db: WpDb, post: WpPost, body: string): PageDoc {
   const slug = SLUG_OVERRIDES.get(post.ID) ?? post.post_name;
   const doc: PageDoc = {
     slug,
-    path: post.ID === ABOUT_ID ? ABOUT_PATH : `/${post.post_name}/`,
+    path: MOVED_PATHS.get(post.ID) ?? `/${post.post_name}/`,
     title: post.post_title,
     lang: 'en',
     body,

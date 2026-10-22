@@ -55,7 +55,7 @@ export const EXPECTED: Counts = {
   genres: 6,
   countries: 13,
   categories: 9,
-  redirects: 18,
+  redirects: 19,
 };
 
 const PHOTOS_PAGE_SLUG = 'photos';

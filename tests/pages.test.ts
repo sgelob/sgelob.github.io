@@ -111,7 +111,7 @@ describe('pages (fixture)', () => {
   test('slugs and public paths', async () => {
     const { db, page } = await load();
     expect(buildAboutPage(db, db.post(9)!)).toMatchObject({ slug: 'about', path: '/about/' });
-    expect(page(743)).toMatchObject({ slug: 'quotes', path: '/my-favourite-inspirational-quotes-life-design/' });
+    expect(page(743)).toMatchObject({ slug: 'quotes', path: '/quotes/' });
     expect(page(11)).toMatchObject({ slug: 'photos', path: '/photos/' });
     expect(page(13)).toMatchObject({ slug: 'blog', path: '/blog/' });
   });

@@ -22,6 +22,6 @@ const { author, quotes: authorQuotes } = Astro.props;
   description={`Inspirational quotes by ${author.name}.`}
   lang="en"
 >
-  <a slot="meta" href="/my-favourite-inspirational-quotes-life-design/">← All quotes</a>
+  <a slot="meta" href="/quotes/">← All quotes</a>
   <QuoteList quotes={authorQuotes} headingLevel={false} />
 </Reading>

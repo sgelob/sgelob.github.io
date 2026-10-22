@@ -164,6 +164,8 @@ Regola per tutto il resto. Si conserva ciò che sta nella sitemap di oggi (post,
 
 Amended 2026-10-22: About moved to `/about/`; the old keyword slug redirects to it.
 
+Amended 2026-10-22: Quotes moved to `/quotes/`; the old slug redirects to it.
+
 ### 6.2 Redirect
 
 Cloudflare free consente circa 10 Single Redirects e pochi Bulk Redirects per zona, quindi su Cloudflare vanno solo le regole con wildcard:
