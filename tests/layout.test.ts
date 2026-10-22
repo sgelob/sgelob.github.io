@@ -22,7 +22,7 @@ describe('Base', () => {
     expect(html).toContain(`© ${new Date().getFullYear()} Olegs Belousovs`);
     expect(html).toContain('href="mailto:44_tildes_agog@icloud.com"');
     expect(html).toContain('href="/feed.xml"');
-    expect(html).toContain('href="/privacy-policy/"');
+    expect(html).not.toContain('privacy'); // the site sets no cookies: no policy pages
   });
 
   test('renders the Cloudflare beacon when a token is set', async () => {
