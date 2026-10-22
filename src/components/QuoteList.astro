@@ -15,7 +15,10 @@ const Heading = headingLevel === 3 ? 'h3' : 'h2';
   {groupByAuthor(quotes).map(({ author, quotes: authorQuotes }) => (
     <section class="group">
       {headingLevel !== false && (
-        <Heading id={author.slug} class="author mono"><a href={quoteAuthorPath(author)}>{author.name}</a></Heading>
+        <Heading id={author.slug} class="author mono">
+          <a href={quoteAuthorPath(author)}>{author.name}</a>
+          {authorQuotes.length > 1 && <span class="count">{authorQuotes.length} quotes</span>}
+        </Heading>
       )}
       {authorQuotes.map((quote) => (
         <blockquote class="quote"><p>{quote.text}</p></blockquote>
@@ -26,14 +29,17 @@ const Heading = headingLevel === 3 ? 'h3' : 'h2';
 
 <style>
   .quote-list .group {
-    padding-block: 24px;
+    padding-block: 32px 40px;
     border-top: 1px solid var(--rule);
   }
 
   .quote-list .group:last-child { border-bottom: 1px solid var(--rule); }
 
   .quote-list .author {
-    margin: 0 0 12px;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin: 0 0 8px;
     color: var(--muted);
     font-size: 11px;
     font-weight: 400;
@@ -46,14 +52,39 @@ const Heading = headingLevel === 3 ? 'h3' : 'h2';
 
   .quote-list .author a:hover { color: var(--fg); }
 
+  .quote-list .count { color: var(--muted); opacity: 0.7; }
+
+  /* Each quote hangs from a large opening mark in the left margin: the mark is the only
+     ornament, the text keeps the reading size of the site. */
   .quote-list .quote {
+    position: relative;
     margin: 0;
-    padding: 0;
+    padding: 20px 0 0 44px;
     border: 0;
     color: var(--fg);
-    font-size: 17px;
-    line-height: 1.5;
+    font-size: 21px;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+    text-wrap: pretty;
   }
 
-  .quote-list .quote + .quote { margin-top: 12px; }
+  .quote-list .quote::before {
+    content: "\201C";
+    position: absolute;
+    left: -2px;
+    top: 12px;
+    color: var(--muted);
+    font-size: 64px;
+    line-height: 1;
+    font-weight: 500;
+  }
+
+  .quote-list .quote p { margin: 0; max-width: 34em; }
+
+  .quote-list .quote + .quote { margin-top: 20px; }
+
+  @media (max-width: 719px) {
+    .quote-list .quote { padding-left: 32px; font-size: 18px; }
+    .quote-list .quote::before { font-size: 48px; top: 10px; left: -2px; }
+  }
 </style>
