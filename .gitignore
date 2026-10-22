@@ -6,3 +6,4 @@ dist
 .photos-cache/
 .gstack/
 .claude/
+.DS_Store
