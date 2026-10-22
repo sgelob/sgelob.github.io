@@ -28,18 +28,18 @@ Decarola ti accompagnerà alla scoperta delle analogie tra teoria del buon tenni
 - Slide: [https://speakerdeck.com/decarola/le-performance-come-esperienza-religiosa-css-day-2017](https://speakerdeck.com/decarola/le-performance-come-esperienza-religiosa-css-day-2017)
 - Evento: https://www.meetup.com/it-IT/Turin-Web-Performance-Group/events/238586495/
 
-### Vuoi fare o proporre una presentazione a uno dei Meetup di Turin Web Performance Group?!
+## Vuoi fare o proporre una presentazione a uno dei Meetup di Turin Web Performance Group?!
 
 Siamo sempre alla ricerca di nuovi speaker provenienti da tutti i settori inerenti alle web performance e di ogni livello di preparazione. Se ti interessa a fare una presentazione al Meetup di Turin Web Performance Group, scrivi un messaggio a uno dei nostri organizzatori.
 
 *Cerchiamo sponsor per stampare dello swag e offrire cibo e bevande ai partecipanti dopo i talk.*
 
-### Come contattarci
+## Come contattarci
 
 - trnwebperf \[at\] gmail.com
 - [twitter.com/trnwebperf](https://x.com/trnwebperf)
 
-### La community online
+## La community online
 
 - [Gruppo Web Performance Italia su Facebook](https://www.facebook.com/groups/webperformanceitalia/)
 - Web Performance Group on Slack (in inglese)

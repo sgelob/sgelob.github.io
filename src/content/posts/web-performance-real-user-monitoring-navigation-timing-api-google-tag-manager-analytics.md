@@ -26,18 +26,18 @@ Dopo questo talk potrai, in completa autonomia e al costo praticamente di qualch
 - Slide: [https://www.slideshare.net/Xtraboy/real-user-monitoring-con-navigation-timing-api-tag-manager-e-google-analytics](https://www.slideshare.net/slideshow/real-user-monitoring-con-navigation-timing-api-tag-manager-e-google-analytics/116535641)
 - Evento: https://www.meetup.com/it-IT/Turin-Web-Performance-Group/events/254370450/
 
-### Vuoi fare o proporre una presentazione a uno dei Meetup di Turin Web Performance Group?!
+## Vuoi fare o proporre una presentazione a uno dei Meetup di Turin Web Performance Group?!
 
 Siamo sempre alla ricerca di nuovi speaker provenienti da tutti i settori inerenti alle web performance e di ogni livello di preparazione. Se ti interessa a fare una presentazione al Meetup di Turin Web Performance Group, scrivi un messaggio a uno dei nostri organizzatori.
 
 *Cerchiamo sponsor per stampare dello swag e offrire cibo e bevande ai partecipanti dopo i talk.*
 
-### Come contattarci
+## Come contattarci
 
 - trnwebperf \[at\] gmail.com
 - [twitter.com/trnwebperf](https://x.com/trnwebperf)
 
-### La community online
+## La community online
 
 - [Gruppo Web Performance Italia su Facebook](https://www.facebook.com/groups/webperformanceitalia/)
 - Web Performance Group on Slack (in inglese)
