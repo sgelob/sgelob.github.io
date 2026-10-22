@@ -30,3 +30,11 @@ export function neighbours<T extends { id: string }>(
   if (i === -1) return {};
   return { prev: galleries[i - 1], next: galleries[i + 1] };
 }
+
+/** The cover's size: from `coverWidth`/`coverHeight`, else from the matching photo; undefined when unknown. */
+export function coverSize(gallery: Pick<Gallery, 'data'>): { width: number; height: number } | undefined {
+  const { cover, coverWidth, coverHeight, photos } = gallery.data;
+  if (coverWidth && coverHeight) return { width: coverWidth, height: coverHeight };
+  const photo = photos.find((p) => p.src === cover);
+  return photo && { width: photo.width, height: photo.height };
+}

@@ -4,11 +4,11 @@ import { render } from './helpers/render';
 
 const base = { alt: 'A photo', sizes: '100vw' };
 
-test('Pic: webp srcset, jpg fallback at the largest width under maxWidth, intrinsic size, lazy', async () => {
+test('Pic: webp srcset, plain jpg fallback at the largest width under maxWidth, intrinsic size, lazy', async () => {
   const html = await render(Pic, { props: { ...base, src: '2012/08/a.jpg', width: 1620, height: 1080, maxWidth: 960 } });
   expect(html).toContain('<source type="image/webp" srcset="https://img.olegs.be/uploads/2012/08/a-480.webp 480w, https://img.olegs.be/uploads/2012/08/a-960.webp 960w" sizes="100vw">');
   expect(html).toContain('src="https://img.olegs.be/uploads/2012/08/a-960.jpg"');
-  expect(html).toContain('srcset="https://img.olegs.be/uploads/2012/08/a-480.jpg 480w, https://img.olegs.be/uploads/2012/08/a-960.jpg 960w"');
+  expect(html).not.toMatch(/<img[^>]*srcset/); // the webp source carries the srcset; the img is the fallback
   expect(html).toMatch(/width="1620" height="1080"/);
   expect(html).toContain('alt="A photo"');
   expect(html).toContain('loading="lazy"');
@@ -26,6 +26,15 @@ test('Pic: maxWidth defaults to the image width, never upscales', async () => {
 test('Pic: an image narrower than every variant uses the original and no srcset', async () => {
   const html = await render(Pic, { props: { ...base, src: '2012/08/small.jpg', width: 300, height: 200 } });
   expect(html).toContain('src="https://img.olegs.be/uploads/2012/08/small.jpg"');
+  expect(html).not.toContain('srcset');
+  expect(html).not.toContain('<source');
+});
+
+test('Pic: an image of unknown size is the original with no size, srcset or source', async () => {
+  const html = await render(Pic, { props: { ...base, src: '2012/08/unknown.jpg' } });
+  expect(html).toContain('<img src="https://img.olegs.be/uploads/2012/08/unknown.jpg"');
+  expect(html).not.toContain('width=');
+  expect(html).not.toContain('height=');
   expect(html).not.toContain('srcset');
   expect(html).not.toContain('<source');
 });

@@ -1,0 +1,24 @@
+---
+import { SITE } from '../lib/site';
+
+interface Props {
+  /** Site-relative path the old url moved to. */
+  to: string;
+}
+
+const { to } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="refresh" content={`0; url=${to}`} />
+    <link rel="canonical" href={SITE.url + to} />
+    <meta name="robots" content="noindex" />
+    <title>Redirecting…</title>
+  </head>
+  <body>
+    <p>This page has moved to <a href={to}>{SITE.url + to}</a>.</p>
+  </body>
+</html>

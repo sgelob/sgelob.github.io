@@ -15,9 +15,11 @@ interface Props {
   lang?: Lang;
   ogImage?: string;
   canonical?: string;
+  /** The nav floats over the top of the page, e.g. over a full-bleed cover. */
+  overlayNav?: boolean;
 }
 
-const { title, description, lang = 'en', ogImage, canonical } = Astro.props;
+const { title, description, lang = 'en', ogImage, canonical, overlayNav = false } = Astro.props;
 const current = sectionFor(Astro.url.pathname);
 const beaconToken: unknown = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
 ---
@@ -32,7 +34,7 @@ const beaconToken: unknown = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
   <body>
-    <Nav current={current} />
+    <Nav current={current} overlay={overlayNav} />
     <main>
       <slot />
     </main>

@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import { originalUrl, srcset, variantUrl } from '../src/lib/images';
+import { largestVariantUrl, originalUrl, srcset, variantUrl } from '../src/lib/images';
 
 describe('image URL builders', () => {
   test('variantUrl', () => {
@@ -23,4 +23,10 @@ describe('image URL builders', () => {
       'https://img.olegs.be/uploads/2020/01/s-480.jpg 480w, https://img.olegs.be/uploads/2020/01/s-960.jpg 960w',
     );
   });
+});
+
+test('largestVariantUrl: the widest jpg variant within the limit, else the original', () => {
+  expect(largestVariantUrl('2012/08/a.jpg', 1600)).toBe('https://img.olegs.be/uploads/2012/08/a-1600.jpg');
+  expect(largestVariantUrl('2012/08/a.jpg', 1000)).toBe('https://img.olegs.be/uploads/2012/08/a-960.jpg');
+  expect(largestVariantUrl('2012/08/a.jpg', 300)).toBe('https://img.olegs.be/uploads/2012/08/a.jpg');
 });
