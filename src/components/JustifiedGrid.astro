@@ -1,6 +1,6 @@
 ---
 import Pic from './Pic.astro';
-import { originalUrl } from '../lib/images';
+import { lightboxUrl, originalUrl } from '../lib/images';
 
 interface Photo {
   src: string;
@@ -17,14 +17,15 @@ const { photos, galleryTitle } = Astro.props;
 const ratio = (p: Photo): number => Math.round((p.width / p.height) * 1e4) / 1e4;
 ---
 
+<!-- href is the original, the no-JS fallback; PhotoSwipe opens data-pswp-src, the 1600 variant, when
+     the original is wider than that, and takes the size from the img (see Lightbox.astro). -->
 <div class="justified wrap">
   {photos.map((photo, i) => (
     <a
       class="ph"
       href={originalUrl(photo.src)}
-      data-pswp-width={photo.width}
-      data-pswp-height={photo.height}
-      style={`--r: ${ratio(photo)}`}
+      data-pswp-src={lightboxUrl(photo.src, photo.width)}
+      style={`--r:${ratio(photo)}`}
     >
       <Pic
         src={photo.src}

@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import { largestVariantUrl, originalUrl, srcset, variantUrl } from '../src/lib/images';
+import { largestVariantUrl, lightboxUrl, originalUrl, srcset, variantUrl } from '../src/lib/images';
 
 describe('image URL builders', () => {
   test('variantUrl', () => {
@@ -29,4 +29,11 @@ test('largestVariantUrl: the widest jpg variant within the limit, else the origi
   expect(largestVariantUrl('2012/08/a.jpg', 1600)).toBe('https://img.olegs.be/uploads/2012/08/a-1600.jpg');
   expect(largestVariantUrl('2012/08/a.jpg', 1000)).toBe('https://img.olegs.be/uploads/2012/08/a-960.jpg');
   expect(largestVariantUrl('2012/08/a.jpg', 300)).toBe('https://img.olegs.be/uploads/2012/08/a.jpg');
+});
+
+test('lightboxUrl: the 1600 jpg of a photo at least that wide, else none (the original is used)', () => {
+  expect(lightboxUrl('2012/08/a.jpg', 4000)).toBe('https://img.olegs.be/uploads/2012/08/a-1600.jpg');
+  expect(lightboxUrl('2012/08/a.jpg', 1600)).toBe('https://img.olegs.be/uploads/2012/08/a-1600.jpg');
+  expect(lightboxUrl('2012/08/a.jpg', 1440)).toBeUndefined();
+  expect(lightboxUrl('2012/08/a.jpg', 0)).toBeUndefined(); // unknown size
 });

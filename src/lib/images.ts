@@ -29,3 +29,14 @@ export function largestVariantUrl(path: string, maxWidth: number): string {
   const width = WIDTHS.filter((w) => w <= maxWidth).at(-1);
   return width === undefined ? originalUrl(path) : variantUrl(path, width, 'jpg');
 }
+
+/** Width of the lightbox image: originals can be full camera files, too heavy to open one after another. */
+export const LIGHTBOX_WIDTH = 1600;
+
+/**
+ * The lightbox source when it is not the original: the 1600 jpg of a photo at least that wide. A narrower
+ * original is already no wider than that variant, and better than any smaller one, so it is used as it is.
+ */
+export function lightboxUrl(path: string, width: number): string | undefined {
+  return width >= LIGHTBOX_WIDTH ? variantUrl(path, LIGHTBOX_WIDTH, 'jpg') : undefined;
+}
