@@ -467,7 +467,7 @@ test('country with galleries builds; every taxonomy slug has a page', () => { fo
 - [ ] **Step 1: Write the failing test**
 
 ```ts
-test('venezia gallery renders 60 photos, hero, neighbours', () => { const html = read('dist/gallery/venezia-italy/index.html'); expect(count(html, 'class="ph"')).toBe(60); expect(html).toContain('data-pswp-width="1620"'); expect(html).toContain('60 photos'); expect(html).toMatch(/href="\/gallery\/[a-z0-9-]+\/"[^>]*rel="prev"/); });
+test('venezia gallery renders 81 photos, hero, neighbours', () => { const html = read('dist/gallery/venezia-italy/index.html'); expect(count(html, 'class="ph"')).toBe(81); expect(html).toContain('data-pswp-width="1620"'); expect(html).toContain('81 photos'); expect(html).toMatch(/href="\/gallery\/[a-z0-9-]+\/"[^>]*rel="prev"/); });
 test('gallery html stays under 50 KB and has no inline photoswipe', () => { const html = read('dist/gallery/berlin-germany/index.html'); expect(Buffer.byteLength(html)).toBeLessThan(50 * 1024); expect(html).not.toContain('PhotoSwipeLightbox'); });
 test('old gallery slug builds a redirect page', () => { expect(read('dist/gallery/tarragona-spain/index.html')).toContain('http-equiv="refresh" content="0; url=/gallery/tarragona-catalonia-spain/"'); });
 ```
