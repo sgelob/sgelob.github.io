@@ -30,6 +30,9 @@ const uploadName = (name: string) => name.toLowerCase().replace(/\s+/g, '-');
 /** Copies the folder's photos into the uploads tree, uploads them, and writes the gallery's markdown file. Returns its path. */
 export async function scaffoldGallery(opts: ScaffoldOptions): Promise<string> {
   const { slug, folder, store, contentDir, date = new Date() } = opts;
+  const target = join(contentDir, `${slug}.md`);
+  // Checked before anything is copied or uploaded: rewriting it would discard the edited title, cover and order.
+  if (existsSync(target)) throw new Error(`${target} already exists: pick another slug, or delete the file first to start the gallery over`);
   const uploadsDir = opts.uploadsDir ?? process.env.UPLOADS_DIR;
   if (!uploadsDir) throw new Error('UPLOADS_DIR is not set');
 
@@ -66,5 +69,5 @@ export async function scaffoldGallery(opts: ScaffoldOptions): Promise<string> {
     body: '',
   };
   writeMarkdown(contentDir, slug, galleryFrontmatter(doc), '');
-  return join(contentDir, `${slug}.md`);
+  return target;
 }
