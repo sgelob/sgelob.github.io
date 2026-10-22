@@ -1,6 +1,6 @@
 ---
 import Pic from './Pic.astro';
-import { galleryPath, type Gallery } from '../lib/paths';
+import { coverSize, galleryPath, type Gallery } from '../lib/paths';
 import { countryName } from '../lib/taxonomies';
 
 interface Props {
@@ -8,19 +8,16 @@ interface Props {
 }
 
 const { gallery } = Astro.props;
-const { title, shortTitle, cover, country, date, photos } = gallery.data;
+const { title, shortTitle, cover, country, date } = gallery.data;
 
-// A few covers are not among their gallery's photos, so their size is unknown. A nominal
-// 4:3 size below every variant width makes Pic serve the original, which always exists.
-const UNSIZED = { width: 4, height: 3 };
-const { width, height } = photos.find((p) => p.src === cover) ?? UNSIZED;
+const size = coverSize(gallery);
 ---
 
 <a class="gallery-card" href={galleryPath(gallery)}>
   <Pic
     src={cover}
-    width={width}
-    height={height}
+    width={size?.width}
+    height={size?.height}
     alt={title}
     sizes="(min-width: 1100px) 25vw, (min-width: 640px) 50vw, 100vw"
     maxWidth={960}

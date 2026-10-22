@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { galleryPath, neighbours, postPath, sortByDateDesc } from '../src/lib/paths';
+import { coverSize, galleryPath, neighbours, postPath, sortByDateDesc } from '../src/lib/paths';
 import { formatDate, formatMonthYear } from '../src/lib/site';
 import { categoryName, countryName, genreName } from '../src/lib/taxonomies';
 
@@ -51,5 +51,19 @@ describe('taxonomies', () => {
     expect(countryName('italy')).toBe('Italy');
     expect(countryName('nope')).toBe('nope');
     expect(categoryName('nope')).toBe('nope');
+  });
+});
+
+describe('coverSize', () => {
+  const photos = [{ src: 'a.jpg', width: 1620, height: 1080 }];
+  const gallery = (data: object) => ({ data: { cover: 'a.jpg', photos, ...data } }) as any;
+
+  it('prefers coverWidth/coverHeight', () => {
+    expect(coverSize(gallery({ coverWidth: 800, coverHeight: 1079 }))).toEqual({ width: 800, height: 1079 });
+  });
+
+  it('falls back to the matching photo, else undefined', () => {
+    expect(coverSize(gallery({}))).toEqual({ width: 1620, height: 1080 });
+    expect(coverSize(gallery({ cover: 'b.jpg' }))).toBeUndefined();
   });
 });

@@ -1,0 +1,74 @@
+---
+import Pic from './Pic.astro';
+import { originalUrl } from '../lib/images';
+
+interface Photo {
+  src: string;
+  width: number;
+  height: number;
+}
+
+interface Props {
+  photos: Photo[];
+  galleryTitle: string;
+}
+
+const { photos, galleryTitle } = Astro.props;
+const ratio = (p: Photo): number => Math.round((p.width / p.height) * 1e4) / 1e4;
+---
+
+<div class="justified wrap">
+  {photos.map((photo, i) => (
+    <a
+      class="ph"
+      href={originalUrl(photo.src)}
+      data-pswp-width={photo.width}
+      data-pswp-height={photo.height}
+      style={`--r: ${ratio(photo)}`}
+    >
+      <Pic
+        src={photo.src}
+        width={photo.width}
+        height={photo.height}
+        alt={`${galleryTitle}, photo ${i + 1} of ${photos.length}`}
+        sizes="(min-width: 1100px) 33vw, 50vw"
+        maxWidth={960}
+      />
+    </a>
+  ))}
+  <span class="spacer" style="flex-grow: 10000"></span>
+</div>
+
+<!-- Global but namespaced under .justified: a scoped style would stamp a data-astro-cid attribute
+     on every item, and a gallery of 80 photos has to stay under 50 KB. -->
+<style is:global>
+  /* Justified rows without JS: every item grows in proportion to its aspect ratio, so a row
+     shares one height; the spacer soaks up the last row's slack so it is not stretched. */
+  .justified {
+    --row: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 48px;
+  }
+
+  .justified .ph {
+    display: block;
+    flex-grow: var(--r);
+    flex-basis: calc(var(--r) * var(--row));
+    aspect-ratio: var(--r);
+    background: var(--rule);
+  }
+
+  .justified .ph picture { height: 100%; }
+
+  .justified .ph img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media (max-width: 719px) {
+    .justified { --row: 180px; }
+  }
+</style>
