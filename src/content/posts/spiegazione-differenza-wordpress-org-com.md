@@ -74,11 +74,11 @@ Come vedi, con WordPress.com ci sono comunque dei limiti rispetto alla libertà 
 
 ## Le mie slide su SlideShare
 
-<iframe class="aligncenter" src="//www.slideshare.net/slideshow/embed_code/key/jtOARQ7xbvtzrU" width="320" height="180" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" class="aligncenter" src="//www.slideshare.net/slideshow/embed_code/key/jtOARQ7xbvtzrU" width="320" height="180" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowfullscreen="allowfullscreen"></iframe>
 
 ## Il video della presentazione estratto da Periscope
 
-<iframe class="aligncenter" src="https://www.youtube.com/embed/j1tsCxuEsD0" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" class="aligncenter" src="https://www.youtube.com/embed/j1tsCxuEsD0" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 Purtroppo nel video mancano dei pezzi 🙃 In ogni caso, grazie mille a [Ljuba Daviè](https://x.com/ljuba_davie), la co-organizer del WordPress Meetup Torino e che segue tutta la parte di comunicazione sui social media, per aver fatto questo video.
 
