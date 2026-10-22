@@ -9,7 +9,7 @@ test('about lives at /about/ and the old slug redirects', () => {
   expect(read('dist/agile-scrum-product-owner-manager-turin-italy/index.html')).toContain('http-equiv="refresh" content="0; url=/about/"');
 });
 test('events and books exist', () => { for (const p of ['dist/events/index.html','dist/books/index.html']) expect(existsSync(p)).toBe(true); expect(read('dist/events/index.html')).toContain('2026'); });
-test('quotes page and 141 author pages', () => { expect(count(read('dist/my-favourite-inspirational-quotes-life-design/index.html'), 'class="quote"')).toBe(188); expect(readdirSync('dist/quote-author').length).toBe(141); });
+test('quotes page at /quotes/ with title, old slug redirects, and 141 author pages', () => { expect(count(read('dist/quotes/index.html'), 'class="quote"')).toBe(188); expect(read('dist/my-favourite-inspirational-quotes-life-design/index.html')).toContain('http-equiv="refresh" content="0; url=/quotes/"'); expect(read('dist/quotes/index.html')).toMatch(/<h1[^>]*>Favourite quotes<\/h1>/); expect(readdirSync('dist/quote-author').length).toBe(141); });
 
 describe('home', () => {
   test('title, description, link row and section links', () => {
@@ -19,7 +19,7 @@ describe('home', () => {
     expect(html).toContain('<html lang="en"');
     expect(html).toContain('<a href="/events/">tech events</a>'); // intro Markdown link rendered
     expect(html).not.toContain('Creative Mornings'); // third paragraph stays on the About page
-    for (const href of ['/events/', '/books/', '/my-favourite-inspirational-quotes-life-design/', 'mailto:44_tildes_agog@icloud.com', '/photos/', '/blog/']) {
+    for (const href of ['/events/', '/books/', '/quotes/', 'mailto:44_tildes_agog@icloud.com', '/photos/', '/blog/']) {
       expect(html).toContain(`href="${href}"`);
     }
     expect(html).toContain('All 39 posts');
@@ -64,7 +64,7 @@ describe('pages', () => {
 
 describe('quotes', () => {
   test('grouped by author with anchors', () => {
-    const html = read('dist/my-favourite-inspirational-quotes-life-design/index.html');
+    const html = read('dist/quotes/index.html');
     expect(html).toContain('<title>My Favourite Inspirational Quotes on Life and Design — olegs</title>');
     expect(count(html, '<h2 id="')).toBe(141);
     expect(html).toMatch(/<h2 id="abraham-lincoln"[^>]*><a href="\/quote-author\/abraham-lincoln\/"[^>]*>Abraham Lincoln<\/a><\/h2>/);
@@ -76,7 +76,7 @@ describe('quotes', () => {
     expect(html).toMatch(/<h1[^>]*>Abraham Lincoln<\/h1>/);
     expect(html).toContain('The best way to predict your future is to create it.');
     expect(count(html, 'class="quote"')).toBeLessThan(188);
-    expect(html).toContain('href="/my-favourite-inspirational-quotes-life-design/"');
+    expect(html).toContain('href="/quotes/"');
   });
 });
 

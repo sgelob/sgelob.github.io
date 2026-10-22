@@ -18,7 +18,7 @@ La pagina mostra le frasi e le citazioni in ordine casuale ogni volta che la vis
 
 A oggi, sono presenti in questa raccolta 122 frasi e citazioni.
 
-**[My Favourite Inspirational Quotes on Life and Design](https://olegs.be/my-favourite-inspirational-quotes-life-design/)**
+**[My Favourite Inspirational Quotes on Life and Design](/quotes/)**
 
 Enjoy 😉
 
