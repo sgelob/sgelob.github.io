@@ -12,7 +12,7 @@ excerpt: Talk di Marco Mangione sul come ottenere un sito performante utilizzand
 
 Case Study: ottenere un sito performante utilizzando strumenti gratuiti.
 
-<iframe src="https://www.youtube.com/embed/uCtJpo2DLT0" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://www.youtube.com/embed/uCtJpo2DLT0" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 ## Speaker – Marco Mangione
 

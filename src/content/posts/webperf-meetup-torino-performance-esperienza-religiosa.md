@@ -15,7 +15,7 @@ Finalmente, con l’arrivo della primavera, arrivano anche nuove energie e spunt
 
 Questo abbiamo avuto con noi [Andrea De Carolis](https://decaro.la), co-founder di [https://modo.md](https://modo.md). Il suo talk «Le performance come esperienza religiosa» ci aveva accompagnati alla scoperta delle analogie tra teoria del buon tennis e pratica dello sviluppo web: allenamenti intensi, scenari dove ogni millisecondo fa la differenza e obiettivi a breve termine che ti avvicinano alla vittoria finale 🎾 😎 🚀
 
-<iframe src="https://www.youtube.com/embed/etac2WYMxg4" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://www.youtube.com/embed/etac2WYMxg4" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 Realizzare un sito con delle buone performance è un po’ come partecipare ad un torneo di tennis: devi vincere una serie di sfide con avversari più o meno antipatici, più o meno giovani, più o meno ostici.
 

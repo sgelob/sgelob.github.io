@@ -15,7 +15,7 @@ Ci siamo visti da Toolbox per il terzo mese consecutivo, da quando abbiamo ripre
 
 Questo mese abbiamo parlato di performance lato back-end e abbiamo avuto un ospite molto preparato su questo tema 😉
 
-<iframe src="https://www.youtube.com/embed/O-Mov8s0LO4" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://www.youtube.com/embed/O-Mov8s0LO4" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 L’uscita del PHP 7 ha portato un nuovo rilancio del linguaggio PHP. Molte le novità come il controllo dei tipi scalari sulle funzioni e la nuova gestione delle eccezioni. Forse l’aspetto più interessante del PHP 7 è il miglioramento delle performance del linguaggio.
 

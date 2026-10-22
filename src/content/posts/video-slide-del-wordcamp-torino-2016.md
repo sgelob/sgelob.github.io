@@ -29,7 +29,7 @@ Traccia per gli sviluppatori.
 
 Too often the idea of WordPress as an old and bloated framework and its PHP 5.2 back-compatibility minimum requirement will hide implementation mistakes and a “spaghetti” code approach. Let’s take responsibility for our code and stop writing it the “old way.” I will talk about test-driven development, dependency-injection, template engines and other techniques and tools that will allow for modern and efficient code while maintaining PHP 5.2 compatibility.
 
-<iframe src="https://www.youtube.com/embed/biFdRKVdVqo?list=PLttehiHjjtrl7AFuwBzq9kFnzBfLxU8ht" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://www.youtube.com/embed/biFdRKVdVqo?list=PLttehiHjjtrl7AFuwBzq9kFnzBfLxU8ht" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 [Slide](https://wptv.files.wordpress.com/2016/04/luca-tumedei-wordpress-way-modern-developing-wctrn-2016.pdf)
 
@@ -37,7 +37,7 @@ Too often the idea of WordPress as an old and bloated framework and its PHP 5.2 
 
 MariaDB è un fork di MySQL il database relazionale, sviluppato da una community sotto licenza GNU GPL che intende mantenerlo come software libero. Con ottimizzatore avanzato delle performance di MariaDB e le sue specifiche caratteristiche si possono facilmente migliorare le performance della tua applicazione.
 
-<iframe src="https://www.youtube.com/embed/Oy0_Cc9sjZc?list=PLttehiHjjtrl7AFuwBzq9kFnzBfLxU8ht" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://www.youtube.com/embed/Oy0_Cc9sjZc?list=PLttehiHjjtrl7AFuwBzq9kFnzBfLxU8ht" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 [Slide](https://wptv.files.wordpress.com/2016/04/maria-luisa-raviol-mariadb-database-migliorare-performance-applicazioni-wp-wctrn-2016.pdf)
 
@@ -45,7 +45,7 @@ MariaDB è un fork di MySQL il database relazionale, sviluppato da una community
 
 Through a series of increasingly complex requests from an imaginary, albeit very demanding client, we will review the most effective methods of rendering truly responsive images, and learn how to embed them — right from the start — in your WordPress workflow. You will walk away safe in the knowledge you own all the right tools to achieve bulletproof responsive art-directed seo-friendly lazy-loading images. (phew!)
 
-<iframe src="https://www.youtube.com/embed/yMtV_NTL5iI?list=PLttehiHjjtrl7AFuwBzq9kFnzBfLxU8ht" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://www.youtube.com/embed/yMtV_NTL5iI?list=PLttehiHjjtrl7AFuwBzq9kFnzBfLxU8ht" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 [Slide](https://wptv.files.wordpress.com/2016/04/piero-bellomo-responsive-images-beyond-max-width-100-wctrn-2016.pdf)
 
@@ -53,7 +53,7 @@ Through a series of increasingly complex requests from an imaginary, albeit very
 
 Panoramica sulle funzioni più importanti per rendere temi e plugin traducibili (i18n e l10n) e come usarli.
 
-<iframe src="https://www.youtube.com/embed/7873zaH1IEc?list=PLttehiHjjtrl7AFuwBzq9kFnzBfLxU8ht" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://www.youtube.com/embed/7873zaH1IEc?list=PLttehiHjjtrl7AFuwBzq9kFnzBfLxU8ht" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 [Slide](https://wptv.files.wordpress.com/2016/04/dennis-ploetner-i18n-l10n-temi-plugin-wctrn-2016.pdf)
 
@@ -61,7 +61,7 @@ Panoramica sulle funzioni più importanti per rendere temi e plugin traducibili 
 
 Questo talk è rivolto sia a chi ha appena iniziato a sviluppare con WordPress, sia agli sviluppatori più esperti che lo conoscono già da parecchio tempo, ed è un’introduzione ad alcuni argomenti come il caching e l’esecuzione differita di codice PHP, che sono utili per migliorare notevolmente le performance del tuo sito. Alcuni degli argomenti trattati sono il corretto utilizzo della cache e dei plugin di caching. Un’introduzione al WordPress Jobs System, e come eseguire codice differito senza dover quindi rallentare il rendering della pagina.
 
-<iframe src="https://www.youtube.com/embed/zEWuxQhyCZ0?list=PLttehiHjjtrl7AFuwBzq9kFnzBfLxU8ht" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://www.youtube.com/embed/zEWuxQhyCZ0?list=PLttehiHjjtrl7AFuwBzq9kFnzBfLxU8ht" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 [Slide](https://wptv.files.wordpress.com/2016/04/danilo-ercoli-migliorare-performance-wp-caching-esecuzione-differita-codice-wctrn-2016.pdf)
 
@@ -69,7 +69,7 @@ Questo talk è rivolto sia a chi ha appena iniziato a sviluppare con WordPress, 
 
 WordPress is over twelve years old now. How does the software and the project as a whole continue to move forward, maintain relevance, push boundaries, and assert influence when it has to compete with much leaner, cooler, and more modern alternatives? I’ll attempt to answer these points in this presentation.
 
-<iframe src="https://www.youtube.com/embed/AvDKNiDSg1M?list=PLttehiHjjtrl7AFuwBzq9kFnzBfLxU8ht" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://www.youtube.com/embed/AvDKNiDSg1M?list=PLttehiHjjtrl7AFuwBzq9kFnzBfLxU8ht" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 [Slide](https://speakerdeck.com/johnbillion/moving-forward-with-a-mature-platform-wctrn)
 
@@ -77,7 +77,7 @@ WordPress is over twelve years old now. How does the software and the project as
 
 Il Core di WordPress non deve essere modificato, ma può essere letto! Nei (molti) file che compongono WordPress si trovano molte gemme, alcune delle quali poco conosciute ed utilizzate. Lo scopo di questo talk, utilizzando come pretesto alcune funzioni, è quello di invitare gli sviluppatori a non ritenere WordPress una «black box», ma sfruttare il suo essere open source e «guardare sotto al cofano».
 
-<iframe src="https://www.youtube.com/embed/44P4l5DHCJI?list=PLttehiHjjtrl7AFuwBzq9kFnzBfLxU8ht" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://www.youtube.com/embed/44P4l5DHCJI?list=PLttehiHjjtrl7AFuwBzq9kFnzBfLxU8ht" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 [Slide](https://wptv.files.wordpress.com/2016/04/giustino-borzacchiello-10-funzioni-utili-wp-forse-qualcuna-in-piu-wctrn-2016.pdf)
 
@@ -85,7 +85,7 @@ Il Core di WordPress non deve essere modificato, ma può essere letto! Nei (molt
 
 La complessità uccide la creatività e rallenta lo sviluppo del software. Avere i dati in JSON separati dalla loro presentazione ci permette di realizzare dei servizi più ottimizzati e più facili da mantenere per il nostro caso d’uso. Vedremo quali sono le potenzialità della nuova WP API e un esempio pratico con JavaScript e ReactJS.
 
-<iframe src="https://www.youtube.com/embed/xvTXj9HBAo4?list=PLttehiHjjtrl7AFuwBzq9kFnzBfLxU8ht" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://www.youtube.com/embed/xvTXj9HBAo4?list=PLttehiHjjtrl7AFuwBzq9kFnzBfLxU8ht" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 [Slide](https://wptv.files.wordpress.com/2016/04/luigi-maselli-controllare-wp-rest-api-tramite-javascript-react-wctrn-2016.pdf)
 
@@ -103,7 +103,7 @@ In this presentation, you will get information about the latest practices and te
 - Handle and optimize JS and CSS scripts
 - Properly implement a CDN service in your site
 
-<iframe src="https://www.youtube.com/embed/SMXZazxWKrU?list=PLttehiHjjtrl7AFuwBzq9kFnzBfLxU8ht" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://www.youtube.com/embed/SMXZazxWKrU?list=PLttehiHjjtrl7AFuwBzq9kFnzBfLxU8ht" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 [Slide](https://wptv.files.wordpress.com/2016/04/hristo-pandjarov-speed-up-wp-latest-performance-technologies-wctrn-2016.pdf)
 
@@ -113,7 +113,7 @@ Tutti sanno che WordPress è pessimo, ma lo usiamo tutti, no? Questo talk esplor
 
 Si parlerà di codice datato, di sistemi di versioning obsoleti, di rilasci e bugfix, di sistema ibrido CMS/Framework, di programmazione orientata agli oggetti, REST API e di repository. Tutto questi aspetti possono essere ritrovati nelle credenze e nei miti che circondano spesso l’ambiente WordPress. Conoscere bene il funzionamento, del software in primis, della community che c’è dietro e della mission poi, è l’unico modo per comprendere a pieno la potenza del prodotto che usiamo nel nostro quotidiano. Se poi lo facciamo con ironia ci divertiamo tutti di più!
 
-<iframe src="https://www.youtube.com/embed/DlHgOX1YKVQ?list=PLttehiHjjtrl7AFuwBzq9kFnzBfLxU8ht" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://www.youtube.com/embed/DlHgOX1YKVQ?list=PLttehiHjjtrl7AFuwBzq9kFnzBfLxU8ht" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 [Slide](https://wptv.files.wordpress.com/2016/04/eugenio-petulla-wp-sucks-wctrn-2016.pdf)
 
@@ -121,7 +121,7 @@ Si parlerà di codice datato, di sistemi di versioning obsoleti, di rilasci e bu
 
 ACF è un plugin che facilita la creazione di interfacce complesse di ogni tipo. Questo intervento prenderà in considerazione le possibili applicazioni, il suo utilizzo in pratica, nella versione base e PRO, e le questioni legate alla sicurezza del plugin stesso.
 
-<iframe src="https://www.youtube.com/embed/kEfCOsrwGaQ?list=PLttehiHjjtrl7AFuwBzq9kFnzBfLxU8ht" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://www.youtube.com/embed/kEfCOsrwGaQ?list=PLttehiHjjtrl7AFuwBzq9kFnzBfLxU8ht" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 [Slide](https://wptv.files.wordpress.com/2016/04/davide-pante-introduzione-utilizzo-advanced-custom-fields-wctrn-2016.pdf)
 
@@ -129,7 +129,7 @@ ACF è un plugin che facilita la creazione di interfacce complesse di ogni tipo.
 
 Dalla scelta del ticket allo scrivere la prima patch, vediamo i vari passaggi e come divertirci!
 
-<iframe src="https://www.youtube.com/embed/YSRv9iV6CFY?list=PLttehiHjjtrl7AFuwBzq9kFnzBfLxU8ht" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://www.youtube.com/embed/YSRv9iV6CFY?list=PLttehiHjjtrl7AFuwBzq9kFnzBfLxU8ht" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 [Slide](http://mte90.tech/Presentazione-WP-Patch/#/)
 
@@ -141,7 +141,7 @@ Traccia dedicata a contenuti, seo, marketing, business… tutto powered by WordP
 
 Prima ancora di iniziare a sviluppare un sito in WordPress bisogna scegliere il miglior hosting che ospiterà questo sito web. Può sembrare una scelta casuale o collegata per lo più al prezzo del servizio, ma scegliere un hosting per WordPress può non essere così semplice. Affronteremo temi importanti da tenere in considerazione nella scelta del proprio fornitore di servizi web, con un occhio verso il futuro e le nuove tecnologie come i dischi allo stato solido (SSD) per garantire performance migliori al proprio sito WordPress, i Certificati SSL inclusi che sono considerati un must per tutti i siti internet esistenti e la configurazione PHP ottimizzata che garantisce la massima compatibilità tra l’hosting e il vostro sito in WordPress.
 
-<iframe src="https://www.youtube.com/embed/TdaFNjF49gY?list=PLttehiHjjtrl7AFuwBzq9kFnzBfLxU8ht" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://www.youtube.com/embed/TdaFNjF49gY?list=PLttehiHjjtrl7AFuwBzq9kFnzBfLxU8ht" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 [Slide](https://wptv.files.wordpress.com/2016/04/alice-gallerani-scegliere-hosting-wordpress-regole-oro-wctrn-2016.pdf)
 
@@ -149,7 +149,7 @@ Prima ancora di iniziare a sviluppare un sito in WordPress bisogna scegliere il 
 
 We all want to keep our clients having the best possible experience, that starts with project management basics. In this session, whether you’re a freelancer, a small agency, or an established enterprise grade agency, we will cover the 10 best practices I have seen and learned through 20 years of mistakes while learning from Some of the best professional service companies in the world. We will cover tactical examples and best-of-breed tools available today.
 
-<iframe src="https://www.youtube.com/embed/OAD7FiFkMSM?list=PLttehiHjjtrl7AFuwBzq9kFnzBfLxU8ht" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://www.youtube.com/embed/OAD7FiFkMSM?list=PLttehiHjjtrl7AFuwBzq9kFnzBfLxU8ht" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 [Slide](https://wptv.files.wordpress.com/2016/04/karim-marucchi-10-best-project-management-practices-for-working-with-clients-wctrn-2016.pdf)
 
@@ -157,7 +157,7 @@ We all want to keep our clients having the best possible experience, that starts
 
 Il rapporto tra SEO tecnica e SEO strategica per i siti realizzati con WordPress. Grazie a WordPress e al mitico plugin WordPress SEO by Yoast è facile prendersi cura di molti aspetti e problemi tecnici. Risolti questi ultimi, ci si può concentrare sulla strategia e quindi sull’analisi dell’attività che sta dietro al sito, sullo studio di topic e keyword e sull’organizzazione dei contenuti.
 
-<iframe src="https://www.youtube.com/embed/0AMfgCc48To?list=PLttehiHjjtrl7AFuwBzq9kFnzBfLxU8ht" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://www.youtube.com/embed/0AMfgCc48To?list=PLttehiHjjtrl7AFuwBzq9kFnzBfLxU8ht" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 [Slide](https://wptv.files.wordpress.com/2016/04/tatiana-schirinzi-wp-seo-tecnica-strategia-wctrn-2016.pdf)
 
@@ -165,7 +165,7 @@ Il rapporto tra SEO tecnica e SEO strategica per i siti realizzati con WordPress
 
 Quando scriviamo un articolo sul nostro blog WordPress non possiamo più solo pensare all’ottimizzazione del testo, ma dobbiamo essere preparanti anche alla condivisione del post sui Social Media. Analizzeremo insieme l’ABC di come rendere un post blog ottimizzato social, dalla scelta dei social button, all’integrazione dei Social Meta Tags di Facebook e Custom Cards di Twitter. Tecniche utili e consigli per rendere appetibile lato social il contenuto del post blog.
 
-<iframe src="https://www.youtube.com/embed/bGe4rbRjv0s?list=PLttehiHjjtrl7AFuwBzq9kFnzBfLxU8ht" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://www.youtube.com/embed/bGe4rbRjv0s?list=PLttehiHjjtrl7AFuwBzq9kFnzBfLxU8ht" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 [Slide](https://www.slideshare.net/JuliusDesign/abc-come-rendere-un-post-blog-su-wordpress-ottimizzato-per-i-social-media)
 
@@ -173,7 +173,7 @@ Quando scriviamo un articolo sul nostro blog WordPress non possiamo più solo pe
 
 Testing activities are effective only under strict circumstances. When I started my adventure at Automattic, the welcome message was: “Welcome to the chaos.” This presentation narrates the journey we had to conduct to implement strict growth methodologies in a distributed environment.
 
-<iframe src="https://www.youtube.com/embed/oxBdMXDHHRs?list=PLttehiHjjtrl7AFuwBzq9kFnzBfLxU8ht" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://www.youtube.com/embed/oxBdMXDHHRs?list=PLttehiHjjtrl7AFuwBzq9kFnzBfLxU8ht" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 [Slide](https://luca.blog/2016/04/08/growth-methodologies-in-a-distributed-environment/)
 
@@ -185,7 +185,7 @@ L’intervento è rivolto principalmente a blogger, imprenditori, professionisti
 - Come realizzare una landing page con WordPress e soprattutto una che funziona: gli aspetti da curare e gli errori da evitare;
 - Gli strumenti e le tecniche per misurare e migliorare il successo di una landing page.
 
-<iframe src="https://www.youtube.com/embed/FS_LDUryrDM?list=PLttehiHjjtrl7AFuwBzq9kFnzBfLxU8ht" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://www.youtube.com/embed/FS_LDUryrDM?list=PLttehiHjjtrl7AFuwBzq9kFnzBfLxU8ht" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 [Slide](https://www.slideshare.net/tixx/landing-page-con-wordpress-come-ottenere-di-pi-dal-tuo-sito)
 
@@ -193,7 +193,7 @@ L’intervento è rivolto principalmente a blogger, imprenditori, professionisti
 
 Ho un blog che parla dell’autismo di mia figlia. Aprirlo è una scelta che mi ha aperto una strada per comunicare con chi condivide la mia stessa esperienza. Vorrei parlare di come secondo me bisogna affrontare l’avventura di un blog, smettendo di pensare a «saper scrivere bene»: pensando solo alle persone con cui si desidera comunicare, cercando anche nell’introspezione più spinta di condividere qualcosa di utile o nel quale le persone possono rispecchiarsi almeno un po’. E facendolo in casa propria, non «on rented land».
 
-<iframe src="https://www.youtube.com/embed/sdLHVOtn8No?list=PLttehiHjjtrl7AFuwBzq9kFnzBfLxU8ht" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://www.youtube.com/embed/sdLHVOtn8No?list=PLttehiHjjtrl7AFuwBzq9kFnzBfLxU8ht" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 [Slide](https://wptv.files.wordpress.com/2016/04/daniela-scapoli-meglio-un-blog-in-piu-meno-come-mette-contatto-tuo-mondo-wctrn-2016.pdf)
 
@@ -201,7 +201,7 @@ Ho un blog che parla dell’autismo di mia figlia. Aprirlo è una scelta che mi 
 
 Cosa fare per targettizzare un blog che si rivolge alle mamme e quali sono i passi per sviluppare la parte commerciale del proprio blog.
 
-<iframe src="https://www.youtube.com/embed/cBz3scQ_eA4?list=PLttehiHjjtrl7AFuwBzq9kFnzBfLxU8ht" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://www.youtube.com/embed/cBz3scQ_eA4?list=PLttehiHjjtrl7AFuwBzq9kFnzBfLxU8ht" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 [Slide](https://wptv.files.wordpress.com/2016/04/luisa-pavesi-come-avere-blog-mamme-diventare-tuo-lavoro-wctrn-2016.pdf)
 
@@ -211,7 +211,7 @@ Costruire un business vincente e ritagliarsi nuove opportunità di lavoro grazie
 
 In questo intervento fornirò una panoramica sui nuovi modi di fare business attraverso WordPress, una piattaforma che ad oggi fa girare milioni di dollari e dà lavoro a centinaia di migliaia di persone in tutto il mondo.
 
-<iframe src="https://www.youtube.com/embed/OoXw2vBteVM?list=PLttehiHjjtrl7AFuwBzq9kFnzBfLxU8ht" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://www.youtube.com/embed/OoXw2vBteVM?list=PLttehiHjjtrl7AFuwBzq9kFnzBfLxU8ht" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 [Slide](https://wptv.files.wordpress.com/2016/04/nando-pappalardo-wp-strumento-lavoro-wctrn-2016.pdf)
 
@@ -219,7 +219,7 @@ In questo intervento fornirò una panoramica sui nuovi modi di fare business att
 
 In January 2015 I landed a dream job that allowed me to work from anywhere in the world. This talk is an honest take on remote work and explores the best and the worst about location independence. It provides useful insights and tips on how to go about organising your work when there are no limitations on work hours and places to work from.
 
-<iframe src="https://www.youtube.com/embed/XXPo3TbfE24?list=PLttehiHjjtrl7AFuwBzq9kFnzBfLxU8ht" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://www.youtube.com/embed/XXPo3TbfE24?list=PLttehiHjjtrl7AFuwBzq9kFnzBfLxU8ht" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 [Slide](https://speakerdeck.com/petya/gone-with-he-wind-lessons-learned-from-a-year-of-location-independence)
 
@@ -230,7 +230,7 @@ This talk consist of two parts.
 1. Attending and organizing a local meetup. What is it that makes the tech industry so eager to meet up? Why are you here at WordCamp Torino? What hidden treasures can be found when attending a gathering of developers? What value do we all get from it? Even though there isn’t a single answer to answer all these questions, I’ll give a couple of answers to help you understand.
 2. Organizing a local meetup So what if there’s no local meetup to attend? I’ll give some basic tips and tricks to help you start your own, successfully!
 
-<iframe src="https://www.youtube.com/embed/fvRrRlzF27A?list=PLttehiHjjtrl7AFuwBzq9kFnzBfLxU8ht" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://www.youtube.com/embed/fvRrRlzF27A?list=PLttehiHjjtrl7AFuwBzq9kFnzBfLxU8ht" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 [Slide](https://wptv.files.wordpress.com/2016/04/taco-verdonschot-your-local-meetup-only-few-steps-away-wctrn-2016.pdf)
 
@@ -243,7 +243,7 @@ Progettare un sito ed i suoi contenuti partendo dagli obiettivi di business e da
 3. misurazione dei risultati;
 4. ottimizzazione delle conversioni.
 
-<iframe src="https://www.youtube.com/embed/JF93utjX5ng?list=PLttehiHjjtrl7AFuwBzq9kFnzBfLxU8ht" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://www.youtube.com/embed/JF93utjX5ng?list=PLttehiHjjtrl7AFuwBzq9kFnzBfLxU8ht" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 [Slide](https://wptv.files.wordpress.com/2016/04/lucia-arsena-web-sales-design-progettare-siti-obiettivo-vendita-diretta-generazione-contatti-wctrn-2016.pdf)
 

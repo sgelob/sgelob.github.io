@@ -1,5 +1,7 @@
 ---
 import '@fontsource-variable/inter';
+// The same file the Inter @font-face points at, so the preload below is the request the page uses.
+import interLatin from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
 import '@fontsource/ibm-plex-mono/400.css';
 import '@fontsource/ibm-plex-mono/500.css';
 import '../styles/global.css';
@@ -30,6 +32,7 @@ const beaconToken: unknown = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#0c0c0c" />
+    <link rel="preload" href={interLatin} as="font" type="font/woff2" crossorigin />
     <Seo title={title} description={description} ogImage={ogImage} canonical={canonical} lang={lang} />
     <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />

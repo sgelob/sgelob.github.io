@@ -216,7 +216,7 @@ Queste sono metriche di User Experience e non dei numeri vanitosi come Load Time
 
 ### WebPagetest.org (confronto video)
 
-<iframe src="https://www.youtube.com/embed/64FdytErJnw" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" src="https://www.youtube.com/embed/64FdytErJnw" width="320" height="180" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 Questo strumento permette di comparare due siti e vederli caricarsi fianco a fianco. Ottimo per mostrare per esempio a un cliente come è messo in confronto alla sua concorrenza. Si può anche fare il test del vostro sito con connessioni diverse o con browser diversi o da location nel mondo diverse e vedere una comparazione fianco a fianco.
 
@@ -455,7 +455,7 @@ Il web lo facciamo tutti noi, per altre persone come noi, e anche se questo argo
 
 ## Il video intero del mio talk
 
-<iframe width="560" height="315" src="https://videopress.com/embed/2qGsKO6U" frameborder="0" allowfullscreen="" allow="clipboard-write"></iframe><script src="https://videopress.com/videopress-iframe.js"></script>
+<iframe loading="lazy" width="560" height="315" src="https://videopress.com/embed/2qGsKO6U" frameborder="0" allowfullscreen="" allow="clipboard-write"></iframe><script src="https://videopress.com/videopress-iframe.js"></script>
 
 Grazie per l’attenzione!
 

@@ -13,7 +13,7 @@ excerpt: Talk di Matteo Fogli su come funziona AMP, a cosa serve e soprattutto q
 
 Cos’è AMP, come funziona, a cosa serve e soprattutto, quanto va veloce? Ci siamo visti come sempre da Toolbox Coworking per parlare dell’importanza delle web performance, come misurare le #webperf e come ottimizzare siti web e renderli una scheggia.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/gqbJIOrpvl8" frameborder="0" allowfullscreen=""></iframe>
+<iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/gqbJIOrpvl8" frameborder="0" allowfullscreen=""></iframe>
 
 ## Speaker – Matteo Fogli
 

@@ -12,7 +12,7 @@ excerpt: Talk di Mirko Ciesco sul come migliorare le prestazioni di caricamento 
 
 In questo talk verranno affrontate le principali problematiche riscontrate con l’utilizzo di font esterni (come ad esempio Google Fonts) e verranno esposte le possibili soluzioni per migliorare le prestazioni di caricamento.
 
-<iframe src="https://www.youtube.com/embed/TQKjFtzTrog" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"><span data-mce-type="bookmark" style="display: inline-block; width: 0px; overflow: hidden; line-height: 0;" class="mce_SELRES_start">﻿</span></iframe>
+<iframe loading="lazy" src="https://www.youtube.com/embed/TQKjFtzTrog" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"><span data-mce-type="bookmark" style="display: inline-block; width: 0px; overflow: hidden; line-height: 0;" class="mce_SELRES_start">﻿</span></iframe>
 
 ## Speaker – Mirko Ciesco
 

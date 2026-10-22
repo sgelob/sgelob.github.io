@@ -14,7 +14,7 @@ Abbiamo parlato delle performance lato front-end e abbiamo fatto una sessione ha
 
 Abbiamo scelto come target il sito web «La Stampa», scelto su un suggerimento dal pubblico.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/QKc4dDHTo0s" frameborder="0" allowfullscreen=""></iframe>
+<iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/QKc4dDHTo0s" frameborder="0" allowfullscreen=""></iframe>
 
 Nel video è utilizzata la versione del browser [Chrome Canary](https://www.google.it/chrome/canary/).
 
