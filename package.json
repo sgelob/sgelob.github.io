@@ -15,6 +15,7 @@
     "check": "astro check",
     "migrate": "tsx scripts/migrate.ts",
     "photos": "tsx scripts/photos.ts",
+    "fetch-uploads": "tsx scripts/fetch-uploads.ts",
     "check-urls": "tsx scripts/check-urls.ts"
   },
   "dependencies": {
@@ -34,6 +35,7 @@
     "@astrojs/check": "^0.9.12",
     "@types/node": "^26.6.5",
     "@types/turndown": "^5.0.6",
+    "basic-ftp": "^6.2.3",
     "tsx": "^4.23.15",
     "typescript": "^6.0.3",
     "vitest": "^4.1.12"
