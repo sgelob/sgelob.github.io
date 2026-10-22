@@ -114,8 +114,10 @@ const { heading, ...base } = Astro.props;
     line-height: 1.5;
   }
 
+  /* Never wider than the column, never stretched past the image's own width (a 413 px GIF). */
   .prose :global(img) {
-    width: 100%;
+    width: auto;
+    max-width: 100%;
     height: auto;
   }
 
