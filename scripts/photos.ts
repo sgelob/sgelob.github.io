@@ -61,7 +61,8 @@ async function main(): Promise<number> {
     const [slug, folder] = positionals;
     if (!slug || !folder) throw new Error(`--new needs a slug and a folder\n${USAGE}`);
     const path = await scaffoldGallery({ slug, folder: resolve(folder), store: realStore(), contentDir: GALLERIES_DIR });
-    log(`wrote ${path}: set genre, country, cover and darkHeader, then review the order`);
+    log(`wrote ${path}: set genre, country and cover, then review the order`);
+    log('set darkHeader: true when the cover is light at the top or bottom: the hero then darkens it more under the nav and title');
     return 0;
   }
 
