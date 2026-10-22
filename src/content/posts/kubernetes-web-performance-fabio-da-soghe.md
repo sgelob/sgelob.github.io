@@ -13,7 +13,7 @@ excerpt: Talk di Fabio Da Soghe su come funziona l’orchestratore di container 
 
 In questo talk si era parlato di Kubernetes, l’orchestratore open source sviluppato da Google: abbiamo visto i principi alla base della sua implementazione, come funziona e come può migliorare le performance, il processo di sviluppo e deploy basato su container, sia in teoria che con una demo pratica.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/_XlxRrwSCd0" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen=""></iframe>
+<iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/_XlxRrwSCd0" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen=""></iframe>
 
 ## Speaker – Fabio Da Soghe
 

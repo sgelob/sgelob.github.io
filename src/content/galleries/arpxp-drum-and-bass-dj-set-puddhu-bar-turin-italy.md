@@ -50,6 +50,6 @@ photos:
 
 ## ARPxp – The Dreamers at Puddhu Bar – April 14 2012, Torino
 
-<iframe width="320" height="180" src="https://www.youtube.com/embed/v80WFXrxnAI" frameborder="0" allowfullscreen=""></iframe>
+<iframe loading="lazy" width="320" height="180" src="https://www.youtube.com/embed/v80WFXrxnAI" frameborder="0" allowfullscreen=""></iframe>
 
 For listening to his music, booking requests and infos, please visit [arpxp.com](http://www.arpxp.com/ "ArpXP")

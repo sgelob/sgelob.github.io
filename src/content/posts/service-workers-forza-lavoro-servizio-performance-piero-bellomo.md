@@ -18,7 +18,7 @@ Questo qualcuno si chiama Service Worker e stasera te lo presentiamo.
 
 Lavorerà per te, direttamente nel browser. Sempre, anche in background. Gratis. Vieni a conoscerlo.
 
-<iframe src="https://www.youtube.com/embed/Vr0SiZnIlc4" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"><span data-mce-type="bookmark" style="display: inline-block; width: 0px; overflow: hidden; line-height: 0;" class="mce_SELRES_start">﻿</span></iframe>
+<iframe loading="lazy" src="https://www.youtube.com/embed/Vr0SiZnIlc4" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"><span data-mce-type="bookmark" style="display: inline-block; width: 0px; overflow: hidden; line-height: 0;" class="mce_SELRES_start">﻿</span></iframe>
 
 ## Speaker – Piero Bellomo
 

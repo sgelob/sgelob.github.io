@@ -12,7 +12,7 @@ excerpt: Talk di Matteo Fogli sul come come monitorare il proprio sito e quelli 
 
 SpeedCurve è WebPageTest agli steroidi + una soluzione di Real User Monitoring abbinate a dashboard grafiche comprensibili tanto da persone del business quanto da sviluppatori. Vedremo come monitorare il proprio sito e quelli della concorrenza, aggiungere metriche personalizzate e leggere gli indicatori di miglioramento.
 
-<iframe src="https://www.youtube.com/embed/JSZnUQU4a4E" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"><span data-mce-type="bookmark" style="display: inline-block; width: 0px; overflow: hidden; line-height: 0;" class="mce_SELRES_start">﻿</span></iframe>
+<iframe loading="lazy" src="https://www.youtube.com/embed/JSZnUQU4a4E" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"><span data-mce-type="bookmark" style="display: inline-block; width: 0px; overflow: hidden; line-height: 0;" class="mce_SELRES_start">﻿</span></iframe>
 
 ## Speaker – Matteo Fogli
 
