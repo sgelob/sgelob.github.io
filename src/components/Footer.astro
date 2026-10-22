@@ -1,13 +1,19 @@
 ---
-import { SITE } from '../lib/site';
+import { SITE, type Lang } from '../lib/site';
 
+interface Props {
+  /** The page's language: the labels are English, so they are marked as such on other pages. */
+  lang?: Lang;
+}
+
+const { lang = 'en' } = Astro.props;
 const year = new Date().getFullYear();
 ---
 
 <footer class="footer wrap mono">
   <p>© {year} {SITE.author}</p>
-  <ul class="links">
-    <li><a href={`mailto:${SITE.email}`}>Email</a></li>
+  <ul class="links" lang={lang === 'en' ? undefined : 'en'}>
+    <li><a href={SITE.mailto}>Email</a></li>
     <li><a href="/feed.xml">RSS</a></li>
   </ul>
 </footer>
@@ -32,7 +38,13 @@ const year = new Date().getFullYear();
     list-style: none;
   }
 
-  .links a { transition: color 120ms ease; }
+  /* Padded to a 24 px target; the margin keeps the row where it was. */
+  .links a {
+    display: inline-block;
+    padding-block: 5px;
+    margin-block: -5px;
+    transition: color 120ms ease;
+  }
 
   .links a:hover { color: var(--fg); }
 </style>

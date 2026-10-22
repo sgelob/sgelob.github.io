@@ -45,9 +45,17 @@ const { heading, ...base } = Astro.props;
     color: var(--muted);
   }
 
-  .meta :global(a) { transition: color 120ms ease; }
+  /* Underlined at rest, as the nav, so a category reads as a link and not as part of the date line. */
+  .meta :global(a) {
+    padding-bottom: 3px;
+    border-bottom: 1px solid var(--muted);
+    transition: color 120ms ease, border-color 120ms ease;
+  }
 
-  .meta :global(a:hover) { color: var(--fg); }
+  .meta :global(a:hover) {
+    color: var(--fg);
+    border-bottom-color: var(--fg);
+  }
 
   .prose {
     margin-top: 48px;

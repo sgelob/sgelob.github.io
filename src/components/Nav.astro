@@ -1,19 +1,22 @@
 ---
 import { NAV_LINKS, type Section } from '../lib/nav';
+import type { Lang } from '../lib/site';
 
 interface Props {
   current?: Section;
   overlay?: boolean;
+  /** The page's language: the labels are English, so they are marked as such on other pages. */
+  lang?: Lang;
 }
 
-const { current, overlay = false } = Astro.props;
+const { current, overlay = false, lang = 'en' } = Astro.props;
 const pathname = Astro.url.pathname;
 ---
 
 <header class:list={['nav wrap', { overlay }]}>
   <a class="home" href="/">olegs</a>
   <nav aria-label="Main">
-    <ul class="links mono">
+    <ul class="links mono" lang={lang === 'en' ? undefined : 'en'}>
       {NAV_LINKS.map(({ section, label, href }) => (
         <li>
           <a href={href} aria-current={section === current ? (pathname === href ? 'page' : 'true') : undefined}>
@@ -40,7 +43,12 @@ const pathname = Astro.url.pathname;
     z-index: 1;
   }
 
+  .overlay a { text-shadow: 0 1px 2px rgb(0 0 0 / 0.6); }
+
   .home {
+    display: inline-block;
+    padding-block: 4px;
+    margin-block: -4px;
     font-size: 17px;
     font-weight: 700;
     letter-spacing: -0.02em;
@@ -54,19 +62,29 @@ const pathname = Astro.url.pathname;
     list-style: none;
   }
 
+  /* 6 px above the text, cancelled by the margin, makes a 24 px target without moving the row. */
   .links a {
     display: inline-block;
-    padding-bottom: 3px;
+    padding: 6px 0 3px;
+    margin-top: -6px;
     border-bottom: 1px solid transparent;
     transition: color 120ms ease;
   }
 
   .links a:hover { color: var(--muted); }
 
+  /* Over a cover the muted grey can fall below 4.5:1: hover underlines instead. */
+  .overlay .links a:hover {
+    color: inherit;
+    border-bottom-color: currentColor;
+  }
+
   .links a[aria-current] { border-bottom-color: currentColor; }
 
   @media (max-width: 719px) {
     .nav { padding-block: 20px; }
+    /* On a narrow screen the gallery caption sits under the cover, and so does the nav: above it. */
+    .overlay { position: static; }
     .links { gap: 20px; }
   }
 </style>
