@@ -4,7 +4,7 @@ import { events } from '../lib/events';
 import { renderInline } from '../lib/markdown';
 ---
 
-<Reading title="Events — olegs" heading="Events and conferences" description="Tech, product and design events and conferences Olegs Belousovs attended, by year." lang="en">
+<Reading section title="Events — olegs" heading="Events and conferences" description="Tech, product and design events and conferences Olegs Belousovs attended, by year." lang="en">
   <p class="lead">Conferences, meetups and courses I attended or visited over the years, newest first.</p>
   <div class="events">
     {events.map(({ year, entries }) => (
@@ -19,7 +19,7 @@ import { renderInline } from '../lib/markdown';
 </Reading>
 
 <style>
-  .lead { color: var(--muted); margin: 0 0 32px; }
+  .lead { color: var(--muted); margin: 0 0 40px; }
 
   .events .group { padding-block: 24px; border-top: 1px solid var(--rule); }
 
