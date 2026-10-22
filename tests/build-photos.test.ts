@@ -9,7 +9,7 @@ test('country with galleries builds; every taxonomy slug has a page', () => { fo
 describe('photos pages', () => {
   test('index: title, description, intro and All active in the filter row', () => {
     const html = read('dist/photos/index.html');
-    expect(html).toContain('<title>Photos — olegs</title>');
+    expect(html).toContain('<title>Photography by Olegs Belousovs</title>'); // Yoast seoTitle of the photos page
     expect(html).toContain('<meta name="description" content="Pictures and reportages');
     expect(html).toContain('I&#39;m constantly updating these photo galleries.');
     expect(html).toMatch(/<a href="\/photos\/" aria-current="page"[^>]*>All<\/a>/);

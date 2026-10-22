@@ -39,7 +39,7 @@ const { Content } = gallery ? await render(gallery) : { Content: undefined };
   <Redirect to={props.redirectTo} />
 ) : gallery && (
   <Base
-    title={`${gallery.data.title} — Photos — olegs`}
+    title={gallery.data.seoTitle ?? `${gallery.data.title} — Photos — olegs`}
     description={gallery.data.seoDescription ?? `Photos from ${gallery.data.title}: ${gallery.data.photos.length} photos.`}
     ogImage={largestVariantUrl(gallery.data.cover, Math.min(1600, coverSize(gallery)?.width ?? 0))}
     overlayNav

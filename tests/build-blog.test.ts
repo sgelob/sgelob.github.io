@@ -25,7 +25,7 @@ function postSlugsDated(prefix: string): string[] {
 describe('blog lists', () => {
   test('a row: mono date and category, linked title, excerpt', () => {
     const html = read('dist/blog/index.html');
-    expect(html).toContain('<title>Blog — olegs</title>');
+    expect(html).toContain('<title>Blog – Olegs Belousovs</title>'); // Yoast seoTitle of the blog page
     expect(html).toMatch(/<meta name="description" content="Scrivo su ottimizzazione/);
     expect(html).toContain('<html lang="it"');
     expect(html).toMatch(/16 aprile 2025[^<]*<\/time>[\s\S]{0,200}Personal Growth/);

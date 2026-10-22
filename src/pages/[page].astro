@@ -25,6 +25,6 @@ const { page } = Astro.props;
 const { Content } = await render(page);
 ---
 
-<Reading title={`${page.data.title} — olegs`} heading={page.data.title} description={page.data.seoDescription} lang={page.data.lang}>
+<Reading title={page.data.seoTitle ?? `${page.data.title} — olegs`} heading={page.data.title} description={page.data.seoDescription} lang={page.data.lang}>
   <Content />
 </Reading>

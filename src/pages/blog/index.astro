@@ -8,7 +8,7 @@ const page = await getEntry('pages', 'blog');
 const posts = await getPosts();
 ---
 
-<Base title="Blog — olegs" description={page?.data.seoDescription} lang="it">
+<Base title={page?.data.seoTitle ?? 'Blog — olegs'} description={page?.data.seoDescription} lang="it">
   <h1 class="visually-hidden">Blog</h1>
   <PostList posts={posts} />
 </Base>
