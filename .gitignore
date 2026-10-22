@@ -7,3 +7,5 @@ dist
 .gstack/
 .claude/
 .DS_Store
+olegs-be-data/
+olegs-be-drafts/

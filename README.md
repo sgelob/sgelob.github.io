@@ -14,7 +14,7 @@ npm run build    # static site into dist/
 ## Add a gallery
 
 ```bash
-UPLOADS_DIR=~/olegs-be-data/uploads npm run photos -- --new <slug> <folder-with-jpegs>
+UPLOADS_DIR=./olegs-be-data/uploads npm run photos -- --new <slug> <folder-with-jpegs>
 ```
 
 This copies the photos into `UPLOADS_DIR/yyyy/mm/` (the local tree of originals, kept in sync with R2), uploads them with their 480, 960 and 1600 px variants, and writes `src/content/galleries/<slug>.md` with the photos in file-name order. It refuses to overwrite an existing gallery file. Then edit the title, genre, country, cover and date, reorder the photos if you like, commit and push. It needs a `.env` with the R2 keys, see `.env.example`.
@@ -51,7 +51,7 @@ Variants are never upscaled: use `-960` only when the original is at least 960 p
 npm run migrate -- --dump <sql>
 ```
 
-This rebuilt everything from the WordPress dump once. Re-running it would overwrite every file under `src/content` and `src/data`, discarding hand edits, so it refuses while `src/content` has files unless you pass `--force`. Drafts were exported to `~/olegs-be-drafts/`.
+This rebuilt everything from the WordPress dump once. Re-running it would overwrite every file under `src/content` and `src/data`, discarding hand edits, so it refuses while `src/content` has files unless you pass `--force`. Drafts were exported to `./olegs-be-drafts/` (git-ignored).
 
 ## Photos pipeline
 
@@ -62,7 +62,7 @@ npm run photos -- --uploads <dir> [--dry-run]
 Uploads every original under `<dir>` (normally `UPLOADS_DIR`) unchanged, plus 480, 960 and 1600 px variants in webp and jpg, with keys `uploads/yyyy/mm/name-w.ext`; keys already in R2 are skipped, and no variant is wider than its original. `npm run fetch-uploads` pulls the originals from OVH using the `OVH_FTP_*` environment variables.
 
 ```bash
-UPLOADS_DIR=~/olegs-be-data/uploads npm run photos -- --fix-sizes
+UPLOADS_DIR=./olegs-be-data/uploads npm run photos -- --fix-sizes
 ```
 
 Fills in the photos with width 0 in the gallery files (as `--new` leaves them when a size cannot be read), measuring the originals in `UPLOADS_DIR`.
