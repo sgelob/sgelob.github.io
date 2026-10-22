@@ -4,6 +4,8 @@ date: "2015-07-23T20:39:47"
 genre: world-places
 country: italy
 cover: 2015/07/torino-italia-piazza-vittorio-veneto.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: true
 oldSlugs: []
 photos:

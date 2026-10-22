@@ -4,6 +4,8 @@ date: "2009-07-27T11:58:38"
 genre: world-places
 country: spain
 cover: 2009/07/lloret-de-mar-spain-10.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: true
 oldSlugs: []
 photos:

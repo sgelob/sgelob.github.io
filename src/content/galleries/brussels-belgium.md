@@ -4,6 +4,8 @@ date: "2011-08-08T21:30:01"
 genre: world-places
 country: belgium
 cover: 2011/08/brussels-belgium-28.jpg
+coverWidth: 1440
+coverHeight: 1080
 darkHeader: true
 oldSlugs: []
 photos:

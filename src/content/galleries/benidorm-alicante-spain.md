@@ -5,6 +5,8 @@ date: "2007-08-07T12:00:41"
 genre: world-places
 country: spain
 cover: 2007/08/benidorm-alicante-spain-main-beach-skyline-00.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: true
 oldSlugs: []
 photos:

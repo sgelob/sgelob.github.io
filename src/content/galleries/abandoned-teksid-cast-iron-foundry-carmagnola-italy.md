@@ -5,6 +5,8 @@ date: "2009-10-11T12:00:21"
 genre: abandoned-places
 country: italy
 cover: 2009/10/abandoned-teksid-steel-mill-carmagnola-italy_MG_3240.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:

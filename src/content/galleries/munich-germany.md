@@ -4,6 +4,8 @@ date: "2012-12-30T10:25:27"
 genre: world-places
 country: germany
 cover: 2012/12/munchen-germany-73.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:

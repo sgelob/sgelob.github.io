@@ -5,6 +5,8 @@ date: "2016-03-28T08:34:04"
 genre: people
 country: world
 cover: 2016/03/other-side-people-backtraits-97.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: true
 oldSlugs: []
 photos:

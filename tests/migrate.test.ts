@@ -53,7 +53,7 @@ describe('frontmatter key order', () => {
   const dir = tmp();
   const gallery = {
     slug: 'g', title: 'T', date: '2012-08-11T09:00:31', genre: 'cities', country: 'italy', cover: 'a.jpg', darkHeader: true,
-    photos: [{ src: 'a.jpg', width: 1, height: 2 }], seoDescription: 'D', seoTitle: 'S', shortTitle: 'Short', oldSlugs: ['x', '', 'x', 'y'], body: '',
+    photos: [{ src: 'a.jpg', width: 1, height: 2 }], coverHeight: 2, coverWidth: 1, seoDescription: 'D', seoTitle: 'S', shortTitle: 'Short', oldSlugs: ['x', '', 'x', 'y'], body: '',
   };
   const post = {
     slug: 'p', title: 'T', date: '2019-03-04T10:11:12', categories: ['c'], lang: 'it' as const, excerpt: 'E', oldSlugs: [], body: '',
@@ -63,7 +63,7 @@ describe('frontmatter key order', () => {
 
   test('galleries', () => {
     writeMarkdown(dir, 'g', galleryFrontmatter(gallery), '');
-    expect(keysOf(join(dir, 'g.md'))).toEqual(['title', 'shortTitle', 'date', 'genre', 'country', 'cover', 'darkHeader', 'seoTitle', 'seoDescription', 'oldSlugs', 'photos']);
+    expect(keysOf(join(dir, 'g.md'))).toEqual(['title', 'shortTitle', 'date', 'genre', 'country', 'cover', 'coverWidth', 'coverHeight', 'darkHeader', 'seoTitle', 'seoDescription', 'oldSlugs', 'photos']);
     expect(galleryFrontmatter(gallery).oldSlugs).toEqual(['x', 'y']);
   });
 
@@ -129,7 +129,7 @@ describe('runMigration (fixture)', () => {
 
   test('gallery frontmatter is ordered and its old slugs are clean', async () => {
     const { out } = await migrate();
-    expect(keysOf(join(out, 'content/galleries/venezia-italy.md'))).toEqual(['title', 'shortTitle', 'date', 'genre', 'country', 'cover', 'darkHeader', 'seoTitle', 'seoDescription', 'oldSlugs', 'photos']);
+    expect(keysOf(join(out, 'content/galleries/venezia-italy.md'))).toEqual(['title', 'shortTitle', 'date', 'genre', 'country', 'cover', 'coverWidth', 'coverHeight', 'darkHeader', 'seoTitle', 'seoDescription', 'oldSlugs', 'photos']);
     const front = parse(read(out, 'content/galleries/venezia-italy.md').split('---\n')[1]) as { oldSlugs: string[]; photos: unknown[] };
     expect(front.oldSlugs).toEqual(['lubitel-любитель', 'venice']);
     expect(front.photos).toHaveLength(3);

@@ -4,6 +4,8 @@ date: "2011-08-08T09:00:59"
 genre: world-places
 country: belgium
 cover: 2016/12/bruges-belgium-40.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:

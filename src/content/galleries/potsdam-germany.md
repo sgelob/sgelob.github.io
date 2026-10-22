@@ -4,6 +4,8 @@ date: "2009-12-29T11:00:20"
 genre: world-places
 country: germany
 cover: 2016/01/potsdam-germany-20.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: true
 oldSlugs: []
 photos:

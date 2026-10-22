@@ -4,6 +4,8 @@ date: "2011-08-10T11:00:58"
 genre: world-places
 country: france
 cover: 2011/08/paris-france-88.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:

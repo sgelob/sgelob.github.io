@@ -5,6 +5,8 @@ date: "2007-07-08T23:00:49"
 genre: music-events
 country: italy
 cover: 2007/07/boschetto-crew-friends-music-party-first-edition-avigliana-italy-2007-13.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:

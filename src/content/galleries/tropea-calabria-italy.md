@@ -4,6 +4,8 @@ date: "2010-08-12T17:00:49"
 genre: world-places
 country: italy
 cover: 2010/08/tropea-calabria-italy-37.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:

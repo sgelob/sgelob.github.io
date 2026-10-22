@@ -5,6 +5,8 @@ date: "2007-05-06T12:00:37"
 genre: abandoned-places
 country: italy
 cover: 2007/05/garis-abandoned-brakes-factory-nichelino-italy-11.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:

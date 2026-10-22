@@ -5,6 +5,8 @@ date: "2009-06-21T21:00:17"
 genre: abandoned-places
 country: italy
 cover: 2009/06/abandoned-beldi-furnace-novara-italy-19.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:

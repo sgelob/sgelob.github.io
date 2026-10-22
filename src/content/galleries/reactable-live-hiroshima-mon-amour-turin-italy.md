@@ -5,6 +5,8 @@ date: "2008-03-14T22:00:21"
 genre: music-events
 country: italy
 cover: 2008/03/reactable-electronic-music-instrument-hiroshimamonamour-turin-02.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:

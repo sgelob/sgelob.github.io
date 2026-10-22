@@ -5,6 +5,8 @@ date: "2007-02-19T22:00:53"
 genre: abandoned-places
 country: italy
 cover: 2007/02/ogr-abandoned-train-repairing-workshop-turin-italy-17.jpg
+coverWidth: 1440
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:

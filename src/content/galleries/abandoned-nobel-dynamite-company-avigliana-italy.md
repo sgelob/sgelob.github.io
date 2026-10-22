@@ -5,6 +5,8 @@ date: "2011-05-07T15:00:42"
 genre: abandoned-places
 country: italy
 cover: 2011/05/abandoned-nobel-dynamite-company-avigliana-italy-52.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:

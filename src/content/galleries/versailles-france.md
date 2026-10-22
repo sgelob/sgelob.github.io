@@ -4,6 +4,8 @@ date: "2011-08-10T11:45:22"
 genre: world-places
 country: france
 cover: 2011/08/versailles-france-1.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:

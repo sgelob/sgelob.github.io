@@ -4,6 +4,8 @@ date: "2013-06-21T18:00:35"
 genre: world-places
 country: italy
 cover: 2013/06/rome-italy-25.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:

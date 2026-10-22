@@ -5,6 +5,8 @@ date: "2007-08-26T18:00:41"
 genre: abandoned-places
 country: italy
 cover: 2007/08/altissimo-abandoned-factory-trofarello-italy-16.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:

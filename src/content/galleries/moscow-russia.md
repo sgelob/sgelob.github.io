@@ -4,6 +4,8 @@ date: "2016-03-13T11:39:52"
 genre: world-places
 country: russia
 cover: 2016/03/moscow-city-russia-95.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:

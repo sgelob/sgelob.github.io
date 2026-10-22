@@ -31,6 +31,8 @@ describe('buildGallery (fixture)', () => {
       genre: 'cities', // primary genre, not the first genre term
       country: 'italy',
       cover: '2012/08/b.jpg', // from _thumbnail_id
+      coverWidth: 1080,
+      coverHeight: 1620,
       darkHeader: true,
       photos: expect.any(Array),
       seoTitle: 'Venezia, Italy | Olegs',
@@ -44,6 +46,20 @@ describe('buildGallery (fixture)', () => {
     // 11: _thumbnail_id points to a deleted attachment; 12: no _thumbnail_id at all.
     expect((await build(11)).gallery.cover).toBe('2012/08/a.jpg');
     expect((await build(12)).gallery.cover).toBe('2012/08/b.jpg');
+  });
+
+  test('cover size comes from its attachment, even when the cover is not among the photos', async () => {
+    const outside = (await build(14)).gallery;
+    expect(outside.photos.map((p) => p.src)).toEqual(['2012/08/a.jpg']);
+    expect(outside).toMatchObject({ cover: '2012/08/b.jpg', coverWidth: 1080, coverHeight: 1620 });
+    expect((await build(11)).gallery).toMatchObject({ cover: '2012/08/a.jpg', coverWidth: 1620, coverHeight: 1080 });
+  });
+
+  test('a cover attachment without dimensions leaves the cover size out', async () => {
+    const { gallery } = await build(15);
+    expect(gallery.cover).toBe('2012/08/nodims.jpg');
+    expect(gallery).not.toHaveProperty('coverWidth');
+    expect(gallery).not.toHaveProperty('coverHeight');
   });
 
   test('old slugs decoded', async () => {

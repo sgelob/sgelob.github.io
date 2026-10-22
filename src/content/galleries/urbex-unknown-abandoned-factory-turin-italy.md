@@ -5,6 +5,8 @@ date: "2008-11-11T18:00:52"
 genre: abandoned-places
 country: italy
 cover: 2008/11/urbex-unknown-abandoned-factory-turin-italy-06.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:

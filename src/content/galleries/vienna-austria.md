@@ -4,6 +4,8 @@ date: "2011-07-30T12:13:45"
 genre: world-places
 country: austria
 cover: 2011/07/wien-austria-59.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: true
 oldSlugs: []
 photos:

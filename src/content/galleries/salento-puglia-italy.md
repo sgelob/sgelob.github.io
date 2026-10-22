@@ -5,6 +5,8 @@ date: "2006-08-01T08:00:17"
 genre: world-places
 country: italy
 cover: 2005/08/puglia-salento-beach-fireworks.jpg
+coverWidth: 1440
+coverHeight: 1080
 darkHeader: false
 oldSlugs:
   - puglia-italy

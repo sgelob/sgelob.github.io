@@ -5,6 +5,8 @@ date: "2011-08-07T12:00:25"
 genre: world-places
 country: netherlands
 cover: 2011/08/amsterdam-netherlands-109.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: true
 oldSlugs: []
 photos:

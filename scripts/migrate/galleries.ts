@@ -12,6 +12,9 @@ export type GalleryDoc = {
   genre: string;
   country: string;
   cover: string;
+  /** Size of the cover's attachment: the cover is not always one of the photos. */
+  coverWidth?: number;
+  coverHeight?: number;
   darkHeader: boolean;
   photos: Photo[];
   seoTitle?: string;
@@ -82,5 +85,10 @@ export function buildGallery(db: WpDb, post: WpPost, warn: (msg: string) => void
   if (shortTitle) doc.shortTitle = shortTitle;
   if (seoTitle) doc.seoTitle = seoTitle;
   if (seoDescription) doc.seoDescription = seoDescription;
+  const coverAtt = attachments.get(cover);
+  if (coverAtt?.width && coverAtt.height) {
+    doc.coverWidth = coverAtt.width;
+    doc.coverHeight = coverAtt.height;
+  }
   return doc;
 }

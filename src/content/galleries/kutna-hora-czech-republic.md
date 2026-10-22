@@ -5,6 +5,8 @@ date: "2011-08-01T15:00:58"
 genre: world-places
 country: czech-republic
 cover: 2018/02/kutna-hora-czech-republic-09.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: true
 oldSlugs: []
 photos:

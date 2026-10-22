@@ -5,6 +5,8 @@ date: "2007-12-16T20:00:18"
 genre: abandoned-places
 country: italy
 cover: 2007/12/abandoned-mental-asylum-racconigi-italy-46.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:

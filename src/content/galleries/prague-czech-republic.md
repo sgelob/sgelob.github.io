@@ -5,6 +5,8 @@ date: "2011-08-03T18:00:39"
 genre: world-places
 country: czech-republic
 cover: 2011/08/praha-czech-republic-295.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:

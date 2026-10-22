@@ -5,6 +5,8 @@ date: "2009-01-15T12:00:28"
 genre: old-film-cameras
 country: russia
 cover: 2009/01/kiev4a-type2-soviet-35mm-rangefinder-film-camera-jupiter8m-lens.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: true
 oldSlugs:
   - kiev4a-type2-soviet-35mm-film-camera

@@ -5,6 +5,8 @@ date: "2007-07-12T18:13:18"
 genre: old-film-cameras
 country: russia
 cover: 2015/09/smena-8m-soviet-35mm-rangefinder-film-camera-07.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: true
 oldSlugs:
   - smena-8m-Смена-8М-soviet-35mm-film-camera

@@ -3,7 +3,7 @@ import type { PageDoc } from './pages';
 import type { PostDoc } from './posts';
 
 // The builders return unordered objects: the key order of the written files is decided here.
-const GALLERY_KEYS = ['title', 'shortTitle', 'date', 'genre', 'country', 'cover', 'darkHeader', 'seoTitle', 'seoDescription', 'oldSlugs', 'photos'] as const;
+const GALLERY_KEYS = ['title', 'shortTitle', 'date', 'genre', 'country', 'cover', 'coverWidth', 'coverHeight', 'darkHeader', 'seoTitle', 'seoDescription', 'oldSlugs', 'photos'] as const;
 const POST_KEYS = ['title', 'date', 'categories', 'cover', 'lang', 'seoTitle', 'seoDescription', 'oldSlugs', 'excerpt'] as const;
 const PAGE_KEYS = ['title', 'path', 'lang', 'seoTitle', 'seoDescription'] as const;
 

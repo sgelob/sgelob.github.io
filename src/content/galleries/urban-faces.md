@@ -4,6 +4,8 @@ date: "2015-05-10T12:10:19"
 genre: abstract
 country: world
 cover: 2015/05/urban-face-16.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: true
 oldSlugs: []
 photos:

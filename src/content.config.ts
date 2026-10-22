@@ -13,6 +13,8 @@ const galleries = defineCollection({
     genre: z.string(),
     country: z.string(),
     cover: z.string(),
+    coverWidth: z.number().optional(),
+    coverHeight: z.number().optional(),
     darkHeader: z.boolean(),
     seoTitle: z.string().optional(),
     seoDescription: z.string().optional(),

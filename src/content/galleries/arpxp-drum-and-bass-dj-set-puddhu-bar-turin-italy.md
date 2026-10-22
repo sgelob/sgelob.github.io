@@ -5,6 +5,8 @@ date: "2007-12-09T02:00:07"
 genre: music-events
 country: italy
 cover: 2007/12/arpxp-dnb-dj-set-puddhu-turin-italy-02.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:

@@ -5,6 +5,8 @@ date: "2010-05-29T10:25:16"
 genre: world-places
 country: russia
 cover: 2010/05/dzerzhinsk-nizhegorodskaya-oblast-russia-18.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: true
 oldSlugs: []
 photos:

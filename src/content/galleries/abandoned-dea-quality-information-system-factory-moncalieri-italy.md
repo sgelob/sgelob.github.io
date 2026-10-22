@@ -5,6 +5,8 @@ date: "2009-09-27T20:00:45"
 genre: abandoned-places
 country: italy
 cover: 2009/09/abandoned-dea-quality-information-system-factory-moncalieri-italy-04.jpg
+coverWidth: 1620
+coverHeight: 1080
 darkHeader: false
 oldSlugs: []
 photos:
