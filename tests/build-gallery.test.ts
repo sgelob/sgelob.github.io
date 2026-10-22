@@ -47,6 +47,16 @@ describe('gallery page', () => {
     expect(Buffer.byteLength(entry)).toBeLessThan(4 * 1024);
     expect(entry).toMatch(/import\([`"']\.\/photoswipe-lightbox\.esm\.[\w-]+\.js[`"']\)/);
     expect(entry).not.toContain('pswp__');
+    // The core chunk is fetched by load() itself, so its failure reaches the plain-link fallback;
+    // PhotoSwipe is not left to import it lazily (an uncaught rejection after preventDefault).
+    expect(entry).toMatch(/import\([`"']\.\/photoswipe\.esm\.[\w-]+\.js[`"']\)/);
+    expect(entry).not.toMatch(/pswpModule:\s*\(\)\s*=>/);
+  });
+
+  test('grid basis sits below the target row height: 280px desktop, 150px mobile', () => {
+    const html = venezia();
+    expect(html).toMatch(/\.justified\{--basis:280px;/);
+    expect(html).toMatch(/@media \(width<=719px\)\{\.justified\{--basis:150px\}\}/);
   });
 
   test('a gallery with text renders its Markdown body', () => {

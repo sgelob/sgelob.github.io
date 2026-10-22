@@ -43,9 +43,11 @@ const ratio = (p: Photo): number => Math.round((p.width / p.height) * 1e4) / 1e4
      on every item, and a gallery of 80 photos has to stay under 50 KB. -->
 <style is:global>
   /* Justified rows without JS: every item grows in proportion to its aspect ratio, so a row
-     shares one height; the spacer soaks up the last row's slack so it is not stretched. */
+     shares one height; the spacer soaks up the last row's slack so it is not stretched.
+     --basis is the height before growing, so it sits below the ~300px (mobile ~180px) target:
+     at 300px, three landscape photos no longer fit a 1344px row and two grow to ~445px. */
   .justified {
-    --row: 300px;
+    --basis: 280px;
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
@@ -55,7 +57,7 @@ const ratio = (p: Photo): number => Math.round((p.width / p.height) * 1e4) / 1e4
   .justified .ph {
     display: block;
     flex-grow: var(--r);
-    flex-basis: calc(var(--r) * var(--row));
+    flex-basis: calc(var(--r) * var(--basis));
     aspect-ratio: var(--r);
     background: var(--rule);
   }
@@ -69,6 +71,6 @@ const ratio = (p: Photo): number => Math.round((p.width / p.height) * 1e4) / 1e4
   }
 
   @media (max-width: 719px) {
-    .justified { --row: 180px; }
+    .justified { --basis: 150px; }
   }
 </style>
