@@ -27,6 +27,7 @@ describe('pages', () => {
     expect(html).toMatch(/<h1[^>]*>Olegs Belousovs<\/h1>/);
     expect(html).toContain('How May I Help You?');
     expect(html).toContain('class="reading');
+    expect(html).toContain('<title>Olegs Belousovs – Product Manager</title>'); // Yoast seoTitle
   });
 
   test('policies keep their language', () => {

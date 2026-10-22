@@ -10,7 +10,7 @@ const page = await getEntry('pages', 'photos');
 const galleries = await getGalleries();
 ---
 
-<Base title="Photos — olegs" description={page?.data.seoDescription}>
+<Base title={page?.data.seoTitle ?? 'Photos — olegs'} description={page?.data.seoDescription}>
   <PhotosHeader intro={home.photosIntro} active="all" />
   <GalleryGrid galleries={galleries} />
 </Base>
