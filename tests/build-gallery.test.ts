@@ -77,6 +77,14 @@ describe('gallery page', () => {
     const html = read('dist/gallery/the-bearder-line/index.html');
     expect(html).toMatch(/<img [^>]*width="800" height="1079"[^>]*loading="eager"/);
   });
+
+  test('a cover narrower than 1600 px offers its original above the variants', () => {
+    const hero = (slug: string) => /<header class="hero"[\s\S]*?<\/picture>/.exec(read(`dist/gallery/${slug}/index.html`))?.[0] ?? '';
+    const brussels = hero('brussels-belgium'); // 1440 px cover
+    expect(brussels).toContain('brussels-belgium-28-960.webp 960w, https://img.olegs.be/uploads/2011/08/brussels-belgium-28.jpg 1440w"');
+    expect(brussels).toContain('<img src="https://img.olegs.be/uploads/2011/08/brussels-belgium-28.jpg"');
+    expect(hero('the-bearder-line')).toMatch(/\.jpg 800w"/); // 800 px cover
+  });
 });
 
 describe('gallery redirects', () => {

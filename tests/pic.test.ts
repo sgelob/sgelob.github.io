@@ -38,3 +38,25 @@ test('Pic: an image of unknown size is the original with no size, srcset or sour
   expect(html).not.toContain('srcset');
   expect(html).not.toContain('<source');
 });
+
+test('Pic: an image between its largest variant and maxWidth adds the original as the widest candidate', async () => {
+  const html = await render(Pic, { props: { ...base, src: '2012/08/c.jpg', width: 1440, height: 960, maxWidth: 1600 } });
+  expect(html).toContain(
+    'srcset="https://img.olegs.be/uploads/2012/08/c-480.webp 480w, https://img.olegs.be/uploads/2012/08/c-960.webp 960w, https://img.olegs.be/uploads/2012/08/c.jpg 1440w"',
+  );
+  expect(html).toContain('<img src="https://img.olegs.be/uploads/2012/08/c.jpg"');
+});
+
+test('Pic: an 800 px image shown up to 1600 is served as the original', async () => {
+  const html = await render(Pic, { props: { ...base, src: '2012/08/d.jpg', width: 800, height: 1079, maxWidth: 1600 } });
+  expect(html).toContain('<img src="https://img.olegs.be/uploads/2012/08/d.jpg"');
+  expect(html).toContain('srcset="https://img.olegs.be/uploads/2012/08/d-480.webp 480w, https://img.olegs.be/uploads/2012/08/d.jpg 800w"');
+});
+
+test('Pic: no original when a variant reaches maxWidth or the image is wider than it', async () => {
+  for (const width of [1600, 1620]) {
+    const html = await render(Pic, { props: { ...base, src: '2012/08/e.jpg', width, height: 1080, maxWidth: 1600 } });
+    expect(html, String(width)).not.toContain('e.jpg');
+    expect(html, String(width)).toContain('src="https://img.olegs.be/uploads/2012/08/e-1600.jpg"');
+  }
+});
