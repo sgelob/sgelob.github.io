@@ -2,29 +2,41 @@
 import type { GetStaticPaths } from 'astro';
 import { getCollection, render, type CollectionEntry } from 'astro:content';
 import Reading from '../layouts/Reading.astro';
+import Redirect from '../components/Redirect.astro';
+import { redirectsUnder } from '../lib/redirects';
 
-// Single-segment pages from the `pages` collection, at their WordPress path. Photos, blog and quotes
-// have their own templates. [year]/index.astro yields only 4-digit years, so the two never collide.
+// Single-segment pages from the `pages` collection, at their WordPress path, plus the single-segment
+// redirects (the dropped privacy and cookie policies). Photos, blog and quotes have their own
+// templates. [year]/index.astro yields only 4-digit years, so the two never collide.
 export const getStaticPaths = (async () => {
   const OWN_TEMPLATES = new Set(['photos', 'blog', 'quotes']);
-  const pages = (await getCollection('pages')).filter((page) => !OWN_TEMPLATES.has(page.id));
-  return pages.map((page) => {
-    const param = page.data.path.replace(/^\/|\/$/g, '');
-    if (!/^[^/]+$/.test(param) || /^\d{4}$/.test(param)) {
-      throw new Error(`pages/${page.id}: path "${page.data.path}" must be one segment and not a year`);
+  const param = (path: string, owner: string): string => {
+    const segment = path.replace(/^\/|\/$/g, '');
+    if (!/^[^/]+$/.test(segment) || /^\d{4}$/.test(segment)) {
+      throw new Error(`${owner}: path "${path}" must be one segment and not a year`);
     }
-    return { params: { page: param }, props: { page } };
-  });
+    return segment;
+  };
+  const pages = (await getCollection('pages')).filter((page) => !OWN_TEMPLATES.has(page.id));
+  // Deeper redirects (galleries, posts) belong to their own routes.
+  const redirects = redirectsUnder('/').filter(({ from }) => /^\/[^/]+\/$/.test(from));
+  return [
+    ...pages.map((page) => ({ params: { page: param(page.data.path, `pages/${page.id}`) }, props: { page } })),
+    ...redirects.map(({ from, to }) => ({ params: { page: param(from, `redirect ${from}`) }, props: { redirectTo: to } })),
+  ];
 }) satisfies GetStaticPaths;
 
-interface Props {
-  page: CollectionEntry<'pages'>;
-}
+type Props = { page: CollectionEntry<'pages'>; redirectTo?: undefined } | { redirectTo: string; page?: undefined };
 
-const { page } = Astro.props;
-const { Content } = await render(page);
+const props = Astro.props as Props;
+const page = props.page;
+const { Content } = page ? await render(page) : { Content: undefined };
 ---
 
-<Reading title={page.data.seoTitle ?? `${page.data.title} — olegs`} heading={page.data.title} description={page.data.seoDescription} lang={page.data.lang}>
-  <Content />
-</Reading>
+{props.redirectTo !== undefined ? (
+  <Redirect to={props.redirectTo} />
+) : page && Content && (
+  <Reading title={page.data.seoTitle ?? `${page.data.title} — olegs`} heading={page.data.title} description={page.data.seoDescription} lang={page.data.lang}>
+    <Content />
+  </Reading>
+)}
