@@ -48,7 +48,7 @@ Puoi vedere tu stesso una [mappa con la copertura di reti mobile](https://www.op
 
 ### I 9 browser più utilizzati al mondo – Maggio 2015-2016
 
-![I 9 browser più utilizzati al mondo – Maggio 2015-2016](https://img.olegs.be/uploads/2016/06/9-top-browser-utilizzati-mondo-maggio-2015-2016-statcounter-960.jpg)
+![I 9 browser più utilizzati al mondo – Maggio 2015-2016](https://img.olegs.be/uploads/2016/06/9-top-browser-utilizzati-mondo-maggio-2015-2016-statcounter-480.jpg)
 
 *Fonte: [StatCounter Global Stats – Browser Market Share](https://gs.statcounter.com/#all-browser-ww-monthly-201505-201605)*
 

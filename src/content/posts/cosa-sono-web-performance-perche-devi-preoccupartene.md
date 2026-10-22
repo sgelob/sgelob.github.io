@@ -100,7 +100,7 @@ Non avere un sito web mobile-friendly e ottimizzato per alte prestazioni, signif
 > 
 > — Ricerca di Harris Interactive per Tealeaf, 2011
 
-![Uomo incazzato lancia il suo telefono contro il muro](https://img.olegs.be/uploads/2016/09/mobile-web-is-slow-phone-rage-throw-wall-960.jpg)
+![Uomo incazzato lancia il suo telefono contro il muro](https://img.olegs.be/uploads/2016/09/mobile-web-is-slow-phone-rage-throw-wall.gif)
 
 ### Ottimizzazione per i motori di ricerca (SEO)
 
