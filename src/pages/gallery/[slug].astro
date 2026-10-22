@@ -48,10 +48,10 @@ const { Content } = gallery ? await render(gallery) : { Content: undefined };
     {gallery.body?.trim() && Content && (
       <div class="body wrap"><Content /></div>
     )}
-    <JustifiedGrid photos={gallery.data.photos} galleryTitle={gallery.data.title} />
+    <JustifiedGrid photos={gallery.data.photos} />
     <nav class="pager wrap mono" aria-label="More galleries">
-      {props.next ? <a href={galleryPath(props.next)} rel="next">← {props.next.data.title}</a> : <span></span>}
-      {props.prev && <a href={galleryPath(props.prev)} rel="prev">{props.prev.data.title} →</a>}
+      {props.next ? <a href={galleryPath(props.next)} rel="next"><span aria-hidden="true">←</span> <span class="visually-hidden">Older gallery: </span>{props.next.data.title}</a> : <span></span>}
+      {props.prev && <a href={galleryPath(props.prev)} rel="prev"><span class="visually-hidden">Newer gallery: </span>{props.prev.data.title} <span aria-hidden="true">→</span></a>}
     </nav>
     <Lightbox />
   </Base>

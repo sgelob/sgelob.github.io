@@ -18,4 +18,4 @@ I often attend local Meetups, [Creative Mornings Turin](https://creativemornings
 
 **Do you have problems you need help with? Do you want to work together? Maybe you want to chat and need some advice…**
 
-**[Get in touch](mailto:44_tildes_agog@icloud.com) and let’s talk!**
+**[Get in touch](mailto:44_tildes_agog@icloud.com?subject=Message%20from%20olegs.be) and let’s talk!**

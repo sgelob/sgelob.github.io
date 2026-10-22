@@ -35,6 +35,10 @@ type Props =
 const props = Astro.props as Props;
 const post = props.post;
 const { Content } = post ? await render(post) : { Content: undefined };
+// The pager speaks the post's language: its name and the hidden older/newer prefixes.
+const pager = post?.data.lang === 'it'
+  ? { label: 'Altri articoli', older: 'Articolo precedente', newer: 'Articolo successivo' }
+  : { label: 'More posts', older: 'Older post', newer: 'Newer post' };
 ---
 
 {props.redirectTo !== undefined ? (
@@ -54,9 +58,9 @@ const { Content } = post ? await render(post) : { Content: undefined };
       ))}
     </Fragment>
     <Content />
-    <nav class="pager mono" aria-label="More posts" slot="after">
-      {props.next ? <a href={postPath(props.next)} rel="next">← {props.next.data.title}</a> : <span></span>}
-      {props.prev && <a href={postPath(props.prev)} rel="prev">{props.prev.data.title} →</a>}
+    <nav class="pager mono" aria-label={pager.label} slot="after">
+      {props.next ? <a href={postPath(props.next)} rel="next"><span aria-hidden="true">←</span> <span class="visually-hidden">{pager.older}: </span>{props.next.data.title}</a> : <span></span>}
+      {props.prev && <a href={postPath(props.prev)} rel="prev"><span class="visually-hidden">{pager.newer}: </span>{props.prev.data.title} <span aria-hidden="true">→</span></a>}
     </nav>
   </Reading>
 )}

@@ -1,9 +1,13 @@
+const EMAIL = '44_tildes_agog@icloud.com';
+
 export const SITE = {
   name: 'olegs',
   author: 'Olegs Belousovs',
   description: 'Product Management and Photography',
   url: 'https://olegs.be',
-  email: '44_tildes_agog@icloud.com',
+  email: EMAIL,
+  /** Every Email link: the subject tells the owner the message came from the site. */
+  mailto: `mailto:${EMAIL}?subject=${encodeURIComponent('Message from olegs.be')}`,
 } as const;
 
 export type Lang = 'en' | 'it';

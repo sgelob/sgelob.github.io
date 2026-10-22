@@ -19,7 +19,8 @@ const galleries = defineCollection({
     seoTitle: z.string().optional(),
     seoDescription: z.string().optional(),
     oldSlugs: z.array(z.string()),
-    photos: z.array(z.object({ src: z.string(), width: z.number(), height: z.number() })),
+    // `alt` describes the photo; without it the grid falls back to "Photo N" (the h1 names the gallery).
+    photos: z.array(z.object({ src: z.string(), width: z.number(), height: z.number(), alt: z.string().optional() })),
   }),
 });
 
