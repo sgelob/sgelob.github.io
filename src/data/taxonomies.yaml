@@ -1,0 +1,65 @@
+genres:
+  - slug: abandoned-places
+    name: Abandoned
+    description: I find peace in these places, my mind rests from routine and noise of the crowded metropolis. Here everything stopped and remained intact for years and abandoned places are like a big urban cemeteries.
+  - slug: abstract
+    name: Abstract
+    description: My abstract visions represented through experimental and conceptual photographies.
+  - slug: music-events
+    name: Music Events
+    description: I follow the electronic music scene since I was a kid. I like underground clubs with international guests, but also support the local DJs. I document the parties from different points of view of clubbers and musicians.
+  - slug: old-film-cameras
+    name: Old Cameras
+    description: The new is not always better than the old. My personal collection of the old Soviet film cameras, some are working and others are used as knick knacks.
+  - slug: people
+    name: People
+    description: I’m a social animal so I have many friends in different cultures and I like to photograph them. I steal even the moments of strangers around the world.
+  - slug: world-places
+    name: World Places
+    description: How to spend almost all your money on traveling and invest in yourself by opening new horizons and breaking down mental barriers.
+countries:
+  - slug: austria
+    name: Austria
+  - slug: belgium
+    name: Belgium
+  - slug: czech-republic
+    name: Czech Republic
+  - slug: france
+    name: France
+  - slug: germany
+    name: Germany
+  - slug: italy
+    name: Italy
+  - slug: monaco
+    name: Monaco
+  - slug: portugal
+    name: Portugal
+  - slug: russia
+    name: Russia
+  - slug: spain
+    name: Spain
+  - slug: netherlands
+    name: The Netherlands
+  - slug: usa
+    name: USA
+  - slug: world
+    name: World
+categories:
+  - slug: design
+    name: Design
+  - slug: meetup
+    name: Meetup
+  - slug: organization
+    name: Organization
+  - slug: personal-growth
+    name: Personal Growth
+  - slug: product-management
+    name: Product Management
+  - slug: uncategorized
+    name: Uncategorized
+  - slug: user-experience
+    name: User Experience
+  - slug: web-performance
+    name: Web Performance
+  - slug: wordpress
+    name: WordPress
