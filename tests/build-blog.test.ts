@@ -79,6 +79,12 @@ describe('post page', () => {
     expect(html).toContain('<title>Come organizzare un WordPress Meetup informale con Post-it — olegs</title>');
   });
 
+  test('post images keep their own width up to the column: a small GIF is not stretched', () => {
+    const html = read('dist/2016/10/cosa-sono-web-performance-perche-devi-preoccupartene/index.html');
+    expect(html).toContain('<img src="https://img.olegs.be/uploads/2016/09/mobile-web-is-slow-phone-rage-throw-wall.gif"');
+    expect(html).toMatch(/\.prose\[[\w-]+\] img\{width:auto;max-width:100%;height:auto\}/);
+  });
+
   test('raw script embeds survive', () => {
     const html = read('dist/2016/11/note-impressioni-conferenza-webperfdays-amsterdam/index.html');
     expect(html).toContain('class="speakerdeck-embed"');
