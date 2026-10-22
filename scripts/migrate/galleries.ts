@@ -31,13 +31,13 @@ function primaryGenre(db: WpDb, post: WpPost): WpTerm | undefined {
 }
 
 /** `_thumbnail_id` is an attachment post id; a missing or deleted attachment yields undefined. */
-function thumbnailPath(db: WpDb, post: WpPost): string | undefined {
+export function thumbnailPath(db: WpDb, post: WpPost): string | undefined {
   const id = Number(db.meta(post.ID, '_thumbnail_id'));
   const guid = id ? db.post(id)?.guid : undefined;
   return guid ? (uploadPath(guid) ?? undefined) : undefined;
 }
 
-function decodeSlug(slug: string): string {
+export function decodeSlug(slug: string): string {
   try {
     return decodeURIComponent(slug);
   } catch {
@@ -46,7 +46,7 @@ function decodeSlug(slug: string): string {
 }
 
 /** Optional text meta: absent and empty both mean "not set". */
-const optionalMeta = (db: WpDb, id: number, key: string): string | undefined => db.meta(id, key) || undefined;
+export const optionalMeta = (db: WpDb, id: number, key: string): string | undefined => db.meta(id, key) || undefined;
 
 export function buildGallery(db: WpDb, post: WpPost, warn: (msg: string) => void): GalleryDoc {
   const slug = post.post_name;
