@@ -59,6 +59,13 @@ describe('gallery page', () => {
     expect(html).toMatch(/@media \(width<=719px\)\{\.justified\{--basis:150px\}\}/);
   });
 
+  test('darkHeader: the hero is marked for the stronger scrims, only when set', () => {
+    const hero = (slug: string) => /<header class="hero"[^>]*>/.exec(read(`dist/gallery/${slug}/index.html`))?.[0];
+    expect(hero('kiev4a-type2-soviet-35mm-rangefinder-film-camera')).toContain('data-dark-header');
+    expect(hero('berlin-germany')).toBeDefined();
+    expect(hero('berlin-germany')).not.toContain('data-dark-header'); // darkHeader: false
+  });
+
   test('a gallery with text renders its Markdown body', () => {
     const html = read('dist/gallery/zenit-e-soviet-35mm-reflex-film-camera/index.html');
     expect(html).toContain('<strong>Producer:</strong> KMZ/BeLomo');
