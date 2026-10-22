@@ -1,6 +1,6 @@
 ---
 title: Olegs Belousovs
-path: /agile-scrum-product-owner-manager-turin-italy/
+path: /about/
 lang: en
 seoTitle: Olegs Belousovs – Product Manager
 seoDescription: Product Manager in Italy (originally from Latvia). Passionate about web community, open source, hiking, MTB, travel, photography, vinyl, and reading.

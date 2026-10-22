@@ -1,6 +1,6 @@
 export type Section = 'photos' | 'blog' | 'about';
 
-export const ABOUT_PATH = '/agile-scrum-product-owner-manager-turin-italy/';
+export const ABOUT_PATH = '/about/';
 
 export const NAV_LINKS: readonly { section: Section; label: string; href: string }[] = [
   { section: 'photos', label: 'Photos', href: '/photos/' },
