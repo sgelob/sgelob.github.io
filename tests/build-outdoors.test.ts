@@ -41,7 +41,8 @@ describe('nav', () => {
 describe('trip page', () => {
   test('title, hero meta in order, search marks, story, route block, photos with alts, the lightbox', () => {
     const html = read(TRIP);
-    expect(html).toContain('<title>Canosio – Gardetta — Outdoors — olegs</title>');
+    expect(html).toContain('<title>Canosio – Gardetta · MTB · Valle Maira · 2026 — Outdoors — olegs</title>'); // activity, area and year in the title
+    expect(html).toMatch(/<meta property="og:title" content="Canosio – Gardetta · MTB · Valle Maira · 2026 — Outdoors — olegs"/);
     expect(html).toMatch(/<h1 class="title"[^>]*>Canosio – Gardetta<\/h1>/);
     const meta = [...(html.match(/<p class="meta mono"[^>]*>([\s\S]*?)<\/p>/)?.[1] ?? '').matchAll(/<span[^>]*>([^<]*)<\/span>/g)].map((m) => m[1]);
     expect(meta).toEqual(['Italy', 'MTB', 'Trail bike', '38.1 km', '1,500 m up', 'Valle Maira', 'September 2026', '26 photos']);
