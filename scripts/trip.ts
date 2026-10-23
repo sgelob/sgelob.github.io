@@ -11,7 +11,7 @@ import { spawn } from 'node:child_process';
 import { mkdtempSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { downloadKomootImages, fetchKomootTour } from './trip/komoot';
+import { downloadKomootImages, fetchKomootTour, komootLogin, type KomootAuth } from './trip/komoot';
 import { runWizard, type Ask } from './trip/wizard';
 
 if (existsSync('.env')) process.loadEnvFile('.env');
@@ -49,6 +49,22 @@ try {
   process.exit(2);
 }
 
+// With KOMOOT_EMAIL and KOMOOT_PASSWORD in .env the wizard logs in once, so Komoot lists all of a tour's photos.
+let auth: Promise<KomootAuth | undefined> | undefined;
+const komootAuth = () =>
+  (auth ??= (async () => {
+    const { KOMOOT_EMAIL: email, KOMOOT_PASSWORD: password } = process.env;
+    if (!email || !password) return undefined;
+    try {
+      const session = await komootLogin(email, password, fetch);
+      console.log('  Logged in to Komoot.');
+      return session;
+    } catch (error) {
+      console.log(`  ${error instanceof Error ? error.message : error}; going on without a login.`);
+      return undefined;
+    }
+  })());
+
 runWizard({
   ask,
   say: (line) => console.log(line),
@@ -58,7 +74,7 @@ runWizard({
   tracksDir: `${root}src/content/outdoors/tracks`,
   notesDir: `${process.env.DRAFTS_DIR ?? `${root}olegs-be-drafts`}/outdoors`,
   countries: taxonomies.countries.map((c) => c.slug),
-  komoot: (url) => fetchKomootTour(url, fetch),
+  komoot: async (url) => fetchKomootTour(url, fetch, await komootAuth()),
   reveal: (dir) => { if (process.platform === 'darwin') spawn('open', [dir], { stdio: 'ignore', detached: true }).unref(); },
   komootPhotos: async (tour) => {
     const dir = mkdtempSync(join(tmpdir(), `komoot-${tour.id}-`));
