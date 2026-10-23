@@ -43,9 +43,9 @@ export function tripPath(trip: Pick<Trip, 'id'>): string {
   return `/outdoors/${trip.id}/`;
 }
 
-/** `/outdoors/<id>.gpx` */
+/** `/outdoors/<id>-olegs-be.gpx`: the download always says where it came from, whatever the browser names the file after. */
 export function trackPath(trip: Pick<Trip, 'id'>): string {
-  return `/outdoors/${trip.id}.gpx`;
+  return `/outdoors/${trip.id}-olegs-be.gpx`;
 }
 
 /** `/outdoors/<id>.contours.svg`: the contour layer behind the route map, when the trip has one. */

@@ -46,7 +46,7 @@ describe('RouteBlock', () => {
     expect(html).toMatch(/<text class="axis"[^>]*>38 km<\/text>/); // the total, from the front matter
     expect(html).toMatch(/<svg class="profile"[^>]*aria-label="Elevation profile, from 1,200 m to 2,176 m"/);
     expect(html).toContain('38 km · 1,700 m up');
-    expect(html).toMatch(/<a href="\/outdoors\/x.gpx" download[^>]*>Download GPX/);
+    expect(html).toMatch(/<a href="\/outdoors\/x.gpx" download="x.gpx"[^>]*>Download GPX/); // the saved file is named after the address
     expect(html).toMatch(/<a href="https:\/\/www.komoot.com\/tour\/1" rel="noopener"[^>]*>Komoot/);
     expect(html).not.toContain('Parking');
   });

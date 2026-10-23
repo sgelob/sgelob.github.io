@@ -57,7 +57,7 @@ Shareable GPX files are committed under `src/content/outdoors/tracks/`: the repo
 npm run track -- <export.gpx> <slug>
 ```
 
-This writes `src/content/outdoors/tracks/<slug>.gpx` with the route only (latitude, longitude, elevation), refuses to overwrite a track, and prints the point count; then set `track: <slug>.gpx`. The tests fail on a committed track that still has times, extensions, metadata or waypoints. A discreet trip (`track: false`) never has its export in the repo: if it is kept, it stays in `olegs-be-data/`, which is git-ignored.
+This writes `src/content/outdoors/tracks/<slug>.gpx` with the route only (latitude, longitude, elevation; visitors download it as `<slug>-olegs-be.gpx`), refuses to overwrite a track, and prints the point count; then set `track: <slug>.gpx`. The tests fail on a committed track that still has times, extensions, metadata or waypoints. A discreet trip (`track: false`) never has its export in the repo: if it is kept, it stays in `olegs-be-data/`, which is git-ignored.
 
 A discreet trip has its `date` on the 1st of the month and no `links` (the build checks both), and nothing it publishes names or hints at a start, parking, access road or exact timing: not the story, and not the slug, the title, the alt texts or the `seoDescription` either. The photo file names are guaranteed by the scaffold (`<slug>-NN.jpg`). The slugs `hikes` and `rides` are taken by the filter pages.
 
