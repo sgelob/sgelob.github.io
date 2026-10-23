@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && pagefind --site dist",
     "preview": "astro preview",
     "astro": "astro",
     "test": "vitest run",
@@ -38,6 +38,7 @@
     "@types/node": "^26.6.5",
     "@types/turndown": "^5.0.6",
     "basic-ftp": "^6.2.3",
+    "pagefind": "^1.5.2",
     "satteri": "^0.10.5",
     "tsx": "^4.23.15",
     "typescript": "^6.0.3",

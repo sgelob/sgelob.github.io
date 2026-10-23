@@ -1,6 +1,7 @@
 ---
 import Base from './Base.astro';
 import type { Lang } from '../lib/site';
+import { pagefindAttrs, type SearchMarks } from '../lib/search';
 
 interface Props {
   /** The document title. */
@@ -12,15 +13,17 @@ interface Props {
   ogImage?: string;
   /** An index page (Events, Books, Quotes): column at the left gutter and a section-size title, like Blog and Photos. */
   section?: boolean;
+  /** Index the article for the site search. */
+  search?: SearchMarks;
 }
 
-const { heading, section = false, ...base } = Astro.props;
+const { heading, section = false, search, ...base } = Astro.props;
 ---
 
 <Base {...base}>
-  <article class:list={['reading', { section }]}>
+  <article class:list={['reading', { section }]} {...pagefindAttrs(search)}>
     <header class="header">
-      <h1 class="title">{heading}</h1>
+      <h1 class="title" data-pagefind-meta="title">{heading}</h1>
       {Astro.slots.has('meta') && <p class="meta mono"><slot name="meta" /></p>}
     </header>
     <div class="prose"><slot /></div>

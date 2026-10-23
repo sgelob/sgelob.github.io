@@ -50,6 +50,15 @@ const pager = post?.data.lang === 'it'
     description={post.data.seoDescription ?? post.data.excerpt}
     lang={post.data.lang}
     ogImage={post.data.cover && originalUrl(post.data.cover)}
+    search={{
+      type: 'post',
+      meta: {
+        date: isoDate(post.data.date),
+        // Post covers have no recorded size, so a variant may not exist: the original always does.
+        image: post.data.cover && originalUrl(post.data.cover),
+        excerpt: post.data.excerpt,
+      },
+    }}
   >
     <Fragment slot="meta">
       <time datetime={isoDate(post.data.date)}>{formatDate(post.data.date, post.data.lang)}</time>
@@ -58,7 +67,7 @@ const pager = post?.data.lang === 'it'
       ))}
     </Fragment>
     <Content />
-    <nav class="pager mono" aria-label={pager.label} slot="after">
+    <nav class="pager mono" aria-label={pager.label} slot="after" data-pagefind-ignore>
       {props.next ? <a href={postPath(props.next)} rel="next"><span aria-hidden="true">←</span> <span class="visually-hidden">{pager.older}: </span>{props.next.data.title}</a> : <span></span>}
       {props.prev && <a href={postPath(props.prev)} rel="prev"><span class="visually-hidden">{pager.newer}: </span>{props.prev.data.title} <span aria-hidden="true">→</span></a>}
     </nav>

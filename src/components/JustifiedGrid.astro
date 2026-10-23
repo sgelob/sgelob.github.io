@@ -33,6 +33,7 @@ const ratio = (p: Photo): number => Math.round((p.width / p.height) * 1e4) / 1e4
         width={photo.width}
         height={photo.height}
         alt={photo.alt ?? `Photo ${i + 1}`}
+        indexAlt={photo.alt !== undefined}
         sizes="(min-width: 1100px) 33vw, 50vw"
         maxWidth={960}
       />

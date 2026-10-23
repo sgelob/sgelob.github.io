@@ -36,7 +36,7 @@ const { Content } = page ? await render(page) : { Content: undefined };
 {props.redirectTo !== undefined ? (
   <Redirect to={props.redirectTo} />
 ) : page && Content && (
-  <Reading title={page.data.seoTitle ?? `${page.data.title} — olegs`} heading={page.data.title} description={page.data.seoDescription} lang={page.data.lang}>
+  <Reading title={page.data.seoTitle ?? `${page.data.title} — olegs`} heading={page.data.title} description={page.data.seoDescription} lang={page.data.lang} search={{ type: 'other' }}>
     <Content />
   </Reading>
 )}
