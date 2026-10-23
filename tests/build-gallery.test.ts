@@ -46,6 +46,22 @@ describe('gallery page', () => {
     expect(html).toMatch(/<a href="\/gallery\/munich-germany\/" rel="prev"[^>]*><span class="visually-hidden"[^>]*>Newer gallery: <\/span>Munich – Germany <span aria-hidden="true"[^>]*>→<\/span><\/a>/);
   });
 
+  test('related galleries: four covers from the same country, linking to its archive, never the gallery itself', () => {
+    const html = venezia();
+    const section = html.match(/<section class="related" aria-labelledby="related" data-pagefind-ignore[^>]*>([\s\S]*?)<\/section>/)?.[1] ?? '';
+    expect(section).toMatch(/<h2 id="related"[^>]*>More from Italy<\/h2>/);
+    expect(section).toMatch(/<a href="\/photos\/country\/italy\/"[^>]*>All from Italy/);
+    expect(count(section, 'class="gallery-card"')).toBe(4);
+    expect(section).toContain('href="/gallery/florence-italy/"');
+    expect(section).not.toContain('href="/gallery/venezia-italy/"');
+  });
+
+  test('related galleries fall back to the genre when the country has no other gallery', () => {
+    const html = read('dist/gallery/ljubljana-slovenia/index.html');
+    expect(html).toMatch(/<h2 id="related"[^>]*>More World Places<\/h2>/);
+    expect(html).toMatch(/<a href="\/photos\/genre\/world-places\/"[^>]*>All World Places/);
+  });
+
   test('the lightbox is a small module that imports PhotoSwipe on demand', () => {
     const html = venezia();
     expect(html).not.toContain('photoswipe'); // neither its stylesheet nor its code up front

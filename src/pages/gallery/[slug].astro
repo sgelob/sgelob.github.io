@@ -2,11 +2,13 @@
 import type { GetStaticPaths } from 'astro';
 import { render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
+import GalleryGrid from '../../components/GalleryGrid.astro';
 import GalleryHero from '../../components/GalleryHero.astro';
 import JustifiedGrid from '../../components/JustifiedGrid.astro';
 import Lightbox from '../../components/Lightbox.astro';
 import Redirect from '../../components/Redirect.astro';
-import { galleryPath, getGalleries, neighbours, type Gallery } from '../../lib/collections';
+import SectionLabel from '../../components/SectionLabel.astro';
+import { galleryPath, getGalleries, neighbours, related, type Gallery, type Related } from '../../lib/collections';
 import { coverSize } from '../../lib/paths';
 import { largestVariantUrl } from '../../lib/images';
 import { isoDate } from '../../lib/site';
@@ -23,17 +25,21 @@ export const getStaticPaths = (async () => {
     props: { redirectTo: to },
   }));
   return [
-    ...galleries.map((gallery) => ({ params: { slug: gallery.id }, props: { gallery, ...neighbours(galleries, gallery.id) } })),
+    ...galleries.map((gallery) => ({ params: { slug: gallery.id }, props: { gallery, ...neighbours(galleries, gallery.id), related: related(galleries, gallery.id) } })),
     ...redirects,
   ];
 }) satisfies GetStaticPaths;
 
 type Props =
-  | { gallery: Gallery; prev?: Gallery; next?: Gallery; redirectTo?: undefined }
+  | { gallery: Gallery; prev?: Gallery; next?: Gallery; related?: Related<Gallery>; redirectTo?: undefined }
   | { redirectTo: string; gallery?: undefined };
 
 const props = Astro.props as Props;
 const gallery = props.gallery;
+// The related block: galleries from the same country (link to its archive), else the same genre.
+const more = gallery && props.related && (props.related.by === 'country'
+  ? { title: `More from ${countryName(gallery.data.country)}`, href: `/photos/country/${gallery.data.country}/`, link: `All from ${countryName(gallery.data.country)}` }
+  : { title: `More ${genreName(gallery.data.genre)}`, href: `/photos/genre/${gallery.data.genre}/`, link: `All ${genreName(gallery.data.genre)}` });
 const { Content } = gallery ? await render(gallery) : { Content: undefined };
 // The search result row: a small cover (the 480 jpg, or the original of a narrower cover) and the meta line.
 const search = gallery && {
@@ -66,6 +72,12 @@ const search = gallery && {
       {props.next ? <a href={galleryPath(props.next)} rel="next"><span aria-hidden="true">←</span> <span class="visually-hidden">Older gallery: </span>{props.next.data.title}</a> : <span></span>}
       {props.prev && <a href={galleryPath(props.prev)} rel="prev"><span class="visually-hidden">Newer gallery: </span>{props.prev.data.title} <span aria-hidden="true">→</span></a>}
     </nav>
+    {props.related && more && (
+      <section class="related" aria-labelledby="related" data-pagefind-ignore>
+        <SectionLabel id="related" title={more.title} href={more.href} link={more.link} />
+        <GalleryGrid galleries={props.related.galleries} />
+      </section>
+    )}
     <Lightbox />
   </Base>
 )}
@@ -97,4 +109,6 @@ const search = gallery && {
   .pager a { transition: color 120ms ease; }
 
   .pager a:hover { color: var(--muted); }
+
+  .related { margin-top: 64px; }
 </style>
