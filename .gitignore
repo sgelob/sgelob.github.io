@@ -9,3 +9,6 @@ dist
 .DS_Store
 olegs-be-data/
 olegs-be-drafts/
+
+# Design specs and implementation plans stay local (#24)
+docs/superpowers/
