@@ -1,5 +1,6 @@
 import { parse } from 'yaml';
 import raw from '../data/home.yaml?raw';
+import { quotes, type Quote } from './quotes';
 
 export interface Home {
   photosIntro: string;
@@ -49,3 +50,20 @@ export function pickFeatured<T extends { id: string }>(galleries: readonly T[], 
 /** The first `count` paragraphs of a Markdown body (paragraphs are separated by blank lines). */
 export const leadParagraphs = (body: string, count = 2): string[] =>
   body.split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean).slice(0, count);
+
+/** The longest quote the home shows: all but six fit; the few long ones would outweigh the bio above them. */
+export const HOME_QUOTE_MAX = 160;
+
+/** Days since 1970 for the date's calendar day, so the pick changes at midnight and not with the hour. */
+const dayNumber = (date: Date): number => Math.floor(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) / 86_400_000);
+
+/**
+ * The quote for the home on `date`: the short quotes in one fixed shuffled order, one step a day. Unlike a fresh draw
+ * each day, two days in a row never show the same quote, and every quote comes round before any repeats.
+ */
+export function quoteOfTheDay(date = new Date(), list: readonly Quote[] = quotes): Quote {
+  // Each text once: a few quotes are in the file twice, and they should not get two days.
+  const short = [...new Map(list.filter((q) => q.text.length <= HOME_QUOTE_MAX).map((q) => [q.text, q])).values()];
+  const order = pickRandom(short, short.length, 20261023); // a fixed seed: the order never changes, only the day moves along it
+  return order[dayNumber(date) % order.length];
+}
