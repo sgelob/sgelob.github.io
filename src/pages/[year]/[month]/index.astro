@@ -3,7 +3,7 @@ import type { GetStaticPaths } from 'astro';
 import Base from '../../../layouts/Base.astro';
 import PostList from '../../../components/PostList.astro';
 import { getPosts, type Post } from '../../../lib/collections';
-import { formatMonthYear } from '../../../lib/site';
+import { formatMonthYear, pageTitle } from '../../../lib/site';
 
 export const getStaticPaths = (async () => {
   const posts = await getPosts();
@@ -27,6 +27,6 @@ const { posts } = Astro.props;
 const heading = formatMonthYear(posts[0]!.data.date, 'it');
 ---
 
-<Base title={`${heading} — Blog — olegs`} lang="it">
+<Base title={pageTitle(heading, 'Blog')} lang="it">
   <PostList posts={posts} heading={heading} />
 </Base>

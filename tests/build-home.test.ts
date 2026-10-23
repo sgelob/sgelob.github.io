@@ -59,7 +59,7 @@ describe('pages', () => {
 
   test('events: a heading per year, Markdown links and italics rendered', () => {
     const html = read('dist/events/index.html');
-    expect(html).toContain('<title>Events — olegs</title>');
+    expect(html).toContain('<title>Events – Olegs Belousovs</title>');
     expect(count(html, '<h2 class="year mono')).toBe(12);
     expect(html).toContain('<a href="https://www.productheroes.it/conference/">Product Heroes Conference</a> – <em>October 1-2, 2026 – Milan, Italy</em>');
     expect(html).not.toContain('](');
@@ -67,7 +67,7 @@ describe('pages', () => {
 
   test('books: favourite list keeps reversed numbering, escapes rendered', () => {
     const html = read('dist/books/index.html');
-    expect(html).toContain('<title>Books — olegs</title>');
+    expect(html).toContain('<title>Books – Olegs Belousovs</title>');
     expect(html).toContain('<ol reversed');
     expect(html).toContain('The Subtle Art of Not Giving a F*ck – <em>Mark Manson</em>');
     expect(html).toContain('Rework – <em>Jason Fried &amp; David Heinemeier Hansson</em>');
@@ -77,14 +77,14 @@ describe('pages', () => {
 describe('quotes', () => {
   test('grouped by author with anchors', () => {
     const html = read('dist/quotes/index.html');
-    expect(html).toContain('<title>My Favourite Inspirational Quotes on Life and Design — olegs</title>');
+    expect(html).toContain('<title>My Favourite Inspirational Quotes on Life and Design – Olegs Belousovs</title>');
     expect(count(html, '<h2 id="')).toBe(141);
     expect(html).toMatch(/<h2 id="abraham-lincoln"[^>]*><a href="\/quote-author\/abraham-lincoln\/"[^>]*>Abraham Lincoln<\/a><\/h2>/);
   });
 
   test('author page: title, filtered list, back link', () => {
     const html = read('dist/quote-author/abraham-lincoln/index.html');
-    expect(html).toContain('<title>Abraham Lincoln — Quotes — olegs</title>');
+    expect(html).toContain('<title>Abraham Lincoln · Quotes – Olegs Belousovs</title>');
     expect(html).toMatch(/<h1[^>]*>Abraham Lincoln<\/h1>/);
     expect(html).toContain('The best way to predict your future is to create it.');
     expect(count(html, 'class="quote"')).toBeLessThan(188);

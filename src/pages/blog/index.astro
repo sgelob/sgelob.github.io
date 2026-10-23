@@ -1,4 +1,5 @@
 ---
+import { pageTitle } from '../../lib/site';
 import { getEntry } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import PostList from '../../components/PostList.astro';
@@ -8,7 +9,7 @@ const page = await getEntry('pages', 'blog');
 const posts = await getPosts();
 ---
 
-<Base title={page?.data.seoTitle ?? 'Blog — olegs'} description={page?.data.seoDescription} lang="it">
+<Base title={pageTitle(page?.data.seoTitle ?? 'Blog')} description={page?.data.seoDescription} lang="it">
   <PostList posts={posts} heading="Blog" lead={'Appunti su web performance, meetup e prodotto, dal 2016. <span lang="en">The posts are in Italian.</span>'} />
 </Base>
 
