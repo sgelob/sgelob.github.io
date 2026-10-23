@@ -4,7 +4,7 @@ import { join } from 'node:path';
 import { describe, expect, test } from 'vitest';
 import { parse } from 'yaml';
 import type { ObjectStore } from '../scripts/photos/r2';
-import { runWizard, slugify, type WizardDeps } from '../scripts/trip/wizard';
+import { pathOf, runWizard, slugify, type WizardDeps } from '../scripts/trip/wizard';
 import type { KomootTour } from '../scripts/trip/komoot';
 import { tripSchema } from '../src/lib/outdoors';
 
@@ -111,6 +111,13 @@ describe('trip wizard', () => {
     expect(data).toMatchObject({ title: 'Assietta ridge', activity: 'ride', bike: 'xc', distance: 52, climb: 1100, track: false, cover: '2026/09/assietta-ridge-01.jpg' });
     expect(said.some((l) => l.includes('1 photo.'))).toBe(true);
     expect(said.some((l) => l.includes('Downloading from Komoot'))).toBe(true);
+  });
+
+  test('pathOf: a path dragged into the terminal, quoted or with escaped spaces', () => {
+    expect(pathOf("'/Users/o/Downloads/2026-09-20 Canosio – Gardetta - komoot.gpx'")).toBe('/Users/o/Downloads/2026-09-20 Canosio – Gardetta - komoot.gpx');
+    expect(pathOf('"/tmp/a b.gpx"')).toBe('/tmp/a b.gpx');
+    expect(pathOf('/tmp/a\\ b/c\\ d.gpx ')).toBe('/tmp/a b/c d.gpx');
+    expect(pathOf('~/x')).toBe(`${process.env.HOME}/x`);
   });
 
   test('slugify', () => {
