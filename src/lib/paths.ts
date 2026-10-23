@@ -38,3 +38,30 @@ export function coverSize(gallery: Pick<Gallery, 'data'>): { width: number; heig
   const photo = photos.find((p) => p.src === cover);
   return photo && { width: photo.width, height: photo.height };
 }
+
+export interface Related<T> {
+  /** What the first pick shares with the gallery, for the heading: its country or only its genre. */
+  by: 'country' | 'genre';
+  galleries: T[];
+}
+
+/**
+ * Up to `count` other galleries to show after one. Same country and genre come first, then the same
+ * country, then the same genre; within a tier the closest in date wins. Undefined when nothing is shared.
+ */
+export function related<T extends { id: string; data: { date: Date; country: string; genre: string } }>(
+  galleries: readonly T[],
+  id: string,
+  count = 4,
+): Related<T> | undefined {
+  const self = galleries.find((g) => g.id === id);
+  if (!self) return undefined;
+  const tier = (g: T) => (g.data.country === self.data.country ? 2 : 0) + (g.data.genre === self.data.genre ? 1 : 0);
+  const distance = (g: T) => Math.abs(g.data.date.getTime() - self.data.date.getTime());
+  const picks = galleries
+    .filter((g) => g.id !== id && tier(g) > 0)
+    .sort((a, b) => tier(b) - tier(a) || distance(a) - distance(b) || a.id.localeCompare(b.id))
+    .slice(0, count);
+  if (picks.length === 0) return undefined;
+  return { by: picks[0].data.country === self.data.country ? 'country' : 'genre', galleries: picks };
+}

@@ -1,0 +1,40 @@
+---
+// The mono label above a section: a heading on the left and a "see all" link on the right, over a rule.
+// Used on the home page and under a gallery for the related galleries.
+interface Props {
+  id: string;
+  title: string;
+  href: string;
+  link: string;
+}
+
+const { id, title, href, link } = Astro.props;
+---
+
+<div class="lab mono">
+  <h2 id={id}>{title}</h2>
+  <a href={href}>{link} <span aria-hidden="true">↗</span></a>
+</div>
+
+<style>
+  .lab {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 24px;
+    margin: 0 var(--gutter) 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--rule);
+  }
+
+  .lab h2 { font: inherit; }
+
+  .lab a {
+    padding-block: 5px;
+    margin-block: -5px;
+    color: var(--muted);
+    transition: color 120ms ease;
+  }
+
+  .lab a:hover { color: var(--fg); }
+</style>
