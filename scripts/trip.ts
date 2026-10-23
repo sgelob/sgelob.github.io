@@ -7,7 +7,10 @@ import { createInterface } from 'node:readline/promises';
 import { fileURLToPath } from 'node:url';
 import { parse } from 'yaml';
 import { storeFromEnv } from './photos/r2';
-import { fetchKomootTour } from './trip/komoot';
+import { mkdtempSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import { downloadKomootImages, fetchKomootTour } from './trip/komoot';
 import { runWizard, type Ask } from './trip/wizard';
 
 if (existsSync('.env')) process.loadEnvFile('.env');
@@ -55,6 +58,11 @@ runWizard({
   notesDir: `${process.env.DRAFTS_DIR ?? `${root}olegs-be-drafts`}/outdoors`,
   countries: taxonomies.countries.map((c) => c.slug),
   komoot: (url) => fetchKomootTour(url, fetch),
+  komootPhotos: async (tour) => {
+    const dir = mkdtempSync(join(tmpdir(), `komoot-${tour.id}-`));
+    await downloadKomootImages(tour.images, dir, fetch, (line) => console.log(line));
+    return dir;
+  },
 }).then(
   () => { rl.close(); process.exit(0); },
   (error) => { console.error(error instanceof Error ? error.message : error); rl.close(); process.exit(1); },
