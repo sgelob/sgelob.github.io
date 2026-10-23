@@ -1,0 +1,47 @@
+---
+import TripCard from './TripCard.astro';
+import type { Trip } from '../lib/outdoors';
+
+interface Props {
+  trips: Trip[];
+  /** One grid among several on a page: a shorter gap below, the page adds the rest. */
+  embedded?: boolean;
+}
+
+const { trips, embedded = false } = Astro.props;
+---
+
+{trips.length === 0 ? (
+  <p class="empty mono wrap">No trips yet.</p>
+) : (
+  <ul class:list={["grid wrap", { embedded }]}>
+    {trips.map((trip) => (
+      <li><TripCard trip={trip} /></li>
+    ))}
+  </ul>
+)}
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding-block: 0 96px;
+    list-style: none;
+  }
+
+  .grid.embedded { padding-bottom: 64px; }
+
+  @media (min-width: 480px) {
+    .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  @media (min-width: 1100px) {
+    .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  }
+
+  .empty {
+    padding-block: 0 96px;
+    color: var(--muted);
+  }
+</style>
