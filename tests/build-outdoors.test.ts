@@ -27,6 +27,7 @@ describe('nav', () => {
     expect(hrefs.slice(0, 5)).toEqual(['/about/', '/photos/', '/outdoors/', '/blog/', '/search/']);
     expect(html).toMatch(/<a href="\/outdoors\/" aria-current="page"[^>]*>Outdoors<\/a>/);
     expect(count(html, 'aria-current="page"')).toBe(2); // nav + filter
+    expect(html).toMatch(/\.nav[^{]*\{[^}]*flex-wrap:wrap/); // five links wrap under the logo on a phone
   });
 });
 
