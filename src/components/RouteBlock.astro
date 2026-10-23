@@ -1,0 +1,102 @@
+---
+// The route of a trip: its shape seen from above, the elevation profile when the track carries elevation,
+// the front-matter distance and climb, and the links (the GPX download first). Pure: the page reads the file.
+import { elevationProfile, parseGpx, routeShape, simplifyPoints } from '../lib/gpx';
+import { formatClimb, formatKm } from '../lib/outdoors';
+
+interface Props {
+  /** The GPX document (the original, not the sanitised copy). */
+  xml: string;
+  distance: number;
+  climb: number;
+  downloadHref: string;
+  links?: { label: string; url: string }[];
+}
+
+const { xml, distance, climb, downloadHref, links = [] } = Astro.props;
+
+const all = parseGpx(xml);
+const points = simplifyPoints(all);
+const shape = routeShape(points);
+const profile = elevationProfile(points);
+
+const metres = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 });
+// The label names the real lowest and highest points, from the whole track: the drawn line is simplified and can cut a summit.
+const elevations = all.flatMap((p) => (p.ele === undefined ? [] : [p.ele]));
+const lowest = elevations.reduce((a, b) => Math.min(a, b), Infinity);
+const highest = elevations.reduce((a, b) => Math.max(a, b), -Infinity);
+const stats = `${formatKm(distance)} · ${formatClimb(climb)}`;
+
+// The profile line, and the same line closed down to the baseline for the soft fill under it.
+const [, , width, height] = (profile?.viewBox ?? '0 0 0 0').split(' ').map(Number);
+const pad = 8;
+const area = profile ? `${profile.d} L ${width - pad} ${height - pad} L ${pad} ${height - pad} Z` : '';
+---
+
+<section class="route wrap" aria-labelledby="route">
+  <h2 id="route" class="mono">Route</h2>
+  <div class="figures">
+    <svg class="shape" viewBox={shape.viewBox} role="img" aria-label="Shape of the route">
+      <path d={shape.d} fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" />
+    </svg>
+    {profile ? (
+      <div class="elevation">
+        <svg class="profile" viewBox={profile.viewBox} role="img" aria-label={`Elevation profile, from ${metres.format(lowest)} m to ${metres.format(highest)} m`}>
+          <path class="area" d={area} stroke="none" />
+          <path d={profile.d} fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" />
+        </svg>
+        <p class="stats mono">{stats}</p>
+      </div>
+    ) : (
+      <p class="stats mono">{stats}</p>
+    )}
+  </div>
+  <p class="links mono">
+    <a href={downloadHref} download>Download GPX <span aria-hidden="true">↗</span></a>
+    {links.map((l) => <a href={l.url} rel="noopener">{l.label} <span aria-hidden="true">↗</span></a>)}
+  </p>
+</section>
+
+<style>
+  .route {
+    padding-block: 48px 0;
+    color: var(--fg);
+  }
+
+  h2 {
+    margin-bottom: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--rule);
+    font-weight: inherit;
+  }
+
+  .figures {
+    display: grid;
+    gap: 24px;
+    align-items: end;
+  }
+
+  svg { display: block; width: 100%; height: auto; }
+
+  .profile { overflow: visible; }
+
+  .area { fill: rgb(236 236 236 / 0.08); }
+
+  .stats { color: var(--muted); margin-top: 12px; }
+
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+    margin-top: 24px;
+    color: var(--muted);
+  }
+
+  .links a { transition: color 120ms ease; }
+
+  .links a:hover { color: var(--fg); }
+
+  @media (min-width: 720px) {
+    .figures { grid-template-columns: 1fr 2fr; gap: 40px; }
+  }
+</style>

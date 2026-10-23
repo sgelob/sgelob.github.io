@@ -31,8 +31,18 @@ export function neighbours<T extends { id: string }>(
   return { prev: galleries[i - 1], next: galleries[i + 1] };
 }
 
+/** Anything with a cover and its photos: a gallery or a trip. */
+export interface HasCover {
+  data: {
+    cover: string;
+    coverWidth?: number;
+    coverHeight?: number;
+    photos: { src: string; width: number; height: number }[];
+  };
+}
+
 /** The cover's size: from `coverWidth`/`coverHeight`, else from the matching photo; undefined when unknown. */
-export function coverSize(gallery: Pick<Gallery, 'data'>): { width: number; height: number } | undefined {
+export function coverSize(gallery: HasCover): { width: number; height: number } | undefined {
   const { cover, coverWidth, coverHeight, photos } = gallery.data;
   if (coverWidth && coverHeight) return { width: coverWidth, height: coverHeight };
   const photo = photos.find((p) => p.src === cover);

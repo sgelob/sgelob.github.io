@@ -1,0 +1,111 @@
+import { describe, expect, test } from 'vitest';
+import { mkdtempSync, readdirSync, readFileSync as readSync, statSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import { activityFromSport, downloadKomootImages, fetchKomootImages, fetchKomootTour, komootLogin, tourIdFromUrl, type FetchLike } from '../scripts/trip/komoot';
+
+const body = readSync(new URL('./fixtures/komoot-tour.json', import.meta.url), 'utf8');
+const imagesBody = readSync(new URL('./fixtures/komoot-images.json', import.meta.url), 'utf8');
+const jpeg = readSync(new URL('./fixtures/sample-900x600.jpg', import.meta.url));
+const answering = (status: number, text = body): FetchLike => async (url) => {
+  if (url.includes('/images/')) return { ok: true, status: 200, text: async () => imagesBody, arrayBuffer: async () => new ArrayBuffer(0) };
+  return { ok: status >= 200 && status < 300, status, text: async () => text, arrayBuffer: async () => new ArrayBuffer(0) };
+};
+
+describe('komoot', () => {
+  test('tour id from the link forms Komoot uses', () => {
+    expect(tourIdFromUrl('https://www.komoot.com/tour/1134841094')).toBe('1134841094');
+    expect(tourIdFromUrl('https://www.komoot.com/it-it/tour/690659568?ref=wtd')).toBe('690659568');
+    expect(tourIdFromUrl('https://www.komoot.de/tour/18937346')).toBe('18937346');
+    expect(tourIdFromUrl('https://www.komoot.com/smarttour/e1336309189/x')).toBeUndefined();
+    expect(tourIdFromUrl('https://www.komoot.com/it-it/highlight/3512406')).toBeUndefined();
+  });
+
+  test('sports map to hike or ride, the rest to nothing', () => {
+    expect(activityFromSport('hike')).toBe('hike');
+    expect(activityFromSport('mtb')).toBe('ride');
+    expect(activityFromSport('e_mtb')).toBe('ride');
+    expect(activityFromSport('racebike')).toBeUndefined();
+  });
+
+  test('a public tour: name, sport, km to one decimal, climb rounded, local day, recorded flag; the start point is never read', async () => {
+    const asked: string[] = [];
+    const fetchImpl: FetchLike = async (url, init) => { asked.push(`${url} ${init?.headers?.Accept}`); return answering(200)(url, init); };
+    const tour = await fetchKomootTour('https://www.komoot.com/tour/1134841094', fetchImpl);
+    expect(asked[0]).toBe('https://api.komoot.de/v007/tours/1134841094 application/hal+json');
+    expect(tour).toMatchObject({ id: '1134841094', name: 'Colle delle Finestre – 10 historic Giro Italia climbs', sport: 'mtb', distanceKm: 93.1, climb: 2754, date: '2023-05-25', recorded: true });
+    expect(tour.images.map((i) => i.id)).toEqual([2, 1, 3]); // along the track, the unplaced one last
+    expect(tour.imagesTotal).toBe(3);
+    expect(JSON.stringify(tour)).not.toContain('start_point');
+    expect(JSON.stringify(tour)).not.toContain('location'); // nor the photos' locations
+  });
+
+  test('private, missing and odd answers become plain messages', async () => {
+    await expect(fetchKomootTour('https://www.komoot.com/tour/1', answering(403, ''))).rejects.toThrow('not public');
+    await expect(fetchKomootTour('https://www.komoot.com/tour/1', answering(404, ''))).rejects.toThrow('no Komoot tour with id 1');
+    await expect(fetchKomootTour('https://www.komoot.com/tour/1', answering(200, '{"id":"1"}'))).rejects.toThrow('without name');
+    await expect(fetchKomootTour('https://example.com/x', answering(200))).rejects.toThrow('not a Komoot tour link');
+  });
+});
+
+describe('komoot photos', () => {
+  test('images: plain src, along the track, an unplaced photo last, the size of the upload; none for a tour without', async () => {
+    const { images, total } = await fetchKomootImages('907671487', answering(200));
+    expect(total).toBe(3);
+    expect(images).toEqual([
+      { id: 2, src: 'https://d2exd72xrrp1s7.cloudfront.net/www/gg/b-p2-full/2', index: 300, createdAt: '2022-10-19T15:40:00.000Z', widthPx: 4608, heightPx: 3456 },
+      { id: 1, src: 'https://d2exd72xrrp1s7.cloudfront.net/www/gg/a-p1-full/1', index: 1208, createdAt: '2022-10-19T15:52:23.000Z', widthPx: 4608, heightPx: 3456 },
+      { id: 3, src: 'https://d2exd72xrrp1s7.cloudfront.net/www/gg/c-p3-full/3', index: undefined, createdAt: '2022-10-19T15:30:00.000Z', widthPx: 4608, heightPx: 3456 }, // taken first, but not on the track
+    ]);
+    const none: FetchLike = async () => ({ ok: false, status: 404, text: async () => '', arrayBuffer: async () => new ArrayBuffer(0) });
+    expect(await fetchKomootImages('1', none)).toEqual({ images: [], total: 0 });
+  });
+
+  test('download: numbered JPEGs in tour order into the folder', async () => {
+    const dir = mkdtempSync(join(tmpdir(), 'komoot-dl-'));
+    const asked: string[] = [];
+    const bytes: FetchLike = async (url) => { asked.push(url); return { ok: true, status: 200, text: async () => '', arrayBuffer: async () => jpeg.buffer.slice(jpeg.byteOffset, jpeg.byteOffset + jpeg.byteLength) }; };
+    const { images } = await fetchKomootImages('907671487', answering(200));
+    const names = await downloadKomootImages(images, dir, bytes);
+    expect(names).toEqual(['01.jpg', '02.jpg', '03.jpg']);
+    expect(asked).toEqual(['https://d2exd72xrrp1s7.cloudfront.net/www/gg/b-p2-full/2', 'https://d2exd72xrrp1s7.cloudfront.net/www/gg/a-p1-full/1', 'https://d2exd72xrrp1s7.cloudfront.net/www/gg/c-p3-full/3']);
+    expect(readdirSync(dir).sort()).toEqual(['01.jpg', '02.jpg', '03.jpg']);
+    expect(statSync(join(dir, '01.jpg')).size).toBe(jpeg.byteLength);
+  });
+});
+
+describe('komoot login and paging', () => {
+  const item = (id: number) => ({ id, index: id * 10, created_at: '2026-09-20T07:57:50.000Z', src: `https://img/p${id}-full/x?width={width}`, width_px: 2048, height_px: 1536 });
+  const page = (ids: number[], total: number, next?: string) => JSON.stringify({ _embedded: { items: ids.map(item) }, page: { totalElements: total }, ...(next ? { _links: { next: { href: next } } } : {}) });
+  const respond = (text: string, status = 200) => ({ ok: status < 300, status, text: async () => text, arrayBuffer: async () => new ArrayBuffer(0) });
+
+  test('without a login Komoot repeats the first page: the loop stops and total shows the list is short', async () => {
+    const calls: string[] = [];
+    const anon: FetchLike = async (url) => { calls.push(url); return respond(page([1, 2], 26, 'https://api.komoot.de/v007/tours/9/images/?page=1&limit=5')); };
+    const { images, total } = await fetchKomootImages('9', anon);
+    expect(images.map((i) => i.id)).toEqual([1, 2]);
+    expect(total).toBe(26);
+    expect(calls).toHaveLength(2);
+  });
+
+  test('logged in: every page is followed through its next link, with the token in the Authorization header', async () => {
+    const auths: (string | undefined)[] = [];
+    const pages: Record<string, string> = {
+      'https://api.komoot.de/v007/tours/9/images/?page=0&limit=50': page([3, 1], 3, 'https://api.komoot.de/v007/tours/9/images/?page=1&limit=50'),
+      'https://api.komoot.de/v007/tours/9/images/?page=1&limit=50': page([2], 3),
+    };
+    const authed: FetchLike = async (url, init) => { auths.push(init?.headers?.Authorization); return respond(pages[url] ?? '', pages[url] ? 200 : 404); };
+    const { images, total } = await fetchKomootImages('9', authed, { username: '601', token: 'tok' });
+    expect(images.map((i) => i.id)).toEqual([1, 2, 3]);
+    expect(total).toBe(3);
+    expect(auths).toEqual([`Basic ${Buffer.from('601:tok').toString('base64')}`, `Basic ${Buffer.from('601:tok').toString('base64')}`]);
+  });
+
+  test('login: email and password as Basic auth to the account endpoint, the token comes back; a refusal is a plain message', async () => {
+    let seen = '';
+    const ok: FetchLike = async (url, init) => { seen = `${url} ${init?.headers?.Authorization}`; return respond('{"username":"601","password":"tok","email":"a@b.c"}'); };
+    expect(await komootLogin('a@b.c', 's3cret', ok)).toEqual({ username: '601', token: 'tok' });
+    expect(seen).toBe(`https://api.komoot.de/v006/account/email/a%40b.c/ Basic ${Buffer.from('a@b.c:s3cret').toString('base64')}`);
+    await expect(komootLogin('a@b.c', 'wrong', async () => respond('', 401))).rejects.toThrow('Komoot refused the login');
+  });
+});

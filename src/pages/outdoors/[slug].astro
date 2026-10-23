@@ -1,0 +1,116 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import JustifiedGrid from '../../components/JustifiedGrid.astro';
+import Lightbox from '../../components/Lightbox.astro';
+import RouteBlock from '../../components/RouteBlock.astro';
+import SectionLabel from '../../components/SectionLabel.astro';
+import TripGrid from '../../components/TripGrid.astro';
+import { getTrips, neighbours, trackPath, tripPath, type Trip } from '../../lib/collections';
+import { activityLabel, formatClimb, formatKm, heroMeta, moreLabels, moreTrips } from '../../lib/outdoors';
+import { coverSize } from '../../lib/paths';
+import { largestVariantUrl } from '../../lib/images';
+import { isoDate } from '../../lib/site';
+import { readTrack } from '../../lib/tracks';
+
+// getStaticPaths runs isolated from the rest of the frontmatter: everything it uses lives inside it.
+export const getStaticPaths = (async () => {
+  const trips = await getTrips();
+  return trips.map((trip) => ({
+    params: { slug: trip.id },
+    props: { trip, ...neighbours(trips, trip.id), more: moreTrips(trips, trip.id) },
+  }));
+}) satisfies GetStaticPaths;
+
+interface Props {
+  trip: Trip;
+  prev?: Trip;
+  next?: Trip;
+  more: Trip[];
+}
+
+const { trip, prev, next, more } = Astro.props;
+const { title, date, activity, distance, climb, area, track, links, cover, darkHeader, seoDescription, photos } = trip.data;
+const { Content } = await render(trip);
+const size = coverSize(trip);
+// The cover is decorative when the grid shows it again; otherwise this is its only appearance.
+const coverAlt = photos.some((photo) => photo.src === cover) ? '' : title;
+// The search result row: a small cover (the 480 jpg, or the original of a narrower cover) and the meta line.
+const search = {
+  type: 'outdoors' as const,
+  meta: {
+    date: isoDate(date),
+    image: largestVariantUrl(cover, Math.min(480, size?.width ?? 0)),
+    activity: activityLabel(activity),
+  },
+};
+const moreRow = moreLabels(activity, more);
+---
+
+<Base
+  title={`${title} — Outdoors — olegs`}
+  description={seoDescription ?? `${activityLabel(activity)} in ${area}: ${formatKm(distance)}, ${formatClimb(climb)}.`}
+  ogImage={largestVariantUrl(cover, Math.min(1600, size?.width ?? 0))}
+  overlayNav
+  search={search}
+>
+  <Hero title={title} cover={cover} width={size?.width} height={size?.height} coverAlt={coverAlt} darkHeader={darkHeader}>
+    {heroMeta(trip.data, photos.length).map((item) => <><span>{item}</span>{' '}</>)}
+  </Hero>
+  {trip.body?.trim() && (
+    <div class="body wrap"><Content /></div>
+  )}
+  {track !== false && (
+    <RouteBlock xml={readTrack(track)} distance={distance} climb={climb} downloadHref={trackPath(trip)} links={links} />
+  )}
+  <JustifiedGrid photos={photos} />
+  <nav class="pager wrap mono" aria-label="More trips" data-pagefind-ignore>
+    {next ? <a href={tripPath(next)} rel="next"><span aria-hidden="true">←</span> <span class="visually-hidden">Older trip: </span>{next.data.title}</a> : <span></span>}
+    {prev && <a href={tripPath(prev)} rel="prev"><span class="visually-hidden">Newer trip: </span>{prev.data.title} <span aria-hidden="true">→</span></a>}
+  </nav>
+  {more.length > 0 && (
+    <section class="related" aria-labelledby="more" data-pagefind-ignore>
+      <SectionLabel
+        id="more"
+        title={moreRow.title}
+        href={moreRow.href}
+        link={moreRow.link}
+      />
+      <TripGrid trips={more} />
+    </section>
+  )}
+  <Lightbox />
+</Base>
+
+<style>
+  .body {
+    max-width: calc(680px + 2 * var(--gutter));
+    padding-block: 56px 8px;
+    color: var(--muted);
+  }
+
+  .body :global(* + *) { margin-top: 1em; }
+
+  .body :global(:is(ul, ol)) { padding-left: 1.25em; }
+
+  .body :global(li + li) { margin-top: 0.25em; }
+
+  .body :global(:is(strong, a)) { color: var(--fg); }
+
+  .body :global(a) { text-decoration: underline; text-underline-offset: 3px; }
+
+  .pager {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    padding-block: 48px 0;
+  }
+
+  .pager a { transition: color 120ms ease; }
+
+  .pager a:hover { color: var(--muted); }
+
+  .related { margin-top: 64px; }
+</style>

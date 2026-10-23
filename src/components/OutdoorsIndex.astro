@@ -1,0 +1,99 @@
+---
+import TripGrid from './TripGrid.astro';
+import SectionLabel from './SectionLabel.astro';
+import { groupByYear, OUTDOORS_LEAD, type Trip } from '../lib/outdoors';
+
+interface Props {
+  trips: Trip[];
+  filter: 'all' | 'hikes' | 'rides';
+}
+
+const { trips, filter } = Astro.props;
+const filters = [
+  { slug: 'all', name: 'All', href: '/outdoors/' },
+  { slug: 'hikes', name: 'Hikes', href: '/outdoors/hikes/' },
+  { slug: 'rides', name: 'Rides', href: '/outdoors/rides/' },
+];
+const years = groupByYear(trips);
+const empty = { all: 'No trips yet.', hikes: 'No hikes yet.', rides: 'No rides yet.' };
+---
+
+<header class="outdoors-header wrap">
+  <h1 class="heading">Outdoors</h1>
+  <p class="description">{OUTDOORS_LEAD}</p>
+  <nav aria-label="Activities">
+    <ul class="filters mono">
+      {filters.map(({ slug, name, href }) => (
+        <li>
+          <a href={href} aria-current={slug === filter ? 'page' : undefined}>{name}</a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</header>
+
+{years.length === 0 ? (
+  <TripGrid trips={[]} empty={empty[filter]} />
+) : (
+  <div class="sections">
+    {years.map((group) => (
+      <section aria-labelledby={`year-${group.year}`}>
+        <SectionLabel id={`year-${group.year}`} title={String(group.year)} />
+        <TripGrid trips={group.trips} embedded />
+      </section>
+    ))}
+  </div>
+)}
+
+<style>
+  .outdoors-header {
+    padding-block: 72px 48px;
+  }
+
+  .heading {
+    max-width: 900px;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+
+  .description {
+    max-width: 900px;
+    margin-top: 16px;
+    color: var(--muted);
+  }
+
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 28px;
+    margin-top: 48px;
+    padding: 0;
+    list-style: none;
+  }
+
+  /* 6 px above the text, cancelled by the margin, makes a 24 px target without moving the row. */
+  .filters a {
+    display: inline-block;
+    padding: 6px 0 3px;
+    margin-top: -6px;
+    border-bottom: 1px solid transparent;
+    color: var(--muted);
+    transition: color 120ms ease;
+  }
+
+  .filters a:hover,
+  .filters a[aria-current] { color: var(--fg); }
+
+  .filters a[aria-current] { border-bottom-color: currentColor; }
+
+  /* Each embedded grid ends 64px below; the page ends 96px below the last one, like a plain grid. */
+  .sections { padding-bottom: 32px; }
+
+  @media (max-width: 719px) {
+    .outdoors-header { padding-block: 40px 32px; }
+    .heading { font-size: 22px; }
+    .filters { margin-top: 32px; gap: 10px 20px; }
+  }
+</style>

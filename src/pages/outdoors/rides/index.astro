@@ -1,0 +1,12 @@
+---
+import Base from '../../../layouts/Base.astro';
+import OutdoorsIndex from '../../../components/OutdoorsIndex.astro';
+import { getTripsBy } from '../../../lib/collections';
+import { OUTDOORS_LEAD } from '../../../lib/outdoors';
+
+const trips = await getTripsBy('ride');
+---
+
+<Base title="Rides — Outdoors — olegs" description={OUTDOORS_LEAD}>
+  <OutdoorsIndex trips={trips} filter="rides" />
+</Base>
