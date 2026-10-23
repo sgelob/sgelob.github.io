@@ -49,7 +49,8 @@ const title = `${SITE.author} – ${SITE.description}`;
 </Base>
 
 <style>
-  .intro { padding-block: 72px 96px; }
+  /* Less below than between the sections: the bio ends in text, not in a grid. */
+  .intro { padding-block: 72px 56px; }
 
   .lead {
     max-width: 900px;
@@ -74,7 +75,7 @@ const title = `${SITE.author} – ${SITE.description}`;
   .blog { padding-bottom: 96px; }
 
   @media (max-width: 719px) {
-    .intro { padding-block: 40px 64px; }
+    .intro { padding-block: 40px 40px; }
     .lead { font-size: 22px; }
   }
 </style>
