@@ -22,6 +22,8 @@ countries:
     name: Austria
   - slug: belgium
     name: Belgium
+  - slug: croatia
+    name: Croatia
   - slug: czech-republic
     name: Czech Republic
   - slug: france
