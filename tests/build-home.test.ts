@@ -9,8 +9,9 @@ test('home has the bio with its section links and no link row, 4 gallery cards, 
   for (const href of ['/outdoors/', '/photos/', '/books/', '/quotes/', '/events/']) expect(intro).toContain(`href="${href}"`);
   expect(intro).not.toContain('<ul'); // the link row is gone: the bio links the sections itself
   expect(html).toMatch(/<h2 id="home-outdoors"[^>]*>Outdoors<\/h2>/); // the Outdoors row, now that there is a trip
-  expect(html).toMatch(/<a href="\/outdoors\/"[^>]*>All 1 trip/);
-  expect(count(html, 'class="trip-card"')).toBe(1);
+  const trips = contentCount('outdoors'); // counted, so adding a trip doesn't break the test
+  expect(html).toContain(`All ${trips} ${trips === 1 ? 'trip' : 'trips'} <span`);
+  expect(count(html, 'class="trip-card"')).toBe(Math.min(trips, 4));
   expect(count(html, 'class="gallery-card"')).toBe(4); expect(count(html, 'class="post-item"')).toBe(3); expect(html).toContain(`All ${contentCount('galleries')} galleries`);
 });
 test('about lives at /about/ and the old slug redirects', () => {
