@@ -1,5 +1,6 @@
-import { copyFileSync, existsSync, mkdirSync, readdirSync, statSync } from 'node:fs';
+import { copyFileSync, existsSync, mkdirSync, readdirSync, statSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { stringify } from 'yaml';
 import { writeMarkdown } from '../lib/frontmatter';
 import type { GalleryDoc, Photo } from '../migrate/galleries';
 import { galleryFrontmatter } from '../migrate/frontmatter-order';
@@ -16,7 +17,52 @@ export type ScaffoldOptions = {
   /** Local uploads tree the photos are copied into; defaults to `UPLOADS_DIR`. */
   uploadsDir?: string;
   date?: Date;
+  /** `'outdoors'` writes a trip file (to be completed by hand) instead of a gallery. Default `'gallery'`. */
+  kind?: 'gallery' | 'outdoors';
 };
+
+/** What `--outdoors` scaffolds: placeholders for what the photos cannot tell, `track` left undecided. */
+export type TripDoc = {
+  slug: string;
+  title: string;
+  date: string;
+  activity: 'hike';
+  distance: number;
+  climb: number;
+  area: string;
+  country: string;
+  track: undefined;
+  cover: string;
+  darkHeader: boolean;
+  photos: Photo[];
+};
+
+/**
+ * The front matter of a new trip, as text (the YAML writer cannot leave a key empty or keep a comment).
+ * `track:` has no value on purpose: the build fails until it is a .gpx name or `false`. The cover's size is filled when known.
+ */
+export function tripFrontmatter(doc: TripDoc): string {
+  const field = (key: string, value: unknown) => stringify({ [key]: value }, { lineWidth: 0 });
+  const photos = doc.photos.map(({ src, width, height, alt }) => ({ src, width, height, ...(alt === undefined ? {} : { alt }) }));
+  const coverPhoto = doc.photos.find((p) => p.src === doc.cover);
+  return (
+    '---\n' +
+    field('title', doc.title) +
+    `date: ${JSON.stringify(doc.date)}\n` +
+    field('activity', doc.activity) +
+    '# bike: xc | trail\n' +
+    field('distance', doc.distance) +
+    field('climb', doc.climb) +
+    field('area', doc.area) +
+    field('country', doc.country) +
+    'track:\n' +
+    field('cover', doc.cover) +
+    (coverPhoto && coverPhoto.width > 0 ? field('coverWidth', coverPhoto.width) + field('coverHeight', coverPhoto.height) : '') +
+    field('darkHeader', doc.darkHeader) +
+    field('photos', photos) +
+    '---\n'
+  );
+}
 
 const pad = (n: number) => String(n).padStart(2, '0');
 
@@ -29,10 +75,10 @@ const uploadName = (name: string) => name.toLowerCase().replace(/\s+/g, '-');
 
 /** Copies the folder's photos into the uploads tree, uploads them, and writes the gallery's markdown file. Returns its path. */
 export async function scaffoldGallery(opts: ScaffoldOptions): Promise<string> {
-  const { slug, folder, store, contentDir, date = new Date() } = opts;
+  const { slug, folder, store, contentDir, date = new Date(), kind = 'gallery' } = opts;
   const target = join(contentDir, `${slug}.md`);
   // Checked before anything is copied or uploaded: rewriting it would discard the edited title, cover and order.
-  if (existsSync(target)) throw new Error(`${target} already exists: pick another slug, or delete the file first to start the gallery over`);
+  if (existsSync(target)) throw new Error(`${target} already exists: pick another slug, or delete the file first to start the ${kind === 'outdoors' ? 'trip' : 'gallery'} over`);
   const uploadsDir = opts.uploadsDir ?? process.env.UPLOADS_DIR;
   if (!uploadsDir) throw new Error('UPLOADS_DIR is not set');
 
@@ -56,6 +102,27 @@ export async function scaffoldGallery(opts: ScaffoldOptions): Promise<string> {
   const { sizes, errors } = await processUploads({ uploadsDir, store, files: paths, log: console.log });
   if (errors.length) throw new Error(`could not process:\n${errors.join('\n')}`);
 
+  const photoDocs = paths.map((src): Photo => ({ src, ...(sizes.get(src) ?? { width: 0, height: 0 }) }));
+  if (kind === 'outdoors') {
+    const trip: TripDoc = {
+      slug,
+      title: titleFromSlug(slug),
+      date: timestamp(date),
+      activity: 'hike',
+      distance: 0,
+      climb: 0,
+      area: '',
+      country: 'italy',
+      track: undefined,
+      cover: paths[0],
+      darkHeader: false,
+      photos: photoDocs,
+    };
+    mkdirSync(contentDir, { recursive: true });
+    writeFileSync(target, tripFrontmatter(trip));
+    return target;
+  }
+
   const doc: GalleryDoc = {
     slug,
     title: titleFromSlug(slug),
@@ -65,7 +132,7 @@ export async function scaffoldGallery(opts: ScaffoldOptions): Promise<string> {
     cover: paths[0],
     darkHeader: false,
     oldSlugs: [],
-    photos: paths.map((src): Photo => ({ src, ...(sizes.get(src) ?? { width: 0, height: 0 }) })),
+    photos: photoDocs,
     body: '',
   };
   writeMarkdown(contentDir, slug, galleryFrontmatter(doc), '');
