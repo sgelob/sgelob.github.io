@@ -9,9 +9,11 @@ import { R2Store, type ObjectStore } from './photos/r2';
 import { scaffoldGallery } from './photos/scaffold';
 
 const GALLERIES_DIR = fileURLToPath(new URL('../src/content/galleries', import.meta.url));
+const OUTDOORS_DIR = fileURLToPath(new URL('../src/content/outdoors', import.meta.url));
 const USAGE = `Usage:
   npm run photos -- --uploads <dir> [--dry-run] [--width <n>]   resize and upload every original under <dir>
   npm run photos -- --new <slug> <folder> [--date YYYY-MM-DD]   copy a folder of photos into UPLOADS_DIR/<yyyy>/<mm> of the shooting date, upload, write the gallery file
+  npm run photos -- --new --outdoors <slug> <folder> [--date ...]  the same for a trip: writes src/content/outdoors/<slug>.md
   npm run photos -- --fix-sizes                                 fill photos with width 0 in the gallery files from UPLOADS_DIR`;
 
 const { values, positionals } = parseArgs({
@@ -21,6 +23,7 @@ const { values, positionals } = parseArgs({
     'dry-run': { type: 'boolean' },
     width: { type: 'string' },
     new: { type: 'boolean' },
+    outdoors: { type: 'boolean' },
     date: { type: 'string' },
     'fix-sizes': { type: 'boolean' },
   },
@@ -67,7 +70,20 @@ async function main(): Promise<number> {
       if (!m) throw new Error(`--date must be YYYY-MM-DD, got "${values.date}"`);
       date = new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3]), 12, 0, 0);
     }
-    const path = await scaffoldGallery({ slug, folder: resolve(folder), store: realStore(), contentDir: GALLERIES_DIR, date });
+    const outdoors = Boolean(values.outdoors);
+    const path = await scaffoldGallery({
+      slug,
+      folder: resolve(folder),
+      store: realStore(),
+      contentDir: outdoors ? OUTDOORS_DIR : GALLERIES_DIR,
+      date,
+      kind: outdoors ? 'outdoors' : 'gallery',
+    });
+    if (outdoors) {
+      log(`wrote ${path}: set activity, bike, distance, climb, area, country and track (a .gpx in src/content/outdoors/tracks, or false for a discreet trip), then write the story`);
+      log('set darkHeader: true when the cover is light at the top or bottom: the hero then darkens it more under the nav and title');
+      return 0;
+    }
     log(`wrote ${path}: set genre, country and cover, then review the order`);
     log('set darkHeader: true when the cover is light at the top or bottom: the hero then darkens it more under the nav and title');
     return 0;

@@ -1,10 +1,12 @@
 import sharp from 'sharp';
 import { existsSync, mkdirSync, readFileSync } from 'node:fs';
 import { parse } from 'yaml';
-// usage: npm run thumbs -- <gallery-slug>  → 512px thumbnails in olegs-be-data/thumbs/<slug>/NNN.jpg (frontmatter order)
+// usage: npm run thumbs -- <gallery-or-trip-slug>  → 512px thumbnails in olegs-be-data/thumbs/<slug>/NNN.jpg (frontmatter order)
 const slug = process.argv[2];
-if (!slug) { console.error('usage: npm run thumbs -- <gallery-slug>'); process.exit(2); }
-const md = readFileSync(`src/content/galleries/${slug}.md`, 'utf8');
+if (!slug) { console.error('usage: npm run thumbs -- <gallery-or-trip-slug>'); process.exit(2); }
+const file = ['galleries', 'outdoors'].map((dir) => `src/content/${dir}/${slug}.md`).find(existsSync);
+if (!file) { console.error(`no gallery or trip "${slug}" in src/content/galleries or src/content/outdoors`); process.exit(2); }
+const md = readFileSync(file, 'utf8');
 const fm = parse(md.split('\n---\n')[0].replace(/^---\n/, ''));
 const out = `olegs-be-data/thumbs/${slug}`; mkdirSync(out, { recursive: true });
 let n = 0;
