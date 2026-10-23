@@ -3,26 +3,39 @@ import type { GetStaticPaths } from 'astro';
 import Base from '../../../layouts/Base.astro';
 import PhotosHeader from '../../../components/PhotosHeader.astro';
 import GalleryGrid from '../../../components/GalleryGrid.astro';
+import Redirect from '../../../components/Redirect.astro';
 import { getGalleries, getGalleriesBy } from '../../../lib/collections';
+import { redirectsUnder } from '../../../lib/redirects';
 import { countries, type Term } from '../../../lib/taxonomies';
 
 // Only countries with at least one gallery get a page; the rest of taxonomies.yaml is for the trips.
+// A live URL of a country that no longer has a gallery (/photos/country/usa/) redirects instead of vanishing.
 export const getStaticPaths = (async () => {
+  const PREFIX = '/photos/country/';
   const galleries = await getGalleries();
-  return countries
-    .filter((c) => galleries.some((g) => g.data.country === c.slug))
-    .map((country) => ({ params: { slug: country.slug }, props: { country } }));
+  const withGalleries = countries.filter((c) => galleries.some((g) => g.data.country === c.slug));
+  const redirects = redirectsUnder(PREFIX)
+    .map(({ from, to }) => ({ slug: from.slice(PREFIX.length).replace(/\/$/, ''), to }))
+    .filter(({ slug }) => !withGalleries.some((c) => c.slug === slug))
+    .map(({ slug, to }) => ({ params: { slug }, props: { redirectTo: to } }));
+  return [
+    ...withGalleries.map((country) => ({ params: { slug: country.slug }, props: { country } })),
+    ...redirects,
+  ];
 }) satisfies GetStaticPaths;
 
-interface Props {
-  country: Term;
-}
+type Props = { country: Term; redirectTo?: undefined } | { redirectTo: string; country?: undefined };
 
-const { country } = Astro.props;
-const galleries = await getGalleriesBy('country', country.slug);
+const props = Astro.props as Props;
+const country = props.country;
+const galleries = country ? await getGalleriesBy('country', country.slug) : [];
 ---
 
-<Base title={`${country.name} — Photos — olegs`}>
-  <PhotosHeader heading={country.name} />
-  <GalleryGrid galleries={galleries} />
-</Base>
+{props.redirectTo !== undefined ? (
+  <Redirect to={props.redirectTo} />
+) : country && (
+  <Base title={`${country.name} — Photos — olegs`}>
+    <PhotosHeader heading={country.name} />
+    <GalleryGrid galleries={galleries} />
+  </Base>
+)}
