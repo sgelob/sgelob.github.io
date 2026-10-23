@@ -31,6 +31,12 @@ export function parseGpx(xml: string): TrackPoint[] {
   return points;
 }
 
+/** The track points of each `<trkseg>`, in document order; points outside any segment make one segment. */
+export function parseSegments(xml: string): TrackPoint[][] {
+  const segments = [...xml.matchAll(/<trkseg\b[^>]*>([\s\S]*?)<\/trkseg>/g)].map(([, inner]) => parseGpx(inner)).filter((s) => s.length);
+  return segments.length ? segments : [parseGpx(xml)].filter((s) => s.length);
+}
+
 /** The same points when there are at most `max`, else every nth point, always keeping the first and the last. */
 export function simplifyPoints(points: readonly TrackPoint[], max = 400): TrackPoint[] {
   if (points.length <= max) return [...points];
@@ -50,29 +56,24 @@ export function distanceKm(a: TrackPoint, b: TrackPoint): number {
   return 2 * EARTH_RADIUS_KM * Math.asin(Math.sqrt(h));
 }
 
-export interface MoveEndsOptions {
+export interface MoveStartOptions {
   /** A number in [0, 1); `Math.random` unless a test fixes it. The draw is made once, when the track is written, never again. */
   random?: () => number;
-  /** How far, in a straight line, the published start and finish are from the real ones: a random distance between the two. */
+  /** How far, in a straight line, the published start is from the real one: a random distance between the two. */
   minKm?: number;
   maxKm?: number;
 }
 
 /**
- * A route with approximate ends: the same points, but beginning and ending somewhere on the path 1 to 1.5 km (straight line)
- * from the real start and finish. The middle of the route is not touched.
+ * A route with approximate ends: every point kept, but starting somewhere on the path 1 to 1.5 km (straight line) from the real
+ * start. The first segment runs from there to the real finish, the second from the real start to just before the moved one:
+ * two segments, so nothing draws a straight line from the real finish to the real start.
  */
-export function moveEnds(points: readonly TrackPoint[], { random = Math.random, minKm = 1, maxKm = 1.5 }: MoveEndsOptions = {}): TrackPoint[] {
-  const cut = (order: number[]): number => {
-    const end = points[order[0]];
-    const target = minKm + random() * (maxKm - minKm);
-    return order.find((i) => distanceKm(points[i], end) >= target) ?? -1;
-  };
-  const indices = points.map((_, i) => i);
-  const first = cut(indices);
-  const last = cut(indices.reverse());
-  if (first === -1 || last === -1 || last - first < 1) throw new Error('the route is too short to move its start and finish 1 km and keep a stretch between them');
-  return points.slice(first, last + 1);
+export function moveStart(points: readonly TrackPoint[], { random = Math.random, minKm = 1, maxKm = 1.5 }: MoveStartOptions = {}): [TrackPoint[], TrackPoint[]] {
+  const target = minKm + random() * (maxKm - minKm);
+  const at = points.findIndex((p) => distanceKm(p, points[0]) >= target);
+  if (at < 1) throw new Error(`the route never gets ${target.toFixed(1)} km from its start: there is nowhere to move the start to`);
+  return [points.slice(at), points.slice(0, at)];
 }
 
 const round1 = (n: number): number => Math.round(n * 10) / 10;
@@ -218,28 +219,23 @@ function drawProfile(km: readonly number[], ele: readonly number[], width: numbe
 
 const escapeXml = (s: string): string => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
-/** A new GPX 1.1 document with only the name and the track points (lat, lon, ele): no time, author, extensions or waypoints. */
+/** A new GPX 1.1 document with only the name and the track points (lat, lon, ele), segment by segment: no time, author, extensions or waypoints. */
 export function sanitizeGpx(xml: string, name: string): string {
-  const points = parseGpx(xml);
-  if (points.length === 0) throw new Error('no track points');
-  return trackDocument(points, name);
+  const segments = parseSegments(xml);
+  if (segments.length === 0) throw new Error('no track points');
+  return trackDocument(segments, name);
 }
 
-/** A GPX 1.1 document of these points, with the name and nothing else. */
-export function trackDocument(points: readonly TrackPoint[], name: string): string {
-  const trkpts = points.map((p) =>
-    p.ele === undefined
-      ? `      <trkpt lat="${p.lat}" lon="${p.lon}"/>`
-      : `      <trkpt lat="${p.lat}" lon="${p.lon}"><ele>${p.ele}</ele></trkpt>`,
-  );
+/** A GPX 1.1 document of these segments, with the name and nothing else. */
+export function trackDocument(segments: readonly (readonly TrackPoint[])[], name: string): string {
+  const trkpt = (p: TrackPoint) =>
+    p.ele === undefined ? `      <trkpt lat="${p.lat}" lon="${p.lon}"/>` : `      <trkpt lat="${p.lat}" lon="${p.lon}"><ele>${p.ele}</ele></trkpt>`;
   return [
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<gpx version="1.1" creator="olegs.be" xmlns="http://www.topografix.com/GPX/1/1">',
     '  <trk>',
     `    <name>${escapeXml(name)}</name>`,
-    '    <trkseg>',
-    ...trkpts,
-    '    </trkseg>',
+    ...segments.flatMap((segment) => ['    <trkseg>', ...segment.map(trkpt), '    </trkseg>']),
     '  </trk>',
     '</gpx>',
     '',
