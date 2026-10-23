@@ -1,8 +1,8 @@
 import { existsSync } from 'node:fs';
 import { describe, expect, test } from 'vitest';
-import { count, read } from './helpers/dist';
+import { count, read, contentCount } from './helpers/dist';
 
-test('photos index lists 85 cards with webp srcset', () => { const html = read('dist/photos/index.html'); expect(count(html, 'class="gallery-card"')).toBe(85); expect(html).toContain('-480.webp 480w'); });
+test('photos index lists a card per gallery with webp srcset', () => { const html = read('dist/photos/index.html'); expect(count(html, 'class="gallery-card"')).toBe(contentCount('galleries')); expect(html).toContain('-480.webp 480w'); });
 test('genre page filters', () => { expect(count(read('dist/photos/genre/abandoned-places/index.html'), 'class="gallery-card"')).toBe(29); });
 test('country with galleries builds; every taxonomy slug has a page', () => { for (const slug of ['italy','russia','usa']) expect(existsSync(`dist/photos/country/${slug}/index.html`)).toBe(true); });  // Review Focus 4: 'usa' has 0 galleries
 

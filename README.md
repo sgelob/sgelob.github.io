@@ -16,7 +16,7 @@ Search (`/search/`) runs on a [Pagefind](https://pagefind.app) index that `npm r
 ## Add a gallery
 
 ```bash
-UPLOADS_DIR=./olegs-be-data/uploads npm run photos -- --new <slug> <folder-with-jpegs>
+UPLOADS_DIR=./olegs-be-data/uploads npm run photos -- --new <slug> <folder-with-jpegs> --date YYYY-MM-DD
 ```
 
 This copies the photos into `UPLOADS_DIR/yyyy/mm/` (the local tree of originals, kept in sync with R2), uploads them with their 480, 960 and 1600 px variants, and writes `src/content/galleries/<slug>.md` with the photos in file-name order. It refuses to overwrite an existing gallery file. Then edit the title, genre, country, cover and date, reorder the photos if you like, commit and push. It needs a `.env` with the R2 keys, see `.env.example`.

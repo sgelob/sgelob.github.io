@@ -36,6 +36,8 @@ countries:
     name: Portugal
   - slug: russia
     name: Russia
+  - slug: slovenia
+    name: Slovenia
   - slug: spain
     name: Spain
   - slug: netherlands

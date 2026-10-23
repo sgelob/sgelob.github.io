@@ -1,8 +1,8 @@
 import { existsSync, readdirSync } from 'node:fs';
 import { describe, expect, test } from 'vitest';
-import { count, read } from './helpers/dist';
+import { count, read, contentCount } from './helpers/dist';
 
-test('home has intro, 4 gallery cards, 3 posts', () => { const html = read('dist/index.html'); expect(html).toContain('Hi, I’m Oleg'); expect(count(html,'class="gallery-card"')).toBe(4); expect(count(html,'class="post-item"')).toBe(3); expect(html).toContain('All 85 galleries'); });
+test('home has intro, 4 gallery cards, 3 posts', () => { const html = read('dist/index.html'); expect(html).toContain('Hi, I’m Oleg'); expect(count(html,'class="gallery-card"')).toBe(4); expect(count(html,'class="post-item"')).toBe(3); expect(html).toContain(`All ${contentCount('galleries')} galleries`); });
 test('about lives at /about/ and the old slug redirects', () => {
   expect(existsSync('dist/about/index.html')).toBe(true);
   expect(read('dist/about/index.html')).toMatch(/<title>[^<]*Olegs Belousovs[^<]*<\/title>/);
@@ -105,7 +105,7 @@ describe('home accessibility', () => {
   test('arrow glyphs are hidden from assistive tech', () => {
     const html = read('dist/index.html');
     expect(html).toMatch(/Events <span aria-hidden="true"[^>]*>↗<\/span><\/a>/);
-    expect(html).toMatch(/All 85 galleries <span aria-hidden="true"[^>]*>↗<\/span>/);
+    expect(html).toMatch(new RegExp(`All ${contentCount('galleries')} galleries <span aria-hidden="true"[^>]*>↗</span>`));
     expect(html.replace(/<span aria-hidden="true"[^>]*>[↗←→]<\/span>/g, '')).not.toMatch(/[↗←→]/);
   });
 

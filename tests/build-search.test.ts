@@ -1,6 +1,6 @@
 import { readdirSync } from 'node:fs';
 import { describe, expect, test } from 'vitest';
-import { exists, read } from './helpers/dist';
+import { exists, read, contentCount } from './helpers/dist';
 import { pagefindAttrs } from '../src/lib/search';
 
 const POST = 'dist/2016/09/come-eseguire-test-sintetici-web-performance-webpagetest-org/index.html';
@@ -35,7 +35,7 @@ describe('search index', () => {
     // Galleries and the English pages; the Italian posts in an index of their own.
     expect(Object.keys(entry.languages).sort()).toEqual(['en', 'it']);
     const pages = Object.values(entry.languages).reduce((sum, l) => sum + l.page_count, 0);
-    expect(pages).toBe(85 + 39 + 4); // galleries, posts, and events, books, quotes, about
+    expect(pages).toBe(contentCount('galleries') + contentCount('posts') + 4); // galleries, posts, and events, books, quotes, about
     expect(readdirSync('dist/pagefind/filter').filter((f) => f.endsWith('.pf_filter')).length).toBeGreaterThan(0);
   });
 
