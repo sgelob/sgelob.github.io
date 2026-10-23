@@ -1,8 +1,10 @@
+import { readFileSync } from 'node:fs';
 import { describe, expect, test } from 'vitest';
 import { render } from './helpers/render';
 import Hero from '../src/components/Hero.astro';
 import TripCard from '../src/components/TripCard.astro';
 import TripGrid from '../src/components/TripGrid.astro';
+import RouteBlock from '../src/components/RouteBlock.astro';
 
 const trip = { id: 'colle-delle-finestre', data: { title: 'Colle delle Finestre', date: new Date('2026-06-14'), activity: 'ride', bike: 'trail', distance: 38, climb: 1700, area: 'Val di Susa', country: 'italy', track: 'colle-delle-finestre.gpx', cover: '2026/06/a.jpg', coverWidth: 1620, coverHeight: 1080, darkHeader: false, photos: [{ src: '2026/06/a.jpg', width: 1620, height: 1080, alt: 'Larches' }] } } as any;
 
@@ -27,5 +29,26 @@ describe('TripCard and TripGrid', () => {
   test('grid lists cards; empty state', async () => {
     expect((await render(TripGrid, { props: { trips: [trip, trip] } })).match(/class="trip-card"/g)).toHaveLength(2);
     expect(await render(TripGrid, { props: { trips: [] } })).toContain('No trips yet.');
+  });
+});
+
+const xml = readFileSync('tests/fixtures/track.gpx', 'utf8');
+
+describe('RouteBlock', () => {
+  test('shape, profile, the front-matter numbers and the download', async () => {
+    const html = await render(RouteBlock, { props: { xml, distance: 38, climb: 1700, downloadHref: '/outdoors/x.gpx', links: [{ label: 'Komoot', url: 'https://www.komoot.com/tour/1' }] } });
+    expect(html).toMatch(/<svg class="shape"[^>]*viewBox="0 0 400 300"[^>]*aria-label="Shape of the route"/);
+    expect(html).toMatch(/<svg class="profile"[^>]*aria-label="Elevation profile, from 1,200 m to 2,176 m"/);
+    expect(html).toContain('38 km · 1,700 m up');
+    expect(html).toMatch(/<a href="\/outdoors\/x.gpx" download[^>]*>Download GPX/);
+    expect(html).toMatch(/<a href="https:\/\/www.komoot.com\/tour\/1" rel="noopener"[^>]*>Komoot/);
+    expect(html).not.toContain('Parking');
+  });
+  test('without elevation there is no profile and nothing else changes', async () => {
+    const flat = '<gpx><trk><trkseg><trkpt lat="45.1" lon="7"></trkpt><trkpt lat="45.2" lon="7.1"></trkpt></trkseg></trk></gpx>';
+    const html = await render(RouteBlock, { props: { xml: flat, distance: 9, climb: 0, downloadHref: '/outdoors/y.gpx' } });
+    expect(html).toContain('class="shape"');
+    expect(html).not.toContain('class="profile"');
+    expect(html).toContain('9 km · 0 m up');
   });
 });
