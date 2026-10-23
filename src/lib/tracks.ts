@@ -32,7 +32,7 @@ export function listContours(): string[] {
   return readdirSync(TRACKS_DIR).filter((f) => f.endsWith('.contours.svg')).sort();
 }
 
-/** The whole route's elevation profile written next to a masked track (`npm run track -- … --mask <km>`), if there is one. */
+/** The whole route's elevation profile written next to a track with approximate ends (`npm run track -- … --approximate-ends`), if there is one. */
 export function readProfile(track: string): ProfileSeries | undefined {
   const path = `${TRACKS_DIR}${track.replace(/\.gpx$/, '.profile.json')}`;
   return existsSync(path) ? (JSON.parse(readFileSync(path, 'utf8')) as ProfileSeries) : undefined;

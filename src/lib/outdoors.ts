@@ -22,8 +22,8 @@ export const tripSchema = z.object({
   country: z.string().refine((slug) => countries.some((c) => c.slug === slug), { message: 'unknown country slug' }),
   // A bare file name in src/content/outdoors/tracks/: no folders, so the name cannot point elsewhere.
   track: z.union([z.string().regex(/^[\w.-]+\.gpx$/), z.literal(false)]),
-  // The track leaves out its start and finish (`npm run track -- … --mask <km>`): the page says so and measures only what it draws.
-  trackMasked: z.boolean().optional(),
+  // Approximate ends: the track's start and finish were moved about 1 km along the path (`npm run track -- … --approximate-ends`).
+  approximateEnds: z.boolean().optional(),
   links: z.array(z.object({ label: z.string(), url: z.url() })).optional(),
   cover: z.string(),
   coverWidth: z.number().optional(),
@@ -36,7 +36,7 @@ export const tripSchema = z.object({
   .refine((t) => t.activity === 'ride' || t.bike === undefined, { message: 'bike is for rides only', path: ['bike'] })
   .refine((t) => t.track !== false || t.date.getDate() === 1, { message: 'a discreet trip (track: false) has its date on the 1st of the month', path: ['date'] })
   .refine((t) => t.track !== false || !t.links?.length, { message: 'a discreet trip (track: false) has no links', path: ['links'] })
-  .refine((t) => t.track !== false || !t.trackMasked, { message: 'trackMasked needs a track', path: ['trackMasked'] });
+  .refine((t) => t.track !== false || !t.approximateEnds, { message: 'approximateEnds needs a track', path: ['approximateEnds'] });
 
 export type Trip = CollectionEntry<'outdoors'>;
 export type TripData = z.infer<typeof tripSchema>;

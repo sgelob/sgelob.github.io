@@ -34,6 +34,8 @@ export type TripValues = {
   area?: string;
   country?: string;
   track?: string | false;
+  /** The track's start and finish were moved (`npm run track -- … --approximate-ends`). */
+  approximateEnds?: boolean;
   links?: TripLink[];
   cover?: number;
   darkHeader?: boolean;
@@ -51,6 +53,7 @@ export type TripDoc = {
   area: string;
   country: string;
   track: string | false | undefined;
+  approximateEnds?: boolean;
   links?: TripLink[];
   cover: string;
   darkHeader: boolean;
@@ -77,6 +80,7 @@ export function tripFrontmatter(doc: TripDoc): string {
     field('area', doc.area) +
     field('country', doc.country) +
     (doc.track === undefined ? 'track:\n' : field('track', doc.track)) +
+    (doc.approximateEnds ? field('approximateEnds', true) : '') +
     (doc.links?.length ? field('links', doc.links) : '') +
     field('cover', doc.cover) +
     (coverPhoto && coverPhoto.width > 0 ? field('coverWidth', coverPhoto.width) + field('coverHeight', coverPhoto.height) : '') +
@@ -150,6 +154,7 @@ export async function scaffoldGallery(opts: ScaffoldOptions): Promise<string> {
       area: given.area ?? '',
       country: given.country ?? 'italy',
       track: given.track,
+      approximateEnds: given.approximateEnds,
       links: given.links,
       cover: paths[(given.cover ?? 1) - 1] ?? paths[0],
       darkHeader: given.darkHeader ?? false,
