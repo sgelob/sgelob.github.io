@@ -38,3 +38,5 @@
   to: /quotes/
 - from: /photos/country/usa/
   to: /photos/genre/world-places/
+- from: /photos/country/portugal/
+  to: /photos/genre/world-places/
