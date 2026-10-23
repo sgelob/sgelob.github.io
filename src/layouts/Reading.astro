@@ -24,7 +24,7 @@ const { heading, section = false, search, ...base } = Astro.props;
   <article class:list={['reading', { section }]} {...pagefindAttrs(search)}>
     <header class="header">
       <h1 class="title" data-pagefind-meta="title">{heading}</h1>
-      {Astro.slots.has('meta') && <p class="meta mono"><slot name="meta" /></p>}
+      {Astro.slots.has('meta') && <p class="meta mono" data-pagefind-ignore><slot name="meta" /></p>}
     </header>
     <div class="prose"><slot /></div>
     <slot name="after" />
