@@ -60,7 +60,7 @@ photos:
   - src: 2009/12/berlin-germany-13.jpg
     width: 1620
     height: 1080
-    alt: Berlin Cathedral's green dome and TV Tower beyond bare trees
+    alt: Berlin Cathedral’s green dome and TV Tower beyond bare trees
   - src: 2009/12/berlin-germany-15.jpg
     width: 1620
     height: 1080
@@ -168,7 +168,7 @@ photos:
   - src: 2009/12/berlin-germany-42.jpg
     width: 1620
     height: 1080
-    alt: Victory Column's golden figure against a pale sky with a small moon
+    alt: Victory Column’s golden figure against a pale sky with a small moon
   - src: 2009/12/berlin-germany-44.jpg
     width: 720
     height: 1080
@@ -208,7 +208,7 @@ photos:
   - src: 2009/12/berlin-germany-52.jpg
     width: 1620
     height: 1080
-    alt: Reichstag's glowing arches seen from the side at night
+    alt: Reichstag’s glowing arches seen from the side at night
   - src: 2009/12/berlin-germany-53.jpg
     width: 1620
     height: 1080
@@ -228,7 +228,7 @@ photos:
   - src: 2009/12/berlin-germany-61.jpg
     width: 1620
     height: 1080
-    alt: Oberbaum Bridge's brick towers with a train crossing under a full moon
+    alt: Oberbaum Bridge’s brick towers with a train crossing under a full moon
   - src: 2009/12/berlin-germany-59.jpg
     width: 1620
     height: 1080
@@ -325,6 +325,6 @@ photos:
 
 Berlin in the cold season. The TV Tower at Alexanderplatz shows up everywhere, in blue sky and in fog and snow, and around it the Christmas markets glow: Ferris wheels, gingerbread hearts, sausages on giant grills, vendors in felt hats.
 
-By day I walked between the big names, the Brandenburg Gate with its crowds, the Holocaust Memorial's grey slabs, the Victory Column, the green dome of the cathedral, Charlottenburg Palace in grey winter light. Street performers in silver paint and Soviet uniforms work the squares.
+By day I walked between the big names, the Brandenburg Gate with its crowds, the Holocaust Memorial’s grey slabs, the Victory Column, the green dome of the cathedral, Charlottenburg Palace in grey winter light. Street performers in silver paint and Soviet uniforms work the squares.
 
 Then the long evenings: the Reichstag under a full moon, the Oberbaum Bridge, the Spree with its reflections, avenues of trees wrapped in fairy lights, a red-lit corridor at Tresor, and the kiss on the Wall at the East Side Gallery.

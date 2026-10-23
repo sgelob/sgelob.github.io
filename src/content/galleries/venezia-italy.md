@@ -24,15 +24,15 @@ photos:
   - src: 2012/08/venezia-italy-04.jpg
     width: 1620
     height: 1080
-    alt: Bird flying above the arcaded Procuratie facade in St Mark's Square
+    alt: Bird flying above the arcaded Procuratie facade in St Mark’s Square
   - src: 2012/08/venezia-italy-05.jpg
     width: 1620
     height: 1080
-    alt: Doge's Palace facade with pink and white diamond pattern above crowded arcades
+    alt: Doge’s Palace facade with pink and white diamond pattern above crowded arcades
   - src: 2012/08/venezia-italy-06.jpg
     width: 1620
     height: 1080
-    alt: St Mark's Basilica facade with gilded mosaics above the crowd
+    alt: St Mark’s Basilica facade with gilded mosaics above the crowd
   - src: 2012/08/venezia-italy-07.jpg
     width: 1620
     height: 1080
@@ -40,11 +40,11 @@ photos:
   - src: 2012/08/venezia-italy-08.jpg
     width: 720
     height: 1080
-    alt: Ornate Gothic Porta della Carta of the Doge's Palace with visitors
+    alt: Ornate Gothic Porta della Carta of the Doge’s Palace with visitors
   - src: 2012/08/venezia-italy-09.jpg
     width: 720
     height: 1080
-    alt: Torre dell'Orologio with its blue astronomical clock face above an archway
+    alt: Torre dell’Orologio with its blue astronomical clock face above an archway
   - src: 2012/08/venezia-italy-10.jpg
     width: 1620
     height: 1080
@@ -52,11 +52,11 @@ photos:
   - src: 2012/08/venezia-italy-11.jpg
     width: 720
     height: 1080
-    alt: Campanile of St Mark's rising above the Piazza on an overcast day
+    alt: Campanile of St Mark’s rising above the Piazza on an overcast day
   - src: 2012/08/venezia-italy-12.jpg
     width: 720
     height: 1080
-    alt: Campanile of St Mark's seen across the water above trees
+    alt: Campanile of St Mark’s seen across the water above trees
   - src: 2012/08/venezia-italy-13.jpg
     width: 1620
     height: 1080
@@ -160,15 +160,15 @@ photos:
   - src: 2012/08/venezia-italy-38.jpg
     width: 1620
     height: 1080
-    alt: Domes, mosaics and pinnacles of St Mark's Basilica past two red poles
+    alt: Domes, mosaics and pinnacles of St Mark’s Basilica past two red poles
   - src: 2012/08/venezia-italy-39.jpg
     width: 1620
     height: 1080
-    alt: Bronze horses above the main portal of St Mark's Basilica
+    alt: Bronze horses above the main portal of St Mark’s Basilica
   - src: 2012/08/venezia-italy-40.jpg
     width: 1620
     height: 1080
-    alt: Winged lion and angels on the gilded gable of St Mark's Basilica
+    alt: Winged lion and angels on the gilded gable of St Mark’s Basilica
   - src: 2012/08/venezia-italy-41.jpg
     width: 1080
     height: 1080
@@ -200,7 +200,7 @@ photos:
   - src: 2012/08/venezia-italy-48.jpg
     width: 720
     height: 1080
-    alt: Narrow lane framing the gabled upper facade of St Mark's Basilica
+    alt: Narrow lane framing the gabled upper facade of St Mark’s Basilica
   - src: 2012/08/venezia-italy-49.jpg
     width: 1620
     height: 1080
@@ -252,7 +252,7 @@ photos:
   - src: 2012/08/venezia-italy-61.jpg
     width: 1620
     height: 1080
-    alt: Renaissance arcaded palace facade with balustrades on St Mark's Square
+    alt: Renaissance arcaded palace facade with balustrades on St Mark’s Square
   - src: 2012/08/venezia-italy-62.jpg
     width: 720
     height: 1080
@@ -260,7 +260,7 @@ photos:
   - src: 2012/08/venezia-italy-63.jpg
     width: 720
     height: 1080
-    alt: Gothic columns of the Doge's Palace loggia with seagulls on the balustrade
+    alt: Gothic columns of the Doge’s Palace loggia with seagulls on the balustrade
   - src: 2012/08/venezia-italy-64.jpg
     width: 1620
     height: 1080
@@ -335,6 +335,6 @@ photos:
     alt: Weathered grey palazzo with a blue water door on a side canal
 ---
 
-I arrived in Venice under heavy clouds and left in bright sun. The first day was the Grand Canal from the vaporetto, St Mark's Square with the basilica's gilded mosaics and bronze horses, the Doge's Palace, the Torre dell'Orologio and the crowds along the Riva degli Schiavoni. Across the water, San Giorgio Maggiore kept appearing behind gondolas and mooring poles.
+I arrived in Venice under heavy clouds and left in bright sun. The first day was the Grand Canal from the vaporetto, St Mark’s Square with the basilica’s gilded mosaics and bronze horses, the Doge’s Palace, the Torre dell’Orologio and the crowds along the Riva degli Schiavoni. Across the water, San Giorgio Maggiore kept appearing behind gondolas and mooring poles.
 
 Then the quieter side: empty campi with a lone pigeon, leaning bell towers, peeling plaster and window boxes, gondoliers resting under stone bridges, the Giudecca with the Redentore and the Zitelle seen from the far bank. The last photos go back up the Grand Canal, past the Rialto, the Fondaco dei Turchi and the golden mosaics of Palazzo Salviati, to the Scalzi Bridge by the station.

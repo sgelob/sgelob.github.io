@@ -60,7 +60,7 @@ photos:
   - src: 2011/07/wien-austria-16.jpg
     width: 1620
     height: 1080
-    alt: Curved glass facade reflecting the cathedral's Gothic spire
+    alt: Curved glass facade reflecting the cathedral’s Gothic spire
   - src: 2011/07/wien-austria-15.jpg
     width: 1620
     height: 1080
@@ -611,6 +611,6 @@ photos:
     alt: Gateway arches glowing at dusk under dark clouds
 ---
 
-A few days in Vienna under a mostly grey sky, which suits the city: gilded eagles, green copper domes and cream facades look best against clouds. I walked from the Gothic roof tiles of St Stephen's through the Hofburg gateways, past white horse carriages waiting on the cobbles, to the Karlskirche with its twin columns reflected in a pool.
+A few days in Vienna under a mostly grey sky, which suits the city: gilded eagles, green copper domes and cream facades look best against clouds. I walked from the Gothic roof tiles of St Stephen’s through the Hofburg gateways, past white horse carriages waiting on the cobbles, to the Karlskirche with its twin columns reflected in a pool.
 
 Out at Schönbrunn the yellow palace sits above clipped hedges and flower beds, with the hilltop colonnade at the far end. Back in town I rode the red trams, ate apple strudel, and found small oddities: a mobile phone tied to a hammer on a signpost, a statue wrapped in white cloth. The last pictures are from the Prater Ferris wheel and from the streets at dusk.

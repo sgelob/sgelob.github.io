@@ -46,7 +46,7 @@ Discussione aperta sul come implementare CriticalCSS nei progetti di larga scala
 
 Alla fine della giornata, Perry Dyball, organizzatore del [London Web Perf meetup](https://ldnwebperf.org/), ha fatto partire un quiz interattivo ed è stato molto divertente, oltre anche ad essere formativo. Steve Souders non è arrivato primo 🙃 Dovrei provare questo modello di quiz a qualche meetup del [Turin Web Performance Group](https://olegs.be/2016/07/nasce-meetup-turin-web-performance-group/), utilizzando il servizio [Kahoot](https://kahoot.com).
 
-> Here's [@perrydyball](https://x.com/perrydyball) at [#webperfdays](https://x.com/hashtag/webperfdays?src=hash) /[@onishiweb](https://x.com/onishiweb) [pic.twitter.com/Q4nKJ9ju5Q](https://x.com/simonhearne/status/795302597154447361)
+> Here’s [@perrydyball](https://x.com/perrydyball) at [#webperfdays](https://x.com/hashtag/webperfdays?src=hash) /[@onishiweb](https://x.com/onishiweb) [pic.twitter.com/Q4nKJ9ju5Q](https://x.com/simonhearne/status/795302597154447361)
 > 
 > — Simon Hearne (@simonhearne) [November 6, 2016](https://x.com/simonhearne/status/795302597154447361)
 

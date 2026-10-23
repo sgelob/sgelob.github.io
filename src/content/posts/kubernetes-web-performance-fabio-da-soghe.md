@@ -17,7 +17,7 @@ In questo talk si era parlato di Kubernetes, l’orchestratore open source svilu
 
 ## Speaker – Fabio Da Soghe
 
-Software engineer, da sempre appassionato di informatica, ha iniziato nel 1997 sviluppando videogiochi per poi passare in ambito business dove ha lavorato per lo più su backend web per varie aziende in vari settori. Nel 2012 fonda la Cognitio, scopre il cloud e i container e impara di nuovo tutto dall'inizio.
+Software engineer, da sempre appassionato di informatica, ha iniziato nel 1997 sviluppando videogiochi per poi passare in ambito business dove ha lavorato per lo più su backend web per varie aziende in vari settori. Nel 2012 fonda la Cognitio, scopre il cloud e i container e impara di nuovo tutto dall’inizio.
 
 Twitter: [@fabiodasoghe](https://x.com/fabiodasoghe) Slide: [https://olegs.be/wp-content/uploads/2018/04/fabio-da-soghe-kubernetes-web-performance-turin.pdf](https://img.olegs.be/uploads/2018/04/fabio-da-soghe-kubernetes-web-performance-turin.pdf) Evento: https://www.meetup.com/it-IT/Turin-Web-Performance-Group/events/247158179
 
