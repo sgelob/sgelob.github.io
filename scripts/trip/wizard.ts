@@ -5,6 +5,7 @@ import { parseGpx } from '../../src/lib/gpx';
 import type { ObjectStore } from '../photos/r2';
 import { scaffoldGallery, type TripLink, type TripValues } from '../photos/scaffold';
 import { writeTrack } from '../track';
+import { activityFromSport, type KomootTour } from './komoot';
 
 /** Asks one question and returns the answer; `multiline` answers end at an empty line. */
 export type Ask = (question: string, opts?: { default?: string; multiline?: boolean }) => Promise<string>;
@@ -22,6 +23,8 @@ export interface WizardDeps {
   notesDir: string;
   /** Country slugs from taxonomies.yaml. */
   countries: readonly string[];
+  /** Reads a public Komoot tour from its link, to prefill the answers; absent when offline. */
+  komoot?: (url: string) => Promise<KomootTour>;
 }
 
 export interface WizardResult {
@@ -44,11 +47,11 @@ export const slugify = (s: string): string =>
   s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 
 /** Asks until `parse` accepts the answer; a thrown Error is shown and the question repeats. */
-async function until<T>(deps: Pick<WizardDeps, 'ask' | 'say'>, question: string, parse: (answer: string) => T, opts?: { default?: string }): Promise<T> {
+async function until<T>(deps: Pick<WizardDeps, 'ask' | 'say'>, question: string, parse: (answer: string) => T | Promise<T>, opts?: { default?: string }): Promise<T> {
   for (;;) {
     const answer = await deps.ask(question, opts);
     try {
-      return parse(answer);
+      return await parse(answer);
     } catch (e) {
       deps.say(`  ${e instanceof Error ? e.message : String(e)}`);
     }
@@ -77,12 +80,26 @@ export async function runWizard(deps: WizardDeps): Promise<WizardResult> {
   });
   say(`  ${folder.photos.length} photo${folder.photos.length === 1 ? '' : 's'} found.`);
 
+  let tour: KomootTour | undefined;
+  if (deps.komoot) {
+    tour = await until(deps, 'Komoot tour link, to prefill the numbers (empty to skip)', async (s) => {
+      const url = s.trim();
+      if (!url) return undefined;
+      return deps.komoot!(url);
+    }, { default: '' });
+    if (tour) {
+      say(`  Found: ${tour.name}, ${tour.sport}, ${tour.distanceKm} km, ${tour.climb} m up, ${tour.date}${tour.recorded ? '' : ' (a planned tour, not a recording)'}.`);
+      say('  Each answer below is prefilled from it; press Enter to keep it or type another.');
+    }
+  }
+  const sportActivity = tour && activityFromSport(tour.sport);
+
   const activity = await until(deps, 'Hike or ride? (hike/ride)', (s): 'hike' | 'ride' => {
     const a = s.trim().toLowerCase();
     if (a === 'hike' || a === 'h') return 'hike';
     if (a === 'ride' || a === 'r' || a === 'mtb') return 'ride';
     throw new Error('answer hike or ride');
-  });
+  }, sportActivity ? { default: sportActivity } : undefined);
   const bike = activity === 'ride'
     ? await until(deps, 'Which bike? (xc/trail)', (s): 'xc' | 'trail' => {
         const b = s.trim().toLowerCase();
@@ -96,7 +113,7 @@ export async function runWizard(deps: WizardDeps): Promise<WizardResult> {
     const t = s.trim();
     if (!t) throw new Error('the title cannot be empty');
     return t;
-  });
+  }, tour ? { default: tour.name } : undefined);
   const slug = await until(deps, 'Slug (the URL: /outdoors/<slug>/)', (s) => {
     const v = s.trim();
     if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(v)) throw new Error('lowercase letters, digits and single dashes only');
@@ -116,8 +133,8 @@ export async function runWizard(deps: WizardDeps): Promise<WizardResult> {
     return c;
   }, { default: 'italy' });
 
-  const distance = await until(deps, 'Distance in km (as Komoot reports it)', (s) => number(s, 'the distance', { min: 0.1 }));
-  const climb = await until(deps, 'Climb in metres', (s) => number(s, 'the climb', { integer: true }));
+  const distance = await until(deps, 'Distance in km (as Komoot reports it)', (s) => number(s, 'the distance', { min: 0.1 }), tour ? { default: String(tour.distanceKm) } : undefined);
+  const climb = await until(deps, 'Climb in metres', (s) => number(s, 'the climb', { integer: true }), tour ? { default: String(tour.climb) } : undefined);
 
   say('  A shared trip gets its route drawn on the page and the GPX offered for download.');
   say('  A discreet trip (near home) gets no route, no download, no links, and its date on the 1st of the month.');
@@ -134,6 +151,7 @@ export async function runWizard(deps: WizardDeps): Promise<WizardResult> {
       say(`  ${points} track points; only latitude, longitude and elevation will be kept.`);
       return file;
     });
+    if (tour && yes(await ask('Add the Komoot page as a public link? (Y/n)', { default: 'y' }))) links.push({ label: 'Komoot', url: `https://www.komoot.com/tour/${tour.id}` });
     for (;;) {
       const line = (await ask('Public link as label=url, e.g. Komoot=https://… (empty to finish)', { default: '' })).trim();
       if (!line) break;
@@ -149,7 +167,7 @@ export async function runWizard(deps: WizardDeps): Promise<WizardResult> {
     const d = new Date(Number(m[1]), Number(m[2]) - 1, shared ? Number(m[3]) : 1, 12);
     if (Number.isNaN(d.getTime())) throw new Error('not a date');
     return d;
-  });
+  }, tour ? { default: tour.date } : undefined);
   if (!shared) say(`  Discreet: the day is set to the 1st (${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-01).`);
 
   folder.photos.forEach((name, i) => say(`  ${String(i + 1).padStart(2)}  ${name}`));

@@ -5,12 +5,13 @@ import { describe, expect, test } from 'vitest';
 import { parse } from 'yaml';
 import type { ObjectStore } from '../scripts/photos/r2';
 import { runWizard, slugify, type WizardDeps } from '../scripts/trip/wizard';
+import type { KomootTour } from '../scripts/trip/komoot';
 import { tripSchema } from '../src/lib/outdoors';
 
 const fixture = (name: string) => new URL(`./fixtures/${name}`, import.meta.url).pathname;
 
 /** A wizard wired to temp folders, answering from a script; invalid answers must be followed by valid ones. */
-function setup(script: (photos: string) => string[]) {
+function setup(script: (photos: string) => string[], komoot?: (url: string) => Promise<KomootTour>) {
   const photos = mkdtempSync(join(tmpdir(), 'wiz-photos-'));
   copyFileSync(fixture('sample-1620x1080.jpg'), join(photos, 'IMG_0002.JPG'));
   copyFileSync(fixture('sample-1620x1080.jpg'), join(photos, 'IMG_0001.jpg'));
@@ -31,6 +32,7 @@ function setup(script: (photos: string) => string[]) {
     tracksDir: join(base, 'outdoors', 'tracks'),
     notesDir: join(base, 'drafts'),
     countries: ['italy', 'france', 'croatia'],
+    komoot,
   };
   mkdirSync(deps.tracksDir, { recursive: true });
   return { photos, deps, said, queue };
@@ -79,6 +81,20 @@ describe('trip wizard', () => {
     expect(readFileSync(r.notes, 'utf8')).toContain('DISCREET');
     expect(said.some((l) => l.includes('taken by the hikes page'))).toBe(true);
     expect(said.some((l) => l.includes('the day is set to the 1st'))).toBe(true);
+  });
+
+  test('a Komoot link prefills activity, title, distance, climb and date, and offers its page as a link', async () => {
+    const tour: KomootTour = { id: '1134841094', name: 'Colle delle Finestre', sport: 'mtb', distanceKm: 38.5, climb: 1700, date: '2026-06-14', recorded: true };
+    const komoot = async (url: string) => { if (!url.includes('komoot')) throw new Error('not a Komoot tour link'); return tour; };
+    // link (bad, then good), activity default, bike, title default, slug default, area, country default, distance default, climb default,
+    // shared, gpx, Komoot link yes, no more links, date default, cover default, darkHeader, notes
+    const { deps, said } = setup((photos) => [photos, 'https://example.com', 'https://www.komoot.com/tour/1134841094', '', 'trail', '', '', 'Val di Susa', '', '', '', 'y', fixture('track.gpx'), '', '', '', '', '', 'Up and over.'], komoot);
+    const r = await runWizard(deps);
+    const data = parse(readFileSync(r.path, 'utf8').split('---')[1]);
+    expect(data).toMatchObject({ title: 'Colle delle Finestre', activity: 'ride', bike: 'trail', distance: 38.5, climb: 1700, links: [{ label: 'Komoot', url: 'https://www.komoot.com/tour/1134841094' }] });
+    expect(readFileSync(r.path, 'utf8')).toContain('date: "2026-06-14T12:00:00"');
+    expect(said.some((l) => l.includes('not a Komoot tour link'))).toBe(true);
+    expect(said.some((l) => l.startsWith('  Found: Colle delle Finestre, mtb, 38.5 km, 1700 m up, 2026-06-14'))).toBe(true);
   });
 
   test('slugify', () => {
