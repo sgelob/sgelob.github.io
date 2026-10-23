@@ -1,6 +1,7 @@
 import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
+import { tripSchema } from './lib/outdoors';
 
 const lang = z.enum(['it', 'en']);
 
@@ -22,6 +23,11 @@ const galleries = defineCollection({
     // `alt` describes the photo; without it the grid falls back to "Photo N" (the h1 names the gallery).
     photos: z.array(z.object({ src: z.string(), width: z.number(), height: z.number(), alt: z.string().optional() })),
   }),
+});
+
+const outdoors = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/outdoors' }),
+  schema: tripSchema,
 });
 
 const posts = defineCollection({
@@ -50,4 +56,4 @@ const pages = defineCollection({
   }),
 });
 
-export const collections = { galleries, posts, pages };
+export const collections = { galleries, outdoors, posts, pages };
