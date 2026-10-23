@@ -56,7 +56,7 @@ describe('photos pages', () => {
 
   test('genre: heading, description and the genre active', () => {
     const html = read('dist/photos/genre/abandoned-places/index.html');
-    expect(html).toContain('<title>Abandoned — Photos — olegs</title>');
+    expect(html).toContain('<title>Abandoned · Photos – Olegs Belousovs</title>');
     expect(html).toMatch(/<h1[^>]*>Abandoned<\/h1>/);
     expect(html).toContain('I find peace in these places');
     expect(html).toMatch(/<a href="\/photos\/genre\/abandoned-places\/" aria-current="page"[^>]*>Abandoned<\/a>/);
@@ -65,7 +65,7 @@ describe('photos pages', () => {
 
   test('country: heading, every gallery of the country, no filter active', () => {
     const html = read('dist/photos/country/russia/index.html');
-    expect(html).toContain('<title>Russia — Photos — olegs</title>');
+    expect(html).toContain('<title>Russia · Photos – Olegs Belousovs</title>');
     expect(html).toMatch(/<h1[^>]*>Russia<\/h1>/);
     expect(count(html, 'class="gallery-card"')).toBe(13);
     expect(html).not.toMatch(/<a href="\/photos\/(genre\/[^"]+\/)?" aria-current="page"/);

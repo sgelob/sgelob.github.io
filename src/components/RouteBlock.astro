@@ -2,7 +2,7 @@
 // The route of a trip: a map of it seen from above, over contour lines when the trip has its terrain layer,
 // the elevation profile with altitude guides, kilometre marks and the high and low points, the front-matter
 // distance and climb, and the links (the GPX download first). Pure: the page reads the files.
-import { parseGpx, profileFigure, profileFromSeries, routeFit, simplifyPoints, type ProfileSeries } from '../lib/gpx';
+import { parseSegments, profileFigure, profileFromSeries, routeFit, simplifyPoints, type ProfileSeries } from '../lib/gpx';
 import { formatClimb, formatKm } from '../lib/outdoors';
 import { placeLabel } from '../lib/labels';
 
@@ -15,8 +15,7 @@ interface Props {
   links?: { label: string; url: string }[];
   /** The contour layer drawn for this route's map box (`/outdoors/<slug>.contours.svg`), when there is one. */
   contoursHref?: string;
-  /** The track leaves out its start and finish: no start ring, the profile measures only the drawn stretch, and the stats say so. */
-  /** The track's start and finish were moved about 1 km along the path: the stats say they are approximate. */
+  /** The track starts about 1 km along the path from the real start (two segments, every point kept): the stats say the ends are approximate. */
   approximateEnds?: boolean;
   /** The whole route's elevation profile, for a track with approximate ends: the profile shows the full ride, not only the drawn route. */
   fullProfile?: ProfileSeries;
@@ -24,12 +23,17 @@ interface Props {
 
 const { xml, distance, climb, downloadHref, links = [], contoursHref, approximateEnds = false, fullProfile } = Astro.props;
 
-const all = parseGpx(xml);
+const segments = parseSegments(xml);
+const all = segments.flat();
 const points = simplifyPoints(all);
 // The same box as scripts/trip/contours.ts (MAP), so the route sits exactly on its terrain.
 const fit = routeFit(points, 400, 300, 8);
 const r1 = (n: number) => Math.round(n * 10) / 10;
-const line = points.map((p, i) => `${i ? 'L' : 'M'}${fit.project(p).map(r1).join(' ')}`).join('');
+// Each segment is drawn on its own (a track with approximate ends has two), so no line joins one segment's end to the next one's start.
+const line = segments
+  .map((segment) => simplifyPoints(segment, Math.max(2, Math.round((400 * segment.length) / all.length))))
+  .map((segment) => segment.map((p, i) => `${i ? 'L' : 'M'}${fit.project(p).map(r1).join(' ')}`).join(''))
+  .join('');
 const [startX, startY] = fit.project(all[0]).map(r1);
 const top = all.reduce<(typeof all)[number] | undefined>((best, p) => (p.ele !== undefined && (best?.ele === undefined || p.ele > best.ele) ? p : best), undefined);
 const [topX, topY] = top ? fit.project(top).map(r1) : [0, 0];

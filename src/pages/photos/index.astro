@@ -1,4 +1,5 @@
 ---
+import { pageTitle } from '../../lib/site';
 import { getEntry } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import PhotosHeader from '../../components/PhotosHeader.astro';
@@ -16,7 +17,7 @@ const sections = groupGalleries(galleries, 'genre');
 const plural = (n: number) => `${n} ${n === 1 ? 'gallery' : 'galleries'}`;
 ---
 
-<Base title={page?.data.seoTitle ?? 'Photos — olegs'} description={page?.data.seoDescription}>
+<Base title={pageTitle(page?.data.seoTitle ?? 'Photos')} description={page?.data.seoDescription}>
   <PhotosHeader intro={home.photosIntro} active="all" />
   <div class="sections">
     {sections.map(({ key, galleries: items }) => (

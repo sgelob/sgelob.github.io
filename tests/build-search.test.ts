@@ -10,7 +10,7 @@ const POST = 'dist/2016/09/come-eseguire-test-sintetici-web-performance-webpaget
 describe('search page', () => {
   test('is a noindex page with a labelled search form, out of the sitemap', () => {
     const html = read('dist/search/index.html');
-    expect(html).toContain('<title>Search — olegs</title>');
+    expect(html).toContain('<title>Search – Olegs Belousovs</title>');
     expect(html).toContain('<html lang="en"');
     expect(html).toContain('<meta name="robots" content="noindex">');
     expect(html).toContain('role="search"');

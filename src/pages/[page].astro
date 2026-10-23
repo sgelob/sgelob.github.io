@@ -1,4 +1,5 @@
 ---
+import { pageTitle } from '../lib/site';
 import type { GetStaticPaths } from 'astro';
 import { getCollection, render, type CollectionEntry } from 'astro:content';
 import Reading from '../layouts/Reading.astro';
@@ -36,7 +37,7 @@ const { Content } = page ? await render(page) : { Content: undefined };
 {props.redirectTo !== undefined ? (
   <Redirect to={props.redirectTo} />
 ) : page && Content && (
-  <Reading title={page.data.seoTitle ?? `${page.data.title} — olegs`} heading={page.data.title} description={page.data.seoDescription} lang={page.data.lang} search={{ type: 'other' }}>
+  <Reading title={pageTitle(page.data.seoTitle ?? page.data.title)} heading={page.data.title} description={page.data.seoDescription} lang={page.data.lang} search={{ type: 'other' }}>
     <Content />
   </Reading>
 )}

@@ -1,4 +1,5 @@
 ---
+import { pageTitle } from '../../lib/site';
 import Base from '../../layouts/Base.astro';
 import OutdoorsIndex from '../../components/OutdoorsIndex.astro';
 import { getTrips } from '../../lib/collections';
@@ -7,6 +8,6 @@ import { OUTDOORS_LEAD } from '../../lib/outdoors';
 const trips = await getTrips();
 ---
 
-<Base title="Outdoors — olegs" description={OUTDOORS_LEAD}>
+<Base title={pageTitle('Outdoors')} description={OUTDOORS_LEAD}>
   <OutdoorsIndex trips={trips} filter="all" />
 </Base>
