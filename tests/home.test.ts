@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest';
-import { daySeed, leadParagraphs, pickFeatured, pickRandom } from '../src/lib/home';
+import { daySeed, HOME_QUOTE_MAX, leadParagraphs, pickFeatured, pickRandom, quoteOfTheDay } from '../src/lib/home';
 import { groupByAuthor, quotes } from '../src/lib/quotes';
 
 const galleries = ['a', 'b', 'c', 'd', 'e'].map((id) => ({ id }));
@@ -26,4 +26,19 @@ test('groupByAuthor keeps file order and every quote', () => {
   expect(groups).toHaveLength(141);
   expect(groups.flatMap((g) => g.quotes)).toEqual(quotes);
   expect(groups[0]?.author.slug).toBe(quotes[0]?.author.slug);
+});
+
+test('quoteOfTheDay: the same day gives the same quote, the next day another, and every short quote comes round', () => {
+  const day = (n: number) => new Date(2026, 9, 23 + n, 4);
+  expect(quoteOfTheDay(day(0))).toBe(quoteOfTheDay(new Date(2026, 9, 23, 22))); // a day, not an hour
+  const eligible = [...new Set(quotes.filter((q) => q.text.length <= HOME_QUOTE_MAX).map((q) => q.text))]; // a few texts are in the file twice
+  expect(eligible.length).toBeGreaterThan(150);
+  const seen = new Set<string>();
+  for (let n = 0; n < eligible.length; n++) {
+    const today = quoteOfTheDay(day(n));
+    expect(today.text.length).toBeLessThanOrEqual(HOME_QUOTE_MAX);
+    expect(today).not.toBe(quoteOfTheDay(day(n + 1)));
+    seen.add(today.text);
+  }
+  expect(seen.size).toBe(eligible.length); // no repeat before every quote has had its day
 });
