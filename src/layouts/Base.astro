@@ -9,6 +9,7 @@ import Seo from '../components/Seo.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import { sectionFor } from '../lib/nav';
+import { pagefindAttrs, type SearchMarks } from '../lib/search';
 import type { Lang } from '../lib/site';
 
 interface Props {
@@ -19,9 +20,13 @@ interface Props {
   canonical?: string;
   /** The nav floats over the top of the page, e.g. over a full-bleed cover. */
   overlayNav?: boolean;
+  /** Keep the page out of search engines (robots noindex). */
+  noindex?: boolean;
+  /** Index the whole of `<main>` for the site search (a gallery); Reading marks its own article instead. */
+  search?: SearchMarks;
 }
 
-const { title, description, lang = 'en', ogImage, canonical, overlayNav = false } = Astro.props;
+const { title, description, lang = 'en', ogImage, canonical, overlayNav = false, noindex = false, search } = Astro.props;
 const current = sectionFor(Astro.url.pathname);
 const beaconToken: unknown = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
 ---
@@ -33,14 +38,14 @@ const beaconToken: unknown = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#0c0c0c" />
     <link rel="preload" href={interLatin} as="font" type="font/woff2" crossorigin />
-    <Seo title={title} description={description} ogImage={ogImage} canonical={canonical} lang={lang} />
+    <Seo title={title} description={description} ogImage={ogImage} canonical={canonical} lang={lang} noindex={noindex} />
     <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   </head>
   <body>
     <a class="skip-link" href="#main">{lang === 'it' ? 'Vai al contenuto' : 'Skip to content'}</a>
     <Nav current={current} overlay={overlayNav} lang={lang} />
-    <main id="main" tabindex="-1">
+    <main id="main" tabindex="-1" {...pagefindAttrs(search)}>
       <slot />
     </main>
     <Footer lang={lang} />

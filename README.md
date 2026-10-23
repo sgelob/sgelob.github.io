@@ -8,8 +8,10 @@ Personal site of Olegs Belousovs. An Astro static site deployed to GitHub Pages;
 npm install
 npm run dev      # local dev server
 npm test         # vitest (builds the site once, then checks the output)
-npm run build    # static site into dist/
+npm run build    # static site into dist/, then its search index into dist/pagefind/
 ```
+
+Search (`/search/`) runs on a [Pagefind](https://pagefind.app) index that `npm run build` writes after the Astro build; the dev server has no index, so try search with `npm run build && npm run preview`.
 
 ## Add a gallery
 

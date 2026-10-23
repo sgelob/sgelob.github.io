@@ -13,9 +13,11 @@ interface Props {
   /** `high` for the page's LCP image, so the browser fetches it ahead of fonts and other images. */
   fetchpriority?: 'high';
   class?: string;
+  /** The alt text is a real description: the site search indexes it (Pagefind skips alt by default). */
+  indexAlt?: boolean;
 }
 
-const { src, width, height, alt, sizes, maxWidth, loading = 'lazy', fetchpriority, class: className } = Astro.props;
+const { src, width, height, alt, sizes, maxWidth, loading = 'lazy', fetchpriority, class: className, indexAlt = false } = Astro.props;
 
 // Variants are never upscaled, so none exists above the image's own width. Of an image narrower
 // than the smallest variant, or of unknown size, only the original exists: the srcset comes out empty.
@@ -42,5 +44,6 @@ const fallback = original ? originalUrl(src) : largestVariantUrl(src, limit);
     loading={loading}
     fetchpriority={fetchpriority}
     class={className}
+    data-pagefind-index-attrs={indexAlt ? 'alt' : undefined}
   />
 </picture>
