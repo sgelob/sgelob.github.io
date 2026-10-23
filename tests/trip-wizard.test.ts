@@ -85,7 +85,7 @@ describe('trip wizard', () => {
   });
 
   test('a Komoot link prefills activity, title, distance, climb and date, and offers its page as a link', async () => {
-    const tour: KomootTour = { id: '1134841094', name: 'Colle delle Finestre', sport: 'mtb', distanceKm: 38.5, climb: 1700, date: '2026-06-14', recorded: true, images: [] };
+    const tour: KomootTour = { id: '1134841094', name: 'Colle delle Finestre', sport: 'mtb', distanceKm: 38.5, climb: 1700, date: '2026-06-14', recorded: true, images: [], imagesTotal: 0 };
     const komoot = async (url: string) => { if (!url.includes('komoot')) throw new Error('not a Komoot tour link'); return tour; };
     // link (bad, then good), activity default, bike, title default, slug default, area, country default, distance default, climb default,
     // shared, gpx, Komoot link yes, no more links, date default, cover default, darkHeader, notes
@@ -99,7 +99,7 @@ describe('trip wizard', () => {
   });
 
   test('with photos on Komoot, Enter at the folder question downloads them and the run goes on from that folder', async () => {
-    const tour: KomootTour = { id: '907671487', name: 'Assietta ridge', sport: 'mtb', distanceKm: 52, climb: 1100, date: '2026-09-06', recorded: true, images: [{ id: 1, src: 'https://x/1', index: 1, createdAt: '', widthPx: 4608, heightPx: 3456 }] };
+    const tour: KomootTour = { id: '907671487', name: 'Assietta ridge', sport: 'mtb', distanceKm: 52, climb: 1100, date: '2026-09-06', recorded: true, images: [{ id: 1, src: 'https://x/1', index: 1, createdAt: '', widthPx: 4608, heightPx: 3456 }], imagesTotal: 1 };
     let downloaded = '';
     const komootPhotos = async () => { downloaded = mkdtempSync(join(tmpdir(), 'wiz-komoot-')); copyFileSync(fixture('sample-1620x1080.jpg'), join(downloaded, '01.jpg')); return downloaded; };
     // link, folder (Enter → Komoot), activity, bike, title, slug, area, country, distance, climb, shared?, date, cover, darkHeader, notes
@@ -112,6 +112,20 @@ describe('trip wizard', () => {
     expect(said.some((l) => l.includes('1 photo.'))).toBe(true);
     expect(said.some((l) => l.includes('Downloading from Komoot'))).toBe(true);
     expect(said.some((l) => l === `  The photos are in ${downloaded}`)).toBe(true);
+  });
+
+  test('when Komoot lists only some of the photos (no login), they are not offered and the folder is asked for', async () => {
+    const five = [1, 2, 3, 4, 5].map((id) => ({ id, src: `https://x/${id}`, index: id, createdAt: '', widthPx: 2048, heightPx: 1536 }));
+    const tour: KomootTour = { id: '3297659281', name: 'Canosio – Gardetta', sport: 'mtb', distanceKm: 38.1, climb: 1500, date: '2026-09-20', recorded: true, images: five, imagesTotal: 26 };
+    let offered = false;
+    // link, folder (must be given), activity, bike, title, slug, area, country, distance, climb, shared?, date, cover, darkHeader, notes
+    const { deps, said } = setup((photos) => ['https://www.komoot.com/tour/3297659281', '', photos, '', 'trail', '', '', 'Valle Maira', '', '', '', 'n', '', '', '', 'Gardetta plateau.'], async () => tour, async () => { offered = true; return ''; });
+    const r = await runWizard(deps);
+    expect(offered).toBe(false);
+    expect(r.photos).toBe(2);
+    expect(said.some((l) => l.includes('only 5 of the 26 photos without a login'))).toBe(true);
+    expect(said.some((l) => l.includes('KOMOOT_EMAIL and KOMOOT_PASSWORD'))).toBe(true);
+    expect(said.some((l) => l.includes('give the folder with the photos'))).toBe(true); // the empty answer is not taken as "download"
   });
 
   test('pathOf: a path dragged into the terminal, quoted or with escaped spaces', () => {
