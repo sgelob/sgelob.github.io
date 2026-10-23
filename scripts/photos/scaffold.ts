@@ -19,19 +19,40 @@ export type ScaffoldOptions = {
   date?: Date;
   /** `'outdoors'` writes a trip file (to be completed by hand) instead of a gallery. Default `'gallery'`. */
   kind?: 'gallery' | 'outdoors';
+  /** Values for the trip file when they are already known (the wizard); what is left out stays undecided. */
+  trip?: TripValues;
 };
 
-/** What `--outdoors` scaffolds: placeholders for what the photos cannot tell; `activity`, `distance`, `climb` and `track` are left undecided. */
+export type TripLink = { label: string; url: string };
+
+/** What a trip's front matter can be given up front. `cover` is the 1-based number of the photo in file-name order. */
+export type TripValues = {
+  title?: string;
+  activity?: 'hike' | 'ride';
+  bike?: 'xc' | 'trail';
+  distance?: number;
+  climb?: number;
+  area?: string;
+  country?: string;
+  track?: string | false;
+  links?: TripLink[];
+  cover?: number;
+  darkHeader?: boolean;
+};
+
+/** A trip file's front matter: what `--outdoors` leaves undecided (`undefined`) the build refuses until it is set. */
 export type TripDoc = {
   slug: string;
   title: string;
   date: string;
-  activity: undefined;
-  distance: undefined;
-  climb: undefined;
+  activity: 'hike' | 'ride' | undefined;
+  bike?: 'xc' | 'trail';
+  distance: number | undefined;
+  climb: number | undefined;
   area: string;
   country: string;
-  track: undefined;
+  track: string | false | undefined;
+  links?: TripLink[];
   cover: string;
   darkHeader: boolean;
   photos: Photo[];
@@ -50,13 +71,14 @@ export function tripFrontmatter(doc: TripDoc): string {
     '---\n' +
     field('title', doc.title) +
     `date: ${JSON.stringify(doc.date)}\n` +
-    'activity:\n' +
-    '# bike: xc | trail\n' +
-    'distance:\n' +
-    'climb:\n' +
+    (doc.activity === undefined ? 'activity:\n' : field('activity', doc.activity)) +
+    (doc.bike === undefined ? '# bike: xc | trail\n' : field('bike', doc.bike)) +
+    (doc.distance === undefined ? 'distance:\n' : field('distance', doc.distance)) +
+    (doc.climb === undefined ? 'climb:\n' : field('climb', doc.climb)) +
     field('area', doc.area) +
     field('country', doc.country) +
-    'track:\n' +
+    (doc.track === undefined ? 'track:\n' : field('track', doc.track)) +
+    (doc.links?.length ? field('links', doc.links) : '') +
     field('cover', doc.cover) +
     (coverPhoto && coverPhoto.width > 0 ? field('coverWidth', coverPhoto.width) + field('coverHeight', coverPhoto.height) : '') +
     field('darkHeader', doc.darkHeader) +
@@ -115,18 +137,21 @@ export async function scaffoldGallery(opts: ScaffoldOptions): Promise<string> {
 
   const photoDocs = paths.map((src): Photo => ({ src, ...(sizes.get(src) ?? { width: 0, height: 0 }) }));
   if (kind === 'outdoors') {
+    const given = opts.trip ?? {};
     const trip: TripDoc = {
       slug,
-      title: titleFromSlug(slug),
+      title: given.title ?? titleFromSlug(slug),
       date: timestamp(date),
-      activity: undefined,
-      distance: undefined,
-      climb: undefined,
-      area: '',
-      country: 'italy',
-      track: undefined,
-      cover: paths[0],
-      darkHeader: false,
+      activity: given.activity,
+      bike: given.bike,
+      distance: given.distance,
+      climb: given.climb,
+      area: given.area ?? '',
+      country: given.country ?? 'italy',
+      track: given.track,
+      links: given.links,
+      cover: paths[(given.cover ?? 1) - 1] ?? paths[0],
+      darkHeader: given.darkHeader ?? false,
       photos: photoDocs,
     };
     mkdirSync(contentDir, { recursive: true });

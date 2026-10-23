@@ -5,7 +5,7 @@ import { parseArgs } from 'node:util';
 import { WIDTHS } from '../src/lib/images';
 import { fixSizes } from './photos/fill-sizes';
 import { processUploads } from './photos/process';
-import { R2Store, type ObjectStore } from './photos/r2';
+import { r2Env, storeFromEnv, type ObjectStore } from './photos/r2';
 import { scaffoldGallery } from './photos/scaffold';
 
 const GALLERIES_DIR = fileURLToPath(new URL('../src/content/galleries', import.meta.url));
@@ -31,11 +31,6 @@ const { values, positionals } = parseArgs({
 
 if (existsSync('.env')) process.loadEnvFile('.env');
 
-function r2Env() {
-  const { R2_ACCOUNT_ID: accountId, R2_ACCESS_KEY_ID: accessKeyId, R2_SECRET_ACCESS_KEY: secretAccessKey, R2_BUCKET: bucket } = process.env;
-  return accountId && accessKeyId && secretAccessKey && bucket ? { accountId, accessKeyId, secretAccessKey, bucket } : undefined;
-}
-
 /** A dry run may go without credentials: then nothing is known to exist remotely. */
 const nothingStored: ObjectStore = {
   listKeys: async () => new Set(),
@@ -44,11 +39,6 @@ const nothingStored: ObjectStore = {
   },
 };
 
-function realStore(): ObjectStore {
-  const env = r2Env();
-  if (!env) throw new Error('R2_ACCOUNT_ID, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY and R2_BUCKET must be set (see .env.example)');
-  return new R2Store(env);
-}
 
 async function main(): Promise<number> {
   const log = console.log;
@@ -74,7 +64,7 @@ async function main(): Promise<number> {
     const path = await scaffoldGallery({
       slug,
       folder: resolve(folder),
-      store: realStore(),
+      store: storeFromEnv(),
       contentDir: outdoors ? OUTDOORS_DIR : GALLERIES_DIR,
       date,
       kind: outdoors ? 'outdoors' : 'gallery',
@@ -97,7 +87,7 @@ async function main(): Promise<number> {
       widths.push(extra);
     }
     const dryRun = Boolean(values['dry-run']);
-    const store = dryRun && !r2Env() ? nothingStored : realStore();
+    const store = dryRun && !r2Env() ? nothingStored : storeFromEnv();
     const r = await processUploads({ uploadsDir: resolve(values.uploads), store, widths, dryRun, log });
     log(
       `${r.files} files, ${r.uploaded} uploaded, ${r.skipped} already present` +
