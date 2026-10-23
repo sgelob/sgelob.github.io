@@ -32,7 +32,7 @@ describe('tripSchema', () => {
 });
 
 describe('labels and paths', () => {
-  it('paths', () => { expect(tripPath({ id: 'x' } as any)).toBe('/outdoors/x/'); expect(trackPath({ id: 'x' } as any)).toBe('/outdoors/x.gpx'); });
+  it('paths', () => { expect(tripPath({ id: 'x' } as any)).toBe('/outdoors/x/'); expect(trackPath({ id: 'x' } as any)).toBe('/outdoors/x-olegs-be.gpx'); });
   it('formats numbers the en-US way', () => { expect(formatKm(12.5)).toBe('12.5 km'); expect(formatKm(1024)).toBe('1,024 km'); expect(formatClimb(1350)).toBe('1,350 m up'); });
   it('cardMeta: hike without bike, ride with the short bike name, no "up"', () => {
     expect(cardMeta({ activity: 'hike', distance: 16, climb: 1350 })).toBe('Hike · 16 km · 1,350 m');
