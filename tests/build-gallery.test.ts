@@ -68,7 +68,7 @@ describe('gallery page', () => {
     const src = /<script type="module" src="(\/_astro\/[^"]+\.js)"><\/script>/.exec(html)?.[1];
     expect(src).toBeDefined();
     const entry = read(`dist${src}`);
-    expect(Buffer.byteLength(entry)).toBeLessThan(4 * 1024);
+    expect(Buffer.byteLength(entry)).toBeLessThan(5 * 1024); // ~4 KB with the caption and hash history code
     expect(entry).toMatch(/import\([`"']\.\/photoswipe-lightbox\.esm\.[\w-]+\.js[`"']\)/);
     expect(entry).not.toContain('pswp__');
     // The core chunk is fetched by load() itself, so its failure reaches the plain-link fallback;
@@ -80,6 +80,17 @@ describe('gallery page', () => {
     expect(entry).toContain('Photo viewer');
     expect(entry).toContain('aria-live');
     expect(entry).toContain('Previous photo');
+  });
+
+  test('the lightbox shows the photo description as a caption and keeps the open photo in the hash', () => {
+    const html = venezia();
+    const src = /<script type="module" src="(\/_astro\/[^"]+\.js)"><\/script>/.exec(html)?.[1];
+    const entry = read(`dist${src}`);
+    expect(entry).toContain('registerElement'); // the caption element, filled from the slide's alt
+    expect(entry).toMatch(/Photo \\d\+/); // the "Photo n" fallback is not shown as a caption
+    expect(entry).toContain('#photo-'); // deep link to the open photo
+    expect(entry).toContain('popstate'); // Back closes the photo instead of leaving the page
+    expect(html).toContain('.pswp .lb-caption'); // the caption's style ships with the page
   });
 
   test('grid basis sits below the target row height: 280px desktop, 150px mobile', () => {

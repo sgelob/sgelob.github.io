@@ -36,6 +36,8 @@
       gallery: '.justified',
       children: 'a.ph',
       pswpModule: PhotoSwipe,
+      // A solid backdrop: at the default 0.8 the page's text shows through behind the caption.
+      bgOpacity: 1,
       // Become each button's title and aria-label.
       arrowPrevTitle: 'Previous photo',
       arrowNextTitle: 'Next photo',
@@ -64,7 +66,46 @@
       const img = link.querySelector('img');
       item.width = item.w = Number(img?.getAttribute('width')) || 0;
       item.height = item.h = Number(img?.getAttribute('height')) || 0;
+      // The description goes on the full-size img too; the "Photo n" fallback is not a description.
+      const alt = img?.getAttribute('alt') ?? '';
+      item.alt = /^Photo \d+$/.test(alt) ? '' : alt;
       return item;
+    });
+    // The caption: the photo's description under the image, updated as the slides change.
+    lightbox.on('uiRegister', () => {
+      lightbox.pswp?.ui?.registerElement({
+        name: 'caption',
+        className: 'lb-caption mono',
+        appendTo: 'root',
+        onInit: (element, pswp) => {
+          pswp.on('change', () => {
+            element.textContent = pswp.currSlide?.data.alt ?? '';
+          });
+        },
+      });
+    });
+    // Deep links: the open photo is in the hash (#photo-12), so a link to it opens the lightbox on
+    // load, and closing it is a history entry, so Back closes the photo instead of leaving the page.
+    let opened = false;
+    lightbox.on('change', () => {
+      const hash = `#photo-${(lightbox.pswp?.currIndex ?? 0) + 1}`;
+      if (opened) {
+        history.replaceState({ photo: true }, '', hash);
+      } else {
+        opened = true;
+        // Landed on #photo-n: the page itself becomes the entry below, so Back still closes.
+        if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+        history.pushState({ photo: true }, '', hash);
+      }
+    });
+    lightbox.on('close', () => {
+      opened = false;
+      // Closed with Esc, the button or a tap: drop the hash entry so Back does not reopen it.
+      if (history.state?.photo) history.back();
+    });
+    window.addEventListener('popstate', () => {
+      // Back (or forward) while open: close the photo. PhotoSwipe ignores a close while closing.
+      if (!history.state?.photo) lightbox.pswp?.close();
     });
     lightbox.init();
     return lightbox;
@@ -73,27 +114,51 @@
   const grid = document.querySelector<HTMLElement>('.justified');
   let state: 'idle' | 'loading' | 'ready' = 'idle';
 
-  // Once initialised, PhotoSwipe handles the clicks itself: this only covers the first one.
-  grid?.addEventListener('click', (event) => {
-    if (state === 'ready' || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-    const link = (event.target as Element).closest<HTMLAnchorElement>('a.ph');
-    if (!link) return;
-    event.preventDefault();
+  /** Loads PhotoSwipe once and opens the photo at `index`; `fallback` runs when loading fails. */
+  function open(index: number, fallback?: () => void): void {
     if (state === 'loading') return;
     state = 'loading';
-    const index = [...grid.querySelectorAll('a.ph')].indexOf(link);
     load().then(
       (lightbox) => {
         state = 'ready';
         lightbox.loadAndOpen(index);
       },
       () => {
-        // Any of the three requests in load() failed (offline, a missing chunk or stylesheet): nothing
-        // has opened, so follow the plain link to the original. Photos that fail inside the open
-        // lightbox are PhotoSwipe's to report.
         state = 'idle';
-        window.location.href = link.href;
+        fallback?.();
       },
     );
+  }
+
+  // Once initialised, PhotoSwipe handles the clicks itself: this only covers the first one.
+  grid?.addEventListener('click', (event) => {
+    if (state === 'ready' || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const link = (event.target as Element).closest<HTMLAnchorElement>('a.ph');
+    if (!link) return;
+    event.preventDefault();
+    // Any of the three requests in load() failed (offline, a missing chunk or stylesheet): nothing
+    // has opened, so follow the plain link to the original. Photos that fail inside the open
+    // lightbox are PhotoSwipe's to report.
+    open([...grid.querySelectorAll('a.ph')].indexOf(link), () => { window.location.href = link.href; });
   });
+
+  // A deep link to a photo (#photo-12) opens it on load; an index past the last photo is ignored.
+  const linked = Number(/^#photo-(\d+)$/.exec(location.hash)?.[1]);
+  if (grid && linked >= 1 && linked <= grid.querySelectorAll('a.ph').length) open(linked - 1);
 </script>
+
+<!-- Global: the caption is rendered by PhotoSwipe outside any scoped markup. -->
+<style is:global>
+  .pswp .lb-caption {
+    position: absolute;
+    inset: auto 0 0;
+    padding: 12px var(--gutter) max(12px, env(safe-area-inset-bottom));
+    color: var(--muted);
+    text-align: center;
+    text-wrap: balance;
+    background: linear-gradient(transparent, rgb(0 0 0 / 0.5));
+    pointer-events: none;
+  }
+
+  .pswp .lb-caption:empty { display: none; }
+</style>
