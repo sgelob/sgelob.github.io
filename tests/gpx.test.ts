@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { distanceKm, parseGpx, profileFigure, routeFit, routeShape, sanitizeGpx, simplifyPoints } from '../src/lib/gpx';
+import { distanceKm, maskEnds, parseGpx, profileFigure, routeFit, routeShape, sanitizeGpx, simplifyPoints, type TrackPoint } from '../src/lib/gpx';
 
 const xml = readFileSync('tests/fixtures/track.gpx', 'utf8');
 
@@ -74,5 +74,44 @@ describe('sanitizeGpx', () => {
   it('round-trips through parseGpx and refuses an empty track', () => {
     expect(parseGpx(sanitizeGpx(xml, 'x'))).toEqual(parseGpx(xml));
     expect(() => sanitizeGpx('<gpx></gpx>', 'x')).toThrow('no track points');
+  });
+});
+
+describe('maskEnds', () => {
+  // About 0.1 km a step: 0.0009° of latitude.
+  const north = (from: TrackPoint, steps: number): TrackPoint[] => Array.from({ length: steps }, (_, i) => ({ lat: from.lat + 0.0009 * (i + 1), lon: from.lon, ele: 300 }));
+  const east = (from: TrackPoint, steps: number): TrackPoint[] => Array.from({ length: steps }, (_, i) => ({ lat: from.lat, lon: from.lon + 0.00127 * (i + 1), ele: 300 }));
+  const home: TrackPoint = { lat: 45, lon: 7.5, ele: 250 };
+  const away = (kept: TrackPoint[], from: TrackPoint) => Math.min(...kept.map((q) => distanceKm(q, from)));
+
+  it('drops every point within the radius of the start and of the finish', () => {
+    const line = [home, ...north(home, 100)]; // 10 km north
+    const kept = maskEnds(line, 2);
+    expect(away(kept, line[0])).toBeGreaterThanOrEqual(2);
+    expect(away(kept, line[line.length - 1])).toBeGreaterThanOrEqual(2);
+    expect(away(kept, line[0])).toBeLessThan(2.2); // the line still starts just outside the circle
+    expect(kept.length).toBeGreaterThan(50);
+  });
+
+  it('keeps one unbroken stretch: the longest one outside both circles, when the route passes the start again', () => {
+    const out = north(home, 60); // 6 km north
+    const back = out.slice(0, -1).reverse().slice(0, 50).concat(home).slice(0, 51); // back south, through the start circle
+    const loop = [home, ...out, ...back, ...east(home, 80)]; // then 8 km east, ending far away
+    const kept = maskEnds(loop, 2);
+    for (const q of kept) expect(Math.min(distanceKm(q, loop[0]), distanceKm(q, loop[loop.length - 1]))).toBeGreaterThanOrEqual(2);
+    const first = loop.indexOf(kept[0]);
+    expect(kept).toEqual(loop.slice(first, first + kept.length)); // contiguous in the original
+  });
+
+  it('a radius of 0 keeps the track; a track entirely inside the circles is refused', () => {
+    const line = [home, ...north(home, 30)];
+    expect(maskEnds(line, 0)).toEqual(line);
+    expect(() => maskEnds(line, 5)).toThrow(/within 5 km of the start or finish/);
+  });
+
+  it('sanitizeGpx can mask the ends', () => {
+    const doc = [home, ...north(home, 100)].map((q) => `<trkpt lat="${q.lat}" lon="${q.lon}"><ele>${q.ele}</ele></trkpt>`).join('');
+    const masked = parseGpx(sanitizeGpx(`<gpx><trk><trkseg>${doc}</trkseg></trk></gpx>`, 'x', 2));
+    expect(away(masked, home)).toBeGreaterThanOrEqual(2);
   });
 });
