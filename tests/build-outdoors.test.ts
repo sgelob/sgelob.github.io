@@ -9,6 +9,7 @@ describe('outdoors index', () => {
     expect(html).toContain('<title>Outdoors — olegs</title>');
     expect(html).toMatch(/<h1[^>]*>Outdoors<\/h1>/);
     expect(html).toContain('a kind of shinrin-yoku on foot or on two wheels');
+    expect(html).toContain('Distance and climb are there to describe the day, not to measure it.');
     expect(html).toMatch(/<a href="\/outdoors\/" aria-current="page"[^>]*>All<\/a>/);
     expect(html).toContain('href="/outdoors/hikes/"'); expect(html).toContain('href="/outdoors/rides/"');
     expect(html).toMatch(/<h2 id="year-2026"[^>]*>2026<\/h2>/);
