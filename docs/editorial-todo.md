@@ -48,7 +48,7 @@ Added by Oleg on 2026-10-22. One gallery per line; the dates are the trip dates 
 ### Rest of Europe
 - Budapest 04-2013
 - Copenhagen 04-2013
-- Ljubljana 04-2013
+- [x] Ljubljana 04-2013 (published 2026-10-23)
 - Frankfurt am Main 01-2014
 - Istanbul 02-2014
 - Latvia 06-2014
