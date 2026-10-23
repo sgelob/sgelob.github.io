@@ -17,6 +17,15 @@ describe('outdoors content', () => {
     const referenced = new Set(trips.map((t) => t.data.track).filter((t): t is string => typeof t === 'string'));
     for (const file of listTracks()) expect(referenced.has(file), `tracks/${file} is referenced by no trip`).toBe(true);
   });
+  test('a committed track is a sanitised export (no times, extensions, metadata or waypoints): run it through `npm run track`', () => {
+    for (const file of listTracks()) {
+      const xml = readTrack(file);
+      for (const tag of ['<time', '<extensions', '<metadata', '<wpt']) expect(xml.includes(tag), `tracks/${file} contains ${tag}: it is a raw export, not the output of npm run track`).toBe(false);
+    }
+  });
+  test('hikes and rides are the filter pages: no trip may take those slugs', () => {
+    for (const { slug } of trips) expect(['hikes', 'rides'].includes(slug), `${slug}.md would collide with /outdoors/${slug}/`).toBe(false);
+  });
   test('no .gpx outside tracks/', () => {
     expect(readdirSync(DIR).filter((f) => f.endsWith('.gpx'))).toEqual([]);
   });
