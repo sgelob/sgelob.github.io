@@ -11,7 +11,7 @@ import { tripSchema } from '../src/lib/outdoors';
 const fixture = (name: string) => new URL(`./fixtures/${name}`, import.meta.url).pathname;
 
 /** A wizard wired to temp folders, answering from a script; invalid answers must be followed by valid ones. */
-function setup(script: (photos: string) => string[], komoot?: (url: string) => Promise<KomootTour>) {
+function setup(script: (photos: string) => string[], komoot?: (url: string) => Promise<KomootTour>, komootPhotos?: (tour: KomootTour) => Promise<string>) {
   const photos = mkdtempSync(join(tmpdir(), 'wiz-photos-'));
   copyFileSync(fixture('sample-1620x1080.jpg'), join(photos, 'IMG_0002.JPG'));
   copyFileSync(fixture('sample-1620x1080.jpg'), join(photos, 'IMG_0001.jpg'));
@@ -33,6 +33,7 @@ function setup(script: (photos: string) => string[], komoot?: (url: string) => P
     notesDir: join(base, 'drafts'),
     countries: ['italy', 'france', 'croatia'],
     komoot,
+    komootPhotos,
   };
   mkdirSync(deps.tracksDir, { recursive: true });
   return { photos, deps, said, queue };
@@ -84,17 +85,32 @@ describe('trip wizard', () => {
   });
 
   test('a Komoot link prefills activity, title, distance, climb and date, and offers its page as a link', async () => {
-    const tour: KomootTour = { id: '1134841094', name: 'Colle delle Finestre', sport: 'mtb', distanceKm: 38.5, climb: 1700, date: '2026-06-14', recorded: true };
+    const tour: KomootTour = { id: '1134841094', name: 'Colle delle Finestre', sport: 'mtb', distanceKm: 38.5, climb: 1700, date: '2026-06-14', recorded: true, images: [] };
     const komoot = async (url: string) => { if (!url.includes('komoot')) throw new Error('not a Komoot tour link'); return tour; };
     // link (bad, then good), activity default, bike, title default, slug default, area, country default, distance default, climb default,
     // shared, gpx, Komoot link yes, no more links, date default, cover default, darkHeader, notes
-    const { deps, said } = setup((photos) => [photos, 'https://example.com', 'https://www.komoot.com/tour/1134841094', '', 'trail', '', '', 'Val di Susa', '', '', '', 'y', fixture('track.gpx'), '', '', '', '', '', 'Up and over.'], komoot);
+    const { deps, said } = setup((photos) => ['https://example.com', 'https://www.komoot.com/tour/1134841094', photos, '', 'trail', '', '', 'Val di Susa', '', '', '', 'y', fixture('track.gpx'), '', '', '', '', '', 'Up and over.'], komoot);
     const r = await runWizard(deps);
     const data = parse(readFileSync(r.path, 'utf8').split('---')[1]);
     expect(data).toMatchObject({ title: 'Colle delle Finestre', activity: 'ride', bike: 'trail', distance: 38.5, climb: 1700, links: [{ label: 'Komoot', url: 'https://www.komoot.com/tour/1134841094' }] });
     expect(readFileSync(r.path, 'utf8')).toContain('date: "2026-06-14T12:00:00"');
     expect(said.some((l) => l.includes('not a Komoot tour link'))).toBe(true);
     expect(said.some((l) => l.startsWith('  Found: Colle delle Finestre, mtb, 38.5 km, 1700 m up, 2026-06-14'))).toBe(true);
+  });
+
+  test('with photos on Komoot, Enter at the folder question downloads them and the run goes on from that folder', async () => {
+    const tour: KomootTour = { id: '907671487', name: 'Assietta ridge', sport: 'mtb', distanceKm: 52, climb: 1100, date: '2026-09-06', recorded: true, images: [{ id: 1, src: 'https://x/1', index: 1, createdAt: '', widthPx: 4608, heightPx: 3456 }] };
+    let downloaded = '';
+    const komootPhotos = async () => { downloaded = mkdtempSync(join(tmpdir(), 'wiz-komoot-')); copyFileSync(fixture('sample-1620x1080.jpg'), join(downloaded, '01.jpg')); return downloaded; };
+    // link, folder (Enter → Komoot), activity, bike, title, slug, area, country, distance, climb, shared?, date, cover, darkHeader, notes
+    const { deps, said } = setup(() => ['https://www.komoot.com/tour/907671487', '', '', 'xc', '', '', 'Val Chisone', '', '', '', 'n', '', '', '', 'Windy on the ridge.'], async () => tour, komootPhotos);
+    const r = await runWizard(deps);
+    expect(downloaded).not.toBe('');
+    expect(r.photos).toBe(1);
+    const data = parse(readFileSync(r.path, 'utf8').split('---')[1]);
+    expect(data).toMatchObject({ title: 'Assietta ridge', activity: 'ride', bike: 'xc', distance: 52, climb: 1100, track: false, cover: '2026/09/assietta-ridge-01.jpg' });
+    expect(said.some((l) => l.includes('1 photo.'))).toBe(true);
+    expect(said.some((l) => l.includes('Downloading from Komoot'))).toBe(true);
   });
 
   test('slugify', () => {

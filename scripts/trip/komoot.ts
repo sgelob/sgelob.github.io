@@ -4,6 +4,8 @@
 
 export interface KomootTour {
   id: string;
+  /** The tour's own photos, in tour order; empty for a planned tour or one without photos. */
+  images: KomootImage[];
   name: string;
   /** Komoot's sport slug, e.g. `hike`, `mtb`, `mtb_easy`, `e_mtb`, `racebike`. */
   sport: string;
@@ -16,7 +18,20 @@ export interface KomootTour {
   recorded: boolean;
 }
 
-export type FetchLike = (url: string, init?: { headers?: Record<string, string> }) => Promise<{ ok: boolean; status: number; text(): Promise<string> }>;
+export type FetchLike = (url: string, init?: { headers?: Record<string, string> }) => Promise<{ ok: boolean; status: number; text(): Promise<string>; arrayBuffer(): Promise<ArrayBuffer> }>;
+
+/** One of the tour's own photos, in tour order. The location Komoot attaches to it is never read. */
+export interface KomootImage {
+  id: number;
+  /** The plain image URL: Komoot serves the photo at up to 2048 px on the long side. */
+  src: string;
+  /** Position along the tour, which is the shooting order. */
+  index: number;
+  createdAt: string;
+  /** The size of the upload, not of what Komoot serves. */
+  widthPx: number;
+  heightPx: number;
+}
 
 const TOUR_URL = /komoot\.[a-z.]+\/(?:[a-z]{2}-[a-z]{2}\/)?tour\/(\d+)/i;
 
@@ -45,5 +60,42 @@ export async function fetchKomootTour(url: string, fetchImpl: FetchLike): Promis
   }
   const when = new Date(date);
   const day = `${when.getFullYear()}-${String(when.getMonth() + 1).padStart(2, '0')}-${String(when.getDate()).padStart(2, '0')}`;
-  return { id, name, sport, distanceKm: Math.round(distance / 100) / 10, climb: Math.round(up), date: day, recorded: type === 'tour_recorded' };
+  const images = await fetchKomootImages(id, fetchImpl);
+  return { id, name, sport, distanceKm: Math.round(distance / 100) / 10, climb: Math.round(up), date: day, recorded: type === 'tour_recorded', images };
+}
+
+const HEADERS = { Accept: 'application/hal+json', 'User-Agent': 'olegs.be trip wizard' };
+
+/** The tour's own photos from every page of `/tours/<id>/images/`, sorted by their position along the tour. */
+export async function fetchKomootImages(id: string, fetchImpl: FetchLike): Promise<KomootImage[]> {
+  const images: KomootImage[] = [];
+  for (let page = 0, pages = 1; page < pages; page++) {
+    const res = await fetchImpl(`https://api.komoot.de/v007/tours/${id}/images/?page=${page}&limit=50`, { headers: HEADERS });
+    if (!res.ok) return images; // a planned tour or one without photos: nothing to offer
+    const data = JSON.parse(await res.text()) as { page?: { totalPages?: number }; _embedded?: { items?: Record<string, unknown>[] } };
+    pages = data.page?.totalPages ?? 1;
+    for (const it of data._embedded?.items ?? []) {
+      if (typeof it.src !== 'string' || typeof it.id !== 'number') continue;
+      images.push({ id: it.id, src: it.src.split('?')[0], index: Number(it.index ?? 0), createdAt: String(it.created_at ?? ''), widthPx: Number(it.width_px ?? 0), heightPx: Number(it.height_px ?? 0) });
+    }
+  }
+  return images.sort((a, b) => a.index - b.index || a.id - b.id);
+}
+
+/** Downloads the photos into `dir` as `01.jpg`, `02.jpg`, … in tour order; returns the file names. */
+export async function downloadKomootImages(images: readonly KomootImage[], dir: string, fetchImpl: FetchLike, log?: (line: string) => void): Promise<string[]> {
+  const { mkdirSync, writeFileSync } = await import('node:fs');
+  const { join } = await import('node:path');
+  mkdirSync(dir, { recursive: true });
+  const pad = String(images.length).length > 2 ? 3 : 2;
+  const names: string[] = [];
+  for (const [i, image] of images.entries()) {
+    const res = await fetchImpl(image.src, { headers: { 'User-Agent': HEADERS['User-Agent'] } });
+    if (!res.ok) throw new Error(`Komoot photo ${image.id} answered ${res.status}`);
+    const name = `${String(i + 1).padStart(pad, '0')}.jpg`;
+    writeFileSync(join(dir, name), Buffer.from(await res.arrayBuffer()));
+    names.push(name);
+    log?.(`  ${name} (${image.widthPx}×${image.heightPx} uploaded, served at up to 2048 px)`);
+  }
+  return names;
 }
