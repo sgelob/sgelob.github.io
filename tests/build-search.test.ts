@@ -28,6 +28,15 @@ describe('search page', () => {
     expect(code).toContain('pagefind.js');
     expect(exists('dist/_astro/pagefind.js')).toBe(false);
   });
+
+  test('groups the results with an Outdoors group between Galleries and Posts', () => {
+    const html = read('dist/search/index.html');
+    // The page script is inline here; an external module entry would be read the same way as in the lightbox test.
+    const scripts = [...html.matchAll(/<script type="module" src="([^"]+)"/g)].map((m) => m[1]!);
+    const code = [html, ...scripts.map((src) => read(`dist${src}`))].join('\n');
+    // The nav already says "Outdoors", so look for the group itself, between Galleries and Posts.
+    expect(code).toMatch(/label:`Galleries`\},\{type:`outdoors`,label:`Outdoors`\},\{type:`post`/);
+  });
 });
 
 describe('search index', () => {

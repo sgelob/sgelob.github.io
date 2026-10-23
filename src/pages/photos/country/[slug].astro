@@ -3,11 +3,16 @@ import type { GetStaticPaths } from 'astro';
 import Base from '../../../layouts/Base.astro';
 import PhotosHeader from '../../../components/PhotosHeader.astro';
 import GalleryGrid from '../../../components/GalleryGrid.astro';
-import { getGalleriesBy } from '../../../lib/collections';
+import { getGalleries, getGalleriesBy } from '../../../lib/collections';
 import { countries, type Term } from '../../../lib/taxonomies';
 
-// From taxonomies.yaml, not from the galleries, so a country without galleries (usa) still gets a page.
-export const getStaticPaths = (() => countries.map((country) => ({ params: { slug: country.slug }, props: { country } }))) satisfies GetStaticPaths;
+// Only countries with at least one gallery get a page; the rest of taxonomies.yaml is for the trips.
+export const getStaticPaths = (async () => {
+  const galleries = await getGalleries();
+  return countries
+    .filter((c) => galleries.some((g) => g.data.country === c.slug))
+    .map((country) => ({ params: { slug: country.slug }, props: { country } }));
+}) satisfies GetStaticPaths;
 
 interface Props {
   country: Term;
