@@ -1,4 +1,5 @@
 ---
+import { pageTitle } from '../../../lib/site';
 import type { GetStaticPaths } from 'astro';
 import Base from '../../../layouts/Base.astro';
 import PhotosHeader from '../../../components/PhotosHeader.astro';
@@ -23,7 +24,7 @@ const sections = genre.slug === 'world-places' ? mergeSmallGroups(groupGalleries
 const plural = (n: number) => `${n} ${n === 1 ? 'gallery' : 'galleries'}`;
 ---
 
-<Base title={`${genre.name} — Photos — olegs`} description={genre.description}>
+<Base title={pageTitle(genre.name, 'Photos')} description={genre.description}>
   <PhotosHeader heading={genre.name} description={genre.description} active={genre.slug} />
   {sections ? (
     <div class="sections">

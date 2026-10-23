@@ -101,7 +101,7 @@ describe('Seo', () => {
 
 test('404 page repeats the section links', async () => {
   const html = await render(NotFound, { path: '/404/' });
-  expect(html).toContain('<title>Page not found — olegs</title>');
+  expect(html).toContain('<title>Page not found – Olegs Belousovs</title>');
   expect(html).toContain('This page does not exist.');
   for (const href of ['/about/', '/photos/', '/outdoors/', '/blog/', '/search/']) {
     expect(html.split(`href="${href}"`).length - 1).toBe(2);

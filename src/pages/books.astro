@@ -1,10 +1,11 @@
 ---
+import { pageTitle } from '../lib/site';
 import Reading from '../layouts/Reading.astro';
 import { books } from '../lib/books';
 import { renderInline } from '../lib/markdown';
 ---
 
-<Reading section search={{ type: 'other' }} title="Books — olegs" heading="Books" description="Books Olegs Belousovs has read: favourites on product, design and work, and a mixed shelf." lang="en">
+<Reading section search={{ type: 'other' }} title={pageTitle('Books')} heading="Books" description="Books Olegs Belousovs has read: favourites on product, design and work, and a mixed shelf." lang="en">
   <p class="lead">Books I have read and keep on my shelf: the favourites first, then a mixed shelf.</p>
   <div class="books">
     {books.map(({ title, entries }) => {

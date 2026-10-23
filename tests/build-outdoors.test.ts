@@ -6,7 +6,7 @@ const TRIP = 'dist/outdoors/canosio-gardetta-valle-maira/index.html';
 describe('outdoors index', () => {
   test('heading, lead, filter row and the trips grouped by year', () => {
     const html = read('dist/outdoors/index.html');
-    expect(html).toContain('<title>Outdoors — olegs</title>');
+    expect(html).toContain('<title>Outdoors – Olegs Belousovs</title>');
     expect(html).toMatch(/<h1[^>]*>Outdoors<\/h1>/);
     expect(html).toContain('a kind of shinrin-yoku on foot or on two wheels');
     expect(html).toContain('Distance and climb are there to describe the day, not to measure it.');
@@ -20,7 +20,7 @@ describe('outdoors index', () => {
   test('hikes and rides pages exist with their filter active', () => {
     expect(read('dist/outdoors/hikes/index.html')).toMatch(/<a href="\/outdoors\/hikes\/" aria-current="page"[^>]*>Hikes<\/a>/);
     expect(read('dist/outdoors/rides/index.html')).toMatch(/<a href="\/outdoors\/rides\/" aria-current="page"[^>]*>Rides<\/a>/);
-    expect(read('dist/outdoors/rides/index.html')).toContain('<title>Rides — Outdoors — olegs</title>');
+    expect(read('dist/outdoors/rides/index.html')).toContain('<title>Rides · Outdoors – Olegs Belousovs</title>');
     expect(read('dist/outdoors/hikes/index.html')).toContain('No hikes yet.');
     expect(read('dist/outdoors/rides/index.html')).toContain('href="/outdoors/canosio-gardetta-valle-maira/"');
   });
@@ -41,8 +41,8 @@ describe('nav', () => {
 describe('trip page', () => {
   test('title, hero meta in order, search marks, story, route block, photos with alts, the lightbox', () => {
     const html = read(TRIP);
-    expect(html).toContain('<title>Canosio – Gardetta · MTB · Valle Maira · 2026 — Outdoors — olegs</title>'); // activity, area and year in the title
-    expect(html).toMatch(/<meta property="og:title" content="Canosio – Gardetta · MTB · Valle Maira · 2026 — Outdoors — olegs"/);
+    expect(html).toContain('<title>Canosio – Gardetta · MTB · Valle Maira · 2026 · Outdoors – Olegs Belousovs</title>'); // activity, area and year in the title
+    expect(html).toMatch(/<meta property="og:title" content="Canosio – Gardetta · MTB · Valle Maira · 2026 · Outdoors – Olegs Belousovs"/);
     expect(html).toMatch(/<h1 class="title"[^>]*>Canosio – Gardetta<\/h1>/);
     const meta = [...(html.match(/<p class="meta mono"[^>]*>([\s\S]*?)<\/p>/)?.[1] ?? '').matchAll(/<span[^>]*>([^<]*)<\/span>/g)].map((m) => m[1]);
     expect(meta).toEqual(['Italy', 'MTB', 'Trail bike', '38.1 km', '1,500 m up', 'Valle Maira', 'September 2026', '26 photos']);
