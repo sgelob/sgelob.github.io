@@ -16,7 +16,7 @@ Case Study: ottenere un sito performante utilizzando strumenti gratuiti.
 
 ## Speaker – Marco Mangione
 
-Cosa faccio nella vita? Sono un hoster, un albergatore possiamo dire, ma su internet. Il mio lavoro è ospitare chiunque voglia fare un sito internet (personale, aziendale, etc…) sui miei server. La passione per l'informatica è diventata quindi il mio lavoro e ci ho fatto nascere la mia azienda, con tutti i suoi brand, nell'ordine: DNShosting.it, JoomlaHost.it e Colt.Academy. Nel 2017 tutto si è unificato sotto un unico ed evocativo brand HOST.IT con la sua HOST ACADEMY per la parte relativa ai corsi di formazione.
+Cosa faccio nella vita? Sono un hoster, un albergatore possiamo dire, ma su internet. Il mio lavoro è ospitare chiunque voglia fare un sito internet (personale, aziendale, etc…) sui miei server. La passione per l’informatica è diventata quindi il mio lavoro e ci ho fatto nascere la mia azienda, con tutti i suoi brand, nell’ordine: DNShosting.it, JoomlaHost.it e Colt.Academy. Nel 2017 tutto si è unificato sotto un unico ed evocativo brand HOST.IT con la sua HOST ACADEMY per la parte relativa ai corsi di formazione.
 
 - Evento: https://www.meetup.com/it-IT/Turin-Web-Performance-Group/events/255001683/
 

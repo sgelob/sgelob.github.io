@@ -153,7 +153,7 @@ photos:
   - src: 2007/12/abandoned-mental-asylum-racconigi-italy-36.jpg
     width: 1620
     height: 1080
-    alt: Dentist's chair and lamp in a derelict tiled room
+    alt: Dentist’s chair and lamp in a derelict tiled room
   - src: 2007/12/abandoned-mental-asylum-racconigi-italy-37.jpg
     width: 1620
     height: 1080

@@ -49,7 +49,7 @@ photos:
   - src: 2007/09/boschetto-crew-2-music-party-villaggio-stelle-north-italy-2007-08.jpg
     width: 1620
     height: 1080
-    alt: Fisheye view of the cabin's wooden bar front and Borgo delle Stelle sign
+    alt: Fisheye view of the cabin’s wooden bar front and Borgo delle Stelle sign
   - src: 2007/09/boschetto-crew-2-music-party-villaggio-stelle-north-italy-2007-09.jpg
     width: 1620
     height: 1080

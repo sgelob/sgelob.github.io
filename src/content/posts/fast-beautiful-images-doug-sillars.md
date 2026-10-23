@@ -26,7 +26,7 @@ He is widely known as an expert in mobile application architecture, especially w
 
 Doug has spoken at many conferences (including CES, Velocity Conference, AT&T Developer Summit, Android DevCon, and Øredev) in the US and Europe. Doug is an energetic, engaging speaker who loves to present very technical details to all audiences (from layperson, to leadership to technical specialists, from developer to executives).
 
-His book, "High Performance Android Apps" was published by O'Reilly in the fall of 2015. In 2015-2016, Doug traveled Europe with his family for a year. He would love to meld his love for travel with a position that allows for telecommuting.
+His book, “High Performance Android Apps” was published by O’Reilly in the fall of 2015. In 2015-2016, Doug traveled Europe with his family for a year. He would love to meld his love for travel with a position that allows for telecommuting.
 
 Doug holds a PhD in inorganic chemistry and can tell you all about how catalysts are used to make polymer.
 

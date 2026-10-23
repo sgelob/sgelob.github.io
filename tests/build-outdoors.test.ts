@@ -23,7 +23,8 @@ describe('outdoors index', () => {
 describe('nav', () => {
   test('order About, Photos, Outdoors, Blog, Search; Outdoors active on its pages', () => {
     const html = read('dist/outdoors/index.html');
-    const hrefs = [...html.matchAll(/<a href="(\/[a-z]*\/)"[^>]*>(About|Photos|Outdoors|Blog|Search)<\/a>/g)].map((m) => m[1]);
+    const nav = html.match(/<nav aria-label="Main"[^>]*>[\s\S]*?<\/nav>/)?.[0] ?? '';
+    const hrefs = [...nav.matchAll(/<li[^>]*><a href="(\/[a-z]*\/)"/g)].map((m) => m[1]);
     expect(hrefs.slice(0, 5)).toEqual(['/about/', '/photos/', '/outdoors/', '/blog/', '/search/']);
     expect(html).toMatch(/<a href="\/outdoors\/" aria-current="page"[^>]*>Outdoors<\/a>/);
     expect(count(html, 'aria-current="page"')).toBe(2); // nav + filter

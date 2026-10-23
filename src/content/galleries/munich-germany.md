@@ -36,7 +36,7 @@ photos:
   - src: 2012/12/munchen-germany-7.jpg
     width: 1620
     height: 1080
-    alt: Butcher's shop front with chalkboard menus and a bright orange banner
+    alt: Butcher’s shop front with chalkboard menus and a bright orange banner
   - src: 2012/12/munchen-germany-1.jpg
     width: 1620
     height: 1080
@@ -260,7 +260,7 @@ photos:
   - src: 2012/12/munchen-germany-63.jpg
     width: 1620
     height: 1080
-    alt: Frauenkirche's twin green domes above the old town rooftops
+    alt: Frauenkirche’s twin green domes above the old town rooftops
   - src: 2012/12/munchen-germany-65.jpg
     width: 1620
     height: 1080
@@ -276,7 +276,7 @@ photos:
   - src: 2012/12/munchen-germany-68.jpg
     width: 1620
     height: 1080
-    alt: BMW Museum's curving silver forms with a tall mast behind
+    alt: BMW Museum’s curving silver forms with a tall mast behind
   - src: 2012/12/munchen-germany-71.jpg
     width: 1620
     height: 1080
@@ -305,6 +305,6 @@ photos:
 
 Munich around Christmas, in cold, clear light. The towers of the old town are everywhere: the twin green domes of the Frauenkirche, the Neo-Gothic New Town Hall on Marienplatz with its big lit tree, the little Old Town Hall with its red spire. I climbed up for the rooftops and walked the narrow streets below.
 
-Between the landmarks, the small things: sausages in a butcher's window, pretzels piled high, two stoneware mugs of hot wine on a wooden table, beer signs of wrought iron, a pig in a pearl necklace.
+Between the landmarks, the small things: sausages in a butcher’s window, pretzels piled high, two stoneware mugs of hot wine on a wooden table, beer signs of wrought iron, a pig in a pearl necklace.
 
 Further out there are the surfers waiting their turn on the Eisbach wave, the sunlit stream in the Englischer Garten, the Siegestor, and the silver curves and four cylinders of BMW.
