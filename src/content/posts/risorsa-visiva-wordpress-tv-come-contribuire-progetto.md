@@ -52,7 +52,7 @@ Dal lancio del progetto a oggi c’è stata una **crescita esponenziale dei vide
 
 I WordCamp che hanno aderito sono passati da 49 nel 2009 a **89 nel 2015**.
 
-**WordPress.tv riceve nella media 3000 visualizzazioni al giorno**, per lo più dai paesi dove si parla in inglese. L'Italia è comunque nei primi 10 paesi.
+**WordPress.tv riceve nella media 3000 visualizzazioni al giorno**, per lo più dai paesi dove si parla in inglese. L’Italia è comunque nei primi 10 paesi.
 
 *Ringrazio il membro molto attivo del nostro team [John Parkinson](https://profiles.wordpress.org/jwparky/) per avermi passato questi dati.*
 

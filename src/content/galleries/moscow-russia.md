@@ -164,7 +164,7 @@ photos:
   - src: 2016/03/moscow-city-russia-40.jpg
     width: 720
     height: 1080
-    alt: St Basil's Cathedral with colourful domes above Red Square
+    alt: St Basil’s Cathedral with colourful domes above Red Square
   - src: 2016/03/moscow-city-russia-43.jpg
     width: 1620
     height: 1080
@@ -180,7 +180,7 @@ photos:
   - src: 2016/03/moscow-city-russia-45.jpg
     width: 1620
     height: 1080
-    alt: Red Square with St Basil's and the clock tower
+    alt: Red Square with St Basil’s and the clock tower
   - src: 2016/03/moscow-city-russia-47.jpg
     width: 1080
     height: 1080
@@ -384,7 +384,7 @@ photos:
   - src: 2016/03/moscow-city-russia-95.jpg
     width: 1620
     height: 1080
-    alt: Red Square at night with St Basil's and the clock tower
+    alt: Red Square at night with St Basil’s and the clock tower
   - src: 2016/03/moscow-city-russia-93.jpg
     width: 1620
     height: 1080
@@ -467,6 +467,6 @@ photos:
     alt: Steam rising from power station stacks beyond a busy highway
 ---
 
-Moscow, from snowy winter to green summer. Red Square is the centre of it: the clock tower of the Kremlin, the colourful domes of St Basil's, GUM glowing at night over wet cobblestones, and the long red wall running down to the river. Along the Moskva stand the gilded domes of the Cathedral of Christ the Saviour and the Stalinist towers that crown the skyline.
+Moscow, from snowy winter to green summer. Red Square is the centre of it: the clock tower of the Kremlin, the colourful domes of St Basil’s, GUM glowing at night over wet cobblestones, and the long red wall running down to the river. Along the Moskva stand the gilded domes of the Cathedral of Christ the Saviour and the Stalinist towers that crown the skyline.
 
 Beyond the postcards, the city is a lot of concrete: endless Soviet apartment blocks with lit windows, metro trains, snowy platforms, old Volgas on the street, and a flyover of aircraft above a crowd with raised phones.

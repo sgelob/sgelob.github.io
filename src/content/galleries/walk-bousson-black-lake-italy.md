@@ -65,7 +65,7 @@ photos:
   - src: 2007/01/sestriere-view-from-bousson-alps-winter-mountains.jpg
     width: 1620
     height: 1080
-    alt: Sestriere's tower buildings below snow-covered mountains
+    alt: Sestriere’s tower buildings below snow-covered mountains
   - src: 2007/01/alps-gypsum-quarries-monte-seguret.jpg
     width: 1620
     height: 1080

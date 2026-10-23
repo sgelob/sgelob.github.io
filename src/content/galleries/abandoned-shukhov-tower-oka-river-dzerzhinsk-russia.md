@@ -25,7 +25,7 @@ photos:
   - src: 2017/01/abandoned-shukhov-tower-oka-river-dzerzhinsk-russia-04.jpg
     width: 1620
     height: 1080
-    alt: Looking up inside the tower's spiderweb of steel rings and rods
+    alt: Looking up inside the tower’s spiderweb of steel rings and rods
   - src: 2017/01/abandoned-shukhov-tower-oka-river-dzerzhinsk-russia-05.jpg
     width: 1620
     height: 1080

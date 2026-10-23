@@ -155,6 +155,6 @@ photos:
     alt: Sunlit archway through an ochre alley with potted plants and a table beyond
 ---
 
-Tropea sits on a sandstone cliff above a sea so clear you can count the swimmers from the top. The beach below is a carpet of umbrellas, and the rock of Santa Maria dell'Isola rises from it with its small church on top. In the old town the alleys are ochre and sunlit, with strings of red chillies hanging outside the shops and children playing at a fountain.
+Tropea sits on a sandstone cliff above a sea so clear you can count the swimmers from the top. The beach below is a carpet of umbrellas, and the rock of Santa Maria dell’Isola rises from it with its small church on top. In the old town the alleys are ochre and sunlit, with strings of red chillies hanging outside the shops and children playing at a fountain.
 
 Along the coast the cliffs drop through thickets of prickly pear to the water, and on clear days two islands float on the horizon. The last photos are from Reggio Calabria: the long seafront promenade with its palms and mosaic sculptures, the cathedral with its twin bell towers, and the hazy strait with the mountains of Sicily on the far shore.

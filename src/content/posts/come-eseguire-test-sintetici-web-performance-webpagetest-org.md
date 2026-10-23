@@ -318,7 +318,7 @@ Altri tool per fare test sintetici:
 - **video** che si caricano in automatico;
 - **script di terze parti** non raggiungibili (SPOF)…
 
-In più abbiamo **Latency**, che è la quantità di tempo necessaria per un pacchetto di dati per arrivare da un punto all'altro. Ti ricordi che su mobile c’è anche la torre cellulare o ripetitore di mezzo?
+In più abbiamo **Latency**, che è la quantità di tempo necessaria per un pacchetto di dati per arrivare da un punto all’altro. Ti ricordi che su mobile c’è anche la torre cellulare o ripetitore di mezzo?
 
 Alcune cose sono [fuori dal tuo controllo](https://olegs.be/2016/06/fattori-prestazioni-velocita-web-non-sempre-sotto-nostro-controllo/) come: la rete dati che si sta utilizzando, il browser in utilizzo, il hardware dei dispositivi, la location geografica dei tuoi visitatori…
 
@@ -366,7 +366,7 @@ Ottimo libro per chi fa sviluppo front-end e responsive web design.
 ## Iscriviti ai blog sulle Web Performance
 
 - [Web Performance Today](http://bit.ly/2cvlobR) – Blog curato da Kent Alstad di Radware;
-- [O'Reilly Performance](http://oreil.ly/2cc1aWi) – Blog su O'Reilly Media;
+- [O’Reilly Performance](http://oreil.ly/2cc1aWi) – Blog su O’Reilly Media;
 - [Planet Performance](http://bit.ly/2caZny7) – Aggregatore di RSS curato dal Stoyan Stefanov. Anche tu puoi contribuire alla lista dei siti su GitHub;
 - [Catchpoint’s Blog](http://bit.ly/2cvlq3p) – Blog della società Catchpoint che offre strumenti di end-user monitoring;
 - [Blog di Steve Souders](http://bit.ly/2cEOXLv);

@@ -12,7 +12,7 @@ photos:
   - src: 2013/04/ljubljana-slovenia-02.jpg
     width: 1620
     height: 1080
-    alt: Ljubljana's red rooftops and the Ljubljanica from the castle, mountains on the horizon
+    alt: Ljubljana’s red rooftops and the Ljubljanica from the castle, mountains on the horizon
   - src: 2013/04/ljubljana-slovenia-06.jpg
     width: 1620
     height: 1080
@@ -56,7 +56,7 @@ photos:
   - src: 2013/04/ljubljana-slovenia-19.jpg
     width: 1620
     height: 1080
-    alt: Tourist boat on the Ljubljanica beside Plečnik's market colonnade
+    alt: Tourist boat on the Ljubljanica beside Plečnik’s market colonnade
   - src: 2013/04/ljubljana-slovenia-25.jpg
     width: 720
     height: 1080
@@ -185,4 +185,4 @@ photos:
 
 Ljubljana, the capital of Slovenia, on a spring day at the end of April 2013. The best way to start is from above: the watchtower of the castle, reached up a red spiral staircase, looks over a sea of red roofs, the green bends of the Ljubljanica and the Alps on the horizon.
 
-Back down, the old town is small and easy to walk: cobbled lanes under the castle hill, Town Square with the Robba Fountain and the Town Hall, pastel facades along the river shaded by weeping willows, and the bridges, from Cobblers' Bridge to the Triple Bridge in front of the pink Franciscan Church on Prešeren Square. Tourist boats go up and down the river past Plečnik's market colonnade, and in one street pairs of shoes hang from the wires above the passers-by.
+Back down, the old town is small and easy to walk: cobbled lanes under the castle hill, Town Square with the Robba Fountain and the Town Hall, pastel facades along the river shaded by weeping willows, and the bridges, from Cobblers' Bridge to the Triple Bridge in front of the pink Franciscan Church on Prešeren Square. Tourist boats go up and down the river past Plečnik’s market colonnade, and in one street pairs of shoes hang from the wires above the passers-by.

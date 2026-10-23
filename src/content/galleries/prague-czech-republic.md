@@ -205,7 +205,7 @@ photos:
   - src: 2011/08/praha-czech-republic-89.jpg
     width: 1620
     height: 1080
-    alt: Red tram and traffic on a city street beneath a McDonald's sign
+    alt: Red tram and traffic on a city street beneath a McDonald’s sign
   - src: 2011/08/praha-czech-republic-102.jpg
     width: 1620
     height: 1080

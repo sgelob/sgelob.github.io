@@ -104,7 +104,7 @@ photos:
   - src: 2016/12/bruges-belgium-24.jpg
     width: 720
     height: 1080
-    alt: Stepped-gable brick house at a lane's end with a no-entry sign
+    alt: Stepped-gable brick house at a lane’s end with a no-entry sign
   - src: 2016/12/bruges-belgium-25.jpg
     width: 1080
     height: 1080
