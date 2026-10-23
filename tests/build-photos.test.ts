@@ -39,6 +39,7 @@ test('World Places: sections by country, largest first, small countries merged i
 test('only countries with galleries get a page; usa, a preserved live URL, is a redirect stub; croatia is nothing', () => {
   for (const slug of ['italy', 'russia']) expect(existsSync(`dist/photos/country/${slug}/index.html`)).toBe(true);
   expect(read('dist/photos/country/usa/index.html')).toContain('http-equiv="refresh" content="0; url=/photos/genre/world-places/"');
+  expect(read('dist/photos/country/portugal/index.html')).toContain('http-equiv="refresh" content="0; url=/photos/genre/world-places/"');
   expect(existsSync('dist/photos/country/croatia/index.html')).toBe(false);
 });
 
@@ -86,4 +87,11 @@ describe('photos pages', () => {
     expect(html).toContain('smena-symbol-soviet-35mm-rangefinder-film-camera-cover-480.webp 480w');
     expect(html).toMatch(/<img src="https:\/\/img\.olegs\.be\/uploads\/2015\/09\/smena-symbol-soviet-35mm-rangefinder-film-camera-cover-960\.jpg" width="1620" height="1080"/);
   });
+});
+
+test('every preserved live URL of the old site still builds, as a page or a redirect', () => {
+  const missing = readFileSync('tests/fixtures/live-urls.txt', 'utf8').split('\n').map((l) => l.trim()).filter((l) => l.startsWith('/'))
+    .map((path) => decodeURI(path))
+    .filter((path) => !existsSync(`dist${path}${path.endsWith('/') ? 'index.html' : ''}`));
+  expect(missing).toEqual([]);
 });
