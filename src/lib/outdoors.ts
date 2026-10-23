@@ -22,7 +22,7 @@ export const tripSchema = z.object({
   country: z.string().refine((slug) => countries.some((c) => c.slug === slug), { message: 'unknown country slug' }),
   // A bare file name in src/content/outdoors/tracks/: no folders, so the name cannot point elsewhere.
   track: z.union([z.string().regex(/^[\w.-]+\.gpx$/), z.literal(false)]),
-  // Approximate ends: the track's start and finish were moved about 1 km along the path (`npm run track -- … --approximate-ends`).
+  // Approximate ends: the track keeps every point but starts about 1 km along the path (`npm run track -- … --approximate-ends`).
   approximateEnds: z.boolean().optional(),
   links: z.array(z.object({ label: z.string(), url: z.url() })).optional(),
   cover: z.string(),

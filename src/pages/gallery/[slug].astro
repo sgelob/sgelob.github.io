@@ -11,7 +11,7 @@ import SectionLabel from '../../components/SectionLabel.astro';
 import { galleryPath, getGalleries, neighbours, related, type Gallery, type Related } from '../../lib/collections';
 import { coverSize } from '../../lib/paths';
 import { largestVariantUrl } from '../../lib/images';
-import { isoDate } from '../../lib/site';
+import { isoDate, pageTitle } from '../../lib/site';
 import { countryName, genreName } from '../../lib/taxonomies';
 import { redirectsUnder } from '../../lib/redirects';
 
@@ -57,7 +57,7 @@ const search = gallery && {
   <Redirect to={props.redirectTo} />
 ) : gallery && (
   <Base
-    title={gallery.data.seoTitle ?? `${gallery.data.title} — Photos — olegs`}
+    title={gallery.data.seoTitle ? pageTitle(gallery.data.seoTitle) : pageTitle(gallery.data.title, 'Photos')}
     description={gallery.data.seoDescription ?? `Photos from ${gallery.data.title}: ${gallery.data.photos.length} photos.`}
     ogImage={largestVariantUrl(gallery.data.cover, Math.min(1600, coverSize(gallery)?.width ?? 0))}
     overlayNav

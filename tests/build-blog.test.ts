@@ -54,7 +54,7 @@ describe('blog lists', () => {
   test('category page has the category name as heading and only its posts', () => {
     const html = read('dist/category/wordpress/index.html');
     expect(html).toMatch(/<h1[^>]*>WordPress<\/h1>/);
-    expect(html).toContain('<title>WordPress — Blog — olegs</title>');
+    expect(html).toContain('<title>WordPress · Blog – Olegs Belousovs</title>');
     expect(html).toContain('href="/2017/04/video-slide-wordpress-wordcamp-torino-2017/"');
     expect(html).not.toContain('href="/2025/04/podcast-naval-ravikant-dure-verita-felicita-natura-umana/"');
   });
@@ -67,7 +67,7 @@ describe('blog lists', () => {
 describe('post page', () => {
   test('title, description, og image, heading and meta line', () => {
     const html = read('dist/2025/04/podcast-naval-ravikant-dure-verita-felicita-natura-umana/index.html');
-    expect(html).toContain('<title>Podcast con Naval Ravikant – Dure verità sulla felicità e la natura umana — olegs</title>');
+    expect(html).toContain('<title>Podcast con Naval Ravikant – Dure verità sulla felicità e la natura umana – Olegs Belousovs</title>');
     expect(html).toContain('<meta name="description" content="Riflessioni essenziali su felicità');
     expect(html).toContain('<meta property="og:image" content="https://img.olegs.be/uploads/2025/04/you-have-one-life-naval-ravikant.jpg">');
     expect(html).toMatch(/<h1[^>]*>Podcast con Naval Ravikant – Dure verità sulla felicità e la natura umana<\/h1>/);
@@ -77,7 +77,7 @@ describe('post page', () => {
 
   test('seoTitle wins over title in <title>', () => {
     const html = read('dist/2016/01/come-organizzare-meetup-informale-domande-postit/index.html');
-    expect(html).toContain('<title>Come organizzare un WordPress Meetup informale con Post-it — olegs</title>');
+    expect(html).toContain('<title>Come organizzare un WordPress Meetup informale con Post-it – Olegs Belousovs</title>');
   });
 
   test('post images keep their own width up to the column: a small GIF is not stretched', () => {

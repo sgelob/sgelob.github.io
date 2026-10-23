@@ -6,7 +6,7 @@ const TRIP = 'dist/outdoors/canosio-gardetta-valle-maira/index.html';
 describe('outdoors index', () => {
   test('heading, lead, filter row and the trips grouped by year', () => {
     const html = read('dist/outdoors/index.html');
-    expect(html).toContain('<title>Outdoors — olegs</title>');
+    expect(html).toContain('<title>Outdoors – Olegs Belousovs</title>');
     expect(html).toMatch(/<h1[^>]*>Outdoors<\/h1>/);
     expect(html).toContain('a kind of shinrin-yoku on foot or on two wheels');
     expect(html).toContain('Distance and climb are there to describe the day, not to measure it.');
@@ -20,7 +20,7 @@ describe('outdoors index', () => {
   test('hikes and rides pages exist with their filter active', () => {
     expect(read('dist/outdoors/hikes/index.html')).toMatch(/<a href="\/outdoors\/hikes\/" aria-current="page"[^>]*>Hikes<\/a>/);
     expect(read('dist/outdoors/rides/index.html')).toMatch(/<a href="\/outdoors\/rides\/" aria-current="page"[^>]*>Rides<\/a>/);
-    expect(read('dist/outdoors/rides/index.html')).toContain('<title>Rides — Outdoors — olegs</title>');
+    expect(read('dist/outdoors/rides/index.html')).toContain('<title>Rides · Outdoors – Olegs Belousovs</title>');
     expect(read('dist/outdoors/hikes/index.html')).toContain('No hikes yet.');
     expect(read('dist/outdoors/rides/index.html')).toContain('href="/outdoors/canosio-gardetta-valle-maira/"');
   });
@@ -41,8 +41,8 @@ describe('nav', () => {
 describe('trip page', () => {
   test('title, hero meta in order, search marks, story, route block, photos with alts, the lightbox', () => {
     const html = read(TRIP);
-    expect(html).toContain('<title>Canosio – Gardetta · MTB · Valle Maira · 2026 — Outdoors — olegs</title>'); // activity, area and year in the title
-    expect(html).toMatch(/<meta property="og:title" content="Canosio – Gardetta · MTB · Valle Maira · 2026 — Outdoors — olegs"/);
+    expect(html).toContain('<title>Canosio – Gardetta · MTB · Valle Maira · 2026 · Outdoors – Olegs Belousovs</title>'); // activity, area and year in the title
+    expect(html).toMatch(/<meta property="og:title" content="Canosio – Gardetta · MTB · Valle Maira · 2026 · Outdoors – Olegs Belousovs"/);
     expect(html).toMatch(/<h1 class="title"[^>]*>Canosio – Gardetta<\/h1>/);
     const meta = [...(html.match(/<p class="meta mono"[^>]*>([\s\S]*?)<\/p>/)?.[1] ?? '').matchAll(/<span[^>]*>([^<]*)<\/span>/g)].map((m) => m[1]);
     expect(meta).toEqual(['Italy', 'MTB', 'Trail bike', '38.1 km', '1,500 m up', 'Valle Maira', 'September 2026', '26 photos']);
@@ -96,16 +96,19 @@ describe('trip page', () => {
     expect(exists('dist/outdoors/canosio-gardetta-valle-maira.gpx')).toBe(false); // only the named download
   });
 
-  test('approximate ends: the whole route, the start ring, and the whole ride’s profile', () => {
+  test('approximate ends: the whole route without a gap, the start ring elsewhere, the whole ride’s profile', () => {
     const slug = 'castiglione-pavarolo-cordova-baldissero-rivodora-san-martino';
     const html = read(`dist/outdoors/${slug}/index.html`);
     const route = html.slice(html.indexOf('<section class="route'), html.indexOf('</section>', html.indexOf('<section class="route')));
     expect(route).toContain('start and finish approximate');
     expect(route).toMatch(/<circle class="start" cx="[\d.]+" cy="[\d.]+" r="3"/); // the ring marks the published start
+    const d = route.match(/<path class="line" d="([^"]+)"/)?.[1] ?? '';
+    expect(d.match(/M/g)).toHaveLength(2); // two pieces drawn end to end, with no line between the real finish and start
     expect(route).toMatch(/text-anchor="end"[^>]*>30\.1 km</); // the profile is the whole ride, from its profile file
     expect(route).toMatch(/<a href="https:\/\/www\.komoot\.com\/tour\/3352410239"/);
     expect(exists(`dist/outdoors/${slug}.profile.json`)).toBe(false); // read at build time, not published
-    const gpx = read(`dist/outdoors/${slug}-olegs-be.gpx`).match(/<trkpt/g)?.length ?? 0;
-    expect(gpx).toBeGreaterThan(8000); // most of the ride (the full export has about 11,500 points), not a short stretch
+    const gpx = read(`dist/outdoors/${slug}-olegs-be.gpx`);
+    expect(gpx.match(/<trkpt/g)?.length ?? 0).toBeGreaterThan(11000); // every point of the ride
+    expect(gpx.match(/<trkseg>/g)).toHaveLength(2); // and no straight line in a GPS app
   });
 });
