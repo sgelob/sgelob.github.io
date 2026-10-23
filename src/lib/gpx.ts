@@ -50,35 +50,29 @@ export function distanceKm(a: TrackPoint, b: TrackPoint): number {
   return 2 * EARTH_RADIUS_KM * Math.asin(Math.sqrt(h));
 }
 
+export interface MoveEndsOptions {
+  /** A number in [0, 1); `Math.random` unless a test fixes it. The draw is made once, when the track is written, never again. */
+  random?: () => number;
+  /** How far, in a straight line, the published start and finish are from the real ones: a random distance between the two. */
+  minKm?: number;
+  maxKm?: number;
+}
+
 /**
- * The track without its ends: every point within `radiusKm` of the start or of the finish is dropped, so a route that starts
- * near home can be shared without showing where. What is left is one unbroken stretch, the longest one outside both circles:
- * keeping two stretches would draw a straight line across the hidden circle between them.
+ * A route with approximate ends: the same points, but beginning and ending somewhere on the path 1 to 1.5 km (straight line)
+ * from the real start and finish. The middle of the route is not touched.
  */
-export function maskEnds(points: readonly TrackPoint[], radiusKm: number): TrackPoint[] {
-  if (!(radiusKm > 0) || points.length === 0) return [...points];
-  const start = points[0];
-  const finish = points[points.length - 1];
-  let best: TrackPoint[] = [];
-  let bestKm = -1;
-  let run: TrackPoint[] = [];
-  let runKm = 0;
-  const close = () => {
-    if (run.length > 1 && runKm > bestKm) [best, bestKm] = [run, runKm];
-    run = [];
-    runKm = 0;
+export function moveEnds(points: readonly TrackPoint[], { random = Math.random, minKm = 1, maxKm = 1.5 }: MoveEndsOptions = {}): TrackPoint[] {
+  const cut = (order: number[]): number => {
+    const end = points[order[0]];
+    const target = minKm + random() * (maxKm - minKm);
+    return order.find((i) => distanceKm(points[i], end) >= target) ?? -1;
   };
-  for (const p of points) {
-    if (distanceKm(p, start) < radiusKm || distanceKm(p, finish) < radiusKm) {
-      close();
-      continue;
-    }
-    if (run.length) runKm += distanceKm(run[run.length - 1], p);
-    run.push(p);
-  }
-  close();
-  if (best.length < 2) throw new Error(`the whole track lies within ${radiusKm} km of the start or finish: nothing would be left to share`);
-  return best;
+  const indices = points.map((_, i) => i);
+  const first = cut(indices);
+  const last = cut(indices.reverse());
+  if (first === -1 || last === -1 || last - first < 1) throw new Error('the route is too short to move its start and finish 1 km and keep a stretch between them');
+  return points.slice(first, last + 1);
 }
 
 const round1 = (n: number): number => Math.round(n * 10) / 10;
@@ -174,7 +168,7 @@ function seriesOf(points: readonly TrackPoint[]): { km: number[]; ele: number[] 
 
 /**
  * The profile of a whole route as a small file can keep it: at most about `max` pairs (every nth, plus the first, last,
- * highest and lowest), km to the metre and whole metres of elevation. A masked track's page draws its profile from this.
+ * highest and lowest), km to the metre and whole metres of elevation. A page whose track has approximate ends draws its profile from this.
  */
 export function profileSeries(points: readonly TrackPoint[], max = 400): ProfileSeries {
   const { km, ele } = seriesOf(points);
@@ -224,14 +218,15 @@ function drawProfile(km: readonly number[], ele: readonly number[], width: numbe
 
 const escapeXml = (s: string): string => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
-/**
- * A new GPX 1.1 document with only the name and the track points (lat, lon, ele): no time, author, extensions or waypoints.
- * With `maskKm`, the points within that distance of the start and the finish are left out too (see `maskEnds`).
- */
-export function sanitizeGpx(xml: string, name: string, maskKm = 0): string {
-  const parsed = parseGpx(xml);
-  if (parsed.length === 0) throw new Error('no track points');
-  const points = maskEnds(parsed, maskKm);
+/** A new GPX 1.1 document with only the name and the track points (lat, lon, ele): no time, author, extensions or waypoints. */
+export function sanitizeGpx(xml: string, name: string): string {
+  const points = parseGpx(xml);
+  if (points.length === 0) throw new Error('no track points');
+  return trackDocument(points, name);
+}
+
+/** A GPX 1.1 document of these points, with the name and nothing else. */
+export function trackDocument(points: readonly TrackPoint[], name: string): string {
   const trkpts = points.map((p) =>
     p.ele === undefined
       ? `      <trkpt lat="${p.lat}" lon="${p.lon}"/>`

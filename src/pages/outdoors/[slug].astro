@@ -32,7 +32,7 @@ interface Props {
 }
 
 const { trip, prev, next, more } = Astro.props;
-const { title, date, activity, distance, climb, area, track, trackMasked, links, cover, darkHeader, seoDescription, photos } = trip.data;
+const { title, date, activity, distance, climb, area, track, approximateEnds, links, cover, darkHeader, seoDescription, photos } = trip.data;
 const { Content } = await render(trip);
 const size = coverSize(trip);
 // The cover is decorative when the grid shows it again; otherwise this is its only appearance.
@@ -65,7 +65,7 @@ const pageTitle = [title, activityLabel(activity), area, date.getFullYear()].joi
     <div class="body wrap"><Content /></div>
   )}
   {track !== false && (
-    <RouteBlock xml={readTrack(track)} distance={distance} climb={climb} downloadHref={trackPath(trip)} masked={trackMasked} fullProfile={readProfile(track)} links={links} contoursHref={hasContours(track) ? contoursPath(trip) : undefined} />
+    <RouteBlock xml={readTrack(track)} distance={distance} climb={climb} downloadHref={trackPath(trip)} approximateEnds={approximateEnds} fullProfile={readProfile(track)} links={links} contoursHref={hasContours(track) ? contoursPath(trip) : undefined} />
   )}
   <JustifiedGrid photos={photos} />
   <nav class="pager wrap mono" aria-label="More trips" data-pagefind-ignore>

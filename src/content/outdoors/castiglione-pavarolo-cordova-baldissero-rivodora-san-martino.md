@@ -8,7 +8,7 @@ climb: 1311
 area: Metropolitan City of Turin
 country: italy
 track: castiglione-pavarolo-cordova-baldissero-rivodora-san-martino.gpx
-trackMasked: true
+approximateEnds: true
 links:
   - label: Komoot
     url: https://www.komoot.com/tour/3352410239

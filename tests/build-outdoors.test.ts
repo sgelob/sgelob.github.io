@@ -96,15 +96,16 @@ describe('trip page', () => {
     expect(exists('dist/outdoors/canosio-gardetta-valle-maira.gpx')).toBe(false); // only the named download
   });
 
-  test('a masked track: no start ring, the page says the ends are not shown, and the profile is the whole ride', () => {
+  test('approximate ends: the whole route, the start ring, and the whole ride’s profile', () => {
     const slug = 'castiglione-pavarolo-cordova-baldissero-rivodora-san-martino';
     const html = read(`dist/outdoors/${slug}/index.html`);
     const route = html.slice(html.indexOf('<section class="route'), html.indexOf('</section>', html.indexOf('<section class="route')));
-    expect(route).toContain('start and finish not shown');
-    expect(route).not.toMatch(/<circle class="start" cx="[\d.]+" cy="[\d.]+" r="3"/); // the map's start ring
+    expect(route).toContain('start and finish approximate');
+    expect(route).toMatch(/<circle class="start" cx="[\d.]+" cy="[\d.]+" r="3"/); // the ring marks the published start
     expect(route).toMatch(/text-anchor="end"[^>]*>30\.1 km</); // the profile is the whole ride, from its profile file
-    expect(route).toMatch(/>20<\/text>/); // kilometre marks up to 20: far beyond the 8 km drawn on the map
     expect(route).toMatch(/<a href="https:\/\/www\.komoot\.com\/tour\/3352410239"/);
     expect(exists(`dist/outdoors/${slug}.profile.json`)).toBe(false); // read at build time, not published
+    const gpx = read(`dist/outdoors/${slug}-olegs-be.gpx`).match(/<trkpt/g)?.length ?? 0;
+    expect(gpx).toBeGreaterThan(8000); // most of the ride (the full export has about 11,500 points), not a short stretch
   });
 });
