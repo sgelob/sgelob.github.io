@@ -78,10 +78,50 @@ const number = (s: string, what: string, { integer = false, min = 0 } = {}): num
   return n;
 };
 
-/** Runs the wizard: asks, then creates the trip, the track and the notes. Nothing is written before every answer is in. */
+const pad2 = (n: number) => String(n).padStart(2, '0');
+const isoDay = (d: Date) => `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`;
+const yn = (b: boolean | undefined) => (b === undefined ? undefined : b ? 'y' : 'n');
+
+/** The answers collected so far; a step leaves its field undefined until it is asked. */
+interface Answers {
+  folder?: { dir: string; photos: string[]; fromKomoot: boolean };
+  activity?: 'hike' | 'ride';
+  bike?: 'xc' | 'trail';
+  title?: string;
+  slug?: string;
+  area?: string;
+  country?: string;
+  distance?: number;
+  climb?: number;
+  shared?: boolean;
+  gpx?: string;
+  links?: TripLink[];
+  /** The day as typed; a discreet trip publishes the 1st of that month instead. */
+  date?: Date;
+  cover?: number;
+  darkHeader?: boolean;
+  notes?: string;
+}
+
+/** One question: asked in order the first time, and again from the review with the current answer as default. */
+interface Step {
+  label: string;
+  /** Whether the question makes sense with the other answers (the bike only for a ride, the GPX only when shared). */
+  applies(): boolean;
+  /** Whether it must be asked (again) before the trip can be created, e.g. after another answer changed. */
+  missing(): boolean;
+  ask(): Promise<void>;
+  /** The answer as the review lists it. */
+  show(): string;
+}
+
+/**
+ * Runs the wizard: asks every question, then shows a review where any answer can be changed by its number,
+ * then creates the trip, the track and the notes. Nothing is written before the review is confirmed.
+ */
 export async function runWizard(deps: WizardDeps): Promise<WizardResult> {
   const { ask, say } = deps;
-  say('A new trip for Outdoors. Answers in brackets are defaults; press Enter to take them.');
+  say('A new trip for Outdoors. Answers in brackets are defaults; press Enter to take them. A review at the end lets you change any answer.');
 
   let tour: KomootTour | undefined;
   if (deps.komoot) {
@@ -103,129 +143,304 @@ export async function runWizard(deps: WizardDeps): Promise<WizardResult> {
     say(`  Komoot lists only ${tour.images.length} of the ${tour.imagesTotal} photos without a login, so they are not offered.`);
     say('  Add KOMOOT_EMAIL and KOMOOT_PASSWORD to .env to take them all from Komoot, or give the folder of originals.');
   }
-  const readFolder = (dir: string) => {
+  const readFolder = (dir: string, komoot: boolean) => {
     if (!existsSync(dir)) throw new Error(`${dir} does not exist`);
     const photos = readdirSync(dir).filter((n) => !n.startsWith('.') && RASTER.test(n)).sort();
     if (!photos.length) throw new Error(`no JPEG, PNG or WebP files in ${dir}`);
-    return { dir, photos };
+    return { dir, photos, fromKomoot: komoot };
   };
-  const folder = await until(
-    deps,
-    fromKomoot
-      ? `Folder with the photos (JPEGs through ImageOptim), or Enter to take the ${tour!.images.length} photos from Komoot (served at up to 2048 px)`
-      : 'Folder with the photos (JPEGs through ImageOptim, in shooting order)',
-    async (s) => {
-      const answer = s.trim();
-      if (!answer && fromKomoot) {
-        say('  Downloading from Komoot…');
-        return readFolder(await deps.komootPhotos!(tour!));
-      }
-      if (!answer) throw new Error('give the folder with the photos');
-      return readFolder(pathOf(answer));
-    },
-    fromKomoot ? { default: '' } : undefined,
-  );
-  say(`  ${folder.photos.length} photo${folder.photos.length === 1 ? '' : 's'} found.`);
 
-  const activity = await until(deps, 'Hike or ride? (hike/ride)', (s): 'hike' | 'ride' => {
-    const a = s.trim().toLowerCase();
-    if (a === 'hike' || a === 'h') return 'hike';
-    if (a === 'ride' || a === 'r' || a === 'mtb') return 'ride';
-    throw new Error('answer hike or ride');
-  }, sportActivity ? { default: sportActivity } : undefined);
-  const bike = activity === 'ride'
-    ? await until(deps, 'Which bike? (xc/trail)', (s): 'xc' | 'trail' => {
-        const b = s.trim().toLowerCase();
-        if (b === 'xc' || b === 'trail') return b;
-        if (b === 'enduro') return 'trail';
-        throw new Error('answer xc or trail');
-      })
-    : undefined;
-
-  const title = await until(deps, 'Title (e.g. Colle delle Finestre)', (s) => {
+  const a: Answers = {};
+  const text = (what: string) => (s: string) => {
     const t = s.trim();
-    if (!t) throw new Error('the title cannot be empty');
+    if (!t) throw new Error(`the ${what} cannot be empty`);
     return t;
-  }, tour ? { default: tour.name } : undefined);
-  const slug = await until(deps, 'Slug (the URL: /outdoors/<slug>/)', (s) => {
-    const v = s.trim();
-    if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(v)) throw new Error('lowercase letters, digits and single dashes only');
-    if (RESERVED_SLUGS.has(v)) throw new Error(`"${v}" is taken by the ${v} page; pick another`);
-    if (existsSync(join(deps.contentDir, `${v}.md`))) throw new Error(`a trip called ${v} already exists`);
-    return v;
-  }, { default: slugify(title) });
+  };
+  const withDefault = (...values: (string | undefined)[]) => {
+    const value = values.find((v) => v !== undefined);
+    return value === undefined ? undefined : { default: value };
+  };
 
-  const area = await until(deps, 'Area, at valley or massif scale (never a trailhead or village)', (s) => {
-    const a = s.trim();
-    if (!a) throw new Error('the area cannot be empty');
-    return a;
-  });
-  const country = await until(deps, `Country slug (${deps.countries.join(', ')})`, (s) => {
-    const c = s.trim().toLowerCase();
-    if (!deps.countries.includes(c)) throw new Error(`unknown country "${c}"; add it to src/data/taxonomies.yaml first`);
-    return c;
-  }, { default: 'italy' });
+  const steps: Step[] = [
+    {
+      label: 'Photos',
+      applies: () => true,
+      missing: () => !a.folder,
+      async ask() {
+        const current = a.folder;
+        const question = current
+          ? 'Folder with the photos (Enter keeps the current ones)'
+          : fromKomoot
+            ? `Folder with the photos (JPEGs through ImageOptim), or Enter to take the ${tour!.images.length} photos from Komoot (served at up to 2048 px)`
+            : 'Folder with the photos (JPEGs through ImageOptim, in shooting order)';
+        a.folder = await until(deps, question, async (s) => {
+          const answer = s.trim();
+          if (!answer && current) return current;
+          if (!answer && fromKomoot) {
+            say('  Downloading from Komoot…');
+            return readFolder(await deps.komootPhotos!(tour!), true);
+          }
+          if (!answer) throw new Error('give the folder with the photos');
+          return readFolder(pathOf(answer), false);
+        }, current || fromKomoot ? { default: '' } : undefined);
+        say(`  ${a.folder.photos.length} photo${a.folder.photos.length === 1 ? '' : 's'} found.`);
+      },
+      show: () => `${a.folder!.photos.length} ${a.folder!.fromKomoot ? 'from Komoot' : `in ${a.folder!.dir}`}`,
+    },
+    {
+      label: 'Activity',
+      applies: () => true,
+      missing: () => !a.activity,
+      async ask() {
+        a.activity = await until(deps, 'Hike or ride? (hike/ride)', (s): 'hike' | 'ride' => {
+          const v = s.trim().toLowerCase();
+          if (v === 'hike' || v === 'h') return 'hike';
+          if (v === 'ride' || v === 'r' || v === 'mtb') return 'ride';
+          throw new Error('answer hike or ride');
+        }, withDefault(a.activity, sportActivity));
+        if (a.activity === 'hike') a.bike = undefined;
+      },
+      show: () => a.activity!,
+    },
+    {
+      label: 'Bike',
+      applies: () => a.activity === 'ride',
+      missing: () => !a.bike,
+      async ask() {
+        a.bike = await until(deps, 'Which bike? (xc/trail)', (s): 'xc' | 'trail' => {
+          const b = s.trim().toLowerCase();
+          if (b === 'xc' || b === 'trail') return b;
+          if (b === 'enduro') return 'trail';
+          throw new Error('answer xc or trail');
+        }, withDefault(a.bike));
+      },
+      show: () => a.bike!,
+    },
+    {
+      label: 'Title',
+      applies: () => true,
+      missing: () => !a.title,
+      async ask() {
+        a.title = await until(deps, 'Title (e.g. Colle delle Finestre)', text('title'), withDefault(a.title, tour?.name));
+      },
+      show: () => a.title!,
+    },
+    {
+      label: 'Slug',
+      applies: () => true,
+      missing: () => !a.slug,
+      async ask() {
+        a.slug = await until(deps, 'Slug (the URL: /outdoors/<slug>/)', (s) => {
+          const v = s.trim();
+          if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(v)) throw new Error('lowercase letters, digits and single dashes only');
+          if (RESERVED_SLUGS.has(v)) throw new Error(`"${v}" is taken by the ${v} page; pick another`);
+          if (existsSync(join(deps.contentDir, `${v}.md`))) throw new Error(`a trip called ${v} already exists`);
+          return v;
+        }, { default: a.slug ?? slugify(a.title!) });
+      },
+      show: () => `${a.slug!}  (/outdoors/${a.slug!}/)`,
+    },
+    {
+      label: 'Area',
+      applies: () => true,
+      missing: () => !a.area,
+      async ask() {
+        a.area = await until(deps, 'Area, at valley or massif scale (never a trailhead or village)', text('area'), withDefault(a.area));
+      },
+      show: () => a.area!,
+    },
+    {
+      label: 'Country',
+      applies: () => true,
+      missing: () => !a.country,
+      async ask() {
+        a.country = await until(deps, `Country slug (${deps.countries.join(', ')})`, (s) => {
+          const c = s.trim().toLowerCase();
+          if (!deps.countries.includes(c)) throw new Error(`unknown country "${c}"; add it to src/data/taxonomies.yaml first`);
+          return c;
+        }, { default: a.country ?? 'italy' });
+      },
+      show: () => a.country!,
+    },
+    {
+      label: 'Distance',
+      applies: () => true,
+      missing: () => a.distance === undefined,
+      async ask() {
+        a.distance = await until(deps, 'Distance in km (as Komoot reports it)', (s) => number(s, 'the distance', { min: 0.1 }), withDefault(a.distance?.toString(), tour?.distanceKm.toString()));
+      },
+      show: () => `${a.distance} km`,
+    },
+    {
+      label: 'Climb',
+      applies: () => true,
+      missing: () => a.climb === undefined,
+      async ask() {
+        a.climb = await until(deps, 'Climb in metres', (s) => number(s, 'the climb', { integer: true }), withDefault(a.climb?.toString(), tour?.climb.toString()));
+      },
+      show: () => `${a.climb} m up`,
+    },
+    {
+      label: 'Route',
+      applies: () => true,
+      missing: () => a.shared === undefined,
+      async ask() {
+        say('  A shared trip gets its route drawn on the page and the GPX offered for download.');
+        say('  A discreet trip (near home) gets no route, no download, no links, and its date on the 1st of the month.');
+        const was = a.shared;
+        a.shared = yes(await ask('Share the route? (y/n)', { default: yn(a.shared) ?? 'n' }));
+        if (a.shared && !was) {
+          a.gpx = undefined;
+          a.links = undefined;
+        }
+        if (!a.shared) {
+          a.gpx = undefined;
+          a.links = [];
+        }
+      },
+      show: () => (a.shared ? 'shared' : 'discreet'),
+    },
+    {
+      label: 'GPX',
+      applies: () => a.shared === true,
+      missing: () => !a.gpx,
+      async ask() {
+        a.gpx = await until(deps, 'GPX export (the file as Komoot or Wikiloc exported it)', (s) => {
+          const file = pathOf(s);
+          if (!existsSync(file)) throw new Error(`${file} does not exist`);
+          const points = parseGpx(readFileSync(file, 'utf8')).length;
+          if (points < 2) throw new Error(`${file} has no track points (a route-only export?)`);
+          say(`  ${points} track points; only latitude, longitude and elevation will be kept.`);
+          return file;
+        }, withDefault(a.gpx));
+      },
+      show: () => a.gpx!,
+    },
+    {
+      label: 'Links',
+      applies: () => a.shared === true,
+      missing: () => a.links === undefined,
+      async ask() {
+        const links: TripLink[] = [];
+        if (tour && yes(await ask('Add the Komoot page as a public link? (y/n)', { default: 'y' }))) links.push({ label: 'Komoot', url: `https://www.komoot.com/tour/${tour.id}` });
+        for (;;) {
+          const line = (await ask('Public link as label=url, e.g. Komoot=https://… (empty to finish)', { default: '' })).trim();
+          if (!line) break;
+          const m = /^([^=]+)=(https?:\/\/\S+)$/.exec(line);
+          if (!m) {
+            say('  write it as label=https://…');
+            continue;
+          }
+          links.push({ label: m[1].trim(), url: m[2] });
+        }
+        a.links = links;
+      },
+      show: () => (a.links!.length ? a.links!.map((l) => `${l.label} ${l.url}`).join(', ') : 'none'),
+    },
+    {
+      label: 'Date',
+      applies: () => true,
+      missing: () => !a.date,
+      async ask() {
+        a.date = await until(deps, 'Date of the trip (YYYY-MM-DD)', (s) => {
+          const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s.trim());
+          if (!m) throw new Error('write it as YYYY-MM-DD');
+          const d = new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3]), 12);
+          if (Number.isNaN(d.getTime()) || d.getMonth() !== Number(m[2]) - 1) throw new Error('not a date');
+          return d;
+        }, withDefault(a.date && isoDay(a.date), tour?.date));
+        if (!a.shared) say(`  Discreet: the day is set to the 1st (${a.date.getFullYear()}-${pad2(a.date.getMonth() + 1)}-01).`);
+      },
+      show: () => (a.shared ? isoDay(a.date!) : `${a.date!.getFullYear()}-${pad2(a.date!.getMonth() + 1)}-01  (discreet: the 1st of the month)`),
+    },
+    {
+      label: 'Cover',
+      applies: () => true,
+      missing: () => a.cover === undefined || a.cover > a.folder!.photos.length,
+      async ask() {
+        const { dir, photos } = a.folder!;
+        photos.forEach((name, i) => say(`  ${String(i + 1).padStart(2)}  ${name}`));
+        say(`  The photos are in ${dir}`);
+        deps.reveal?.(dir);
+        a.cover = await until(deps, 'Cover photo (its number above)', (s) => {
+          const n = number(s, 'the cover', { integer: true, min: 1 });
+          if (n > photos.length) throw new Error(`there are only ${photos.length} photos`);
+          return n;
+        }, { default: String(a.cover !== undefined && a.cover <= photos.length ? a.cover : 1) });
+      },
+      show: () => `${a.cover}  (${a.folder!.photos[a.cover! - 1]})`,
+    },
+    {
+      label: 'Light cover',
+      applies: () => true,
+      missing: () => a.darkHeader === undefined,
+      async ask() {
+        a.darkHeader = yes(await ask('Is the cover light at the top or bottom, where the title sits? (y/n)', { default: yn(a.darkHeader) ?? 'n' }));
+      },
+      show: () => (a.darkHeader ? 'yes' : 'no'),
+    },
+    {
+      label: 'Notes',
+      applies: () => true,
+      missing: () => a.notes === undefined,
+      async ask() {
+        if (a.notes) say(`  Current notes: ${a.notes.split('\n')[0].slice(0, 70)}${a.notes.length > 70 || a.notes.includes('\n') ? '…' : ''}  (an empty first line keeps them)`);
+        const answer = await ask('Notes for the story, in your words: the route, what struck you, the conditions', { multiline: true });
+        a.notes = answer.trim() || a.notes || '';
+      },
+      show: () => {
+        const first = (a.notes ?? '').split('\n')[0];
+        return first ? `${first.slice(0, 60)}${first.length > 60 || a.notes!.includes('\n') ? '…' : ''}` : '(none)';
+      },
+    },
+  ];
 
-  const distance = await until(deps, 'Distance in km (as Komoot reports it)', (s) => number(s, 'the distance', { min: 0.1 }), tour ? { default: String(tour.distanceKm) } : undefined);
-  const climb = await until(deps, 'Climb in metres', (s) => number(s, 'the climb', { integer: true }), tour ? { default: String(tour.climb) } : undefined);
+  for (const step of steps) if (step.applies()) await step.ask();
 
-  say('  A shared trip gets its route drawn on the page and the GPX offered for download.');
-  say('  A discreet trip (near home) gets no route, no download, no links, and its date on the 1st of the month.');
-  const shared = yes(await ask('Share the route? (y/N)', { default: 'n' }));
-
-  let gpx: string | undefined;
-  const links: TripLink[] = [];
-  if (shared) {
-    gpx = await until(deps, 'GPX export (the file as Komoot or Wikiloc exported it)', (s) => {
-      const file = pathOf(s);
-      if (!existsSync(file)) throw new Error(`${file} does not exist`);
-      const points = parseGpx(readFileSync(file, 'utf8')).length;
-      if (points < 2) throw new Error(`${file} has no track points (a route-only export?)`);
-      say(`  ${points} track points; only latitude, longitude and elevation will be kept.`);
-      return file;
-    });
-    if (tour && yes(await ask('Add the Komoot page as a public link? (Y/n)', { default: 'y' }))) links.push({ label: 'Komoot', url: `https://www.komoot.com/tour/${tour.id}` });
-    for (;;) {
-      const line = (await ask('Public link as label=url, e.g. Komoot=https://… (empty to finish)', { default: '' })).trim();
-      if (!line) break;
-      const m = /^([^=]+)=(https?:\/\/\S+)$/.exec(line);
-      if (!m) { say('  write it as label=https://…'); continue; }
-      links.push({ label: m[1].trim(), url: m[2] });
+  // The review: every answer by number; a number asks that question again, Enter creates the trip.
+  for (;;) {
+    const rows = steps.filter((step) => step.applies());
+    say('');
+    say('Review: type a number to change that answer, or press Enter to create the trip.');
+    rows.forEach((step, i) => say(`  ${String(i + 1).padStart(2)}  ${step.label.padEnd(12)}${step.show()}`));
+    const choice = (await ask('Change which?', { default: '' })).trim();
+    if (!choice) break;
+    const n = Number(choice);
+    if (!Number.isInteger(n) || n < 1 || n > rows.length) {
+      say(`  type a number from 1 to ${rows.length}, or press Enter to create the trip`);
+      continue;
     }
+    await rows[n - 1].ask();
+    // A change can open or invalidate another answer: a ride needs a bike, a shared route a GPX, fewer photos a cover.
+    for (const step of steps) if (step.applies() && step.missing()) await step.ask();
   }
 
-  const date = await until(deps, 'Date of the trip (YYYY-MM-DD)', (s) => {
-    const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s.trim());
-    if (!m) throw new Error('write it as YYYY-MM-DD');
-    const d = new Date(Number(m[1]), Number(m[2]) - 1, shared ? Number(m[3]) : 1, 12);
-    if (Number.isNaN(d.getTime())) throw new Error('not a date');
-    return d;
-  }, tour ? { default: tour.date } : undefined);
-  if (!shared) say(`  Discreet: the day is set to the 1st (${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-01).`);
-
-  folder.photos.forEach((name, i) => say(`  ${String(i + 1).padStart(2)}  ${name}`));
-  say(`  The photos are in ${folder.dir}`);
-  deps.reveal?.(folder.dir);
-  const cover = await until(deps, 'Cover photo (its number above)', (s) => number(s, 'the cover', { integer: true, min: 1 }), { default: '1' });
-  if (cover > folder.photos.length) throw new Error(`there are only ${folder.photos.length} photos`);
-  const darkHeader = yes(await ask('Is the cover light at the top or bottom, where the title sits? (y/N)', { default: 'n' }));
-
-  const notes = await ask('Notes for the story, in your words: the route, what struck you, the conditions', { multiline: true });
-
-  // Everything is known: now create.
-  const trip: TripValues = { title, activity, bike, distance, climb, area, country, track: shared ? `${slug}.gpx` : false, links: links.length ? links : undefined, cover, darkHeader };
-  const path = await scaffoldGallery({ slug, folder: folder.dir, store: deps.store, contentDir: deps.contentDir, uploadsDir: deps.uploadsDir, date, kind: 'outdoors', trip });
-  const track = gpx ? writeTrack(gpx, slug, deps.tracksDir).path : undefined;
+  // Everything is confirmed: now create.
+  const slug = a.slug!;
+  const date = new Date(a.date!.getFullYear(), a.date!.getMonth(), a.shared ? a.date!.getDate() : 1, 12);
+  const links = a.shared ? (a.links ?? []) : [];
+  const trip: TripValues = {
+    title: a.title, activity: a.activity, bike: a.bike, distance: a.distance, climb: a.climb, area: a.area, country: a.country,
+    track: a.shared ? `${slug}.gpx` : false, links: links.length ? links : undefined, cover: a.cover, darkHeader: a.darkHeader,
+  };
+  const path = await scaffoldGallery({ slug, folder: a.folder!.dir, store: deps.store, contentDir: deps.contentDir, uploadsDir: deps.uploadsDir, date, kind: 'outdoors', trip });
+  const track = a.shared && a.gpx ? writeTrack(a.gpx, slug, deps.tracksDir).path : undefined;
 
   mkdirSync(deps.notesDir, { recursive: true });
   const notesPath = join(deps.notesDir, `${slug}.md`);
-  const meta = [`activity: ${activity}${bike ? ` (${bike} bike)` : ''}`, `area: ${area}, ${country}`, `distance: ${distance} km, climb: ${climb} m`, `date: ${date.toISOString().slice(0, 10)}`, shared ? `shared: ${links.map((l) => `${l.label} ${l.url}`).join(', ') || 'no public links'}` : 'DISCREET: no start, parking, access road, exact day or time in the story'];
-  writeFileSync(notesPath, `# ${title}\n\n${meta.map((m) => `- ${m}`).join('\n')}\n\n## Notes\n\n${notes.trim()}\n`);
+  const meta = [
+    `activity: ${a.activity}${a.bike ? ` (${a.bike} bike)` : ''}`,
+    `area: ${a.area}, ${a.country}`,
+    `distance: ${a.distance} km, climb: ${a.climb} m`,
+    `date: ${isoDay(date)}`,
+    a.shared ? `shared: ${links.map((l) => `${l.label} ${l.url}`).join(', ') || 'no public links'}` : 'DISCREET: no start, parking, access road, exact day or time in the story',
+  ];
+  writeFileSync(notesPath, `# ${a.title}\n\n${meta.map((m) => `- ${m}`).join('\n')}\n\n## Notes\n\n${(a.notes ?? '').trim()}\n`);
 
   say('');
   say(`Trip file: ${path}`);
   if (track) say(`Track: ${track}`);
   say(`Notes: ${notesPath}`);
   say('Next: ask Claude to write the story and the alt texts from the notes, then run npm test and commit.');
-  return { slug, path, track, notes: notesPath, photos: folder.photos.length, discreet: !shared };
+  return { slug, path, track, notes: notesPath, photos: a.folder!.photos.length, discreet: !a.shared };
 }

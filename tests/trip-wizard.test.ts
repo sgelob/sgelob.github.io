@@ -45,6 +45,7 @@ describe('trip wizard', () => {
       photos, 'bike', 'ride', 'enduro', 'Colle delle Finestre', '', 'Val di Susa', 'itlay', 'italy', '38,5', '1700',
       'y', fixture('track.gpx'), 'Komoot=https://www.komoot.com/tour/1', 'not a link', '', '2026-06-14', '2', 'n',
       'Up the military road from Meana.\nTrail bike was the right call.',
+      '', // the review: Enter creates the trip
     ]);
     const r = await runWizard(deps);
     expect(queue).toEqual([]);
@@ -68,7 +69,7 @@ describe('trip wizard', () => {
   });
 
   test('a discreet hike: no track, no links, the day on the 1st, and the notes flag it', async () => {
-    const { deps, said } = setup((photos) => [photos, 'hike', 'Rocciamelone', 'hikes', 'rocciamelone', 'Val di Susa', '', '16', '1350', 'n', '2026-08-23', '', 'y', 'Long day, clear sky.']);
+    const { deps, said } = setup((photos) => [photos, 'hike', 'Rocciamelone', 'hikes', 'rocciamelone', 'Val di Susa', '', '16', '1350', 'n', '2026-08-23', '', 'y', 'Long day, clear sky.', '']);
     const r = await runWizard(deps);
     expect(r.discreet).toBe(true);
     expect(r.track).toBeUndefined();
@@ -89,7 +90,7 @@ describe('trip wizard', () => {
     const komoot = async (url: string) => { if (!url.includes('komoot')) throw new Error('not a Komoot tour link'); return tour; };
     // link (bad, then good), activity default, bike, title default, slug default, area, country default, distance default, climb default,
     // shared, gpx, Komoot link yes, no more links, date default, cover default, darkHeader, notes
-    const { deps, said } = setup((photos) => ['https://example.com', 'https://www.komoot.com/tour/1134841094', photos, '', 'trail', '', '', 'Val di Susa', '', '', '', 'y', fixture('track.gpx'), '', '', '', '', '', 'Up and over.'], komoot);
+    const { deps, said } = setup((photos) => ['https://example.com', 'https://www.komoot.com/tour/1134841094', photos, '', 'trail', '', '', 'Val di Susa', '', '', '', 'y', fixture('track.gpx'), '', '', '', '', '', 'Up and over.', ''], komoot);
     const r = await runWizard(deps);
     const data = parse(readFileSync(r.path, 'utf8').split('---')[1]);
     expect(data).toMatchObject({ title: 'Colle delle Finestre', activity: 'ride', bike: 'trail', distance: 38.5, climb: 1700, links: [{ label: 'Komoot', url: 'https://www.komoot.com/tour/1134841094' }] });
@@ -103,7 +104,7 @@ describe('trip wizard', () => {
     let downloaded = '';
     const komootPhotos = async () => { downloaded = mkdtempSync(join(tmpdir(), 'wiz-komoot-')); copyFileSync(fixture('sample-1620x1080.jpg'), join(downloaded, '01.jpg')); return downloaded; };
     // link, folder (Enter → Komoot), activity, bike, title, slug, area, country, distance, climb, shared?, date, cover, darkHeader, notes
-    const { deps, said } = setup(() => ['https://www.komoot.com/tour/907671487', '', '', 'xc', '', '', 'Val Chisone', '', '', '', 'n', '', '', '', 'Windy on the ridge.'], async () => tour, komootPhotos);
+    const { deps, said } = setup(() => ['https://www.komoot.com/tour/907671487', '', '', 'xc', '', '', 'Val Chisone', '', '', '', 'n', '', '', '', 'Windy on the ridge.', ''], async () => tour, komootPhotos);
     const r = await runWizard(deps);
     expect(downloaded).not.toBe('');
     expect(r.photos).toBe(1);
@@ -119,13 +120,50 @@ describe('trip wizard', () => {
     const tour: KomootTour = { id: '3297659281', name: 'Canosio – Gardetta', sport: 'mtb', distanceKm: 38.1, climb: 1500, date: '2026-09-20', recorded: true, images: five, imagesTotal: 26 };
     let offered = false;
     // link, folder (must be given), activity, bike, title, slug, area, country, distance, climb, shared?, date, cover, darkHeader, notes
-    const { deps, said } = setup((photos) => ['https://www.komoot.com/tour/3297659281', '', photos, '', 'trail', '', '', 'Valle Maira', '', '', '', 'n', '', '', '', 'Gardetta plateau.'], async () => tour, async () => { offered = true; return ''; });
+    const { deps, said } = setup((photos) => ['https://www.komoot.com/tour/3297659281', '', photos, '', 'trail', '', '', 'Valle Maira', '', '', '', 'n', '', '', '', 'Gardetta plateau.', ''], async () => tour, async () => { offered = true; return ''; });
     const r = await runWizard(deps);
     expect(offered).toBe(false);
     expect(r.photos).toBe(2);
     expect(said.some((l) => l.includes('only 5 of the 26 photos without a login'))).toBe(true);
     expect(said.some((l) => l.includes('KOMOOT_EMAIL and KOMOOT_PASSWORD'))).toBe(true);
     expect(said.some((l) => l.includes('give the folder with the photos'))).toBe(true); // the empty answer is not taken as "download"
+  });
+
+  test('the review: a number re-asks that answer; turning discreet into shared asks for the GPX and the links, and keeps the real day', async () => {
+    const { deps, said, queue } = setup((photos) => [
+      photos, 'hike', 'Rocciamelone', '', 'Val di Susa', '', '16', '1350', 'n', '2026-08-23', '', 'n', 'Long day.',
+      '3', 'Rocciamelone from the south', // row 3 is the title for a discreet hike
+      '42', // not a row
+      '9', 'y', fixture('track.gpx'), 'Strava=https://www.strava.com/activities/1', '', // the route made shared: GPX and links follow
+      '',
+    ]);
+    const r = await runWizard(deps);
+    expect(queue).toEqual([]);
+    expect(said.some((l) => /^\s+3  Title\s+Rocciamelone$/.test(l))).toBe(true);
+    expect(said.some((l) => l.includes('type a number from 1 to 13'))).toBe(true);
+    const text = readFileSync(r.path, 'utf8');
+    expect(parse(text.split('---')[1])).toMatchObject({ title: 'Rocciamelone from the south', track: 'rocciamelone.gpx', links: [{ label: 'Strava', url: 'https://www.strava.com/activities/1' }] });
+    expect(text).toContain('date: "2026-08-23T12:00:00"'); // shared now: the real day, not the 1st
+    expect(r.discreet).toBe(false);
+    expect(existsSync(r.track!)).toBe(true);
+  });
+
+  test('the review: fewer photos re-ask the cover; a hike turned into a ride asks for the bike', async () => {
+    const one = mkdtempSync(join(tmpdir(), 'wiz-one-'));
+    copyFileSync(fixture('sample-1620x1080.jpg'), join(one, 'IMG_0009.jpg'));
+    const { deps, queue } = setup((photos) => [
+      photos, 'hike', 'Monte Musinè', '', 'Val di Susa', '', '24', '850', 'n', '2026-03-14', '2', 'n', 'Loop.',
+      '1', one, // one photo now: cover 2 is gone, so the cover is asked again
+      '',
+      '2', 'ride', 'trail', // a ride: the bike follows
+      '',
+    ]);
+    const r = await runWizard(deps);
+    expect(queue).toEqual([]);
+    const data = parse(readFileSync(r.path, 'utf8').split('---')[1]);
+    expect(data).toMatchObject({ activity: 'ride', bike: 'trail', cover: '2026/03/monte-musine-01.jpg', track: false });
+    expect(data.photos).toHaveLength(1);
+    expect(r.photos).toBe(1);
   });
 
   test('pathOf: a path dragged into the terminal, quoted or with escaped spaces', () => {
