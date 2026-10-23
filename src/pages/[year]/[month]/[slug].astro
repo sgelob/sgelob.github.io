@@ -6,7 +6,7 @@ import Redirect from '../../../components/Redirect.astro';
 import { getPosts, neighbours, postPath, type Post } from '../../../lib/collections';
 import { originalUrl } from '../../../lib/images';
 import { redirectsUnder } from '../../../lib/redirects';
-import { formatDate, isoDate } from '../../../lib/site';
+import { formatDate, isoDate, pageTitle } from '../../../lib/site';
 import { categoryName } from '../../../lib/taxonomies';
 
 // getStaticPaths runs isolated from the rest of the frontmatter: everything it uses lives inside it.
@@ -45,7 +45,7 @@ const pager = post?.data.lang === 'it'
   <Redirect to={props.redirectTo} />
 ) : post && Content && (
   <Reading
-    title={`${post.data.seoTitle ?? post.data.title} — olegs`}
+    title={pageTitle(post.data.seoTitle ?? post.data.title)}
     heading={post.data.title}
     description={post.data.seoDescription ?? post.data.excerpt}
     lang={post.data.lang}

@@ -1,9 +1,10 @@
 ---
+import { pageTitle } from '../lib/site';
 import Base from '../layouts/Base.astro';
 import { NAV_LINKS } from '../lib/nav';
 ---
 
-<Base title="Page not found — olegs">
+<Base title={pageTitle('Page not found')}>
   <section class="not-found wrap">
     <p class="mono code">404</p>
     <h1>This page does not exist.</h1>

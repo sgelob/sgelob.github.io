@@ -17,7 +17,7 @@ describe('gallery page', () => {
 
   test('title, description, og image and the photos section active in the nav', () => {
     const html = venezia();
-    expect(html).toContain('<title>Venezia – Italy — Photos — olegs</title>');
+    expect(html).toContain('<title>Venezia – Italy · Photos – Olegs Belousovs</title>');
     expect(html).toContain('<meta name="description" content="Photos from Venezia – Italy: 81 photos.">');
     expect(html).toContain('<meta property="og:image" content="https://img.olegs.be/uploads/2012/08/venezia-italy-02-1600.jpg">');
     expect(html).toMatch(/<a href="\/photos\/" aria-current="true"[^>]*>/);
@@ -101,7 +101,7 @@ describe('gallery page', () => {
 
   test('a Yoast seoTitle replaces the generated title', () => {
     expect(read('dist/gallery/sky-clouds-surreal-shapes-colors/index.html')).toContain(
-      '<title>Sky and Clouds – Shapes and Surreal Colors Photography</title>',
+      '<title>Sky and Clouds – Shapes and Surreal Colors Photography – Olegs Belousovs</title>',
     );
   });
 

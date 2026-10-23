@@ -12,7 +12,7 @@ import { getTrips, neighbours, trackPath, tripPath, type Trip } from '../../lib/
 import { activityLabel, contoursPath, formatClimb, formatKm, heroMeta, moreLabels, moreTrips } from '../../lib/outdoors';
 import { coverSize } from '../../lib/paths';
 import { largestVariantUrl } from '../../lib/images';
-import { isoDate } from '../../lib/site';
+import { isoDate, pageTitle } from '../../lib/site';
 import { hasContours, readProfile, readTrack } from '../../lib/tracks';
 
 // getStaticPaths runs isolated from the rest of the frontmatter: everything it uses lives inside it.
@@ -47,12 +47,10 @@ const search = {
   },
 };
 const moreRow = moreLabels(activity, more);
-// The browser tab and search results get what the trip is, where and when: “Canosio – Gardetta · MTB · Valle Maira · 2026”.
-const pageTitle = [title, activityLabel(activity), area, date.getFullYear()].join(' · ');
 ---
 
 <Base
-  title={`${pageTitle} — Outdoors — olegs`}
+  title={pageTitle(title, activityLabel(activity), area, date.getFullYear(), 'Outdoors')} // what, where, when
   description={seoDescription ?? `${activityLabel(activity)} in ${area}: ${formatKm(distance)}, ${formatClimb(climb)}.`}
   ogImage={largestVariantUrl(cover, Math.min(1600, size?.width ?? 0))}
   overlayNav
