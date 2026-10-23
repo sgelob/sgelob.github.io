@@ -16,12 +16,13 @@ interface Props {
   /** The contour layer drawn for this route's map box (`/outdoors/<slug>.contours.svg`), when there is one. */
   contoursHref?: string;
   /** The track leaves out its start and finish: no start ring, the profile measures only the drawn stretch, and the stats say so. */
-  masked?: boolean;
-  /** The whole route's elevation profile, for a masked track: the profile then shows the full ride, not the drawn stretch. */
+  /** The track's start and finish were moved about 1 km along the path: the stats say they are approximate. */
+  approximateEnds?: boolean;
+  /** The whole route's elevation profile, for a track with approximate ends: the profile shows the full ride, not only the drawn route. */
   fullProfile?: ProfileSeries;
 }
 
-const { xml, distance, climb, downloadHref, links = [], contoursHref, masked = false, fullProfile } = Astro.props;
+const { xml, distance, climb, downloadHref, links = [], contoursHref, approximateEnds = false, fullProfile } = Astro.props;
 
 const all = parseGpx(xml);
 const points = simplifyPoints(all);
@@ -36,7 +37,7 @@ const [topX, topY] = top ? fit.project(top).map(r1) : [0, 0];
 const profile = fullProfile ? profileFromSeries(fullProfile) : profileFigure(all);
 const metres = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 });
 const kmOne = new Intl.NumberFormat('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
-const stats = `${formatKm(distance)} · ${formatClimb(climb)}${masked ? ' · start and finish not shown' : ''}`;
+const stats = `${formatKm(distance)} · ${formatClimb(climb)}${approximateEnds ? ' · start and finish approximate' : ''}`;
 // Each label goes where it covers the least of its own line, inside the drawing.
 const routePoints = points.map((p) => fit.project(p));
 const topText = top ? `${metres.format(top.ele!)} m` : '';
@@ -54,10 +55,10 @@ const lowLabel = profile && placeLabel([profile.low.x, profile.low.y], lowText, 
     <figure class="map">
       <div class="frame">
         {contoursHref && <img class="terrain" src={contoursHref} alt="" width="400" height="300" loading="lazy" decoding="async" />}
-        <svg class="shape" viewBox={fit.viewBox} role="img" aria-label={`${contoursHref ? 'Map of the route over contour lines every 100 m' : 'Map of the route'}${masked ? ', without its start and finish' : ''}`}>
+        <svg class="shape" viewBox={fit.viewBox} role="img" aria-label={`${contoursHref ? 'Map of the route over contour lines every 100 m' : 'Map of the route'}${approximateEnds ? ', with an approximate start and finish' : ''}`}>
           <path class="halo" d={line} />
           <path class="line" d={line} />
-          {!masked && <circle class="start" cx={startX} cy={startY} r="3" />}
+          <circle class="start" cx={startX} cy={startY} r="3" />
           {top && (
             <>
               <circle class="top" cx={topX} cy={topY} r="3.5" />
@@ -84,7 +85,7 @@ const lowLabel = profile && placeLabel([profile.low.x, profile.low.y], lowText, 
               <text class="axis" x={t.x} y={profile.baseline + 15} text-anchor="middle">{t.km}</text>
             </>
           ))}
-          <text class="axis" x={profile.right} y={profile.baseline + 15} text-anchor="end">{formatKm(masked && !fullProfile ? Math.round(profile.totalKm * 10) / 10 : distance)}</text>
+          <text class="axis" x={profile.right} y={profile.baseline + 15} text-anchor="end">{formatKm(distance)}</text>
           <path class="area" d={profile.area} />
           <path class="line thin" d={profile.line} />
           <circle class="top" cx={profile.high.x} cy={profile.high.y} r="3" />
