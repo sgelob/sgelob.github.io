@@ -95,7 +95,7 @@ const lowLabel = profile && placeLabel([profile.low.x, profile.low.y], lowText, 
     )}
   </div>
   <p class="links mono">
-    <a href={downloadHref} download>Download GPX <span aria-hidden="true">↗</span></a>
+    <a href={downloadHref} download={downloadHref.split('/').pop()}>Download GPX <span aria-hidden="true">↗</span></a>
     {links.map((l) => <a href={l.url} rel="noopener">{l.label} <span aria-hidden="true">↗</span></a>)}
   </p>
 </section>
