@@ -2,7 +2,15 @@ import { existsSync, readdirSync } from 'node:fs';
 import { describe, expect, test } from 'vitest';
 import { count, read, contentCount } from './helpers/dist';
 
-test('home has intro, 4 gallery cards, 3 posts', () => { const html = read('dist/index.html'); expect(html).toContain('Hi, I’m Oleg'); expect(html).toContain('drawn to offline things'); expect(html.match(/<ul class="links[^>]*>[\s\S]*?<\/ul>/)?.[0] ?? '').toContain('href="/outdoors/"'); expect(html).toContain('<a href="https://www.discogs.com/it/user/Xtraboy/collection">record on the turntable</a>'); expect(html).not.toContain('Creative Mornings'); expect(html).not.toContain('id="home-outdoors"'); expect(count(html,'class="gallery-card"')).toBe(4); expect(count(html,'class="post-item"')).toBe(3); expect(html).toContain(`All ${contentCount('galleries')} galleries`); });
+test('home has the bio with its section links and no link row, 4 gallery cards, 3 posts', () => {
+  const html = read('dist/index.html');
+  const intro = html.match(/<section class="intro[\s\S]*?<\/section>/)?.[0] ?? '';
+  expect(intro).toContain('Hi, I’m Oleg'); expect(intro).toContain('drawn to offline things');
+  for (const href of ['/outdoors/', '/photos/', '/books/', '/quotes/', '/events/']) expect(intro).toContain(`href="${href}"`);
+  expect(intro).not.toContain('<ul'); // the link row is gone: the bio links the sections itself
+  expect(html).not.toContain('id="home-outdoors"'); // no trips yet
+  expect(count(html, 'class="gallery-card"')).toBe(4); expect(count(html, 'class="post-item"')).toBe(3); expect(html).toContain(`All ${contentCount('galleries')} galleries`);
+});
 test('about lives at /about/ and the old slug redirects', () => {
   expect(existsSync('dist/about/index.html')).toBe(true);
   expect(read('dist/about/index.html')).toMatch(/<title>[^<]*Olegs Belousovs[^<]*<\/title>/);
@@ -12,7 +20,7 @@ test('events and books exist', () => { for (const p of ['dist/events/index.html'
 test('quotes page at /quotes/ with title, old slug redirects, and 141 author pages', () => { expect(count(read('dist/quotes/index.html'), 'class="quote"')).toBe(188); expect(read('dist/my-favourite-inspirational-quotes-life-design/index.html')).toContain('http-equiv="refresh" content="0; url=/quotes/"'); expect(read('dist/quotes/index.html')).toMatch(/<h1[^>]*>Favourite quotes<\/h1>/); expect(readdirSync('dist/quote-author').length).toBe(141); });
 
 describe('home', () => {
-  test('title, description, link row and section links', () => {
+  test('title, description, bio links, footer email and section links', () => {
     const html = read('dist/index.html');
     expect(html).toContain('<title>Olegs Belousovs – Product Management and Photography</title>'); // not About's
     expect(html).toContain('<meta name="description" content="Product Manager in Italy');
@@ -30,7 +38,7 @@ describe('pages', () => {
     const html = read('dist/about/index.html');
     expect(html).toMatch(/<h1[^>]*>Olegs Belousovs<\/h1>/);
     expect(html).toContain('How May I Help You?');
-    expect(html).toContain('<a href="/events/">tech events</a>'); // Markdown link rendered
+    expect(html).toContain('<a href="/events/">tech events and meetups</a>'); // Markdown link rendered
     expect(html).toContain('class="reading');
     expect(html).toContain('<title>Olegs Belousovs – Product Manager</title>'); // Yoast seoTitle
   });
@@ -104,7 +112,7 @@ test('the WordPress sitemap URLs serve the index of the sitemap Astro writes', (
 describe('home accessibility', () => {
   test('arrow glyphs are hidden from assistive tech', () => {
     const html = read('dist/index.html');
-    expect(html).toMatch(/Events <span aria-hidden="true"[^>]*>↗<\/span><\/a>/);
+    expect(html).toMatch(/galleries <span aria-hidden="true"[^>]*>↗<\/span><\/a>/);
     expect(html).toMatch(new RegExp(`All ${contentCount('galleries')} galleries <span aria-hidden="true"[^>]*>↗</span>`));
     expect(html.replace(/<span aria-hidden="true"[^>]*>[↗←→]<\/span>/g, '')).not.toMatch(/[↗←→]/);
   });

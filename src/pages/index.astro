@@ -21,22 +21,13 @@ const featured = pickFeatured(galleries, home.featuredGalleries);
 // Not About's seoTitle: the home and /about/ need different titles.
 const title = `${SITE.author} – ${SITE.description}`;
 
-const links = [
-  { label: 'Outdoors', href: '/outdoors/' },
-  { label: 'Events', href: '/events/' },
-  { label: 'Books', href: '/books/' },
-  { label: 'Quotes', href: '/quotes/' },
-  { label: 'Email', href: SITE.mailto },
-];
 ---
 
 <Base title={title} description={about.data.seoDescription} lang="en">
   <section class="intro wrap">
     <h1 class="visually-hidden">{SITE.author}</h1>
+    {/* The sections are linked from the bio itself; the nav and the footer carry the rest. */}
     {intro.map((html) => <p class="lead" set:html={html} />)}
-    <ul class="links mono">
-      {links.map(({ label, href }) => <li><a href={href}>{label} <span aria-hidden="true">↗</span></a></li>)}
-    </ul>
   </section>
 
   <section aria-labelledby="home-photos">
@@ -80,31 +71,10 @@ const links = [
 
   .lead :global(a:hover) { color: var(--fg); }
 
-  .links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px 32px;
-    margin-top: 48px;
-    padding: 0;
-    list-style: none;
-  }
-
-  /* 6 px above the text, cancelled by the margin, makes a 24 px target without moving the row. */
-  .links a {
-    display: inline-block;
-    padding: 6px 0 3px;
-    margin-top: -6px;
-    border-bottom: 1px solid var(--rule);
-    transition: border-color 120ms ease;
-  }
-
-  .links a:hover { border-bottom-color: currentColor; }
-
   .blog { padding-bottom: 96px; }
 
   @media (max-width: 719px) {
     .intro { padding-block: 40px 64px; }
     .lead { font-size: 22px; }
-    .links { margin-top: 32px; gap: 10px 20px; }
   }
 </style>
