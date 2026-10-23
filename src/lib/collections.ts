@@ -2,8 +2,8 @@
 import { getCollection } from 'astro:content';
 import { sortByDateDesc, type Gallery, type Post } from './paths';
 
-export { galleryPath, neighbours, postPath, related, sortByDateDesc } from './paths';
-export type { Gallery, Post, Related } from './paths';
+export { galleryPath, groupGalleries, mergeSmallGroups, neighbours, postPath, related, sortByDateDesc } from './paths';
+export type { Gallery, Group, Post, Related } from './paths';
 
 export async function getGalleries(): Promise<Gallery[]> {
   return sortByDateDesc(await getCollection('galleries'));

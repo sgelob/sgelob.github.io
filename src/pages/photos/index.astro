@@ -3,14 +3,32 @@ import { getEntry } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import PhotosHeader from '../../components/PhotosHeader.astro';
 import GalleryGrid from '../../components/GalleryGrid.astro';
-import { getGalleries } from '../../lib/collections';
+import SectionLabel from '../../components/SectionLabel.astro';
+import { getGalleries, groupGalleries } from '../../lib/collections';
+import { genreName } from '../../lib/taxonomies';
 import { home } from '../../lib/home';
 
 const page = await getEntry('pages', 'photos');
 const galleries = await getGalleries();
+// A section per genre, largest first, with its newest covers; the genre page has them all.
+const PREVIEW = 8;
+const sections = groupGalleries(galleries, 'genre');
+const plural = (n: number) => `${n} ${n === 1 ? 'gallery' : 'galleries'}`;
 ---
 
 <Base title={page?.data.seoTitle ?? 'Photos — olegs'} description={page?.data.seoDescription}>
   <PhotosHeader intro={home.photosIntro} active="all" />
-  <GalleryGrid galleries={galleries} />
+  <div class="sections">
+    {sections.map(({ key, galleries: items }) => (
+      <section aria-labelledby={`genre-${key}`}>
+        <SectionLabel id={`genre-${key}`} title={genreName(key)} href={`/photos/genre/${key}/`} link={`All ${plural(items.length)}`} />
+        <GalleryGrid galleries={items.slice(0, PREVIEW)} embedded />
+      </section>
+    ))}
+  </div>
 </Base>
+
+<style>
+  /* Each embedded grid ends 64px below; the page ends 96px below the last one, like a plain grid. */
+  .sections { padding-bottom: 32px; }
+</style>

@@ -1,9 +1,41 @@
-import { existsSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { describe, expect, test } from 'vitest';
-import { count, read, contentCount } from './helpers/dist';
+import { count, read } from './helpers/dist';
 
-test('photos index lists a card per gallery with webp srcset', () => { const html = read('dist/photos/index.html'); expect(count(html, 'class="gallery-card"')).toBe(contentCount('galleries')); expect(html).toContain('-480.webp 480w'); });
-test('genre page filters', () => { expect(count(read('dist/photos/genre/abandoned-places/index.html'), 'class="gallery-card"')).toBe(29); });
+/** Galleries per genre slug, from the content folder. */
+function galleriesPerGenre(): Map<string, number> {
+  const per = new Map<string, number>();
+  for (const file of readdirSync('src/content/galleries')) {
+    const genre = /^genre: (\S+)/m.exec(readFileSync(`src/content/galleries/${file}`, 'utf8'))?.[1] ?? '';
+    per.set(genre, (per.get(genre) ?? 0) + 1);
+  }
+  return per;
+}
+
+test('photos index: a section per genre, largest first, with up to 8 newest covers and a link to all', () => {
+  const html = read('dist/photos/index.html');
+  const per = galleriesPerGenre();
+  const expected = [...per.values()].reduce((sum, n) => sum + Math.min(n, 8), 0);
+  expect(count(html, 'class="gallery-card"')).toBe(expected);
+  expect(html).toContain('-480.webp 480w');
+  const labels = [...html.matchAll(/<h2 id="genre-([a-z-]+)"[^>]*>([^<]+)<\/h2>/g)].map((m) => m[1]);
+  expect(labels).toEqual([...per.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).map(([slug]) => slug));
+  expect(labels[0]).toBe('world-places');
+  expect(html).toMatch(new RegExp(`<a href="/photos/genre/world-places/"[^>]*>All ${per.get('world-places')} galleries`));
+});
+test('genre page filters; a genre other than World Places is a plain grid', () => { const html = read('dist/photos/genre/abandoned-places/index.html'); expect(count(html, 'class="gallery-card"')).toBe(29); expect(html).not.toContain('id="country-'); });
+
+test('World Places: sections by country, largest first, small countries merged in a last Elsewhere section', () => {
+  const html = read('dist/photos/genre/world-places/index.html');
+  const sections = [...html.matchAll(/<h2 id="country-([a-z-]+)"[^>]*>([^<]+)<\/h2>/g)].map((m) => [m[1], m[2]]);
+  expect(sections).toEqual([['italy', 'Italy'], ['germany', 'Germany'], ['spain', 'Spain'], ['france', 'France'], ['russia', 'Russia'], ['elsewhere', 'Elsewhere']]);
+  expect(html).toMatch(/<a href="\/photos\/country\/italy\/"[^>]*>All 12 galleries/);
+  expect(html).not.toMatch(/href="\/photos\/country\/elsewhere\/"/);
+  expect(count(html, 'class="gallery-card"')).toBe(36);
+  const elsewhere = html.slice(html.indexOf('id="country-elsewhere"'));
+  expect(count(elsewhere, 'class="gallery-card"')).toBe(8); // Belgium 2, Czech Republic 2, Slovenia, Netherlands, Austria, Monaco
+  expect(elsewhere).toContain('href="/gallery/ljubljana-slovenia/"');
+});
 test('country with galleries builds; every taxonomy slug has a page', () => { for (const slug of ['italy','russia','usa']) expect(existsSync(`dist/photos/country/${slug}/index.html`)).toBe(true); });  // Review Focus 4: 'usa' has 0 galleries
 
 describe('photos pages', () => {
