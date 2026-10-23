@@ -6,12 +6,14 @@ import { satteri } from '@astrojs/markdown-satteri';
 import { parse } from 'yaml';
 import { iframeTitles } from './src/lib/iframe-titles.ts';
 
-// Redirect stubs are noindex pages, so they stay out of the sitemap. Read with fs: the `?raw`
+// Redirect stubs and the search page are noindex pages, so they stay out of the sitemap. Read with fs: the `?raw`
 // import of src/lib/redirects.ts does not work here. `from` keeps raw Unicode; sitemap URLs are
 // percent-encoded, hence decodeURI below.
 /** @type {{ from: string }[]} */
 const redirects = parse(readFileSync(new URL('./src/data/redirects.yaml', import.meta.url), 'utf8'));
 const REDIRECT_PATHS = new Set(redirects.map((r) => r.from));
+// The search page is noindex too: its results are the pages the sitemap already lists.
+const NOINDEX_PATHS = new Set([...REDIRECT_PATHS, '/search/']);
 
 // https://astro.build/config
 export default defineConfig({
@@ -21,5 +23,5 @@ export default defineConfig({
   build: { format: 'directory', inlineStylesheets: 'always' },
   // Every embedded <iframe> gets a title from its host, so none is announced as a bare "frame".
   markdown: { processor: satteri({ hastPlugins: [iframeTitles] }) },
-  integrations: [sitemap({ filter: (page) => !REDIRECT_PATHS.has(decodeURI(new URL(page).pathname)) })],
+  integrations: [sitemap({ filter: (page) => !NOINDEX_PATHS.has(decodeURI(new URL(page).pathname)) })],
 });
