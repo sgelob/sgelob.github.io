@@ -18,7 +18,8 @@
     "fetch-uploads": "tsx scripts/fetch-uploads.ts",
     "check-urls": "tsx scripts/check-urls.ts",
     "thumbs": "tsx scripts/thumbs.ts",
-    "track": "tsx scripts/track.ts"
+    "track": "tsx scripts/track.ts",
+    "trip": "tsx scripts/trip.ts"
   },
   "dependencies": {
     "@astrojs/markdown-satteri": "^0.4.5",

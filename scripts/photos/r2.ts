@@ -7,6 +7,19 @@ export interface ObjectStore {
 
 export type R2Env = { accountId: string; accessKeyId: string; secretAccessKey: string; bucket: string };
 
+/** The R2 credentials from the environment, or undefined when any of the four is missing. */
+export function r2Env(env: NodeJS.ProcessEnv = process.env): R2Env | undefined {
+  const { R2_ACCOUNT_ID: accountId, R2_ACCESS_KEY_ID: accessKeyId, R2_SECRET_ACCESS_KEY: secretAccessKey, R2_BUCKET: bucket } = env;
+  return accountId && accessKeyId && secretAccessKey && bucket ? { accountId, accessKeyId, secretAccessKey, bucket } : undefined;
+}
+
+/** The real store from the environment; the error names the variables. */
+export function storeFromEnv(env: NodeJS.ProcessEnv = process.env): ObjectStore {
+  const r2 = r2Env(env);
+  if (!r2) throw new Error('R2_ACCOUNT_ID, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY and R2_BUCKET must be set (see .env.example)');
+  return new R2Store(r2);
+}
+
 /** Only the part of S3Client the store uses, so tests can pass a fake. */
 type Client = Pick<S3Client, 'send'>;
 

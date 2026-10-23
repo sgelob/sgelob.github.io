@@ -27,7 +27,15 @@ This copies the photos into `UPLOADS_DIR/yyyy/mm/` (the local tree of originals,
 
 ## Add a trip
 
-A trip is a hike or a mountain-bike ride in `src/content/outdoors/<slug>.md`, with its photos and an optional GPX track.
+A trip is a hike or a mountain-bike ride in `src/content/outdoors/<slug>.md`, with its photos and an optional GPX track. The wizard asks for everything step by step:
+
+```bash
+npm run trip
+```
+
+It wants a folder of JPEGs (through ImageOptim, in shooting order), hike or ride and the bike, title, area at valley or massif scale, country, distance and climb, whether the route is shared (then the GPX export and any public links) or discreet, the date, the cover and a few notes. Then it uploads the photos, writes the trip file with those answers, sanitises the track into `src/content/outdoors/tracks/`, and saves the notes to `olegs-be-drafts/outdoors/<slug>.md` for the story. What is left after it: the story and an `alt` for every photo. It needs `.env` with the R2 keys and `UPLOADS_DIR`.
+
+The same without the questions (the fields are then left empty to fill by hand):
 
 ```bash
 UPLOADS_DIR=./olegs-be-data/uploads npm run photos -- --new --outdoors <slug> <folder-with-jpegs> --date YYYY-MM-DD
