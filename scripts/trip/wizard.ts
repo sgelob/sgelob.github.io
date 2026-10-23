@@ -25,6 +25,8 @@ export interface WizardDeps {
   countries: readonly string[];
   /** Reads a public Komoot tour from its link, to prefill the answers; absent when offline. */
   komoot?: (url: string) => Promise<KomootTour>;
+  /** Downloads the tour's photos into a fresh folder and returns it; absent when offline. */
+  komootPhotos?: (tour: KomootTour) => Promise<string>;
 }
 
 export interface WizardResult {
@@ -71,28 +73,43 @@ export async function runWizard(deps: WizardDeps): Promise<WizardResult> {
   const { ask, say } = deps;
   say('A new trip for Outdoors. Answers in brackets are defaults; press Enter to take them.');
 
-  const folder = await until(deps, 'Folder with the photos (JPEGs through ImageOptim, in shooting order)', (s) => {
-    const dir = resolve(s.trim().replace(/^~(?=\/|$)/, process.env.HOME ?? '~'));
-    if (!existsSync(dir)) throw new Error(`${dir} does not exist`);
-    const photos = readdirSync(dir).filter((n) => !n.startsWith('.') && RASTER.test(n)).sort();
-    if (!photos.length) throw new Error(`no JPEG, PNG or WebP files in ${dir}`);
-    return { dir, photos };
-  });
-  say(`  ${folder.photos.length} photo${folder.photos.length === 1 ? '' : 's'} found.`);
-
   let tour: KomootTour | undefined;
   if (deps.komoot) {
-    tour = await until(deps, 'Komoot tour link, to prefill the numbers (empty to skip)', async (s) => {
+    tour = await until(deps, 'Komoot tour link, to prefill the numbers and offer its photos (empty to skip)', async (s) => {
       const url = s.trim();
       if (!url) return undefined;
       return deps.komoot!(url);
     }, { default: '' });
     if (tour) {
-      say(`  Found: ${tour.name}, ${tour.sport}, ${tour.distanceKm} km, ${tour.climb} m up, ${tour.date}${tour.recorded ? '' : ' (a planned tour, not a recording)'}.`);
+      say(`  Found: ${tour.name}, ${tour.sport}, ${tour.distanceKm} km, ${tour.climb} m up, ${tour.date}${tour.recorded ? '' : ' (a planned tour, not a recording)'}; ${tour.images.length} photo${tour.images.length === 1 ? '' : 's'}.`);
       say('  Each answer below is prefilled from it; press Enter to keep it or type another.');
     }
   }
   const sportActivity = tour && activityFromSport(tour.sport);
+
+  const fromKomoot = Boolean(tour && tour.images.length && deps.komootPhotos);
+  const readFolder = (dir: string) => {
+    if (!existsSync(dir)) throw new Error(`${dir} does not exist`);
+    const photos = readdirSync(dir).filter((n) => !n.startsWith('.') && RASTER.test(n)).sort();
+    if (!photos.length) throw new Error(`no JPEG, PNG or WebP files in ${dir}`);
+    return { dir, photos };
+  };
+  const folder = await until(
+    deps,
+    fromKomoot
+      ? `Folder with the photos (JPEGs through ImageOptim), or Enter to take the ${tour!.images.length} photos from Komoot (served at up to 2048 px)`
+      : 'Folder with the photos (JPEGs through ImageOptim, in shooting order)',
+    async (s) => {
+      const answer = s.trim();
+      if (!answer && fromKomoot) {
+        say('  Downloading from Komoot…');
+        return readFolder(await deps.komootPhotos!(tour!));
+      }
+      return readFolder(resolve(answer.replace(/^~(?=\/|$)/, process.env.HOME ?? '~')));
+    },
+    fromKomoot ? { default: '' } : undefined,
+  );
+  say(`  ${folder.photos.length} photo${folder.photos.length === 1 ? '' : 's'} found.`);
 
   const activity = await until(deps, 'Hike or ride? (hike/ride)', (s): 'hike' | 'ride' => {
     const a = s.trim().toLowerCase();
