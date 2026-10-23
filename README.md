@@ -19,7 +19,7 @@ Search (`/search/`) runs on a [Pagefind](https://pagefind.app) index that `npm r
 UPLOADS_DIR=./olegs-be-data/uploads npm run photos -- --new <slug> <folder-with-jpegs> --date YYYY-MM-DD
 ```
 
-This copies the photos into `UPLOADS_DIR/yyyy/mm/` (the local tree of originals, kept in sync with R2), uploads them with their 480, 960 and 1600 px variants, and writes `src/content/galleries/<slug>.md` with the photos in file-name order. It refuses to overwrite an existing gallery file. Then edit the title, genre, country, cover and date, reorder the photos if you like, commit and push. It needs a `.env` with the R2 keys, see `.env.example`.
+This copies the photos into `UPLOADS_DIR/yyyy/mm/` (the local tree of originals, kept in sync with R2), uploads them with their 480, 960 and 1600 px variants, and writes `src/content/galleries/<slug>.md` with the photos in file-name order (natural order, so `shot 2` comes before `shot 10`). Every photo is renamed `<slug>-01.jpg`, `<slug>-02.jpg`, … so the URLs say what the photo belongs to and no camera or phone name reaches them; trips are named the same way. It refuses to overwrite an existing gallery file. Then edit the title, genre, country, cover and date, reorder the photos if you like, commit and push. It needs a `.env` with the R2 keys, see `.env.example`.
 
 - Originals are uploaded unchanged: the grid and the lightbox use the variants, but the original is what the no-JS link and old `/wp-content/uploads/` links serve. Export large camera files at 2400 px or less first.
 - `cover` is an upload path, `yyyy/mm/file.jpg`, usually one of the gallery's photos.

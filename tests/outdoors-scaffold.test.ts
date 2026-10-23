@@ -4,7 +4,7 @@ import { join } from 'node:path';
 import { expect, test } from 'vitest';
 import { parse } from 'yaml';
 import type { ObjectStore } from '../scripts/photos/r2';
-import { scaffoldGallery, tripFrontmatter, tripPhotoName } from '../scripts/photos/scaffold';
+import { scaffoldGallery, tripFrontmatter, photoName } from '../scripts/photos/scaffold';
 
 test('tripFrontmatter leaves activity, distance, climb and track undecided and lists the photos', () => {
   const fm = tripFrontmatter({ slug: 'x', title: 'X', date: '2026-06-14T12:00:00', activity: undefined, distance: undefined, climb: undefined, area: '', country: 'italy', track: undefined, cover: '2026/06/a.jpg', darkHeader: false, photos: [{ src: '2026/06/a.jpg', width: 1620, height: 1080 }] });
@@ -41,8 +41,8 @@ test('scaffoldGallery with kind outdoors writes a trip file in the field order',
   await expect(scaffoldGallery({ slug: 'monte-bondone', folder, store, contentDir, uploadsDir: uploads, kind: 'outdoors' })).rejects.toThrow(/already exists/);
 });
 
-test('tripPhotoName numbers with two digits, three from 100 photos, and keeps a lower-cased extension', () => {
-  expect(tripPhotoName('x', 0, 41, 'PXL_1.JPG')).toBe('x-01.jpg');
-  expect(tripPhotoName('x', 98, 100, 'a.jpeg')).toBe('x-099.jpeg');
-  expect(tripPhotoName('x', 99, 100, 'a.jpg')).toBe('x-100.jpg');
+test('photoName numbers with two digits, three from 100 photos, and keeps a lower-cased extension', () => {
+  expect(photoName('x', 0, 41, 'PXL_1.JPG')).toBe('x-01.jpg');
+  expect(photoName('x', 98, 100, 'a.jpeg')).toBe('x-099.jpeg');
+  expect(photoName('x', 99, 100, 'a.jpg')).toBe('x-100.jpg');
 });

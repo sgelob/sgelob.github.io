@@ -135,10 +135,10 @@ describe('processUploads', () => {
 });
 
 describe('scaffoldGallery', () => {
-  test('writes frontmatter with sizes in filename order', async () => {
+  test('renames the photos <slug>-NN in natural file-name order and writes frontmatter with sizes', async () => {
     const folder = tmp();
-    put(folder, 'B Photo.JPG', fixture('sample-900x600.jpg'));
-    put(folder, 'a photo.jpg', fixture('sample-1620x1080.jpg'));
+    put(folder, 'shot 10.JPG', fixture('sample-900x600.jpg'));
+    put(folder, 'shot 2.jpg', fixture('sample-1620x1080.jpg'));
     put(folder, 'notes.txt');
     const contentDir = tmp();
     const date = new Date(2024, 4, 3, 10, 20, 30);
@@ -146,9 +146,9 @@ describe('scaffoldGallery', () => {
     const path = await scaffoldGallery({ slug: 'lake-como-italy', folder, store, contentDir, uploadsDir: uploads, date });
 
     expect(path).toBe(join(contentDir, 'lake-como-italy.md'));
-    expect(readdirSync(join(uploads, '2024/05')).sort()).toEqual(['a-photo.jpg', 'b-photo.jpg']);
-    expect(store.objects.has('uploads/2024/05/a-photo.jpg')).toBe(true);
-    expect(store.objects.has('uploads/2024/05/b-photo-480.webp')).toBe(true);
+    expect(readdirSync(join(uploads, '2024/05')).sort()).toEqual(['lake-como-italy-01.jpg', 'lake-como-italy-02.jpg']);
+    expect(store.objects.has('uploads/2024/05/lake-como-italy-01.jpg')).toBe(true);
+    expect(store.objects.has('uploads/2024/05/lake-como-italy-02-480.webp')).toBe(true);
 
     const text = readFileSync(path, 'utf8');
     expect(text.indexOf('title:')).toBeLessThan(text.indexOf('date:'));
@@ -159,12 +159,12 @@ describe('scaffoldGallery', () => {
       date: '2024-05-03T10:20:30',
       genre: 'world-places',
       country: 'world',
-      cover: '2024/05/a-photo.jpg',
+      cover: '2024/05/lake-como-italy-01.jpg',
       darkHeader: false,
       oldSlugs: [],
       photos: [
-        { src: '2024/05/a-photo.jpg', width: 1620, height: 1080 },
-        { src: '2024/05/b-photo.jpg', width: 900, height: 600 },
+        { src: '2024/05/lake-como-italy-01.jpg', width: 1620, height: 1080 }, // shot 2 before shot 10
+        { src: '2024/05/lake-como-italy-02.jpg', width: 900, height: 600 },
       ],
     });
   });
@@ -172,7 +172,7 @@ describe('scaffoldGallery', () => {
   test('rejects a different file already sitting at the target name', async () => {
     const folder = tmp();
     put(folder, 'a.jpg', fixture('sample-900x600.jpg'));
-    put(uploads, '2024/05/a.jpg', fixture('sample-1620x1080.jpg'));
+    put(uploads, '2024/05/s-01.jpg', fixture('sample-1620x1080.jpg'));
     await expect(scaffoldGallery({ slug: 's', folder, store, contentDir: tmp(), uploadsDir: uploads, date: new Date(2024, 4, 3) })).rejects.toThrow(/already exists/);
   });
 
