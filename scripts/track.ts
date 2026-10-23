@@ -1,11 +1,12 @@
 // Turns a GPX export into a shareable track: `npm run track -- <export.gpx> <slug> [--mask <km>]`.
 // Writes src/content/outdoors/tracks/<slug>.gpx with only the route (lat, lon, ele): no times, no heart rate, no waypoints,
 // no device or author. The repository is public, so a shareable track is never copied there raw.
-// `--mask 2` also leaves out everything within 2 km of the start and the finish, for a ride that starts near home.
+// `--mask 2` also leaves out everything within 2 km of the start and the finish, for a ride that starts near home, and writes
+// <slug>.profile.json: the whole route's elevation profile as distance and elevation pairs, without coordinates.
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
-import { parseGpx, sanitizeGpx } from '../src/lib/gpx';
+import { parseGpx, profileSeries, sanitizeGpx } from '../src/lib/gpx';
 
 const TRACKS_DIR = fileURLToPath(new URL('../src/content/outdoors/tracks', import.meta.url));
 
@@ -17,6 +18,7 @@ export function writeTrack(exportPath: string, slug: string, tracksDir: string, 
   const xml = readFileSync(exportPath, 'utf8');
   const clean = sanitizeGpx(xml, slug, maskKm);
   writeFileSync(path, clean);
+  if (maskKm > 0) writeFileSync(resolve(tracksDir, `${slug}.profile.json`), `${JSON.stringify(profileSeries(parseGpx(xml), 600))}\n`);
   return { path, points: parseGpx(clean).length };
 }
 
