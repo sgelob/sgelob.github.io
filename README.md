@@ -85,21 +85,13 @@ Variants are never upscaled: use `-960` only when the original is at least 960 p
 
 `src/data/*.yaml` holds the non-post content: the home page featured galleries (an empty list means 4 galleries picked at random each day by the scheduled rebuild) and the Photos intro, events, books, quotes, taxonomies and redirects.
 
-## One-shot migration
-
-```bash
-npm run migrate -- --dump <sql>
-```
-
-This rebuilt everything from the WordPress dump once. Re-running it would overwrite every file under `src/content` and `src/data`, discarding hand edits, so it refuses while `src/content` has files unless you pass `--force`. Drafts were exported to `./olegs-be-drafts/` (git-ignored).
-
 ## Photos pipeline
 
 ```bash
 npm run photos -- --uploads <dir> [--dry-run]
 ```
 
-Uploads every original under `<dir>` (normally `UPLOADS_DIR`) unchanged, plus 480, 960 and 1600 px variants in webp and jpg, with keys `uploads/yyyy/mm/name-w.ext`; keys already in R2 are skipped, and no variant is wider than its original. `npm run fetch-uploads` pulls the originals from OVH using the `OVH_FTP_*` environment variables.
+Uploads every original under `<dir>` (normally `UPLOADS_DIR`) unchanged, plus 480, 960 and 1600 px variants in webp and jpg, with keys `uploads/yyyy/mm/name-w.ext`; keys already in R2 are skipped, and no variant is wider than its original.
 
 ```bash
 UPLOADS_DIR=./olegs-be-data/uploads npm run photos -- --fix-sizes
