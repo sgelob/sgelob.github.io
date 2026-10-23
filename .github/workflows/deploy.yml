@@ -3,6 +3,8 @@ name: Deploy
 on:
   push:
     branches: [main]
+  schedule:
+    - cron: '0 4 * * *' # daily rebuild: the home shows 4 galleries picked at random for the day
   workflow_dispatch:
 
 permissions:

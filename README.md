@@ -43,7 +43,7 @@ Variants are never upscaled: use `-960` only when the original is at least 960 p
 
 ## Data files
 
-`src/data/*.yaml` holds the non-post content: the home page featured galleries and the Photos intro, events, books, quotes, taxonomies and redirects.
+`src/data/*.yaml` holds the non-post content: the home page featured galleries (an empty list means 4 galleries picked at random each day by the scheduled rebuild) and the Photos intro, events, books, quotes, taxonomies and redirects.
 
 ## One-shot migration
 
