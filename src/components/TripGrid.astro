@@ -6,13 +6,15 @@ interface Props {
   trips: Trip[];
   /** One grid among several on a page: a shorter gap below, the page adds the rest. */
   embedded?: boolean;
+  /** Shown when there are no trips. */
+  empty?: string;
 }
 
-const { trips, embedded = false } = Astro.props;
+const { trips, embedded = false, empty = 'No trips yet.' } = Astro.props;
 ---
 
 {trips.length === 0 ? (
-  <p class="empty mono wrap">No trips yet.</p>
+  <p class="empty mono wrap">{empty}</p>
 ) : (
   <ul class:list={["grid wrap", { embedded }]}>
     {trips.map((trip) => (

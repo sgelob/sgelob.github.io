@@ -14,6 +14,7 @@ describe('search page', () => {
     expect(html).toContain('<html lang="en"');
     expect(html).toContain('<meta name="robots" content="noindex">');
     expect(html).toContain('role="search"');
+    expect(html).toContain('Galleries, trips, posts, quotes, events and books.');
     expect(html).toMatch(/<label class="mono"[^>]*for="q"[^>]*>Search the site<\/label>/);
     expect(html).toMatch(/<input id="q" name="q" type="search"/);
     expect(html).toMatch(/<h1 class="heading"[^>]*>Search<\/h1>/);

@@ -15,6 +15,7 @@ const filters = [
   { slug: 'rides', name: 'Rides', href: '/outdoors/rides/' },
 ];
 const years = groupByYear(trips);
+const empty = { all: 'No trips yet.', hikes: 'No hikes yet.', rides: 'No rides yet.' };
 ---
 
 <header class="outdoors-header wrap">
@@ -32,7 +33,7 @@ const years = groupByYear(trips);
 </header>
 
 {years.length === 0 ? (
-  <TripGrid trips={[]} />
+  <TripGrid trips={[]} empty={empty[filter]} />
 ) : (
   <div class="sections">
     {years.map((group) => (
