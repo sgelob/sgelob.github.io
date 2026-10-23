@@ -27,3 +27,13 @@ describe('nav', () => {
     expect(count(html, 'aria-current="page"')).toBe(2); // nav + filter
   });
 });
+
+describe('trip page', () => {
+  test.skip('hero meta, route block, photos, pager and more row (enable with the first trip)', () => {
+    const html = read('dist/outdoors/<first-slug>/index.html');
+    expect(html).toMatch(/<p class="meta mono"[^>]*><span[^>]*>Italy<\/span> <span[^>]*>(Hike|MTB)<\/span>/);
+    expect(html).toMatch(/data-pagefind-filter="type:outdoors"/);
+    expect(html).toContain('data-meta-activity=');
+    expect(html).toContain('class="ph"');
+  });
+});
