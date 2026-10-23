@@ -9,6 +9,8 @@ import Redirect from '../../components/Redirect.astro';
 import { galleryPath, getGalleries, neighbours, type Gallery } from '../../lib/collections';
 import { coverSize } from '../../lib/paths';
 import { largestVariantUrl } from '../../lib/images';
+import { isoDate } from '../../lib/site';
+import { countryName, genreName } from '../../lib/taxonomies';
 import { redirectsUnder } from '../../lib/redirects';
 
 // getStaticPaths runs isolated from the rest of the frontmatter: everything it uses lives inside it.
@@ -33,6 +35,16 @@ type Props =
 const props = Astro.props as Props;
 const gallery = props.gallery;
 const { Content } = gallery ? await render(gallery) : { Content: undefined };
+// The search result row: a small cover (the 480 jpg, or the original of a narrower cover) and the meta line.
+const search = gallery && {
+  type: 'gallery' as const,
+  meta: {
+    date: isoDate(gallery.data.date),
+    image: largestVariantUrl(gallery.data.cover, Math.min(480, coverSize(gallery)?.width ?? 0)),
+    country: countryName(gallery.data.country),
+    genre: genreName(gallery.data.genre),
+  },
+};
 ---
 
 {props.redirectTo !== undefined ? (
@@ -43,13 +55,14 @@ const { Content } = gallery ? await render(gallery) : { Content: undefined };
     description={gallery.data.seoDescription ?? `Photos from ${gallery.data.title}: ${gallery.data.photos.length} photos.`}
     ogImage={largestVariantUrl(gallery.data.cover, Math.min(1600, coverSize(gallery)?.width ?? 0))}
     overlayNav
+    search={search}
   >
     <GalleryHero gallery={gallery} />
     {gallery.body?.trim() && Content && (
       <div class="body wrap"><Content /></div>
     )}
     <JustifiedGrid photos={gallery.data.photos} />
-    <nav class="pager wrap mono" aria-label="More galleries">
+    <nav class="pager wrap mono" aria-label="More galleries" data-pagefind-ignore>
       {props.next ? <a href={galleryPath(props.next)} rel="next"><span aria-hidden="true">←</span> <span class="visually-hidden">Older gallery: </span>{props.next.data.title}</a> : <span></span>}
       {props.prev && <a href={galleryPath(props.prev)} rel="prev"><span class="visually-hidden">Newer gallery: </span>{props.prev.data.title} <span aria-hidden="true">→</span></a>}
     </nav>

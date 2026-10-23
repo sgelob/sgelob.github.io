@@ -27,11 +27,12 @@ const coverAlt = photos.some((photo) => photo.src === cover) ? '' : title;
     fetchpriority="high"
   />
   <div class="caption wrap">
-    <h1 class="title">{title}</h1>
+    <h1 class="title" data-pagefind-meta="title">{title}</h1>
+    {/* The spaces keep the items apart as words for the search index; the flex gap lays them out. */}
     <p class="meta mono">
-      <a href={`/photos/country/${country}/`}>{countryName(country)}</a>
-      <a href={`/photos/genre/${genre}/`}>{genreName(genre)}</a>
-      <span>{formatMonthYear(date, 'en')}</span>
+      <a href={`/photos/country/${country}/`}>{countryName(country)}</a>{' '}
+      <a href={`/photos/genre/${genre}/`}>{genreName(genre)}</a>{' '}
+      <span>{formatMonthYear(date, 'en')}</span>{' '}
       <span>{photos.length} photos</span>
     </p>
   </div>

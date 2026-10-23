@@ -9,6 +9,7 @@ if (!page) throw new Error('src/content/pages/quotes.md is missing');
 ---
 
 <Reading section
+  search={{ type: 'other' }}
   title={page.data.seoTitle ?? `${page.data.title} — olegs`}
   heading="Favourite quotes"
   description={page.data.seoDescription ?? 'Inspirational quotes on life, design and work, collected by author.'}
