@@ -91,13 +91,18 @@ export async function runWizard(deps: WizardDeps): Promise<WizardResult> {
       return deps.komoot!(url);
     }, { default: '' });
     if (tour) {
-      say(`  Found: ${tour.name}, ${tour.sport}, ${tour.distanceKm} km, ${tour.climb} m up, ${tour.date}${tour.recorded ? '' : ' (a planned tour, not a recording)'}; ${tour.images.length} photo${tour.images.length === 1 ? '' : 's'}.`);
+      say(`  Found: ${tour.name}, ${tour.sport}, ${tour.distanceKm} km, ${tour.climb} m up, ${tour.date}${tour.recorded ? '' : ' (a planned tour, not a recording)'}; ${tour.imagesTotal} photo${tour.imagesTotal === 1 ? '' : 's'}.`);
       say('  Each answer below is prefilled from it; press Enter to keep it or type another.');
     }
   }
   const sportActivity = tour && activityFromSport(tour.sport);
 
-  const fromKomoot = Boolean(tour && tour.images.length && deps.komootPhotos);
+  const complete = Boolean(tour && tour.images.length && tour.images.length >= tour.imagesTotal);
+  const fromKomoot = Boolean(complete && deps.komootPhotos);
+  if (tour && tour.images.length && !complete) {
+    say(`  Komoot lists only ${tour.images.length} of the ${tour.imagesTotal} photos without a login, so they are not offered.`);
+    say('  Add KOMOOT_EMAIL and KOMOOT_PASSWORD to .env to take them all from Komoot, or give the folder of originals.');
+  }
   const readFolder = (dir: string) => {
     if (!existsSync(dir)) throw new Error(`${dir} does not exist`);
     const photos = readdirSync(dir).filter((n) => !n.startsWith('.') && RASTER.test(n)).sort();
@@ -115,6 +120,7 @@ export async function runWizard(deps: WizardDeps): Promise<WizardResult> {
         say('  Downloading from Komoot…');
         return readFolder(await deps.komootPhotos!(tour!));
       }
+      if (!answer) throw new Error('give the folder with the photos');
       return readFolder(pathOf(answer));
     },
     fromKomoot ? { default: '' } : undefined,
