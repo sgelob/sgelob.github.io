@@ -98,6 +98,8 @@ interface Answers {
   distance?: number;
   climb?: number;
   shared?: boolean;
+  /** Shared, but with the start and finish moved about 1 km along the path, and the day on the 1st like a discreet trip. */
+  approximateEnds?: boolean;
   gpx?: string;
   links?: TripLink[];
   /** The day as typed; a discreet trip publishes the 1st of that month instead. */
@@ -290,9 +292,20 @@ export async function runWizard(deps: WizardDeps): Promise<WizardResult> {
       missing: () => a.shared === undefined,
       async ask() {
         say('  A shared trip gets its route drawn on the page and the GPX offered for download.');
-        say('  A discreet trip (near home) gets no route, no download, no links, and its date on the 1st of the month.');
+        say('  An approximate trip gets the same, with its start and finish moved about 1 km along the path, and its date on the 1st of the month.');
+        say('  A discreet trip gets no route, no download, no links, and its date on the 1st of the month.');
         const was = a.shared;
-        a.shared = yes(await ask('Share the route? (y/n)', { default: yn(a.shared) ?? 'n' }));
+        const current = a.shared === undefined ? 'd' : a.approximateEnds ? 'a' : a.shared ? 's' : 'd';
+        const route = await until(deps, 'Route: shared, approximate or discreet? (s/a/d)', (s): 's' | 'a' | 'd' => {
+          const v = s.trim().toLowerCase();
+          if (['s', 'shared', 'y', 'yes'].includes(v)) return 's';
+          if (['a', 'approximate'].includes(v)) return 'a';
+          if (['d', 'discreet', 'n', 'no'].includes(v)) return 'd';
+          throw new Error('answer s (shared), a (approximate) or d (discreet)');
+        }, { default: current });
+        a.shared = route !== 'd';
+        a.approximateEnds = route === 'a';
+        if (a.approximateEnds) say('  Approximate: the published route starts and ends about 1 km from your real start and finish, along the path; the date is set to the 1st of the month.');
         if (a.shared && !was) {
           a.gpx = undefined;
           a.links = undefined;
@@ -302,7 +315,7 @@ export async function runWizard(deps: WizardDeps): Promise<WizardResult> {
           a.links = [];
         }
       },
-      show: () => (a.shared ? 'shared' : 'discreet'),
+      show: () => (a.approximateEnds ? 'approximate' : a.shared ? 'shared' : 'discreet'),
     },
     {
       label: 'GPX',
@@ -353,9 +366,9 @@ export async function runWizard(deps: WizardDeps): Promise<WizardResult> {
           if (Number.isNaN(d.getTime()) || d.getMonth() !== Number(m[2]) - 1) throw new Error('not a date');
           return d;
         }, withDefault(a.date && isoDay(a.date), tour?.date));
-        if (!a.shared) say(`  Discreet: the day is set to the 1st (${a.date.getFullYear()}-${pad2(a.date.getMonth() + 1)}-01).`);
+        if (!a.shared || a.approximateEnds) say(`  ${a.approximateEnds ? 'Approximate' : 'Discreet'}: the day is set to the 1st (${a.date.getFullYear()}-${pad2(a.date.getMonth() + 1)}-01).`);
       },
-      show: () => (a.shared ? isoDay(a.date!) : `${a.date!.getFullYear()}-${pad2(a.date!.getMonth() + 1)}-01  (discreet: the 1st of the month)`),
+      show: () => (a.shared && !a.approximateEnds ? isoDay(a.date!) : `${a.date!.getFullYear()}-${pad2(a.date!.getMonth() + 1)}-01  (${a.approximateEnds ? 'approximate' : 'discreet'}: the 1st of the month)`),
     },
     {
       label: 'Cover',
@@ -421,14 +434,15 @@ export async function runWizard(deps: WizardDeps): Promise<WizardResult> {
 
   // Everything is confirmed: now create.
   const slug = a.slug!;
-  const date = new Date(a.date!.getFullYear(), a.date!.getMonth(), a.shared ? a.date!.getDate() : 1, 12);
+  const date = new Date(a.date!.getFullYear(), a.date!.getMonth(), a.shared && !a.approximateEnds ? a.date!.getDate() : 1, 12);
   const links = a.shared ? (a.links ?? []) : [];
   const trip: TripValues = {
     title: a.title, activity: a.activity, bike: a.bike, distance: a.distance, climb: a.climb, area: a.area, country: a.country,
-    track: a.shared ? `${slug}.gpx` : false, links: links.length ? links : undefined, cover: a.cover, darkHeader: a.darkHeader,
+    track: a.shared ? `${slug}.gpx` : false, approximateEnds: a.approximateEnds || undefined, links: links.length ? links : undefined, cover: a.cover, darkHeader: a.darkHeader,
   };
   const path = await scaffoldGallery({ slug, folder: a.folder!.dir, store: deps.store, contentDir: deps.contentDir, uploadsDir: deps.uploadsDir, date, kind: 'outdoors', trip });
-  const track = a.shared && a.gpx ? writeTrack(a.gpx, slug, deps.tracksDir).path : undefined;
+  const approximateEnds = a.approximateEnds ? {} : undefined;
+  const track = a.shared && a.gpx ? writeTrack(a.gpx, slug, deps.tracksDir, { approximateEnds }).path : undefined;
   let contours: string | undefined;
   if (track && deps.contours) {
     say('  Drawing the contour lines behind the route map…');
@@ -447,7 +461,7 @@ export async function runWizard(deps: WizardDeps): Promise<WizardResult> {
     `area: ${a.area}, ${a.country}`,
     `distance: ${a.distance} km, climb: ${a.climb} m`,
     `date: ${isoDay(date)}`,
-    a.shared ? `shared: ${links.map((l) => `${l.label} ${l.url}`).join(', ') || 'no public links'}` : 'DISCREET: no start, parking, access road, exact day or time in the story',
+    a.shared ? `${a.approximateEnds ? 'approximate ends (start and finish moved about 1 km), ' : ''}shared: ${links.map((l) => `${l.label} ${l.url}`).join(', ') || 'no public links'}` : 'DISCREET: no start, parking, access road, exact day or time in the story',
   ];
   writeFileSync(notesPath, `# ${a.title}\n\n${meta.map((m) => `- ${m}`).join('\n')}\n\n## Notes\n\n${(a.notes ?? '').trim()}\n`);
 
