@@ -15,11 +15,16 @@ interface Props {
 
 const { xml, distance, climb, downloadHref, links = [] } = Astro.props;
 
-const points = simplifyPoints(parseGpx(xml));
+const all = parseGpx(xml);
+const points = simplifyPoints(all);
 const shape = routeShape(points);
 const profile = elevationProfile(points);
 
-const metres = new Intl.NumberFormat('en-US');
+const metres = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 });
+// The label names the real lowest and highest points, from the whole track: the drawn line is simplified and can cut a summit.
+const elevations = all.flatMap((p) => (p.ele === undefined ? [] : [p.ele]));
+const lowest = elevations.reduce((a, b) => Math.min(a, b), Infinity);
+const highest = elevations.reduce((a, b) => Math.max(a, b), -Infinity);
 const stats = `${formatKm(distance)} · ${formatClimb(climb)}`;
 
 // The profile line, and the same line closed down to the baseline for the soft fill under it.
@@ -36,7 +41,7 @@ const area = profile ? `${profile.d} L ${width - pad} ${height - pad} L ${pad} $
     </svg>
     {profile ? (
       <div class="elevation">
-        <svg class="profile" viewBox={profile.viewBox} role="img" aria-label={`Elevation profile, from ${metres.format(profile.minEle)} m to ${metres.format(profile.maxEle)} m`}>
+        <svg class="profile" viewBox={profile.viewBox} role="img" aria-label={`Elevation profile, from ${metres.format(lowest)} m to ${metres.format(highest)} m`}>
           <path class="area" d={area} stroke="none" />
           <path d={profile.d} fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" />
         </svg>

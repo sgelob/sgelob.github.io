@@ -105,7 +105,7 @@ describe('post page', () => {
 describe('feed', () => {
   test('one item per post and per gallery, newest first, with absolute links', () => {
     const xml = read('dist/feed.xml');
-    expect(count(xml, '<item>')).toBe(contentCount('posts') + contentCount('galleries'));
+    expect(count(xml, '<item>')).toBe(contentCount('posts') + contentCount('galleries') + contentCount('outdoors'));
     expect(xml).toContain('<title>olegs — blog and photos</title>');
     expect(xml).toContain('<link>https://olegs.be/2025/04/podcast-naval-ravikant-dure-verita-felicita-natura-umana/</link>');
     expect(xml).toContain('<link>https://olegs.be/gallery/ljubljana-slovenia/</link>');

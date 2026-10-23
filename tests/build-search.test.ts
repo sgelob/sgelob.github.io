@@ -44,10 +44,10 @@ describe('search index', () => {
   test('pagefind wrote its bundle into dist/pagefind', () => {
     expect(exists('dist/pagefind/pagefind.js')).toBe(true);
     const entry = JSON.parse(read('dist/pagefind/pagefind-entry.json')) as { languages: Record<string, { page_count: number }> };
-    // Galleries and the English pages; the Italian posts in an index of their own.
+    // Galleries, trips and the English pages; the Italian posts in an index of their own.
     expect(Object.keys(entry.languages).sort()).toEqual(['en', 'it']);
     const pages = Object.values(entry.languages).reduce((sum, l) => sum + l.page_count, 0);
-    expect(pages).toBe(contentCount('galleries') + contentCount('posts') + 4); // galleries, posts, and events, books, quotes, about
+    expect(pages).toBe(contentCount('galleries') + contentCount('outdoors') + contentCount('posts') + 4); // galleries, trips, posts, and events, books, quotes, about
     expect(readdirSync('dist/pagefind/filter').filter((f) => f.endsWith('.pf_filter')).length).toBeGreaterThan(0);
   });
 
