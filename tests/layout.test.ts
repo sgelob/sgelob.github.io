@@ -43,6 +43,8 @@ describe('Base', () => {
   test.each([
     ['/photos/', '/photos/', 'page'],
     ['/gallery/turin/', '/photos/', 'true'],
+    ['/outdoors/', '/outdoors/', 'page'],
+    ['/outdoors/hikes/', '/outdoors/', 'true'],
     ['/blog/', '/blog/', 'page'],
     ['/category/agile/', '/blog/', 'true'],
     ['/2019/05/some-post/', '/blog/', 'true'],
@@ -61,10 +63,10 @@ describe('Base', () => {
 });
 
 describe('Nav', () => {
-  test('Search is the fourth link, after About', async () => {
+  test('Search is the last link, after Blog', async () => {
     const html = await render(Nav, { path: '/blog/' });
     const hrefs = [...html.matchAll(/<li[^>]*><a href="([^"]+)"/g)].map((m) => m[1]);
-    expect(hrefs).toEqual(['/photos/', '/blog/', '/about/', '/search/']);
+    expect(hrefs).toEqual(['/about/', '/photos/', '/outdoors/', '/blog/', '/search/']);
     expect(html).toMatch(/<a href="\/search\/"[^>]*>[\s\S]*?<span class="visually-hidden"[^>]*>Search<\/span>\s*<\/a>/); // an icon with a hidden name
   });
 });
@@ -97,11 +99,11 @@ describe('Seo', () => {
   });
 });
 
-test('404 page repeats the four section links', async () => {
+test('404 page repeats the section links', async () => {
   const html = await render(NotFound, { path: '/404/' });
   expect(html).toContain('<title>Page not found — olegs</title>');
   expect(html).toContain('This page does not exist.');
-  for (const href of ['/photos/', '/blog/', '/about/', '/search/']) {
+  for (const href of ['/about/', '/photos/', '/outdoors/', '/blog/', '/search/']) {
     expect(html.split(`href="${href}"`).length - 1).toBe(2);
   }
 });

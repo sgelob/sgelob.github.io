@@ -22,8 +22,8 @@ function prose(path: string): string[] {
 const files = (dir: string) => readdirSync(dir).filter((f) => f.endsWith('.md')).map((f) => `${dir}/${f}`);
 
 describe('typography', () => {
-  test('galleries and pages: no straight apostrophes or straight quotes in prose and alt texts', () => {
-    for (const path of [...files('src/content/galleries'), ...files('src/content/pages')]) {
+  test('galleries, pages and trips: no straight apostrophes or straight quotes in prose and alt texts', () => {
+    for (const path of [...files('src/content/galleries'), ...files('src/content/pages'), ...files('src/content/outdoors')]) {
       for (const line of prose(path)) {
         expect(line, `${path}: ${line}`).not.toMatch(APOSTROPHE);
         expect(line, `${path}: ${line}`).not.toMatch(QUOTED);

@@ -1,8 +1,9 @@
 import rss from '@astrojs/rss';
 import type { APIRoute } from 'astro';
-import { getGalleries, getPosts, galleryPath, postPath } from '../lib/collections';
+import { getGalleries, getPosts, getTrips, galleryPath, postPath, tripPath } from '../lib/collections';
 import { coverSize } from '../lib/paths';
 import { largestVariantUrl, originalUrl } from '../lib/images';
+import { activityLabel } from '../lib/outdoors';
 import { SITE } from '../lib/site';
 import { categoryName, countryName, genreName } from '../lib/taxonomies';
 
@@ -22,7 +23,7 @@ export function firstParagraph(markdown: string): string {
 }
 
 export const GET: APIRoute = async (context) => {
-  const [posts, galleries] = await Promise.all([getPosts(), getGalleries()]);
+  const [posts, galleries, trips] = await Promise.all([getPosts(), getGalleries(), getTrips()]);
 
   const postItems = posts.map((post) => ({
     title: post.data.title,
@@ -47,10 +48,25 @@ export const GET: APIRoute = async (context) => {
     };
   });
 
+  const tripItems = trips.map((trip) => {
+    const { title, date, cover, activity, area } = trip.data;
+    const description = firstParagraph(trip.body ?? '') || `${activityLabel(activity)} in ${area}.`;
+    const size = coverSize(trip);
+    const image = size ? largestVariantUrl(cover, Math.min(size.width, 960)) : originalUrl(cover);
+    return {
+      title,
+      pubDate: date,
+      description,
+      link: tripPath(trip),
+      categories: ['Outdoors', activityLabel(activity)],
+      content: `<p><img src="${image}" alt="" /></p><p>${escapeHtml(description)}</p>`,
+    };
+  });
+
   return rss({
     title: FEED_TITLE,
     description: SITE.description,
     site: context.site ?? SITE.url,
-    items: [...postItems, ...galleryItems].sort((a, b) => b.pubDate.getTime() - a.pubDate.getTime()),
+    items: [...postItems, ...galleryItems, ...tripItems].sort((a, b) => b.pubDate.getTime() - a.pubDate.getTime()),
   });
 };

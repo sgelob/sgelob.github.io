@@ -31,6 +31,7 @@ describe('blog lists', () => {
     expect(html).toMatch(/16 aprile 2025[^<]*<\/time>[\s\S]{0,200}Personal Growth/);
     expect(html).toMatch(/<a href="\/2025\/04\/podcast-naval-ravikant-dure-verita-felicita-natura-umana\/"[^>]*>Podcast con Naval Ravikant/);
     expect(html).toContain('Riflessioni essenziali su felicità');
+    expect(html).toContain('<span lang="en">The posts are in Italian.</span>');
     // date descending: the 2025 post comes before every 2016 one
     expect(html.indexOf('/2025/04/')).toBeLessThan(html.indexOf('/2016/'));
   });
@@ -104,7 +105,7 @@ describe('post page', () => {
 describe('feed', () => {
   test('one item per post and per gallery, newest first, with absolute links', () => {
     const xml = read('dist/feed.xml');
-    expect(count(xml, '<item>')).toBe(contentCount('posts') + contentCount('galleries'));
+    expect(count(xml, '<item>')).toBe(contentCount('posts') + contentCount('galleries') + contentCount('outdoors'));
     expect(xml).toContain('<title>olegs — blog and photos</title>');
     expect(xml).toContain('<link>https://olegs.be/2025/04/podcast-naval-ravikant-dure-verita-felicita-natura-umana/</link>');
     expect(xml).toContain('<link>https://olegs.be/gallery/ljubljana-slovenia/</link>');

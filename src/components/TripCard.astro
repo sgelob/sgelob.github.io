@@ -1,0 +1,63 @@
+---
+import Pic from './Pic.astro';
+import { coverSize } from '../lib/paths';
+import { cardMeta, tripPath, type Trip } from '../lib/outdoors';
+
+interface Props {
+  trip: Trip;
+}
+
+const { trip } = Astro.props;
+const { title, cover } = trip.data;
+
+const size = coverSize(trip);
+---
+
+<a class="trip-card" href={tripPath(trip)}>
+  <Pic
+    src={cover}
+    width={size?.width}
+    height={size?.height}
+    alt=""
+    sizes="(min-width: 1100px) 25vw, (min-width: 640px) 50vw, 100vw"
+    maxWidth={960}
+  />
+  <span class="caption mono">
+    <span class="title">{title}</span>
+    <span class="meta">{cardMeta(trip.data)}</span>
+  </span>
+</a>
+
+<style>
+  .trip-card {
+    display: block;
+  }
+
+  .trip-card :global(img) {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    background: var(--rule);
+    transition: opacity 160ms ease;
+  }
+
+  .trip-card:hover :global(img) { opacity: 0.85; }
+
+  /* In a narrow card the meta drops under the title, and a long word breaks instead of overflowing. */
+  .caption {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 4px 16px;
+    margin-top: 12px;
+  }
+
+  .title,
+  .meta {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .meta { color: var(--muted); }
+</style>

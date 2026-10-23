@@ -35,11 +35,13 @@ const pathname = Astro.url.pathname;
 </header>
 
 <style>
+  /* The links drop under the logo only when the five of them do not fit beside it. */
   .nav {
     display: flex;
+    flex-wrap: wrap;
     align-items: baseline;
     justify-content: space-between;
-    gap: 24px;
+    gap: 12px 24px;
     padding-block: 28px;
   }
 
@@ -63,7 +65,8 @@ const pathname = Astro.url.pathname;
 
   .links {
     display: flex;
-    gap: 32px;
+    flex-wrap: wrap;
+    gap: 8px 32px;
     padding: 0;
     list-style: none;
   }
@@ -103,6 +106,6 @@ const pathname = Astro.url.pathname;
     .nav { padding-block: 20px; }
     /* On a narrow screen the gallery caption sits under the cover, and so does the nav: above it. */
     .overlay { position: static; }
-    .links { gap: 20px; }
+    .links { gap: 8px 20px; }
   }
 </style>

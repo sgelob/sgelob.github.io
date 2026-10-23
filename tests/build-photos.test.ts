@@ -36,7 +36,11 @@ test('World Places: sections by country, largest first, small countries merged i
   expect(count(elsewhere, 'class="gallery-card"')).toBe(8); // Belgium 2, Czech Republic 2, Slovenia, Netherlands, Austria, Monaco
   expect(elsewhere).toContain('href="/gallery/ljubljana-slovenia/"');
 });
-test('country with galleries builds; every taxonomy slug has a page', () => { for (const slug of ['italy','russia','usa']) expect(existsSync(`dist/photos/country/${slug}/index.html`)).toBe(true); });  // Review Focus 4: 'usa' has 0 galleries
+test('only countries with galleries get a page; usa, a preserved live URL, is a redirect stub; croatia is nothing', () => {
+  for (const slug of ['italy', 'russia']) expect(existsSync(`dist/photos/country/${slug}/index.html`)).toBe(true);
+  expect(read('dist/photos/country/usa/index.html')).toContain('http-equiv="refresh" content="0; url=/photos/genre/world-places/"');
+  expect(existsSync('dist/photos/country/croatia/index.html')).toBe(false);
+});
 
 describe('photos pages', () => {
   test('index: title, description, intro and All active in the filter row', () => {
@@ -64,12 +68,6 @@ describe('photos pages', () => {
     expect(html).toMatch(/<h1[^>]*>Russia<\/h1>/);
     expect(count(html, 'class="gallery-card"')).toBe(13);
     expect(html).not.toMatch(/<a href="\/photos\/(genre\/[^"]+\/)?" aria-current="page"/);
-  });
-
-  test('a country without galleries renders the empty state', () => {
-    const html = read('dist/photos/country/usa/index.html');
-    expect(count(html, 'class="gallery-card"')).toBe(0);
-    expect(html).toContain('No galleries yet.');
   });
 
   test('card: link, 4:3 cover from the 960 cap, caption with short title, country and year', () => {

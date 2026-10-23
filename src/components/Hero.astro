@@ -1,0 +1,148 @@
+---
+import Pic from './Pic.astro';
+
+interface Props {
+  title: string;
+  cover: string;
+  /** Intrinsic size of the cover, when known. */
+  width?: number;
+  height?: number;
+  coverAlt: string;
+  /** The cover is light where the text sits: the scrims get stronger. */
+  darkHeader: boolean;
+}
+
+const { title, cover, width, height, coverAlt, darkHeader } = Astro.props;
+---
+
+<header class="hero" data-dark-header={darkHeader ? '' : undefined}>
+  <Pic
+    src={cover}
+    width={width}
+    height={height}
+    alt={coverAlt}
+    sizes="100vw"
+    maxWidth={1600}
+    loading="eager"
+    fetchpriority="high"
+  />
+  <div class="caption wrap">
+    <h1 class="title" data-pagefind-meta="title">{title}</h1>
+    {/* The spaces between the items keep them apart as words for the search index; the flex gap lays them out. */}
+    <p class="meta mono"><slot /></p>
+  </div>
+</header>
+
+<style>
+  .hero {
+    --scrim-top: 0.6;
+    --scrim-bottom: 0.65;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    min-height: 640px;
+    padding-top: 96px; /* room for the nav floating over the cover, so a long title never runs under it */
+    overflow: hidden;
+    background: var(--rule);
+  }
+
+  .hero :global(img) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Scrims sized in px, not in % of the hero, so they always cover the text: a solid band under the
+     nav (its text sits within the first 80 px) and, on the caption itself, a solid band behind the
+     title and meta, however many lines the title takes. At these alphas #ececec keeps 4.5:1 even on
+     a pure white cover. `darkHeader` marks covers that are light where the text sits: both get stronger. */
+  .hero[data-dark-header] {
+    --scrim-top: 0.75;
+    --scrim-bottom: 0.8;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to bottom, rgb(0 0 0 / var(--scrim-top)) 80px, transparent 150px),
+      rgb(0 0 0 / 0.15);
+  }
+
+  .caption {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    padding-block-end: 40px;
+  }
+
+  .caption::before {
+    content: '';
+    position: absolute;
+    inset: -120px 0 0;
+    z-index: -1;
+    background: linear-gradient(to top, rgb(0 0 0 / var(--scrim-bottom)) calc(100% - 120px), transparent);
+  }
+
+  .title {
+    font-size: 44px;
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+  }
+
+  .title,
+  .meta { text-shadow: 0 1px 2px rgb(0 0 0 / 0.6); }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 20px;
+    margin-top: 16px;
+  }
+
+  /* Underlined at rest, as the nav; padded to a 24 px target without moving the row. The links come
+     through the slot, so they carry their parent's scope, not this one's. */
+  .meta :global(a) {
+    padding: 5px 0 3px;
+    margin: -5px 0 -3px;
+    border-bottom: 1px solid var(--muted);
+    transition: border-color 120ms ease;
+  }
+
+  .meta :global(a:hover) { border-bottom-color: var(--fg); }
+
+  /* Below 720 px the cover is too short to hold the title: the caption moves under the full-width
+     image, onto the page background, and the nav sits above it (Nav.astro), so no text is on the photo. */
+  @media (max-width: 719px) {
+    .hero {
+      display: block;
+      min-height: 0;
+      padding-top: 0;
+      background: none;
+    }
+
+    .hero :global(img) {
+      position: static;
+      height: auto;
+      aspect-ratio: 5 / 3;
+      background: var(--rule);
+    }
+
+    .hero::after,
+    .caption::before { display: none; }
+
+    .caption { padding-block: 20px 0; }
+
+    .title { font-size: 28px; }
+
+    .title,
+    .meta { text-shadow: none; }
+
+    .meta { margin-top: 10px; }
+  }
+</style>
