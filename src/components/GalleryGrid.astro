@@ -4,15 +4,17 @@ import type { Gallery } from '../lib/paths';
 
 interface Props {
   galleries: Gallery[];
+  /** One grid among several on a page: a shorter gap below, the page adds the rest. */
+  embedded?: boolean;
 }
 
-const { galleries } = Astro.props;
+const { galleries, embedded = false } = Astro.props;
 ---
 
 {galleries.length === 0 ? (
   <p class="empty mono wrap">No galleries yet.</p>
 ) : (
-  <ul class="grid wrap">
+  <ul class:list={["grid wrap", { embedded }]}>
     {galleries.map((gallery) => (
       <li><GalleryCard gallery={gallery} /></li>
     ))}
@@ -27,6 +29,8 @@ const { galleries } = Astro.props;
     padding-block: 0 96px;
     list-style: none;
   }
+
+  .grid.embedded { padding-bottom: 64px; }
 
   @media (min-width: 480px) {
     .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }

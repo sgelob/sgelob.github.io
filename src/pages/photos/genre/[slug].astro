@@ -3,8 +3,9 @@ import type { GetStaticPaths } from 'astro';
 import Base from '../../../layouts/Base.astro';
 import PhotosHeader from '../../../components/PhotosHeader.astro';
 import GalleryGrid from '../../../components/GalleryGrid.astro';
-import { getGalleriesBy } from '../../../lib/collections';
-import { genres, type Term } from '../../../lib/taxonomies';
+import SectionLabel from '../../../components/SectionLabel.astro';
+import { getGalleriesBy, groupGalleries, mergeSmallGroups } from '../../../lib/collections';
+import { countryName, genres, type Term } from '../../../lib/taxonomies';
 
 // From taxonomies.yaml, not from the galleries, so a genre without galleries still gets a page.
 export const getStaticPaths = (() => genres.map((genre) => ({ params: { slug: genre.slug }, props: { genre } }))) satisfies GetStaticPaths;
@@ -15,9 +16,33 @@ interface Props {
 
 const { genre } = Astro.props;
 const galleries = await getGalleriesBy('genre', genre.slug);
+// World Places is grouped by country, largest first; countries with fewer than 3 galleries share
+// a last "Elsewhere" section. The other genres are a plain grid.
+const ELSEWHERE = 'elsewhere';
+const sections = genre.slug === 'world-places' ? mergeSmallGroups(groupGalleries(galleries, 'country'), 3, ELSEWHERE) : undefined;
+const plural = (n: number) => `${n} ${n === 1 ? 'gallery' : 'galleries'}`;
 ---
 
 <Base title={`${genre.name} — Photos — olegs`} description={genre.description}>
   <PhotosHeader heading={genre.name} description={genre.description} active={genre.slug} />
-  <GalleryGrid galleries={galleries} />
+  {sections ? (
+    <div class="sections">
+      {sections.map(({ key, galleries: items }) => (
+        <section aria-labelledby={`country-${key}`}>
+          {key === ELSEWHERE ? (
+            <SectionLabel id={`country-${key}`} title="Elsewhere" />
+          ) : (
+            <SectionLabel id={`country-${key}`} title={countryName(key)} href={`/photos/country/${key}/`} link={`All ${plural(items.length)}`} />
+          )}
+          <GalleryGrid galleries={items} embedded />
+        </section>
+      ))}
+    </div>
+  ) : (
+    <GalleryGrid galleries={galleries} />
+  )}
 </Base>
+
+<style>
+  .sections { padding-bottom: 32px; }
+</style>

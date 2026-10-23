@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { coverSize, galleryPath, neighbours, postPath, related, sortByDateDesc } from '../src/lib/paths';
+import { coverSize, galleryPath, groupGalleries, mergeSmallGroups, neighbours, postPath, related, sortByDateDesc } from '../src/lib/paths';
 import { formatDate, formatMonthYear } from '../src/lib/site';
 import { categoryName, countryName, genreName } from '../src/lib/taxonomies';
 
@@ -97,5 +97,34 @@ describe('related', () => {
   it('is undefined when nothing is shared or the id is unknown', () => {
     expect(related(list, 'zenit')).toBeUndefined();
     expect(related(list, 'nope')).toBeUndefined();
+  });
+});
+
+describe('groupGalleries and mergeSmallGroups', () => {
+  const g = (id: string, date: string, country: string, genre = 'world-places') => ({ id, data: { date: new Date(date), country, genre } }) as any;
+  const list = [
+    g('rome', '2013-12-01', 'italy'), g('venezia', '2012-08-11', 'italy'), g('pisa', '2012-07-01', 'italy'),
+    g('munich', '2012-09-10', 'germany'), g('berlin', '2009-12-20', 'germany'),
+    g('paris', '2011-05-01', 'france'), g('vienna', '2011-04-01', 'austria'),
+    g('fiat', '2012-09-01', 'italy', 'abandoned-places'),
+  ];
+
+  it('groups by a term, largest first, ties by key, keeping the input order inside a group', () => {
+    const groups = groupGalleries(list, 'country');
+    expect(groups.map((x) => [x.key, x.galleries.map((e) => e.id)])).toEqual([
+      ['italy', ['rome', 'venezia', 'pisa', 'fiat']], ['germany', ['munich', 'berlin']], ['austria', ['vienna']], ['france', ['paris']],
+    ]);
+    expect(groupGalleries(list, 'genre').map((x) => x.key)).toEqual(['world-places', 'abandoned-places']);
+  });
+
+  it('merges the groups under the minimum into one last group, date descending', () => {
+    const merged = mergeSmallGroups(groupGalleries(list, 'country'), 3, 'elsewhere');
+    expect(merged.map((x) => [x.key, x.galleries.map((e) => e.id)])).toEqual([
+      ['italy', ['rome', 'venezia', 'pisa', 'fiat']], ['elsewhere', ['munich', 'paris', 'vienna', 'berlin']],
+    ]);
+  });
+
+  it('adds no merged group when nothing is small', () => {
+    expect(mergeSmallGroups(groupGalleries(list, 'country'), 1, 'elsewhere').map((x) => x.key)).toEqual(['italy', 'germany', 'austria', 'france']);
   });
 });

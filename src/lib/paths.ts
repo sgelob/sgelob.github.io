@@ -65,3 +65,41 @@ export function related<T extends { id: string; data: { date: Date; country: str
   if (picks.length === 0) return undefined;
   return { by: picks[0].data.country === self.data.country ? 'country' : 'genre', galleries: picks };
 }
+
+export interface Group<T> {
+  /** The genre or country slug, or the name of a merged group. */
+  key: string;
+  galleries: T[];
+}
+
+/**
+ * Galleries grouped by genre or country, largest group first (ties by key), each group keeping
+ * the order of `galleries`. A term with no galleries has no group.
+ */
+export function groupGalleries<T extends { data: { genre: string; country: string } }>(
+  galleries: readonly T[],
+  by: 'genre' | 'country',
+): Group<T>[] {
+  const groups = new Map<string, T[]>();
+  for (const g of galleries) {
+    const key = g.data[by];
+    groups.set(key, [...(groups.get(key) ?? []), g]);
+  }
+  return [...groups]
+    .map(([key, items]) => ({ key, galleries: items }))
+    .sort((a, b) => b.galleries.length - a.galleries.length || a.key.localeCompare(b.key));
+}
+
+/**
+ * Groups smaller than `min` galleries are merged into one last group named `into`, date descending.
+ * Groups keep their order otherwise; no merged group is added when nothing is small.
+ */
+export function mergeSmallGroups<T extends { id: string; data: { date: Date } }>(
+  groups: readonly Group<T>[],
+  min: number,
+  into: string,
+): Group<T>[] {
+  const kept = groups.filter((g) => g.galleries.length >= min);
+  const small = groups.filter((g) => g.galleries.length < min).flatMap((g) => g.galleries);
+  return small.length > 0 ? [...kept, { key: into, galleries: sortByDateDesc(small) }] : [...kept];
+}
