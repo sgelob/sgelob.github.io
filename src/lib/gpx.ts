@@ -50,6 +50,37 @@ export function distanceKm(a: TrackPoint, b: TrackPoint): number {
   return 2 * EARTH_RADIUS_KM * Math.asin(Math.sqrt(h));
 }
 
+/**
+ * The track without its ends: every point within `radiusKm` of the start or of the finish is dropped, so a route that starts
+ * near home can be shared without showing where. What is left is one unbroken stretch, the longest one outside both circles:
+ * keeping two stretches would draw a straight line across the hidden circle between them.
+ */
+export function maskEnds(points: readonly TrackPoint[], radiusKm: number): TrackPoint[] {
+  if (!(radiusKm > 0) || points.length === 0) return [...points];
+  const start = points[0];
+  const finish = points[points.length - 1];
+  let best: TrackPoint[] = [];
+  let bestKm = -1;
+  let run: TrackPoint[] = [];
+  let runKm = 0;
+  const close = () => {
+    if (run.length > 1 && runKm > bestKm) [best, bestKm] = [run, runKm];
+    run = [];
+    runKm = 0;
+  };
+  for (const p of points) {
+    if (distanceKm(p, start) < radiusKm || distanceKm(p, finish) < radiusKm) {
+      close();
+      continue;
+    }
+    if (run.length) runKm += distanceKm(run[run.length - 1], p);
+    run.push(p);
+  }
+  close();
+  if (best.length < 2) throw new Error(`the whole track lies within ${radiusKm} km of the start or finish: nothing would be left to share`);
+  return best;
+}
+
 const round1 = (n: number): number => Math.round(n * 10) / 10;
 
 function pathOf(coords: readonly [number, number][]): string {
@@ -130,38 +161,77 @@ export interface ProfileFigure {
  * The profile of the whole track: distance and extremes are measured on every point, the line is drawn from at most
  * `max` of them. The altitude axis spans the track's own range, rounded out to 100 m, plus a band below. Undefined with fewer than two elevations.
  */
-export function profileFigure(points: readonly TrackPoint[], width = 400, height = 170, max = 400): ProfileFigure | undefined {
+/** A route's elevation profile without its coordinates: `[km from the start, elevation in m]` pairs. */
+export type ProfileSeries = [number, number][];
+
+/** Cumulative distance and elevation of the points that have one. */
+function seriesOf(points: readonly TrackPoint[]): { km: number[]; ele: number[] } {
   const withEle = points.filter((p): p is TrackPoint & { ele: number } => p.ele !== undefined);
-  if (withEle.length < 2) return undefined;
-  const left = 40, right = width - 10, top = 26, baseline = height - 22;
-  const km = [0];
+  const km = withEle.length ? [0] : [];
   for (let i = 1; i < withEle.length; i++) km.push(km[i - 1] + distanceKm(withEle[i - 1], withEle[i]));
+  return { km, ele: withEle.map((p) => p.ele) };
+}
+
+/**
+ * The profile of a whole route as a small file can keep it: at most about `max` pairs (every nth, plus the first, last,
+ * highest and lowest), km to the metre and whole metres of elevation. A masked track's page draws its profile from this.
+ */
+export function profileSeries(points: readonly TrackPoint[], max = 400): ProfileSeries {
+  const { km, ele } = seriesOf(points);
+  if (km.length < 2) return [];
+  let hi = 0, lo = 0;
+  ele.forEach((e, i) => { if (e > ele[hi]) hi = i; if (e < ele[lo]) lo = i; });
+  const step = Math.max(1, Math.ceil(km.length / max));
+  const last = km.length - 1;
+  const series: ProfileSeries = [];
+  for (let i = 0; i <= last; i++) if (i % step === 0 || i === last || i === hi || i === lo) series.push([Math.round(km[i] * 1000) / 1000, Math.round(ele[i])]);
+  return series;
+}
+
+/** The elevation profile of a track (see `drawProfile`). */
+export function profileFigure(points: readonly TrackPoint[], width = 400, height = 170, max = 400): ProfileFigure | undefined {
+  const { km, ele } = seriesOf(points);
+  return drawProfile(km, ele, width, height, max);
+}
+
+/** The same figure from a profile file's pairs, for a track whose drawn part is not the whole route. */
+export function profileFromSeries(series: readonly (readonly [number, number])[], width = 400, height = 170, max = 400): ProfileFigure | undefined {
+  return drawProfile(series.map(([k]) => k), series.map(([, e]) => e), width, height, max);
+}
+
+function drawProfile(km: readonly number[], ele: readonly number[], width: number, height: number, max: number): ProfileFigure | undefined {
+  if (km.length < 2) return undefined;
+  const left = 40, right = width - 10, top = 26, baseline = height - 22;
   const totalKm = km[km.length - 1];
   let hi = 0, lo = 0;
-  withEle.forEach((p, i) => { if (p.ele > withEle[hi].ele) hi = i; if (p.ele < withEle[lo].ele) lo = i; });
+  ele.forEach((e, i) => { if (e > ele[hi]) hi = i; if (e < ele[lo]) lo = i; });
   // One more 100 m band under the lowest point, so its label has room below it.
-  const floor = Math.floor(withEle[lo].ele / 100) * 100 - 100;
-  const ceil = Math.max(Math.ceil(withEle[hi].ele / 100) * 100, floor + 100);
+  const floor = Math.floor(ele[lo] / 100) * 100 - 100;
+  const ceil = Math.max(Math.ceil(ele[hi] / 100) * 100, floor + 100);
   const x = (d: number) => left + (totalKm > 0 ? d / totalKm : 0) * (right - left);
   const y = (e: number) => top + (1 - (e - floor) / (ceil - floor)) * (baseline - top);
-  const step = Math.max(1, Math.ceil(withEle.length / max));
-  const drawn = withEle.map((p, i) => [x(km[i]), y(p.ele)] as [number, number]).filter((_, i) => i % step === 0 || i === withEle.length - 1);
+  const step = Math.max(1, Math.ceil(km.length / max));
+  const drawn = km.map((d, i) => [x(d), y(ele[i])] as [number, number]).filter((_, i) => i % step === 0 || i === km.length - 1);
   const line = pathOf(drawn);
   const area = `${line} L ${round1(right)} ${round1(baseline)} L ${round1(left)} ${round1(baseline)} Z`;
   const guides: ProfileFigure['guides'] = [];
   for (let e = Math.ceil(floor / 500) * 500; e <= ceil; e += 500) guides.push({ y: round1(y(e)), ele: e });
   const ticks: ProfileFigure['ticks'] = [];
   for (let d = 0; d <= totalKm - 4; d += 5) ticks.push({ x: round1(x(d)), km: d });
-  const mark = (i: number) => ({ x: round1(x(km[i])), y: round1(y(withEle[i].ele)), ele: withEle[i].ele, km: km[i] });
+  const mark = (i: number) => ({ x: round1(x(km[i])), y: round1(y(ele[i])), ele: ele[i], km: km[i] });
   return { viewBox: `0 0 ${width} ${height}`, points: drawn, line, area, left, right, baseline, guides, ticks, totalKm, high: mark(hi), low: mark(lo) };
 }
 
 const escapeXml = (s: string): string => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
-/** A new GPX 1.1 document with only the name and the track points (lat, lon, ele): no time, author, extensions or waypoints. */
-export function sanitizeGpx(xml: string, name: string): string {
-  const points = parseGpx(xml);
-  if (points.length === 0) throw new Error('no track points');
+/**
+ * A new GPX 1.1 document with only the name and the track points (lat, lon, ele): no time, author, extensions or waypoints.
+ * With `maskKm`, the points within that distance of the start and the finish are left out too (see `maskEnds`).
+ */
+export function sanitizeGpx(xml: string, name: string, maskKm = 0): string {
+  const parsed = parseGpx(xml);
+  if (parsed.length === 0) throw new Error('no track points');
+  const points = maskEnds(parsed, maskKm);
   const trkpts = points.map((p) =>
     p.ele === undefined
       ? `      <trkpt lat="${p.lat}" lon="${p.lon}"/>`

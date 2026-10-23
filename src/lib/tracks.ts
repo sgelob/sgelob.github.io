@@ -1,6 +1,7 @@
 // The committed GPX files behind the outdoors trips. Node `fs`: build time and tests only, never imported by client code.
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
+import type { ProfileSeries } from './gpx';
 
 /**
  * Absolute path of `src/content/outdoors/tracks/`, with a trailing slash. Resolved from the project root (the cwd of `astro build` and vitest):
@@ -29,4 +30,10 @@ export const hasContours = (track: string): boolean => existsSync(`${TRACKS_DIR}
 /** The `.contours.svg` file names in the tracks folder, sorted. */
 export function listContours(): string[] {
   return readdirSync(TRACKS_DIR).filter((f) => f.endsWith('.contours.svg')).sort();
+}
+
+/** The whole route's elevation profile written next to a masked track (`npm run track -- … --mask <km>`), if there is one. */
+export function readProfile(track: string): ProfileSeries | undefined {
+  const path = `${TRACKS_DIR}${track.replace(/\.gpx$/, '.profile.json')}`;
+  return existsSync(path) ? (JSON.parse(readFileSync(path, 'utf8')) as ProfileSeries) : undefined;
 }

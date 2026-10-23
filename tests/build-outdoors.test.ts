@@ -94,4 +94,16 @@ describe('trip page', () => {
     expect(exists('dist/outdoors/canosio-gardetta-valle-maira-olegs-be.gpx')).toBe(true);
     expect(exists('dist/outdoors/canosio-gardetta-valle-maira.gpx')).toBe(false); // only the named download
   });
+
+  test('a masked track: no start ring, the page says the ends are not shown, and the profile is the whole ride', () => {
+    const slug = 'castiglione-pavarolo-cordova-baldissero-rivodora-san-martino';
+    const html = read(`dist/outdoors/${slug}/index.html`);
+    const route = html.slice(html.indexOf('<section class="route'), html.indexOf('</section>', html.indexOf('<section class="route')));
+    expect(route).toContain('start and finish not shown');
+    expect(route).not.toMatch(/<circle class="start" cx="[\d.]+" cy="[\d.]+" r="3"/); // the map's start ring
+    expect(route).toMatch(/text-anchor="end"[^>]*>30\.1 km</); // the profile is the whole ride, from its profile file
+    expect(route).toMatch(/>20<\/text>/); // kilometre marks up to 20: far beyond the 8 km drawn on the map
+    expect(route).toMatch(/<a href="https:\/\/www\.komoot\.com\/tour\/3352410239"/);
+    expect(exists(`dist/outdoors/${slug}.profile.json`)).toBe(false); // read at build time, not published
+  });
 });

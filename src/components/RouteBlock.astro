@@ -2,7 +2,7 @@
 // The route of a trip: a map of it seen from above, over contour lines when the trip has its terrain layer,
 // the elevation profile with altitude guides, kilometre marks and the high and low points, the front-matter
 // distance and climb, and the links (the GPX download first). Pure: the page reads the files.
-import { parseGpx, profileFigure, routeFit, simplifyPoints } from '../lib/gpx';
+import { parseGpx, profileFigure, profileFromSeries, routeFit, simplifyPoints, type ProfileSeries } from '../lib/gpx';
 import { formatClimb, formatKm } from '../lib/outdoors';
 import { placeLabel } from '../lib/labels';
 
@@ -15,9 +15,13 @@ interface Props {
   links?: { label: string; url: string }[];
   /** The contour layer drawn for this route's map box (`/outdoors/<slug>.contours.svg`), when there is one. */
   contoursHref?: string;
+  /** The track leaves out its start and finish: no start ring, the profile measures only the drawn stretch, and the stats say so. */
+  masked?: boolean;
+  /** The whole route's elevation profile, for a masked track: the profile then shows the full ride, not the drawn stretch. */
+  fullProfile?: ProfileSeries;
 }
 
-const { xml, distance, climb, downloadHref, links = [], contoursHref } = Astro.props;
+const { xml, distance, climb, downloadHref, links = [], contoursHref, masked = false, fullProfile } = Astro.props;
 
 const all = parseGpx(xml);
 const points = simplifyPoints(all);
@@ -29,10 +33,10 @@ const [startX, startY] = fit.project(all[0]).map(r1);
 const top = all.reduce<(typeof all)[number] | undefined>((best, p) => (p.ele !== undefined && (best?.ele === undefined || p.ele > best.ele) ? p : best), undefined);
 const [topX, topY] = top ? fit.project(top).map(r1) : [0, 0];
 
-const profile = profileFigure(all);
+const profile = fullProfile ? profileFromSeries(fullProfile) : profileFigure(all);
 const metres = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 });
 const kmOne = new Intl.NumberFormat('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
-const stats = `${formatKm(distance)} · ${formatClimb(climb)}`;
+const stats = `${formatKm(distance)} · ${formatClimb(climb)}${masked ? ' · start and finish not shown' : ''}`;
 // Each label goes where it covers the least of its own line, inside the drawing.
 const routePoints = points.map((p) => fit.project(p));
 const topText = top ? `${metres.format(top.ele!)} m` : '';
@@ -50,10 +54,10 @@ const lowLabel = profile && placeLabel([profile.low.x, profile.low.y], lowText, 
     <figure class="map">
       <div class="frame">
         {contoursHref && <img class="terrain" src={contoursHref} alt="" width="400" height="300" loading="lazy" decoding="async" />}
-        <svg class="shape" viewBox={fit.viewBox} role="img" aria-label={contoursHref ? 'Map of the route over contour lines every 100 m' : 'Map of the route'}>
+        <svg class="shape" viewBox={fit.viewBox} role="img" aria-label={`${contoursHref ? 'Map of the route over contour lines every 100 m' : 'Map of the route'}${masked ? ', without its start and finish' : ''}`}>
           <path class="halo" d={line} />
           <path class="line" d={line} />
-          <circle class="start" cx={startX} cy={startY} r="3" />
+          {!masked && <circle class="start" cx={startX} cy={startY} r="3" />}
           {top && (
             <>
               <circle class="top" cx={topX} cy={topY} r="3.5" />
@@ -80,7 +84,7 @@ const lowLabel = profile && placeLabel([profile.low.x, profile.low.y], lowText, 
               <text class="axis" x={t.x} y={profile.baseline + 15} text-anchor="middle">{t.km}</text>
             </>
           ))}
-          <text class="axis" x={profile.right} y={profile.baseline + 15} text-anchor="end">{formatKm(distance)}</text>
+          <text class="axis" x={profile.right} y={profile.baseline + 15} text-anchor="end">{formatKm(masked && !fullProfile ? Math.round(profile.totalKm * 10) / 10 : distance)}</text>
           <path class="area" d={profile.area} />
           <path class="line thin" d={profile.line} />
           <circle class="top" cx={profile.high.x} cy={profile.high.y} r="3" />
