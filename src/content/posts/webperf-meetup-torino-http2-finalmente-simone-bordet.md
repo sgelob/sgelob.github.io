@@ -16,7 +16,7 @@ Questo mese, siamo partiti con qualche tema interessante e abbiamo iniziato ad a
 
 <iframe loading="lazy" src="https://www.youtube.com/embed/aXQQXSxIyQU" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
-Cos’è HTTP/2, come cambia lo sviluppo di applicazioni web, perché ti serve il prima possibile, e altre cose che non sai ma che vorresti sapere sull'ultima versione del protocollo HTTP.
+Cos’è HTTP/2, come cambia lo sviluppo di applicazioni web, perché ti serve il prima possibile, e altre cose che non sai ma che vorresti sapere sull’ultima versione del protocollo HTTP.
 
 ## Speaker
 

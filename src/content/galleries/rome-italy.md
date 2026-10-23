@@ -12,7 +12,7 @@ photos:
   - src: 2013/06/rome-italy-01.jpg
     width: 1620
     height: 1080
-    alt: Twin church domes and Trajan's Column beside a bronze winged figure
+    alt: Twin church domes and Trajan’s Column beside a bronze winged figure
   - src: 2013/06/rome-italy-02.jpg
     width: 1620
     height: 1080
@@ -32,7 +32,7 @@ photos:
   - src: 2013/06/rome-italy-06.jpg
     width: 720
     height: 1080
-    alt: Castel Sant'Angelo's round tower topped by the bronze angel above the Tiber
+    alt: Castel Sant’Angelo’s round tower topped by the bronze angel above the Tiber
   - src: 2013/06/rome-italy-07.jpg
     width: 1620
     height: 1080
@@ -48,7 +48,7 @@ photos:
   - src: 2013/06/rome-italy-10.jpg
     width: 1620
     height: 1080
-    alt: Castel Sant'Angelo and its arched bridge across the green Tiber
+    alt: Castel Sant’Angelo and its arched bridge across the green Tiber
   - src: 2013/06/rome-italy-11.jpg
     width: 720
     height: 1080
@@ -100,7 +100,7 @@ photos:
   - src: 2013/06/rome-italy-23.jpg
     width: 1620
     height: 1080
-    alt: Trajan's Column and a domed church above a railing at night
+    alt: Trajan’s Column and a domed church above a railing at night
   - src: 2013/06/rome-italy-24.jpg
     width: 1620
     height: 1080
@@ -148,25 +148,25 @@ photos:
   - src: 2013/06/rome-italy-35.jpg
     width: 1620
     height: 1080
-    alt: Bridge lined with angel statues leading to the lit Castel Sant'Angelo
+    alt: Bridge lined with angel statues leading to the lit Castel Sant’Angelo
   - src: 2013/06/rome-italy-36.jpg
     width: 1620
     height: 1080
-    alt: Lamp-lined avenue leading to the dome of St Peter's at night
+    alt: Lamp-lined avenue leading to the dome of St Peter’s at night
   - src: 2013/06/rome-italy-37.jpg
     width: 1620
     height: 1080
-    alt: St Peter's Square at night with a lit Christmas tree, obelisk and nativity scene
+    alt: St Peter’s Square at night with a lit Christmas tree, obelisk and nativity scene
   - src: 2013/06/rome-italy-39.jpg
     width: 1620
     height: 1080
-    alt: St Peter's Basilica facade across the empty wet square at night
+    alt: St Peter’s Basilica facade across the empty wet square at night
   - src: 2013/06/rome-italy-38.jpg
     width: 1620
     height: 1080
     alt: Curving colonnade around the wet cobbled square at night
 ---
 
-Rome on foot, from daylight to well after dark. Castel Sant'Angelo above the green Tiber, the Colosseum at dusk, the church domes around Trajan's Column, a fruit stall tucked under an ancient wall, and a crowd of blue flags passing in front of the arches.
+Rome on foot, from daylight to well after dark. Castel Sant’Angelo above the green Tiber, the Colosseum at dusk, the church domes around Trajan’s Column, a fruit stall tucked under an ancient wall, and a crowd of blue flags passing in front of the arches.
 
-Most of the set is night. The Forum ruins floodlit from the street above, the Pantheon behind a blur of passers-by, Trevi and Piazza Navona with its market stalls, a tall Christmas tree in front of the white monument on Piazza Venezia. The walk ends on the glistening cobbles of St Peter's Square, almost empty, under Bernini's colonnade.
+Most of the set is night. The Forum ruins floodlit from the street above, the Pantheon behind a blur of passers-by, Trevi and Piazza Navona with its market stalls, a tall Christmas tree in front of the white monument on Piazza Venezia. The walk ends on the glistening cobbles of St Peter’s Square, almost empty, under Bernini’s colonnade.

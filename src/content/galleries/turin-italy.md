@@ -136,7 +136,7 @@ photos:
   - src: 2015/07/torino-italia-sinagoga-ebraica-notte.jpg
     width: 1620
     height: 1080
-    alt: Rooftop view of the synagogue's onion domes at night
+    alt: Rooftop view of the synagogue’s onion domes at night
   - src: 2015/07/torino-italia-cattedrale-san-giovanni-battista-notte.jpg
     width: 1620
     height: 1080

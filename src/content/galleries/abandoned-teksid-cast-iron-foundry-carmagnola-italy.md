@@ -269,7 +269,7 @@ photos:
   - src: 2009/10/abandoned-teksid-steel-mill-carmagnola-italy_MG_3241.jpg
     width: 1620
     height: 1080
-    alt: Excavator at work beside the factory's gutted wall
+    alt: Excavator at work beside the factory’s gutted wall
   - src: 2009/10/abandoned-teksid-steel-mill-carmagnola-italy_MG_3240.jpg
     width: 1620
     height: 1080

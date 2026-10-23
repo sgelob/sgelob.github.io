@@ -15,7 +15,7 @@ A partire da questo meetup, ci troveremo ogni mese da [Toolbox Coworking](http:/
 
 <iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/VVFJg9HfKPM" frameborder="0" allowfullscreen=""></iframe>
 
-And the winner is… questa volta senza imbarazzanti sorprese all'apertura della busta, vi racconteremo gli attori, le scene, la produzione, gli effetti speciali, la sceneggiatura di un film che sta guadagnando consensi e critica: portare in una grande azienda un approccio alle performance web.
+And the winner is… questa volta senza imbarazzanti sorprese all’apertura della busta, vi racconteremo gli attori, le scene, la produzione, gli effetti speciali, la sceneggiatura di un film che sta guadagnando consensi e critica: portare in una grande azienda un approccio alle performance web.
 
 ## Speaker
 
