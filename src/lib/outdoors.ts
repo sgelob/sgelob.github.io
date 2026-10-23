@@ -112,3 +112,7 @@ export function moreTrips<T extends { id: string; data: { activity: Activity } }
   const rest = others.filter((t) => t.data.activity !== current?.data.activity);
   return [...same, ...rest].slice(0, count);
 }
+
+/** The lead of the Outdoors pages, also their meta description. */
+export const OUTDOORS_LEAD =
+  'Hikes and mountain-bike rides, mostly in the Alps: time in the woods and on the trails for the landscape and the quiet, a kind of shinrin-yoku on foot or on two wheels. The numbers only describe the day.';
