@@ -47,10 +47,12 @@ const search = {
   },
 };
 const moreRow = moreLabels(activity, more);
+// The browser tab and search results get what the trip is, where and when: “Canosio – Gardetta · MTB · Valle Maira · 2026”.
+const pageTitle = [title, activityLabel(activity), area, date.getFullYear()].join(' · ');
 ---
 
 <Base
-  title={`${title} — Outdoors — olegs`}
+  title={`${pageTitle} — Outdoors — olegs`}
   description={seoDescription ?? `${activityLabel(activity)} in ${area}: ${formatKm(distance)}, ${formatClimb(climb)}.`}
   ogImage={largestVariantUrl(cover, Math.min(1600, size?.width ?? 0))}
   overlayNav
