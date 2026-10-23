@@ -29,6 +29,8 @@ export interface WizardDeps {
   komootPhotos?: (tour: KomootTour) => Promise<string>;
   /** Shows a folder to the user (Finder on a Mac) so they can pick the cover; absent in tests. */
   reveal?: (dir: string) => void;
+  /** Draws the contour layer behind a shared trip's route map from its committed track; returns the file written. */
+  contours?: (track: string) => Promise<string>;
 }
 
 export interface WizardResult {
@@ -37,6 +39,8 @@ export interface WizardResult {
   path: string;
   /** The sanitised track, when the route is shared. */
   track?: string;
+  /** The contour layer, when it was drawn. */
+  contours?: string;
   /** The notes file for the story. */
   notes: string;
   photos: number;
@@ -425,6 +429,16 @@ export async function runWizard(deps: WizardDeps): Promise<WizardResult> {
   };
   const path = await scaffoldGallery({ slug, folder: a.folder!.dir, store: deps.store, contentDir: deps.contentDir, uploadsDir: deps.uploadsDir, date, kind: 'outdoors', trip });
   const track = a.shared && a.gpx ? writeTrack(a.gpx, slug, deps.tracksDir).path : undefined;
+  let contours: string | undefined;
+  if (track && deps.contours) {
+    say('  Drawing the contour lines behind the route map…');
+    try {
+      contours = await deps.contours(`${slug}.gpx`);
+    } catch (error) {
+      // The trip is complete without them: the map just has no terrain until the command is run again.
+      say(`  The contour lines were not drawn (${error instanceof Error ? error.message : error}); run npm run contours -- ${slug} later.`);
+    }
+  }
 
   mkdirSync(deps.notesDir, { recursive: true });
   const notesPath = join(deps.notesDir, `${slug}.md`);
@@ -440,7 +454,8 @@ export async function runWizard(deps: WizardDeps): Promise<WizardResult> {
   say('');
   say(`Trip file: ${path}`);
   if (track) say(`Track: ${track}`);
+  if (contours) say(`Contours: ${contours}`);
   say(`Notes: ${notesPath}`);
   say('Next: ask Claude to write the story and the alt texts from the notes, then run npm test and commit.');
-  return { slug, path, track, notes: notesPath, photos: a.folder!.photos.length, discreet: !a.shared };
+  return { slug, path, track, contours, notes: notesPath, photos: a.folder!.photos.length, discreet: !a.shared };
 }

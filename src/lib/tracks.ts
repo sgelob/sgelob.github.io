@@ -19,3 +19,14 @@ export function readTrack(file: string): string {
 export function listTracks(): string[] {
   return readdirSync(TRACKS_DIR).filter((f) => f.endsWith('.gpx')).sort();
 }
+
+/** The contour layer drawn behind a track's route map: `<name>.gpx` → `<name>.contours.svg`. */
+export const contoursFile = (track: string): string => track.replace(/\.gpx$/, '.contours.svg');
+
+/** Whether a track has its contour layer (written by `npm run contours` or the trip wizard). */
+export const hasContours = (track: string): boolean => existsSync(`${TRACKS_DIR}${contoursFile(track)}`);
+
+/** The `.contours.svg` file names in the tracks folder, sorted. */
+export function listContours(): string[] {
+  return readdirSync(TRACKS_DIR).filter((f) => f.endsWith('.contours.svg')).sort();
+}

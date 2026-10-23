@@ -19,7 +19,8 @@
     "check-urls": "tsx scripts/check-urls.ts",
     "thumbs": "tsx scripts/thumbs.ts",
     "track": "tsx scripts/track.ts",
-    "trip": "tsx scripts/trip.ts"
+    "trip": "tsx scripts/trip.ts",
+    "contours": "tsx scripts/contours.ts"
   },
   "dependencies": {
     "@astrojs/markdown-satteri": "^0.4.5",
@@ -37,9 +38,11 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.12",
+    "@types/d3-contour": "^3.0.6",
     "@types/node": "^26.6.5",
     "@types/turndown": "^5.0.6",
     "basic-ftp": "^6.2.3",
+    "d3-contour": "^4.0.2",
     "pagefind": "^1.5.2",
     "satteri": "^0.10.5",
     "tsx": "^4.23.15",

@@ -1,4 +1,4 @@
-// Pure GPX helpers: parse track points, draw them as SVG paths, write a sanitised download.
+// Pure GPX helpers: parse track points, lay them out and draw them as SVG paths, write a sanitised download.
 // No Astro runtime and no XML library: GPX 1.1 track points are regular enough for regexes.
 
 export interface TrackPoint {
@@ -56,55 +56,104 @@ function pathOf(coords: readonly [number, number][]): string {
   return coords.map(([x, y], i) => `${i === 0 ? 'M' : 'L'} ${round1(x)} ${round1(y)}`).join(' ');
 }
 
-/** The route seen from above as an SVG path, scaled uniformly to fit the box minus `pad` and centred in it. */
-export function routeShape(
-  points: readonly TrackPoint[],
-  width = 400,
-  height = 300,
-  pad = 8,
-): { d: string; viewBox: string } {
+/** How a route is laid out in a box: projected equirectangularly (longitude scaled by the cosine of the mean latitude), scaled uniformly to fit the box minus `pad`, centred. */
+export interface RouteFit {
+  viewBox: string;
+  width: number;
+  height: number;
+  /** A point's position in the box. */
+  project(p: Pick<TrackPoint, 'lat' | 'lon'>): [number, number];
+  /** The latitude and longitude at a position in the box: what the terrain behind the route is sampled at. */
+  unproject(x: number, y: number): { lat: number; lon: number };
+}
+
+/** The layout shared by the route line, its marks and the contour layer drawn behind it. */
+export function routeFit(points: readonly TrackPoint[], width = 400, height = 300, pad = 8): RouteFit {
   const viewBox = `0 0 ${width} ${height}`;
-  if (points.length === 0) return { d: '', viewBox };
-  const meanLat = points.reduce((sum, p) => sum + p.lat, 0) / points.length;
+  const meanLat = points.length ? points.reduce((sum, p) => sum + p.lat, 0) / points.length : 0;
   const k = Math.cos((meanLat * Math.PI) / 180);
-  const flat = points.map((p): [number, number] => [p.lon * k, -p.lat]);
-  const xs = flat.map(([x]) => x);
-  const ys = flat.map(([, y]) => y);
-  const minX = Math.min(...xs);
-  const minY = Math.min(...ys);
-  const spanX = Math.max(...xs) - minX;
-  const spanY = Math.max(...ys) - minY;
+  let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+  for (const p of points) {
+    minX = Math.min(minX, p.lon * k); maxX = Math.max(maxX, p.lon * k);
+    minY = Math.min(minY, -p.lat); maxY = Math.max(maxY, -p.lat);
+  }
+  if (!points.length) minX = minY = maxX = maxY = 0;
+  const spanX = maxX - minX;
+  const spanY = maxY - minY;
   const innerW = width - 2 * pad;
   const innerH = height - 2 * pad;
   const scale = Math.min(spanX > 0 ? innerW / spanX : Infinity, spanY > 0 ? innerH / spanY : Infinity);
   const s = Number.isFinite(scale) ? scale : 1;
   const offsetX = pad + (innerW - spanX * s) / 2;
   const offsetY = pad + (innerH - spanY * s) / 2;
-  return { d: pathOf(flat.map(([x, y]) => [offsetX + (x - minX) * s, offsetY + (y - minY) * s])), viewBox };
+  return {
+    viewBox,
+    width,
+    height,
+    project: (p) => [offsetX + (p.lon * k - minX) * s, offsetY + (-p.lat - minY) * s],
+    unproject: (x, y) => ({ lon: ((x - offsetX) / s + minX) / k, lat: -((y - offsetY) / s + minY) }),
+  };
 }
 
-/** Elevation against distance as an SVG path (highest point at the top); undefined when fewer than two points carry `ele`. */
-export function elevationProfile(
+/** The route seen from above as an SVG path, laid out by `routeFit`. */
+export function routeShape(
   points: readonly TrackPoint[],
   width = 400,
-  height = 120,
+  height = 300,
   pad = 8,
-): { d: string; viewBox: string; minEle: number; maxEle: number; totalKm: number } | undefined {
+): { d: string; viewBox: string } {
+  const fit = routeFit(points, width, height, pad);
+  return { d: points.length ? pathOf(points.map((p) => fit.project(p))) : '', viewBox: fit.viewBox };
+}
+
+/** An elevation profile with what makes it readable: altitude guides, kilometre marks, the high and the low point. */
+export interface ProfileFigure {
+  viewBox: string;
+  /** The drawn points (what labels must stay clear of), the profile line, and the same closed down to the baseline for the fill. */
+  points: [number, number][];
+  line: string;
+  area: string;
+  /** The plot's edges, for the guide lines. */
+  left: number;
+  right: number;
+  baseline: number;
+  /** Horizontal guides at every 500 m within the range. */
+  guides: { y: number; ele: number }[];
+  /** Kilometre marks every 5 km, leaving room for the total at the end. */
+  ticks: { x: number; km: number }[];
+  totalKm: number;
+  high: { x: number; y: number; ele: number; km: number };
+  low: { x: number; y: number; ele: number; km: number };
+}
+
+/**
+ * The profile of the whole track: distance and extremes are measured on every point, the line is drawn from at most
+ * `max` of them. The altitude axis spans the track's own range, rounded out to 100 m, plus a band below. Undefined with fewer than two elevations.
+ */
+export function profileFigure(points: readonly TrackPoint[], width = 400, height = 170, max = 400): ProfileFigure | undefined {
   const withEle = points.filter((p): p is TrackPoint & { ele: number } => p.ele !== undefined);
   if (withEle.length < 2) return undefined;
-  const cumulative = [0];
-  for (let i = 1; i < withEle.length; i++) cumulative.push(cumulative[i - 1] + distanceKm(withEle[i - 1], withEle[i]));
-  const totalKm = cumulative[cumulative.length - 1];
-  const eles = withEle.map((p) => p.ele);
-  const minEle = Math.min(...eles);
-  const maxEle = Math.max(...eles);
-  const innerW = width - 2 * pad;
-  const innerH = height - 2 * pad;
-  const coords = withEle.map((p, i): [number, number] => [
-    pad + (totalKm > 0 ? (cumulative[i] / totalKm) * innerW : 0),
-    pad + (maxEle > minEle ? ((maxEle - p.ele) / (maxEle - minEle)) * innerH : innerH / 2),
-  ]);
-  return { d: pathOf(coords), viewBox: `0 0 ${width} ${height}`, minEle, maxEle, totalKm };
+  const left = 40, right = width - 10, top = 26, baseline = height - 22;
+  const km = [0];
+  for (let i = 1; i < withEle.length; i++) km.push(km[i - 1] + distanceKm(withEle[i - 1], withEle[i]));
+  const totalKm = km[km.length - 1];
+  let hi = 0, lo = 0;
+  withEle.forEach((p, i) => { if (p.ele > withEle[hi].ele) hi = i; if (p.ele < withEle[lo].ele) lo = i; });
+  // One more 100 m band under the lowest point, so its label has room below it.
+  const floor = Math.floor(withEle[lo].ele / 100) * 100 - 100;
+  const ceil = Math.max(Math.ceil(withEle[hi].ele / 100) * 100, floor + 100);
+  const x = (d: number) => left + (totalKm > 0 ? d / totalKm : 0) * (right - left);
+  const y = (e: number) => top + (1 - (e - floor) / (ceil - floor)) * (baseline - top);
+  const step = Math.max(1, Math.ceil(withEle.length / max));
+  const drawn = withEle.map((p, i) => [x(km[i]), y(p.ele)] as [number, number]).filter((_, i) => i % step === 0 || i === withEle.length - 1);
+  const line = pathOf(drawn);
+  const area = `${line} L ${round1(right)} ${round1(baseline)} L ${round1(left)} ${round1(baseline)} Z`;
+  const guides: ProfileFigure['guides'] = [];
+  for (let e = Math.ceil(floor / 500) * 500; e <= ceil; e += 500) guides.push({ y: round1(y(e)), ele: e });
+  const ticks: ProfileFigure['ticks'] = [];
+  for (let d = 0; d <= totalKm - 4; d += 5) ticks.push({ x: round1(x(d)), km: d });
+  const mark = (i: number) => ({ x: round1(x(km[i])), y: round1(y(withEle[i].ele)), ele: withEle[i].ele, km: km[i] });
+  return { viewBox: `0 0 ${width} ${height}`, points: drawn, line, area, left, right, baseline, guides, ticks, totalKm, high: mark(hi), low: mark(lo) };
 }
 
 const escapeXml = (s: string): string => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
