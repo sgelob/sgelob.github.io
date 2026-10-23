@@ -4,8 +4,9 @@
 interface Props {
   id: string;
   title: string;
-  href: string;
-  link: string;
+  /** The "see all" link on the right; a section with nothing to link to has none. */
+  href?: string;
+  link?: string;
 }
 
 const { id, title, href, link } = Astro.props;
@@ -13,7 +14,7 @@ const { id, title, href, link } = Astro.props;
 
 <div class="lab mono">
   <h2 id={id}>{title}</h2>
-  <a href={href}>{link} <span aria-hidden="true">↗</span></a>
+  {href && link && <a href={href}>{link} <span aria-hidden="true">↗</span></a>}
 </div>
 
 <style>
