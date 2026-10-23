@@ -273,7 +273,7 @@ photos:
   - src: 2016/03/other-side-people-backtraits-66.jpg
     width: 720
     height: 1080
-    alt: Couple at a railing below a lamp post overlooking a city's rooftops
+    alt: Couple at a railing below a lamp post overlooking a city’s rooftops
   - src: 2016/03/other-side-people-backtraits-67.jpg
     width: 1620
     height: 1080
@@ -369,7 +369,7 @@ photos:
   - src: 2016/03/other-side-people-backtraits-90.jpg
     width: 720
     height: 1080
-    alt: Woman beside a person in a wheelchair at the water's edge
+    alt: Woman beside a person in a wheelchair at the water’s edge
   - src: 2016/03/other-side-people-backtraits-91.jpg
     width: 1620
     height: 1080
@@ -557,7 +557,7 @@ photos:
   - src: 2016/03/other-side-people-backtraits-136.jpg
     width: 1620
     height: 1080
-    alt: Man sitting on cobblestones at the river's edge with a black bag
+    alt: Man sitting on cobblestones at the river’s edge with a black bag
   - src: 2016/03/other-side-people-backtraits-138.jpg
     width: 1620
     height: 1080

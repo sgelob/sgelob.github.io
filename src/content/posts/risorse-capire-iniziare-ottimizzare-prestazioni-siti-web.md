@@ -16,8 +16,8 @@ Questa mia lista di risorse contiene per lo più materiale in inglese ed è i
 ## Eventi
 
 - Meetup del Turin Web Performance Group;
-- [Conferenza O'Reilly Velocity](https://conferences.oreilly.com/velocity/vl-eu) sull’ingegneria dei sistemi;
-- [O'Reilly Fluent Conference](https://conferences.oreilly.com/fluent/fl-ca) per costruire un web migliore;
+- [Conferenza O’Reilly Velocity](https://conferences.oreilly.com/velocity/vl-eu) sull’ingegneria dei sistemi;
+- [O’Reilly Fluent Conference](https://conferences.oreilly.com/fluent/fl-ca) per costruire un web migliore;
 - WebPerfDays Amsterdam porta la comunità di Performance Web insieme.
 
 ## Video dalle conferenze e video corsi
@@ -39,7 +39,7 @@ Questa mia lista di risorse contiene per lo più materiale in inglese ed è i
 
 ## Blog
 
-- [Performance Calendar](https://calendar.perfplanet.com/2016/) – The speed geek's favorite time of the year;
+- [Performance Calendar](https://calendar.perfplanet.com/2016/) – The speed geek’s favorite time of the year;
 - [Steve Souders](https://www.stevesouders.com/blog/) – Essential knowledge for making your web pages faster;
 - [Code as Craft](https://www.etsy.com/codeascraft) – Etsy’s Engineering Blog;
 - [Smashing Magazine](https://www.smashingmagazine.com/category/performance) – Posts Tagged ‘Performance’;

@@ -45,7 +45,7 @@ photos:
   - src: 2009/04/abandoned-mineral-oils-factory-oma-rivalta-italy-09.jpg
     width: 1080
     height: 1080
-    alt: Close view of a rust-brown chimney's finned collar
+    alt: Close view of a rust-brown chimney’s finned collar
   - src: 2009/04/abandoned-mineral-oils-factory-oma-rivalta-italy-10.jpg
     width: 1620
     height: 1080

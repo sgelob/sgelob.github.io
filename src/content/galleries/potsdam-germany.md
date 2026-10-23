@@ -24,7 +24,7 @@ photos:
   - src: 2016/01/potsdam-germany-04.jpg
     width: 1620
     height: 1080
-    alt: Sanssouci's yellow facade with carved figures and a green dome
+    alt: Sanssouci’s yellow facade with carved figures and a green dome
   - src: 2016/01/potsdam-germany-14.jpg
     width: 1620
     height: 1080

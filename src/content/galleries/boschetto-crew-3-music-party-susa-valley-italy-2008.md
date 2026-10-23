@@ -37,7 +37,7 @@ photos:
   - src: 0208/06/boschetto-crew-3-music-party-susa-valley-italy-2008-07.jpg
     width: 1620
     height: 1080
-    alt: Fire spinner's glowing trails under a concrete canopy
+    alt: Fire spinner’s glowing trails under a concrete canopy
   - src: 0208/06/boschetto-crew-3-music-party-susa-valley-italy-2008-08.jpg
     width: 1080
     height: 1080
@@ -89,7 +89,7 @@ photos:
   - src: 0208/06/boschetto-crew-3-music-party-susa-valley-italy-2008-20.jpg
     width: 1620
     height: 1080
-    alt: Close-up of a mixer's knobs and faders with a DJ in headphones
+    alt: Close-up of a mixer’s knobs and faders with a DJ in headphones
   - src: 0208/06/boschetto-crew-3-music-party-susa-valley-italy-2008-21.jpg
     width: 1620
     height: 1080

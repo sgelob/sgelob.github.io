@@ -19,8 +19,14 @@ const pathname = Astro.url.pathname;
     <ul class="links mono" lang={lang === 'en' ? undefined : 'en'}>
       {NAV_LINKS.map(({ section, label, href }) => (
         <li>
-          <a href={href} aria-current={section === current ? (pathname === href ? 'page' : 'true') : undefined}>
-            {label}
+          <a href={href} class:list={{ icon: section === 'search' }} aria-current={section === current ? (pathname === href ? 'page' : 'true') : undefined}>
+            {section === 'search' ? (
+              <>
+                {/* The magnifier stands in for the word; the hidden text keeps the link named. */}
+                <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5" /><path d="m20 20-4.6-4.6" /></svg>
+                <span class="visually-hidden">{label}</span>
+              </>
+            ) : label}
           </a>
         </li>
       ))}
@@ -72,6 +78,18 @@ const pathname = Astro.url.pathname;
   }
 
   .links a:hover { color: var(--muted); }
+
+  /* The icon sits on the text baseline of its neighbours; side padding (cancelled by the margin)
+     widens its tap target to 24 px without moving the row. */
+  .links a.icon {
+    padding-inline: 5px;
+    margin-inline: -5px;
+  }
+
+  .links a.icon svg {
+    display: inline-block;
+    vertical-align: -2px;
+  }
 
   /* Over a cover the muted grey can fall below 4.5:1: hover underlines instead. */
   .overlay .links a:hover {
