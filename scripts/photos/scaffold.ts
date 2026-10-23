@@ -21,14 +21,14 @@ export type ScaffoldOptions = {
   kind?: 'gallery' | 'outdoors';
 };
 
-/** What `--outdoors` scaffolds: placeholders for what the photos cannot tell, `track` left undecided. */
+/** What `--outdoors` scaffolds: placeholders for what the photos cannot tell; `activity`, `distance`, `climb` and `track` are left undecided. */
 export type TripDoc = {
   slug: string;
   title: string;
   date: string;
-  activity: 'hike';
-  distance: number;
-  climb: number;
+  activity: undefined;
+  distance: undefined;
+  climb: undefined;
   area: string;
   country: string;
   track: undefined;
@@ -39,7 +39,8 @@ export type TripDoc = {
 
 /**
  * The front matter of a new trip, as text (the YAML writer cannot leave a key empty or keep a comment).
- * `track:` has no value on purpose: the build fails until it is a .gpx name or `false`. The cover's size is filled when known.
+ * `activity:`, `distance:`, `climb:` and `track:` have no value on purpose: the build fails until each is set (`track` to a .gpx name or `false`),
+ * so a forgotten edit cannot ship a plausible placeholder. The cover's size is filled when known.
  */
 export function tripFrontmatter(doc: TripDoc): string {
   const field = (key: string, value: unknown) => stringify({ [key]: value }, { lineWidth: 0 });
@@ -49,10 +50,10 @@ export function tripFrontmatter(doc: TripDoc): string {
     '---\n' +
     field('title', doc.title) +
     `date: ${JSON.stringify(doc.date)}\n` +
-    field('activity', doc.activity) +
+    'activity:\n' +
     '# bike: xc | trail\n' +
-    field('distance', doc.distance) +
-    field('climb', doc.climb) +
+    'distance:\n' +
+    'climb:\n' +
     field('area', doc.area) +
     field('country', doc.country) +
     'track:\n' +
@@ -73,6 +74,15 @@ const titleFromSlug = (slug: string) => slug.split('-').filter(Boolean).map((w) 
 
 const uploadName = (name: string) => name.toLowerCase().replace(/\s+/g, '-');
 
+/**
+ * A trip's public file name: `<slug>-NN.<ext>`, numbered in the sorted order of the originals. Phone names such as
+ * `PXL_20260614_073512.jpg` carry the exact day and time and would end up in the photo URLs.
+ */
+export const tripPhotoName = (slug: string, index: number, count: number, original: string) => {
+  const ext = /\.[^.]+$/.exec(original)?.[0].toLowerCase() ?? '';
+  return `${slug}-${String(index + 1).padStart(Math.max(2, String(count).length), '0')}${ext}`;
+};
+
 /** Copies the folder's photos into the uploads tree, uploads them, and writes the gallery's markdown file. Returns its path. */
 export async function scaffoldGallery(opts: ScaffoldOptions): Promise<string> {
   const { slug, folder, store, contentDir, date = new Date(), kind = 'gallery' } = opts;
@@ -84,7 +94,8 @@ export async function scaffoldGallery(opts: ScaffoldOptions): Promise<string> {
 
   const names = readdirSync(folder).filter((n) => !n.startsWith('.') && isRaster(n));
   if (!names.length) throw new Error(`no images in ${folder}`);
-  const photos = names.map((name) => ({ from: join(folder, name), name: uploadName(name) })).sort((a, b) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0));
+  const sorted = names.map((name) => ({ from: join(folder, name), name: uploadName(name) })).sort((a, b) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0));
+  const photos = kind === 'outdoors' ? sorted.map((p, i) => ({ ...p, name: tripPhotoName(slug, i, sorted.length, p.name) })) : sorted;
 
   console.log(
     'Originals are uploaded unchanged: the lightbox opens the 1600 px variant, but the original is what the no-JS link ' +
@@ -108,9 +119,9 @@ export async function scaffoldGallery(opts: ScaffoldOptions): Promise<string> {
       slug,
       title: titleFromSlug(slug),
       date: timestamp(date),
-      activity: 'hike',
-      distance: 0,
-      climb: 0,
+      activity: undefined,
+      distance: undefined,
+      climb: undefined,
       area: '',
       country: 'italy',
       track: undefined,

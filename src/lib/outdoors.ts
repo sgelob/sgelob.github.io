@@ -2,7 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 import { z } from 'astro/zod';
 import { formatMonthYear } from './site';
-import { countryName } from './taxonomies';
+import { countries, countryName } from './taxonomies';
 
 export const ACTIVITIES = ['hike', 'ride'] as const;
 export type Activity = (typeof ACTIVITIES)[number];
@@ -19,16 +19,18 @@ export const tripSchema = z.object({
   distance: z.number().positive(),
   climb: z.number().nonnegative(),
   area: z.string().min(1),
-  country: z.string().min(1),
-  track: z.union([z.string().regex(/\.gpx$/), z.literal(false)]),
-  links: z.array(z.object({ label: z.string(), url: z.string().url() })).optional(),
+  country: z.string().refine((slug) => countries.some((c) => c.slug === slug), { message: 'unknown country slug' }),
+  // A bare file name in src/content/outdoors/tracks/: no folders, so the name cannot point elsewhere.
+  track: z.union([z.string().regex(/^[\w.-]+\.gpx$/), z.literal(false)]),
+  links: z.array(z.object({ label: z.string(), url: z.url() })).optional(),
   cover: z.string(),
   coverWidth: z.number().optional(),
   coverHeight: z.number().optional(),
   darkHeader: z.boolean(),
   seoDescription: z.string().optional(),
-  photos: z.array(z.object({ src: z.string(), width: z.number(), height: z.number(), alt: z.string().optional() })),
+  photos: z.array(z.object({ src: z.string(), width: z.number(), height: z.number(), alt: z.string().min(1) })),
 })
+  .strict()
   .refine((t) => t.activity === 'ride' || t.bike === undefined, { message: 'bike is for rides only', path: ['bike'] })
   .refine((t) => t.track !== false || t.date.getDate() === 1, { message: 'a discreet trip (track: false) has its date on the 1st of the month', path: ['date'] })
   .refine((t) => t.track !== false || !t.links?.length, { message: 'a discreet trip (track: false) has no links', path: ['links'] });
@@ -111,6 +113,14 @@ export function moreTrips<T extends { id: string; data: { activity: Activity } }
   const same = others.filter((t) => t.data.activity === current?.data.activity);
   const rest = others.filter((t) => t.data.activity !== current?.data.activity);
   return [...same, ...rest].slice(0, count);
+}
+
+/** The heading and link of the "more" row on a trip page: by activity when every picked trip shares it, else all trips. */
+export function moreLabels(activity: Activity, more: readonly { data: { activity: Activity } }[]): { title: string; href: string; link: string } {
+  if (more.some((t) => t.data.activity !== activity)) return { title: 'More trips', href: '/outdoors/', link: 'All trips' };
+  return activity === 'hike'
+    ? { title: 'More hikes', href: '/outdoors/hikes/', link: 'All hikes' }
+    : { title: 'More rides', href: '/outdoors/rides/', link: 'All rides' };
 }
 
 /** The lead of the Outdoors pages, also their meta description. */
