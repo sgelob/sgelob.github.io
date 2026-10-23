@@ -130,4 +130,4 @@ export function moreLabels(activity: Activity, more: readonly { data: { activity
 
 /** The lead of the Outdoors pages, also their meta description. */
 export const OUTDOORS_LEAD =
-  'Hikes and mountain-bike rides, mostly in the Alps: time in the woods and on the trails for the landscape and the quiet, a kind of shinrin-yoku on foot or on two wheels. The numbers only describe the day.';
+  'Hikes and mountain-bike rides, mostly in the Alps: time in the woods and on the trails for the landscape and the quiet, a kind of shinrin-yoku on foot or on two wheels. Distance and climb are there to describe the day, not to measure it.';
