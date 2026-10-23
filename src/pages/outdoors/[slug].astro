@@ -13,7 +13,7 @@ import { activityLabel, contoursPath, formatClimb, formatKm, heroMeta, moreLabel
 import { coverSize } from '../../lib/paths';
 import { largestVariantUrl } from '../../lib/images';
 import { isoDate } from '../../lib/site';
-import { hasContours, readTrack } from '../../lib/tracks';
+import { hasContours, readProfile, readTrack } from '../../lib/tracks';
 
 // getStaticPaths runs isolated from the rest of the frontmatter: everything it uses lives inside it.
 export const getStaticPaths = (async () => {
@@ -63,7 +63,7 @@ const moreRow = moreLabels(activity, more);
     <div class="body wrap"><Content /></div>
   )}
   {track !== false && (
-    <RouteBlock xml={readTrack(track)} distance={distance} climb={climb} downloadHref={trackPath(trip)} masked={trackMasked} links={links} contoursHref={hasContours(track) ? contoursPath(trip) : undefined} />
+    <RouteBlock xml={readTrack(track)} distance={distance} climb={climb} downloadHref={trackPath(trip)} masked={trackMasked} fullProfile={readProfile(track)} links={links} contoursHref={hasContours(track) ? contoursPath(trip) : undefined} />
   )}
   <JustifiedGrid photos={photos} />
   <nav class="pager wrap mono" aria-label="More trips" data-pagefind-ignore>
