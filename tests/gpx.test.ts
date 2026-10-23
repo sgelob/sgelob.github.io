@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { distanceKm, moveEnds, parseGpx, profileFigure, profileFromSeries, profileSeries, routeFit, routeShape, sanitizeGpx, simplifyPoints, type TrackPoint } from '../src/lib/gpx';
+import { distanceKm, moveStart, parseGpx, parseSegments, profileFigure, profileFromSeries, profileSeries, routeFit, routeShape, sanitizeGpx, simplifyPoints, type TrackPoint } from '../src/lib/gpx';
 
 const xml = readFileSync('tests/fixtures/track.gpx', 'utf8');
 
@@ -77,34 +77,49 @@ describe('sanitizeGpx', () => {
   });
 });
 
-describe('moveEnds', () => {
+describe('moveStart', () => {
   // About 0.1 km a step: 0.0009° of latitude.
   const north = (from: TrackPoint, steps: number): TrackPoint[] => Array.from({ length: steps }, (_, i) => ({ lat: from.lat + 0.0009 * (i + 1), lon: from.lon, ele: 300 }));
   const origin: TrackPoint = { lat: 45, lon: 7.5, ele: 250 };
   const line = [origin, ...north(origin, 100)]; // 10 km north, one point every 100 m
-  const slice = (kept: TrackPoint[]) => { const i = line.indexOf(kept[0]); return line.slice(i, i + kept.length); };
 
-  it('starts and ends on the path, 1 to 1.5 km in a straight line from the real start and finish, the middle untouched', () => {
+  it('keeps every point, starting on the path 1 to 1.5 km from the real start and coming round to just before it', () => {
     for (const r of [0, 0.5, 0.999]) {
-      const kept = moveEnds(line, { random: () => r });
-      expect(kept).toEqual(slice(kept)); // one unbroken stretch of the original points
-      const fromStart = distanceKm(kept[0], line[0]);
-      const fromFinish = distanceKm(kept[kept.length - 1], line[line.length - 1]);
-      for (const d of [fromStart, fromFinish]) {
-        expect(d).toBeGreaterThanOrEqual(1 + 0.5 * r);
-        expect(d).toBeLessThan(1 + 0.5 * r + 0.11);
-      }
+      const [first, second] = moveStart(line, { random: () => r });
+      expect([...first, ...second].length).toBe(line.length); // nothing left out
+      const at = line.indexOf(first[0]);
+      expect(first).toEqual(line.slice(at)); // from the moved start to the real finish
+      expect(second).toEqual(line.slice(0, at)); // then from the real start to just before the moved one
+      const d = distanceKm(first[0], origin);
+      expect(d).toBeGreaterThanOrEqual(1 + 0.5 * r);
+      expect(d).toBeLessThan(1 + 0.5 * r + 0.11);
     }
   });
 
   it('a new draw each time unless the caller fixes the randomness', () => {
-    const draws = new Set(Array.from({ length: 20 }, () => line.indexOf(moveEnds(line)[0])));
+    const draws = new Set(Array.from({ length: 20 }, () => line.indexOf(moveStart(line)[0][0])));
     expect(draws.size).toBeGreaterThan(1);
-    for (const i of draws) expect(distanceKm(line[i], origin)).toBeGreaterThanOrEqual(1);
   });
 
-  it('refuses a route too short to keep anything between the moved ends', () => {
-    expect(() => moveEnds([origin, ...north(origin, 20)], { random: () => 0.5 })).toThrow(/too short/);
+  it('refuses a route that never gets 1 km from its start', () => {
+    expect(() => moveStart([origin, ...north(origin, 8)], { random: () => 0 })).toThrow(/never gets/);
+  });
+});
+
+describe('segments', () => {
+  const seg = (lat: number) => `<trkseg><trkpt lat="${lat}" lon="7"><ele>1</ele></trkpt><trkpt lat="${lat + 0.01}" lon="7"/></trkseg>`;
+  const two = `<gpx><trk>${seg(45)}${seg(46)}</trk></gpx>`;
+
+  it('parseSegments keeps each track segment apart; parseGpx runs them together', () => {
+    expect(parseSegments(two).map((s) => s.length)).toEqual([2, 2]);
+    expect(parseGpx(two)).toHaveLength(4);
+    expect(parseSegments(`<gpx><trk>${seg(45).replace(/<\/?trkseg>/g, '')}</trk></gpx>`)).toHaveLength(1); // points outside any segment
+  });
+
+  it('sanitizeGpx keeps the segments, so no straight line joins them', () => {
+    const clean = sanitizeGpx(two, 'x');
+    expect(clean.match(/<trkseg>/g)).toHaveLength(2);
+    expect(parseSegments(clean).map((s) => s.length)).toEqual([2, 2]);
   });
 });
 
