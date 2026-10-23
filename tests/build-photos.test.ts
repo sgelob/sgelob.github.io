@@ -36,7 +36,11 @@ test('World Places: sections by country, largest first, small countries merged i
   expect(count(elsewhere, 'class="gallery-card"')).toBe(8); // Belgium 2, Czech Republic 2, Slovenia, Netherlands, Austria, Monaco
   expect(elsewhere).toContain('href="/gallery/ljubljana-slovenia/"');
 });
-test('only countries with galleries get a page', () => { for (const slug of ['italy', 'russia']) expect(existsSync(`dist/photos/country/${slug}/index.html`)).toBe(true); for (const slug of ['usa', 'croatia']) expect(existsSync(`dist/photos/country/${slug}/index.html`)).toBe(false); });
+test('only countries with galleries get a page; usa, a preserved live URL, is a redirect stub; croatia is nothing', () => {
+  for (const slug of ['italy', 'russia']) expect(existsSync(`dist/photos/country/${slug}/index.html`)).toBe(true);
+  expect(read('dist/photos/country/usa/index.html')).toContain('http-equiv="refresh" content="0; url=/photos/genre/world-places/"');
+  expect(existsSync('dist/photos/country/croatia/index.html')).toBe(false);
+});
 
 describe('photos pages', () => {
   test('index: title, description, intro and All active in the filter row', () => {

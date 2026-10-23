@@ -36,3 +36,5 @@
   to: /about/
 - from: /my-favourite-inspirational-quotes-life-design/
   to: /quotes/
+- from: /photos/country/usa/
+  to: /photos/genre/world-places/
