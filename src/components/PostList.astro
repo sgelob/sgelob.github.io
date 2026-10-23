@@ -7,7 +7,7 @@ interface Props {
   posts: Post[];
   /** Rendered as the page's h1. */
   heading?: string;
-  /** One-line introduction under the heading (muted). */
+  /** One-line introduction under the heading (muted). HTML, written by us: it may carry a `lang` span. */
   lead?: string;
   /** Inside another page's section (the home): no page padding, no heading, post titles as h3. */
   embedded?: boolean;
@@ -20,7 +20,7 @@ const Title = embedded ? 'h3' : 'h2';
 
 <section class:list={['post-list wrap', { embedded }]}>
   {heading && !embedded && <h1 class="heading">{heading}</h1>}
-  {lead && !embedded && <p class="lead">{lead}</p>}
+  {lead && !embedded && <p class="lead" set:html={lead} />}
   {posts.length === 0 ? (
     <p class="mono">No posts yet.</p>
   ) : (

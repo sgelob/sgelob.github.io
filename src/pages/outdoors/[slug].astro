@@ -9,7 +9,7 @@ import RouteBlock from '../../components/RouteBlock.astro';
 import SectionLabel from '../../components/SectionLabel.astro';
 import TripGrid from '../../components/TripGrid.astro';
 import { getTrips, neighbours, trackPath, tripPath, type Trip } from '../../lib/collections';
-import { activityLabel, formatClimb, formatKm, heroMeta, moreTrips } from '../../lib/outdoors';
+import { activityLabel, formatClimb, formatKm, heroMeta, moreLabels, moreTrips } from '../../lib/outdoors';
 import { coverSize } from '../../lib/paths';
 import { largestVariantUrl } from '../../lib/images';
 import { isoDate } from '../../lib/site';
@@ -46,7 +46,7 @@ const search = {
     activity: activityLabel(activity),
   },
 };
-const hikes = activity === 'hike';
+const moreRow = moreLabels(activity, more);
 ---
 
 <Base
@@ -74,9 +74,9 @@ const hikes = activity === 'hike';
     <section class="related" aria-labelledby="more" data-pagefind-ignore>
       <SectionLabel
         id="more"
-        title={hikes ? 'More hikes' : 'More rides'}
-        href={hikes ? '/outdoors/hikes/' : '/outdoors/rides/'}
-        link={hikes ? 'All hikes' : 'All rides'}
+        title={moreRow.title}
+        href={moreRow.href}
+        link={moreRow.link}
       />
       <TripGrid trips={more} />
     </section>
