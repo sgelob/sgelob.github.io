@@ -2,7 +2,7 @@ import { existsSync, readdirSync } from 'node:fs';
 import { describe, expect, test } from 'vitest';
 import { count, read, contentCount } from './helpers/dist';
 
-test('home has intro, 4 gallery cards, 3 posts', () => { const html = read('dist/index.html'); expect(html).toContain('Hi, I’m Oleg'); expect(html).toContain('drawn to offline things'); expect(html).toContain('href="/outdoors/"'); expect(html).not.toContain('Creative Mornings'); expect(html).not.toContain('id="home-outdoors"'); expect(count(html,'class="gallery-card"')).toBe(4); expect(count(html,'class="post-item"')).toBe(3); expect(html).toContain(`All ${contentCount('galleries')} galleries`); });
+test('home has intro, 4 gallery cards, 3 posts', () => { const html = read('dist/index.html'); expect(html).toContain('Hi, I’m Oleg'); expect(html).toContain('drawn to offline things'); expect(html.match(/<ul class="links[^>]*>[\s\S]*?<\/ul>/)?.[0] ?? '').toContain('href="/outdoors/"'); expect(html).toContain('<a href="https://www.discogs.com/it/user/Xtraboy/collection">record on the turntable</a>'); expect(html).not.toContain('Creative Mornings'); expect(html).not.toContain('id="home-outdoors"'); expect(count(html,'class="gallery-card"')).toBe(4); expect(count(html,'class="post-item"')).toBe(3); expect(html).toContain(`All ${contentCount('galleries')} galleries`); });
 test('about lives at /about/ and the old slug redirects', () => {
   expect(existsSync('dist/about/index.html')).toBe(true);
   expect(read('dist/about/index.html')).toMatch(/<title>[^<]*Olegs Belousovs[^<]*<\/title>/);

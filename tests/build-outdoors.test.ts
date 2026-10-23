@@ -15,6 +15,8 @@ describe('outdoors index', () => {
     expect(read('dist/outdoors/hikes/index.html')).toMatch(/<a href="\/outdoors\/hikes\/" aria-current="page"[^>]*>Hikes<\/a>/);
     expect(read('dist/outdoors/rides/index.html')).toMatch(/<a href="\/outdoors\/rides\/" aria-current="page"[^>]*>Rides<\/a>/);
     expect(read('dist/outdoors/rides/index.html')).toContain('<title>Rides — Outdoors — olegs</title>');
+    expect(read('dist/outdoors/hikes/index.html')).toContain('No hikes yet.');
+    expect(read('dist/outdoors/rides/index.html')).toContain('No rides yet.');
   });
 });
 

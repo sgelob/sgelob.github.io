@@ -33,19 +33,25 @@ A trip is a hike or a mountain-bike ride in `src/content/outdoors/<slug>.md`, wi
 UPLOADS_DIR=./olegs-be-data/uploads npm run photos -- --new --outdoors <slug> <folder-with-jpegs> --date YYYY-MM-DD
 ```
 
-This does what a gallery does (photos copied into `UPLOADS_DIR/yyyy/mm/`, uploaded with their variants) and writes the trip file with placeholders. It refuses to overwrite an existing trip. Run the photos through ImageOptim first: it strips the EXIF, GPS position included, and they are uploaded unchanged.
+This does what a gallery does (photos copied into `UPLOADS_DIR/yyyy/mm/`, uploaded with their variants) and writes the trip file with placeholders. The photos are renamed `<slug>-01.jpg`, `<slug>-02.jpg`... in the order of the original names, so a phone's `PXL_20260614_073512.jpg` (the exact day and time) never reaches a URL. It refuses to overwrite an existing trip. Run the photos through ImageOptim first: it strips the EXIF, GPS position included, and they are uploaded unchanged.
 
 Front matter to complete, in this order:
 
-- `activity: hike | ride`; `bike: xc | trail` for rides only (the scaffold leaves it as a comment).
-- `distance` in km, `climb` in metres, `area` (the range or valley) and `country` (a slug from `src/data/taxonomies.yaml`).
-- `track`: required, and left empty on purpose, so the build fails until it is set. Either the name of a `.gpx` file in `src/content/outdoors/tracks/` (the page then shows the route, the elevation profile and a GPX download), or `false` for a discreet trip.
+- `activity: hike | ride`, `distance` in km and `climb` in metres: left empty by the scaffold, so the build fails until they are set. `bike: xc | trail` for rides only (a comment in the scaffold).
+- `area` (the range or valley) and `country` (a slug from `src/data/taxonomies.yaml`; an unknown one fails the build). Unknown front matter keys fail it too.
+- `track`: required, and left empty on purpose, so the build fails until it is set. Either the bare name of a `.gpx` file (no folders) in `src/content/outdoors/tracks/` (the page then shows the route, the elevation profile and a GPX download), or `false` for a discreet trip.
 - `links`: optional list of `label` and `url`, such as the route on Komoot or Wikiloc. Not for a discreet trip.
-- `cover` (with `coverWidth` and `coverHeight`), `darkHeader`, optional `seoDescription`, and `photos` with an `alt` for each one.
+- `cover` (with `coverWidth` and `coverHeight`), `darkHeader`, optional `seoDescription`, and `photos` with a non-empty `alt` for each one.
 
-Shareable GPX files are committed under `src/content/outdoors/tracks/`: the repository is public, so only tracks that are fine to share go there. A discreet trip (`track: false`) never has its export in the repo: if it is kept, it stays in `olegs-be-data/`, which is git-ignored.
+Shareable GPX files are committed under `src/content/outdoors/tracks/`: the repository is public, so only tracks that are fine to share go there, and never a raw export (it carries times, heart rate, waypoints and the device). Turn the export into the track with:
 
-A discreet trip has its `date` on the 1st of the month and no `links` (the build checks both), and its story names no start, parking, access road or exact timing.
+```bash
+npm run track -- <export.gpx> <slug>
+```
+
+This writes `src/content/outdoors/tracks/<slug>.gpx` with the route only (latitude, longitude, elevation), refuses to overwrite a track, and prints the point count; then set `track: <slug>.gpx`. The tests fail on a committed track that still has times, extensions, metadata or waypoints. A discreet trip (`track: false`) never has its export in the repo: if it is kept, it stays in `olegs-be-data/`, which is git-ignored.
+
+A discreet trip has its `date` on the 1st of the month and no `links` (the build checks both), and nothing it publishes names or hints at a start, parking, access road or exact timing: not the story, and not the slug, the title, the alt texts or the `seoDescription` either. The photo file names are guaranteed by the scaffold (`<slug>-NN.jpg`). The slugs `hikes` and `rides` are taken by the filter pages.
 
 The story is English and first person, below the front matter. Research the place and the route before writing: Komoot, Wikiloc and, for rides, Trailforks; hut and club sites; blogs; and the history of what is along the way.
 
