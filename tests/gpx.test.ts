@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { distanceKm, maskEnds, parseGpx, profileFigure, routeFit, routeShape, sanitizeGpx, simplifyPoints, type TrackPoint } from '../src/lib/gpx';
+import { distanceKm, maskEnds, parseGpx, profileFigure, profileFromSeries, profileSeries, routeFit, routeShape, sanitizeGpx, simplifyPoints, type TrackPoint } from '../src/lib/gpx';
 
 const xml = readFileSync('tests/fixtures/track.gpx', 'utf8');
 
@@ -113,5 +113,29 @@ describe('maskEnds', () => {
     const doc = [home, ...north(home, 100)].map((q) => `<trkpt lat="${q.lat}" lon="${q.lon}"><ele>${q.ele}</ele></trkpt>`).join('');
     const masked = parseGpx(sanitizeGpx(`<gpx><trk><trkseg>${doc}</trkseg></trk></gpx>`, 'x', 2));
     expect(away(masked, home)).toBeGreaterThanOrEqual(2);
+  });
+});
+
+describe('profileSeries', () => {
+  const wave: TrackPoint[] = Array.from({ length: 3000 }, (_, i) => ({ lat: 45 + i * 0.00009, lon: 7.5, ele: 300 + Math.round(200 * Math.sin(i / 300)) + (i === 1234 ? 90 : 0) }));
+
+  it('keeps distance and elevation only, at most about `max` points, with the highest and lowest kept exactly', () => {
+    const series = profileSeries(wave, 400);
+    expect(series.length).toBeLessThanOrEqual(402);
+    expect(series[0]).toEqual([0, wave[0].ele]);
+    for (const pair of series) expect(pair).toHaveLength(2);
+    expect(Math.max(...series.map(([, e]) => e))).toBe(Math.max(...wave.map((p) => p.ele!)));
+    expect(Math.min(...series.map(([, e]) => e))).toBe(Math.min(...wave.map((p) => p.ele!)));
+    let total = 0; for (let i = 1; i < wave.length; i++) total += distanceKm(wave[i - 1], wave[i]);
+    expect(series[series.length - 1][0]).toBeCloseTo(total, 1);
+  });
+
+  it('profileFromSeries draws the same figure as profileFigure from the track', () => {
+    const fromTrack = profileFigure(wave)!;
+    const fromSeries = profileFromSeries(profileSeries(wave, 4000))!;
+    expect(fromSeries.totalKm).toBeCloseTo(fromTrack.totalKm, 1);
+    expect(fromSeries.high.ele).toBe(fromTrack.high.ele);
+    expect(fromSeries.low.ele).toBe(fromTrack.low.ele);
+    expect(fromSeries.ticks).toEqual(fromTrack.ticks);
   });
 });
