@@ -48,6 +48,11 @@ export function trackPath(trip: Pick<Trip, 'id'>): string {
   return `/outdoors/${trip.id}.gpx`;
 }
 
+/** `/outdoors/<id>.contours.svg`: the contour layer behind the route map, when the trip has one. */
+export function contoursPath(trip: Pick<Trip, 'id'>): string {
+  return `/outdoors/${trip.id}.contours.svg`;
+}
+
 export function activityLabel(a: Activity): 'Hike' | 'MTB' {
   return a === 'hike' ? 'Hike' : 'MTB';
 }

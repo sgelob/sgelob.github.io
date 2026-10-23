@@ -37,7 +37,13 @@ const xml = readFileSync('tests/fixtures/track.gpx', 'utf8');
 describe('RouteBlock', () => {
   test('shape, profile, the front-matter numbers and the download', async () => {
     const html = await render(RouteBlock, { props: { xml, distance: 38, climb: 1700, downloadHref: '/outdoors/x.gpx', links: [{ label: 'Komoot', url: 'https://www.komoot.com/tour/1' }] } });
-    expect(html).toMatch(/<svg class="shape"[^>]*viewBox="0 0 400 300"[^>]*aria-label="Shape of the route"/);
+    expect(html).toMatch(/<svg class="shape"[^>]*viewBox="0 0 400 300"[^>]*aria-label="Map of the route"/);
+    expect(html).not.toContain('class="terrain"'); // no contour layer given
+    expect(html).not.toContain('Contours:');
+    expect(html).toMatch(/<text class="label"[^>]*>2,176 m<\/text>/); // the high point on the map
+    expect(html).toMatch(/<text class="label"[^>]*>2,176 m · km [\d.]+<\/text>/); // and on the profile
+    expect(html).toMatch(/<text class="axis"[^>]*>1,500<\/text>/); // an altitude guide
+    expect(html).toMatch(/<text class="axis"[^>]*>38 km<\/text>/); // the total, from the front matter
     expect(html).toMatch(/<svg class="profile"[^>]*aria-label="Elevation profile, from 1,200 m to 2,176 m"/);
     expect(html).toContain('38 km · 1,700 m up');
     expect(html).toMatch(/<a href="\/outdoors\/x.gpx" download[^>]*>Download GPX/);
@@ -49,6 +55,16 @@ describe('RouteBlock', () => {
     const html = await render(RouteBlock, { props: { xml: flat, distance: 9, climb: 0, downloadHref: '/outdoors/y.gpx' } });
     expect(html).toContain('class="shape"');
     expect(html).not.toContain('class="profile"');
+    expect(html).not.toContain('class="top"'); // no elevation, no high point
     expect(html).toContain('9 km · 0 m up');
+  });
+});
+
+describe('RouteBlock with a contour layer', () => {
+  test('the terrain image under the route, the map named for it, the data credited', async () => {
+    const html = await render(RouteBlock, { props: { xml, distance: 38, climb: 1700, downloadHref: '/outdoors/x.gpx', contoursHref: '/outdoors/x.contours.svg' } });
+    expect(html).toMatch(/<img class="terrain"[^>]*src="\/outdoors\/x\.contours\.svg"[^>]*alt=""[^>]*width="400"[^>]*height="300"[^>]*loading="lazy"/);
+    expect(html).toMatch(/<svg class="shape"[^>]*aria-label="Map of the route over contour lines every 100 m"/);
+    expect(html).toMatch(/<figcaption class="credit mono"[^>]*>Contours: EU-DEM via Terrain Tiles<\/figcaption>/);
   });
 });

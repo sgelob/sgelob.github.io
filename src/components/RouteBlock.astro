@@ -1,8 +1,10 @@
 ---
-// The route of a trip: its shape seen from above, the elevation profile when the track carries elevation,
-// the front-matter distance and climb, and the links (the GPX download first). Pure: the page reads the file.
-import { elevationProfile, parseGpx, routeShape, simplifyPoints } from '../lib/gpx';
+// The route of a trip: a map of it seen from above, over contour lines when the trip has its terrain layer,
+// the elevation profile with altitude guides, kilometre marks and the high and low points, the front-matter
+// distance and climb, and the links (the GPX download first). Pure: the page reads the files.
+import { parseGpx, profileFigure, routeFit, simplifyPoints } from '../lib/gpx';
 import { formatClimb, formatKm } from '../lib/outdoors';
+import { placeLabel } from '../lib/labels';
 
 interface Props {
   /** The GPX document (the original, not the sanitised copy). */
@@ -11,39 +13,80 @@ interface Props {
   climb: number;
   downloadHref: string;
   links?: { label: string; url: string }[];
+  /** The contour layer drawn for this route's map box (`/outdoors/<slug>.contours.svg`), when there is one. */
+  contoursHref?: string;
 }
 
-const { xml, distance, climb, downloadHref, links = [] } = Astro.props;
+const { xml, distance, climb, downloadHref, links = [], contoursHref } = Astro.props;
 
 const all = parseGpx(xml);
 const points = simplifyPoints(all);
-const shape = routeShape(points);
-const profile = elevationProfile(points);
+// The same box as scripts/trip/contours.ts (MAP), so the route sits exactly on its terrain.
+const fit = routeFit(points, 400, 300, 8);
+const r1 = (n: number) => Math.round(n * 10) / 10;
+const line = points.map((p, i) => `${i ? 'L' : 'M'}${fit.project(p).map(r1).join(' ')}`).join('');
+const [startX, startY] = fit.project(all[0]).map(r1);
+const top = all.reduce<(typeof all)[number] | undefined>((best, p) => (p.ele !== undefined && (best?.ele === undefined || p.ele > best.ele) ? p : best), undefined);
+const [topX, topY] = top ? fit.project(top).map(r1) : [0, 0];
 
+const profile = profileFigure(all);
 const metres = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 });
-// The label names the real lowest and highest points, from the whole track: the drawn line is simplified and can cut a summit.
-const elevations = all.flatMap((p) => (p.ele === undefined ? [] : [p.ele]));
-const lowest = elevations.reduce((a, b) => Math.min(a, b), Infinity);
-const highest = elevations.reduce((a, b) => Math.max(a, b), -Infinity);
+const kmOne = new Intl.NumberFormat('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 const stats = `${formatKm(distance)} · ${formatClimb(climb)}`;
-
-// The profile line, and the same line closed down to the baseline for the soft fill under it.
-const [, , width, height] = (profile?.viewBox ?? '0 0 0 0').split(' ').map(Number);
-const pad = 8;
-const area = profile ? `${profile.d} L ${width - pad} ${height - pad} L ${pad} ${height - pad} Z` : '';
+// Each label goes where it covers the least of its own line, inside the drawing.
+const routePoints = points.map((p) => fit.project(p));
+const topText = top ? `${metres.format(top.ele!)} m` : '';
+const topLabel = placeLabel([topX, topY], topText, routePoints, { left: 2, top: 2, right: 398, bottom: 298 });
+const plot = profile && { left: profile.left, top: 2, right: profile.right, bottom: profile.baseline - 1 };
+const highText = profile ? `${metres.format(profile.high.ele)} m · km ${kmOne.format(profile.high.km)}` : '';
+const lowText = profile ? `${metres.format(profile.low.ele)} m` : '';
+const highLabel = profile && placeLabel([profile.high.x, profile.high.y], highText, profile.points, plot!);
+const lowLabel = profile && placeLabel([profile.low.x, profile.low.y], lowText, profile.points, plot!);
 ---
 
 <section class="route wrap" aria-labelledby="route">
   <h2 id="route" class="mono">Route</h2>
   <div class="figures">
-    <svg class="shape" viewBox={shape.viewBox} role="img" aria-label="Shape of the route">
-      <path d={shape.d} fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" />
-    </svg>
+    <figure class="map">
+      <div class="frame">
+        {contoursHref && <img class="terrain" src={contoursHref} alt="" width="400" height="300" loading="lazy" decoding="async" />}
+        <svg class="shape" viewBox={fit.viewBox} role="img" aria-label={contoursHref ? 'Map of the route over contour lines every 100 m' : 'Map of the route'}>
+          <path class="halo" d={line} />
+          <path class="line" d={line} />
+          <circle class="start" cx={startX} cy={startY} r="3" />
+          {top && (
+            <>
+              <circle class="top" cx={topX} cy={topY} r="3.5" />
+              <text class="label" x={topLabel.x} y={topLabel.y} text-anchor={topLabel.anchor}>{topText}</text>
+            </>
+          )}
+        </svg>
+      </div>
+      {contoursHref && <figcaption class="credit mono">Contours: EU-DEM via Terrain Tiles</figcaption>}
+    </figure>
     {profile ? (
       <div class="elevation">
-        <svg class="profile" viewBox={profile.viewBox} role="img" aria-label={`Elevation profile, from ${metres.format(lowest)} m to ${metres.format(highest)} m`}>
-          <path class="area" d={area} stroke="none" />
-          <path d={profile.d} fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" />
+        <svg class="profile" viewBox={profile.viewBox} role="img" aria-label={`Elevation profile, from ${metres.format(profile.low.ele)} m to ${metres.format(profile.high.ele)} m`}>
+          {profile.guides.map((g) => (
+            <>
+              <line class="guide" x1={profile.left} x2={profile.right} y1={g.y} y2={g.y} />
+              <text class="axis" x={profile.left - 6} y={g.y + 3} text-anchor="end">{metres.format(g.ele)}</text>
+            </>
+          ))}
+          <line class="guide" x1={profile.left} x2={profile.right} y1={profile.baseline} y2={profile.baseline} />
+          {profile.ticks.map((t) => (
+            <>
+              <line class="tick" x1={t.x} x2={t.x} y1={profile.baseline} y2={profile.baseline + 4} />
+              <text class="axis" x={t.x} y={profile.baseline + 15} text-anchor="middle">{t.km}</text>
+            </>
+          ))}
+          <text class="axis" x={profile.right} y={profile.baseline + 15} text-anchor="end">{formatKm(distance)}</text>
+          <path class="area" d={profile.area} />
+          <path class="line thin" d={profile.line} />
+          <circle class="top" cx={profile.high.x} cy={profile.high.y} r="3" />
+          <text class="label" x={highLabel!.x} y={highLabel!.y} text-anchor={highLabel!.anchor}>{highText}</text>
+          <circle class="start" cx={profile.low.x} cy={profile.low.y} r="2.5" />
+          <text class="label" x={lowLabel!.x} y={lowLabel!.y} text-anchor={lowLabel!.anchor}>{lowText}</text>
         </svg>
         <p class="stats mono">{stats}</p>
       </div>
@@ -72,15 +115,69 @@ const area = profile ? `${profile.d} L ${width - pad} ${height - pad} L ${pad} $
 
   .figures {
     display: grid;
-    gap: 24px;
+    gap: 32px;
     align-items: end;
   }
 
-  svg { display: block; width: 100%; height: auto; }
+  svg { display: block; width: 100%; height: auto; overflow: visible; }
 
-  .profile { overflow: visible; }
+  /* The terrain image and the route are the same 400 × 300 box, stacked. */
+  .frame { position: relative; }
+
+  .terrain {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .shape { position: relative; }
+
+  .halo,
+  .line {
+    fill: none;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+  }
+
+  .halo { stroke: var(--bg); stroke-width: 5; }
+
+  .line { stroke: currentColor; stroke-width: 2; }
+
+  .line.thin { stroke-width: 1.6; }
+
+  .start { fill: none; stroke: currentColor; stroke-width: 1.5; }
+
+  .top { fill: currentColor; }
+
+  .label,
+  .axis {
+    font-family: var(--font-mono);
+    letter-spacing: 0.04em;
+  }
+
+  .label {
+    font-size: 9px;
+    fill: var(--fg);
+    paint-order: stroke;
+    stroke: var(--bg);
+    stroke-width: 3px;
+  }
+
+  .axis { font-size: 8.5px; fill: var(--muted); }
+
+  .guide { stroke: var(--rule); stroke-width: 1; }
+
+  .tick { stroke: #444; }
 
   .area { fill: rgb(236 236 236 / 0.08); }
+
+  .credit {
+    margin-top: 8px;
+    color: var(--muted);
+    font-size: 10px;
+    opacity: 0.75;
+  }
 
   .stats { color: var(--muted); margin-top: 12px; }
 
@@ -97,6 +194,6 @@ const area = profile ? `${profile.d} L ${width - pad} ${height - pad} L ${pad} $
   .links a:hover { color: var(--fg); }
 
   @media (min-width: 720px) {
-    .figures { grid-template-columns: 1fr 2fr; gap: 40px; }
+    .figures { grid-template-columns: 1fr 1fr; gap: 40px; }
   }
 </style>

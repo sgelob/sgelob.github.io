@@ -9,11 +9,11 @@ import RouteBlock from '../../components/RouteBlock.astro';
 import SectionLabel from '../../components/SectionLabel.astro';
 import TripGrid from '../../components/TripGrid.astro';
 import { getTrips, neighbours, trackPath, tripPath, type Trip } from '../../lib/collections';
-import { activityLabel, formatClimb, formatKm, heroMeta, moreLabels, moreTrips } from '../../lib/outdoors';
+import { activityLabel, contoursPath, formatClimb, formatKm, heroMeta, moreLabels, moreTrips } from '../../lib/outdoors';
 import { coverSize } from '../../lib/paths';
 import { largestVariantUrl } from '../../lib/images';
 import { isoDate } from '../../lib/site';
-import { readTrack } from '../../lib/tracks';
+import { hasContours, readTrack } from '../../lib/tracks';
 
 // getStaticPaths runs isolated from the rest of the frontmatter: everything it uses lives inside it.
 export const getStaticPaths = (async () => {
@@ -63,7 +63,7 @@ const moreRow = moreLabels(activity, more);
     <div class="body wrap"><Content /></div>
   )}
   {track !== false && (
-    <RouteBlock xml={readTrack(track)} distance={distance} climb={climb} downloadHref={trackPath(trip)} links={links} />
+    <RouteBlock xml={readTrack(track)} distance={distance} climb={climb} downloadHref={trackPath(trip)} links={links} contoursHref={hasContours(track) ? contoursPath(trip) : undefined} />
   )}
   <JustifiedGrid photos={photos} />
   <nav class="pager wrap mono" aria-label="More trips" data-pagefind-ignore>
