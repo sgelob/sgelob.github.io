@@ -97,10 +97,11 @@ const titleFromSlug = (slug: string) => slug.split('-').filter(Boolean).map((w) 
 const uploadName = (name: string) => name.toLowerCase().replace(/\s+/g, '-');
 
 /**
- * A trip's public file name: `<slug>-NN.<ext>`, numbered in the sorted order of the originals. Phone names such as
- * `PXL_20260614_073512.jpg` carry the exact day and time and would end up in the photo URLs.
+ * A photo's public file name, for galleries and trips alike: `<slug>-NN.<ext>`, numbered in the order of the originals.
+ * The slug says what the photo belongs to, and camera or phone names (`IMG_4021.JPG`, `PXL_20260614_073512.jpg`,
+ * the latter with the exact day and time) never end up in the photo URLs.
  */
-export const tripPhotoName = (slug: string, index: number, count: number, original: string) => {
+export const photoName = (slug: string, index: number, count: number, original: string) => {
   const ext = /\.[^.]+$/.exec(original)?.[0].toLowerCase() ?? '';
   return `${slug}-${String(index + 1).padStart(Math.max(2, String(count).length), '0')}${ext}`;
 };
@@ -116,8 +117,9 @@ export async function scaffoldGallery(opts: ScaffoldOptions): Promise<string> {
 
   const names = readdirSync(folder).filter((n) => !n.startsWith('.') && isRaster(n));
   if (!names.length) throw new Error(`no images in ${folder}`);
-  const sorted = names.map((name) => ({ from: join(folder, name), name: uploadName(name) })).sort((a, b) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0));
-  const photos = kind === 'outdoors' ? sorted.map((p, i) => ({ ...p, name: tripPhotoName(slug, i, sorted.length, p.name) })) : sorted;
+  // Natural order, so `shot 2.jpg` comes before `shot 10.jpg` without zero-padding the originals first.
+  const sorted = names.map((name) => ({ from: join(folder, name), name: uploadName(name) })).sort((a, b) => a.name.localeCompare(b.name, 'en', { numeric: true }));
+  const photos = sorted.map((p, i) => ({ ...p, name: photoName(slug, i, sorted.length, p.name) }));
 
   console.log(
     'Originals are uploaded unchanged: the lightbox opens the 1600 px variant, but the original is what the no-JS link ' +
