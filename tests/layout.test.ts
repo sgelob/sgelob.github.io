@@ -71,7 +71,7 @@ describe('Seo', () => {
     expect(html).toContain('<meta property="og:title" content="Hello — olegs"');
     expect(html).toContain('<meta property="og:url" content="https://olegs.be/blog/"');
     expect(html).toContain('<meta name="twitter:card" content="summary"');
-    expect(html).toContain('<link rel="alternate" type="application/rss+xml" title="olegs — blog" href="/feed.xml"');
+    expect(html).toContain('<link rel="alternate" type="application/rss+xml" title="olegs — blog and photos" href="/feed.xml"');
     expect(html).not.toContain('og:image');
     expect(html).not.toContain('robots');
   });

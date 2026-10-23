@@ -2,7 +2,7 @@ import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { describe, expect, test } from 'vitest';
 import { parse } from 'yaml';
 import PostList from '../src/components/PostList.astro';
-import { count, read } from './helpers/dist';
+import { count, read, contentCount } from './helpers/dist';
 import { render } from './helpers/render';
 
 test('blog index lists 39 posts; empty category builds', () => { expect(count(read('dist/blog/index.html'), 'class="post-item"')).toBe(39); expect(existsSync('dist/category/product-management/index.html')).toBe(true); });  // Review Focus 4
@@ -102,11 +102,23 @@ describe('post page', () => {
 });
 
 describe('feed', () => {
-  test('39 items with absolute links', () => {
+  test('one item per post and per gallery, newest first, with absolute links', () => {
     const xml = read('dist/feed.xml');
-    expect(count(xml, '<item>')).toBe(39);
-    expect(xml).toContain('<title>olegs — blog</title>');
+    expect(count(xml, '<item>')).toBe(contentCount('posts') + contentCount('galleries'));
+    expect(xml).toContain('<title>olegs — blog and photos</title>');
     expect(xml).toContain('<link>https://olegs.be/2025/04/podcast-naval-ravikant-dure-verita-felicita-natura-umana/</link>');
+    expect(xml).toContain('<link>https://olegs.be/gallery/ljubljana-slovenia/</link>');
+    const dates = [...xml.matchAll(/<pubDate>([^<]+)<\/pubDate>/g)].map((m) => Date.parse(m[1]));
+    expect(dates).toEqual([...dates].sort((a, b) => b - a));
+  });
+
+  test('gallery items carry the intro, the cover and their genre and country', () => {
+    const xml = read('dist/feed.xml');
+    const item = xml.split('<item>').find((i) => i.includes('/gallery/ljubljana-slovenia/')) ?? '';
+    expect(item).toContain('Ljubljana, the capital of Slovenia');
+    expect(item).toContain('https://img.olegs.be/uploads/2013/04/ljubljana-slovenia-75-960.jpg');
+    expect(item).toContain('<category>Slovenia</category>');
+    expect(item).toContain('<category>World Places</category>');
   });
 });
 
