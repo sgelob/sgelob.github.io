@@ -49,7 +49,7 @@ describe('trip page', () => {
     expect(html).toContain('Passo della Gardetta at 2,437 metres');
     expect(html).toMatch(/<section class="route wrap"[^>]*aria-labelledby="route"/);
     expect(html).toContain('aria-label="Elevation profile, from 948 m to 2,439 m"'); // whole metres, from the full track: the pass is 2,437 m
-    expect(html).toMatch(/<a href="\/outdoors\/canosio-gardetta-valle-maira\.gpx" download[^>]*>Download GPX/);
+    expect(html).toMatch(/<a href="\/outdoors\/canosio-gardetta-valle-maira-olegs-be\.gpx" download="canosio-gardetta-valle-maira-olegs-be\.gpx"[^>]*>Download GPX/);
     expect(html).toContain('href="https://www.komoot.com/tour/3297659281"');
     expect(count(html, 'class="ph"')).toBe(26);
     expect(html).not.toMatch(/alt="Photo \d+"/);
@@ -73,8 +73,8 @@ describe('trip page', () => {
     expect(Buffer.byteLength(read(TRIP))).toBeLessThan(70 * 1024);
   });
 
-  test('the GPX download is the sanitised track: points only, the trip title as its name', () => {
-    const gpx = read('dist/outdoors/canosio-gardetta-valle-maira.gpx');
+  test('the GPX download, <slug>-olegs-be.gpx, is the sanitised track: points only, the trip title as its name', () => {
+    const gpx = read('dist/outdoors/canosio-gardetta-valle-maira-olegs-be.gpx');
     expect(gpx).toContain('<name>Canosio – Gardetta</name>');
     expect(count(gpx, '<trkpt ')).toBeGreaterThan(20000);
     for (const banned of ['<time', '<metadata', '<extensions', '<wpt', '<author']) expect(gpx).not.toContain(banned);
@@ -90,6 +90,7 @@ describe('trip page', () => {
     const sitemap = read('dist/sitemap-0.xml');
     expect(sitemap).toContain('https://olegs.be/outdoors/canosio-gardetta-valle-maira/');
     expect(sitemap).not.toContain('.gpx');
-    expect(exists('dist/outdoors/canosio-gardetta-valle-maira.gpx')).toBe(true);
+    expect(exists('dist/outdoors/canosio-gardetta-valle-maira-olegs-be.gpx')).toBe(true);
+    expect(exists('dist/outdoors/canosio-gardetta-valle-maira.gpx')).toBe(false); // only the named download
   });
 });
