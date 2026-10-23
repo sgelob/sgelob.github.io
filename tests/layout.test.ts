@@ -1,6 +1,7 @@
 import { afterEach, describe, expect, test, vi } from 'vitest';
 import Base from '../src/layouts/Base.astro';
 import Seo from '../src/components/Seo.astro';
+import Nav from '../src/components/Nav.astro';
 import NotFound from '../src/pages/404.astro';
 import { render } from './helpers/render';
 
@@ -39,6 +40,7 @@ describe('Base', () => {
     ['/category/agile/', '/blog/', 'true'],
     ['/2019/05/some-post/', '/blog/', 'true'],
     ['/about/', '/about/', 'page'],
+    ['/search/', '/search/', 'page'],
   ])('marks the current section at %s', async (path, href, value) => {
     const html = await render(Base, { props: { title: 'T' }, slots: { default: 'X' }, path });
     expect(html).toMatch(new RegExp(`href="${href}" aria-current="${value}"`));
@@ -48,6 +50,15 @@ describe('Base', () => {
   test('marks no section on the home page', async () => {
     const html = await render(Base, { props: { title: 'T' }, slots: { default: 'X' }, path: '/' });
     expect(html).not.toContain('aria-current');
+  });
+});
+
+describe('Nav', () => {
+  test('Search is the fourth link, after About', async () => {
+    const html = await render(Nav, { path: '/blog/' });
+    const hrefs = [...html.matchAll(/<li[^>]*><a href="([^"]+)"/g)].map((m) => m[1]);
+    expect(hrefs).toEqual(['/photos/', '/blog/', '/about/', '/search/']);
+    expect(html).toMatch(/<a href="\/search\/"[^>]*>\s*Search\s*<\/a>/);
   });
 });
 
@@ -62,6 +73,12 @@ describe('Seo', () => {
     expect(html).toContain('<meta name="twitter:card" content="summary"');
     expect(html).toContain('<link rel="alternate" type="application/rss+xml" title="olegs — blog" href="/feed.xml"');
     expect(html).not.toContain('og:image');
+    expect(html).not.toContain('robots');
+  });
+
+  test('marks a noindex page for robots', async () => {
+    const html = await render(Seo, { props: { title: 'T', lang: 'en', noindex: true } });
+    expect(html).toContain('<meta name="robots" content="noindex">');
   });
 
   test('omits the description when absent and uses a large card with an image', async () => {
@@ -73,11 +90,11 @@ describe('Seo', () => {
   });
 });
 
-test('404 page repeats the three section links', async () => {
+test('404 page repeats the four section links', async () => {
   const html = await render(NotFound, { path: '/404/' });
   expect(html).toContain('<title>Page not found — olegs</title>');
   expect(html).toContain('This page does not exist.');
-  for (const href of ['/photos/', '/blog/', '/about/']) {
+  for (const href of ['/photos/', '/blog/', '/about/', '/search/']) {
     expect(html.split(`href="${href}"`).length - 1).toBe(2);
   }
 });
