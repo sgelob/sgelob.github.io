@@ -116,6 +116,10 @@ Added by Oleg on 2026-10-22. One gallery per line; the dates are the trip dates 
 - Nha Trang
 - Tay Ninh
 
+## MTB rides and hikes
+
+Added by Oleg on 2026-10-23. Publish the mountain-bike rides and hikes recorded in [Komoot](https://www.komoot.com/user/1355917992478). Still to decide: blog posts, galleries, or a section of their own; and how to show the route (Komoot embed, self-hosted GPX on a map, or a static map rendered at build time). Options and open questions in [#4](https://github.com/sgelob/sgelob.github.io/issues/4).
+
 ## How to add one (after the migration lands)
 
 `npm run photos -- --new <slug> <folder-with-jpegs>` creates `src/content/galleries/<slug>.md` with the photos uploaded to R2; then fill title, genre `world-places`, country, cover and date, and push.
