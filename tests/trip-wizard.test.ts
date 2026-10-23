@@ -111,6 +111,7 @@ describe('trip wizard', () => {
     expect(data).toMatchObject({ title: 'Assietta ridge', activity: 'ride', bike: 'xc', distance: 52, climb: 1100, track: false, cover: '2026/09/assietta-ridge-01.jpg' });
     expect(said.some((l) => l.includes('1 photo.'))).toBe(true);
     expect(said.some((l) => l.includes('Downloading from Komoot'))).toBe(true);
+    expect(said.some((l) => l === `  The photos are in ${downloaded}`)).toBe(true);
   });
 
   test('pathOf: a path dragged into the terminal, quoted or with escaped spaces', () => {

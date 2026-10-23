@@ -27,6 +27,8 @@ export interface WizardDeps {
   komoot?: (url: string) => Promise<KomootTour>;
   /** Downloads the tour's photos into a fresh folder and returns it; absent when offline. */
   komootPhotos?: (tour: KomootTour) => Promise<string>;
+  /** Shows a folder to the user (Finder on a Mac) so they can pick the cover; absent in tests. */
+  reveal?: (dir: string) => void;
 }
 
 export interface WizardResult {
@@ -196,6 +198,8 @@ export async function runWizard(deps: WizardDeps): Promise<WizardResult> {
   if (!shared) say(`  Discreet: the day is set to the 1st (${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-01).`);
 
   folder.photos.forEach((name, i) => say(`  ${String(i + 1).padStart(2)}  ${name}`));
+  say(`  The photos are in ${folder.dir}`);
+  deps.reveal?.(folder.dir);
   const cover = await until(deps, 'Cover photo (its number above)', (s) => number(s, 'the cover', { integer: true, min: 1 }), { default: '1' });
   if (cover > folder.photos.length) throw new Error(`there are only ${folder.photos.length} photos`);
   const darkHeader = yes(await ask('Is the cover light at the top or bottom, where the title sits? (y/N)', { default: 'n' }));

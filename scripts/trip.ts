@@ -7,6 +7,7 @@ import { createInterface } from 'node:readline/promises';
 import { fileURLToPath } from 'node:url';
 import { parse } from 'yaml';
 import { storeFromEnv } from './photos/r2';
+import { spawn } from 'node:child_process';
 import { mkdtempSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
@@ -58,6 +59,7 @@ runWizard({
   notesDir: `${process.env.DRAFTS_DIR ?? `${root}olegs-be-drafts`}/outdoors`,
   countries: taxonomies.countries.map((c) => c.slug),
   komoot: (url) => fetchKomootTour(url, fetch),
+  reveal: (dir) => { if (process.platform === 'darwin') spawn('open', [dir], { stdio: 'ignore', detached: true }).unref(); },
   komootPhotos: async (tour) => {
     const dir = mkdtempSync(join(tmpdir(), `komoot-${tour.id}-`));
     await downloadKomootImages(tour.images, dir, fetch, (line) => console.log(line));
