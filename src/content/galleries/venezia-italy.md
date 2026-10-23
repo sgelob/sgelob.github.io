@@ -334,3 +334,7 @@ photos:
     height: 1080
     alt: Weathered grey palazzo with a blue water door on a side canal
 ---
+
+I arrived in Venice under heavy clouds and left in bright sun. The first day was the Grand Canal from the vaporetto, St Mark's Square with the basilica's gilded mosaics and bronze horses, the Doge's Palace, the Torre dell'Orologio and the crowds along the Riva degli Schiavoni. Across the water, San Giorgio Maggiore kept appearing behind gondolas and mooring poles.
+
+Then the quieter side: empty campi with a lone pigeon, leaning bell towers, peeling plaster and window boxes, gondoliers resting under stone bridges, the Giudecca with the Redentore and the Zitelle seen from the far bank. The last photos go back up the Grand Canal, past the Rialto, the Fondaco dei Turchi and the golden mosaics of Palazzo Salviati, to the Scalzi Bridge by the station.

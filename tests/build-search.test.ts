@@ -1,3 +1,5 @@
+import { render } from './helpers/render';
+import JustifiedGrid from '../src/components/JustifiedGrid.astro';
 import { readdirSync } from 'node:fs';
 import { describe, expect, test } from 'vitest';
 import { exists, read, contentCount } from './helpers/dist';
@@ -51,8 +53,14 @@ describe('search index', () => {
     expect(html).toMatch(/<nav class="pager wrap mono" aria-label="More galleries" data-pagefind-ignore/);
   });
 
-  test('a gallery without photo descriptions does not index the "Photo n" fallbacks', () => {
-    expect(read('dist/gallery/berlin-germany/index.html')).not.toContain('data-pagefind-index-attrs');
+  // Every live gallery has alt texts now, so the fallback case is rendered in isolation.
+  test('a photo without a description does not index its "Photo n" fallback', async () => {
+    const html = await render(JustifiedGrid, { props: { photos: [
+      { src: '2012/08/a.jpg', width: 1620, height: 1080, alt: 'Gondolas moored at striped poles' },
+      { src: '2012/08/b.jpg', width: 1620, height: 1080 },
+    ] } });
+    expect(html).toMatch(/<img [^>]*alt="Gondolas moored at striped poles"[^>]*data-pagefind-index-attrs="alt"/);
+    expect(html).not.toMatch(/<img [^>]*alt="Photo 2"[^>]*data-pagefind-index-attrs/);
   });
 
   test('posts are indexed as posts, with date and excerpt', () => {

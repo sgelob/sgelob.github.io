@@ -12,21 +12,27 @@ photos:
   - src: 2008/07/bearder-line-sedia2_merged.jpg
     width: 800
     height: 1200
+    alt: Surreal bald figure in red heels on a wheelchair in a ruin
   - src: 2008/07/bearder-line-barile_gocce_full.jpg
     width: 800
     height: 1200
+    alt: Monkey-like creature crouching on a barrel in a littered courtyard
   - src: 2008/07/bearder-line-mirror_merged.jpg
     width: 800
     height: 1200
+    alt: Pale arms reaching toward a mirror above a grimy sink
   - src: 2008/07/bearder-line-cesso_merged.jpg
     width: 800
     height: 1200
+    alt: Large pale figure slumped beside a broken sink in a tiled ruin
   - src: 2008/07/bearder-line-clown_merged.jpg
     width: 800
     height: 1054
+    alt: Sad clown figure smoking in a wet corner of an abandoned building
   - src: 2008/07/bearder-line-doll_2_merged.jpg
     width: 800
     height: 1054
+    alt: Bearded figure holding a tiny doll under a ruined roof
 ---
 
 Foreword written by [Mauro Santucci](http://www.maurosantucci.com/). Illustrations by [Cristian Girotto](http://www.cristiangirotto.com/). Background pictures by Me.
