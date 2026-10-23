@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="Garmin Connect" xmlns="http://www.topografix.com/GPX/1/1" xmlns:gpxtpx="http://www.garmin.com/xmlschemas/TrackPointExtension/v1">
+  <metadata><author><name>Oleg</name></author><time>2026-06-14T08:01:00Z</time></metadata>
+  <wpt lat="45.1000" lon="7.0000"><name>Parking</name></wpt>
+  <trk>
+    <name>Morning hike</name>
+    <trkseg>
+      <trkpt lat="45.1000" lon="7.0000">
+        <ele>1200</ele>
+        <time>2026-06-14T08:01:00Z</time>
+        <extensions><gpxtpx:TrackPointExtension><gpxtpx:hr>120</gpxtpx:hr></gpxtpx:TrackPointExtension></extensions>
+      </trkpt>
+      <trkpt lat="45.1100" lon="7.0100">
+        <ele>1350</ele>
+        <time>2026-06-14T08:10:00Z</time>
+        <extensions><gpxtpx:TrackPointExtension><gpxtpx:hr>120</gpxtpx:hr></gpxtpx:TrackPointExtension></extensions>
+      </trkpt>
+      <trkpt lat="45.1200" lon="7.0200">
+        <ele>1500</ele>
+        <time>2026-06-14T08:20:00Z</time>
+        <extensions><gpxtpx:TrackPointExtension><gpxtpx:hr>120</gpxtpx:hr></gpxtpx:TrackPointExtension></extensions>
+      </trkpt>
+    </trkseg>
+    <trkseg>
+      <trkpt lat="45.1200" lon="7.0300">
+        <ele>1650</ele>
+        <time>2026-06-14T08:30:00Z</time>
+        <extensions><gpxtpx:TrackPointExtension><gpxtpx:hr>120</gpxtpx:hr></gpxtpx:TrackPointExtension></extensions>
+      </trkpt>
+      <trkpt lat="45.1300" lon="7.0400">
+        <ele>1800</ele>
+        <time>2026-06-14T08:40:00Z</time>
+        <extensions><gpxtpx:TrackPointExtension><gpxtpx:hr>120</gpxtpx:hr></gpxtpx:TrackPointExtension></extensions>
+      </trkpt>
+      <trkpt lat="45.1400" lon="7.0500">
+        <ele>2176</ele>
+        <time>2026-06-14T08:55:00Z</time>
+        <extensions><gpxtpx:TrackPointExtension><gpxtpx:hr>120</gpxtpx:hr></gpxtpx:TrackPointExtension></extensions>
+      </trkpt>
+    </trkseg>
+  </trk>
+</gpx>

@@ -6,13 +6,11 @@ seoTitle: Olegs Belousovs – Product Manager
 seoDescription: Product Manager in Italy (originally from Latvia). Passionate about web community, open source, hiking, MTB, travel, photography, vinyl, and reading.
 ---
 
-Hi, I’m Oleg. I work in tech, currently as a Product Manager, with a background in front-end engineering.
+Hi, I’m Oleg. I work in tech as a Product Manager, with a background in front-end engineering, and I like building digital products that are clear, useful and respectful of people’s privacy.
 
-I enjoy building thoughtful digital products and being part of communities where people share ideas, learn from each other, and make useful things together. I sometimes attend [tech events](/events/) and contribute to open source.
+Away from the screen I’m drawn to offline things: [hiking and mountain biking](/outdoors/) in the Alps, [photographing](/photos/) landscapes, [abandoned places](/photos/genre/abandoned-places/) and [the cities I travel to](/photos/genre/world-places/), a [record on the turntable](https://www.discogs.com/it/user/Xtraboy/collection), a [good book](/books/) and the [quotes](/quotes/) I keep. I also go to [tech events and meetups](/events/), where people share ideas in person. This site is where those pictures and stories end up.
 
-Outside of work, I’m usually drawn to offline things: nature, [photography](https://olegs.be/photos/), [travel](https://olegs.be/photos/genre/world-places/), [vinyl](https://www.discogs.com/it/user/Xtraboy/collection), and good [books](/books/). I care a lot about privacy, trust, and working with people in a clear, straightforward way.
-
-I often attend local Meetups, [Creative Mornings Turin](https://creativemornings.com/cities/trn) and other tech and design events in various Turin communities.
+I enjoy being part of communities where people share ideas, learn from each other and make useful things together: I contribute to open source and go to local Meetups, [Creative Mornings Turin](https://creativemornings.com/cities/trn) and other tech and design events in Turin.
 
 ## How May I Help You?
 

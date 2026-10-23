@@ -14,6 +14,7 @@ describe('search page', () => {
     expect(html).toContain('<html lang="en"');
     expect(html).toContain('<meta name="robots" content="noindex">');
     expect(html).toContain('role="search"');
+    expect(html).toContain('Galleries, trips, posts, quotes, events and books.');
     expect(html).toMatch(/<label class="mono"[^>]*for="q"[^>]*>Search the site<\/label>/);
     expect(html).toMatch(/<input id="q" name="q" type="search"/);
     expect(html).toMatch(/<h1 class="heading"[^>]*>Search<\/h1>/);
@@ -28,16 +29,25 @@ describe('search page', () => {
     expect(code).toContain('pagefind.js');
     expect(exists('dist/_astro/pagefind.js')).toBe(false);
   });
+
+  test('groups the results with an Outdoors group between Galleries and Posts', () => {
+    const html = read('dist/search/index.html');
+    // The page script is inline here; an external module entry would be read the same way as in the lightbox test.
+    const scripts = [...html.matchAll(/<script type="module" src="([^"]+)"/g)].map((m) => m[1]!);
+    const code = [html, ...scripts.map((src) => read(`dist${src}`))].join('\n');
+    // The nav already says "Outdoors", so look for the group itself, between Galleries and Posts.
+    expect(code).toMatch(/label:`Galleries`\},\{type:`outdoors`,label:`Outdoors`\},\{type:`post`/);
+  });
 });
 
 describe('search index', () => {
   test('pagefind wrote its bundle into dist/pagefind', () => {
     expect(exists('dist/pagefind/pagefind.js')).toBe(true);
     const entry = JSON.parse(read('dist/pagefind/pagefind-entry.json')) as { languages: Record<string, { page_count: number }> };
-    // Galleries and the English pages; the Italian posts in an index of their own.
+    // Galleries, trips and the English pages; the Italian posts in an index of their own.
     expect(Object.keys(entry.languages).sort()).toEqual(['en', 'it']);
     const pages = Object.values(entry.languages).reduce((sum, l) => sum + l.page_count, 0);
-    expect(pages).toBe(contentCount('galleries') + contentCount('posts') + 4); // galleries, posts, and events, books, quotes, about
+    expect(pages).toBe(contentCount('galleries') + contentCount('outdoors') + contentCount('posts') + 4); // galleries, trips, posts, and events, books, quotes, about
     expect(readdirSync('dist/pagefind/filter').filter((f) => f.endsWith('.pf_filter')).length).toBeGreaterThan(0);
   });
 
