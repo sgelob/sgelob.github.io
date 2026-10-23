@@ -25,8 +25,8 @@ export interface KomootImage {
   id: number;
   /** The plain image URL: Komoot serves the photo at up to 2048 px on the long side. */
   src: string;
-  /** Position along the tour, which is the shooting order. */
-  index: number;
+  /** Position along the track (the coordinate the photo was taken at), which orders the gallery; undefined when Komoot could not place it. */
+  index: number | undefined;
   createdAt: string;
   /** The size of the upload, not of what Komoot serves. */
   widthPx: number;
@@ -76,10 +76,16 @@ export async function fetchKomootImages(id: string, fetchImpl: FetchLike): Promi
     pages = data.page?.totalPages ?? 1;
     for (const it of data._embedded?.items ?? []) {
       if (typeof it.src !== 'string' || typeof it.id !== 'number') continue;
-      images.push({ id: it.id, src: it.src.split('?')[0], index: Number(it.index ?? 0), createdAt: String(it.created_at ?? ''), widthPx: Number(it.width_px ?? 0), heightPx: Number(it.height_px ?? 0) });
+      images.push({ id: it.id, src: it.src.split('?')[0], index: typeof it.index === 'number' ? it.index : undefined, createdAt: String(it.created_at ?? ''), widthPx: Number(it.width_px ?? 0), heightPx: Number(it.height_px ?? 0) });
     }
   }
-  return images.sort((a, b) => a.index - b.index || a.id - b.id);
+  // Along the track first; photos Komoot could not place on it come last, by the time they were taken.
+  return images.sort((a, b) => {
+    if (a.index !== undefined && b.index !== undefined) return a.index - b.index || a.id - b.id;
+    if (a.index !== undefined) return -1;
+    if (b.index !== undefined) return 1;
+    return a.createdAt.localeCompare(b.createdAt) || a.id - b.id;
+  });
 }
 
 /** Downloads the photos into `dir` as `01.jpg`, `02.jpg`, … in tour order; returns the file names. */

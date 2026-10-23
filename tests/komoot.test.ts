@@ -34,7 +34,7 @@ describe('komoot', () => {
     const tour = await fetchKomootTour('https://www.komoot.com/tour/1134841094', fetchImpl);
     expect(asked[0]).toBe('https://api.komoot.de/v007/tours/1134841094 application/hal+json');
     expect(tour).toMatchObject({ id: '1134841094', name: 'Colle delle Finestre – 10 historic Giro Italia climbs', sport: 'mtb', distanceKm: 93.1, climb: 2754, date: '2023-05-25', recorded: true });
-    expect(tour.images.map((i) => i.id)).toEqual([2, 1]); // sorted by position along the tour
+    expect(tour.images.map((i) => i.id)).toEqual([2, 1, 3]); // along the track, the unplaced one last
     expect(JSON.stringify(tour)).not.toContain('start_point');
     expect(JSON.stringify(tour)).not.toContain('location'); // nor the photos' locations
   });
@@ -48,11 +48,12 @@ describe('komoot', () => {
 });
 
 describe('komoot photos', () => {
-  test('images: plain src, tour order, the size of the upload; none for a tour without', async () => {
+  test('images: plain src, along the track, an unplaced photo last, the size of the upload; none for a tour without', async () => {
     const images = await fetchKomootImages('907671487', answering(200));
     expect(images).toEqual([
       { id: 2, src: 'https://d2exd72xrrp1s7.cloudfront.net/www/gg/b-p2-full/2', index: 300, createdAt: '2022-10-19T15:40:00.000Z', widthPx: 4608, heightPx: 3456 },
       { id: 1, src: 'https://d2exd72xrrp1s7.cloudfront.net/www/gg/a-p1-full/1', index: 1208, createdAt: '2022-10-19T15:52:23.000Z', widthPx: 4608, heightPx: 3456 },
+      { id: 3, src: 'https://d2exd72xrrp1s7.cloudfront.net/www/gg/c-p3-full/3', index: undefined, createdAt: '2022-10-19T15:30:00.000Z', widthPx: 4608, heightPx: 3456 }, // taken first, but not on the track
     ]);
     const none: FetchLike = async () => ({ ok: false, status: 404, text: async () => '', arrayBuffer: async () => new ArrayBuffer(0) });
     expect(await fetchKomootImages('1', none)).toEqual([]);
@@ -64,9 +65,9 @@ describe('komoot photos', () => {
     const bytes: FetchLike = async (url) => { asked.push(url); return { ok: true, status: 200, text: async () => '', arrayBuffer: async () => jpeg.buffer.slice(jpeg.byteOffset, jpeg.byteOffset + jpeg.byteLength) }; };
     const images = await fetchKomootImages('907671487', answering(200));
     const names = await downloadKomootImages(images, dir, bytes);
-    expect(names).toEqual(['01.jpg', '02.jpg']);
-    expect(asked).toEqual(['https://d2exd72xrrp1s7.cloudfront.net/www/gg/b-p2-full/2', 'https://d2exd72xrrp1s7.cloudfront.net/www/gg/a-p1-full/1']);
-    expect(readdirSync(dir).sort()).toEqual(['01.jpg', '02.jpg']);
+    expect(names).toEqual(['01.jpg', '02.jpg', '03.jpg']);
+    expect(asked).toEqual(['https://d2exd72xrrp1s7.cloudfront.net/www/gg/b-p2-full/2', 'https://d2exd72xrrp1s7.cloudfront.net/www/gg/a-p1-full/1', 'https://d2exd72xrrp1s7.cloudfront.net/www/gg/c-p3-full/3']);
+    expect(readdirSync(dir).sort()).toEqual(['01.jpg', '02.jpg', '03.jpg']);
     expect(statSync(join(dir, '01.jpg')).size).toBe(jpeg.byteLength);
   });
 });
