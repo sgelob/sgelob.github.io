@@ -2,7 +2,7 @@ import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { parse } from 'yaml';
 import { writeMarkdown } from '../lib/frontmatter';
-import type { Photo } from '../migrate/galleries';
+import type { Photo } from './gallery';
 import { imageSize } from './resize';
 
 const FRONTMATTER = /^---\n([\s\S]*?)\n---\n?([\s\S]*)$/;
