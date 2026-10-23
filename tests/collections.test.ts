@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { coverSize, galleryPath, neighbours, postPath, sortByDateDesc } from '../src/lib/paths';
+import { coverSize, galleryPath, neighbours, postPath, related, sortByDateDesc } from '../src/lib/paths';
 import { formatDate, formatMonthYear } from '../src/lib/site';
 import { categoryName, countryName, genreName } from '../src/lib/taxonomies';
 
@@ -65,5 +65,37 @@ describe('coverSize', () => {
   it('falls back to the matching photo, else undefined', () => {
     expect(coverSize(gallery({}))).toEqual({ width: 1620, height: 1080 });
     expect(coverSize(gallery({ cover: 'b.jpg' }))).toBeUndefined();
+  });
+});
+
+describe('related', () => {
+  const g = (id: string, date: string, country: string, genre: string) => ({ id, data: { date: new Date(date), country, genre } }) as any;
+  const venezia = g('venezia', '2012-08-11', 'italy', 'world-places');
+  const list = [
+    g('fiat', '2012-09-01', 'italy', 'abandoned-places'), // same country only, closest in date
+    g('florence', '2012-05-01', 'italy', 'world-places'), // same country and genre
+    g('rome', '2010-12-20', 'italy', 'world-places'),
+    g('turin', '2015-07-23', 'italy', 'world-places'),
+    g('munich', '2012-09-10', 'germany', 'world-places'), // same genre only
+    g('zenit', '2012-08-12', 'world', 'old-film-cameras'), // nothing shared, even if close in date
+    venezia,
+  ];
+
+  it('same country and genre first by date proximity, then same country, then same genre', () => {
+    expect(related(list, 'venezia', 10)).toEqual({ by: 'country', galleries: [list[1], list[2], list[3], list[0], list[4]] });
+  });
+
+  it('stops at count and never includes the gallery itself', () => {
+    const picks = related(list, 'venezia')!.galleries.map((e) => e.id);
+    expect(picks).toEqual(['florence', 'rome', 'turin', 'fiat']);
+  });
+
+  it('is by genre when no other gallery shares the country', () => {
+    expect(related(list, 'munich')).toEqual({ by: 'genre', galleries: [venezia, list[1], list[2], list[3]] });
+  });
+
+  it('is undefined when nothing is shared or the id is unknown', () => {
+    expect(related(list, 'zenit')).toBeUndefined();
+    expect(related(list, 'nope')).toBeUndefined();
   });
 });

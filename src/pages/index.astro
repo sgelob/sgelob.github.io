@@ -2,6 +2,7 @@
 import { getEntry } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import GalleryGrid from '../components/GalleryGrid.astro';
+import SectionLabel from '../components/SectionLabel.astro';
 import PostList from '../components/PostList.astro';
 import { getGalleries, getPosts } from '../lib/collections';
 import { home, leadParagraphs, pickFeatured } from '../lib/home';
@@ -36,18 +37,12 @@ const links = [
   </section>
 
   <section aria-labelledby="home-photos">
-    <div class="lab mono">
-      <h2 id="home-photos">Photos</h2>
-      <a href="/photos/">All {galleries.length} galleries <span aria-hidden="true">↗</span></a>
-    </div>
+    <SectionLabel id="home-photos" title="Photos" href="/photos/" link={`All ${galleries.length} galleries`} />
     <GalleryGrid galleries={featured} />
   </section>
 
   <section class="blog" aria-labelledby="home-blog">
-    <div class="lab mono">
-      <h2 id="home-blog">Blog</h2>
-      <a href="/blog/">All {posts.length} posts <span aria-hidden="true">↗</span></a>
-    </div>
+    <SectionLabel id="home-blog" title="Blog" href="/blog/" link={`All ${posts.length} posts`} />
     <PostList posts={posts.slice(0, 3)} embedded />
   </section>
 </Base>
@@ -94,27 +89,6 @@ const links = [
   }
 
   .links a:hover { border-bottom-color: currentColor; }
-
-  .lab {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 24px;
-    margin: 0 var(--gutter) 24px;
-    padding-top: 16px;
-    border-top: 1px solid var(--rule);
-  }
-
-  .lab h2 { font: inherit; }
-
-  .lab a {
-    padding-block: 5px;
-    margin-block: -5px;
-    color: var(--muted);
-    transition: color 120ms ease;
-  }
-
-  .lab a:hover { color: var(--fg); }
 
   .blog { padding-bottom: 96px; }
 
