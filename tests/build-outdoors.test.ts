@@ -58,6 +58,17 @@ describe('trip page', () => {
     expect(html).not.toContain('PhotoSwipeLightbox');
   });
 
+  test('the map over its contour layer, served from the site as an SVG of its own', () => {
+    const html = read(TRIP);
+    expect(html).toMatch(/<img class="terrain"[^>]*src="\/outdoors\/canosio-gardetta-valle-maira\.contours\.svg"/);
+    expect(html).toContain('Contours: EU-DEM via Terrain Tiles');
+    expect(html).toMatch(/<text class="label"[^>]*>2,439 m · km 14\.5<\/text>/);
+    const svg = read('dist/outdoors/canosio-gardetta-valle-maira.contours.svg');
+    expect(svg).toMatch(/^<svg xmlns="http:\/\/www\.w3\.org\/2000\/svg" viewBox="0 0 400 300"/);
+    expect(count(svg, '<path ')).toBeGreaterThan(10);
+    expect(Buffer.byteLength(svg)).toBeLessThan(60 * 1024);
+  });
+
   test('a trip page stays within the gallery page budget', () => {
     expect(Buffer.byteLength(read(TRIP))).toBeLessThan(70 * 1024);
   });

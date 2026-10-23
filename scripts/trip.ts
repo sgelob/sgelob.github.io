@@ -12,6 +12,7 @@ import { mkdtempSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { downloadKomootImages, fetchKomootTour, komootLogin, type KomootAuth } from './trip/komoot';
+import { writeContours } from './trip/contours';
 import { runWizard, type Ask } from './trip/wizard';
 
 if (existsSync('.env')) process.loadEnvFile('.env');
@@ -75,6 +76,7 @@ runWizard({
   notesDir: `${process.env.DRAFTS_DIR ?? `${root}olegs-be-drafts`}/outdoors`,
   countries: taxonomies.countries.map((c) => c.slug),
   komoot: async (url) => fetchKomootTour(url, fetch, await komootAuth()),
+  contours: async (track) => (await writeContours(track, `${root}src/content/outdoors/tracks`, fetch)).path,
   reveal: (dir) => { if (process.platform === 'darwin') spawn('open', [dir], { stdio: 'ignore', detached: true }).unref(); },
   komootPhotos: async (tour) => {
     const dir = mkdtempSync(join(tmpdir(), `komoot-${tour.id}-`));

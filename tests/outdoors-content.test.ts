@@ -1,7 +1,7 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { parse } from 'yaml';
 import { describe, expect, test } from 'vitest';
-import { listTracks, readTrack, TRACKS_DIR } from '../src/lib/tracks';
+import { contoursFile, listContours, listTracks, readTrack, TRACKS_DIR } from '../src/lib/tracks';
 
 const DIR = 'src/content/outdoors';
 const trips = readdirSync(DIR).filter((f) => f.endsWith('.md')).map((f) => ({ slug: f.slice(0, -3), data: parse(readFileSync(`${DIR}/${f}`, 'utf8').split('\n---\n')[0].replace(/^---\n/, '')) as Record<string, unknown> }));
@@ -26,6 +26,11 @@ describe('outdoors content', () => {
   test('hikes and rides are the filter pages: no trip may take those slugs', () => {
     for (const { slug } of trips) expect(['hikes', 'rides'].includes(slug), `${slug}.md would collide with /outdoors/${slug}/`).toBe(false);
   });
+  test('every contour layer in tracks/ belongs to a track a trip shares', () => {
+    const layers = new Set(trips.map((t) => t.data.track).filter((t): t is string => typeof t === 'string').map(contoursFile));
+    for (const file of listContours()) expect(layers.has(file), `tracks/${file} belongs to no shared trip`).toBe(true);
+  });
+
   test('no .gpx outside tracks/', () => {
     expect(readdirSync(DIR).filter((f) => f.endsWith('.gpx'))).toEqual([]);
   });

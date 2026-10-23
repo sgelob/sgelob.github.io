@@ -166,6 +166,31 @@ describe('trip wizard', () => {
     expect(r.photos).toBe(1);
   });
 
+  test('a shared trip gets its contour layer drawn after the track; a failure is reported and the trip is still created', async () => {
+    const drawn: string[] = [];
+    const ok = setup((photos) => [photos, 'hike', 'Rocciamelone', '', 'Val di Susa', '', '16', '1350', 'y', fixture('track.gpx'), '', '2026-08-23', '', 'n', 'Long day.', '']);
+    ok.deps.contours = async (track) => { drawn.push(track); return `/tracks/${track.replace('.gpx', '.contours.svg')}`; };
+    const r = await runWizard(ok.deps);
+    expect(drawn).toEqual(['rocciamelone.gpx']);
+    expect(r.contours).toBe('/tracks/rocciamelone.contours.svg');
+    expect(ok.said.some((l) => l === 'Contours: /tracks/rocciamelone.contours.svg')).toBe(true);
+
+    const failing = setup((photos) => [photos, 'hike', 'Musinè', '', 'Val di Susa', '', '9', '800', 'y', fixture('track.gpx'), '', '2026-03-14', '', 'n', 'Short.', '']);
+    failing.deps.contours = async () => { throw new Error('terrain tile 13/1/1 answered 503'); };
+    const f = await runWizard(failing.deps);
+    expect(f.contours).toBeUndefined();
+    expect(existsSync(f.path)).toBe(true);
+    expect(failing.said.some((l) => l.includes('were not drawn (terrain tile 13/1/1 answered 503); run npm run contours -- musine later'))).toBe(true);
+  });
+
+  test('a discreet trip gets no contour layer', async () => {
+    let called = false;
+    const d = setup((photos) => [photos, 'hike', 'Near home', '', 'Val di Susa', '', '9', '500', 'n', '2026-03-14', '', 'n', 'Quiet.', '']);
+    d.deps.contours = async () => { called = true; return ''; };
+    await runWizard(d.deps);
+    expect(called).toBe(false);
+  });
+
   test('pathOf: a path dragged into the terminal, quoted or with escaped spaces', () => {
     expect(pathOf("'/Users/o/Downloads/2026-09-20 Canosio – Gardetta - komoot.gpx'")).toBe('/Users/o/Downloads/2026-09-20 Canosio – Gardetta - komoot.gpx');
     expect(pathOf('"/tmp/a b.gpx"')).toBe('/tmp/a b.gpx');
