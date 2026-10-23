@@ -2,8 +2,7 @@ import { copyFileSync, existsSync, mkdirSync, readdirSync, statSync, writeFileSy
 import { join } from 'node:path';
 import { stringify } from 'yaml';
 import { writeMarkdown } from '../lib/frontmatter';
-import type { GalleryDoc, Photo } from '../migrate/galleries';
-import { galleryFrontmatter } from '../migrate/frontmatter-order';
+import { galleryFrontmatter, type GalleryDoc, type Photo } from './gallery';
 import { isRaster } from './files';
 import { processUploads } from './process';
 import type { ObjectStore } from './r2';
