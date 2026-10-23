@@ -4,6 +4,7 @@ import Base from '../layouts/Base.astro';
 import GalleryGrid from '../components/GalleryGrid.astro';
 import SectionLabel from '../components/SectionLabel.astro';
 import PostList from '../components/PostList.astro';
+import QuoteOfTheDay from '../components/QuoteOfTheDay.astro';
 import TripGrid from '../components/TripGrid.astro';
 import { getGalleries, getPosts, getTrips } from '../lib/collections';
 import { home, leadParagraphs, pickFeatured } from '../lib/home';
@@ -29,6 +30,8 @@ const title = `${SITE.author} – ${SITE.description}`;
     {/* The sections are linked from the bio itself; the nav and the footer carry the rest. */}
     {intro.map((html) => <p class="lead" set:html={html} />)}
   </section>
+
+  <QuoteOfTheDay />
 
   <section aria-labelledby="home-photos">
     <SectionLabel id="home-photos" title="Photos" href="/photos/" link={`All ${galleries.length} galleries`} />

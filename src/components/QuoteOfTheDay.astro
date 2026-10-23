@@ -1,0 +1,72 @@
+---
+// One quote under the home bio, a different one each day (the site is rebuilt every morning), in the Quotes page's style.
+import { quoteOfTheDay } from '../lib/home';
+import { quoteAuthorPath, quotes } from '../lib/quotes';
+
+const quote = quoteOfTheDay();
+---
+
+<figure class="daily-quote wrap" aria-label="Quote of the day">
+  <blockquote class="quote" lang={quote.lang}><p>{quote.text}</p></blockquote>
+  <figcaption class="mono">
+    <a class="author" href={quoteAuthorPath(quote.author)}>{quote.author.name}</a>
+    <a class="all" href="/quotes/">All {quotes.length} quotes <span aria-hidden="true">↗</span></a>
+  </figcaption>
+</figure>
+
+<style>
+  .daily-quote {
+    max-width: calc(900px + 2 * var(--gutter));
+    margin: 0;
+    padding-block: 0 72px;
+  }
+
+  /* As on the Quotes page: a large opening mark hangs in the left margin, the text keeps the reading size. */
+  .quote {
+    position: relative;
+    margin: 0;
+    padding: 8px 0 0 44px;
+    color: var(--fg);
+    font-size: 21px;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+    text-wrap: pretty;
+  }
+
+  .quote::before {
+    content: "\201C";
+    position: absolute;
+    left: -2px;
+    top: 0;
+    color: var(--muted);
+    font-size: 64px;
+    line-height: 1;
+    font-weight: 500;
+  }
+
+  .quote p { margin: 0; max-width: 34em; }
+
+  figcaption {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+    margin-top: 12px;
+    padding-left: 44px;
+    color: var(--muted);
+  }
+
+  figcaption a {
+    margin-block: -5px;
+    padding-block: 5px;
+    transition: color 120ms ease;
+  }
+
+  figcaption a:hover { color: var(--fg); }
+
+  @media (max-width: 719px) {
+    .daily-quote { padding-bottom: 48px; }
+    .quote { padding-left: 32px; font-size: 18px; }
+    .quote::before { font-size: 48px; }
+    figcaption { padding-left: 32px; }
+  }
+</style>
