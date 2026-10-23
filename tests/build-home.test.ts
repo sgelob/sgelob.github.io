@@ -2,7 +2,7 @@ import { existsSync, readdirSync } from 'node:fs';
 import { describe, expect, test } from 'vitest';
 import { count, read, contentCount } from './helpers/dist';
 
-test('home has intro, 4 gallery cards, 3 posts', () => { const html = read('dist/index.html'); expect(html).toContain('Hi, I’m Oleg'); expect(count(html,'class="gallery-card"')).toBe(4); expect(count(html,'class="post-item"')).toBe(3); expect(html).toContain(`All ${contentCount('galleries')} galleries`); });
+test('home has intro, 4 gallery cards, 3 posts', () => { const html = read('dist/index.html'); expect(html).toContain('Hi, I’m Oleg'); expect(html).toContain('drawn to offline things'); expect(html).toContain('href="/outdoors/"'); expect(html).not.toContain('Creative Mornings'); expect(html).not.toContain('id="home-outdoors"'); expect(count(html,'class="gallery-card"')).toBe(4); expect(count(html,'class="post-item"')).toBe(3); expect(html).toContain(`All ${contentCount('galleries')} galleries`); });
 test('about lives at /about/ and the old slug redirects', () => {
   expect(existsSync('dist/about/index.html')).toBe(true);
   expect(read('dist/about/index.html')).toMatch(/<title>[^<]*Olegs Belousovs[^<]*<\/title>/);
@@ -17,7 +17,6 @@ describe('home', () => {
     expect(html).toContain('<title>Olegs Belousovs – Product Management and Photography</title>'); // not About's
     expect(html).toContain('<meta name="description" content="Product Manager in Italy');
     expect(html).toContain('<html lang="en"');
-    expect(html).toContain('<a href="/events/">tech events</a>'); // intro Markdown link rendered
     expect(html).not.toContain('Creative Mornings'); // third paragraph stays on the About page
     for (const href of ['/events/', '/books/', '/quotes/', 'mailto:44_tildes_agog@icloud.com?subject=Message%20from%20olegs.be', '/photos/', '/blog/']) {
       expect(html).toContain(`href="${href}"`);
@@ -31,6 +30,7 @@ describe('pages', () => {
     const html = read('dist/about/index.html');
     expect(html).toMatch(/<h1[^>]*>Olegs Belousovs<\/h1>/);
     expect(html).toContain('How May I Help You?');
+    expect(html).toContain('<a href="/events/">tech events</a>'); // Markdown link rendered
     expect(html).toContain('class="reading');
     expect(html).toContain('<title>Olegs Belousovs – Product Manager</title>'); // Yoast seoTitle
   });
