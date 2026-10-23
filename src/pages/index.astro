@@ -4,7 +4,8 @@ import Base from '../layouts/Base.astro';
 import GalleryGrid from '../components/GalleryGrid.astro';
 import SectionLabel from '../components/SectionLabel.astro';
 import PostList from '../components/PostList.astro';
-import { getGalleries, getPosts } from '../lib/collections';
+import TripGrid from '../components/TripGrid.astro';
+import { getGalleries, getPosts, getTrips } from '../lib/collections';
 import { home, leadParagraphs, pickFeatured } from '../lib/home';
 import { renderInline } from '../lib/markdown';
 import { SITE } from '../lib/site';
@@ -15,11 +16,13 @@ const intro = leadParagraphs(about.body ?? '').map(renderInline);
 
 const galleries = await getGalleries();
 const posts = await getPosts();
+const trips = await getTrips();
 const featured = pickFeatured(galleries, home.featuredGalleries);
 // Not About's seoTitle: the home and /about/ need different titles.
 const title = `${SITE.author} – ${SITE.description}`;
 
 const links = [
+  { label: 'Outdoors', href: '/outdoors/' },
   { label: 'Events', href: '/events/' },
   { label: 'Books', href: '/books/' },
   { label: 'Quotes', href: '/quotes/' },
@@ -40,6 +43,13 @@ const links = [
     <SectionLabel id="home-photos" title="Photos" href="/photos/" link={`All ${galleries.length} galleries`} />
     <GalleryGrid galleries={featured} />
   </section>
+
+  {trips.length > 0 && (
+    <section aria-labelledby="home-outdoors">
+      <SectionLabel id="home-outdoors" title="Outdoors" href="/outdoors/" link={`All ${trips.length} ${trips.length === 1 ? 'trip' : 'trips'}`} />
+      <TripGrid trips={trips.slice(0, 4)} />
+    </section>
+  )}
 
   <section class="blog" aria-labelledby="home-blog">
     <SectionLabel id="home-blog" title="Blog" href="/blog/" link={`All ${posts.length} posts`} />
