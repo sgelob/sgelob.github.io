@@ -48,6 +48,14 @@ const RASTER = /\.(jpe?g|png|webp)$/i;
 export const slugify = (s: string): string =>
   s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 
+/** A path as typed or dragged into a terminal: surrounding quotes and backslash-escaped spaces removed, `~` expanded. */
+export const pathOf = (answer: string): string => {
+  let p = answer.trim();
+  if ((p.startsWith("'") && p.endsWith("'")) || (p.startsWith('"') && p.endsWith('"'))) p = p.slice(1, -1);
+  p = p.replace(/\\ /g, ' ').trim();
+  return resolve(p.replace(/^~(?=\/|$)/, process.env.HOME ?? '~'));
+};
+
 /** Asks until `parse` accepts the answer; a thrown Error is shown and the question repeats. */
 async function until<T>(deps: Pick<WizardDeps, 'ask' | 'say'>, question: string, parse: (answer: string) => T | Promise<T>, opts?: { default?: string }): Promise<T> {
   for (;;) {
@@ -105,7 +113,7 @@ export async function runWizard(deps: WizardDeps): Promise<WizardResult> {
         say('  Downloading from Komoot…');
         return readFolder(await deps.komootPhotos!(tour!));
       }
-      return readFolder(resolve(answer.replace(/^~(?=\/|$)/, process.env.HOME ?? '~')));
+      return readFolder(pathOf(answer));
     },
     fromKomoot ? { default: '' } : undefined,
   );
@@ -161,7 +169,7 @@ export async function runWizard(deps: WizardDeps): Promise<WizardResult> {
   const links: TripLink[] = [];
   if (shared) {
     gpx = await until(deps, 'GPX export (the file as Komoot or Wikiloc exported it)', (s) => {
-      const file = resolve(s.trim().replace(/^~(?=\/|$)/, process.env.HOME ?? '~'));
+      const file = pathOf(s);
       if (!existsSync(file)) throw new Error(`${file} does not exist`);
       const points = parseGpx(readFileSync(file, 'utf8')).length;
       if (points < 2) throw new Error(`${file} has no track points (a route-only export?)`);
