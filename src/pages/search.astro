@@ -1,8 +1,9 @@
 ---
+import { pageTitle } from '../lib/site';
 import Base from '../layouts/Base.astro';
 ---
 
-<Base title="Search — olegs" description="Search the galleries, posts, quotes, events and books on olegs.be." lang="en" noindex>
+<Base title={pageTitle('Search')} description="Search the galleries, posts, quotes, events and books on olegs.be." lang="en" noindex>
   <section class="search wrap">
     <h1 class="heading">Search</h1>
     <p class="lead">Galleries, trips, posts, quotes, events and books.</p>

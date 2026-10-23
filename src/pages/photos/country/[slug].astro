@@ -1,4 +1,5 @@
 ---
+import { pageTitle } from '../../../lib/site';
 import type { GetStaticPaths } from 'astro';
 import Base from '../../../layouts/Base.astro';
 import PhotosHeader from '../../../components/PhotosHeader.astro';
@@ -34,7 +35,7 @@ const galleries = country ? await getGalleriesBy('country', country.slug) : [];
 {props.redirectTo !== undefined ? (
   <Redirect to={props.redirectTo} />
 ) : country && (
-  <Base title={`${country.name} — Photos — olegs`}>
+  <Base title={pageTitle(country.name, 'Photos')}>
     <PhotosHeader heading={country.name} />
     <GalleryGrid galleries={galleries} />
   </Base>
