@@ -1,6 +1,7 @@
 import { existsSync, readdirSync } from 'node:fs';
 import { describe, expect, test } from 'vitest';
 import { count, read, contentCount } from './helpers/dist';
+import { quotes } from '../src/lib/quotes';
 
 test('home has the bio with its section links and no link row, 4 gallery cards, 3 posts', () => {
   const html = read('dist/index.html');
@@ -138,4 +139,19 @@ describe('home accessibility', () => {
     expect(html).toMatch(/<blockquote class="quote" lang="it"[^>]*><p[^>]*>Senza crisi non ci sono sfide/);
     expect(html).toMatch(/<blockquote class="quote" data-astro-cid-\w+><p[^>]*>The best way to predict your future/);
   });
+});
+
+test('home has the quote of the day under the bio, linked to its author and to all quotes', () => {
+  const html = read('dist/index.html');
+  const block = html.match(/<figure class="daily-quote[\s\S]*?<\/figure>/)?.[0] ?? '';
+  expect(html.indexOf('<figure class="daily-quote')).toBeGreaterThan(html.indexOf('<section class="intro'));
+  expect(html.indexOf('<figure class="daily-quote')).toBeLessThan(html.indexOf('id="home-photos"'));
+  const text = block.match(/<blockquote[^>]*><p[^>]*>([\s\S]*?)<\/p>/)?.[1] ?? '';
+  const quote = quotes.find((q) => q.text.replace(/&/g, '&amp;').replace(/</g, '&lt;') === text);
+  expect(quote).toBeDefined();
+  expect(block).toContain(`href="/quote-author/${quote!.author.slug}/"`);
+  expect(existsSync(`dist/quote-author/${quote!.author.slug}/index.html`)).toBe(true);
+  expect(block).toContain(`All ${quotes.length} quotes`);
+  expect(block).toContain('href="/quotes/"');
+  if (quote!.lang) expect(block).toContain(`lang="${quote!.lang}"`);
 });
