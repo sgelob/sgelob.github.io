@@ -47,7 +47,7 @@ describe('photos pages', () => {
     const html = read('dist/photos/index.html');
     expect(html).toContain('<title>Photography by Olegs Belousovs</title>'); // Yoast seoTitle of the photos page
     expect(html).toContain('<meta name="description" content="Pictures and reportages');
-    expect(html).toContain('I&#39;m constantly updating these photo galleries.');
+    expect(html).toContain('I’m constantly updating these photo galleries.');
     expect(html).toMatch(/<a href="\/photos\/" aria-current="page"[^>]*>All<\/a>/);
     expect(html).toContain('href="/photos/genre/world-places/"');
     expect(count(html, 'aria-current="page"')).toBe(2); // nav section + filter

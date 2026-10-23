@@ -434,7 +434,7 @@ Ottimo libro per chi fa sviluppo front-end e responsive web design.
 ### Blog sulle Web Performance
 
 - [Web Performance Today](http://bit.ly/2cvlobR)
-- [O'Reilly Performance](http://oreil.ly/2cc1aWi)
+- [O’Reilly Performance](http://oreil.ly/2cc1aWi)
 - [Planet Performance](http://bit.ly/2caZny7)
 - [Catchpoint’s Blog](http://bit.ly/2cvlq3p)
 - [Steve Souders](http://bit.ly/2cEOXLv)

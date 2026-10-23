@@ -7,6 +7,13 @@ import { render } from './helpers/render';
 
 afterEach(() => { vi.unstubAllEnvs(); });
 
+test('the Search nav item is an icon with a hidden name, still linking /search/', async () => {
+  vi.stubEnv('PUBLIC_CF_BEACON_TOKEN', '');
+  const html = await render(Base, { props: { title: 'T' }, slots: { default: 'X' } });
+  expect(html).toMatch(/<a href="\/search\/" class="icon"[^>]*><svg aria-hidden="true"[\s\S]*?<\/svg>\s*<span class="visually-hidden"[^>]*>Search<\/span>\s*<\/a>/);
+  expect(html).not.toMatch(/>\s*Search\s*<\/a>/);
+});
+
 test('Base renders nav links and no beacon without token', async () => { vi.stubEnv('PUBLIC_CF_BEACON_TOKEN', ''); const html = await render(Base, { props: { title: 'T' }, slots: { default: 'X' } }); expect(html).toContain('href="/photos/"'); expect(html).not.toContain('cloudflareinsights'); expect(html).toContain('<html lang="en"'); });
 
 describe('Base', () => {
@@ -45,7 +52,7 @@ describe('Base', () => {
     ['/search/', '/search/', 'page'],
   ])('marks the current section at %s', async (path, href, value) => {
     const html = await render(Base, { props: { title: 'T' }, slots: { default: 'X' }, path });
-    expect(html).toMatch(new RegExp(`href="${href}" aria-current="${value}"`));
+    expect(html).toMatch(new RegExp(`href="${href}"( class="icon")? aria-current="${value}"`));
     expect(html.match(/aria-current=/g)).toHaveLength(1);
   });
 
@@ -60,7 +67,7 @@ describe('Nav', () => {
     const html = await render(Nav, { path: '/blog/' });
     const hrefs = [...html.matchAll(/<li[^>]*><a href="([^"]+)"/g)].map((m) => m[1]);
     expect(hrefs).toEqual(['/about/', '/photos/', '/outdoors/', '/blog/', '/search/']);
-    expect(html).toMatch(/<a href="\/search\/"[^>]*>\s*Search\s*<\/a>/);
+    expect(html).toMatch(/<a href="\/search\/"[^>]*>[\s\S]*?<span class="visually-hidden"[^>]*>Search<\/span>\s*<\/a>/); // an icon with a hidden name
   });
 });
 

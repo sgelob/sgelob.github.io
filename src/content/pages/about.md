@@ -8,9 +8,9 @@ seoDescription: Product Manager in Italy (originally from Latvia). Passionate ab
 
 Hi, I’m Oleg. I work in tech as a Product Manager, with a background in front-end engineering, and I like building digital products that are clear, useful and respectful of people’s privacy.
 
-Away from the screen I’m drawn to offline things: hiking and mountain biking in the Alps, photographing landscapes, abandoned places and the cities I travel to, a [record on the turntable](https://www.discogs.com/it/user/Xtraboy/collection), a good book. This site is where those pictures and stories end up.
+Away from the screen I’m drawn to offline things: [hiking and mountain biking](/outdoors/) in the Alps, [photographing](/photos/) landscapes, [abandoned places](/photos/genre/abandoned-places/) and [the cities I travel to](/photos/genre/world-places/), a [record on the turntable](https://www.discogs.com/it/user/Xtraboy/collection), a [good book](/books/). This site is where those pictures and stories end up.
 
-I enjoy being part of communities where people share ideas, learn from each other and make useful things together: I sometimes attend [tech events](/events/), contribute to open source, and go to local Meetups, [Creative Mornings Turin](https://creativemornings.com/cities/trn) and other tech and design events in Turin. Elsewhere on this site: [photos](/photos/), [trips](/outdoors/), [books](/books/) and [quotes](/quotes/).
+I enjoy being part of communities where people share ideas, learn from each other and make useful things together: I sometimes attend [tech events](/events/), contribute to open source, and go to local Meetups, [Creative Mornings Turin](https://creativemornings.com/cities/trn) and other tech and design events in Turin. I also keep a page of [quotes](/quotes/) I return to.
 
 ## How May I Help You?
 

@@ -12,7 +12,7 @@ photos:
   - src: 2011/08/brussels-belgium-01.jpg
     width: 1620
     height: 1080
-    alt: Yellow corner building with a "Drug Opera" sign under grey sky
+    alt: Yellow corner building with a “Drug Opera” sign under grey sky
   - src: 2011/08/brussels-belgium-02.jpg
     width: 864
     height: 1080
@@ -108,7 +108,7 @@ photos:
   - src: 2011/08/brussels-belgium-25.jpg
     width: 1620
     height: 1080
-    alt: Atomium's steel spheres against cloudy sky with parked cars below
+    alt: Atomium’s steel spheres against cloudy sky with parked cars below
   - src: 2011/08/brussels-belgium-27.jpg
     width: 720
     height: 1080
@@ -228,7 +228,7 @@ photos:
   - src: 2011/08/brussels-belgium-55.jpg
     width: 1620
     height: 1080
-    alt: Atomium's steel spheres and tubes seen from below
+    alt: Atomium’s steel spheres and tubes seen from below
   - src: 2011/08/brussels-belgium-56.jpg
     width: 1620
     height: 1080

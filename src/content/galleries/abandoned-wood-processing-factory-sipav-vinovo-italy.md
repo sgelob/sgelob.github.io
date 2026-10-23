@@ -101,7 +101,7 @@ photos:
   - src: 2009/04/abandoned-wood-processing-factory-sipav-italy-23.jpg
     width: 1620
     height: 1080
-    alt: Reeds growing at the water's edge against a concrete wall
+    alt: Reeds growing at the water’s edge against a concrete wall
   - src: 2009/04/abandoned-wood-processing-factory-sipav-italy-24.jpg
     width: 1620
     height: 1080

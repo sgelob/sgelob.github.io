@@ -93,7 +93,7 @@ photos:
     alt: Rocky mountain ridge at sunset between trees and white apartment towers
 ---
 
-A few days in Grenoble, the city that sits in a bowl between the Alps. The snow-capped peaks are the backdrop to almost everything here: to the UFO-shaped “Lucie Aubrac” middle school, to a mother and child crossing the street in Saint-Martin-d'Hères, to the sunsets.
+A few days in Grenoble, the city that sits in a bowl between the Alps. The snow-capped peaks are the backdrop to almost everything here: to the UFO-shaped “Lucie Aubrac” middle school, to a mother and child crossing the street in Saint-Martin-d’Hères, to the sunsets.
 
 I moved around on the modern “TAG” tramway, very efficient, and went up to the mountain fortress of “La Bastille” in the bubble-shaped cable car to see the city from above, by day and by night. Down in the streets there were people socialising, playing music and drinking beer at the “City Garden”, a Ferris wheel set up for the fair, and young people taking advantage of the first warm days of spring to play and bathe in the many fountains, like the one in “Grenette Square”.
 
