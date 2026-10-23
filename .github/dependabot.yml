@@ -7,6 +7,11 @@ updates:
     schedule:
       interval: weekly
     open-pull-requests-limit: 5
+    ignore:
+      # astro check (@astrojs/check) refuses TypeScript 7.0 and npm ci fails on its peer range, which broke the
+      # deploy after #13. Lift this once Astro's type checking supports TypeScript 7 (7.1+ via ts-content-mapper).
+      - dependency-name: typescript
+        update-types: ['version-update:semver-major']
     groups:
       minor-and-patch:
         update-types: [minor, patch]
