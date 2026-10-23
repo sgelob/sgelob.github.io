@@ -25,6 +25,30 @@ This copies the photos into `UPLOADS_DIR/yyyy/mm/` (the local tree of originals,
 - `cover` is an upload path, `yyyy/mm/file.jpg`, usually one of the gallery's photos.
 - `darkHeader: true` is for covers that are light at the top or bottom: the hero darkens them more under the nav and the title.
 
+## Add a trip
+
+A trip is a hike or a mountain-bike ride in `src/content/outdoors/<slug>.md`, with its photos and an optional GPX track.
+
+```bash
+UPLOADS_DIR=./olegs-be-data/uploads npm run photos -- --new --outdoors <slug> <folder-with-jpegs> --date YYYY-MM-DD
+```
+
+This does what a gallery does (photos copied into `UPLOADS_DIR/yyyy/mm/`, uploaded with their variants) and writes the trip file with placeholders. It refuses to overwrite an existing trip. Run the photos through ImageOptim first: it strips the EXIF, GPS position included, and they are uploaded unchanged.
+
+Front matter to complete, in this order:
+
+- `activity: hike | ride`; `bike: xc | trail` for rides only (the scaffold leaves it as a comment).
+- `distance` in km, `climb` in metres, `area` (the range or valley) and `country` (a slug from `src/data/taxonomies.yaml`).
+- `track`: required, and left empty on purpose, so the build fails until it is set. Either the name of a `.gpx` file in `src/content/outdoors/tracks/` (the page then shows the route, the elevation profile and a GPX download), or `false` for a discreet trip.
+- `links`: optional list of `label` and `url`, such as the route on Komoot or Wikiloc. Not for a discreet trip.
+- `cover` (with `coverWidth` and `coverHeight`), `darkHeader`, optional `seoDescription`, and `photos` with an `alt` for each one.
+
+Shareable GPX files are committed under `src/content/outdoors/tracks/`: the repository is public, so only tracks that are fine to share go there. A discreet trip (`track: false`) never has its export in the repo: if it is kept, it stays in `olegs-be-data/`, which is git-ignored.
+
+A discreet trip has its `date` on the 1st of the month and no `links` (the build checks both), and its story names no start, parking, access road or exact timing.
+
+The story is English and first person, below the front matter. Research the place and the route before writing: Komoot, Wikiloc and, for rides, Trailforks; hut and club sites; blogs; and the history of what is along the way.
+
 ## Add a post
 
 Add a Markdown file to `src/content/posts/` with these frontmatter fields:
