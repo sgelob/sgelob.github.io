@@ -1,5 +1,6 @@
 ---
 title: Abandoned “Elbi” Electrical Components Manufacturing Factory – Collegno, Italy
+cardTitle: "Abandoned “Elbi” Factory – Collegno"
 date: "2008-10-05T19:00:58"
 genre: abandoned-places
 country: italy
