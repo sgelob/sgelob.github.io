@@ -56,24 +56,24 @@ export function distanceKm(a: TrackPoint, b: TrackPoint): number {
   return 2 * EARTH_RADIUS_KM * Math.asin(Math.sqrt(h));
 }
 
-export interface MoveStartOptions {
+export interface CircuitOptions {
   /** A number in [0, 1); `Math.random` unless a test fixes it. The draw is made once, when the track is written, never again. */
   random?: () => number;
-  /** How far, in a straight line, the published start is from the real one: a random distance between the two. */
+  /** How far, in a straight line, the circuit begins from the real start: a random distance between the two. */
   minKm?: number;
   maxKm?: number;
 }
 
 /**
- * A route with approximate ends: every point kept, but starting somewhere on the path 1 to 1.5 km (straight line) from the real
- * start. The first segment runs from there to the real finish, the second from the real start to just before the moved one:
- * two segments, so nothing draws a straight line from the real finish to the real start.
+ * A route with approximate ends as a closed circuit: every point once, from a point on the path 1 to 1.5 km (straight
+ * line) from the real start to the real finish, then from the real start back round to where it began. It has no start
+ * or finish of its own: nothing marks where the ride really began or ended.
  */
-export function moveStart(points: readonly TrackPoint[], { random = Math.random, minKm = 1, maxKm = 1.5 }: MoveStartOptions = {}): [TrackPoint[], TrackPoint[]] {
+export function asCircuit(points: readonly TrackPoint[], { random = Math.random, minKm = 1, maxKm = 1.5 }: CircuitOptions = {}): TrackPoint[] {
   const target = minKm + random() * (maxKm - minKm);
   const at = points.findIndex((p) => distanceKm(p, points[0]) >= target);
-  if (at < 1) throw new Error(`the route never gets ${target.toFixed(1)} km from its start: there is nowhere to move the start to`);
-  return [points.slice(at), points.slice(0, at)];
+  if (at < 1) throw new Error(`the route never gets ${target.toFixed(1)} km from its start: there is nowhere to begin the circuit`);
+  return [...points.slice(at), ...points.slice(0, at), points[at]];
 }
 
 const round1 = (n: number): number => Math.round(n * 10) / 10;
@@ -156,9 +156,6 @@ export interface ProfileFigure {
  * The profile of the whole track: distance and extremes are measured on every point, the line is drawn from at most
  * `max` of them. The altitude axis spans the track's own range, rounded out to 100 m, plus a band below. Undefined with fewer than two elevations.
  */
-/** A route's elevation profile without its coordinates: `[km from the start, elevation in m]` pairs. */
-export type ProfileSeries = [number, number][];
-
 /** Cumulative distance and elevation of the points that have one. */
 function seriesOf(points: readonly TrackPoint[]): { km: number[]; ele: number[] } {
   const withEle = points.filter((p): p is TrackPoint & { ele: number } => p.ele !== undefined);
@@ -167,31 +164,10 @@ function seriesOf(points: readonly TrackPoint[]): { km: number[]; ele: number[] 
   return { km, ele: withEle.map((p) => p.ele) };
 }
 
-/**
- * The profile of a whole route as a small file can keep it: at most about `max` pairs (every nth, plus the first, last,
- * highest and lowest), km to the metre and whole metres of elevation. A page whose track has approximate ends draws its profile from this.
- */
-export function profileSeries(points: readonly TrackPoint[], max = 400): ProfileSeries {
-  const { km, ele } = seriesOf(points);
-  if (km.length < 2) return [];
-  let hi = 0, lo = 0;
-  ele.forEach((e, i) => { if (e > ele[hi]) hi = i; if (e < ele[lo]) lo = i; });
-  const step = Math.max(1, Math.ceil(km.length / max));
-  const last = km.length - 1;
-  const series: ProfileSeries = [];
-  for (let i = 0; i <= last; i++) if (i % step === 0 || i === last || i === hi || i === lo) series.push([Math.round(km[i] * 1000) / 1000, Math.round(ele[i])]);
-  return series;
-}
-
 /** The elevation profile of a track (see `drawProfile`). */
 export function profileFigure(points: readonly TrackPoint[], width = 400, height = 170, max = 400): ProfileFigure | undefined {
   const { km, ele } = seriesOf(points);
   return drawProfile(km, ele, width, height, max);
-}
-
-/** The same figure from a profile file's pairs, for a track whose drawn part is not the whole route. */
-export function profileFromSeries(series: readonly (readonly [number, number])[], width = 400, height = 170, max = 400): ProfileFigure | undefined {
-  return drawProfile(series.map(([k]) => k), series.map(([, e]) => e), width, height, max);
 }
 
 function drawProfile(km: readonly number[], ele: readonly number[], width: number, height: number, max: number): ProfileFigure | undefined {

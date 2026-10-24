@@ -96,19 +96,20 @@ describe('trip page', () => {
     expect(exists('dist/outdoors/canosio-gardetta-valle-maira.gpx')).toBe(false); // only the named download
   });
 
-  test('approximate ends: the whole route without a gap, the start ring elsewhere, the whole ride’s profile', () => {
-    const slug = 'castiglione-pavarolo-cordova-baldissero-rivodora-san-martino';
+  test.each(['castiglione-pavarolo-cordova-baldissero-rivodora-san-martino', 'castiglione-sassi-superga-rivodora-tanohill-cordova-pavarolo'])(
+    'approximate ends (%s): a closed circuit with no start or finish on the map, in the GPX or on the profile', (slug) => {
     const html = read(`dist/outdoors/${slug}/index.html`);
     const route = html.slice(html.indexOf('<section class="route'), html.indexOf('</section>', html.indexOf('<section class="route')));
-    expect(route).toContain('start and finish approximate');
-    expect(route).toMatch(/<circle class="start" cx="[\d.]+" cy="[\d.]+" r="3"/); // the ring marks the published start
+    expect(route).toContain('start and finish not shown');
+    const map = route.slice(route.indexOf('<svg class="shape"'), route.indexOf('</svg>', route.indexOf('<svg class="shape"')));
+    expect(map).not.toMatch(/<circle class="start"/); // no start ring on the map (the profile marks its low point with the same class)
     const d = route.match(/<path class="line" d="([^"]+)"/)?.[1] ?? '';
-    expect(d.match(/M/g)).toHaveLength(2); // two pieces drawn end to end, with no line between the real finish and start
-    expect(route).toMatch(/text-anchor="end"[^>]*>30\.1 km</); // the profile is the whole ride, from its profile file
-    expect(route).toMatch(/<a href="https:\/\/www\.komoot\.com\/tour\/3352410239"/);
-    expect(exists(`dist/outdoors/${slug}.profile.json`)).toBe(false); // read at build time, not published
+    expect(d.match(/M/g)).toHaveLength(1); // one unbroken line
+    expect(exists(`dist/outdoors/${slug}.profile.json`)).toBe(false);
     const gpx = read(`dist/outdoors/${slug}-olegs-be.gpx`);
-    expect(gpx.match(/<trkpt/g)?.length ?? 0).toBeGreaterThan(11000); // every point of the ride
-    expect(gpx.match(/<trkseg>/g)).toHaveLength(2); // and no straight line in a GPS app
+    expect(gpx.match(/<trkseg>/g)).toHaveLength(1);
+    const points = [...gpx.matchAll(/<trkpt lat="([^"]+)" lon="([^"]+)"/g)].map((m) => `${m[1]},${m[2]}`);
+    expect(points.length).toBeGreaterThan(5000);
+    expect(points[points.length - 1]).toBe(points[0]); // the circuit closes where it starts
   });
 });

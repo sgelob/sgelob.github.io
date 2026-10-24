@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { distanceKm, moveStart, parseGpx, parseSegments, profileFigure, profileFromSeries, profileSeries, routeFit, routeShape, sanitizeGpx, simplifyPoints, type TrackPoint } from '../src/lib/gpx';
+import { asCircuit, distanceKm, parseGpx, parseSegments, profileFigure, routeFit, routeShape, sanitizeGpx, simplifyPoints, type TrackPoint } from '../src/lib/gpx';
 
 const xml = readFileSync('tests/fixtures/track.gpx', 'utf8');
 
@@ -77,32 +77,31 @@ describe('sanitizeGpx', () => {
   });
 });
 
-describe('moveStart', () => {
+describe('asCircuit', () => {
   // About 0.1 km a step: 0.0009° of latitude.
   const north = (from: TrackPoint, steps: number): TrackPoint[] => Array.from({ length: steps }, (_, i) => ({ lat: from.lat + 0.0009 * (i + 1), lon: from.lon, ele: 300 }));
   const origin: TrackPoint = { lat: 45, lon: 7.5, ele: 250 };
   const line = [origin, ...north(origin, 100)]; // 10 km north, one point every 100 m
 
-  it('keeps every point, starting on the path 1 to 1.5 km from the real start and coming round to just before it', () => {
+  it('one closed loop through every point, starting and ending 1 to 1.5 km along the path from the real start', () => {
     for (const r of [0, 0.5, 0.999]) {
-      const [first, second] = moveStart(line, { random: () => r });
-      expect([...first, ...second].length).toBe(line.length); // nothing left out
-      const at = line.indexOf(first[0]);
-      expect(first).toEqual(line.slice(at)); // from the moved start to the real finish
-      expect(second).toEqual(line.slice(0, at)); // then from the real start to just before the moved one
-      const d = distanceKm(first[0], origin);
+      const loop = asCircuit(line, { random: () => r });
+      const at = line.indexOf(loop[0]);
+      expect(loop).toEqual([...line.slice(at), ...line.slice(0, at), line[at]]); // to the real finish, then from the real start round to where it began
+      expect(loop[loop.length - 1]).toBe(loop[0]); // closed: no start or finish of its own
+      const d = distanceKm(loop[0], origin);
       expect(d).toBeGreaterThanOrEqual(1 + 0.5 * r);
       expect(d).toBeLessThan(1 + 0.5 * r + 0.11);
     }
   });
 
   it('a new draw each time unless the caller fixes the randomness', () => {
-    const draws = new Set(Array.from({ length: 20 }, () => line.indexOf(moveStart(line)[0][0])));
+    const draws = new Set(Array.from({ length: 20 }, () => line.indexOf(asCircuit(line)[0])));
     expect(draws.size).toBeGreaterThan(1);
   });
 
   it('refuses a route that never gets 1 km from its start', () => {
-    expect(() => moveStart([origin, ...north(origin, 8)], { random: () => 0 })).toThrow(/never gets/);
+    expect(() => asCircuit([origin, ...north(origin, 8)], { random: () => 0 })).toThrow(/never gets/);
   });
 });
 
@@ -123,26 +122,3 @@ describe('segments', () => {
   });
 });
 
-describe('profileSeries', () => {
-  const wave: TrackPoint[] = Array.from({ length: 3000 }, (_, i) => ({ lat: 45 + i * 0.00009, lon: 7.5, ele: 300 + Math.round(200 * Math.sin(i / 300)) + (i === 1234 ? 90 : 0) }));
-
-  it('keeps distance and elevation only, at most about `max` points, with the highest and lowest kept exactly', () => {
-    const series = profileSeries(wave, 400);
-    expect(series.length).toBeLessThanOrEqual(402);
-    expect(series[0]).toEqual([0, wave[0].ele]);
-    for (const pair of series) expect(pair).toHaveLength(2);
-    expect(Math.max(...series.map(([, e]) => e))).toBe(Math.max(...wave.map((p) => p.ele!)));
-    expect(Math.min(...series.map(([, e]) => e))).toBe(Math.min(...wave.map((p) => p.ele!)));
-    let total = 0; for (let i = 1; i < wave.length; i++) total += distanceKm(wave[i - 1], wave[i]);
-    expect(series[series.length - 1][0]).toBeCloseTo(total, 1);
-  });
-
-  it('profileFromSeries draws the same figure as profileFigure from the track', () => {
-    const fromTrack = profileFigure(wave)!;
-    const fromSeries = profileFromSeries(profileSeries(wave, 4000))!;
-    expect(fromSeries.totalKm).toBeCloseTo(fromTrack.totalKm, 1);
-    expect(fromSeries.high.ele).toBe(fromTrack.high.ele);
-    expect(fromSeries.low.ele).toBe(fromTrack.low.ele);
-    expect(fromSeries.ticks).toEqual(fromTrack.ticks);
-  });
-});
