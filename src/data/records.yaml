@@ -15,7 +15,7 @@
     height: 546
   tracks:
     - position: A
-      title: Tape (12’’ Edit)
+      title: Tape (12″ Edit)
     - position: B1
       title: Tape (Burnski Remix)
       video: WI7cCJ3S8uM
@@ -68,20 +68,6 @@
       duration: 4:55
       video: C_FcCGc2s6g
   videos:
-    - title: Ooops (Mellow Birds Mix)
-      id: gBcs9UOw350
-    - title: Ooops (Utsula Head Mix)
-      id: HM7Py5AI_3I
-    - title: Ooops (Eric’s Kup Of Hysteria Mix)
-      id: E4PNCB97WfU
-    - title: Ooops (Eric’s Kup Of Hysteria Edit)
-      id: zdntQ-xE5O8
-    - title: Ski Family
-      id: xxe0lBQ9OhE
-    - title: 808091 (Live)
-      id: C_FcCGc2s6g
-    - title: Ooops
-      id: UIwvuVHho6k
     - title: Ooops (Mellow Birds Mix)
       id: gBcs9UOw350
     - title: Ooops (Utsula Head Mix)
@@ -147,40 +133,28 @@
       video: 0ZJRI0mszy0
     - position: "1"
       title: Because Of...
-      video: WbHGS2NfBlg
     - position: "2"
       title: A Tribute
-      video: BuUiJyIs-uk
     - position: "3"
       title: All My Lovin’
-      video: _CCicxGLFIs
     - position: "4"
       title: Circumstances
-      video: Yya0hnjSjY8
     - position: "5"
       title: Suite For B-Boy
-      video: tCOrsm_MRbQ
     - position: "6"
       title: And You Know
-      video: LoaiGeXfGp4
     - position: "7"
       title: Somewhere
-      video: bNJOT9ylqJw
     - position: "8"
       title: And I Still Grow
-      video: tM2INyyMs9M
     - position: "9"
       title: Jade Knights, 2
-      video: jfiTjSkb03M
     - position: "10"
       title: Untitled
-      video: rhIVMFo8LCw
     - position: "11"
       title: Vivement Dimanche!
-      video: SperqWwsQaA
     - position: "12"
       title: It’s All Inside
-      video: 0ZJRI0mszy0
   videos: []
 - slug: adele-21
   artist: Adele
@@ -258,38 +232,6 @@
       id: E22V_zTuQks
     - title: ADELE 21   The Best of Adele 2021  Adele Greatest Hits FULL ALBUM 2021
       id: HkmKQl5_i34
-    - title: Adele - Rolling in the Deep (Official Music Video)
-      id: rYEDA3JcQqw
-    - title: Adele - He Won’t Go (Visualizer)
-      id: 0y_NdA3Q5b0
-    - title: Adele - Set Fire to the Rain
-      id: WjqYTpE6Qdg
-    - title: Adele - Someone Like You (Official Music Video)
-      id: hLQl3WQQoQ0
-    - title: Turning Tables
-      id: FRa2lpHWRZo
-    - title: One And Only
-      id: DPHtuiq6jeM
-    - title: Don’t You Remember
-      id: at-_5h2r3Vc
-    - title: He Won’t Go
-      id: dCQefdyqavQ
-    - title: Rumour Has It
-      id: A8IRqCJVkOo
-    - title: Set Fire to the Rain
-      id: uJdu4Lfy8aI
-    - title: Take It All
-      id: 0NXQOlkAXFs
-    - title: Adele 21
-      id: yBH9Qaf0BTo
-    - title: ADELE 21   The Best of Adele 2021   Adele Greatest Hits FULL ALBUM 2021   Easy On Me
-      id: E22V_zTuQks
-    - title: ADELE 21   The Best of Adele 2021  Adele Greatest Hits FULL ALBUM 2021
-      id: HkmKQl5_i34
-    - title: Lovesong
-      id: NSec3LfUWxE
-    - title: I’ll Be Waiting
-      id: ttfKlH2xkwo
     - title: Turning Tables
       id: 3SojhAemf34
     - title: One And Only
@@ -442,8 +384,6 @@
       id: _6BwhmL0lZ4
     - title: AIR French Band “Trente Millions d’Amis” (Live KCRW 98) 2025 Parlophone
       id: Szl6gQySo4w
-    - title: AIR - Moon Safari (Full Album - Official Audio)
-      id: 3XTV6pkQne0
 - slug: aleks-future-dialect-ep
   artist: Aleks
   title: Future Dialect EP
@@ -504,15 +444,7 @@
     - position: B2
       title: Jericho (Insect O. Remix)
       video: gbXXp1dz_5c
-  videos:
-    - title: Alessandro Crimi - Wandering - [ETUILTD017]
-      id: Qu3H8HUxOas
-    - title: Alessandro Crimi - Wandering (Federsen Remix) - [ETUILTD017]
-      id: 6SLNhFPmd-A
-    - title: Alessandro Crimi - Jericho - [ETUILTD017]
-      id: izllonUFLv0
-    - title: Jericho (Insect O. Remix)
-      id: gbXXp1dz_5c
+  videos: []
 - slug: ambient-noise-level-aka-daniel-sanchez-we-march-backwards-into-the-future
   artist: Ambient Noise Level Aka Daniel Sanchez
   title: We March Backwards Into The Future
@@ -573,13 +505,7 @@
     - position: B2
       title: Tabukula Beach Resort
       video: kvUOAG_0PjY
-  videos:
-    - title: Amon Tobin - Mission
-      id: 6RVmkQwI34k
-    - title: Amon Tobin - People Like Frank
-      id: eX7xwMp5ZuM
-    - title: Amon Tobin - Tabukula Beach Resort
-      id: kvUOAG_0PjY
+  videos: []
 - slug: amy-winehouse-back-to-black
   artist: Amy Winehouse
   title: Back To Black
@@ -658,12 +584,6 @@
       id: fkwLgjS1pyY
     - title: Andrey Pushkarev - Picea Abies (Circus Company)
       id: D3GeIoVA0UI
-    - title: Andrey Pushkarev - Gingo Biloba (Circus Company)
-      id: fkwLgjS1pyY
-    - title: Andrey Pushkarev - Quercus (Circus Company)
-      id: 3WjwUn0kG48
-    - title: Andrey Pushkarev - Picea Abies (Circus Company)
-      id: D3GeIoVA0UI
 - slug: angelo-badalamenti-soundtrack-from-twin-peaks
   artist: Angelo Badalamenti
   title: Soundtrack From Twin Peaks
@@ -734,32 +654,6 @@
       id: khMlcTE7lw8
     - title: Angelo Badalamenti(Twin Peaks full soundtrack-1-2.)
       id: nVM9GzUvEeA
-    - title: Laura Palmer’s Theme (Instrumental)
-      id: woUt7wPe8Ow
-    - title: Laura Palmer’s Theme - Angelo Badalamenti (Twin Peaks OST)
-      id: khMlcTE7lw8
-    - title: Audrey’s Dance (Instrumental)
-      id: 3uJh6Famdgo
-    - title: The Nightingale
-      id: BzImHGz4R0M
-    - title: Freshly Squeezed (Instrumental)
-      id: bc-Prdyp9LY
-    - title: The Bookhouse Boys (Instrumental)
-      id: rQrVeoiebWs
-    - title: Into the Night
-      id: euq0sKwbDTg
-    - title: Night Life in Twin Peaks (Instrumental)
-      id: xgQ418SHXXg
-    - title: Dance of the Dream Man (Instrumental)
-      id: kBn_lQBh9JA
-    - title: Love Theme from Twin Peaks (Instrumental)
-      id: JwHwyejd-vk
-    - title: Falling
-      id: KkR6Jd0Agi4
-    - title: Angelo Badalamenti(Twin Peaks full soundtrack-1-2.)
-      id: nVM9GzUvEeA
-    - title: Angelo Badalamenti Twin Peaks Theme ( Instrumental) 1990
-      id: pXrjMaVoTy0
 - slug: animals-on-wheels-designs-and-mistakes
   artist: Animals On Wheels
   title: Designs And Mistakes
@@ -846,20 +740,6 @@
       duration: 7:50
       video: x2786O6UaQQ
   videos:
-    - title: Move (Groove Mix)
-      id: vbxkEjQq4dk
-    - title: Move (Pitch Mix)
-      id: F_akP5ti4zg
-    - title: Anthony Acid – Powerful (powerful mix) Nervous Dog records 1995
-      id: 9go6pYuFwIU
-    - title: Anthony Acid pres Powerhouse - Move (Breaks Mix)  - |Dub | Breaks |
-      id: v4l8K97vKyA
-    - title: Powerful (Scream Mix)
-      id: QDyvpJimxt0
-    - title: Powerful (Powerful Mix)
-      id: M3kqUHMwD5k
-    - title: Powerful (Scream Mix)
-      id: x2786O6UaQQ
     - title: Move (Groove Mix)
       id: vbxkEjQq4dk
     - title: Move (Pitch Mix)
@@ -1043,70 +923,6 @@
       id: 5PiYRewJllA
     - title: Prep Gwarek 36
       id: wCcIN_Cp5C8
-    - title: APHEX TWIN ‎- BBYDHYONCHORD (WARPLP92)
-      id: 72qRvZ88zRg
-    - title: Jynweythek
-      id: bc2HCxUQ12s
-    - title: Vordhosbn
-      id: 6ro1aHvhGec
-    - title: Kladfvgbung Mischk
-      id: anLAJPixa8E
-    - title: Omgyjya-Switch7
-      id: Ut7qIWDflsc
-    - title: Strotha Tynhe
-      id: lv4ZBN8X1fI
-    - title: Gwely Mernans
-      id: gwqFjxMD7i0
-    - title: Bbydhyonchord
-      id: IYKajhHfL4Q
-    - title: Cock/ver10
-      id: epuUd_qTfCw
-    - title: Avril 14th
-      id: uxTdTaNIUxo
-    - title: Mt Saint Michel + Saint Michaels Mount
-      id: 6kN4zRfnHm8
-    - title: Gwarek2
-      id: wSDHoowH5_E
-    - title: Orban Eq Trx 4
-      id: 3REwZZ3PMtg
-    - title: Aussois
-      id: Bt0tTmrzIfg
-    - title: Hy A Scullyas Lyf Adhagrow
-      id: tu-PQRyMKVE
-    - title: Kesson Dalek
-      id: 5PiYRewJllA
-    - title: 54 Cymru Beats
-      id: _a83fSZR2Ag
-    - title: Btoum-Roumada
-      id: Quo-sWfCb7M
-    - title: Lornaderek
-      id: DmlUCzzIzDE
-    - title: QKThr
-      id: 9wCfNFmpL1s
-    - title: Meltphace 6
-      id: avOkNedtccE
-    - title: Bit 4
-      id: 4MEVc6MWfgo
-    - title: Prep Gwarek 36
-      id: wCcIN_Cp5C8
-    - title: Father
-      id: CN3bw28eAPE
-    - title: Taking Control
-      id: G1UVHcNXsxk
-    - title: Petiatil Cx Htdui
-      id: -3YxciozfM4
-    - title: Ruglen Holon
-      id: u-s_wi1HlVI
-    - title: Afx237 v.7
-      id: tRXap98CYIw
-    - title: Ziggomatic 17
-      id: Rv_lCXlfEnI
-    - title: Beskhu3epnm
-      id: 0fGIOGOQBI8
-    - title: Nanou2
-      id: zpNhIAlA83s
-    - title: APHEX TWIN ‎- BBYDHYONCHORD (WARPLP92)
-      id: 72qRvZ88zRg
 - slug: aphex-twin-richard-d-james-album
   artist: Aphex Twin
   title: Richard D. James Album
@@ -1235,16 +1051,6 @@
       id: Xw5AiRVqfqk
     - title: Aphex Twin - Selected Ambient Works 85-92 (Full Album)
       id: 68NypE1XOlA
-    - title: Aphex Twin - Selected Ambient Works 85-92
-      id: Xw5AiRVqfqk
-    - title: Aphex Twin - Ageispolis
-      id: CJsiDDI-7Xw
-    - title: Aphex Twin - Ageispolis
-      id: hfzgYbjvoNk
-    - title: Aphex Twin - Selected Ambient Works 85-92
-      id: Xw5AiRVqfqk
-    - title: Aphex Twin - Selected Ambient Works 85-92 (Full Album)
-      id: 68NypE1XOlA
 - slug: aphex-twin-ventolin-e-p-the-remixes
   artist: Aphex Twin
   title: Ventolin E.P (The Remixes)
@@ -1325,16 +1131,6 @@
   videos:
     - title: Nowhere
       id: yD0aroGglA8
-    - title: Nowhere (Gabriel’s Drop 4 Original)
-      id: 1E4No8lyhZ8
-    - title: Nowhere (Speakeasy Remix)
-      id: A_-wpxQyscA
-    - title: Nowhere (Crazy P’s Heatwave Mix)
-      id: x31h0LMFfSE
-    - title: Nowhere (Onda Sgt. Pepper Mix)
-      id: TwsNMsJ9PNw
-    - title: Nowhere
-      id: yD0aroGglA8
 - slug: aquanote-true-love
   artist: Aquanote
   title: True Love
@@ -1364,16 +1160,6 @@
   videos:
     - title: Aquanote - True Love (Streetlife Original Vocal)
       id: JP4uSI7vH2A
-    - title: Aquanote - True Love (Speakeasy Remix)
-      id: pGtZsKOAla0
-    - title: True Love
-      id: sITCnputYO8
-    - title: Aquanote  -  True Love (Mig’s Petalpusher Love Dub)
-      id: nsSZViBga08
-    - title: Aquanote - True Love (Streetlife Original Vocal)
-      id: JP4uSI7vH2A
-    - title: Aquanote - True Love (Aquanote Original)
-      id: bAeanaVULRM
     - title: Aquanote - True Love (Speakeasy Remix)
       id: pGtZsKOAla0
     - title: True Love
@@ -1608,20 +1394,6 @@
   videos:
     - title: Threshold
       id: -hh3h-e9RBs
-    - title: Blaze - Sacred Sex
-      id: in3dGQKabVk
-    - title: The Garden
-      id: B8rasqkxojY
-    - title: My Beat
-      id: 3YCj_1X5RTA
-    - title: Another Dae
-      id: z2PL3Omg7YU
-    - title: Threshold
-      id: -hh3h-e9RBs
-    - title: Cult of Soul
-      id: W_4rrsm5d9Y
-    - title: Blaze -  Klubtrance
-      id: OXYrfkky2UY
     - title: Blaze - Never Can Get Away
       id: LzvJdyxBDuM
     - title: Blaze – Basic Blaze (Reissue)
@@ -1654,13 +1426,7 @@
       title: Big Ron
       duration: 4:03
       video: GOffv3rh1cU
-  videos:
-    - title: Blue Arsed Fly - Bucket (A1)
-      id: lmYrZZ97w58
-    - title: Blue Arsed Fly - Tired Ears (B1)
-      id: 6cjCI-cdz0Y
-    - title: Blue Arsed Fly - Big Ron (B2)
-      id: GOffv3rh1cU
+  videos: []
 - slug: the-blunted-boy-wonder-crossroads
   artist: The Blunted Boy Wonder
   title: Crossroads
@@ -1692,14 +1458,6 @@
       title: Metropolis
       video: oFtl6P83tX8
   videos:
-    - title: The Blunted Boy Wonder - Crossroads
-      id: 8g92KUY4kuM
-    - title: The Blunted Boy Wonder - Endless (Original Mix)
-      id: ugnMTDQtCMA
-    - title: The Blunted Boy Wonder - On Point
-      id: V3qZXqA62f0
-    - title: The Blunted Boy Wonder - Metropolis (Techno 1997)
-      id: oFtl6P83tX8
     - title: The Blunted Boy Wonder – Darkside
       id: KGz6YbeZSIw
 - slug: boards-of-canada-geogaddi
@@ -1708,7 +1466,7 @@
   year: 2013
   label: Warp Records
   kind: vinyl
-  format: 3×LP + LP + Album
+  format: 3×LP + LP
   genres:
     - Electronic
   styles:
@@ -1876,8 +1634,6 @@
       id: wKmPtYU9DzM
     - title: Boards Of Canada - Aquarius (Version 3)
       id: dIkPeDq4E20
-    - title: Happy Cycling
-      id: MEFSU7WeZt0
     - title: Boards of Canada - “Happy Cycling”
       id: w1GyfNca2vk
     - title: Boards of Canada - Happy Cycling (Bad Day) (original Peel Session broadcast version)
@@ -2111,14 +1867,6 @@
       video: HLpGQvUA0jI
   videos:
     - title: Need Ur Love (Stalagmite Mix)
-      id: wB4wRsQv8MY
-    - title: Callisto - Need Ur Love (Stalactite Mix)
-      id: 6mN0aS-NCJQ
-    - title: "Callisto: The Cimmerian [Guidance]"
-      id: tgaLODfMmXw
-    - title: Callisto - The Groove.m4v
-      id: HLpGQvUA0jI
-    - title: Need Ur Love (Stalagmite Mix)
       id: gvgiR_yeoTQ
     - title: Need Ur Love (Stalagite Mix)
       id: gRWh7r4I-zQ
@@ -2218,10 +1966,6 @@
     - position: 2-1.16
       title: Civilization
   videos:
-    - title: CARL CRAIG - THE WORKOUT (CD 💿 ONE)
-      id: _6WHIzTSCvk
-    - title: CARL CRAIG - THE WORKOUT (CD 💿 TWO)
-      id: IPECWugMR8k
     - title: CARL CRAIG - THE WORKOUT (CD 💿 ONE)
       id: _6WHIzTSCvk
     - title: CARL CRAIG - THE WORKOUT (CD 💿 TWO)
@@ -2345,12 +2089,6 @@
   videos:
     - title: The Test - The Chemical Brothers
       id: LozCtsxp8oE
-    - title: Galaxy Bounce
-      id: AybGKskqF-I
-    - title: My Elastic Eye
-      id: WagyA3N1FgE
-    - title: The State We’re In
-      id: MUrmm7EARZY
 - slug: the-chemical-brothers-dig-your-own-hole
   artist: The Chemical Brothers
   title: Dig Your Own Hole
@@ -2422,12 +2160,9 @@
       video: xUfAXRvzrSs
     - position: B1
       title: Untitled
-      video: xUfAXRvzrSs
     - position: B2
       title: Untitled
   videos:
-    - title: Chester Beatty - Goldenball (B1)
-      id: PsK7FK3wZlY
     - title: Chester Beatty - Goldenball (B1)
       id: PsK7FK3wZlY
     - title: Chester Beatty - Goldenball (Disq, 2000)
@@ -2469,14 +2204,6 @@
       id: fmtRLb1l0Uc
     - title: Kreem Featuring Jennifer Kendall | Now Is The Time (Witch Doctor Mix)
       id: _7IYrCF3lZM
-    - title: Ron & Chez D - Never (Extended Version)
-      id: rwDjuw5dWkg
-    - title: Inner City - Do Ya (Chez D Trent Mix)
-      id: 8_zKcHI4vdQ
-    - title: Chez N Trent - All About You
-      id: G3g9JOUxrNs
-    - title: Kreem Featuring Jennifer Kendall - Now Is The Time (Witch Doctor Mix)
-      id: s7UjRUeaBTM
 - slug: christian-scott-ancestral-recall
   artist: Christian Scott
   title: Ancestral Recall
@@ -2535,8 +2262,6 @@
   videos:
     - title: Christian Scott aTunde Adjuah - Ancestral Recall (Feat. Saul Williams)
       id: pbwRAqehXuI
-    - title: Christian Scott - Ancestral Recall (Full Album) [Jazz]
-      id: BJXvBbBCyO8
 - slug: coldplay-mylo-xyloto
   artist: Coldplay
   title: Mylo Xyloto
@@ -2733,32 +2458,6 @@
       id: JUJxiyy74mY
     - title: Cristian Vogel “Contentment Bison”
       id: _hil0nHQcpU
-    - title: Cristian Vogel - Dreams But Little Sleep
-      id: A1qG-OHe6pc
-    - title: Cristian Vogel - Survive The Peace
-      id: Rsrf3PuCvH0
-    - title: Cristian Vogel - (Don’t) take more
-      id: 39EjhBnqDBo
-    - title: Cristian Vogel - All music has come to an end (1996)
-      id: 6Nn4i9Xq72E
-    - title: Cristian Vogel - Dreams but little sleep (1996)
-      id: JIrDMtdUVA8
-    - title: Cristian Vogel - Tearing the groove (1996)
-      id: NTGIRbF8FPc
-    - title: Cristian Vogel -  Contentment bison (1996)
-      id: caPgdK8s9ws
-    - title: Cristian Vogel - (Don’t) take more (1996)
-      id: JUJxiyy74mY
-    - title: Cristian Vogel “Contentment Bison”
-      id: _hil0nHQcpU
-    - title: Cristian Vogel - Sentinel (1996) | TECHNO CLASSICS
-      id: wBXuLg_bKk8
-    - title: Cristian Vogel - Plastered Cracks
-      id: vJPpQa2zOks
-    - title: Cristian Vogel – Absence Of Fear
-      id: zS-pj3Z3aHU
-    - title: Cristian Vogel - Dreams But Little Sleep
-      id: A1qG-OHe6pc
 - slug: daft-punk-homework
   artist: Daft Punk
   title: Homework
@@ -2980,24 +2679,6 @@
       id: nyX0W7cupQ8
     - title: Le baggage - David Holmes - The Free Association
       id: hU0sMe1ZgDo
-    - title: David Holmes presents The Free Association   - Sugarman
-      id: nyX0W7cupQ8
-    - title: David Holmes - Dont Rhyme No Mo
-      id: nVgs4emG6Ec
-    - title: Le baggage - David Holmes - The Free Association
-      id: hU0sMe1ZgDo
-    - title: David Holmes Free ass o c 8
-      id: x5Su6O2Mm6E
-    - title: David Holmes And The Free Association-Everybody Knows
-      id: LtmQKuVGzMg
-    - title: the free assosiation - Pushin’ A Broom
-      id: rlD3K1vKCSI
-    - title: David Holmes Presents the Free Association - La Dolce Vita
-      id: tYHo_C-E754
-    - title: The Free Association ~ Paper Underwear
-      id: XhZcrHAVCv0
-    - title: David Holmes presents the Free Association - Whistlin’ Down The Wind [Mercury]
-      id: nYFSOIJAN8I
 - slug: decoder-dissection
   artist: Decoder
   title: Dissection
@@ -3060,16 +2741,6 @@
       id: U2VJWL5pjJk
     - title: Decoder & Technical Itch - Dropzone
       id: rfxeaEy8Fxw
-    - title: Decoder - Dissected
-      id: NAsWI4H0wNY
-    - title: Decoder - Dissected
-      id: NAsWI4H0wNY
-    - title: Decoder - Last St
-      id: _CMsDD-Ut0k
-    - title: Decoder - Chase
-      id: 1trHaiXtz7g
-    - title: Decoder – Vapour Dub
-      id: NOnjWXSKuJM
 - slug: deepchord-atmospherica-vol-2
   artist: Deepchord
   title: Atmospherica Vol. 2
@@ -3102,10 +2773,6 @@
   videos:
     - title: Deepchord – Atmospherica Vol. 2
       id: BtX83raCkeo
-    - title: Deepchord – Atmospherica Vol. 2
-      id: BtX83raCkeo
-    - title: Deepchord – Atmospherica Vol. 2
-      id: BtX83raCkeo
 - slug: deepchord-atmospherica-vol-1
   artist: Deepchord
   title: Atmospherica Vol.1
@@ -3130,19 +2797,7 @@
     - position: B2
       title: Night Song
       video: 7t38cMfHqe4
-  videos:
-    - title: Deepchord - Fargo
-      id: B6gNpX5VAKo
-    - title: Deepchord - CMOS Therapy
-      id: IXpgin5rOIc
-    - title: Deepchord - Night Song
-      id: 7t38cMfHqe4
-    - title: Deepchord - Fargo
-      id: B6gNpX5VAKo
-    - title: Deepchord - CMOS Therapy
-      id: IXpgin5rOIc
-    - title: Deepchord - Night Song
-      id: 7t38cMfHqe4
+  videos: []
 - slug: deepchord-auratones
   artist: DeepChord
   title: Auratones
@@ -3196,31 +2851,7 @@
     - position: D3
       title: Roca 9
       video: TIo1d0Whf-w
-  videos:
-    - title: Deepchord - Fog Hotel
-      id: 9qD9CGGbSts
-    - title: Deepchord - Moving Lights
-      id: zc3Wua-3k4M
-    - title: Deepchord - Wind in Trees
-      id: PhPccIizRgk
-    - title: Deepchord - Lagonda
-      id: QDqrBAXjjTM
-    - title: Deepchord - Varanasi
-      id: AyOlrLEGQqM
-    - title: Deepchord - Portofino
-      id: rP2U1bzLT28
-    - title: Deepchord - Point Reyes
-      id: u73D209GsKA
-    - title: Deepchord - Underwater Galaxies
-      id: hxit39hspd4
-    - title: Deepchord - Azure
-      id: UB4Pi2A7iDY
-    - title: Deepchord - Devil Ray
-      id: LdGX-1WR7W8
-    - title: Deepchord - Signals
-      id: LxMWFC10afA
-    - title: Deepchord - Roca 9
-      id: TIo1d0Whf-w
+  videos: []
 - slug: dillinja-lemon-d-the-killa-hertz
   artist: Dillinja & Lemon D
   title: The Killa-Hertz
@@ -3401,18 +3032,6 @@
       title: Outro
       duration: 1:59
   videos:
-    - title: Incontri ravvicinati (Strumentale)
-      id: xCOa8mFdY5o
-    - title: DJ Gruff - Facce di...
-      id: PpFivx_iI-8
-    - title: Dj Gruff- O tutto o niente- Robba pesante.wmv
-      id: hoAzjWB7ABs
-    - title: Svarionato
-      id: OhsiNMPh2Ig
-    - title: Ben bella
-      id: FCRDLGpsxn8
-    - title: Cu gremu (Strumentale)
-      id: wUOjg9tWzFs
     - title: Dj Gruff - O tutto o niente - FULL ALBUM
       id: atGAE4QW-54
 - slug: dj-hyperactive-jeopardy-get-wicked
@@ -3473,13 +3092,7 @@
     - position: B2
       title: Birth
       video: HcSIfmDN5UA
-  videos:
-    - title: DJ Misjah - Premature Ejaculation (B1) [MANKIND21P1]
-      id: V85XfgQkHRc
-    - title: DJ Misjah - Adolescence (A1) [MANKIND21P1]
-      id: BpRUHLmeAtA
-    - title: DJ Misjah - Birth
-      id: HcSIfmDN5UA
+  videos: []
 - slug: dj-sneak-blue-funk-files
   artist: DJ Sneak
   title: Blue Funk Files
@@ -3528,23 +3141,7 @@
       title: Who’s Knocking
       duration: 9:34
       video: mQwGT_ocng8
-  videos:
-    - title: DJ Sneak - Computer Gamez
-      id: 2aM6wO0UHnQ
-    - title: DJ Sneak - The Grinder
-      id: xXmcGQ-mISY
-    - title: DJ Sneak - Sneak Attack
-      id: DvCSar5UggE
-    - title: DJ Sneak - Grace Of Tracks
-      id: XO4KQn2U7qs
-    - title: DJ Sneak - Soundz In My Head
-      id: rcaTcn4uiYI
-    - title: DJ Sneak - For The Love Of House
-      id: l6TtSEedY6s
-    - title: DJ Sneak - Jugglin Thoughts
-      id: 7UxNELlyrGg
-    - title: DJ Sneak - Who’s Knocking
-      id: mQwGT_ocng8
+  videos: []
 - slug: dj-zorkin-priklyucheniya-elektronika
   artist: DJ Zorkin
   title: Приключения Электроника
@@ -3742,140 +3339,20 @@
       id: IoqNPJ0e0aI
     - title: DONNA GILES - And I’m Telling You I’m Not Going      Eve Nelson
       id: UrTsUWBtnRI
-    - title: Donna Giles “And I’m Telling You I’m Not Going” (Official 2020 Video)
-      id: 8drIErmf0GQ
     - title: Donna Giles - I’m Telling You ( Stonebridge Poppers Full Delight Mix) HQwav
       id: Vi3PUj-gXII
-    - title: DONNA GILES  And I’m Telling You I’m Not Going   loveland vocal mix
-      id: g8cRaP9sySQ
     - title: Donna Giles - And I am telling you I’m not going
       id: YCTH6Ly8zI8
-    - title: Donna Giles - And I’m Telling You I’m Not Going (Dubuv No Sham) (1994)
-      id: QICRKTZpXRs
-    - title: Donna Giles - And I’m Telling You (Komix Dubmix)
-      id: 2rqWKQw7RUA
-    - title: Donna Giles - And I’m Telling You (Organized Mix)
-      id: GCoa07vdn0w
-    - title: Donna Giles - And I’m Telling You (Organized Mix)
-      id: MYc1IIgzV0o
-    - title: Donna Giles ‎– And I’m Telling You (I’m Not Going) (Red Nail Dub)
-      id: sCizpPQm7hc
-    - title: Donna Giles - And I’m Telling You (Love Me Deep)
-      id: v4GGVB4g4w8
-    - title: Donna Giles - And Im Telling You (Kerri Chandler Love Me Deep Mix)
-      id: Xwr41AlA0k8
-    - title: Donna Giles “And I’m Telling You I’m Not Going” (Official 2020 Video)
-      id: 8drIErmf0GQ
-    - title: DONNA GILES - AND I’M TELLING YOU I’M NOT GOING (DONNA IN DUB) [HQ]
-      id: 7tI2ob0Z1pE
-    - title: And I’m Telling You I’m Not Going 2020 (Derrick Carter & Chris Nazuka 1994 Red Nail Dub (Remaster))
-      id: 44Jpk6n3DE0
-    - title: And I’m Telling You I’m Not Going 2020 (Babert Club Mix)
-      id: hChcwG7OyEc
-    - title: And I’m Telling You I’m Not Going (Johnny Vicious Bootay Dub (Remaster))
-      id: RZUc0-sTevA
-    - title: And I’m Telling You I’m Not Going (Kerri Chandler’s Organized Mix (Remaster))
-      id: JxCyKqOE8to
-    - title: And I’m Telling You I’m Not Going 2020 (Club Junkies Remix)
-      id: SGamt8Wm1ug
-    - title: And I’m Telling You I’m Not Going (Jonny L’s Pride Mix (Remaster))
-      id: LVKn5nza9u8
-    - title: And I’m Telling You I’m Not Going (StoneBridge’s Poppers Full Delight Mix (Remaster))
-      id: 2fZYxTzy0js
-    - title: Donna Giles - And I’m Telling You (I’m Not Going)[Mooway Ya Bootay Dub][Johnny Vicious]
-      id: kLMwl_sIiYQ
-    - title: Donna Giles - And I’m Telling You (I’m Not Going)[Mooway Ya Bootay Mix][Johnny Vicious]
-      id: A7oxmHO1Bw8
-    - title: Donna Giles - And I’m Telling You (I’m Not Going)[Organized Mix][Kerri Chandler, Yahya McDougald]
-      id: NwhL7tkgZ7I
-    - title: Donna Giles - And I’m Telling You (I’m Not Going)[Golden Diner Accadubba][StoneBridge & Nick Nice]
-      id: zdD_EnesyzM
-    - title: Donna Giles - And I’m Telling You (I’m Not Going)[Poppers Full Delight][StoneBridge & Nick Nice]
-      id: l-ZbFAxngsU
-    - title: Donna Giles - And I’m Telling You (I’m Not Going)[Poppers 7’ Delight][StoneBridge & Nick Nice]
-      id: newojpWWPaM
-    - title: Donna Giles - And I’m Telling You I’m Not Going (Stonebridge Mix)
-      id: PBVWTzYVA7A
-    - title: Donna Giles - And I’m Telling You I’m Not Going (96 Edit)
-      id: ediznYvQsns
-    - title: Donna Giles - And I’m Telling You I’m Not Going (Stonebridge Radio Edit)
-      id: Z4M8vI10oxg
-    - title: Donna Giles - And I’m Telling You I’m Not Going (Stonebridge Mix)
-      id: 7m5xlkldPZc
-    - title: Donna Giles vs  Wh0 - And I’m Telling You I’m Not Going 2020 (Extended Mix)
-      id: M9N0SY3QXQk
-    - title: DONNA GILES  And I’m Telling You I’m Not Going   loveland vocal mix
-      id: g8cRaP9sySQ
-    - title: DONNA GILES  And I’m Telling You I’m Not Going   stones golden accadubba
-      id: ItaEHJo13rw
-    - title: Donna Giles - And I’m Telling You I’m Not Going (Pride Mix) (1994)
-      id: Dr_KrSlPp8s
-    - title: Donna Giles - And I’m Telling You I’m Not Going
-      id: V7lKRZzlNSo
-    - title: Donna Giles - And I’m Telling You I’m Not Going (StoneBridge Popper’s Full Delight)
-      id: gV90UlXUzM4
-    - title: Eric Prydz vs  Donna Giles - And I’m Telling Pjanoo
-      id: WUkH5UFoRjw
-    - title: Donna Giles - And I’m Telling You I’m Not Going 2020 (Valiant Kings Remix)
-      id: hM1i6b0nivg
-    - title: And I’m Telling You I’m Not Going (Jonny L The Pride Mix)
-      id: Fw21SqIS0MQ
-    - title: And I’m Telling You I’m Not Going (StoneBridge Popper’s Full Delight)
-      id: UxcCheOnlJM
-    - title: Donna Giles - And I’m Telling You I’m Not Going (Pride Mix)
-      id: qtSyBNJkajk
-    - title: Donna Giles - And I’m Telling You I’m Not Going - Stonebridge Mix - 4K HD
-      id: fxL32VRpe7Y
-    - title: Donna Giles - I’m Telling You I’m Not Going
-      id: QNsZ40RaZNs
-    - title: Donna Giles -  And I am telling you I’m not going 1996
-      id: mWr_mq631j8
-    - title: "Donna Giles : And Im Telling You Im Not Going (Pride Mix)"
-      id: 6-LHrK93WIo
-    - title: Donna Giles - And I’m Telling You I’m Not Going
-      id: 9Dyvex_YiYc
-    - title: Donna Giles - And I’m Telling You I’m Not Going
-      id: ZK_36YzhcBM
-    - title: Donna Giles - And im telling you im not going (Pride mix)
-      id: W6tYqodX7E8
-    - title: Donna Giles vs Wh0 - And I’m Telling You I’m Not Going 2020
-      id: IoqNPJ0e0aI
-    - title: Donna Giles - And I’m Telling You (I’m Not Going)[Golden Diner Accadubba][StoneBridge & Nick Nice]
-      id: zdD_EnesyzM
-    - title: Donna Giles - And I’m Telling You (I’m Not Going)[Poppers 7’ Delight][StoneBridge & Nick Nice]
-      id: newojpWWPaM
-    - title: Donna Giles - And I’m Telling You (I’m Not Going)[Organized Mix][Kerri Chandler, Yahya McDougald]
-      id: NwhL7tkgZ7I
-    - title: Donna Giles - And I’m Telling You (I’m Not Going)[Mooway Ya Bootay Mix][Johnny Vicious]
-      id: A7oxmHO1Bw8
-    - title: Donna Giles - And I’m Telling You (I’m Not Going)[Mooway Ya Bootay Dub][Johnny Vicious]
-      id: kLMwl_sIiYQ
-    - title: Donna Giles - And I’m Telling You I’m Not Going (Pride Mix) (1994)
-      id: Dr_KrSlPp8s
-    - title: Donna Giles - And I’m Telling You I’m Not Going (Stonebridge Mix)
-      id: PBVWTzYVA7A
     - title: And I’m Telling You I’m Not Going 2020 (Valiant Kings Remix)
       id: y44egIAFd2E
     - title: And I’m Telling You I’m Not Going 2020 (Jay Kay Club Mix)
       id: LEACxETONbI
     - title: And I’m Telling You I’m Not Going 2020 (Tonky & Galleon Club Mix)
       id: sdQs_beJtNs
-    - title: And I’m Telling You I’m Not Going 2020 (Club Junkies Remix)
-      id: SGamt8Wm1ug
-    - title: And I’m Telling You I’m Not Going 2020 (Derrick Carter & Chris Nazuka 1994 Red Nail Dub (Remaster))
-      id: 44Jpk6n3DE0
     - title: And I’m Telling You I’m Not Going 2020 (StoneBridge Poppers Full Delight (Instrumental))
       id: 4Xf26FGY370
     - title: And I’m Telling You I’m Not Going 2020 (Classic Accapella)
       id: BdNQXGmdc48
-    - title: And I’m Telling You I’m Not Going (StoneBridge’s Poppers Full Delight Mix (Remaster))
-      id: 2fZYxTzy0js
-    - title: And I’m Telling You I’m Not Going (Jonny L’s Pride Mix (Remaster))
-      id: LVKn5nza9u8
-    - title: And I’m Telling You I’m Not Going (Kerri Chandler’s Organized Mix (Remaster))
-      id: JxCyKqOE8to
-    - title: And I’m Telling You I’m Not Going (Johnny Vicious Bootay Dub (Remaster))
-      id: RZUc0-sTevA
     - title: And I’m Telling You I’m Not Going (StoneBridge’s Poppers Delight Edit (Remaster))
       id: nkOzgFZYats
 - slug: drexciya-neptune-s-lair
@@ -3982,8 +3459,6 @@
       id: iwztlYWSVVU
     - title: C to the Power of X+C to the Power of X=unknown
       id: K5hQX60iuXo
-    - title: DREXCIYA - ANDREAEN SAND DUNES (TRESOR 129)
-      id: iwztlYWSVVU
 - slug: elon-noose
   artist: Elon
   title: Noose
@@ -4011,13 +3486,7 @@
     - position: B2
       title: TLV
       video: ZExn12lmzjQ
-  videos:
-    - title: Elon - Noose (Original Mix)
-      id: V_NrDzs8XrY
-    - title: Elon - Don’t Pull That String
-      id: U8kLdTnsrss
-    - title: elon - tlv
-      id: ZExn12lmzjQ
+  videos: []
 - slug: erykah-badu-baduizm
   artist: Erykah Badu
   title: Baduizm
@@ -4124,16 +3593,6 @@
       id: Itrmc7BNW5c
     - title: Blame
       id: TN3embWsQyU
-    - title: EBTG - Blame (LP Version)
-      id: WMY5nv6seJM
-    - title: Everything But The Girl - Blame (J Majik VIP Mix)
-      id: dZdrzFkAo8M
-    - title: Everything But the Girl - Blame (Grooverider Jeep Mix) | Gran Turismo 2 (PAL) Soundtrack (Lossless)
-      id: Itrmc7BNW5c
-    - title: Everything but the Girl - Blame [Fabio Remix]
-      id: 6rV3dvX6fFA
-    - title: Blame
-      id: TN3embWsQyU
     - title: Everything But The Girl - Blame (Grooverider Jeep Mix) (Unreleased) // Music House Dubplate
       id: -xt4t-Oyn38
 - slug: fachmann-fachmann-03
@@ -4158,8 +3617,6 @@
     - position: B
       title: Untitled
   videos:
-    - title: Fachmann - Fachmann 03 (B)
-      id: e0xFFTuXYdE
     - title: Fachmann - Fachmann 03 (B)
       id: e0xFFTuXYdE
 - slug: fred-p-selected-compiled-by-fred-p
@@ -4229,12 +3686,6 @@
   videos:
     - title: Freestyle Man - Vortex - Sunday Music 2007
       id: iii6CsPucRk
-    - title: Freestyle Man - This Side Of The Moog
-      id: 7JAPy7Y_hZI
-    - title: Freestyle Man - Vortex - Sunday Music 2007
-      id: iii6CsPucRk
-    - title: Vortex
-      id: jyRoPX6ldcY
 - slug: funki-porcini-lets-see-what-carmen-can-do
   artist: Funki Porcini
   title: Lets See What Carmen Can Do
@@ -4282,18 +3733,6 @@
   videos:
     - title: Funki Porcini ‎”Lets See What Carmen Can Do” Full 12” EP
       id: 4Nd_XC7NHQ4
-    - title: Funki Porcini ‎”Lets See What Carmen Can Do” Full 12” EP
-      id: 4Nd_XC7NHQ4
-    - title: Funki Porcini - Ritmo Di Jazz
-      id: avSJzqKhuQM
-    - title: Shuffle Sheluvly
-      id: qdYYKS8Vxlk
-    - title: Sally Wants To Be A Surgeon
-      id: ZTsuJ_mEwO8
-    - title: funki porcini - surge
-      id: 6DbePYVDx7k
-    - title: Pete Pete Pete
-      id: IDG83mxSw30
     - title: Ritmo Di Jazz
       id: B7I_8KVQysk
     - title: Funki Porcini - Ritmo Di Jazz (Video)
@@ -4359,7 +3798,6 @@
     - position: "14"
       title: Moon Addicted
       duration: 3:40
-      video: ZM7JNl-aVYw
     - position: "15"
       title: Dirt Empire
       duration: 1:37
@@ -4443,14 +3881,6 @@
       id: qD4kcP1rDbE
     - title: Funkstörung - Fat Camp Feva (Shadow Huntaz Remix)
       id: H1cGC0VjtgM
-    - title: Funkstörung - Laid Out ft. Anothr
-      id: qD4kcP1rDbE
-    - title: fat camp feva /testarossa
-      id: kuRAH1S4kNc
-    - title: Funkstörung - Fat Camp Feva (Shadow Huntaz Remix)
-      id: H1cGC0VjtgM
-    - title: Funkstörung - Fat Camp Feva (Shadow Huntaz Remix)
-      id: H1cGC0VjtgM
 - slug: the-future-sound-of-london-accelerator
   artist: The Future Sound Of London
   title: Accelerator
@@ -4517,30 +3947,8 @@
       id: 9PJhTBFN5GE
     - title: T̲h̲e̲ ̲F̲u̲t̲u̲r̲e̲ ̲S̲o̲u̲n̲d̲ ̲O̲f̲ ̲L̲o̲n̲d̲o̲n̲ | A̲c̲c̲e̲l̲e̲r̲a̲t̲o̲r̲ CD2
       id: fDVsuZ9kbNQ
-    - title: T̲h̲e̲ ̲F̲u̲t̲u̲r̲e̲ ̲S̲o̲u̲n̲d̲ ̲O̲f̲ ̲L̲o̲n̲d̲o̲n̲ | A̲c̲c̲e̲l̲e̲r̲a̲t̲o̲r̲ CD2
-      id: fDVsuZ9kbNQ
     - title: Stolen Documents (Accelerated Mix)
       id: xU6V_1Q114o
-    - title: Stolen Documents
-      id: 8pwHvkf2Cg8
-    - title: Central Industrial
-      id: sJ6eRZRHSgU
-    - title: Calcium
-      id: frs81AzZpL0
-    - title: Future Sound Of London - Expander Jumpin’ & Pumpin’ records 1992
-      id: S14sFo_jnQw
-    - title: Stolen Documents
-      id: 8pwHvkf2Cg8
-    - title: While Others Cry
-      id: 2RFJYF-C0FU
-    - title: It’s Not My Problem
-      id: NMojvHJuyZ8
-    - title: Moscow
-      id: mAre7Q2s8qo
-    - title: 1 in 8
-      id: dzN3AY0bm4I
-    - title: The Future Sound of London - Pulse State
-      id: F0RI8L6e7Y0
 - slug: the-future-sound-of-london-dead-cities
   artist: The Future Sound Of London
   title: Dead Cities
@@ -4654,15 +4062,7 @@
       title: Perfect Genes
       duration: 4:32
       video: rMHFyYoaSXk
-  videos:
-    - title: Gene Hunt   Booty TECHNO 1997
-      id: _0wPO1Rb1Mk
-    - title: Gene Hunt  - Drunken Funk [1996]
-      id: FQ4B8QfrBac
-    - title: Gene Hunt - The Conditioner
-      id: lXJ9W_LspFA
-    - title: Gene Hunt - Perfect Genes
-      id: rMHFyYoaSXk
+  videos: []
 - slug: gene-hunt-chicago-dance-tracks-part-2
   artist: Gene Hunt
   title: Chicago Dance Tracks Part 2
@@ -4728,22 +4128,6 @@
       id: maBOVieUyVg
     - title: Farley J.M.F. - Yes He Saved Me
       id: teXeyFs3CM4
-    - title: Virgo Four - The Dryer
-      id: KJUiG7gMF2U
-    - title: Larry Heard vs. Marshall Jefferson - You’re Mine vs. Destination
-      id: Tqmgg7DzTFc
-    - title: Dion & Tony - 1015
-      id: 3wuAVtLXbGA
-    - title: Farley Keith Williams - J.M.F. Groove
-      id: oE8AvcuX64s
-    - title: Craig Loftis - Yes I’m Right (Power Plant Mix)
-      id: k9JLgQyB1DI
-    - title: Lil Louis - Super Clash (DJ Cease aka George Dupree Rework)
-      id: 6CmSo0MuldA
-    - title: Sleezy D - Trust
-      id: 9PG7hL2nOI8
-    - title: Gene Hunt – Chicago Dance Tracks Part 2
-      id: XUoelXlcESk
 - slug: geoff-white-stewart-walker-discord
   artist: Geoff White & Stewart Walker
   title: Discord
@@ -4807,8 +4191,6 @@
   videos:
     - title: DT:Recommends | Geoff White & Stewart Walker - Discord (2003) Mix CD
       id: iykXLpTQerI
-    - title: DT:Recommends | Geoff White & Stewart Walker - Discord (2003) Mix CD
-      id: iykXLpTQerI
     - title: Stewart Walker & Geoff White - Ecstatic Experience
       id: qbgp5lbrL2w
     - title: Panda - Stewart Walker
@@ -4864,18 +4246,8 @@
       id: B9ZMsncrYc4
     - title: Goldie - Believe
       id: OGkZcWBqdug
-    - title: Goldie - Believe (Grooverider Mix)
-      id: uLvcuxZlv48
-    - title: Goldie - Believe [Photek Remix]
-      id: p6WjutEw2j0
     - title: Goldie - Believe (Groove Chronicles Remix)
       id: T7kltjp3DW0
-    - title: Goldie - Believe (Bump & Flex Club Mix)
-      id: Li77YAlCF_0
-    - title: Goldie - Believe (M.J Cole Vocal Mix)
-      id: cc5cNfasWYs
-    - title: Goldie - Believe (M.J Cole Dub Mix)
-      id: mvu0r4UTots
     - title: Believe (Mj Cole Vocal Mix)- Goldie
       id: yEpfMSpzBks
     - title: Goldie - Believe (MJ Cole Dub) - Old Skool Garage
@@ -5016,14 +4388,6 @@
       id: x9TXIogAx2I
     - title: Goldie A Drum & Bass Mix CD 2 (2001)
       id: 6nqBQKYpPqo
-    - title: Goldie.co.uk - Mix 1
-      id: I3qbAagz_fo
-    - title: Goldie.co.uk - Mix 2
-      id: LNLpS6w-dUk
-    - title: Goldie A Drum & Bass Mix CD 1 (2001)
-      id: x9TXIogAx2I
-    - title: Goldie A Drum & Bass Mix CD 2 (2001)
-      id: 6nqBQKYpPqo
 - slug: goldie-timeless
   artist: Goldie
   title: Timeless
@@ -5097,42 +4461,26 @@
       id: LWdP9Y_ERf4
     - title: Goldie - Timeless (1995) Full album - 2 CDs
       id: dhV9VbxV3Rw
-    - title: Goldie - Timeless
-      id: Usqwy2-E4SE
     - title: Goldie - Adrift
       id: j8sN_xgUa58
     - title: "Goldie: Kemistry"
       id: P0IrNQsfL9c
     - title: GOLDIE - Timeless - Drum & Bass FULL ALBUM 1995
       id: eAF40bMD_v4
-    - title: Goldie - Timeless (1995) [Full Album]
-      id: -1ejLKssviw
-    - title: Goldie - Timeless (1995) Full album - 2 CDs
-      id: dhV9VbxV3Rw
     - title: Goldie presses the 30th Anniversary of Timeless
       id: 0U1iqddbgyw
     - title: Timeless (25 Year Remaster)
       id: BPb9IRfD_YE
-    - title: "GOLDIE - Timeless: Inner City Life, Pressure & Jah"
-      id: NoV85P4L8kI
-    - title: Goldie - Timeless
-      id: LWdP9Y_ERf4
-    - title: Timeless
-      id: E_WYFhP8QCs
     - title: Goldie - Saint Darkie (Metalheadz / London Music Stream LMS5521480 A) 2021
       id: gJ_UhZmECXk
     - title: "Goldie: Sensual"
       id: x9Z7WND01xE
-    - title: "Goldie: State of Mind"
-      id: QcbWg01E7Qg
     - title: This Is A Bad
       id: 05iHoucOVLE
     - title: Goldie - A Sense Of Rage (Sensual Vip Mix)
       id: ZTSJLyUhEAk
     - title: "Goldie: Angel"
       id: nIRDgl_Rx4E
-    - title: "Goldie: Kemistry"
-      id: P0IrNQsfL9c
 - slug: graeme-park-we-love-the-hacienda
   artist: Graeme Park
   title: We Love The Haçienda
@@ -5200,14 +4548,9 @@
       video: TX80zPIvMuQ
     - position: B1
       title: Untitled
-      video: TX80zPIvMuQ
     - position: B2
       title: Untitled
   videos:
-    - title: Graziano Avitabile - Inua Nova B2
-      id: rfEOhuu9uyY
-    - title: Graziano Avitabile – Inua Nova (Karmarouge, 2001)
-      id: v4E8MA8EcJU
     - title: Graziano Avitabile - Inua Nova B2
       id: rfEOhuu9uyY
     - title: Graziano Avitabile – Inua Nova (Karmarouge, 2001)
@@ -5242,13 +4585,7 @@
       title: 8 Point Agenda (Instrumental Version 2)
     - position: B3
       title: 8 Point Agenda (Accapella)
-  videos:
-    - title: The Herbaliser - Who´s Really The Realest feat. Blade
-      id: PveZSKNuzKM
-    - title: The Herbaliser - 8 Point Agenda (Version 1) feat. Latyrx
-      id: TwRyC3C7oho
-    - title: 8 Point Agenda (Version 2)
-      id: 7btKmYMniik
+  videos: []
 - slug: hex-antistatic
   artist: Hex
   title: Antistatic
@@ -5280,14 +4617,6 @@
       title: Interference
       video: Us-byNrEO8s
   videos:
-    - title: Hex - Antistatic (Philips CDi, 1993)
-      id: 2-dY2nCLpgA
-    - title: Hex Antistatic - Subtek [1994]
-      id: PXC-xBMZdIg
-    - title: Hex Antistatic - Glass [1994].wmv
-      id: IKZe1GZgDOE
-    - title: Hex - Interference
-      id: Us-byNrEO8s
     - title: Hex - Antistatic (Philips CDi, 1993)
       id: 2-dY2nCLpgA
 - slug: holy-ghost-inc-the-art-lukm-suite
@@ -5456,14 +4785,6 @@
       id: LfAfyRycA4E
     - title: Heaven (feat. Jade, Danielle)
       id: h8cA7DKMn7E
-    - title: Ian Pooley - Heaven (Feat. Jade and Danielle)
-      id: LfAfyRycA4E
-    - title: Heaven (Original Mix)
-      id: pc4st0x32J4
-    - title: Ian Pooley feat. Jade and Dani - Heaven (Tonka’s High Pass Mix)
-      id: o-6NWLNRFEc
-    - title: Heaven (feat. Jade, Danielle)
-      id: h8cA7DKMn7E
 - slug: incognito-wild-peaceful-k-dope-mixes
   artist: Incognito
   title: Wild & Peaceful (K-Dope Mixes)
@@ -5493,8 +4814,6 @@
       title: Wild & Peaceful (K-Dope Hip Hop Beat)
       duration: 2:30
   videos:
-    - title: Incognito - Wild And Peaceful(K-Dope Remix)
-      id: PTeoWd0ZmK4
     - title: Incognito - Wild And Peaceful(K-Dope Remix)
       id: PTeoWd0ZmK4
 - slug: infiniti-the-infiniti-collection
@@ -5636,108 +4955,6 @@
       id: V9_TmXPfwnI
     - title: Think Quick (Moritz Von Oswald ’94 Remodel)
       id: Njns5DrwFSw
-    - title: Impulse
-      id: peHmJK4_TWE
-    - title: INFINITI-game one
-      id: zkX3vmuPkcY
-    - title: Infiniti - Raindrops
-      id: fnYBFSYC3rw
-    - title: Juan Atkins - Moon Beam
-      id: ip6yO4Wy8ZU
-    - title: Juan Atkins - Flash Flood
-      id: S_tdmPvzwbA
-    - title: Infiniti (Juan Atkins) - I-94 (The Infiniti Collection, 1996)
-      id: LkEb-PjSpPI
-    - title: Sunlight
-      id: teAb3Kyc_UI
-    - title: Infiniti - Flash Flood
-      id: stQ1LmswDMk
-    - title: Moon Beam
-      id: 4cYe-3waPfI
-    - title: Raindrops
-      id: fsMDnByvNaw
-    - title: I94
-      id: 0aSskeO4AsA
-    - title: Infiniti - Harddrive
-      id: 8lN8lzDBB-0
-    - title: Harddrive
-      id: s7wOy4vBRoc
-    - title: Martians at Work
-      id: Z2mtXEyBiQc
-    - title: Infiniti - Think Quick (Moritz Von Oswald ’94 Remodel)
-      id: 7brq2_RDhN4
-    - title: Infiniti - Think Quick (Original Mix)
-      id: H-_3oZ3P3hk
-    - title: Infiniti - Sunlight
-      id: uk5J5n_iXmU
-    - title: Infiniti - Martians at Work
-      id: wUCxLSRD7Po
-    - title: Game One
-      id: T_ozFEmOfpM
-    - title: Game One
-      id: twgz8k3ECv8
-    - title: Infiniti - Game One
-      id: CVdbjLu3rgI
-    - title: Game One
-      id: YZICjecsUVE
-    - title: Infiniti - Game One
-      id: sM5xfUO1kQk
-    - title: Metroplex - Infiniti - Game One
-      id: 6hLK1KvJdU4
-    - title: Infiniti - Game One
-      id: Z6V-ds95Lio
-    - title: Infiniti (Juan Atkins) - Game One
-      id: QjgM47-DJc4
-    - title: A - Infiniti - Game One
-      id: WKRLCTDdrvE
-    - title: Juan Atkins - 20 Years Metroplex (1985-2005) (CD1) - 08 Infiniti - Game One
-      id: sIY4czfAsSY
-    - title: Quantec Infiniti - Game One
-      id: 7uau71fI8Ok
-    - title: Juan Atkins(infiniti)   Game One
-      id: ooUt78FRw4s
-    - title: INFINITI aka JUAN ATKINS - Sunlight (1993).
-      id: xrP0Wzmhdlo
-    - title: Infiniti - Sunlight
-      id: ct5jtX9Ub2Y
-    - title: Infiniti   Sunlight
-      id: w2jqfaECkIU
-    - title: Flash Flood
-      id: NVnkV1U6BK8
-    - title: Infiniti - Flash Flood (Original Mix)
-      id: 6yBm3tbYGGg
-    - title: Infiniti Juan Atkins   Moon Beam 1996
-      id: 75vF1Tjc9EY
-    - title: Tresor 48 - The Infiniti Collection
-      id: dGODq-ugnSY
-    - title: Raindrops
-      id: u_icznpW3VQ
-    - title: 309 - Infiniti - Raindrops
-      id: -2gO2riDxPM
-    - title: Raindrops
-      id: TO1OU1bHTno
-    - title: Infiniti -  Raindrops (1996)
-      id: ts43HCwJ0w0
-    - title: Infiniti - Raindrops
-      id: Hoj2sMjviKQ
-    - title: Game one/infiniti aka juan atkins
-      id: _o_msuuHQCo
-    - title: Infiniti   Game One
-      id: 7EL6X4s8gLM
-    - title: Infiniti - Think Quick
-      id: b4L-SwYBhoA
-    - title: Infiniti - Hardrive
-      id: NljvUFL3rUM
-    - title: Think Quick
-      id: F0LNzNvnwvI
-    - title: Infiniti - Hardrive (1994)
-      id: GrjxJMqRW2U
-    - title: Infiniti - Hardrive
-      id: eHjuGOvV-ng
-    - title: A1. Juan Atkins - Martians At Work [PARTOUT4.01]
-      id: V9_TmXPfwnI
-    - title: Think Quick (Moritz Von Oswald ’94 Remodel)
-      id: Njns5DrwFSw
 - slug: infiniti-feat-juan-atkins-never-tempt-me
   artist: "Infiniti Feat.: Juan Atkins"
   title: Never Tempt Me
@@ -5783,10 +5000,6 @@
   videos:
     - title: Infiniti feat. Juan Atkins - Never Tempt Me [HD]
       id: klV0pXWzaVg
-    - title: Infiniti feat. Juan Atkins - Never Tempt Me (Flowing Mix)
-      id: fRGjdLszfwM
-    - title: Infiniti feat. Juan Atkins - Never Tempt Me [HD]
-      id: klV0pXWzaVg
 - slug: jaime-read-vibe-nations
   artist: Jaime Read
   title: Vibe Nations
@@ -5822,15 +5035,7 @@
       title: C & S Groove
       duration: 6:10
       video: zsyrBP23LZ8
-  videos:
-    - title: J.Reed - New Movements
-      id: zKc1dJ4gqq0
-    - title: Resolute Dreams
-      id: gZG_4R8jgq8
-    - title: J.Reed - Da Brakes
-      id: chWphFwzMDg
-    - title: C & S Groove
-      id: zsyrBP23LZ8
+  videos: []
 - slug: james-ruskin-point-2
   artist: James Ruskin
   title: Point 2
@@ -5891,54 +5096,18 @@
       id: BacfBVNjjfk
     - title: James Ruskin - Version - Point 2 EP - Tresor 145
       id: M9Ir1HLs2ok
-    - title: james ruskin-subject-
-      id: AGoBlG3OTpU
-    - title: James Ruskin - Detached
-      id: BacfBVNjjfk
-    - title: James Ruskin - Version - Point 2 EP - Tresor 145
-      id: M9Ir1HLs2ok
-    - title: james ruskin-eight 3-
-      id: aq6mfj05viw
-    - title: James Ruskin -  From Over The Edge
-      id: 1cPOSuHkM6c
-    - title: James Ruskin - If
-      id: RsmN2uJCOyY
-    - title: James Ruskin - Connected
-      id: lFyy5ZHZaa8
-    - title: James Ruskin - Coda
-      id: mfeiJW_SWCM
-    - title: James Ruskin - Before the calling [INTRO]
-      id: pA3i0US2VVo
-    - title: Jamer Ruskin - If (Loft mix)
-      id: pSHPEyUC3ro
-    - title: James Ruskin - If
-      id: RsmN2uJCOyY
     - title: Subject (2019 Remaster)
       id: CSwEWGP87z8
-    - title: James Ruskin - Detached
-      id: BacfBVNjjfk
     - title: Eight 3 (2019 Remaster)
       id: F3onJNg4IcE
-    - title: James Ruskin - Connected
-      id: lFyy5ZHZaa8
-    - title: James Ruskin -  From Over The Edge
-      id: 1cPOSuHkM6c
     - title: James Ruskin – Point 2
       id: 7Iq6oYJDgBI
-    - title: James Ruskin - Coda
-      id: mfeiJW_SWCM
     - title: Before the Calling (2019 Remaster)
       id: fKwCuutL99g
     - title: If (2019 Remaster)
       id: ntqmVENs6tA
-    - title: Subject (2019 Remaster)
-      id: CSwEWGP87z8
-    - title: James Ruskin - Detached
-      id: BacfBVNjjfk
     - title: Version (2019 Remaster)
       id: bFmUTsO9Ofc
-    - title: Eight 3 (2019 Remaster)
-      id: F3onJNg4IcE
     - title: Connected (2019 Remaster)
       id: sbwyXCNwYmg
     - title: From over the Edge (2019 Remaster)
@@ -6011,26 +5180,6 @@
   videos:
     - title: James Ruskin “GlassHopper”
       id: PXF7smUkGGQ
-    - title: James Ruskin - Scene (Original Mix)
-      id: yS3v13FfrAs
-    - title: James Ruskin   “Under 3”
-      id: HLN5L88b0gQ
-    - title: James Ruskin - Road Trip
-      id: fwP5DBuxWiI
-    - title: James Ruskin “GlassHopper”
-      id: PXF7smUkGGQ
-    - title: James Ruskin - Lahaine
-      id: lLVshTfwA3c
-    - title: James Ruskin - Surfaced
-      id: 28fmVqU1qhE
-    - title: James Ruskin - Outlined
-      id: 981jSvjz0So
-    - title: James Ruskin_Vox
-      id: o1j7d-pm7z8
-    - title: James Ruskin - JJ
-      id: dYAaW_J9XLg
-    - title: James Ruskin - Your Journey
-      id: U0JrVNg2R94
 - slug: jamie-bissmire-ground-plans
   artist: Jamie Bissmire
   title: Ground Plans
@@ -6251,12 +5400,6 @@
       title: South Pacific
       duration: 5:28
   videos:
-    - title: Jeff Mills Choice A Collection Of Classics 2004
-      id: MblAsSg50tE
-    - title: Jeff Mills - Choice, a Collection of Classics (2004) (Disc 1) (Classic House Mix Album) [HQ]
-      id: KuOc3ykKg2Y
-    - title: Jeff Mills - Choice, a Collection of Classics (2004) (Disc 2) (Classic House Mix Album) [HQ]
-      id: Oy1T3xw_wPQ
     - title: Jeff Mills Choice A Collection Of Classics 2004
       id: MblAsSg50tE
     - title: Jeff Mills - Choice, a Collection of Classics (2004) (Disc 1) (Classic House Mix Album) [HQ]
@@ -6587,17 +5730,7 @@
       title: Untitled
       duration: 0:11
       video: 254GUXas8H4
-  videos:
-    - title: Jeff Mills - Cobolt [AX-016]
-      id: xEkPtVgSPAo
-    - title: Jeff Mills – Very EP (Untitled A2) [AX-016]
-      id: Dj4KQ2NALX0
-    - title: Jeff Mills - Cometh [AX-016]
-      id: gXfsSn6CZ4k
-    - title: Jeff Mills - Very EP (Untitled B2) [AX-016]
-      id: kGkorU2ygwE
-    - title: Jeff Mills – Very EP (Untitled B3) [AX-016]
-      id: 254GUXas8H4
+  videos: []
 - slug: jeff-mills-waveform-transmission-vol-3
   artist: Jeff Mills
   title: Waveform Transmission Vol. 3
@@ -6647,26 +5780,6 @@
       duration: 5:52
       video: GdqQBvIB2tQ
   videos:
-    - title: Jeff Mills - “The Extremist” (Original Mix)
-      id: g7kI0Xhbpyo
-    - title: Jeff Mills - Solid Sleep
-      id: SfWflQUwMWc
-    - title: Jeff Mills - Life Cycle
-      id: YZcnYTHofBw
-    - title: Jeff Mills - Workers
-      id: 6ctTy_rdNzA
-    - title: Jeff Mills - Wrath Of The Punisher
-      id: ozXtORJjmHw
-    - title: Jeff Mills - D.N.A.
-      id: wOobJH-NniE
-    - title: Jeff Mills - Condor To Mallorca
-      id: t4ivGriR6C0
-    - title: Jeff Mills - Basic Human Design
-      id: GdqQBvIB2tQ
-    - title: Jeff Mills ‎– Waveform Transmission Vol. 3 (1994, Full Album)
-      id: 4J3VCo0ZF5E
-    - title: Jeff Mills - Waveform Transmissions Vol. 3 (full album) 1997
-      id: 3F_p0etucTo
     - title: Jeff Mills ‎– Waveform Transmission Vol. 3 (1994, Full Album)
       id: 4J3VCo0ZF5E
     - title: Jeff Mills - Waveform Transmissions Vol. 3 (full album) 1997
@@ -6867,8 +5980,6 @@
       id: i-HAcfH5hY0
     - title: Subculture Feat. LeJuan - My Way (Rick Garcia’s Original Mix)
       id: pHkniYLkcQM
-    - title: Pascal F.E.O.S. - I Can Feel That 1999
-      id: d0iHG3MbEcY
     - title: Leo Caseri - Le Beguine Du Mac
       id: xhBZt2n3GRw
     - title: Weekender  -  Channel Check
@@ -6974,10 +6085,6 @@
       id: Spz9oryrrVQ
     - title: John B - Firewall (1997)
       id: w_TAtPBdvsA
-    - title: John B - Visions (Disc 1)
-      id: -vHP48vsUdA
-    - title: John B - Visions (Disc 2)
-      id: NozM6n79_3Y
 - slug: john-coltrane-coltrane-s-sound
   artist: John Coltrane
   title: Coltrane’s Sound
@@ -7164,12 +6271,6 @@
       duration: 6:15
       video: A1mm5AsEorg
   videos:
-    - title: Wink* - Higher State Of Consciousness (Version 1 - DJ Wink’s Hardhouse Mix) [SR12321]
-      id: Gt3ajYNuW48
-    - title: Wink* - Higher State Of Consciousness (Version 2 - The 611 Acid Groove Mix) [SR12321]
-      id: Bd7KvxbynjU
-    - title: Wink* - Higher State Of Consciousness (Version 3 - Tweekin Acid Funk) [SR12321]
-      id: A1mm5AsEorg
     - title: Higher State of Consciousness ’96 (Dex & Jonesey’s Higher Stated mix) - Josh Wink
       id: B2KG7Mt6iVc
     - title: Josh Wink - Higher State Of Consciousness (Radio Edit)
@@ -7282,18 +6383,6 @@
       id: nPZkInYK0o8
     - title: K. Hand Featuring Zoey - I Do (Vocal)
       id: 1ozeJOTk70w
-    - title: Do it (Get Up Mix)
-      id: TdbRCsfq8m8
-    - title: K.Hand -  Do It Again (Original Version)
-      id: RNYyXbS-B1s
-    - title: K. Hand Featuring Zoey ‎– I Do (Instrumental)
-      id: 4uozKZZBIyI
-    - title: K-HAND - Do You Love Me
-      id: hGahLIJPmaY
-    - title: K.Hand - Project 5 Ep (Untitled A2)
-      id: nPZkInYK0o8
-    - title: K. Hand Featuring Zoey - I Do (Vocal)
-      id: 1ozeJOTk70w
 - slug: kenny-larkin-metaphor
   artist: Kenny Larkin
   title: Metaphor
@@ -7374,12 +6463,8 @@
       id: cRDQcSDvpwM
     - title: Kenny Larkin - Catatonic (Part 2) (2021)
       id: q12xkjz_zew
-    - title: Kenny Larkin - Metaphor (FULL ALBUM)
-      id: cRDQcSDvpwM
     - title: Kenny Larkin - Metaphor
       id: WUKQu-7Qaks
-    - title: Metaphor
-      id: -TwNg-anCNM
     - title: KENNY LARKIN - Metaphor (1995 R&S)
       id: didYMbTVIdk
     - title: KENNY LARKIN / METAPHOR ( PROMOTION EDIT )
@@ -7392,12 +6477,6 @@
       id: LXAjuLj4zMg
     - title: Kenny Larkin “Metaphor” 1995 R&S
       id: rAbDMAxdplM
-    - title: Kenny Larkin - Metaphor (FULL ALBUM)
-      id: cRDQcSDvpwM
-    - title: Kenny Larkin - Life Goes On (2021)
-      id: OaJyCKSHolo
-    - title: Kenny Larkin - Catatonic (Part 2) (2021)
-      id: q12xkjz_zew
 - slug: kevin-saunderson-bounce-your-body-to-the-box
   artist: Kevin Saunderson
   title: Bounce Your Body To The Box
@@ -7433,8 +6512,6 @@
       id: 2VNTvN_GTmA
     - title: Reese & Santonio- The Sound (Re-Mix)
       id: URIcBEXf8Zo
-    - title: Kevin Saunderson - Bounce Your Body To The Box (Mike ‘Hitman’ Wilson Acid Remix) 1988
-      id: -hFFPZQnfYA
 - slug: kruder-dorfmeister-1995
   artist: Kruder & Dorfmeister
   title: "1995"
@@ -7690,14 +6767,6 @@
       id: sYbATOqrUHQ
     - title: Mirko Loko - Chatbeat - DESOLAT 006
       id: qToq2AipNAA
-    - title: Mirko Loko - Serena - DESOLAT 006
-      id: vC6Skr90NmY
-    - title: Luciano & Mirko Loko - Mousa Big Band - DESOLAT 006
-      id: lPqUqEdiE9E
-    - title: Mirko Loko - Liah - DESOLAT 006
-      id: sYbATOqrUHQ
-    - title: Mirko Loko - Chatbeat - DESOLAT 006
-      id: qToq2AipNAA
 - slug: madonna-something-to-remember
   artist: Madonna
   title: Something To Remember
@@ -7786,14 +6855,6 @@
       id: 1V7yXwSUPAs
     - title: Traffic
       id: fY-6jSHGZys
-    - title: Traffic
-      id: 4fTtqbd02Zs
-    - title: The Deep
-      id: 6LDrUsCRolM
-    - title: Five Seasons
-      id: 1V7yXwSUPAs
-    - title: Traffic
-      id: fY-6jSHGZys
 - slug: mark-ronson-version
   artist: Mark Ronson
   title: Version
@@ -7847,7 +6908,6 @@
     - position: C3
       title: Amy
       duration: 3:32
-      video: lZQfDoeIMxI
     - position: D1
       title: The Only One I Know
       duration: 3:59
@@ -7869,22 +6929,6 @@
       id: JvbO4yfBrpE
     - title: Mark Ronson - L.S.F. (Official Audio) ft. Kasabian
       id: p3VAqoFtMzc
-    - title: Mark Ronson - God Put a Smile on Your Face (Official Audio) ft. The Daptone Horns
-      id: JvbO4yfBrpE
-    - title: Mark Ronson - Outversion (Official Audio)
-      id: jMkzXFgic1Y
-    - title: Mark Ronson - Diversion (Official Audio)
-      id: V4xJSr01bmk
-    - title: Mark Ronson - Toxic (Official Audio) ft. Ol’ Dirty Bastard, Tiggers
-      id: vngbxwRPIOw
-    - title: Mark Ronson - Apply Some Pressure (Official Audio) ft. Paul Smith
-      id: 3mSHQrb26Wg
-    - title: Mark Ronson - L.S.F. (Official Audio) ft. Kasabian
-      id: p3VAqoFtMzc
-    - title: Mark Ronson - Pretty Green (Official Audio) ft. Santigold
-      id: KlBp2ubEQcw
-    - title: Mark Ronson - The Only One I Know (Official Audio) ft. Robbie Williams
-      id: ozUr19F0NRo
 - slug: massive-attack-protection
   artist: Massive Attack
   title: Protection
@@ -7988,20 +7032,8 @@
       id: xMpleyJCcQU
     - title: Matthew Herbert - Around The House (Full Album)
       id: H7YJD5NQ4K4
-    - title: Herbert With Dani Siciliano - Around The House
-      id: MztxrQQYfcM
-    - title: Herbert With Dani Siciliano - Going Round
-      id: SjC8BIPB2vw
-    - title: Herbert with Dani Siciliano - This Time
-      id: O2Ib92dL3Ts
-    - title: Herbert and Dani Siciliano Suddenly Video Clip
-      id: xMpleyJCcQU
-    - title: Herbert & Dani Siciliano - So Now...
-      id: 19YPGWMaM6w
     - title: Around The House
       id: 81TPsTaHWYQ
-    - title: Herbert and Dani Siciliano Suddenly Video Clip
-      id: xMpleyJCcQU
     - title: Matthew Herbert - Around The House
       id: 0woJVhjcEgU
 - slug: matthias-heilbronn-selections
@@ -8058,26 +7090,6 @@
       id: QKkXUdBkUDg
     - title: Blaze - Wishing You Were Here (Joey Negro Extended Mix)
       id: UVPbaNLZTOo
-    - title: Get Fucked - Dreams Are Made  Hangover (Kenneth Graham She Likes To Ed-It Remix)
-      id: Fz_UJHnztq8
-    - title: Red Snapper ft  Allison David - Image of You (Salt City Orchestra Remix Dub)
-      id: QKkXUdBkUDg
-    - title: Blaze - Wishing You Were Here (Joey Negro Extended Mix)
-      id: UVPbaNLZTOo
-    - title: Mateo & Matos -  Stomp Your Feet
-      id: HAquNq8qes4
-    - title: Sfere - Soldar de Musique (1999)
-      id: jE7iIFyEJOc
-    - title: Snowboy - Joe Claussell Remix - Casa Forte (Spiritual Life Latin Samba Mix)
-      id: s1X1JHL4-tM
-    - title: lovetronic YOU ARE LOVE
-      id: QAS5MBCqxpM
-    - title: Karizma - The Power (Original Mix)
-      id: kRXAknG-Uys
-    - title: Dino & Terry - Questions
-      id: UoSg6AAUsb8
-    - title: Mood Swing
-      id: wZV-9pvGFYU
 - slug: melchior-sultana-mediterran-album
   artist: Melchior Sultana
   title: Mediterran Album
@@ -8139,30 +7151,6 @@
       id: 0utrJNI4l0Y
     - title: Melchoir Sultana - Paradise (Malta, 2015)
       id: sMc-sSbeIWU
-    - title: MELCHIOR SULTANA - ONE TAKE (UQ-062)
-      id: 0utrJNI4l0Y
-    - title: Melchoir Sultana - Paradise (Malta, 2015)
-      id: sMc-sSbeIWU
-    - title: Melchior Sultana - Paradise
-      id: _bZaFbm59jo
-    - title: Melchior Sultana - Run
-      id: rICrQC5bRd0
-    - title: Melchior Sultana - Day Dreamer
-      id: ATmBVOjeQGg
-    - title: Melchior Sultana - One Take
-      id: BYRwFF3LZQQ
-    - title: Melchior Sultana - The Void
-      id: 5MHDeRkGz3A
-    - title: Melchior Sultana - If Only
-      id: XiWOE_u-pzQ
-    - title: Melchior Sultana - Lead the Way
-      id: d7taOXRFQcM
-    - title: Melchior Sultana - Moments
-      id: ulBi4uHwJl4
-    - title: Melchior Sultana - Find Yourself
-      id: TuRQgWnoLfA
-    - title: Melchior Sultana - Things Change
-      id: kbchuUDzOhc
 - slug: miles-davis-robert-glasper-everything-s-beautiful
   artist: Miles Davis & Robert Glasper
   title: Everything’s Beautiful
@@ -8369,10 +7357,6 @@
       id: vSNpacuOAGs
     - title: Muse - Butterflies and Hurricanes (Video)
       id: EzCKrwOme2U
-    - title: "[Full Album] Muse - Absolution"
-      id: vSNpacuOAGs
-    - title: "[Full Album] Muse - Absolution"
-      id: vSNpacuOAGs
 - slug: neil-landstrumm-brown-by-august
   artist: Neil Landstrumm
   title: Brown By August
@@ -8419,26 +7403,6 @@
   videos:
     - title: Neil Landstrumm - Brown By August (1995) FULL ALBUM { Techno, Acid }
       id: 5cep9igJzBI
-    - title: Neil Landstrumm - Brown By August (1995) FULL ALBUM { Techno, Acid }
-      id: 5cep9igJzBI
-    - title: Neil Landstrumm - Shuttlecock
-      id: 3pWknsUTbLs
-    - title: Neil Landstrumm - DX Serve
-      id: sjaRA-zDmVI
-    - title: Neil Landstrumm – Index Revisited
-      id: S22KU_yc2FA
-    - title: Neil Landstrumm - Sibling Rivalry (Brother Landstrumm-Sister Tarrida Mix)
-      id: LMx64f_hLOA
-    - title: Neil Landstrumm - Shake The Hog (PF040)
-      id: v78_gpkSAqM
-    - title: Neil Landstrumm-Custard traxx
-      id: 284b1YZ4zXE
-    - title: Neil Landstrumm - Finnish Deception (PF040)
-      id: Y2X5cOsklU4
-    - title: Neil Landstrumm - Home Delivery
-      id: AexPgUQlLHs
-    - title: Neil Landstrum Squeeze
-      id: 8CHJognuPKI
 - slug: neil-landstrumm-lord-for-39
   artist: Neil Landstrumm
   title: Lord For £39
@@ -8504,14 +7468,6 @@
   videos:
     - title: Neil Landstrumm - Musk Of Mask
       id: Hr9aRab1Tr4
-    - title: Neil Landstrumm - Category D   from the Album “Lord Of  £39” 2008
-      id: WX1kPCW6zEo
-    - title: Neil Landstrumm - Musk Of Mask
-      id: Hr9aRab1Tr4
-    - title: Neil Landstrumm - Musk Of Mask
-      id: Hr9aRab1Tr4
-    - title: Neil Landstrumm - Category D   from the Album “Lord Of  £39” 2008
-      id: WX1kPCW6zEo
     - title: Neil Landstrumm - King of Malta
       id: eI0j5s4oUb0
 - slug: neil-landstrumm-understanding-disinformation
@@ -8581,22 +7537,6 @@
       id: hvGwtQ6jO4Q
     - title: Nasty and Suspicious Nature
       id: cBKSzW661AQ
-    - title: Neil Landstrumm - Range Rover Traxx
-      id: W5gPz5CfPxs
-    - title: Neil Landstrumm - The Glasvegas Experience
-      id: BY24Q00dEbo
-    - title: Neil Landstrumm - S:Board Crash//ZX-81
-      id: On8IIbSIZ40
-    - title: Neil Landstrumm - Invasion of the Bovine Snatchers
-      id: IcOMEWCpQH4
-    - title: Neil Landstrumm - Praline Horse
-      id: wPqJUKxDxWk
-    - title: Neil Landstrumm - Twisted in New York
-      id: rRRD-BIyBHs
-    - title: Neil Landstrumm - Pirate
-      id: PYgI8RWEl2s
-    - title: Neil Landstrumm - Nasty and Suspicious Nature
-      id: rmyXzHvWZgg
 - slug: nick-sole-flower-soil
   artist: Nick Solé
   title: Flower Soil
@@ -8674,37 +7614,26 @@
       video: GRpTOfH1McY
     - position: CD-1
       title: Love Song
-      video: dXuLxET35OU
     - position: CD-2
       title: My Mind
-      video: gSP54CDLnf8
     - position: CD-3
       title: Africa
-      video: T9ZFC4eDePA
     - position: CD-4
       title: Woman Of The Rain
-      video: yFqPdJ-UZVk
     - position: CD-5
       title: Money
-      video: Cuazt1Lc4y0
     - position: CD-6
       title: Deep Sundown
-      video: 9hUGDMjSjbE
     - position: CD-7
       title: Sleepless At Night
-      video: TOSVt8t83u8
     - position: CD-8
       title: Conzuela Said
-      video: DNFKmOfhPJ0
     - position: CD-9
       title: Dub Yeah
-      video: SeFW-xqVMKI
     - position: CD-10
       title: More Dance
-      video: 37Dxa1bl_PI
     - position: CD-11
       title: Dangerous Area
-      video: GRpTOfH1McY
   videos: []
 - slug: nightmares-on-wax-carboot-soul
   artist: Nightmares On Wax
@@ -8891,8 +7820,6 @@
   videos:
     - title: nina simone - my baby just cares for me
       id: eYSbUOoq4Vg
-    - title: nina simone - my baby just cares for me
-      id: eYSbUOoq4Vg
     - title: NINA SIMONE - My baby just cares for me
       id: SE1VrzT6RrQ
     - title: Nina Simone   My Baby Just Cares For Me Live   Montreux
@@ -8907,29 +7834,11 @@
       id: 6YxkqDYr-gI
     - title: "Nina Simone: My Baby Just Cares for Me @ Ronnie Scotts"
       id: 0sK1xrGwHsw
-    - title: Nina Simone “Love Me Or Leave Me” on The Ed Sullivan Show
-      id: 5cnZjClf6zM
-    - title: Nina Simone - My Baby Just Cares For Me- Special Extended Smoochtime Version
-      id: 3ZS7iKdRo5Q
-    - title: nina simone - my baby just cares for me
-      id: eYSbUOoq4Vg
-    - title: "Nina Simone: My Baby Just Cares For Me"
-      id: 6YxkqDYr-gI
-    - title: "Nina Simone: My Baby Just Cares For Me (Live on Sábado Noche)"
-      id: Di6lf_Fulks
-    - title: Nina Simone - My Baby Just Cares For Me (Live at Montreux)
-      id: OeHTsR5Y1bc
-    - title: "Nina Simone: My Baby Just Cares for Me @ Ronnie Scotts"
-      id: 0sK1xrGwHsw
-    - title: Nina Simone, HONNE - My Baby Just Cares For Me (HONNE Remix) [Official Video]
-      id: Hl-byHA6Vjs
-    - title: NINA SIMONE - My baby just cares for me
-      id: SE1VrzT6RrQ
     - title: Nina Simone - My Baby Just Cares For Me (The Ultimate Dance Mix)
       id: A1olvSeqTnE
-    - title: 👉📀 Nina Simone - My Baby Just Cares For Me (Special Extended Smoochtime Version) | 12’’ Maxi Single
+    - title: 👉📀 Nina Simone - My Baby Just Cares For Me (Special Extended Smoochtime Version) | 12″ Maxi Single
       id: QcgMZd7PY-Y
-    - title: 👉📀 Nina Simone - Love Me Or Leave Me | 12’’ Maxi Single Vinyl Rip 1987
+    - title: 👉📀 Nina Simone - Love Me Or Leave Me | 12″ Maxi Single Vinyl Rip 1987
       id: -sI9-ivBQLo
 - slug: nina-simone-the-legendary-first-recordings-in-new-york-city-1957
   artist: Nina Simone
@@ -9167,20 +8076,6 @@
       id: 4b_Q1aDY0tc
     - title: Oasis Collaborating - Oasis Seven
       id: ypnhC_KN_Ro
-    - title: Oasis – Oasis Collaborating
-      id: 0Quep646_C8
-    - title: "OASis - #FOUR"
-      id: w0fE68ohNOw
-    - title: "Oasis #Five"
-      id: ARMdKtAqOwo
-    - title: "Oasis - #Nine"
-      id: IOiIgTo2tvE
-    - title: Omar-s   -    Oasis 13 1/2
-      id: gbGYePz6y4M
-    - title: "Oasis - Oasis #7"
-      id: suPn9mvYS_4
-    - title: "D. Oasis #1 (Live Mix)"
-      id: kI6g0RBWlvs
 - slug: octave-one-featuring-random-noise-generation-off-the-grid
   artist: Octave One Featuring Random Noise Generation
   title: Off The Grid
@@ -9278,15 +8173,7 @@
     - position: B2
       title: Højbro
       video: OTSPVUmW750
-  videos:
-    - title: Ohm & Kvadrant - Knippelsbro [KNT-21]
-      id: A6kz9d5CUVg
-    - title: Ohm & Kvadrant - Langebro [KNT-21]
-      id: OqfJMrI6rrk
-    - title: Ohm & Kvadrant - Langebro (The Persuader Remix) [KNT-21]
-      id: kz-rK5IhYgk
-    - title: Ohm & Kvadrant - Højbro [KNT-21]
-      id: OTSPVUmW750
+  videos: []
 - slug: paperclip-people-4-my-peepz
   artist: Paperclip People
   title: 4 My Peepz
@@ -9323,20 +8210,6 @@
       id: HEKD0nxM-A0
     - title: Paperclip People - 4 My Peeps
       id: V7_Y4NUGyEw
-    - title: Paperclip People - Jerry Lewis (Mayday Mix)
-      id: vN9UmOxuQwc
-    - title: Paperclip People – 4 My Peepz
-      id: COkpG5Fe3xY
-    - title: Paperclip People - 4 my peepz (shot) - 10:59 edit
-      id: FUF5wECcdbg
-    - title: Paperclip People - 4 my peepz (stabbed) [1080p]
-      id: I4rfQRjbk_0
-    - title: paperclip people transplant mpeg 4
-      id: HEKD0nxM-A0
-    - title: Paperclip People - 4 My Peeps
-      id: V7_Y4NUGyEw
-    - title: Paperclip People - Jerry Lewis (Mayday Mix)
-      id: vN9UmOxuQwc
     - title: Paperclip People - Jerry Lewis (Mayday Mix)
       id: vN9UmOxuQwc
 - slug: paperclip-people-the-secret-tapes-of-doctor-eich
@@ -9409,30 +8282,6 @@
       id: AhpX1J6hZgQ
     - title: Paperclip People – The Secret Tapes Of Dr. Eich (Planet E, 1996)
       id: 9JAHvMkyd_s
-    - title: Welcome Center
-      id: 1raI7xHFiac
-    - title: Oscillator
-      id: P7i0aIs3Tww
-    - title: Paperclip Man
-      id: 4rrYQhDCynQ
-    - title: The Climax
-      id: ub-zyjYp9bE
-    - title: Floor
-      id: YIGb0OJpc_0
-    - title: Paperclip People - Clear & Present
-      id: AhpX1J6hZgQ
-    - title: Paperclip People - Throw
-      id: i_PzOR1L5SE
-    - title: Steam
-      id: UcrPfNFXmp8
-    - title: Parking Garage Politics
-      id: yV7pN8RkkAA
-    - title: Paperclip People - Country Boy Goes Dub
-      id: ulMsxC0_OKc
-    - title: Slam Dance
-      id: xwqda8PiRC4
-    - title: My Neighborhood
-      id: p6RDPnIvd0E
 - slug: paul-mccartney-snova-v-sssr
   artist: Paul McCartney
   title: Снова В СССР
@@ -9676,16 +8525,12 @@
       id: ECiBbb-RrlY
     - title: Plastikman - Korridor / Psyk / Pakard
       id: mfZdTk5D9ew
-    - title: Psyk
-      id: SbPn4ujgjIw
     - title: Pakard
       id: YudHRt1EeY4
     - title: Korridor
       id: 6PKbL-xnmFk
     - title: Plastikman - Pakard
       id: BQfXG8P7Rms
-    - title: plastikman - pakard
-      id: 0lC0Ths4atk
     - title: Plastikman - Lodgikal Nonsense
       id: TmwnPPCf9HY
     - title: Plastikman - Psyk (HD)
@@ -9736,8 +8581,6 @@
       id: fDBcxEMHNMs
     - title: EXhale (Live)
       id: u78J3RrWEkc
-    - title: Plastikman - EX (Full Album)
-      id: fDBcxEMHNMs
 - slug: portishead-portishead
   artist: Portishead
   title: Portishead
@@ -9795,9 +8638,7 @@
       title: Western Eyes
       duration: 3:57
       video: tz-QNii79lI
-  videos:
-    - title: Western Eyes
-      id: tz-QNii79lI
+  videos: []
 - slug: the-prodigy-the-fat-of-the-land
   artist: The Prodigy
   title: The Fat Of The Land
@@ -9904,16 +8745,8 @@
   videos:
     - title: RAC - On The Verge
       id: n_OwSCTlRrE
-    - title: RAC - Tunnel Talk
-      id: ILGrKTH-L_o
-    - title: RAC - On The Verge
-      id: bgTf7oN-CR0
     - title: RAC - Scuba
       id: g48V4CmbvIc
-    - title: RAC - Scuba
-      id: g48V4CmbvIc
-    - title: RAC - Scuba
-      id: nA601AgLZDM
     - title: RAC - Scuba
       id: nA601AgLZDM
 - slug: red-snapper-loopascoopa
@@ -9959,20 +8792,6 @@
       id: KzJDfAOFE48
     - title: The Last One (DJ Food Mix)
       id: 6RaaB0DWR30
-    - title: The Last One (DJ Food Mix)
-      id: 7TNkXi4hcmk
-    - title: Red Snapper - The Last One
-      id: qIkxazzIbOc
-    - title: Red Snapper - Crusoe Takes a Trip (Tortoise Mix)
-      id: fUU-cjGGPjI
-    - title: Red Snapper – Thomas The Fib (Mr. Scruff Mix)
-      id: w9dX20MGoBA
-    - title: Thomas The Fib (Mr Scruff Mix)
-      id: 44FL79QJ2Rc
-    - title: Red Snapper - Last One (Red Snapper coldcutted and gutted by DJ Food)
-      id: gTx3dGc9Czk
-    - title: The Last One
-      id: KzJDfAOFE48
 - slug: rhythm-plate-it-s-not-an-album-it-s-a-doublepack-e-p
   artist: Rhythm Plate
   title: It’s Not An Album It’s A Doublepack E.P.
@@ -10072,30 +8891,6 @@
       id: 6VTW86DVt8s
     - title: RV Feat  Los Updates – Baile (Sei Es Drum 2009)
       id: 4hgkKPVyNPk
-    - title: Ricardo Villalobos - Perc and Drums
-      id: 6BR9Yla6zds
-    - title: Ricardo Villalobos - Andruic [SED000]
-      id: PWt-YvxHsDs
-    - title: Ricardo Villalobos - Fizpatrick [SED000]
-      id: Z32tYvYrfDk
-    - title: Ricardo Villalobos - Primer Encuentro Latino-Americano [SED000]
-      id: J4N1ZdSJd0s
-    - title: Ricardo Villalobos - Druic [SED000]
-      id: b6MjboA0haY
-    - title: Ricardo Villalobos - Samasai [SED000]
-      id: GxqMMsYX_cY
-    - title: Ricardo Villalobos - Baila Sin Petit [SED000]
-      id: cj9fXkbiC7U
-    - title: Ricardo Villalobos - Farenzer House [SED000]
-      id: JTKts1zPglA
-    - title: Ricardo Villalobos - Andruic (Sei Es Drum, 2007) [HD, AAC 386 kbps]
-      id: lbQQBgd-SaQ
-    - title: Sei Es Drum
-      id: 6VTW86DVt8s
-    - title: RV Feat  Los Updates – Baile (Sei Es Drum 2009)
-      id: 4hgkKPVyNPk
-    - title: Ricardo Villalobos - Samasai
-      id: hDsnaJhzNVM
     - title: Ricardo Villalobos - Perc and Drums
       id: 6BR9Yla6zds
 - slug: richie-hawtin-de9-closer-to-the-edit
@@ -10386,16 +9181,6 @@
       id: rBFMpNyJH4k
     - title: richie hawtin - de9 closer to the edit - track 19
       id: mh9155dM1JY
-    - title: Richie Hawtin - DE9 | Closer To The Edit  (2001, full‐length)
-      id: 4MSymIy9eCY
-    - title: DE9 - Closer to the Edit
-      id: VYzXjuVy4uQ
-    - title: DT:Recommends | Richie Hawtin - DE9 | Closer To The Edit (2001) Mix CD
-      id: c92hWgPmGHo
-    - title: Richie Hawtin - DE9 | Closer To The Edit (CD Mix)
-      id: lPa9lyUVoHw
-    - title: Richie Hawtin ‎– DE9 | Closer To The Edit (Mix CD) 2001
-      id: rBFMpNyJH4k
     - title: Richie Hawtin - Closer to the Edit Track 1
       id: h-MbUJRqnjQ
     - title: Richie Hawtin - Closer To The Edit - Track 4
@@ -10404,50 +9189,12 @@
       id: 7t1iCA7wDXQ
     - title: Richie Hawtin - Closer To The Edit - Track 7
       id: EJkWHvC7K5c
-    - title: richie hawtin - de9 closer to the edit - track 19
-      id: mh9155dM1JY
     - title: Richie Hawtin - DE 9 Closer to the Edit (Bimbo’s Initiation).mov
       id: F1tmduBAT3w
-    - title: Richie Hawtin – DE9 | Closer To The Edit (cd/mixed)
-      id: VTBXzKWKDmk
-    - title: DE9 - Closer to the Edit
-      id: VYzXjuVy4uQ
-    - title: Richie Hawtin - DE9 | Closer To The Edit  (2001, full‐length)
-      id: 4MSymIy9eCY
-    - title: Richie Hawtin - DE9 | Closer To The Edit (CD Mix)
-      id: lPa9lyUVoHw
-    - title: Richie Hawtin – DE9 | Closer To The Edit (cd/mixed)
-      id: VTBXzKWKDmk
-    - title: "RICHIE HAWTIN - DE9: CLOSER TO THE EDIT (2001)"
-      id: ma1Gc24t1e0
-    - title: 01 Richie Hawtin DE9 closer to the edit 2006
-      id: MCp-NLbRKw4
-    - title: richie hawtin - de9 closer to the edit - track 19
-      id: mh9155dM1JY
     - title: Riche Hawtin DE9:Closer To The Edit [2001]
       id: fH_MRtPMxis
     - title: Richie Hawtin | Closer To The Edit | 2001
       id: mNfkrSbfKl8
-    - title: Richie Hawtin - DE9 | Closer To The Edit  (2001, full‐length)
-      id: 4MSymIy9eCY
-    - title: DE9 - Closer to the Edit
-      id: VYzXjuVy4uQ
-    - title: Richie Hawtin - DE9 | Closer To The Edit (CD Mix)
-      id: lPa9lyUVoHw
-    - title: Richie Hawtin – DE9 | Closer To The Edit (cd/mixed)
-      id: VTBXzKWKDmk
-    - title: Richie Hawtin ‎– DE9 | Closer To The Edit (Mix CD) 2001
-      id: rBFMpNyJH4k
-    - title: DT:Recommends | Richie Hawtin - DE9 | Closer To The Edit (2001) Mix CD
-      id: c92hWgPmGHo
-    - title: 01 Richie Hawtin DE9 closer to the edit 2006
-      id: MCp-NLbRKw4
-    - title: Richie Hawtin | Closer To The Edit | 2001
-      id: mNfkrSbfKl8
-    - title: "Richie Hawtin: DE9 | Closer To The Edit"
-      id: Hi80Kk3Ph44
-    - title: "RICHIE HAWTIN - DE9: CLOSER TO THE EDIT (2001)"
-      id: ma1Gc24t1e0
 - slug: robert-glasper-experiment-black-radio
   artist: Robert Glasper Experiment
   title: Black Radio
@@ -10511,18 +9258,10 @@
       duration: 7:24
       video: GvuFNkgePB4
   videos:
-    - title: ROBERT GLASPER EXPERIMENT - LETTER TO HERMIONE (509997 29767 15)
-      id: ZcGZRvWQu9E
     - title: Robert Glasper Experiment - Letter To Hermione (Feat. Bilal)
       id: Yc0TmmmMlZs
     - title: Robert Glasper Experiment ft Mos Def (Yasiin Bey)-Black Radio
       id: IcIuGl1_3w8
-    - title: ROBERT GLASPER EXPERIMENT - LETTER TO HERMIONE (509997 29767 15)
-      id: ZcGZRvWQu9E
-    - title: Cherish The Day
-      id: WzxzfL9n4_Y
-    - title: Black Radio
-      id: PhzXK3275tg
     - title: Black Radio
       id: PhzXK3275tg
     - title: Robert Glasper Experiment “Black Radio” feat. Yasiin Bey [Lyric Video]
@@ -10537,8 +9276,6 @@
       id: dzDs3VdTY0A
     - title: Robert Glasper - Black Radio Broadcast Episode 1
       id: u1qnv1_xrWc
-    - title: Robert Glasper Experiment ft. Mos Def - Black Radio
-      id: tThq3EINsh8
     - title: Robert Glasper - Black Radio Week 17
       id: uSAJLZN3BPI
 - slug: round-one-i-m-your-brother
@@ -10571,18 +9308,12 @@
       duration: 7:07
       video: P8BExSl1KLM
   videos:
-    - title: Round One - I’m Your Brother (Chicago’s Twisted Mix)
-      id: P8BExSl1KLM
-    - title: Round One ‎- I’m Your Brother (Edit)
-      id: PRbDxbGy0Co
     - title: Round One - I’m Your Brother (Club Mix) [1994]
       id: GKzD1-Fjay4
     - title: Round One - I’m Your Brother (Chicago’s Twisted Mix) [MSD1]
       id: 8JQAbXNKPbY
     - title: Round One - I’m Your Brother (Club Vocal Edit)
       id: HaSAkMv-C8c
-    - title: Round One ‎- I’m Your Brother (Edit)
-      id: PRbDxbGy0Co
     - title: Round One - I’m Your Brother (Quadrant Dub II) [MSD1]
       id: nB1ia78gj9g
 - slug: rupert-holmes-partners-in-crime
@@ -10672,15 +9403,7 @@
     - position: b2
       title: Sketch Six
       video: sXENvpoNKP0
-  videos:
-    - title: RVNZ - Sketch Five (Vinyl only)
-      id: zSly9rACtIE
-    - title: Sketch One
-      id: jsVyTLobPmM
-    - title: RVNZ - Sketch Six
-      id: sXENvpoNKP0
-    - title: Sketch Two
-      id: 8A3bh2NDXWU
+  videos: []
 - slug: sade-diamond-life
   artist: Sade
   title: Diamond Life
@@ -10809,11 +9532,7 @@
     - position: B
       title: Another Day (Thunder)
       video: ZF2YKzJGn3g
-  videos:
-    - title: Another Day (Rain)
-      id: T8nU5Ui-Wik
-    - title: Another Day (Thunder)
-      id: ZF2YKzJGn3g
+  videos: []
 - slug: santonio-echols-6267
   artist: Santonio Echols
   title: "6267"
@@ -10842,16 +9561,6 @@
       id: k9SLxwo6Sbg
     - title: A1 - Santonio Echols - Blue Skies
       id: YR53fiQb2Vw
-    - title: B2 - Santonio Echols - Overflow
-      id: hY1S37QRCYw
-    - title: BB - Santonio Echols - Share Me Baby (feat. Mike Anderson) (Unreleased Deep Mix)
-      id: 8QzT5rtXLVQ
-    - title: Santonio Echols ‎– 6267 EP
-      id: k9SLxwo6Sbg
-    - title: A1 - Santonio Echols - Blue Skies
-      id: YR53fiQb2Vw
-    - title: B1 - Santonio Echols - Share Me Baby (feat. Mike Anderson) (Underground Bass Mix)
-      id: m5oRpKhzlmg
     - title: B2 - Santonio Echols - Overflow
       id: hY1S37QRCYw
     - title: BB - Santonio Echols - Share Me Baby (feat. Mike Anderson) (Unreleased Deep Mix)
@@ -10937,18 +9646,6 @@
   videos:
     - title: Alright (Blake’s Tresor Mix)
       id: _PEXKZ8Rvv4
-    - title: Mar’s Bar
-      id: DgfqxS2dcUY
-    - title: On the Hook
-      id: C87tmwwmkPM
-    - title: Bullwalk
-      id: bnQd9pSLwvc
-    - title: Alright
-      id: 1ezuNfaGNXQ
-    - title: Alright (Blake’s Tresor Mix)
-      id: _PEXKZ8Rvv4
-    - title: Alright (Surgeon’s ‘Keith 4 Nat’ Mix)
-      id: AX0uQceAqXM
 - slug: sean-paul-like-glue
   artist: Sean Paul
   title: Like Glue
@@ -11080,13 +9777,7 @@
     - position: AA
       title: Climbing Walls
       video: WfeV1UumYuY
-  videos:
-    - title: Silicone Soul - The Strip
-      id: jkgt7OcFhbM
-    - title: Silicone Soul - Candy Love
-      id: SEmiW16Ggcg
-    - title: Silicone Soul - Climbing Walls
-      id: WfeV1UumYuY
+  videos: []
 - slug: simply-red-men-and-women
   artist: Simply Red
   title: Men And Women
@@ -11180,7 +9871,7 @@
   videos:
     - title: Sinéad O’Connor - Nothing Compares 2 U (Official Music Video) [HD]
       id: 0-EF60neguk
-    - title: Sinead O’Connor - Nothing Compares 2 U [12’’ maxi single]
+    - title: Sinead O’Connor - Nothing Compares 2 U [12″ maxi single]
       id: quOcox3HiSY
     - title: Sinead O’Connor - Jump In The River (Official Music Video)
       id: 1ORbUdApLhk
@@ -11188,8 +9879,6 @@
       id: Ouf9-bOqJVk
     - title: Jump in the River (2009 Remaster)
       id: p_DaBDdg1HA
-    - title: Sinéad O’Connor - Nothing Compares 2 U (Official Music Video) [HD]
-      id: 0-EF60neguk
     - title: Sinead O’Connor - Nothing Compares 2 U (Live)
       id: NAOKzvL8dgk
     - title: Nothing Compares 2 U - Sinéad O’Connor (Lyrics)
@@ -11226,12 +9915,6 @@
       id: 0TCWs_0uDW8
     - title: Sinead O Connor - Nothing compares to you (traduction en français)
       id: XXFjucuHmiw
-    - title: Sinead O’Connor - Nothing Compares 2 U [12’’ maxi single]
-      id: quOcox3HiSY
-    - title: Sinead O’Connor - Jump in the River [12’’ maxi single]
-      id: SGYIzeiR5Lk
-    - title: Sinead O’Connor - Jump in the River (Instrumental) [12’’ maxi single]
-      id: PyLk6Bl0Ejo
 - slug: the-skinless-brothers-escape-from-venice
   artist: The Skinless Brothers
   title: Escape From Venice
@@ -11262,15 +9945,7 @@
     - position: B2
       title: Groove Injection
       video: BwXxxgpktyc
-  videos:
-    - title: The Skinless Brothers - Backyard
-      id: EOFT7_t-pr4
-    - title: The Skinless Brothers - Zwung
-      id: riXZjpDOiVY
-    - title: The Skinless Brothers - Electric Fingers
-      id: Nwq1pyaFi9c
-    - title: The Skinless Brothers - Groove Injection
-      id: BwXxxgpktyc
+  videos: []
 - slug: slam-no-one-left-to-follow
   artist: Slam
   title: No One Left To Follow
@@ -11294,12 +9969,6 @@
       title: We’re Not Here (12” Mix)
       duration: 7:32
   videos:
-    - title: Slam - No One Left To Follow (Unofficial Video)
-      id: q-amzV_dQwI
-    - title: Slam - No one left to follow(12 inch edit)
-      id: En2UWcLvZIM
-    - title: Slam - Were not here (12 inch edit)
-      id: YkVTyRQ9oJg
     - title: Slam - No One Left To Follow (Unofficial Video)
       id: q-amzV_dQwI
     - title: Slam - No one left to follow(12 inch edit)
@@ -11393,8 +10062,6 @@
       id: UqMk0OhIu-U
     - title: 𝐒𝐥𝐚𝐦 - 𝐏𝐨𝐬𝐢𝐭𝐢𝐯𝐞 𝐄𝐝𝐮𝐜𝐚𝐭𝐢𝐨𝐧 (𝟏𝟗𝟗𝟑)
       id: IH3ovTmNzVg
-    - title: Positive Education
-      id: td2gsObDqqA
     - title: Positive Education (Richie Hawtin’s Stripped Mix)
       id: ks5N706sKkE
     - title: Positive Education (Luke Slater Morganistic Mix 1)
@@ -11524,10 +10191,6 @@
       id: HSpgWpZSFA4
     - title: Slam - The Mix (CD2)
       id: H9bV49bqhbU
-    - title: Slam - The Mix (CD1)
-      id: HSpgWpZSFA4
-    - title: Slam - The Mix (CD2)
-      id: H9bV49bqhbU
 - slug: soul-ascendants-variations
   artist: Soul Ascendants
   title: Variations
@@ -11583,14 +10246,6 @@
       duration: 6:43
       video: QXcIAqLbOIU
   videos:
-    - title: Soul Ascendants - Tribute (Toned Up Mix)
-      id: Qy9F9_AwRto
-    - title: Soul Ascendants - In Your Eyes
-      id: tiSXktL9fYU
-    - title: Soul Ascendants - The String Thing
-      id: luvxFqY4aXM
-    - title: Soul Ascendants - Tribute (Toned Up Mix)
-      id: Qy9F9_AwRto
     - title: Soul Ascendants - Tribute
       id: h0nC3Nvs5SU
 - slug: st-germain-boulevard-the-complete-series
@@ -11641,8 +10296,6 @@
       duration: 8:05
       video: avG6ZLff7yI
   videos:
-    - title: St Germain “Alabama blues” (Todd Edwards vocal mix) 1995 F Communications
-      id: GVWYtumc_ZI
     - title: St Germain “Alabama blues” (Todd Edwards vocal mix) 1995 F Communications
       id: GVWYtumc_ZI
     - title: Thank You Mum
@@ -11701,8 +10354,6 @@
       title: Forget Me Not (Instrumental)
       duration: 5:43
   videos:
-    - title: ST GERMAIN ‎– HANKY-PANKY (0825646121984)
-      id: jIPeoC-xBsI
     - title: ST GERMAIN ‎– HANKY-PANKY (0825646121984)
       id: jIPeoC-xBsI
     - title: St Germain - Real Blues Atjazz Astro Remix
@@ -11810,58 +10461,10 @@
       id: ZTYsls_j5-g
     - title: St Germain “Montego Bay spleen” 2000 Blue Note
       id: WXm7QjaEfy8
-    - title: Sure Thing
-      id: NnzSkIjrtQ0
-    - title: Pont des Arts
-      id: A4_KW-cC6Og
-    - title: La goutte d’or
-      id: QxCI05Vz4LU
-    - title: St Germain - So Flute
-      id: ow00U-slPYk
-    - title: Montego Bay Spleen
-      id: z5hjlsc-70c
-    - title: La goutte d’or
-      id: QxCI05Vz4LU
-    - title: Sure Thing
-      id: NnzSkIjrtQ0
-    - title: Pont des Arts
-      id: A4_KW-cC6Og
-    - title: What You Think About...
-      id: -nxwTQoyJ20
-    - title: St. Germain - Land Of...
-      id: 0wvbpjE7gzQ
     - title: St Germain - Sure Thing (Todd Edwards Deepline Remix)
       id: MOvEv-pvldg
     - title: St Germain - Rose Rouge Blaze Early Shelter Mix)
       id: 80EK-mVFWHw
-    - title: St Germain - So Flute
-      id: ow00U-slPYk
-    - title: Montego Bay Spleen
-      id: z5hjlsc-70c
-    - title: La goutte d’or
-      id: QxCI05Vz4LU
-    - title: Sure Thing
-      id: NnzSkIjrtQ0
-    - title: Pont des Arts
-      id: A4_KW-cC6Og
-    - title: St. Germain - Land Of...
-      id: 0wvbpjE7gzQ
-    - title: What You Think About...
-      id: -nxwTQoyJ20
-    - title: St Germain - So Flute
-      id: ow00U-slPYk
-    - title: Sure Thing
-      id: NnzSkIjrtQ0
-    - title: Pont des Arts
-      id: A4_KW-cC6Og
-    - title: St. Germain - Land Of...
-      id: 0wvbpjE7gzQ
-    - title: What You Think About...
-      id: -nxwTQoyJ20
-    - title: La goutte d’or
-      id: QxCI05Vz4LU
-    - title: Latin Note
-      id: BARt_0BcAUw
 - slug: st-germain-tourist-travel-versions
   artist: St Germain
   title: Tourist Travel Versions
@@ -11928,28 +10531,6 @@
       id: 9rp8iNdA1D8
     - title: Rose rouge (Terry Laird Nu Maloya Fusion Mix)
       id: 06ShYBDIYpk
-    - title: Sure Thing (Black Motion Anniversary Mix)
-      id: hp7ANnERlnU
-    - title: Sure Thing (Jullian Gomes Remix)
-      id: 4i7grUZdGF0
-    - title: ST Germain - Rose Rouge (Nightmares on Wax ReRub)
-      id: 4_77hdB1Epg
-    - title: What You Think About (Traumer Re-Jammed Remix)
-      id: 0KUI5GCWgKw
-    - title: Sure Thing (DJ Deep Remix)
-      id: _lWEy82F-Zs
-    - title: Rose rouge (Atjazz Galaxy Aart Remix)
-      id: clUmHKUACQQ
-    - title: ST Germain - So Flute (Ludovic Navarre Amapiano Version 2020)
-      id: Vwe0m7oGNE4
-    - title: Rose rouge (Jovonn Oldskool 90s Remix)
-      id: NtMgxvjzfic
-    - title: Sure Thing (Osunlade Yoruba Soul Mix)
-      id: 9rp8iNdA1D8
-    - title: Rose rouge (Terry Laird Nu Maloya Fusion Mix)
-      id: 06ShYBDIYpk
-    - title: St Germain - Rose Rouge (Jazzfunksuite For Musicandpower Remix)
-      id: rsaum6Lovzs
     - title: Sure Thing (Black Motion Anniversary Mix)
       id: hp7ANnERlnU
     - title: Sure Thing (Jullian Gomes Remix)
@@ -12074,40 +10655,12 @@
       id: 0lLYA9ln0rU
     - title: DJ-Kicks / Mixed by Stacey Pullen (CD 1996)
       id: q83iUQ3Wi8A
-    - title: DT:Recommends | DJ-Kicks - Stacey Pullen (1996) Mix CD
-      id: 9tGBGgm8Ww0
-    - title: Jibaros - Colora (Dub) [1995]
-      id: iGwCV7l8P4E
-    - title: The Kooky Scientist -- Rambunctious-A1 Rambunctious
-      id: _4Nr5uP_ayo
-    - title: Sensorama Harz
-      id: Q45ZOWbQBOI
-    - title: Stacey Pullen - DJ-Kicks (House, Techno) (1996)
-      id: 2rCYoaAkoYA
-    - title: Stacey Pullen - DJ-Kicks - 1996
-      id: NYzlB_f6oiU
-    - title: 25 Stacey Pullen - Dj Kicks (The Track)
-      id: 7Xg_Hzjhcfg
-    - title: "DJ-Kicks: Stacey Pullen"
-      id: WinMxbG1Cdo
-    - title: Stacey Pullen  Dj kicks(The Track)
-      id: 0lLYA9ln0rU
-    - title: DJ-Kicks / Mixed by Stacey Pullen (CD 1996)
-      id: q83iUQ3Wi8A
     - title: Kosmic Messenger ‎– Eye 2 Eye
       id: HUPMonGzTnA
     - title: Wulf n’Bear -  B1 Untitled [2020 Vision, 1995]
       id: ldIdy_dR3DY
-    - title: 25 Stacey Pullen - Dj Kicks (The Track)
-      id: 7Xg_Hzjhcfg
-    - title: DJ-Kicks / Mixed by Stacey Pullen (CD 1996)
-      id: q83iUQ3Wi8A
-    - title: Stacey Pullen - DJ-Kicks - 1996
-      id: NYzlB_f6oiU
     - title: Stacey Pullen - DJ-Kicks
       id: GrihWDowMXU
-    - title: Stacey Pullen  Dj kicks(The Track)
-      id: 0lLYA9ln0rU
 - slug: stewart-walker-live-extracts
   artist: Stewart Walker
   title: Live Extracts
@@ -12379,13 +10932,7 @@
       title: First (Regis Smethwick Alloy Mix)
       duration: 4:39
       video: zxnJD7exFEM
-  videos:
-    - title: Surgeon - “First”
-      id: qkyUbp7Bg-4
-    - title: Surgeon - First (Outline mix)
-      id: ziGdlBXO05w
-    - title: Surgeon - First (Regis Smethwick Alloy mix)
-      id: zxnJD7exFEM
+  videos: []
 - slug: swayzak-another-way
   artist: Swayzak
   title: Another Way
@@ -12411,12 +10958,6 @@
       duration: 7:40
       video: _Ysz-J4nq5Y
   videos:
-    - title: Swayzak - Another Way, HQ
-      id: PdWrDeVa9bU
-    - title: Swayzak - Another Way, HQ
-      id: PdWrDeVa9bU
-    - title: Swayzak - Bergerie
-      id: _Ysz-J4nq5Y
     - title: Swayzak - Another Way, HQ
       id: PdWrDeVa9bU
     - title: Another Way
@@ -12463,8 +11004,6 @@
       id: lebW6RJvQWc
     - title: Keep It Coming (Instrumental)
       id: e01zYA8HbX4
-    - title: Another Way (Mathew Jonson Remix)
-      id: VukGOteJWLI
 - slug: swayzak-loops-from-the-bergerie
   artist: Swayzak
   title: Loops From The Bergerie
@@ -12534,13 +11073,7 @@
     - position: B2
       title: Ikea
       video: 7ZymKAW-M2I
-  videos:
-    - title: Make Up Your Mind
-      id: ykfVTBRh428
-    - title: Make Up Your Mind (Slight Return Mix)
-      id: UsIfIwqR9lg
-    - title: Ikea
-      id: 7ZymKAW-M2I
+  videos: []
 - slug: terrence-parker-detroit-after-dark
   artist: Terrence Parker
   title: Detroit After Dark
@@ -12604,28 +11137,10 @@
       id: RAKfIMMhw7E
     - title: Terrence Parker - Detroit After Darke
       id: BAyHhZykOsA
-    - title: Terrence Parker - The Floormaster
-      id: pLOeCTo668s
-    - title: Terrence Parker - 7 Waves of Soul
-      id: tEWRAELmDh0
-    - title: Terrence Parker - Detroit After Dark
-      id: 9igPLOFHLa8
-    - title: Terrence Parker - Detroit After Dark
-      id: ZFZxWI1TvbU
-    - title: TERRENCE PARKER DETROIT AFTER DARK-you can do it !K7 RECORDS 1997
-      id: fASQD9cy5Ac
-    - title: Terrence Parker - Detroit After Dark | Ambient | Chill out
-      id: RAKfIMMhw7E
-    - title: Terrence Parker - Detroit After Darke
-      id: BAyHhZykOsA
     - title: Terrence Parker - Took My Love [Studio !K7]
       id: iuI53sR_RZc
     - title: Terrence Parker - Play-ah Hate-ah (TP Playin’ House Remix) [Studio !K7]
       id: wLQa02M_lvs
-    - title: Terrence Parker - Detroit After Dark
-      id: 9igPLOFHLa8
-    - title: Terrence Parker - Detroit After Dark
-      id: ZFZxWI1TvbU
     - title: Terrence Parker - You Can Do It (1997)
       id: Q28syOQGL7g
 - slug: theo-parrish-sound-sculptures-volume-1
@@ -12686,24 +11201,6 @@
       id: RBFgVFCe5qc
     - title: Theo Parrish - Second chances *instrumental*
       id: v8WgZL_srLc
-    - title: Theo Parrish “Sound Sculptures Volume 1” Full Triple Vinyl Album
-      id: RBFgVFCe5qc
-    - title: Theo Parrish - Second Chances (w. monica blaire)
-      id: sufZTgf8sOA
-    - title: Theo Parrish - They Say (Feat. Monica Blaire)
-      id: 1tgKT4g6qlg
-    - title: Theo Parrish - Second chances *instrumental*
-      id: v8WgZL_srLc
-    - title: Theo Parrish - Twisted Friskie Biscuits
-      id: uWRa1x188rE
-    - title: Theo Parrish - The Rink
-      id: C5eV7Nqsal0
-    - title: Theo Parrish - Galactic Ancestors
-      id: LyKCfu-1st4
-    - title: Theo Parrish - Soul Control
-      id: ixKSHqMFKj0
-    - title: Theo Parrish - Synthetic Flemm .
-      id: n85Z1D1z6T8
     - title: Theo Parrish - The Interplanetary Gangster Edit
       id: Y2Lkz0MzfEk
     - title: Theo Parrish - Sundown Town
@@ -12790,10 +11287,6 @@
       id: 34xPOMGk94A
     - title: DJ Timo Maas ‎– Connected [HD] Disc 2 - 2001 Classic Progressive House
       id: G9aacwFVWqk
-    - title: "Perfecto Presents... Timo Maas: Connected (CD1)"
-      id: 34xPOMGk94A
-    - title: DJ Timo Maas ‎– Connected [HD] Disc 2 - 2001 Classic Progressive House
-      id: G9aacwFVWqk
 - slug: tobias-schmidt-background-violence-ep
   artist: Tobias Schmidt
   title: Background Violence EP
@@ -12822,13 +11315,7 @@
       video: -pl71HYs5Vc
     - position: B2
       title: Ivory
-  videos:
-    - title: Tobias Schmidt - Visa - Background Violence EP - Drought 1997
-      id: 4TKXGLqDEHU
-    - title: Tobias Schmidt - Displacement
-      id: YHazaiQ3SMU
-    - title: Tobias Schmidt - Self-defence
-      id: -pl71HYs5Vc
+  videos: []
 - slug: tobias-schmidt-dark-of-heartness
   artist: Tobias Schmidt
   title: Dark Of Heartness
@@ -12885,8 +11372,6 @@
       title: Family Pack
       duration: 4:58
   videos:
-    - title: DT:Recommends | Tobias Schmidt - Dark of Heartness (1999) Album
-      id: W0dIU9rDIF4
     - title: DT:Recommends | Tobias Schmidt - Dark of Heartness (1999) Album
       id: W0dIU9rDIF4
 - slug: tom-stephan-warmin-up-firin-off
@@ -13090,10 +11575,6 @@
       id: 88e3MlG7L-o
     - title: Afro Blue (Derrick Carter Mix)
       id: v1x-2a4owdM
-    - title: Two Banks Of Four - Afro Blue
-      id: 88e3MlG7L-o
-    - title: Afro Blue (Derrick Carter Mix)
-      id: v1x-2a4owdM
 - slug: u2-u218-singles
   artist: U2
   title: U218 Singles
@@ -13217,24 +11698,6 @@
       id: 6r2Rd8Q4-S8
     - title: Ultramagnetic MC’s - We Are The Horsemen
       id: 34bN-6EzC3E
-    - title: DJ Krush - Kemuri
-      id: aVjgRlto8PI
-    - title: Birth
-      id: UoYyD-0CUzM
-    - title: 69   If Mojo Was A.M.  extended version
-      id: xVxs3-SfdkI
-    - title: We Are The Horsemen
-      id: v0-CsyVUefk
-    - title: Mighty Bop -  Motherfucking Ghost
-      id: vq7n15Jn9wQ
-    - title: Howie B. - Ambidextrous
-      id: dMm71DY-OHU
-    - title: UNKLE - Dewback
-      id: CE5YSwMsG20
-    - title: Anafey (Half a Stinky Submarine)
-      id: 6r2Rd8Q4-S8
-    - title: Beck - In A Cold Ass Fashion
-      id: 6f_2E7Krsxo
 - slug: various-124-is-2
   artist: Various
   title: 124 Is 2
@@ -13392,7 +11855,6 @@
       title: Filthy Pitch
     - position: 1-MP3-02
       title: Searcher
-      video: QJOQIc9ln-o
     - position: 1-MP3-03
       title: Tikonal
     - position: 1-MP3-04
@@ -13472,8 +11934,6 @@
   videos:
     - title: Sudwestfunk Nº 5
       id: NDzmyKCDIoA
-    - title: Sudwestfunk Nº 5
-      id: NDzmyKCDIoA
     - title: Krekc - Speedy J  /  2 CDs & MP3s (Novamute)
       id: r1_Qoy7KEls
     - title: Knarz aka Thomas P. Heckmann - Knarz Is Machine
@@ -13542,14 +12002,8 @@
   videos:
     - title: 313 by Blake Baxter (Compilation; Tresor; 1996)
       id: a-A0J3rkEzo
-    - title: 313 by Blake Baxter (Compilation; Tresor; 1996)
-      id: a-A0J3rkEzo
-    - title: Renee Feat. Taj - When i Dream (Mid Evil Mix) (1996)
-      id: QL449MwJ27M
     - title: Blake Baxter - Luv 2 Luv (Electric Mix) (1996)
       id: kClpnIpWg0o
-    - title: Xzile - Blind Faith (1996)
-      id: lP7tHK3bJ4U
 - slug: various-an-endless-journey-vol-2-and-the-trip-goes-on
   artist: Various
   title: An Endless Journey Vol. 2 - And The Trip Goes On
@@ -13628,30 +12082,6 @@
       id: -SbbCBdsZqc
     - title: Ghittoni - Sto Bene
       id: TDH8swDI8NY
-    - title: Omni Trio - Haunted Kind
-      id: yExjkZF9sXc
-    - title: 06 Mad Doctor X I like my beats hard 1997
-      id: TkeTlHvyQzo
-    - title: On Yer Haunches
-      id: OIS2zGIMTTw
-    - title: Flight Of The Vulture
-      id: S8EH5gS14_E
-    - title: Stowing Air (Fila Brazillia Remix)
-      id: ugFLfgUM95w
-    - title: The Last Of The Red Hot Brethren
-      id: oxNHOX0uvCA
-    - title: Project 23 - Pleasure & The Pain (Peshay Remix)
-      id: MoQaM2iDnAQ
-    - title: Larceny - Who Are You (Aquasky Mix)
-      id: xoM3gpm65Ok
-    - title: Ant Hill Into The Fire
-      id: fo6hs54Kkc8
-    - title: Straight Beat - Aural Experience
-      id: 8_LMgxjINvA
-    - title: Mad Doctor X ~ I Like My Beats Hard
-      id: NxgWu2wE8kA
-    - title: Waldeck - Aquarius (straight) (trip hop)
-      id: EGKl-THLMaQ
 - slug: various-bare-essentials-volume-one
   artist: Various
   title: Bare Essentials Volume One
@@ -13761,117 +12191,13 @@
       id: LT_xbbPTbR0
     - title: Blue Six ~ Pure
       id: yoowOp94Em8
-    - title: Breakin’ It Down (Jay’s Blue Vocal)
-      id: HCXBijS-DaQ
-    - title: Music & Wine (Th’Attaboy Vocal)
-      id: 5f9_skxc8n8
-    - title: Lovetronic - You Are Love (Jay’s Afrotonic Vocal)
-      id: 0FYPW8dDoi0
-    - title: Everything Is Changing (Swag Remix)
-      id: 3w_7IyedH1I
-    - title: Surrender (Original)
-      id: kb9QEbyLE3s
-    - title: Nightsource  -  Rise Above
-      id: krfGn8gx6Mw
-    - title: Summerland - Soulmate (Mig’s Petalpusher Bump) [Naked Music, 2000]
-      id: fGeGuRH0T18
-    - title: Petalpusher - Breakin’it down ( Miguel Migs’Bump De Luxe Mix )
-      id: 36G8_a9gYV0
-    - title: You Are Love (Original Version)
-      id: _V5Ybtx99lw
-    - title: Summerland - Soulmate (Naked MAJ Original Mix)
-      id: HSY9yMrXfh4
-    - title: Don’t Ya Wanna
-      id: W9IqAACbPNI
-    - title: Music & Wine (Jay’s Conga Lounge Vocal)
-      id: V8mX6zXclHk
-    - title: Surrender (Attaboy Remix Edit)
-      id: cYH6OWEumWs
-    - title: Soulmate (Restless Soul Moontime Dub)
-      id: TED-Rh6bp0c
-    - title: Blue Six - Pure (Original Mix)
-      id: 9gC8cXqRTDs
-    - title: You Are Love (Brad’s Payback Vocal)
-      id: _0ivMlEwOu8
-    - title: bare essentials vol. 1
-      id: 6oS7HwOWXK8
-    - title: bare essentials vol. 1 (part 2)
-      id: kYQIoiO6pqk
-    - title: Lovetronic - You Are Love (Original Version)
-      id: dCDlY8Mqs1c
-    - title: Lovetronic - You Are Love (Original Version)
-      id: k5zqX-fNJWU
-    - title: Various – Bare Essentials Volume One
-      id: hb6cDn54VcI
-    - title: Groove Collective  -  Everything is Changing (SWAG Dub)
-      id: p7x93sOO_kU
-    - title: Groove Collective - Everything Is Changing (Swag Remix)
-      id: iKFA2T13GR4
-    - title: Petalpusher  -  Surrender (Petalpusher Original)
-      id: EYqd1HZDHRE
-    - title: Summerland - Soulmate (Restless Soul Peaktime Vocal Mix) [Naked Music, 2000]
-      id: ire8Maw26tU
-    - title: Summerland - Soulmate (Restless Soul Moontime Dub)
-      id: 3Y_9pNheKWg
-    - title: Petalpusher - Breakin it down
-      id: IfdSE82OiHE
-    - title: Petalpusher - Breakin’ It Down (Downtown Original) [Naked Music, 1999]
-      id: B4yz7JsGIKA
-    - title: Blue Six - Music and Wine (Conga Lounge Mix)
-      id: G3Zm6CslYGU
-    - title: Blue Six - Music And Wine (Conga Lounge Mix)
-      id: 8LWzWykyyg0
-    - title: Blue Six - Music & Wine (Jay’s Conga Lounge Vocal)
-      id: dm604NzPl3M
-    - title: Pure (Jay’s Original Vocal)
-      id: 1GNggDWps0I
-    - title: Blue Six-Pure
-      id: nT8wV-ffB5k
-    - title: Blue Six Pure
-      id: 1Jha-fl7vqc
-    - title: Blue Six - Pure from the album Beautiful Tomorrow Jay Denes and Naked Music
-      id: LT_xbbPTbR0
-    - title: Blue Six ~ Pure
-      id: yoowOp94Em8
-    - title: Lovetronic - You Are Love (Original Version)
-      id: dCDlY8Mqs1c
-    - title: Music & Wine (Th’Attaboy Vocal)
-      id: 5f9_skxc8n8
-    - title: You Are Love (Original Version)
-      id: _V5Ybtx99lw
-    - title: Breakin’ It Down (Jay’s Blue Vocal)
-      id: HCXBijS-DaQ
-    - title: Lovetronic - You Are Love (Original Version)
-      id: k5zqX-fNJWU
     - title: Pure
       id: UGhe7uBkG9s
-    - title: Breakin’ It Down (Jay’s Blue Vocal)
-      id: HCXBijS-DaQ
-    - title: Music & Wine (Th’Attaboy Vocal)
-      id: 5f9_skxc8n8
-    - title: You Are Love (Original Version)
-      id: _V5Ybtx99lw
-    - title: Everything Is Changing (Swag Remix)
-      id: 3w_7IyedH1I
-    - title: Surrender (Original)
-      id: kb9QEbyLE3s
-    - title: Don’t Ya Wanna
-      id: W9IqAACbPNI
     - title: Deep House Music  Summerland   Soulmate mp3
       id: DZxfYKcl_OQ
-    - title: Music & Wine (Jay’s Conga Lounge Vocal)
-      id: V8mX6zXclHk
-    - title: You Are Love (Brad’s Payback Vocal)
-      id: _0ivMlEwOu8
-    - title: Surrender (Attaboy Remix Edit)
-      id: cYH6OWEumWs
-    - title: Soulmate (Restless Soul Moontime Dub)
-      id: TED-Rh6bp0c
-    - title: Pure
-      id: UGhe7uBkG9s
-- slug: various-blue-note-re-imagined
+- slug: various-blue-note-re-imagined-2020
   artist: Various
-  title: Blue Note Re:imagined
+  title: Blue Note Re:imagined (2020)
   year: 2020
   label: Blue Note
   kind: vinyl
@@ -13883,7 +12209,7 @@
     - Contemporary Jazz
     - Jazz-Funk
   cover:
-    src: 2026/10/record-various-blue-note-re-imagined.jpg
+    src: 2026/10/record-various-blue-note-re-imagined-2020.jpg
     width: 599
     height: 589
   tracks:
@@ -14017,24 +12343,6 @@
       id: NrxZBJqzn-0
     - title: Sun Comes Filtering Through
       id: 9FVE1Qgao6E
-    - title: Reality Check
-      id: InQvRDTUEPc
-    - title: The Document
-      id: zyrjymXtMFk
-    - title: Face
-      id: fte3O-caNdQ
-    - title: Hollywood
-      id: BC7w1q2h7dI
-    - title: Speak Softly
-      id: zEw5eHBKWR8
-    - title: Maui
-      id: NrxZBJqzn-0
-    - title: Wasted Time
-      id: nnkHz8LrFZI
-    - title: Invisible Things (mescalito mix)
-      id: R5XrSFW-lSA
-    - title: Sun Comes Filtering Through
-      id: 9FVE1Qgao6E
 - slug: various-cob-10
   artist: Various
   title: COB#10
@@ -14121,19 +12429,7 @@
     - position: D2
       title: VIII
       video: XHT7QhN6Kt8
-  videos:
-    - title: Jay Denham - Destinations [Sonic Mind]
-      id: z4JaBEHbsd0
-    - title: D-Knox - Illusions
-      id: qvedmC30-IQ
-    - title: Mike Dreben - Mindrum
-      id: 6Ozt9i0lJ6U
-    - title: Fanon Flowers - Rockbox [Sonic Mind]
-      id: sv0_-lJayi0
-    - title: Mike Dreben - The Kingdom
-      id: 8DooGE0okqc
-    - title: Aaron Bennett - VIII [Sonic Mind]
-      id: XHT7QhN6Kt8
+  videos: []
 - slug: various-connecting-the-compass
   artist: Various
   title: Connecting The Compass
@@ -14233,40 +12529,8 @@
       title: Momentary
       video: UE8kMxm2W_M
   videos:
-    - title: Chris Stussy - Betasonix
-      id: Wt-DRixABKA
-    - title: Pavel Iudin - Research
-      id: CjYmtLilr3I
-    - title: Andre Kronert - Revelation
-      id: 6KTPE3HYKWo
-    - title: DJOKO - Lazarus
-      id: FgnLESr2ToI
-    - title: Mihai Popoviciu - Mount Gnom
-      id: FfEHWjEsEhY
     - title: Per Hammar & Malin Genie - Central Dubb
       id: 31eo6VWG2jg
-    - title: iO (Mulen) - At Seventeen [BERGAMON10]
-      id: Bh4exSUETW4
-    - title: Nikita SISOV & Gus Dee - Don’t Forget Da Slipperz
-      id: oImusWepgcs
-    - title: Havantepe - Momentary
-      id: UE8kMxm2W_M
-    - title: Nikita SISOV & Gus Dee - Don’t Forget Da Slipperz
-      id: oImusWepgcs
-    - title: Mihai Popoviciu - Mount Gnom
-      id: FfEHWjEsEhY
-    - title: Malin Genie & Per Hammar - Central Dubb
-      id: dQhf9V3w02M
-    - title: Pavel Iudin - Research
-      id: CjYmtLilr3I
-    - title: Andre Kronert - Revelation
-      id: 6KTPE3HYKWo
-    - title: DJOKO - Lazarus
-      id: FgnLESr2ToI
-    - title: Chris Stussy - Betasonix
-      id: Wt-DRixABKA
-    - title: Havantepe - Momentary
-      id: UE8kMxm2W_M
 - slug: various-detroit-beyond-the-third-wave
   artist: Various
   title: "Detroit : Beyond The Third Wave"
@@ -14316,36 +12580,14 @@
       title: Last Trip
       video: ArGC370F5JI
   videos:
-    - title: Ectomorph - Insert Another Data Disk
-      id: peQ9zZMVV1M
-    - title: Will Web - Life on tek [bumpin’ down Jefferson mix]
-      id: 7bTR2pr0Fbk
-    - title: Mode Selector - Last trip
-      id: ArGC370F5JI
-    - title: Shake - Sandblaster
-      id: ccBWzJKx2RM
-    - title: Claude Young - Impolite To Refuse
-      id: Oq2TO9IrORg
-    - title: DJ T1000 - Solid Signal
-      id: q382DBf4vBU
-    - title: Terrence Dixon - Midnight Hours
-      id: XNs6W8KtdOU
     - title: Claude Young - Impolite To Refuse
       id: HBbpxesIAHs
-    - title: Shake - Sandblaster
-      id: ccBWzJKx2RM
     - title: Ectomorph - Insert Another Data Disk
       id: whJSoEfcBUo
-    - title: Will Web - Life on tek [bumpin’ down Jefferson mix]
-      id: 7bTR2pr0Fbk
     - title: DJ T-1000 - Solid Signal - Astralwerks
       id: vZZqgvbNov8
     - title: Terrence Dixon - Midnight Hours
       id: UUzdegIbKes
-    - title: Mode Selector - Last trip
-      id: ArGC370F5JI
-    - title: Terrence Dixon - Midnight Hours
-      id: XNs6W8KtdOU
     - title: Midnight Hours
       id: Hbo-1yBPxmo
 - slug: various-edition-1
@@ -14621,52 +12863,6 @@
       id: b1ZY3_uSuy0
     - title: Future Lounge 3 - (06) - 2. Tag (No Voc.) - Sieg der Liebe
       id: JLYtb-C0lco
-    - title: "Future Lounge 03: Papadam"
-      id: SWs2p7FsTBE
-    - title: "Deep Swing & Jazz Transit - Let’s do this # Future Lounge 03"
-      id: DCrmVBsvVx0
-    - title: Jaffa - Elevator
-      id: ylrJoWwHcFs
-    - title: Future Lounge 3 - (03) - Late Lounge Lover - Hacienda
-      id: JVQcpAgFQPw
-    - title: "Future Lounge 03: Abrosia"
-      id: VfBSVv4yiJc
-    - title: Astrud Gilberto - Maria Quiet
-      id: rvXxlXg_V-k
-    - title: Karma - modifications pt. 2
-      id: MSRt7CakW-4
-    - title: Only Child - When 6 Loves 9
-      id: LL8_NmeveXc
-    - title: Trio Electrico - Return Of The Coconut Groove
-      id: cz4l9MNLa9E
-    - title: Future Lounge 3 - (01) - Reincarnation - Pablo
-      id: yhtCxBG7Dhg
-    - title: Future Lounge 3 - (09) - Let´s do this - Jazz Transit
-      id: Y5oW8B0JUJw
-    - title: Future Lounge 3 - (11) - In Pursuit of the Pimpmobile v.II - Deadly Avenger
-      id: Kuj8OjfT9so
-    - title: Future Lounge 3 - (08) - Modifications Pt. 2 - Karma
-      id: jVQhFm9xOpo
-    - title: Future Lounge 3 - (15) - Maria Quiet - Astrud Gilberto
-      id: ZSxN2q0TsLw
-    - title: Future Lounge 3 - (05) - Dis Poem (Brace Re-Dub) - Mutabaruka
-      id: ADgi7llS4GY
-    - title: Future Lounge 3 - (13) - When 6 Loves 69 - Only Child
-      id: x4kneoJ_SjQ
-    - title: Future Lounge 3 - (12) - Ambrosia - A Reminiscent Drive
-      id: dvsl78xRy8Q
-    - title: Future Lounge 3 - (07) - Return of the Coconut Groove - Trio Electrico
-      id: eUQRXeP6b8M
-    - title: Future Lounge 3 - (02) - Elevator - Jaffa
-      id: 6oQ-OJWW3u4
-    - title: Future Lounge 3 - (10) - Mokkascience - Soul’n’Soda
-      id: lbuNY3KBySg
-    - title: Future Lounge 3 - (14) - Stories (Original Mix) - Airfix
-      id: RunPa-ET_wk
-    - title: Future Lounge 3 - (04) - Papadam - Yonderboi
-      id: b1ZY3_uSuy0
-    - title: Future Lounge 3 - (06) - 2. Tag (No Voc.) - Sieg der Liebe
-      id: JLYtb-C0lco
 - slug: various-groove-the-compilation-volume-2
   artist: Various
   title: Groove - The Compilation Volume 2
@@ -14744,42 +12940,6 @@
       id: Lx-g0xxXatg
     - title: Diese Momente Werden Nicht Verloren Sein Wie Tränen Im Regen - DJ Hell / Diese Momente EP
       id: -LPrpLlYWmo
-    - title: Steve Bug - Rhythm King
-      id: 2RnEW---6Ds
-    - title: Roy Davis Jr.  -  Symphonic Days
-      id: 6z8UgpTMyrQ
-    - title: Jedi Knights - Catch The Break
-      id: UZInkFjcG0s
-    - title: Azymuth - Jazz Carnival (Global Communication Space Jazz Mix)
-      id: wAIIc0EobBY
-    - title: Chris Nazuka ‘Joy, Awe, Anguish, Love and Triumph’
-      id: Ay6Kk-pG7-Q
-    - title: Spensane - Soul power (Dj Sneak’s powerful preacher mix)
-      id: pHoxEVmhxd8
-    - title: ian pooley-higgledy piggledy
-      id: HnZekWADpsk
-    - title: Charly Brown - The Sub Club Pt 1
-      id: f4Q77CwvbMA
-    - title: Blaze ‘Lovelee Dae’ (Original)
-      id: UtL5b4PiDtM
-    - title: Sluts’n’Strings & 909 – Past The Gates
-      id: Lx-g0xxXatg
-    - title: Diese Momente Werden Nicht Verloren Sein Wie Tränen Im Regen - DJ Hell / Diese Momente EP
-      id: -LPrpLlYWmo
-    - title: Jeff Mills - Casa
-      id: HN7XqPXiLuI
-    - title: Get Funky Get Down (Daft Punk Remix)
-      id: NgXArOscuTo
-    - title: Alter Ego / David Homes - The Evil Needle (A1)
-      id: sqMVFc9g9bw
-    - title: Acid Scout aka Richard Bartz - Musik für Millionen - Movie 0 0003 - 1996
-      id: 7eiHKEinreU
-    - title: Wink - Are You There? (Original Version)
-      id: 6NxOik0AXUs
-    - title: Bandulu - “Runnings” Part4
-      id: nBPOyqD-HKM
-    - title: Two Lone Swordsmen - Glide By Shooting
-      id: mR7uMAbEITs
 - slug: various-jungle-massive-4-presents-jungle-vs-the-hardsteppers
   artist: Various
   title: "Jungle Massive 4 Presents: Jungle Vs. The Hardsteppers"
@@ -14927,54 +13087,6 @@
       id: FClAj9ix3e0
     - title: Blak Panta - Do What U Want (Undercover Agent VIP Secial)
       id: 2ysqTlxHtAA
-    - title: Marvellous Cain - Gunman (IQ VIP Special)
-      id: lXVqBQIBkvU
-    - title: ALLADIN 3 - MASHED (VIP EXCLUSIVE)
-      id: _Bc5qvTbUDw
-    - title: SPLASH - BABYLON ( DJ TRACE REMIX ) 1995
-      id: GVkTIXGcmBo
-    - title: NCA EXPERIENCE - The Rhythm (Smokey Joe Remix)
-      id: 6hYFYPRj1E0
-    - title: Smokey Joe Feat Jackal Ranx - 4 Meg (VIP Special)
-      id: xVmIOdpa7fY
-    - title: MACKA BROWN FEAT R CRAIG - SLOW DOWN (VIP EXCLUSIVE)
-      id: GkwyfILVyIU
-    - title: B.U.G. K.A.N.N. - 9MM ( VIP SPECIAL ) 1995
-      id: C0s6QXK3eyI
-    - title: 11 - Aphrodite - Bomber (VIP Hardsteppers Special)
-      id: xeJIEq5Xv2A
-    - title: 15 - Dr S. Gachet - The Dreamer
-      id: K0g7a-rJvQ8
-    - title: Kid Jay - Soundbwoy (VIP Special)
-      id: _5gK9uJ6kVU
-    - title: M.T.S. - Baad Boy Sound (Exclusive Juice VIP Mix)
-      id: _5Hop4L4m9g
-    - title: DJ MONK - NU JACK CITY (KLP VIP MIX)
-      id: MmfFk_ADs5I
-    - title: Marvellous Cain - Gunman (IQ VIP Special)
-      id: lN7M60PJtBw
-    - title: BAGGA WORRIES & JOOKIE NICE - LEGALIZE (REMARC VIP MIX) 1995
-      id: GHixP1wdywk
-    - title: NOOKIE - JUNGLE MASSIVE VI DUBPLATE SPECIAL 1995
-      id: WnLwHTpfT4c
-    - title: CODA - CRISIS 1995
-      id: 4hf4tF4TNOY
-    - title: APHRODITE - BOMBER (VIP HARDSTEPPERS SPECIAL)
-      id: waO4ggUVMLo
-    - title: CITY CONNECTION - LOSING MY MIND (LOVERS VIP MIX)
-      id: J-mwX2GQALk
-    - title: Majistrate   Big Tings   Jungle Massive 4 Presents Jungle Vs  The Hardstepper
-      id: yOyyObTQS20
-    - title: City Connection   Losing My Mind    Jungle Massive 4 Presents Jungle Vs  The Hardstepper
-      id: gmNcaQGEeew
-    - title: ANDY C   ROLL ON      Jungle Massive 4 Presents Jungle Vs  The Hardstepper
-      id: 3wPuMgRfVaY
-    - title: Dr S  Gachet   The Dreamer   Jungle Massive 4 Presents Jungle Vs  The Hardstepper
-      id: MvjKKWeqjc8
-    - title: Alladin 3   Mashed    Jungle Massive 4 Presents Jungle Vs  The Hardstepper
-      id: FClAj9ix3e0
-    - title: Blak Panta - Do What U Want (Undercover Agent VIP Secial)
-      id: 2ysqTlxHtAA
 - slug: various-jungle-strut
   artist: Various
   title: Jungle Strut
@@ -15029,22 +13141,6 @@
       id: xkbWsJIsEzA
     - title: New Dawn - Advanced Drum Tech
       id: DepOnwIJsAY
-    - title: Remedy -Lexicon
-      id: 5XpESReT4ig
-    - title: "Adam F: F Jam (Original Mix)"
-      id: 0PL1ysHfsSY
-    - title: A Forest Mighty Black - Tides (Peshay & Flytronix remix)
-      id: xkbWsJIsEzA
-    - title: Nookie - We Can Make it Happen
-      id: jf1EHWuhc_E
-    - title: Roni Size - Silent Partner [HQ]
-      id: nhpaRx5-MlI
-    - title: Deeper
-      id: QvUniRwj3KU
-    - title: New Dawn - Advanced Drum Tech
-      id: DepOnwIJsAY
-    - title: Recoil- Velocity 9
-      id: SzZUyApbyQM
 - slug: various-lessizmore-10-years-1-forever-never-more
   artist: Various
   title: "Lessizmore 10 Years #1 - Forever Never More"
@@ -15160,26 +13256,6 @@
       id: lIqgjPhX7JU
     - title: (2004) Pleasure - Joyous [DJ Harvey Re-Edit Mix]
       id: sHaAtf8_kfo
-    - title: David Holmes - Jackson Johnson
-      id: fy5Xkwgl0YY
-    - title: Dnipro (Original)
-      id: ZdY2Un9d4Zs
-    - title: Pressure Drop - Warrior Sound {Adam Freeland Mix}
-      id: rIt2J7Z5ChQ
-    - title: Justin Robertson-Love Movement
-      id: x9FxvBPGYBE
-    - title: The Sabres Of Paradise - Ysaedub
-      id: CwyfIcj9UGk
-    - title: Björk - The Anchor Song (Black Dog Mix)
-      id: l-C82IyxCJQ
-    - title: Groove Armada -  Black Sheep
-      id: V7F3scbgk-k
-    - title: (1999) Faze Action - Samba [Roger Sanchez Tha S-Man’s Darkstar RMX]
-      id: aDazW4M6xYk
-    - title: playgroup make it happen.mp4
-      id: lIqgjPhX7JU
-    - title: Tica - Rock The Casbah (Smith & Mighty Steppers Mix)
-      id: 6V7rg4wBKjQ
 - slug: various-lovebox-2
   artist: Various
   title: Lovebox 2
@@ -15283,10 +13359,6 @@
       id: ZIXyBAUSDXQ
     - title: Various - Mixtime 2 (1985 EMI Italiana Side 2)
       id: W8Bbvj8k8xc
-    - title: Various - Mixtime 2 (1985 EMI Italiana Side 1)
-      id: ZIXyBAUSDXQ
-    - title: Various - Mixtime 2 (1985 EMI Italiana Side 2)
-      id: W8Bbvj8k8xc
 - slug: various-nervous-25th-anniversary
   artist: Various
   title: Nervous 25th Anniversary
@@ -15341,22 +13413,6 @@
       id: NrRRLvg1mQU
     - title: Swing Kids - Good Feelin’ (TNT Bonus Beats)
       id: _6BedPNdBD0
-    - title: Nu Yorican Soul - The Nervous Track (Ballsy Mix)
-      id: QsykMgoVsGw
-    - title: Mood II Swing Presents The Club Kidds [Nervous Records] - During Peak Hours (Mood II Swing Dub)
-      id: q5m0tByMLoU
-    - title: Kerri Chandler - Rain
-      id: HmtVq0KsLuE
-    - title: Loni Clark - Rushing (Mood II Swing Dub)
-      id: JWOOQUXNnR0
-    - title: Kim English - Learn 2 Luv (Mood II Swing mix)
-      id: NrRRLvg1mQU
-    - title: Swing Kids - Good Feelin’ (TNT Bonus Beats)
-      id: _6BedPNdBD0
-    - title: DJ Joe T Vannelli ft Csilla - Play with the Voice (MAW In Your Face Mix)
-      id: 6eAzr95l1JI
-    - title: Rapid Winds (Remastered)
-      id: 9UA9chi0nBU
 - slug: various-next-stop-delancey-street
   artist: Various
   title: Next Stop-Delancey Street
@@ -15406,18 +13462,6 @@
       id: dTkUidZblFw
     - title: the ballistic brothers vs the eccentric afro’s - blacker
       id: MNUqjT4OFcg
-    - title: The Ballistic Brothers  “Grovers return”
-      id: mEKubwpkg_M
-    - title: Marden Hill - Hijack
-      id: UEGPV9SYark
-    - title: The 13th Sign - Too Far Gone
-      id: 4uZp9EmI0os
-    - title: BEAMISH & FLY - STOKED (coked)
-      id: dTkUidZblFw
-    - title: the ballistic brothers vs the eccentric afro’s - blacker
-      id: MNUqjT4OFcg
-    - title: Balistic Brothers - Valley Of The AfroTemple
-      id: waxELdGKWuA
     - title: Next Stop-Delancey Street - ‘Various’ - CD - 1996
       id: s6aFuOc7zNc
 - slug: various-ohm-series-2
@@ -15495,22 +13539,6 @@
       id: 3bcdgg1wPPA
     - title: RMA ‎- Past
       id: CoUorQNp2Jg
-    - title: A-Factor - Canto Azul (Extended Mix)
-      id: 4Yt9tQSiDJg
-    - title: Loose Baggage - Dancin’ (The Benson Dub)
-      id: b2NGyFSzQKA
-    - title: Kathy Sledge - Good Times (The S-Man’s Factory Dub)
-      id: SeSPEJYow3M
-    - title: (Deep House / Chill Out) USG Feat. RE - Morning Flute (The Morning Mix)
-      id: mVP7ejFsMUY
-    - title: (1996) The Other Project feat. RMA - Past & Present [A Man Called Adam RMX]
-      id: 3bcdgg1wPPA
-    - title: RMA ‎- Past
-      id: CoUorQNp2Jg
-    - title: Paramour - Hard To Dye
-      id: 8-6K8vnTUbM
-    - title: Blaze  -  Moonwalk
-      id: 5A2pwFSwhVA
 - slug: various-proper-comp-2-0
   artist: Various
   title: Proper Comp 2.0
@@ -15554,22 +13582,6 @@
   videos:
     - title: 01 - The blunted boy wonder -C4     (1996)
       id: uDk2RflC7po
-    - title: 01 - The blunted boy wonder -C4     (1996)
-      id: uDk2RflC7po
-    - title: 02 - Ellery Cowles - Glow     (1996)
-      id: 1F_ziT7vvj8
-    - title: 03 - Anorak - Operation  (1996)
-      id: 26QvBtql0hg
-    - title: 04 - Co-jack - Assigned counsel (1996)
-      id: Q1UEWH690k0
-    - title: 05 - DJ Hyperactive - Krafty   (1996)
-      id: OOnqRANXE1A
-    - title: 06 - i - Monofon hippie base      (1996)
-      id: DSLTC6wpBpY
-    - title: 07 - Fred Giannelli - Mental patience  (1996)
-      id: hxbrJsxk-LY
-    - title: 08 - Musique concrete - Giant robot  (1996)
-      id: sF4h5gbnlj8
 - slug: various-sensory-vol-1
   artist: Various
   title: Sensory Vol.1
@@ -15822,31 +13834,7 @@
     - position: D3
       title: Cool Beat
       video: p4lVchNdFtE
-  videos:
-    - title: Soft House Company A little piano
-      id: xyyZA_MOF0o
-    - title: You X Me (Slow Latin Version)
-      id: BzLLIjr7d1U
-    - title: Omniverse - Antares
-      id: SEpkzF9Jw6s
-    - title: DON CARLOS - Alone (Flute House).
-      id: YeoXSnpKeeo
-    - title: Be Noir - Serious (Vibe Remix)
-      id: Z6Ueq5Hw75o
-    - title: Moz-Art and Angel.I.N.O. “Bladerunner”
-      id: zfdqsnFfsYU
-    - title: Key Tronics Ensemble  - Music You Got Me (Free Piano)
-      id: 8B1UZOhX0AY
-    - title: Deep Aural Penetration - Into The Kick With Tito
-      id: VgwHMvX117w
-    - title: Montego Bay - Magic (Don Carlos Jazzy Mix)
-      id: tFt29yTJz54
-    - title: Tito Valdez - Tumbe (The Big Nowhere)
-      id: wYF8qkC3Auo
-    - title: Subway Ground Master - Marble Arch
-      id: eG7y2-BTz9s
-    - title: Cool Beat
-      id: p4lVchNdFtE
+  videos: []
 - slug: various-the-jazz-house-independent-9th-issue
   artist: Various
   title: The Jazz House Independent (9th Issue)
@@ -16323,16 +14311,10 @@
       id: fIyUxstt7GU
     - title: Blake Baxter - Persuit of Happiness
       id: sSGjnsHQW2U
-    - title: Green Velvet - Help Me
-      id: 9zPWZeXtUTU
     - title: Various - Trance Atlantic - Volume 2 (6xLP)(1995)
       id: 2VBIV0HbZcM
     - title: Lenny Dee & The Outlander - Emotional Response
       id: nnHb4PkRAP0
-    - title: Green Velvet - Help Me
-      id: 9zPWZeXtUTU
-    - title: Green Velvet - Help Me
-      id: 9zPWZeXtUTU
 - slug: various-trance-europe-express-5
   artist: Various
   title: Trance Europe Express 5
@@ -16489,30 +14471,6 @@
   videos:
     - title: Rumenige feat. Loktibrada ‎- Kylie ( Regis BHX Mix )
       id: ScVmGSi6xew
-    - title: Joey Beltram - M-Yard (1995)
-      id: 1ORVMkmj2cw
-    - title: "Scion - Arrange And Process Basic Channel Tracks: Pt. 7 (2003)"
-      id: wUoNAssXuEs
-    - title: Ian J. Richardson - Artillery
-      id: qwqehWx5p5k
-    - title: Mike Wade - Death Rattle
-      id: y4SVy5-BqYE
-    - title: Recyver Dogs - Böses Boot ( Pacou Remix )
-      id: Fg9sFtkTvbA
-    - title: Chester Beatty - Allromance (2003)
-      id: P0AfiL2V_0Y
-    - title: Leo Laker - 0,37 Mg
-      id: cakbLiU9U1Q
-    - title: Jeff MIlls - The Extremist ( DNA Mix )
-      id: 0387z_AqG7c
-    - title: British Murder Boys - Rule By Law (2003)
-      id: 6oTu8Cm6Ejs
-    - title: Rumenige feat. Loktibrada ‎- Kylie ( Regis BHX Mix )
-      id: ScVmGSi6xew
-    - title: Organ Grinda - Distance For Life (2003)
-      id: Xeo6_7pxnoQ
-    - title: 3ST vs. Dash - Gravedigger
-      id: Zz5wtPIWNWY
     - title: Jeff Mills - The Extremist ( DNA Mix )
       id: 1Mq3nVqfS-I
 - slug: various-tresor-2000-compilation-vol-8
@@ -16580,42 +14538,10 @@
       duration: 7:25
       video: BacfBVNjjfk
   videos:
-    - title: Round Two - New Day (Dub)
-      id: te7kUPHgRS8
-    - title: Savvas Ysatis - Mar’s Bar
-      id: wDPT52wJKbc
-    - title: Stewart   Walker - Boring Movies
-      id: WBf9f9b4pWg
-    - title: Terrence Dixon – Running time (2000)
-      id: Dx0j2do4ik4
-    - title: Drexciya - Species Of The Pod
-      id: DtFOacOw68Q
-    - title: Groove La Chord
-      id: hnfShawbT4E
-    - title: Sterac - Spector (2000)
-      id: W6XLub1mEMM
-    - title: Diskordia - BubaMara (TRESOR)
-      id: VcmQPZR11Do
-    - title: Pacou - Freelancer (TRESOR)
-      id: tRvbIfrVgjs
-    - title: James Ruskin - Detached
-      id: BacfBVNjjfk
     - title: Suburban Knight - Sith (Shall Dark Thee)
       id: 6l9LBjAle2U
     - title: Tresor.2000 Compilation Vol. 8
       id: uDVoMpc6_GU
-    - title: Round Two - New Day (Dub)
-      id: te7kUPHgRS8
-    - title: Claude Young - [B1] Rise
-      id: G1Ck0hSYYRo
-    - title: Diskordia - BubaMara (TRESOR)
-      id: VcmQPZR11Do
-    - title: Savvas Ysatis - Mar’s Bar
-      id: wDPT52wJKbc
-    - title: Sender Berlin - Little Cherry - TRESOR 150
-      id: swfb3_EXSiQ
-    - title: Pacou - Freelancer (TRESOR)
-      id: tRvbIfrVgjs
 - slug: various-trip-hop-vibes-vol-1
   artist: Various
   title: Trip Hop Vibes Vol.1
@@ -16714,26 +14640,6 @@
       id: hhrjyDAyvEY
     - title: Tricky - ‘Hell Is Round the Corner’ (Official Video)
       id: E3R_3h6zQEs
-    - title: AIR “Soldissimo” (Super sale) (EDC remix) 1997/2022 Pixadelic
-      id: hhrjyDAyvEY
-    - title: Zero 7 - This World (feat Mozez)
-      id: hKTvwIng-rA
-    - title: Quantic - Time Is The Enemy
-      id: nvUeo5sagkA
-    - title: Tricky - ‘Hell Is Round the Corner’ (Official Video)
-      id: E3R_3h6zQEs
-    - title: Roygbiv
-      id: 0nnqGDZnWhU
-    - title: DJ Cam - Birds Also Sing For Anamaria
-      id: VjDVx1VyXOc
-    - title: Kid Loco - A Grand Love Theme
-      id: f_tQYTEvChI
-    - title: Goldfrapp - lovely head
-      id: ITi6uat0BuQ
-    - title: Plaid feat. Bjork - Lilith
-      id: DsL56SHXALE
-    - title: Craig Armstrong - Weather Storm
-      id: 6SxhzWZrGmg
     - title: The Mighty Bop - Feeling good
       id: fAaSyZODa3g
 - slug: various-true-spirit
@@ -16886,8 +14792,6 @@
       title: Game Form (Mike Dearborn Mix)
       duration: 4:16
   videos:
-    - title: 3 Phase feat. Dr Motte - Der Klang Der Familie (Original Mix) 1992
-      id: RKDe6hQNGDU
     - title: Ingator - Skyscratch (Mano Mano)
       id: 7YwnFNsRv3U
     - title: Eddie Fowlkes & Blake Baxter - wisdom
@@ -16896,10 +14800,6 @@
       id: RBE81wdNSoA
     - title: X 101 - Sonic Destroyer (Original Mix)
       id: y0W3HKxB9Ps
-    - title: 3 Phase feat. Dr Motte - Der Klang Der Familie (Original Mix) 1992
-      id: RKDe6hQNGDU
-    - title: X-101 - Sonic Destroyer
-      id: VtqJdISUEtE
 - slug: various-tsunami-relief
   artist: Various
   title: Tsunami Relief
@@ -16940,19 +14840,7 @@
     - position: D2
       title: Winter Boys
       video: wxE06IFTQD8
-  videos:
-    - title: Andre Galuzzi  vs. Guido Schneider -  Survivor
-      id: EYlpusQQSJU
-    - title: Wighnomy Brothers - Kraftakkt
-      id: fVP72xbcxmc
-    - title: Luciano - Hijos del Kaos
-      id: UZ9OOv7akU0
-    - title: Let’s Get It Done
-      id: rDPpiKuw3KM
-    - title: Laboratory
-      id: YuscIkOsudQ
-    - title: Swayzak -  Winter Boys
-      id: wxE06IFTQD8
+  videos: []
 - slug: various-ultrasuoni
   artist: Various
   title: Ultrasuoni
@@ -17074,32 +14962,6 @@
   videos:
     - title: Eras (666)
       id: DdHFnkVOvpY
-    - title: Blown Fruit
-      id: Jt0uT-tICpo
-    - title: Phoenix At Desert
-      id: fFpENO_z5qk
-    - title: Flutter
-      id: X_5hhFDzbR8
-    - title: Prelude
-      id: Zcml-a9bNYQ
-    - title: Escape
-      id: Krau4mMH2HA
-    - title: The Cycle Of Seasons
-      id: VXOgxTqSjkc
-    - title: 5 Blind Boys
-      id: puwIAjJCkwU
-    - title: Pause
-      id: y2HNQqmNdmk
-    - title: "1969"
-      id: SQ9aZdd-rW0
-    - title: Snow Bird
-      id: Qz9o1YwAZOo
-    - title: Poisson D’Avril (Galaxy Dub)
-      id: eQ6swYUcpcs
-    - title: "1969"
-      id: ufBe71qESFk
-    - title: Eras (666)
-      id: DdHFnkVOvpY
 - slug: various-waehlscheibe-compilation-x
   artist: Various
   title: Waehlscheibe Compilation X
@@ -17175,7 +15037,7 @@
   year: 2004
   label: Warp Records
   kind: dvd
-  format: DVD + CD + S/Edition
+  format: DVD + CD
   genres:
     - Electronic
     - Stage & Screen
@@ -17473,7 +15335,6 @@
       title: Poem Of Dead Song
     - position: CD-8.K
       title: Eyen
-      video: usaJFYKT2n0
     - position: CD-8.L
       title: Southerners (Interlude)
     - position: CD-8.M
@@ -17628,158 +15489,8 @@
       id: AAppK031iy8
     - title: A Warp Records Mix - Section 4
       id: YrK8uICGIoQ
-    - title: "Warp Vision: The Videos 1989-2004"
-      id: oKKNscBppdw
-    - title: "WarpVision: The Videos 1989 - 2004: Watch And Repeat Play - A Warp Records Mix"
-      id: CYIhzsbk0O4
-    - title: A Warp Records Mix - Section 008
-      id: VsnrGzmoDv8
-    - title: Autechre - Second Bad Vibel
-      id: _PC9t4xVJlc
-    - title: A Warp Records Mix - Section 11
-      id: yjIlF-h1XBM
-    - title: CHRIS CUNNINGHAM - CLIPSHOW n°1
-      id: LLpXlCnYH6I
-    - title: Chris Clark (Gob Coitus) Dir. Lynn Fox
-      id: iRgbuqg2txA
-    - title: Take 31 - Beans - Mutescreamer
-      id: WINMA224ueU
-    - title: Plaid - Itsu (Geoff McFetridge DVD rip)
-      id: 4csNuJK7h6o
-    - title: warp films slices london special
-      id: 0H_e72WYGlo
-    - title: Take 29 - Prefuse 73 - Half Of What
-      id: BsRpx7_KKYo
-    - title: "Plaid - Itsu - Pleix (2003) - WARP video  #27"
-      id: izvr1ZD39eA
-    - title: Take 21 - Antipop Consortium - Ghostlawnz
-      id: uv9rteNzCMU
-    - title: "Warp Vision: The Videos 1989-2004 (Trailer)"
-      id: L5mvZh2oqnw
-    - title: I Smell Quality (Warp records commercial) 1994
-      id: 6gfokZMfYPs
-    - title: Warp Records - I Smell Quality
-      id: mn40v7N3V9c
-    - title: Chris Cunningham video presentation
-      id: mXU-aP9KLNk
-    - title: Warp Records - WXAXRXP Sessions (Mini Mix)
-      id: OCJNMFZb-2U
-    - title: LFO - LFO
-      id: kne2esG3y-8
-    - title: LFO - Tied Up (Official Video, Full Version)
-      id: azEB6NsqSsk
-    - title: LFO - Tied Up
-      id: U-dsUVSP14A
-    - title: LFO - We Are Back
-      id: bvOG9YRaqj0
-    - title: LFO ‘We are Back’ 1991
-      id: YeAL7H1X0KA
-    - title: LFO - We Are Back (Original)
-      id: TLA0J-33-og
-    - title: LFO - We Are Back (Original Mix) Music Video
-      id: skrsCOwDhM4
-    - title: LFO interview on TV and Warp
-      id: JWwHvyPraz8
-    - title: LFO - ‘Freak’ | Future Shorts
-      id: HY0_SFaZMJ0
-    - title: Take 25 - LFO - Freak (Director’s Cut)
-      id: eOESso7vtAE
-    - title: LFO  “Freak”,  HQ VERSION - RIP Mark Bell
-      id: 3og0oFiDO3U
-    - title: Marc Bell  LFO Freak
-      id: IVVFtzgvxoo
-    - title: LFO - Freak.avi
-      id: MX9QLDvdnyU
-    - title: LFO - Freak.avi
-      id: q5g6qFDtPTo
-    - title: Aphex Twin - On
-      id: 38RMZ9H7Cg8
-    - title: Aphex Twin - On
-      id: nrKQTi4SoMI
-    - title: Aphex Twin - On (1993)
-      id: hrTBjJM3tTk
-    - title: Take 09 - Aphex Twin - Donkey Rhubarb
-      id: r2nY96LPWxQ
-    - title: Aphex Twin - Come To Daddy (Director’s Cut)
-      id: TZ827lkktYs
-    - title: Aphex Twin - Come to Daddy (Music Video)
-      id: rbR7hs4uFo8
-    - title: Aphex Twin-Come to daddy
-      id: xHB5tblxJTQ
-    - title: Aphex Twin/Richard D. James good/interesting interview bits compilation
-      id: 9fD7jWdbPYw
-    - title: famous director Chris Cunningham
-      id: _wSNKwhAM6g
-    - title: Aphex Twin - Windowlicker (Director’s Version)
-      id: 5ZT3gTu4Sjw
-    - title: Aphex Twin - Windowlicker [Explicit!] (HD 720p)
-      id: J639xIdgzQU
-    - title: Aphex Twin - Windowlicker
-      id: oY6qjNwzCCE
-    - title: Aphex Twin - 1996 MTV Interview
-      id: rndV_5q8Tkc
-    - title: Aphex Twin - Nannou (Official Music Video) 1080p HD
-      id: A-Pkx37kYf4
-    - title: Aphex Twin   Nannou Official Video
-      id: ti-Pc_T042c
-    - title: Nannou (Aphex Twin)
-      id: 6RmyRewo1Bs
-    - title: Aphex Twin -  Nannou
-      id: XesEuvwVjYI
-    - title: Aphex Twin - Nannou
-      id: 7uww0OrU6EA
-    - title: Aphex Twin   Nannou clip
-      id: KfRmW1xXQew
-    - title: "Sabres of Paradise: Wilmot"
-      id: DUxZz4lVRfA
-    - title: Warp Vision The Videos 1989 - 2004
-      id: XjPUEcglHco
-    - title: "Watch & Repeat Play: A Warp Records Mix (mixed by Buddy Peace & ZILLA)"
-      id: 2944jzx8ZPE
-    - title: Aphex Twin - Windowlicker (official video) 1080p HD
-      id: UBS4Gi1y_nc
-    - title: Aphex Twin Windowlicker HD (dir. Chris Cunningham)
-      id: IwcxAnZzItg
-    - title: Aphex Twin - Window Licker
-      id: 2fmo1Sjn7dg
-    - title: Aphex Twin Windowlicker Directors Cut
-      id: v8W-ut6XQD0
-    - title: Aphex Twin - Window Licker
-      id: 7MBaEEODzU0
-    - title: Aphex Twin - Windowlicker (Japanese Demo Version)
-      id: vdpFE5KVlQE
-    - title: Aphex Twin - Windowlicker (making of)
-      id: yXIZAJXQ37M
-    - title: LFO ‘We are Back’ 1991 - AMP MTV
-      id: spBByCxaz-g
-    - title: LFO - LFO (Official Video)
-      id: s-1Y2EqThyQ
-    - title: LFO - LFO (Leeds Warehouse Mix) (Official Video)
-      id: miT8XyMz5t4
-    - title: LFO - LFO (1990)
-      id: A7DlMlnWtEE
-    - title: LFO -  LFO (Full Video)
-      id: AAppK031iy8
-    - title: A Warp Records Mix - Section 4
-      id: YrK8uICGIoQ
-    - title: antipop consortium - perpendicular
-      id: U0JHBr749zE
     - title: Aphex Twin - Come To Daddy (official video) 1080p HD
       id: h-9UvrLyj3k
-    - title: "Sabres of Paradise: Wilmot"
-      id: DUxZz4lVRfA
-    - title: "Warp Vision: The Videos 1989-2004 (Trailer)"
-      id: L5mvZh2oqnw
-    - title: A Warp Records Mix - Section 4
-      id: YrK8uICGIoQ
-    - title: A Warp Records Mix - Section 008
-      id: VsnrGzmoDv8
-    - title: A Warp Records Mix - Section 11
-      id: yjIlF-h1XBM
-    - title: I Smell Quality (Warp records commercial) 1994
-      id: 6gfokZMfYPs
-    - title: Warp Records - I Smell Quality
-      id: mn40v7N3V9c
 - slug: various-welcome-to-the-acid-lounge-vol-1
   artist: Various
   title: Welcome To The Acid Lounge Vol. 1
@@ -18059,11 +15770,7 @@
       title: Chamber No. 364
       duration: 3:55
       video: LY29KgBCwDM
-  videos:
-    - title: Vibert / Simmonds – Mevdonique [Rephlex – CAT 016 LP / A2] 1993
-      id: EVolkh1B3c8
-    - title: Vibert / Simmonds – Chamber No. 364 [Rephlex – CAT 016 LP / D4] 1993
-      id: LY29KgBCwDM
+  videos: []
 - slug: waajeed-memoirs-of-hi-tech-jazz
   artist: Waajeed
   title: Memoirs Of Hi​-​Tech Jazz
@@ -18116,10 +15823,6 @@
       id: FKA1s1AEvUc
     - title: Memoirs of Hi Tech Jazz (feat. Black Nix)
       id: IZ2eyppAK1U
-    - title: Waajeed  ~ The  Dub
-      id: FKA1s1AEvUc
-    - title: Waajeed - Keep It Coming (12” Version)
-      id: L-au9NE3F_k
 - slug: waiwan-goddess
   artist: Waiwan
   title: Goddess
@@ -18151,12 +15854,6 @@
   videos:
     - title: Waiwan Goddess
       id: 54DYS4TZ9C0
-    - title: Waiwan Goddess
-      id: 54DYS4TZ9C0
-    - title: Waiwan - Goddess
-      id: iOxHx3NS3kk
-    - title: Waiwan  -  Goddess (Jimpster Remix)
-      id: -LBmWsDRLBQ
 - slug: willie-graff-tuccillo-colorful-orbs-ep
   artist: Willie Graff & Tuccillo
   title: Colorful Orbs EP
@@ -18213,8 +15910,6 @@
     - position: B2
       title: The Age Of Love (Original)
   videos:
-    - title: "#28 Zoo Brazil - Topless"
-      id: Osy0MFn3w4Y
     - title: "#28 Zoo Brazil - Topless"
       id: Osy0MFn3w4Y
 - slug: ziq-tango-n-vectif
@@ -18300,22 +15995,6 @@
       id: TUFYnronoNM
     - title: µ Ziq ‎– Tango N’ Vectif (Album, 1993)
       id: A-dR_rMSiMM
-    - title: µ Ziq   µ Ziq Theme
-      id: AFUwG0RQ_FA
-    - title: Tango N’ Vectif
-      id: d3SZEQqetw8
-    - title: Phragmal Synthesis Pt. 1
-      id: xbh2DCGpTRo
-    - title: Phragmal Synthesis Pt. 2
-      id: esHQiOraj_M
-    - title: Phragmal Synthesis Pt. 3
-      id: TUFYnronoNM
-    - title: Burnt Sienna
-      id: iDp3Kv9TsSs
-    - title: µ Ziq ‎– Tango N’ Vectif (Album, 1993)
-      id: A-dR_rMSiMM
-    - title: µ Ziq ‎– Tango N’ Vectif (Album, 1993)
-      id: A-dR_rMSiMM
     - title: µ-Ziq – Tango N’ Vectif (Full CD Album)
       id: 31s7tYALisQ
     - title: μ‐Ziq - Tango N’ Vectif (IDM, Techno, Experimental) (1993)
@@ -18390,5 +16069,3 @@
       id: P4UPm5QBGuA
     - title: Мумий троль / Mumiy Troll – Морская / Marine (Russia, Indie Rock, 1997) ▶ cassette rip
       id: 8qA_KkB_Z8E
-    - title: 76 Мумий Тролль - Время Тепла [2012 -Морская]
-      id: 5c_OfT70kCw
