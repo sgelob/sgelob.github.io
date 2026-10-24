@@ -1,6 +1,5 @@
 ---
 title: Fiat-Allis – Abandoned Construction Equipment Vehicles Factory – Turin, Italy
-shortTitle: “Fiat-Allis” – Turin
 date: "2007-04-01T12:00:35"
 genre: abandoned-places
 country: italy

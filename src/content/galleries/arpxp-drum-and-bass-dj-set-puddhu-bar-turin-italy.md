@@ -1,6 +1,5 @@
 ---
 title: ARPxp – Drum and Bass DJ Set at Puddhu Bar – Turin, Italy
-shortTitle: ARPxp DJ Set – Turin
 date: "2007-12-09T02:00:07"
 genre: music-events
 country: italy

@@ -1,6 +1,5 @@
 ---
 title: Reactable Live at Hiroshima Mon Amour – Turin, Italy
-shortTitle: Reactable – Turin, Italy
 date: "2008-03-14T22:00:21"
 genre: music-events
 country: italy

@@ -71,14 +71,14 @@ describe('photos pages', () => {
     expect(html).not.toMatch(/<a href="\/photos\/(genre\/[^"]+\/)?" aria-current="page"/);
   });
 
-  test('card: link, 4:3 cover from the 960 cap, caption with short title, country and year', () => {
+  test('card: link, 4:3 cover from the 960 cap, caption with the title without its country, then country and year', () => {
     const html = read('dist/photos/genre/abandoned-places/index.html');
     const card = html.match(/<a class="gallery-card" href="\/gallery\/abandoned-beldi-furnace-novara-italy\/"[\s\S]*?<\/a>/)?.[0] ?? '';
     expect(card).toContain('srcset="https://img.olegs.be/uploads/2009/06/abandoned-beldi-furnace-novara-italy-19-480.webp 480w, https://img.olegs.be/uploads/2009/06/abandoned-beldi-furnace-novara-italy-19-960.webp 960w"');
     expect(card).toContain('src="https://img.olegs.be/uploads/2009/06/abandoned-beldi-furnace-novara-italy-19-960.jpg"');
     expect(card).toContain('sizes="(min-width: 1100px) 25vw, (min-width: 640px) 50vw, 100vw"');
     expect(card).toContain('loading="lazy"');
-    expect(card).toContain('“Beldì” Furnace – Italy');
+    expect(card).toMatch(/<span class="title"[^>]*>Abandoned “Beldì” Furnace – Novara<\/span>/);
     expect(card).toContain('Italy · 2009');
   });
 

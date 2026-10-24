@@ -1,6 +1,5 @@
 ---
 title: Mandelli – Abandoned Steel Mill – Collegno, Italy
-shortTitle: “Mandelli” – Turin, Italy
 date: "2007-06-03T09:00:14"
 genre: abandoned-places
 country: italy

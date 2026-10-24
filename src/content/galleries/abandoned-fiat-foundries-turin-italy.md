@@ -1,6 +1,5 @@
 ---
 title: Abandoned “Fiat” Foundries – Turin, Italy
-shortTitle: “Fiat” Foundries – Turin
 date: "2007-05-20T08:00:22"
 genre: abandoned-places
 country: italy

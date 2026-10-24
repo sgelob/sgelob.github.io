@@ -1,6 +1,5 @@
 ---
 title: Lucchini – Abandoned Steel Mill – Turin, Italy
-shortTitle: “Lucchini” – Turin
 date: "2007-03-31T22:00:07"
 genre: abandoned-places
 country: italy

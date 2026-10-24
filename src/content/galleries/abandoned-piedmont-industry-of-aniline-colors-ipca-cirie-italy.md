@@ -1,6 +1,5 @@
 ---
 title: Abandoned Piedmont Industry of Aniline Colors “IPCA” – Ciriè, Italy
-shortTitle: Industry of Aniline Colors
 date: "2009-04-11T12:00:16"
 genre: abandoned-places
 country: italy

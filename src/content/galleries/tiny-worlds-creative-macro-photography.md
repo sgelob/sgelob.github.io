@@ -1,6 +1,5 @@
 ---
 title: Tiny Worlds – Creative Macro Photography
-shortTitle: Tiny Worlds
 date: "2016-02-14T15:01:56"
 genre: abstract
 country: world

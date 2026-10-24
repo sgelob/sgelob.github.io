@@ -1,6 +1,5 @@
 ---
 title: Kiev 4A Type-2 (Киев) – Soviet 35mm Rangefinder Film Camera
-shortTitle: Kiev 4A (Киев)
 date: "2009-01-15T12:00:28"
 genre: old-film-cameras
 country: russia

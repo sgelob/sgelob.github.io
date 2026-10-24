@@ -1,6 +1,5 @@
 ---
 title: Abandoned Rise Mill – Santhia, Italy
-shortTitle: Rise Mill – Italy
 date: "2008-05-25T10:00:14"
 genre: abandoned-places
 country: italy

@@ -1,14 +1,14 @@
 ---
 import Pic from './Pic.astro';
 import { coverSize, galleryPath, type Gallery } from '../lib/paths';
-import { countryName } from '../lib/taxonomies';
+import { countryName, withoutCountry } from '../lib/taxonomies';
 
 interface Props {
   gallery: Gallery;
 }
 
 const { gallery } = Astro.props;
-const { title, shortTitle, cover, country, date } = gallery.data;
+const { title, cover, country, date } = gallery.data;
 
 const size = coverSize(gallery);
 ---
@@ -23,7 +23,7 @@ const size = coverSize(gallery);
     maxWidth={960}
   />
   <span class="caption mono">
-    <span class="title">{shortTitle ?? title}</span>
+    <span class="title">{withoutCountry(title, country)}</span>
     <span class="meta">{countryName(country)} · {date.getFullYear()}</span>
   </span>
 </a>

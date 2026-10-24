@@ -1,6 +1,5 @@
 ---
 title: Abandoned Steel Mill – Trana, Italy
-shortTitle: “Trana” Steel Mill – Italy
 date: "2008-03-24T09:00:33"
 genre: abandoned-places
 country: italy

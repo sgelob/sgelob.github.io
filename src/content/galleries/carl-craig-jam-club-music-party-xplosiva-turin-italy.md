@@ -1,6 +1,5 @@
 ---
 title: Carl Craig at Jam Club Music Party by Xplosiva – Turin, Italy
-shortTitle: Carl Craig at Jam Club
 date: "2007-11-23T23:00:25"
 genre: music-events
 country: italy

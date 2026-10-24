@@ -1,6 +1,5 @@
 ---
 title: Benidorm (Alicante) – Spain
-shortTitle: Benidorm – Spain
 date: "2007-08-07T12:00:41"
 genre: world-places
 country: spain

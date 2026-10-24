@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { coverSize, galleryPath, groupGalleries, mergeSmallGroups, neighbours, postPath, related, sortByDateDesc } from '../src/lib/paths';
 import { formatDate, formatMonthYear } from '../src/lib/site';
-import { categoryName, countryName, genreName } from '../src/lib/taxonomies';
+import { categoryName, countryName, genreName, withoutCountry } from '../src/lib/taxonomies';
 
 const entry = (id: string, date: string) => ({ id, data: { date: new Date(date) } }) as any;
 
@@ -126,5 +126,22 @@ describe('groupGalleries and mergeSmallGroups', () => {
 
   it('adds no merged group when nothing is small', () => {
     expect(mergeSmallGroups(groupGalleries(list, 'country'), 1, 'elsewhere').map((x) => x.key)).toEqual(['italy', 'germany', 'austria', 'france']);
+  });
+});
+
+describe('withoutCountry', () => {
+  it('drops the country a gallery title ends with, after a dash or a comma', () => {
+    expect(withoutCountry('Abandoned Mill – Brandizzo, Italy', 'italy')).toBe('Abandoned Mill – Brandizzo');
+    expect(withoutCountry('Moscow – Russia', 'russia')).toBe('Moscow');
+    expect(withoutCountry('Amsterdam – The Netherlands', 'netherlands')).toBe('Amsterdam');
+    expect(withoutCountry('Monte Carlo – Principality of Monaco', 'monaco')).toBe('Monte Carlo');
+    expect(withoutCountry('Tarragona (Catalonia) – Spain', 'spain')).toBe('Tarragona (Catalonia)');
+  });
+
+  it('leaves a title that does not end with the country whole', () => {
+    expect(withoutCountry('Ivrea, Italy – The Battle of the Oranges', 'italy')).toBe('Ivrea, Italy – The Battle of the Oranges');
+    expect(withoutCountry('Boschetto Crew 3: Music Party in Susa Valley, Italy 2008', 'italy')).toBe('Boschetto Crew 3: Music Party in Susa Valley, Italy 2008');
+    expect(withoutCountry('Sky and Clouds', 'world')).toBe('Sky and Clouds');
+    expect(withoutCountry('Italy', 'italy')).toBe('Italy');
   });
 });
