@@ -1,7 +1,9 @@
+import { readdirSync, readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
+import { parse } from 'yaml';
 import { coverSize, galleryPath, groupGalleries, mergeSmallGroups, neighbours, postPath, related, sortByDateDesc } from '../src/lib/paths';
 import { formatDate, formatMonthYear } from '../src/lib/site';
-import { categoryName, countryName, genreName, withoutCountry } from '../src/lib/taxonomies';
+import { CARD_TITLE_MAX, cardTitleOf, categoryName, countryName, genreName, withoutCountry } from '../src/lib/taxonomies';
 
 const entry = (id: string, date: string) => ({ id, data: { date: new Date(date) } }) as any;
 
@@ -143,5 +145,25 @@ describe('withoutCountry', () => {
     expect(withoutCountry('Boschetto Crew 3: Music Party in Susa Valley, Italy 2008', 'italy')).toBe('Boschetto Crew 3: Music Party in Susa Valley, Italy 2008');
     expect(withoutCountry('Sky and Clouds', 'world')).toBe('Sky and Clouds');
     expect(withoutCountry('Italy', 'italy')).toBe('Italy');
+  });
+});
+
+describe('gallery card titles', () => {
+  const dir = 'src/content/galleries';
+  const galleries = readdirSync(dir).filter((f) => f.endsWith('.md')).map((f) => ({
+    file: f,
+    data: parse(readFileSync(`${dir}/${f}`, 'utf8').split('---\n')[1]) as { title: string; cardTitle?: string; country: string },
+  }));
+
+  it(`fit on two lines: at most ${CARD_TITLE_MAX} characters`, () => {
+    const long = galleries.filter((g) => [...cardTitleOf(g.data)].length > CARD_TITLE_MAX).map((g) => g.file);
+    expect(long).toEqual([]);
+  });
+
+  it('a cardTitle only where the title without its country is too long', () => {
+    const needless = galleries
+      .filter((g) => g.data.cardTitle !== undefined && [...withoutCountry(g.data.title, g.data.country)].length <= CARD_TITLE_MAX)
+      .map((g) => g.file);
+    expect(needless).toEqual([]);
   });
 });

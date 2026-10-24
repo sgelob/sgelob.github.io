@@ -31,3 +31,10 @@ export function withoutCountry(title: string, slug: string): string {
   const rest = title.replace(new RegExp(`\\s*[–,]\\s*(?:[^–,]*\\s)?${name}$`), '');
   return rest.trim() === '' ? title : rest;
 }
+
+/** Longest card title, in characters, that stays on two lines at every card width (the cards are 4 across at 1100 px). */
+export const CARD_TITLE_MAX = 61;
+
+/** The title on a gallery card: the hand-written `cardTitle` when the title is too long, else the title without its country. */
+export const cardTitleOf = (gallery: { title: string; cardTitle?: string; country: string }): string =>
+  gallery.cardTitle ?? withoutCountry(gallery.title, gallery.country);

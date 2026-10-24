@@ -9,6 +9,8 @@ const galleries = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/galleries' }),
   schema: z.object({
     title: z.string(),
+    /** Only for a title too long for two lines on a card: see CARD_TITLE_MAX. */
+    cardTitle: z.string().optional(),
     date: z.coerce.date(),
     genre: z.string(),
     country: z.string(),

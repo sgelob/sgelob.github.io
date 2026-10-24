@@ -1,5 +1,6 @@
 ---
 title: Lubitel (Любитель) – First Soviet 6x6 cm Twin Lens Reflex Film Camera
+cardTitle: "Lubitel (Любитель) – Soviet Twin Lens Reflex Camera"
 date: "2016-10-08T13:09:14"
 genre: old-film-cameras
 country: russia
