@@ -21,6 +21,9 @@ export default defineConfig({
   trailingSlash: 'always',
   // The shared stylesheet is ~8 KB: inlined, it no longer blocks first paint behind a second request.
   build: { format: 'directory', inlineStylesheets: 'always' },
+  // Component scripts always go to a file of their own: the Content Security Policy allows scripts from the site
+  // itself, not inline ones (Astro would otherwise inline a script under Vite's 4 KB limit).
+  vite: { build: { assetsInlineLimit: 0 } },
   // Every embedded <iframe> gets a title from its host, so none is announced as a bare "frame".
   markdown: { processor: satteri({ hastPlugins: [iframeTitles] }) },
   integrations: [sitemap({ filter: (page) => !NOINDEX_PATHS.has(decodeURI(new URL(page).pathname)) })],

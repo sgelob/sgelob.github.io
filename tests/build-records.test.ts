@@ -92,3 +92,18 @@ describe('the data', () => {
     expect(walk('dist').filter((f) => readFileSync(f, 'utf8').includes('discogs.com'))).toEqual([]);
   });
 });
+
+describe('the player', () => {
+  const record = records.find((r) => r.tracks.some((t) => t.video))!;
+  const page = read(`dist${recordPath(record)}index.html`);
+
+  test('an empty, hidden player, and a bundled script that plays a track’s video only after a click', () => {
+    expect(page).toMatch(/<div class="player"[^>]*data-player[^>]*hidden/);
+    const src = /<script type="module" src="(\/_astro\/[^"]+\.js)"><\/script>/.exec(page)?.[1];
+    expect(src).toBeDefined();
+    const code = read(`dist${src}`);
+    expect(code).toContain('youtube-nocookie.com/embed/');
+    expect(code).toContain('autoplay=1');
+    expect(code).toMatch(/dataset\.video|data-video/);
+  });
+});
