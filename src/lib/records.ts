@@ -48,10 +48,10 @@ export const artistLabel = (artist: string): string => (artist === 'Various' ? '
 /** The key the A–Z list sorts by: lowercase, without a leading “The”. */
 export const artistSortKey = (artist: string): string => artist.toLowerCase().replace(/^the\s+/, '');
 
-/** The heading a record sits under: “#” for a digit or symbol, a Latin letter without its accent, or the first letter of another script. */
+/** The heading a record sits under: a Latin letter without its accent, a Cyrillic letter, or “#” for anything else (a digit, a symbol, µ). */
 export function letterOf(artist: string): string {
-  const first = [...artistSortKey(artist).normalize('NFD').replace(/[̀-ͯ]/g, '')][0] ?? '#';
-  return /\p{L}/u.test(first) ? first.toUpperCase() : '#';
+  const first = ([...artistSortKey(artist).normalize('NFD').replace(/[\u0300-\u036f]/g, '')][0] ?? '#').toUpperCase();
+  return /^[A-Z]$/.test(first) || /\p{Script=Cyrillic}/u.test(first) ? first : '#';
 }
 
 /** Letter groups in list order: “#” first, then A–Z, then other scripts; records keep their order within a group. */

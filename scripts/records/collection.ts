@@ -60,6 +60,7 @@ export function parseCollection(csv: string): CollectionRow[] {
 /** Straight quotes to typographic ones: an apostrophe is ’, an opening single quote ‘, double quotes “ ”. */
 export function curly(text: string): string {
   return text
+    .replace(/(\d)''/g, '$1″') // 12'' is twelve inches
     .replace(/(^|[\s(\[])'(?=\p{L})/gu, '$1‘')
     .replace(/'/g, '’')
     .replace(/(^|[\s(\[])"/g, '$1“')
@@ -71,12 +72,22 @@ export function cleanName(name: string): string {
   return curly(name.replace(/\s*\(\d+\)/g, '').replace(/\s+/g, ' ').trim());
 }
 
+/** A title as the site shows it: curly quotes; a number in brackets stays, it is part of the title (“Re:imagined (2020)”). */
+export function cleanTitle(title: string): string {
+  return curly(title.replace(/\s+/g, ' ').trim());
+}
+
 const formatToken = (s: string): string =>
   s.trim().replace(/^DVD-V$/, 'DVD').replace(/^(\d+)x(.+)$/, '$1×$2').replace(/"/g, '″');
 
+/** A segment's first token that names a medium; Discogs also lists descriptions of the whole release as segments (“Album”, “S/Edition”). */
+const MEDIUM = /^(\d+×)?(LP|7″|10″|12″|CD|CDr|SACD|DVD|Blu-ray|File|Cass|Box|Vinyl|Flexi-disc|Minidisc)$/;
+
 /** The kind of a release (its first format decides) and a short text such as “2×LP”, “12″”, “LP + CD”. */
 export function formatOf(format: string): { kind: RecordKind; text: string } {
-  const mains = format.split(' + ').map((segment) => formatToken(segment.split(',')[0]));
+  const tokens = format.split(' + ').map((segment) => formatToken(segment.split(',')[0]));
+  const media = tokens.filter((t) => MEDIUM.test(t));
+  const mains = media.length ? media : tokens.slice(0, 1);
   const first = mains[0].replace(/^\d+×/, '');
   const kind: RecordKind = /CD/.test(first) ? 'cd' : /DVD/.test(first) ? 'dvd' : 'vinyl';
   return { kind, text: mains.join(' + ') };
@@ -126,9 +137,13 @@ const normalise = (title: string): string =>
 export function matchVideos(tracks: { title: string }[], videos: { title: string; uri: string }[]): { trackVideo: (string | undefined)[]; extra: { title: string; id: string }[] } {
   const names = tracks.map((t) => normalise(t.title));
   const trackVideo: (string | undefined)[] = tracks.map(() => undefined);
+  // Discogs often lists a video twice: each one is a candidate once.
+  const seen = new Set<string>();
   const candidates = videos.flatMap((v) => {
     const id = youtubeId(v.uri);
-    return id ? [{ title: v.title, id, name: normalise(v.title), used: false }] : [];
+    if (!id || seen.has(id)) return [];
+    seen.add(id);
+    return [{ title: v.title, id, name: normalise(v.title), used: false }];
   });
   const pass = (fits: (video: string, track: string) => boolean) => {
     for (const video of candidates) {

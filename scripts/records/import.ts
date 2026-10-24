@@ -4,7 +4,7 @@ import { join } from 'node:path';
 import type { RecordEntry, RecordTrack } from '../../src/lib/records';
 import { processUploads } from '../photos/process';
 import type { ObjectStore } from '../photos/r2';
-import { artistSortKey, cleanName, curly, formatOf, matchVideos, parseCollection, slugBase, uniqueSlugs } from './collection';
+import { artistSortKey, cleanName, cleanTitle, curly, formatOf, matchVideos, parseCollection, slugBase, uniqueSlugs } from './collection';
 
 export type FetchLike = (url: string, init?: { headers?: Record<string, string> }) => Promise<{ ok: boolean; status: number; text(): Promise<string>; arrayBuffer(): Promise<ArrayBuffer> }>;
 
@@ -64,7 +64,7 @@ export async function importRecords(opts: ImportOptions): Promise<{ records: Rec
 
   const years = rows.map((r) => (/^\d{4}$/.test(r.released) && r.released !== '0000' && Number(r.released) > 0 ? Number(r.released) : undefined));
   const artists = rows.map((r) => cleanName(r.artist));
-  const titles = rows.map((r) => cleanName(r.title));
+  const titles = rows.map((r) => cleanTitle(r.title));
   const slugs = uniqueSlugs(rows.map((r, i) => ({ base: slugBase(artists[i], titles[i]), year: years[i] })));
 
   const records: RecordEntry[] = [];

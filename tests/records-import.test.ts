@@ -4,7 +4,7 @@ import { join } from 'node:path';
 import { describe, expect, test } from 'vitest';
 import type { ObjectStore } from '../scripts/photos/r2';
 import { importRecords } from '../scripts/records/import';
-import { artistSortKey, cleanName, curly, formatOf, matchVideos, parseCollection, slugBase, uniqueSlugs, youtubeId } from '../scripts/records/collection';
+import { artistSortKey, cleanName, cleanTitle, curly, formatOf, matchVideos, parseCollection, slugBase, uniqueSlugs, youtubeId } from '../scripts/records/collection';
 
 describe('collection export', () => {
   test('parseCollection: quoted fields with commas and doubled quotes; one row per release, the first copy kept', () => {
@@ -76,6 +76,31 @@ describe('collection export', () => {
       trackVideo: [undefined, 'id1', 'id2'],
       extra: [{ title: 'Sure Thing (live)', id: 'id3' }, { title: 'Other', id: 'id4' }],
     });
+  });
+
+  test('matchVideos: a video Discogs lists twice is used once', () => {
+    const videos = [
+      { title: 'So Flute', uri: 'https://www.youtube.com/watch?v=id1' },
+      { title: 'So Flute', uri: 'https://www.youtube.com/watch?v=id1' },
+      { title: 'Live', uri: 'https://youtu.be/id9' },
+      { title: 'Live (again)', uri: 'https://www.youtube.com/watch?v=id9' },
+    ];
+    expect(matchVideos([{ title: 'So Flute' }, { title: 'So Flute (Reprise)' }], videos)).toEqual({ trackVideo: ['id1', undefined], extra: [{ title: 'Live', id: 'id9' }] });
+  });
+
+  test('formatOf: a segment that names no medium (a description of the whole release) is left out', () => {
+    expect(formatOf('DVD, PAL + CD, Mixed + S/Edition')).toEqual({ kind: 'dvd', text: 'DVD + CD' });
+    expect(formatOf('3xLP, Etch + LP, S/Sided, Etch + Album, RE, RM')).toEqual({ kind: 'vinyl', text: '3×LP + LP' });
+    expect(formatOf('4xLP, Album + Box')).toEqual({ kind: 'vinyl', text: '4×LP + Box' });
+  });
+
+  test('cleanTitle keeps a parenthesised number, which is part of a title, not a Discogs disambiguation', () => {
+    expect(cleanTitle('Blue Note Re:imagined (2020)')).toBe('Blue Note Re:imagined (2020)');
+    expect(cleanTitle("Coltrane's Sound")).toBe('Coltrane’s Sound');
+  });
+
+  test('curly turns two apostrophes after a digit into an inch mark', () => {
+    expect(curly("Tape (12'' Edit)")).toBe('Tape (12″ Edit)');
   });
 
   test('artistSortKey ignores a leading “The” and case', () => {
