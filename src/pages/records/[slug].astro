@@ -1,0 +1,170 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Base from '../../layouts/Base.astro';
+import Pic from '../../components/Pic.astro';
+import { largestVariantUrl } from '../../lib/images';
+import { artistLabel, type RecordEntry } from '../../lib/records';
+import { records } from '../../lib/records-data';
+import { pageTitle } from '../../lib/site';
+
+export const getStaticPaths = (() => records.map((record) => ({ params: { slug: record.slug }, props: { record } }))) satisfies GetStaticPaths;
+
+interface Props {
+  record: RecordEntry;
+}
+
+const { record } = Astro.props;
+const { title, artist, year, label, format, styles, cover, tracks, videos } = record;
+const by = artistLabel(artist);
+const facts = [format, year, label].filter(Boolean).join(' · ');
+const youtube = (id: string) => `https://www.youtube.com/watch?v=${id}`;
+// The search result row: the small cover and the artist with the format and year.
+const search = {
+  type: 'records' as const,
+  meta: {
+    image: cover ? largestVariantUrl(cover.src, 480) : undefined,
+    artist: by,
+    format: [format, year].filter(Boolean).join(' · '),
+  },
+};
+---
+
+<Base
+  title={pageTitle(title, by, 'Records')}
+  description={`${title} by ${by}: ${[facts, styles.join(', ')].filter(Boolean).join('. ')}.`}
+  ogImage={cover ? largestVariantUrl(cover.src, 480) : undefined}
+  search={search}
+>
+  <article class="record wrap">
+    <p class="back mono" data-pagefind-ignore><a href="/records/"><span aria-hidden="true">←</span> Records</a></p>
+    <div class="head">
+      {cover ? (
+        <Pic src={cover.src} width={cover.width} height={cover.height} alt={`Cover of ${title} by ${by}`} sizes="(min-width: 720px) 360px, 100vw" maxWidth={960} loading="eager" fetchpriority="high" class="cover" />
+      ) : (
+        <span class="cover blank" />
+      )}
+      <div class="facts">
+        <h1 class="title" data-pagefind-meta="title">{title}</h1>
+        <p class="artist">{by}</p>
+        <p class="meta mono">{facts}</p>
+        {styles.length > 0 && <p class="meta mono">{styles.join(', ')}</p>}
+      </div>
+    </div>
+
+    {tracks.length > 0 && (
+      <ol class="tracks" aria-label="Tracklist">
+        {tracks.map((track) => (
+          <li class="track">
+            <span class="position mono">{track.position}</span>
+            <span class="name">{track.title}</span>
+            <span class="duration mono">{track.duration}</span>
+            {track.video ? (
+              <a class="play" href={youtube(track.video)} data-video={track.video} data-title={track.title} aria-label={`Play ${track.title}`}>▶</a>
+            ) : (
+              <span class="play" />
+            )}
+          </li>
+        ))}
+      </ol>
+    )}
+
+    {videos.length > 0 && (
+      <section class="more" aria-labelledby="more-videos">
+        <h2 id="more-videos" class="mono">More videos</h2>
+        <ul class="tracks">
+          {videos.map((video) => (
+            <li class="video">
+              <span class="name">{video.title}</span>
+              <a class="play" href={youtube(video.id)} data-video={video.id} data-title={video.title} aria-label={`Play ${video.title}`}>▶</a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+  </article>
+</Base>
+
+<style>
+  .record { max-width: calc(900px + 2 * var(--gutter)); padding-block: 40px 96px; }
+
+  .back { margin-bottom: 32px; color: var(--muted); }
+
+  .back a { transition: color 120ms ease; }
+
+  .back a:hover { color: var(--fg); }
+
+  .head {
+    display: grid;
+    grid-template-columns: minmax(0, 360px) minmax(0, 1fr);
+    gap: 32px;
+    align-items: start;
+  }
+
+  .head :global(.cover),
+  .cover.blank {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: contain;
+    background: var(--rule);
+  }
+
+  .title {
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+
+  .artist { margin-top: 6px; color: var(--muted); font-size: 17px; }
+
+  .meta { margin-top: 14px; color: var(--muted); }
+
+  .meta + .meta { margin-top: 6px; }
+
+  .tracks { margin: 40px 0 0; padding: 0; list-style: none; }
+
+  .track,
+  .video {
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr) auto 28px;
+    gap: 12px;
+    align-items: baseline;
+    padding-block: 9px;
+    border-top: 1px solid var(--rule);
+  }
+
+  .video { grid-template-columns: minmax(0, 1fr) 28px; }
+
+  .track:last-child,
+  .video:last-child { border-bottom: 1px solid var(--rule); }
+
+  .position,
+  .duration { color: var(--muted); }
+
+  .name { overflow-wrap: anywhere; }
+
+  .play {
+    justify-self: end;
+    margin-block: -6px;
+    padding: 6px 2px;
+    color: var(--muted);
+    font-size: 12px;
+    transition: color 120ms ease;
+  }
+
+  a.play:hover { color: var(--fg); }
+
+  .more h2 { margin-top: 48px; color: var(--muted); font-weight: 400; }
+
+  .more .tracks { margin-top: 12px; }
+
+  @media (max-width: 719px) {
+    .record { padding-top: 24px; }
+    .head { grid-template-columns: 1fr; gap: 20px; }
+    .title { font-size: 22px; }
+    .track { grid-template-columns: 32px minmax(0, 1fr) 28px; }
+    .duration { display: none; }
+  }
+</style>

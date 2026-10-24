@@ -1,7 +1,7 @@
 // Pagefind marks for the pages the site search indexes (src/pages/search.astro reads them back).
 // Plain TS, no Astro imports.
 
-export type SearchType = 'gallery' | 'post' | 'outdoors' | 'other';
+export type SearchType = 'gallery' | 'post' | 'outdoors' | 'records' | 'other';
 
 export interface SearchMarks {
   /** The result group on the search page. */

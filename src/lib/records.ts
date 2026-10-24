@@ -28,3 +28,43 @@ export interface RecordEntry {
   /** Videos that match no track. */
   videos: { title: string; id: string }[];
 }
+
+import { parse } from 'yaml';
+
+/** The entries of a records data file; an empty file is no records. */
+export const parseRecords = (raw: string): RecordEntry[] => (parse(raw) as RecordEntry[] | null) ?? [];
+
+export const recordPath = (record: Pick<RecordEntry, 'slug'>): string => `/records/${record.slug}/`;
+
+export type RecordFilter = 'all' | 'vinyl' | 'cd';
+
+/** The records a filter page lists; DVDs only under all. */
+export const byKind = (list: readonly RecordEntry[], filter: RecordFilter): RecordEntry[] =>
+  filter === 'all' ? [...list] : list.filter((r) => r.kind === filter);
+
+/** “Various” is how Discogs names the artist of a compilation. */
+export const artistLabel = (artist: string): string => (artist === 'Various' ? 'Various artists' : artist);
+
+/** The key the A–Z list sorts by: lowercase, without a leading “The”. */
+export const artistSortKey = (artist: string): string => artist.toLowerCase().replace(/^the\s+/, '');
+
+/** The heading a record sits under: “#” for a digit or symbol, a Latin letter without its accent, or the first letter of another script. */
+export function letterOf(artist: string): string {
+  const first = [...artistSortKey(artist).normalize('NFD').replace(/[̀-ͯ]/g, '')][0] ?? '#';
+  return /\p{L}/u.test(first) ? first.toUpperCase() : '#';
+}
+
+/** Letter groups in list order: “#” first, then A–Z, then other scripts; records keep their order within a group. */
+export function groupByLetter(list: readonly RecordEntry[]): { letter: string; records: RecordEntry[] }[] {
+  const groups = new Map<string, RecordEntry[]>();
+  for (const record of list) {
+    const letter = letterOf(record.artist);
+    groups.set(letter, [...(groups.get(letter) ?? []), record]);
+  }
+  const rank = (letter: string) => (letter === '#' ? 0 : /^[A-Z]$/.test(letter) ? 1 : 2);
+  return [...groups.entries()]
+    .sort(([a], [b]) => rank(a) - rank(b) || a.localeCompare(b, 'en'))
+    .map(([letter, records]) => ({ letter, records }));
+}
+
+export const RECORDS_LEAD = 'The records on my shelves, vinyl and CDs. Open one to see its tracks and play the ones with a video.';
