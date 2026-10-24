@@ -1,4 +1,9 @@
+import { mkdtempSync, readFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 import { describe, expect, test } from 'vitest';
+import type { ObjectStore } from '../scripts/photos/r2';
+import { importRecords } from '../scripts/records/import';
 import { artistSortKey, cleanName, curly, formatOf, matchVideos, parseCollection, slugBase, uniqueSlugs, youtubeId } from '../scripts/records/collection';
 
 describe('collection export', () => {
@@ -76,5 +81,69 @@ describe('collection export', () => {
   test('artistSortKey ignores a leading “The” and case', () => {
     expect(artistSortKey('The Prodigy')).toBe('prodigy');
     expect(artistSortKey('Theo Parrish')).toBe('theo parrish');
+  });
+});
+
+describe('importRecords', () => {
+  const csv = [
+    'Catalog#,Artist,Title,Label,Format,Rating,Released,release_id,CollectionFolder,Date Added,Collection Media Condition,Collection Sleeve Condition,Collection Notes',
+    'B1,The Band (2),Hits,Label (4),"12"", EP",5,1997,101,Uncategorized,2013-01-13 19:27:21,Mint (M),,',
+    'A1,Another,Second,Other Label,"CD, Album",,0,202,Uncategorized,2013-01-13 20:30:39,,,',
+    'Z1,Zed,Gone,Lost,"LP, Album",,2001,303,Uncategorized,2013-01-13 20:30:39,,,',
+  ].join('\n');
+  const release = (id: number, extra: object) => JSON.stringify({ id, genres: ['Electronic'], styles: ['Techno'], tracklist: [], videos: [], images: [], ...extra });
+  const releases: Record<string, string> = {
+    '101': release(101, {
+      images: [{ type: 'secondary', uri: 'https://img.test/101-back.jpg' }, { type: 'primary', uri: 'https://img.test/101.jpg' }],
+      tracklist: [
+        { position: 'A1', title: "Track's One", duration: '5:00', type_: 'track' },
+        { position: '', title: 'Side B', duration: '', type_: 'heading' },
+        { position: 'B1', title: 'Two', duration: '', type_: 'track' },
+      ],
+      videos: [{ title: "The Band - Track's One", uri: 'https://www.youtube.com/watch?v=abc' }, { title: 'Live somewhere', uri: 'https://www.youtube.com/watch?v=xyz' }],
+    }),
+    '202': release(202, { images: [{ type: 'primary', uri: 'https://img.test/202.jpg' }], tracklist: [{ position: '1', title: 'Only', duration: '3:00', type_: 'track' }] }),
+  };
+  const jpeg = readFileSync(new URL('./fixtures/sample-900x600.jpg', import.meta.url));
+
+  function world() {
+    const calls: string[] = [];
+    const fetch = async (url: string) => {
+      calls.push(url);
+      const id = /\/releases\/(\d+)$/.exec(url)?.[1];
+      if (id) return releases[id] ? { ok: true, status: 200, text: async () => releases[id], arrayBuffer: async () => new ArrayBuffer(0) } : { ok: false, status: 404, text: async () => '', arrayBuffer: async () => new ArrayBuffer(0) };
+      return { ok: true, status: 200, text: async () => '', arrayBuffer: async () => jpeg.buffer.slice(jpeg.byteOffset, jpeg.byteOffset + jpeg.byteLength) };
+    };
+    const put: string[] = [];
+    const store: ObjectStore = { listKeys: async () => new Set(put), put: async (key) => { put.push(key); } };
+    return { calls, fetch, put, store };
+  }
+  const base = mkdtempSync(join(tmpdir(), 'records-'));
+  const opts = { csv, uploadsDir: join(base, 'uploads'), cacheDir: join(base, 'cache'), month: '2026/10', log: () => {}, wait: async () => {} };
+
+  test('builds the records from the export and the API, uploads the covers, reports what failed', async () => {
+    const w = world();
+    const { records, problems } = await importRecords({ ...opts, fetch: w.fetch, store: w.store });
+    expect(records.map((r) => r.slug)).toEqual(['another-second', 'the-band-hits', 'zed-gone']); // A–Z, “The” ignored
+    expect(records[1]).toEqual({
+      slug: 'the-band-hits', artist: 'The Band', title: 'Hits', year: 1997, label: 'Label', kind: 'vinyl', format: '12″',
+      genres: ['Electronic'], styles: ['Techno'], cover: { src: '2026/10/record-the-band-hits.jpg', width: 900, height: 600 },
+      tracks: [{ position: 'A1', title: 'Track’s One', duration: '5:00', video: 'abc' }, { position: 'B1', title: 'Two' }],
+      videos: [{ title: 'Live somewhere', id: 'xyz' }],
+    });
+    expect(records[0].year).toBeUndefined(); // released 0
+    expect(records[0].kind).toBe('cd');
+    expect(records[2]).toMatchObject({ slug: 'zed-gone', tracks: [], videos: [] });
+    expect(records[2].cover).toBeUndefined();
+    expect(problems.join('\n')).toMatch(/303/);
+    expect(w.put).toContain('uploads/2026/10/record-the-band-hits.jpg');
+    expect(w.put).toContain('uploads/2026/10/record-the-band-hits-480.webp');
+    expect(JSON.stringify(records)).not.toMatch(/Mint|Uncategorized|2013-01-13/); // none of the owner’s own fields
+  });
+
+  test('a second run reads the cached releases and keeps the covers it already has', async () => {
+    const w = world();
+    await importRecords({ ...opts, fetch: w.fetch, store: w.store });
+    expect(w.calls.filter((u) => /releases\/(101|202)$|img\.test/.test(u))).toEqual([]);
   });
 });
