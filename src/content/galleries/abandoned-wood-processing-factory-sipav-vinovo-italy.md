@@ -1,6 +1,5 @@
 ---
 title: Abandoned Wood Processing Factory “SIPAV” – Vinovo, Italy
-shortTitle: Wood Processing – Italy
 date: "2009-04-19T14:00:58"
 genre: abandoned-places
 country: italy

@@ -1,6 +1,5 @@
 ---
 title: Abandoned “Ceat” Electrical Cables Factory – Turin, Italy
-shortTitle: “Ceat” – Turin, Italy
 date: "2007-06-10T12:00:07"
 genre: abandoned-places
 country: italy

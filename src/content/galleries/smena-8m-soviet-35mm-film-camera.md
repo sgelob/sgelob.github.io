@@ -1,6 +1,5 @@
 ---
 title: Smena 8M (Смена 8М) – Soviet 35mm Film Camera
-shortTitle: Smena 8M (Смена 8М)
 date: "2007-07-12T18:13:18"
 genre: old-film-cameras
 country: russia

@@ -1,6 +1,5 @@
 ---
 title: Monte Carlo – Principality of Monaco
-shortTitle: Monte Carlo – Monaco
 date: "2010-08-03T13:00:06"
 genre: world-places
 country: monaco

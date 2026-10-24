@@ -1,6 +1,6 @@
 ---
 title: Abandoned “Marxer” Pharmaceutical Laboratory and Research Institute – Loranzè, Italy
-shortTitle: Research Institute – Italy
+cardTitle: "Abandoned “Marxer” Laboratory – Loranzè"
 date: "2008-08-31T18:00:40"
 genre: abandoned-places
 country: italy

@@ -1,6 +1,5 @@
 ---
 title: Salento (Puglia) – Italy
-shortTitle: Salento – Italy
 date: "2006-08-01T08:00:17"
 genre: world-places
 country: italy

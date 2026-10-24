@@ -1,6 +1,5 @@
 ---
 title: Moskva 2 (Москва) – Soviet 6x9cm Folding Film Camera
-shortTitle: Moskva 2 (Москва)
 date: "2010-09-27T12:00:14"
 genre: old-film-cameras
 country: russia

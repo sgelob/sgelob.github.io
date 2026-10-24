@@ -5,7 +5,7 @@ export type Photo = { src: string; width: number; height: number; alt?: string }
 export type GalleryDoc = {
   slug: string;
   title: string;
-  shortTitle?: string;
+  cardTitle?: string;
   date: string;
   genre: string;
   country: string;
@@ -22,7 +22,7 @@ export type GalleryDoc = {
 };
 
 // The key order of the written files is decided here, not by the order the object was built in.
-const GALLERY_KEYS = ['title', 'shortTitle', 'date', 'genre', 'country', 'cover', 'coverWidth', 'coverHeight', 'darkHeader', 'seoTitle', 'seoDescription', 'oldSlugs', 'photos'] as const;
+const GALLERY_KEYS = ['title', 'cardTitle', 'date', 'genre', 'country', 'cover', 'coverWidth', 'coverHeight', 'darkHeader', 'seoTitle', 'seoDescription', 'oldSlugs', 'photos'] as const;
 const PHOTO_KEYS = ['src', 'width', 'height', 'alt'] as const;
 
 /** The listed keys of `doc`, in that order; keys that are undefined are left out. */

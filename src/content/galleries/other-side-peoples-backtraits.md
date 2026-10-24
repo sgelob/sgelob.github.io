@@ -1,6 +1,5 @@
 ---
 title: "The “Other Side” – People’s #Backtraits"
-shortTitle: The “Other Side”
 date: "2016-03-28T08:34:04"
 genre: people
 country: world

@@ -1,6 +1,5 @@
 ---
 title: Ivrea, Italy – The Battle of the Oranges
-shortTitle: Ivrea – Italy
 date: "2014-03-02T12:00:32"
 genre: world-places
 country: italy

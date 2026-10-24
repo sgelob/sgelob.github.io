@@ -1,6 +1,5 @@
 ---
-title: Abandoned Military Fleet –  Cambiano, Italy
-shortTitle: Military Fleet – Italy
+title: Abandoned Military Fleet – Cambiano, Italy
 date: "2009-10-11T18:00:14"
 genre: abandoned-places
 country: italy

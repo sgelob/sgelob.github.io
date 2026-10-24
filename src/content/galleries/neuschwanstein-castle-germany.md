@@ -1,6 +1,5 @@
 ---
 title: Neuschwanstein Castle – Germany
-shortTitle: Neuschwanstein – Germany
 date: "2012-12-31T14:40:48"
 genre: world-places
 country: germany

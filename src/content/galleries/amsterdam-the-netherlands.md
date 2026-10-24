@@ -1,6 +1,5 @@
 ---
 title: Amsterdam – The Netherlands
-shortTitle: Amsterdam
 date: "2011-08-07T12:00:25"
 genre: world-places
 country: netherlands

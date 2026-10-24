@@ -1,6 +1,5 @@
 ---
 title: Abandoned Mental Asylum – Racconigi, Italy
-shortTitle: Mental Asylum – Italy
 date: "2007-12-16T20:00:18"
 genre: abandoned-places
 country: italy

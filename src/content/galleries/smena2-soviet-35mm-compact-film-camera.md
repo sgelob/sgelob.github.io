@@ -1,6 +1,5 @@
 ---
 title: Smena 2 (Смена) – Soviet 35mm Compact Film Camera
-shortTitle: Smena 2 (Смена)
 date: "2010-11-04T12:00:45"
 genre: old-film-cameras
 country: russia

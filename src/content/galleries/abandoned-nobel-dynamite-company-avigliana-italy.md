@@ -1,6 +1,5 @@
 ---
 title: Abandoned “Nobel” Dynamite Company – Avigliana, Italy
-shortTitle: Dynamite Company – Italy
 date: "2011-05-07T15:00:42"
 genre: abandoned-places
 country: italy

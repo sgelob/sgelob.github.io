@@ -1,6 +1,5 @@
 ---
 title: Abandoned “Beldì” Furnace – Novara, Italy
-shortTitle: “Beldì” Furnace – Italy
 date: "2009-06-21T21:00:17"
 genre: abandoned-places
 country: italy

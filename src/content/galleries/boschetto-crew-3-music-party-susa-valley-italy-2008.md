@@ -1,6 +1,5 @@
 ---
 title: "Boschetto Crew 3: Music Party in Susa Valley, Italy 2008"
-shortTitle: 3rd “Boschetto Crew”
 date: "2008-06-22T22:00:50"
 genre: music-events
 country: italy

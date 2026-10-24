@@ -1,6 +1,5 @@
 ---
 title: Abandoned Psychiatric Hospital – Vercelli, Italy
-shortTitle: Psychiatric Hospital – Italy
 date: "2008-03-16T09:00:15"
 genre: abandoned-places
 country: italy

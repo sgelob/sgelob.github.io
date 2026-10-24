@@ -1,6 +1,5 @@
 ---
 title: Grenoble (Rhône-Alpes) – France
-shortTitle: Grenoble – France
 date: "2005-03-01T08:00:22"
 genre: world-places
 country: france
