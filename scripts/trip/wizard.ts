@@ -292,7 +292,7 @@ export async function runWizard(deps: WizardDeps): Promise<WizardResult> {
       missing: () => a.shared === undefined,
       async ask() {
         say('  A shared trip gets its route drawn on the page and the GPX offered for download.');
-        say('  An approximate trip gets the same, starting about 1 km along the path from the real start, and its date on the 1st of the month.');
+        say('  An approximate trip gets the same as a closed circuit with no start or finish, and its date on the 1st of the month.');
         say('  A discreet trip gets no route, no download, no links, and its date on the 1st of the month.');
         const was = a.shared;
         const current = a.shared === undefined ? 'd' : a.approximateEnds ? 'a' : a.shared ? 's' : 'd';
@@ -305,7 +305,7 @@ export async function runWizard(deps: WizardDeps): Promise<WizardResult> {
         }, { default: current });
         a.shared = route !== 'd';
         a.approximateEnds = route === 'a';
-        if (a.approximateEnds) say('  Approximate: the published route keeps every point but starts about 1 km along the path from your real start; the date is set to the 1st of the month.');
+        if (a.approximateEnds) say('  Approximate: the route is published as a closed circuit with no start or finish; the date is set to the 1st of the month.');
         if (a.shared && !was) {
           a.gpx = undefined;
           a.links = undefined;
@@ -461,7 +461,7 @@ export async function runWizard(deps: WizardDeps): Promise<WizardResult> {
     `area: ${a.area}, ${a.country}`,
     `distance: ${a.distance} km, climb: ${a.climb} m`,
     `date: ${isoDay(date)}`,
-    a.shared ? `${a.approximateEnds ? 'approximate ends (start moved about 1 km along the path), ' : ''}shared: ${links.map((l) => `${l.label} ${l.url}`).join(', ') || 'no public links'}` : 'DISCREET: no start, parking, access road, exact day or time in the story',
+    a.shared ? `${a.approximateEnds ? 'approximate ends (a closed circuit, no start or finish), ' : ''}shared: ${links.map((l) => `${l.label} ${l.url}`).join(', ') || 'no public links'}` : 'DISCREET: no start, parking, access road, exact day or time in the story',
   ];
   writeFileSync(notesPath, `# ${a.title}\n\n${meta.map((m) => `- ${m}`).join('\n')}\n\n## Notes\n\n${(a.notes ?? '').trim()}\n`);
 
