@@ -1,6 +1,5 @@
 ---
 title: Abandoned Mill – Brandizzo, Italy
-shortTitle: Abandoned Mill – Italy
 date: "2009-04-10T12:00:07"
 genre: abandoned-places
 country: italy

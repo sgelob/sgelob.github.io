@@ -1,6 +1,6 @@
 ---
 title: "Boschetto Crew 2: Music Party at Villaggio delle Stelle – Northern Italy 2007"
-shortTitle: 2nd “Boschetto Crew”
+cardTitle: "Boschetto Crew 2: Music Party at Villaggio delle Stelle"
 date: "2007-09-16T22:00:12"
 genre: music-events
 country: italy

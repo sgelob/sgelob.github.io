@@ -1,6 +1,6 @@
 ---
 title: Abandoned “DEA” Quality Information System Factory – Moncalieri, Italy
-shortTitle: “DEA” Factory – Italy
+cardTitle: "Abandoned “DEA” Factory – Moncalieri"
 date: "2009-09-27T20:00:45"
 genre: abandoned-places
 country: italy

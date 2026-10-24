@@ -1,6 +1,5 @@
 ---
 title: From Bousson to the Black Lake – Italy
-shortTitle: Bousson – Italy
 date: "2007-01-05T08:00:28"
 genre: world-places
 country: italy

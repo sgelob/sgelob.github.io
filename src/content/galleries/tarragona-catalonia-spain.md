@@ -1,6 +1,5 @@
 ---
 title: Tarragona (Catalonia) – Spain
-shortTitle: Tarragona – Spain
 date: "2007-08-06T08:00:35"
 genre: world-places
 country: spain

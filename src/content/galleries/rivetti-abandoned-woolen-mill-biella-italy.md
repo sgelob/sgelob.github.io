@@ -1,6 +1,5 @@
 ---
 title: Rivetti – Abandoned Woolen Mill – Biella, Italy
-shortTitle: “Rivetti” – Biella, Italy
 date: "2007-07-01T16:00:38"
 genre: abandoned-places
 country: italy

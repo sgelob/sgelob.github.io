@@ -1,6 +1,6 @@
 ---
 title: Sokol Automat (Сокол Автомат) – Soviet 35mm Rangefinder Film Camera
-shortTitle: Sokol Automat (Сокол)
+cardTitle: "Sokol Automat (Сокол Автомат) – Soviet 35mm Rangefinder"
 date: "2016-10-08T12:26:57"
 genre: old-film-cameras
 country: russia

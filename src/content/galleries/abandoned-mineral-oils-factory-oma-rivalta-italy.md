@@ -1,6 +1,5 @@
 ---
 title: Abandoned Mineral Oils Factory “OMA” – Rivalta, Italy
-shortTitle: Oils Factory – Italy
 date: "2009-04-12T13:00:37"
 genre: abandoned-places
 country: italy

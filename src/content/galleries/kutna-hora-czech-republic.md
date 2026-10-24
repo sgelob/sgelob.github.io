@@ -1,6 +1,5 @@
 ---
 title: Kutná Hora – Czech Republic
-shortTitle: Kutná Hora – Czechia
 date: "2011-08-01T15:00:58"
 genre: world-places
 country: czech-republic

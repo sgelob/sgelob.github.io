@@ -1,6 +1,5 @@
 ---
 title: Hipe Party at The Beach° Club – Turin, Italy
-shortTitle: The Beach° Club – Turin
 date: "2007-07-01T23:00:00"
 genre: music-events
 country: italy
