@@ -6,7 +6,7 @@ import Base from '../layouts/Base.astro';
 <Base title={pageTitle('Search')} description="Search the galleries, posts, quotes, events and books on olegs.be." lang="en" noindex>
   <section class="search wrap">
     <h1 class="heading">Search</h1>
-    <p class="lead">Galleries, trips, posts, quotes, events and books.</p>
+    <p class="lead">Galleries, trips, records, posts, quotes, events and books.</p>
     <!-- Without JavaScript the form still reloads the page with ?q=, which then has nothing to run it. -->
     <form class="form" role="search" action="/search/" method="get">
       <label class="mono" for="q">Search the site</label>
@@ -36,6 +36,7 @@ import Base from '../layouts/Base.astro';
   const GROUPS = [
     { type: 'gallery', label: 'Galleries' },
     { type: 'outdoors', label: 'Outdoors' },
+    { type: 'records', label: 'Records' },
     { type: 'post', label: 'Posts' },
     { type: 'other', label: 'Other' },
   ] as const;
@@ -91,10 +92,11 @@ import Base from '../layouts/Base.astro';
     const li = el('li', `item ${type}`);
     const title = el('a', 'title', data.meta.title ?? data.url);
     title.href = data.url;
-    if (type === 'gallery' || type === 'outdoors') {
+    if (type === 'gallery' || type === 'outdoors' || type === 'records') {
       if (data.meta.image) {
         const img = el('img', 'cover');
-        Object.assign(img, { src: data.meta.image, alt: '', width: 96, height: 72, loading: 'lazy', decoding: 'async' });
+        // A record's cover is square, a gallery's or trip's 4:3.
+        Object.assign(img, { src: data.meta.image, alt: '', width: type === 'records' ? 72 : 96, height: 72, loading: 'lazy', decoding: 'async' });
         li.append(img);
       } else {
         li.append(el('span', 'cover'));
@@ -102,7 +104,9 @@ import Base from '../layouts/Base.astro';
       const text = el('div', 'text');
       const meta = (type === 'outdoors'
         ? [data.meta.activity, monthYear(data.meta.date)]
-        : [data.meta.country, data.meta.genre, monthYear(data.meta.date)]
+        : type === 'records'
+          ? [data.meta.artist, data.meta.format]
+          : [data.meta.country, data.meta.genre, monthYear(data.meta.date)]
       ).filter(Boolean).join(' · ');
       text.append(title, el('p', 'meta mono', meta));
       li.append(text);
@@ -286,7 +290,8 @@ import Base from '../layouts/Base.astro';
   .results :global(.item:last-child) { border-bottom: 1px solid var(--rule); }
 
   .results :global(.item.gallery),
-  .results :global(.item.outdoors) {
+  .results :global(.item.outdoors),
+  .results :global(.item.records) {
     display: grid;
     grid-template-columns: 96px minmax(0, 1fr);
     align-items: center;
@@ -316,7 +321,11 @@ import Base from '../layouts/Base.astro';
   .results :global(.meta) { color: var(--muted); }
 
   .results :global(.gallery .meta),
-  .results :global(.outdoors .meta) { margin-top: 6px; }
+  .results :global(.outdoors .meta),
+  .results :global(.records .meta) { margin-top: 6px; }
+
+  /* A record's cover is square: as tall as the others, centred in the same column. */
+  .results :global(.records .cover) { width: 72px; justify-self: center; }
 
   .results :global(.meta + .title) { margin-top: 8px; }
 
