@@ -191,8 +191,8 @@ describe('trip wizard', () => {
     const data = parse(text.split('---')[1]);
     expect(data).toMatchObject({ track: 'ridge-loop.gpx', approximateEnds: true, links: [{ label: 'Komoot', url: 'https://www.komoot.com/tour/2' }] });
     expect(text).toContain('date: "2026-10-01T12:00:00"'); // approximate: the 1st of the month, as for a discreet trip
-    expect(existsSync(join(deps.tracksDir, 'ridge-loop.profile.json'))).toBe(true);
-    expect(said.some((l) => l.includes('Approximate: the published route keeps every point but starts about 1 km along the path from your real start'))).toBe(true);
+    expect(existsSync(join(deps.tracksDir, 'ridge-loop.profile.json'))).toBe(false);
+    expect(said.some((l) => l.includes('Approximate: the route is published as a closed circuit with no start or finish'))).toBe(true);
     expect(readFileSync(r.notes, 'utf8')).toContain('approximate ends');
   });
 

@@ -2,7 +2,7 @@
 // The route of a trip: a map of it seen from above, over contour lines when the trip has its terrain layer,
 // the elevation profile with altitude guides, kilometre marks and the high and low points, the front-matter
 // distance and climb, and the links (the GPX download first). Pure: the page reads the files.
-import { parseSegments, profileFigure, profileFromSeries, routeFit, simplifyPoints, type ProfileSeries } from '../lib/gpx';
+import { parseSegments, profileFigure, routeFit, simplifyPoints } from '../lib/gpx';
 import { formatClimb, formatKm } from '../lib/outdoors';
 import { placeLabel } from '../lib/labels';
 
@@ -15,13 +15,11 @@ interface Props {
   links?: { label: string; url: string }[];
   /** The contour layer drawn for this route's map box (`/outdoors/<slug>.contours.svg`), when there is one. */
   contoursHref?: string;
-  /** The track starts about 1 km along the path from the real start (two segments, every point kept): the stats say the ends are approximate. */
+  /** The track is a closed circuit with no start or finish (approximate ends): no start ring, and the stats say so. */
   approximateEnds?: boolean;
-  /** The whole route's elevation profile, for a track with approximate ends: the profile shows the full ride, not only the drawn route. */
-  fullProfile?: ProfileSeries;
 }
 
-const { xml, distance, climb, downloadHref, links = [], contoursHref, approximateEnds = false, fullProfile } = Astro.props;
+const { xml, distance, climb, downloadHref, links = [], contoursHref, approximateEnds = false } = Astro.props;
 
 const segments = parseSegments(xml);
 const all = segments.flat();
@@ -38,10 +36,10 @@ const [startX, startY] = fit.project(all[0]).map(r1);
 const top = all.reduce<(typeof all)[number] | undefined>((best, p) => (p.ele !== undefined && (best?.ele === undefined || p.ele > best.ele) ? p : best), undefined);
 const [topX, topY] = top ? fit.project(top).map(r1) : [0, 0];
 
-const profile = fullProfile ? profileFromSeries(fullProfile) : profileFigure(all);
+const profile = profileFigure(all);
 const metres = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 });
 const kmOne = new Intl.NumberFormat('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
-const stats = `${formatKm(distance)} · ${formatClimb(climb)}${approximateEnds ? ' · start and finish approximate' : ''}`;
+const stats = `${formatKm(distance)} · ${formatClimb(climb)}${approximateEnds ? ' · start and finish not shown' : ''}`;
 // Each label goes where it covers the least of its own line, inside the drawing.
 const routePoints = points.map((p) => fit.project(p));
 const topText = top ? `${metres.format(top.ele!)} m` : '';
@@ -59,10 +57,10 @@ const lowLabel = profile && placeLabel([profile.low.x, profile.low.y], lowText, 
     <figure class="map">
       <div class="frame">
         {contoursHref && <img class="terrain" src={contoursHref} alt="" width="400" height="300" loading="lazy" decoding="async" />}
-        <svg class="shape" viewBox={fit.viewBox} role="img" aria-label={`${contoursHref ? 'Map of the route over contour lines every 100 m' : 'Map of the route'}${approximateEnds ? ', with an approximate start and finish' : ''}`}>
+        <svg class="shape" viewBox={fit.viewBox} role="img" aria-label={`${contoursHref ? 'Map of the route over contour lines every 100 m' : 'Map of the route'}${approximateEnds ? ', without its start and finish' : ''}`}>
           <path class="halo" d={line} />
           <path class="line" d={line} />
-          <circle class="start" cx={startX} cy={startY} r="3" />
+          {!approximateEnds && <circle class="start" cx={startX} cy={startY} r="3" />}
           {top && (
             <>
               <circle class="top" cx={topX} cy={topY} r="3.5" />
