@@ -2,6 +2,7 @@ import { render } from './helpers/render';
 import JustifiedGrid from '../src/components/JustifiedGrid.astro';
 import { readdirSync } from 'node:fs';
 import { describe, expect, test } from 'vitest';
+import { records } from '../src/lib/records-data';
 import { exists, read, contentCount } from './helpers/dist';
 import { pagefindAttrs } from '../src/lib/search';
 
@@ -14,7 +15,7 @@ describe('search page', () => {
     expect(html).toContain('<html lang="en"');
     expect(html).toContain('<meta name="robots" content="noindex">');
     expect(html).toContain('role="search"');
-    expect(html).toContain('Galleries, trips, posts, quotes, events and books.');
+    expect(html).toContain('Galleries, trips, records, posts, quotes, events and books.');
     expect(html).toMatch(/<label class="mono"[^>]*for="q"[^>]*>Search the site<\/label>/);
     expect(html).toMatch(/<input id="q" name="q" type="search"/);
     expect(html).toMatch(/<h1 class="heading"[^>]*>Search<\/h1>/);
@@ -30,13 +31,14 @@ describe('search page', () => {
     expect(exists('dist/_astro/pagefind.js')).toBe(false);
   });
 
-  test('groups the results with an Outdoors group between Galleries and Posts', () => {
+  test('groups the results: Galleries, Outdoors, Records, Posts, Other', () => {
     const html = read('dist/search/index.html');
-    // The page script is inline here; an external module entry would be read the same way as in the lightbox test.
+    // The page script is a module of its own (scripts are never inlined), read like the lightbox's.
     const scripts = [...html.matchAll(/<script type="module" src="([^"]+)"/g)].map((m) => m[1]!);
     const code = [html, ...scripts.map((src) => read(`dist${src}`))].join('\n');
     // The nav already says "Outdoors", so look for the group itself, between Galleries and Posts.
-    expect(code).toMatch(/label:`Galleries`\},\{type:`outdoors`,label:`Outdoors`\},\{type:`post`/);
+    expect(code).toMatch(/label:`Galleries`\},\{type:`outdoors`,label:`Outdoors`\},\{type:`records`,label:`Records`\},\{type:`post`/);
+    expect(html).not.toMatch(/<script(?![^>]*\bsrc=)[^>]*>/); // nothing inline for the security policy to allow by hash
   });
 });
 
@@ -47,8 +49,17 @@ describe('search index', () => {
     // Galleries, trips and the English pages; the Italian posts in an index of their own.
     expect(Object.keys(entry.languages).sort()).toEqual(['en', 'it']);
     const pages = Object.values(entry.languages).reduce((sum, l) => sum + l.page_count, 0);
-    expect(pages).toBe(contentCount('galleries') + contentCount('outdoors') + contentCount('posts') + 4); // galleries, trips, posts, and events, books, quotes, about
+    expect(pages).toBe(contentCount('galleries') + contentCount('outdoors') + contentCount('posts') + records.length + 4); // galleries, trips, posts, records, and events, books, quotes, about
     expect(readdirSync('dist/pagefind/filter').filter((f) => f.endsWith('.pf_filter')).length).toBeGreaterThan(0);
+  });
+
+  test('records are indexed as records, with the cover, the artist and the format', () => {
+    const html = read('dist/records/st-germain-tourist/index.html');
+    expect(html).toMatch(/<main id="main" tabindex="-1" data-pagefind-body data-pagefind-filter="type:records"/);
+    expect(html).toContain('data-meta-image="https://img.olegs.be/uploads/2026/10/record-st-germain-tourist-480.jpg"');
+    expect(html).toContain('data-meta-artist="St Germain"');
+    expect(html).toContain('data-meta-format="2×12″ · 2012"');
+    expect(html).toMatch(/<h1 class="title" data-pagefind-meta="title"/);
   });
 
   test('galleries are indexed as galleries, with their search meta and photo descriptions', () => {
