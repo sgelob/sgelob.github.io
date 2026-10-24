@@ -7,7 +7,7 @@ test('home has the bio with its section links and no link row, 4 gallery cards, 
   const html = read('dist/index.html');
   const intro = html.match(/<section class="intro[\s\S]*?<\/section>/)?.[0] ?? '';
   expect(intro).toContain('Hi, I’m Oleg'); expect(intro).toContain('drawn to offline things');
-  for (const href of ['/outdoors/', '/photos/', '/books/', '/quotes/', '/events/']) expect(intro).toContain(`href="${href}"`);
+  for (const href of ['/outdoors/', '/photos/', '/books/', '/quotes/', '/events/', '/records/']) expect(intro).toContain(`href="${href}"`);
   expect(intro).not.toContain('<ul'); // the link row is gone: the bio links the sections itself
   expect(html).toMatch(/<h2 id="home-outdoors"[^>]*>Outdoors<\/h2>/); // the Outdoors row, now that there is a trip
   const trips = contentCount('outdoors'); // counted, so adding a trip doesn't break the test
