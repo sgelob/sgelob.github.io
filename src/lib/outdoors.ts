@@ -80,9 +80,9 @@ export function formatClimb(m: number): string {
   return `${numbers.format(m)} m up`;
 }
 
-/** Card line: `Hike · 16 km · 1,350 m`, `MTB · Trail · 38 km · 1,700 m` (no "up" here). */
-export function cardMeta(d: Pick<TripData, 'activity' | 'bike' | 'distance' | 'climb'>): string {
-  const parts: string[] = [activityLabel(d.activity)];
+/** Card line, led by the country as on gallery cards: `Italy · Hike · 16 km · 1,350 m`, `Italy · MTB · Trail · 38 km · 1,700 m` (no "up" here). */
+export function cardMeta(d: Pick<TripData, 'country' | 'activity' | 'bike' | 'distance' | 'climb'>): string {
+  const parts: string[] = [countryName(d.country), activityLabel(d.activity)];
   if (d.activity === 'ride' && d.bike) parts.push(bikeShort(d.bike));
   parts.push(formatKm(d.distance), `${numbers.format(d.climb)} m`);
   return parts.join(' · ');
