@@ -15839,8 +15839,6 @@
       <trkpt lat="45.108794" lon="7.816381"><ele>258.27151</ele></trkpt>
       <trkpt lat="45.108813" lon="7.81639"><ele>258.27151</ele></trkpt>
       <trkpt lat="45.108833" lon="7.816424"><ele>258.27151</ele></trkpt>
-    </trkseg>
-    <trkseg>
       <trkpt lat="45.110303" lon="7.816245"><ele>244.931867</ele></trkpt>
       <trkpt lat="45.110326" lon="7.816238"><ele>244.931867</ele></trkpt>
       <trkpt lat="45.110343" lon="7.816229"><ele>244.931867</ele></trkpt>
@@ -15994,6 +15992,7 @@
       <trkpt lat="45.120261" lon="7.815958"><ele>222.336645</ele></trkpt>
       <trkpt lat="45.120328" lon="7.815954"><ele>222.284813</ele></trkpt>
       <trkpt lat="45.120396" lon="7.815945"><ele>222.232026</ele></trkpt>
+      <trkpt lat="45.12047" lon="7.815943"><ele>222.174819</ele></trkpt>
     </trkseg>
   </trk>
 </gpx>
