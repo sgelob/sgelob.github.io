@@ -24,7 +24,7 @@ describe('TripCard and TripGrid', () => {
     expect(html).toMatch(/<a class="trip-card" href="\/outdoors\/colle-delle-finestre\/"/);
     expect(html).toContain('a-480.webp 480w');
     expect(html).toContain('Colle delle Finestre');
-    expect(html).toContain('MTB · Trail · 38 km · 1,700 m');
+    expect(html).toContain('Italy · MTB · Trail · 38 km · 1,700 m');
   });
   test('grid lists cards; empty state', async () => {
     expect((await render(TripGrid, { props: { trips: [trip, trip] } })).match(/class="trip-card"/g)).toHaveLength(2);
