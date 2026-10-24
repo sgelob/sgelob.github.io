@@ -14,7 +14,7 @@ describe('outdoors index', () => {
     expect(html).toContain('href="/outdoors/hikes/"'); expect(html).toContain('href="/outdoors/rides/"');
     expect(html).toMatch(/<h2 id="year-2026"[^>]*>2026<\/h2>/);
     expect(html).toMatch(/<a class="trip-card" href="\/outdoors\/canosio-gardetta-valle-maira\/"/);
-    expect(html).toContain('MTB · Trail · 38.1 km · 1,500 m');
+    expect(html).toContain('Italy · MTB · Trail · 38.1 km · 1,500 m');
     expect(html).not.toContain('No trips yet.');
   });
   test('hikes and rides pages exist with their filter active', () => {
