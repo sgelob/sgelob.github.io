@@ -4,12 +4,12 @@ import { artistLabel, byKind, groupByLetter, parseRecords, recordPath, type Reco
 const entry = (artist: string, kind: RecordEntry['kind'] = 'vinyl'): RecordEntry => ({
   slug: artist.toLowerCase().replace(/\W+/g, '-'), artist, title: 'T', label: 'L', kind, format: 'LP', genres: [], styles: [], tracks: [], videos: [],
 });
-const list = ['2020 Soundsystem', '808 State', 'Aphex Twin', 'Björk', 'The Prodigy', 'Мумий Тролль'].map((a) => entry(a));
+const list = ['2020 Soundsystem', '808 State', 'Aphex Twin', 'Björk', 'The Prodigy', 'µ-Ziq', 'Мумий Тролль'].map((a) => entry(a));
 
 test('groupByLetter: a “#” group for names starting with a digit or symbol, then A–Z (“The” ignored, accents folded), then other scripts', () => {
   const groups = groupByLetter(list);
   expect(groups.map((g) => g.letter)).toEqual(['#', 'A', 'B', 'P', 'М']);
-  expect(groups[0].records.map((r) => r.artist)).toEqual(['2020 Soundsystem', '808 State']);
+  expect(groups[0].records.map((r) => r.artist)).toEqual(['2020 Soundsystem', '808 State', 'µ-Ziq']); // µ is not a Latin or Cyrillic letter
   expect(groups.find((g) => g.letter === 'P')!.records[0].artist).toBe('The Prodigy');
 });
 
