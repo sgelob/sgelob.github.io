@@ -34,9 +34,9 @@ describe('tripSchema', () => {
 describe('labels and paths', () => {
   it('paths', () => { expect(tripPath({ id: 'x' } as any)).toBe('/outdoors/x/'); expect(trackPath({ id: 'x' } as any)).toBe('/outdoors/x-olegs-be.gpx'); });
   it('formats numbers the en-US way', () => { expect(formatKm(12.5)).toBe('12.5 km'); expect(formatKm(1024)).toBe('1,024 km'); expect(formatClimb(1350)).toBe('1,350 m up'); });
-  it('cardMeta: hike without bike, ride with the short bike name, no "up"', () => {
-    expect(cardMeta({ activity: 'hike', distance: 16, climb: 1350 })).toBe('Hike · 16 km · 1,350 m');
-    expect(cardMeta({ activity: 'ride', bike: 'trail', distance: 38, climb: 1700 })).toBe('MTB · Trail · 38 km · 1,700 m');
+  it('cardMeta: the country first; hike without bike, ride with the short bike name, no "up"', () => {
+    expect(cardMeta({ country: 'italy', activity: 'hike', distance: 16, climb: 1350 })).toBe('Italy · Hike · 16 km · 1,350 m');
+    expect(cardMeta({ country: 'france', activity: 'ride', bike: 'trail', distance: 38, climb: 1700 })).toBe('France · MTB · Trail · 38 km · 1,700 m');
   });
   it('heroMeta: country, activity, bike, numbers, area, month, photos', () => {
     expect(heroMeta(tripSchema.parse(base), 41)).toEqual(['Italy', 'MTB', 'Trail bike', '38 km', '1,700 m up', 'Val di Susa', 'June 2026', '41 photos']);
