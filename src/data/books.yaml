@@ -1,272 +1,1499 @@
 - title: Favourite Books
-  entries:
-    - The Anxious Generation – *Jonathan Haidt*
-    - The 5 Types of Wealth – *Sahil Bloom*
-    - Liminal Thinking – *Dave Gray*
-    - Gamestorming – *Dave Gray*
-    - Radical Focus – *Christina Wodtke*
-    - Build Better Products – *Laura Klein*
-    - Make Time – *Jake Knapp & John Zeratsky*
-    - Rework – *Jason Fried & David Heinemeier Hansson*
-    - "Remote: Office Not Required – *Jason Fried & David Heinemeier Hansson*"
-    - It Doesn’t Have to Be Crazy at Work – *Jason Fried & David Heinemeier Hansson*
-    - Shape Up – *Ryan Singer*
-    - Laws of UX – *Jon Yablonski*
-    - User Story Mapping – *Jeff Patton*
-    - You Have Too Much Shit – *Chris Ballantine-Thomas*
-    - What You Do Is Who You Are – *Ben Horowitz*
-    - Indistractable – *Nir Eyal & Julie Li*
-    - Making Ideas Happen – *Scott Belsky*
-    - Maximize Your Potential – *Jocelyn K. Glei*
-    - Make Your Mark – *Jocelyn K. Glei*
-    - Sprint – *Jake Knapp, John Zeratsky & Braden Kowitz*
-    - Going Responsive – *Karen Mcgrane*
-    - Responsible Responsive Design – *Scott Jehl*
-    - Mobile First – *Luke Wroblewski*
-    - Sass for Web Designers – *Dan Cederholm*
-    - Demystifying Public Speaking – *Lara Hogan*
-    - Inspired – *Marty Cagan*
-    - Atomic Design – *Brad Frost*
-    - Don’t Make Me Think – *Steve Krug*
-    - Resilient Web Design – *Jeremy Keith*
-    - Intercom on Product Management
-    - Intercom On Starting Up
-    - Building a Device Lab – *Destiny Montague & Lara Hogan*
-    - Design for Real Life – *Eric Meyer & Sara Wachter-Boettcher*
-    - Resilient Management – *Lara Hogan*
-    - Essentialism – *Greg McKeown*
-    - "Material World: A Global Family Portrait – *Peter Menzel*"
-    - Learning Agile – *Andrew Stellman, Jennifer Greene*
-    - Strategize – *Roman Pichler*
-    - How to Lead in Product Management – *Roman Pichler*
-    - La guerra nel team – *Patrick Lencioni*
-    - Empowered – *Marty Cagan*
-    - Elon Musk – *Ashlee Vance*
-    - Outcomes Over Output – *Joshua Seiden*
-    - The Joy of Less, A Minimalist Living Guide – *Francine Jay*
-    - Reinventing Organizations – *Frederic Laloux*
-    - This Is Lean – *Niklas Modig & Pär Åhlström*
-    - Manage Your Day-to-Day – *99U*
-    - Continuous Discovery Habits – *Teresa Torres*
-    - Understanding Privacy – *Heather Burns*
-    - Business Model You – *Tim Clark, Alexander Osterwalder & Yves Pigneur*
-    - Time Is Money – *Tammy Everts*
-    - The Design of Everyday Things – *Donald Norman*
-    - Designing for Performance – *Lara Callender Hogan*
-    - You’re My Favorite Client – *Mike Monteiro*
-    - Just Enough Research – *Erika Hall*
-    - Design Is a Job – *Mike Monteiro*
-    - Web Performance in Action – *Jeremy Wagner*
-    - Evidence-Guided – *Itamar Gilad*
-    - Fifty Quick Ideas to Improve Your User Stories – *Gojko Adzic & David Evans*
-    - Impact Mapping – *Gojko Adzic*
-    - Agile Product Management with Scrum – *Roman Pichler*
-    - Unsubscribe – *Jocelyn K Glei*
+  books:
+    - title: The Anxious Generation
+      author: Jonathan Haidt
+      year: 2024
+      cover:
+        src: 2026/10/book-the-anxious-generation.jpg
+        width: 329
+        height: 500
+    - title: The 5 Types of Wealth
+      author: Sahil Bloom
+      year: 2025
+    - title: Liminal Thinking
+      author: Dave Gray
+      year: 2016
+      cover:
+        src: 2026/10/book-liminal-thinking.jpg
+        width: 318
+        height: 475
+    - title: Gamestorming
+      author: Dave Gray
+      year: 2014
+      cover:
+        src: 2026/10/book-gamestorming.jpg
+        width: 377
+        height: 500
+    - title: Radical Focus
+      author: Christina Wodtke
+      year: 2015
+      cover:
+        src: 2026/10/book-radical-focus.jpg
+        width: 313
+        height: 500
+    - title: Build Better Products
+      author: Laura Klein
+      year: 2016
+      cover:
+        src: 2026/10/book-build-better-products.jpg
+        width: 333
+        height: 500
+    - title: Make Time
+      author: Jake Knapp & John Zeratsky
+      year: 2018
+      cover:
+        src: 2026/10/book-make-time.jpg
+        width: 331
+        height: 500
+    - title: Rework
+      author: Jason Fried & David Heinemeier Hansson
+      year: 2010
+      cover:
+        src: 2026/10/book-rework.jpg
+        width: 265
+        height: 400
+    - title: "Remote: Office Not Required"
+      author: Jason Fried & David Heinemeier Hansson
+      year: 2013
+      cover:
+        src: 2026/10/book-remote-office-not-required.jpg
+        width: 354
+        height: 500
+    - title: It Doesn’t Have to Be Crazy at Work
+      author: Jason Fried & David Heinemeier Hansson
+      year: 2018
+      cover:
+        src: 2026/10/book-it-doesn-t-have-to-be-crazy-at-work.jpg
+        width: 331
+        height: 500
+    - title: Shape Up
+      author: Ryan Singer
+      year: 2019
+      cover:
+        src: 2026/10/book-shape-up.jpg
+        width: 309
+        height: 475
+    - title: Laws of UX
+      author: Jon Yablonski
+      year: 2020
+      cover:
+        src: 2026/10/book-laws-of-ux.jpg
+        width: 333
+        height: 500
+    - title: User Story Mapping
+      author: Jeff Patton
+      year: 2013
+      cover:
+        src: 2026/10/book-user-story-mapping.jpg
+        width: 333
+        height: 499
+    - title: You Have Too Much Shit
+      author: Chris Ballantine-Thomas
+    - title: What You Do Is Who You Are
+      author: Ben Horowitz
+      year: 2019
+      cover:
+        src: 2026/10/book-what-you-do-is-who-you-are.jpg
+        width: 500
+        height: 500
+    - title: Indistractable
+      author: Nir Eyal & Julie Li
+      year: 2019
+      cover:
+        src: 2026/10/book-indistractable.jpg
+        width: 317
+        height: 475
+    - title: Making Ideas Happen
+      author: Scott Belsky
+      year: 2010
+      cover:
+        src: 2026/10/book-making-ideas-happen.jpg
+        width: 326
+        height: 500
+    - title: Maximize Your Potential
+      author: Jocelyn K. Glei
+      year: 2013
+      cover:
+        src: 2026/10/book-maximize-your-potential.jpg
+        width: 347
+        height: 500
+    - title: Make Your Mark
+      author: Jocelyn K. Glei
+      year: 2014
+      cover:
+        src: 2026/10/book-make-your-mark.jpg
+        width: 340
+        height: 500
+    - title: Sprint
+      author: Jake Knapp, John Zeratsky & Braden Kowitz
+      year: 2001
+      cover:
+        src: 2026/10/book-sprint.jpg
+        width: 331
+        height: 499
+    - title: Going Responsive
+      author: Karen Mcgrane
+      year: 2015
+    - title: Responsible Responsive Design
+      author: Scott Jehl
+      year: 2014
+      cover:
+        src: 2026/10/book-responsible-responsive-design.jpg
+        width: 298
+        height: 461
+    - title: Mobile First
+      author: Luke Wroblewski
+      year: 2011
+      cover:
+        src: 2026/10/book-mobile-first.jpg
+        width: 318
+        height: 500
+    - title: Sass for Web Designers
+      author: Dan Cederholm
+      year: 2013
+      cover:
+        src: 2026/10/book-sass-for-web-designers.jpg
+        width: 297
+        height: 500
+    - title: Demystifying Public Speaking
+      author: Lara Hogan
+      year: 2016
+    - title: Inspired
+      author: Marty Cagan
+      year: 2008
+      cover:
+        src: 2026/10/book-inspired.jpg
+        width: 331
+        height: 500
+    - title: Atomic Design
+      author: Brad Frost
+      year: 2016
+      cover:
+        src: 2026/10/book-atomic-design.jpg
+        width: 323
+        height: 500
+    - title: Don’t Make Me Think
+      author: Steve Krug
+      year: 2000
+      cover:
+        src: 2026/10/book-don-t-make-me-think.jpg
+        width: 372
+        height: 500
+    - title: Resilient Web Design
+      author: Jeremy Keith
+      year: 2016
+      cover:
+        src: 2026/10/book-resilient-web-design.jpg
+        width: 300
+        height: 300
+    - title: Intercom on Product Management
+    - title: Intercom On Starting Up
+      year: 2017
+      cover:
+        src: 2026/10/book-intercom-on-starting-up.jpg
+        width: 317
+        height: 500
+    - title: Building a Device Lab
+      author: Destiny Montague & Lara Hogan
+    - title: Design for Real Life
+      author: Eric Meyer & Sara Wachter-Boettcher
+      year: 2016
+      cover:
+        src: 2026/10/book-design-for-real-life.jpg
+        width: 271
+        height: 419
+    - title: Resilient Management
+      author: Lara Hogan
+      year: 2019
+      cover:
+        src: 2026/10/book-resilient-management.jpg
+        width: 212
+        height: 328
+    - title: Essentialism
+      author: Greg McKeown
+      year: 2014
+      cover:
+        src: 2026/10/book-essentialism.jpg
+        width: 186
+        height: 281
+    - title: "Material World: A Global Family Portrait"
+      author: Peter Menzel
+      year: 1994
+      cover:
+        src: 2026/10/book-material-world-a-global-family-portrait.jpg
+        width: 327
+        height: 475
+    - title: Learning Agile
+      author: Andrew Stellman, Jennifer Greene
+      year: 2015
+      cover:
+        src: 2026/10/book-learning-agile.jpg
+        width: 381
+        height: 499
+    - title: Strategize
+      author: Roman Pichler
+      year: 2016
+      cover:
+        src: 2026/10/book-strategize.jpg
+        width: 333
+        height: 500
+    - title: How to Lead in Product Management
+      author: Roman Pichler
+      year: 2020
+      cover:
+        src: 2026/10/book-how-to-lead-in-product-management.jpg
+        width: 333
+        height: 500
+    - title: La guerra nel team
+      author: Patrick Lencioni
+    - title: Empowered
+      author: Marty Cagan
+      year: 2020
+      cover:
+        src: 2026/10/book-empowered.jpg
+        width: 337
+        height: 500
+    - title: Elon Musk
+      author: Ashlee Vance
+      year: 2013
+      cover:
+        src: 2026/10/book-elon-musk.jpg
+        width: 331
+        height: 500
+    - title: Outcomes Over Output
+      author: Joshua Seiden
+      year: 2019
+      cover:
+        src: 2026/10/book-outcomes-over-output.jpg
+        width: 306
+        height: 466
+    - title: The Joy of Less, A Minimalist Living Guide
+      author: Francine Jay
+      year: 2013
+    - title: Reinventing Organizations
+      author: Frederic Laloux
+      year: 2014
+      cover:
+        src: 2026/10/book-reinventing-organizations.jpg
+        width: 327
+        height: 500
+    - title: This Is Lean
+      author: Niklas Modig & Pär Åhlström
+      year: 2012
+      cover:
+        src: 2026/10/book-this-is-lean.jpg
+        width: 321
+        height: 500
+    - title: Manage Your Day-to-Day
+      author: 99U
+    - title: Continuous Discovery Habits
+      author: Teresa Torres
+      year: 2021
+      cover:
+        src: 2026/10/book-continuous-discovery-habits.jpg
+        width: 333
+        height: 500
+    - title: Understanding Privacy
+      author: Heather Burns
+      year: 2022
+      cover:
+        src: 2026/10/book-understanding-privacy.jpg
+        width: 311
+        height: 365
+    - title: Business Model You
+      author: Tim Clark, Alexander Osterwalder & Yves Pigneur
+      year: 2012
+      cover:
+        src: 2026/10/book-business-model-you.jpg
+        width: 500
+        height: 395
+    - title: Time Is Money
+      author: Tammy Everts
+      year: 2015
+      cover:
+        src: 2026/10/book-time-is-money.jpg
+        width: 333
+        height: 500
+    - title: The Design of Everyday Things
+      author: Donald Norman
+      year: 1988
+      cover:
+        src: 2026/10/book-the-design-of-everyday-things.jpg
+        width: 351
+        height: 500
+    - title: Designing for Performance
+      author: Lara Callender Hogan
+      year: 2014
+      cover:
+        src: 2026/10/book-designing-for-performance.jpg
+        width: 333
+        height: 500
+    - title: You’re My Favorite Client
+      author: Mike Monteiro
+      year: 2014
+      cover:
+        src: 2026/10/book-you-re-my-favorite-client.jpg
+        width: 247
+        height: 383
+    - title: Just Enough Research
+      author: Erika Hall
+      year: 2013
+      cover:
+        src: 2026/10/book-just-enough-research.jpg
+        width: 323
+        height: 500
+    - title: Design Is a Job
+      author: Mike Monteiro
+      year: 2012
+      cover:
+        src: 2026/10/book-design-is-a-job.jpg
+        width: 308
+        height: 475
+    - title: Web Performance in Action
+      author: Jeremy Wagner
+      year: 2017
+      cover:
+        src: 2026/10/book-web-performance-in-action.jpg
+        width: 399
+        height: 500
+    - title: Evidence-Guided
+      author: Itamar Gilad
+    - title: Fifty Quick Ideas to Improve Your User Stories
+      author: Gojko Adzic & David Evans
+      year: 2014
+      cover:
+        src: 2026/10/book-fifty-quick-ideas-to-improve-your-user-stories.jpg
+        width: 500
+        height: 500
+    - title: Impact Mapping
+      author: Gojko Adzic
+      year: 2012
+      cover:
+        src: 2026/10/book-impact-mapping.jpg
+        width: 500
+        height: 500
+    - title: Agile Product Management with Scrum
+      author: Roman Pichler
+      year: 2010
+      cover:
+        src: 2026/10/book-agile-product-management-with-scrum.jpg
+        width: 264
+        height: 400
+    - title: Unsubscribe
+      author: Jocelyn K Glei
+      year: 2016
+      cover:
+        src: 2026/10/book-unsubscribe.jpg
+        width: 384
+        height: 500
 - title: Mixed Books
-  entries:
-    - Made in Italy? – *Giuseppe Iorio*
-    - Lying – *Sam Harris*
-    - Gomorra – *Roberto Saviano*
-    - Talking to Strangers – *Malcolm Gladwell*
-    - So Good They Can’t Ignore You – *Cal Newport*
-    - Product Operations – *Melissa Perri & Denise Tilles*
-    - Job Moves – *Ethan Bernstein, Michael B. Horn, and Bob Moesta*
-    - A Pocket Guide to Front-End Style Guides – *Anna Debenham*
-    - Surviving Change at Work – *Vanessa Gennarelli*
-    - Lizard Optimization – *Gojko Adzic*
-    - Everyday Information Architecture – *Lisa Maria Marquis*
-    - "The Best of Lenny’s Newsletter: Volume 1"
-    - Flexible Typesetting – *Tim Brown*
-    - Going Offline – *Jeremy Keith*
-    - Walden – *Henry David Thoreau*
-    - Le 7 regole per avere successo – *Stephen Covey*
-    - How to Talk So Kids Will Listen & Listen So Kids Will Talk – *Adele Faber, Elaine Mazlish*
-    - Set Boundaries, Find Peace – *Nedra Glover Tawwab*
-    - The Honest Truth About Dishonesty – *Dan Ariely*
-    - "The Second World War: A Complete History – *Martin Gilbert*"
-    - Touch Design for Mobile Interfaces – *Steven Hoober*
-    - L’uomo e la terra. Luci e ombre. – *Edward Burtynsky*
-    - Product Management for UX People – *Christian Crumlish*
-    - Deliberate Intervention – *Alexandra Schmidt*
-    - Conversational Design – *Erika Hall*
-    - Team Mastery – *Geoff Watts*
-    - Le parole sono finestre (oppure muri) – *Marshall B. Rosenberg*
-    - The Strategy Activation Playbook – *Aric Wood*
-    - The New CSS Layout – *Rachel Andrew*
-    - Let my people go surfing – *Yvon Chouinard*
-    - L’arte della guerra – *Sun Tzu*
-    - Crescere i bambini con la comunicazione nonviolenta – *Marshall B. Rosenberg*
-    - Authentic communication – *Alexei Ivanov, Sveta Shedina*
-    - The Ameriguns – *Gabriele Galimberti*
-    - Click! How to Encourage Clicks Without Shady Tricks – *Paul Boag*
-    - Responsible JavaScript – *Jeremy Wagner*
-    - SEO For Everyone – *Rebekah Baggs & Chris Corak*
-    - Better Onboarding – *Krystal Higgins*
-    - Sustainable Web Design – *Tom Greenwood*
-    - Progressive Web Apps – *Jason Grigsby*
-    - Leonardo da Vinci – *Walter Isaacson*
-    - Costituzione Italiana
-    - Design Systems – *Alla Kholmatova*
-    - Product-Led Onboarding – *Ramli John*
-    - Epic Alignment – *Nils Janse*
-    - Hiring Product Managers – *Kate Leto*
-    - Leaders Eat Last – *Simon Sinek*
-    - HYPERGROWTH – *David Cancel*
-    - The Almanack of Naval Ravikant – *Eric Jorgenson*
-    - "Hieronymus Bosch: L’opera completa – *Stefan Fischer*"
-    - Fooled by Randomness – *Nassim Nicholas Taleb*
-    - Made in Dance, 1991-1999 – *Oleg Codikov*
-    - Startup, Scaleup, Screwup – *Jurgen Appelo*
-    - Accessibility for Everyone – *Laura Kalbag*
-    - The Tipping Point – *Malcolm Gladwell*
-    - Scandinavian Style at Home – *Allan Torp*
-    - The Team That Managed Itself – *Christina Wodtke*
-    - L’unica regola è che non ci sono regole – *Reed Hastings & Erin Meyer*
-    - “Surely You’re Joking, Mr. Feynman” – *Richard P. Feynman*
-    - "What I Eat: Around the World in 80 Diets – *Peter Menzel*"
-    - The Workshopper Playbook – *Jonathan Courtney*
-    - Escaping the Build Trap – *Melissa Perri*
-    - Fifty Quick Ideas To Improve Your Retrospectives – *Tom Roden & Ben Williams*
-    - 97 Things Every Scrum Practitioner Should Know – *Gunther Verheyen*
-    - The Serving Leader – *Ken Jennings & John Stahl-Wert*
-    - The Business of Platforms – *Michael A. Cusumano, Annabelle Gawer & David B. Yoffie*
-    - "Dust & Grooves: Adventures in Record Collecting – *Eilon Paz*"
-    - Free-Range Kids – *Lenore Skenazy*
-    - Start with Why – *Simon Sinek*
-    - 17 Anti-Procrastination Hacks – *Dominic Mann*
-    - Change by Design – *Tim Brown*
-    - Innovation Lab Excellence – *Richard Turrin*
-    - The FINTECH Book – *Susanne Chishti & Janos Barberis*
-    - The Subtle Art of Not Giving a F\*ck – *Mark Manson*
-    - Management 3.0 – *Jurgen Appelo*
-    - Agile Estimating and Planning – *Mike Cohn*
-    - Dieci ragioni per cancellare subito i tuoi account social – *Jaron Lanier*
-    - AI Superpowers – *Kai-Fu Lee*
-    - The New York Times Explorer Cities & Towns – *Barbara Ireland*
-    - Minimal Film – *Matteo Civaschi*
-    - Practical Design Discovery – *Dan Brown*
-    - Living in Information – *Jorge Arango*
-    - Everything is Negotiable – *Gavin Kennedy*
-    - The Growth Handbook – *Intercom*
-    - The Innovator’s Solution – *Clayton M. Christensen & Michael E. Raynor*
-    - JavaScript For Web Designers – *Mat Marquis*
-    - "Alibaba: The House That Jack Ma Built – *Duncan Clark*"
-    - Striking Thoughts – *Bruce Lee*
-    - Practical SVG – *Chris Coyier*
-    - "WTF?: What’s the Future and Why It’s Up to Us – *Tim O’Reilly*"
-    - Product Mastery – *Geoff Watts*
-    - A Practical Guide to Managing Web Projects – *Breandan Knowlton*
-    - Make Space – *Scott Doorley & Scott Witthoft*
-    - The Elements of Content Strategy – *Erin Kissane*
-    - Content Strategy for Mobile – *Karen McGrane*
-    - Data-Informed Product Design – *Pamela Pavliscak*
-    - Front-End Style Guides – *Anna Debenham*
-    - Product Leadership – *Richard Banfield, Martin Eriksson & Nate Walkingshaw*
-    - Le leggi della semplicità – *John Maeda*
-    - You Don’t Know JS – *Kyle Simpson*
-    - User Experience Revolution – *Paul Boag*
-    - The Ultimate Guide to Starting a Freelance Web Design Business – *Cory Miller*
-    - The Ultimate Guide to Remote Work – *Zapier*
-    - Thinking in JavaScript – *Aravind Shenoy*
-    - "The Smashing Book 6: New Frontiers In Web Design"
-    - "The Smashing Book 5: Real-Life Responsive Web Design – Part 2"
-    - "The Smashing Book 5: Real-Life Responsive Web Design – Part 1"
-    - "The Smashing Book 4: New Perspectives on Web Design"
-    - "The Smashing Book 3: Redesign The Web"
-    - The Smashing Book 2
-    - The Smashing Book 1
-    - "The Smashing Book: Performance Optimization – Techniques And Strategies"
-    - The Mobile Web Handbook – *Peter-Paul Koch*
-    - "The Smashing Book: The Mobile Book"
-    - I Want To Hire You But Your Resume Sucks – *Cory Miller*
-    - Grow – *Jim Stengel*
-    - Getting Real – *Jason Fried, David Heinemeier Hansson & Matthew Linderman*
-    - Come funziona Google – *Eric Schmidt & Jonathan Rosenberg*
-    - Getting Paid Well To Do What You Love – *Cory Miller*
-    - "The Entrepreneurial Adventure: Is It For You? – *Cory Miller*"
-    - Digital Adaptation – *Paul Boag*
-    - Designing for Touch – *Josh Clark*
-    - Designing for Emotion – *Aarron Walter*
-    - The Conversation Company – *Steven Van Belleghem*
-    - Connect The Dots – *Paul Jun*
-    - Come imparare una cosa al giorno e non invecchiare mai – *Roberto Vacca*
-    - "The Smashing Book: A Career On The Web – On The Road To Success"
-    - Le 22 immutabili leggi del marketing – *Al Ries & Jack Trout*
-    - "Style: Writing from the UnderGround – *IGTimes*"
-    - "M.C. Escher: Grafica e Disegni – *Taschen*"
-    - Startup Opportunities – *Sean Wise & Brad Feld*
-    - "Essential: Essays by The Minimalists – *Joshua Fields Millburn & Ryan Nicodemus*"
-    - Git for Humans – *David Demaree*
-    - "Responsive Design: Patterns & Principles – *Ethan Marcotte*"
-    - Do the Work – *Steven Pressfield*
-    - Blind Spot – *Steve Diller, Nathan Shedroff & Sean Sauber*
-    - Why We Fail – *Victor Lombardi*
-    - Hardboiled Web Design – *Andrew Clarke*
-    - "Nocturnal: Global Highflyers – *Phil Beddard*"
-    - Wall and Piece – *Banksy*
-    - USA On The Road – *Insight Guides*
-    - You Only Live Once – *Lonely Planet*
-    - Strengths Finder 2.0 – *Gallup*
-    - Poke the Box – *Seth Godin*
-    - We Are All Weird – *Seth Godin*
-    - V Is for Vulnerable – *Seth Godin*
-    - All Marketers Are Liars – *Seth Godin*
-    - Ignore Everybody – *Hugh MacLeod*
-    - Tribes – *Seth Godin*
-    - The Dip – *Seth Godin*
-    - Thinking With Type – *Ellen Lupton*
-    - The $1 Prototype – *Greg Nudelman*
-    - Lean UX – *Jeff Gothelf & Josh Seiden*
-    - Microinteractions – *Dan Saffer*
-    - "Badass: Making Users Awesome – *Kathy Sierra*"
-    - High Performance Mobile Web – *Maximiliano Firtman*
-    - Using WebPageTest – *Rick Viscomi, Andy Davies & Marcel Duran*
-    - Discussing Design – *Adam Connor & Aaron Irizarry*
-    - Your Network Is Your Net Worth – *Porter Gale*
-    - Web Performance Daybook Volume 2 – *Stoyan Stefanov*
-    - Jamie‘s Italy – *Jamie Oliver*
-    - Scarcity – *Sendhil Mullainathan & Eldar Shafir*
-    - The Year Without Pants – *Scott Berkun*
-    - Professional WordPress – *Brad Williams, David Damstra & Hal Stern*
-    - Content Rules – *Ann Handley & C. C. Chapman*
-    - Illuminate – *Nancy Duarte & Patti Sanchez*
-    - Lean Websites – *Barbara Bermes*
-    - The Shape of Design – *Frank Chimero*
-    - Responsive Web Design – *Ethan Marcotte*
-    - HTML5 for Web Designers – *Jeremy Keith & Rachel Andrew*
-    - Digging Into WordPress – *Chris Coyier & Jeff Starr*
-    - Essential Zen Habits – *Leo Babauta*
-    - "Clients From Hell: A collection of anonymously-contributed client horror stories from designers"
-    - The Leu Family’s Family Iron – *Fabio Paleari*
-    - Disruptive Marketing – *Geoffrey Colon*
-    - Extreme Teams – *Robert Bruce Shaw*
-    - Subway Art – *Martha Cooper*
-    - Career Renegade – *Jonathan Fields*
-    - Show Your Work! – *Austin Kleon*
-    - Steal Like an Artist – *Austin Kleon*
-    - The Economics Book – *DK Big Ideas*
-    - The Philosophy Book – *DK Big Ideas*
-    - Practical Empathy – *Indi Young*
-    - The Conversation Manager – *Steven Van Belleghem*
-    - The 5 Elements of Effective Thinking – *Edward B. Burger & Michael Starbird*
-    - On Bullshit – *Harry G. Frankfurt*
-    - How to Win Friends & Influence People – *Dale Carnegie*
-    - "Minimalism: Live a Meaningful Life – *Joshua Fields Millburn & Ryan Nicodemus*"
-    - "Your Money: The Missing Manual – *J.D. Roth*"
-    - This is Service Design Thinking – *Jakob Schneider*
-    - Delivering Happiness – *Tony Hsieh*
-    - Learn Something Every Day – *Kee Malesky*
-    - The Art of Non-Conformity – *Chris Guillebeau*
-    - Hooked – *Nir Eyal*
-    - Mobile Usability – *Jakob Nielsen & Raluca Budiu*
-    - The Sketchnote Handbook – *Mike Rohde*
-    - Implementing Responsive Design – *Tim Kadlec*
-    - 100 Things Every Designer Needs to Know About People – *Susan M. Weinschenk*
-    - The $100 Startup – *Chris Guillebeau*
-    - The 4-Hour Workweek – *Timothy Ferriss*
-    - Getting Unstuck – *Hugh Thompson & Bob Sullivan*
-    - Getting Things Done – *David Allen*
-    - Designing the Search Experience – *Tony Russell-Rose & Tyler Tate*
-    - Jab, Jab, Jab, Right Hook – *Gary Vaynerchuk*
-    - Knowledge Is Beautiful – *David McCandless*
-    - Information Is Beautiful – *David McCandless*
+  books:
+    - title: Made in Italy?
+      author: Giuseppe Iorio
+      year: 2018
+    - title: Lying
+      author: Sam Harris
+      year: 1985
+      cover:
+        src: 2026/10/book-lying.jpg
+        width: 303
+        height: 475
+    - title: Gomorra
+      author: Roberto Saviano
+      year: 2010
+      cover:
+        src: 2026/10/book-gomorra.jpg
+        width: 335
+        height: 500
+    - title: Talking to Strangers
+      author: Malcolm Gladwell
+      year: 2019
+      cover:
+        src: 2026/10/book-talking-to-strangers.jpg
+        width: 336
+        height: 499
+    - title: So Good They Can’t Ignore You
+      author: Cal Newport
+      year: 2012
+      cover:
+        src: 2026/10/book-so-good-they-can-t-ignore-you.jpg
+        width: 284
+        height: 430
+    - title: Product Operations
+      author: Melissa Perri & Denise Tilles
+      year: 2023
+    - title: Job Moves
+      author: Ethan Bernstein, Michael B. Horn, and Bob Moesta
+      year: 2024
+    - title: A Pocket Guide to Front-End Style Guides
+      author: Anna Debenham
+    - title: Surviving Change at Work
+      author: Vanessa Gennarelli
+      year: 2023
+      cover:
+        src: 2026/10/book-surviving-change-at-work.jpg
+        width: 250
+        height: 386
+    - title: Lizard Optimization
+      author: Gojko Adzic
+    - title: Everyday Information Architecture
+      author: Lisa Maria Marquis
+      year: 2019
+      cover:
+        src: 2026/10/book-everyday-information-architecture.jpg
+        width: 300
+        height: 425
+    - title: "The Best of Lenny’s Newsletter: Volume 1"
+    - title: Flexible Typesetting
+      author: Tim Brown
+      year: 2018
+    - title: Going Offline
+      author: Jeremy Keith
+      year: 2018
+      cover:
+        src: 2026/10/book-going-offline.jpg
+        width: 300
+        height: 464
+    - title: Walden
+      author: Henry David Thoreau
+      year: 1854
+      cover:
+        src: 2026/10/book-walden.jpg
+        width: 350
+        height: 500
+    - title: Le 7 regole per avere successo
+      author: Stephen Covey
+    - title: How to Talk So Kids Will Listen & Listen So Kids Will Talk
+      author: Adele Faber, Elaine Mazlish
+      year: 1980
+      cover:
+        src: 2026/10/book-how-to-talk-so-kids-will-listen-listen-so-kids-will-talk.jpg
+        width: 330
+        height: 500
+    - title: Set Boundaries, Find Peace
+      author: Nedra Glover Tawwab
+      year: 2021
+      cover:
+        src: 2026/10/book-set-boundaries-find-peace.jpg
+        width: 375
+        height: 500
+    - title: The Honest Truth About Dishonesty
+      author: Dan Ariely
+      year: 2012
+      cover:
+        src: 2026/10/book-the-honest-truth-about-dishonesty.jpg
+        width: 294
+        height: 500
+    - title: "The Second World War: A Complete History"
+      author: Martin Gilbert
+      year: 1970
+      cover:
+        src: 2026/10/book-the-second-world-war-a-complete-history.jpg
+        width: 316
+        height: 475
+    - title: Touch Design for Mobile Interfaces
+      author: Steven Hoober
+      year: 2021
+      cover:
+        src: 2026/10/book-touch-design-for-mobile-interfaces.jpg
+        width: 386
+        height: 500
+    - title: L’uomo e la terra. Luci e ombre.
+      author: Edward Burtynsky
+    - title: Product Management for UX People
+      author: Christian Crumlish
+      year: 2022
+    - title: Deliberate Intervention
+      author: Alexandra Schmidt
+      year: 2022
+    - title: Conversational Design
+      author: Erika Hall
+      year: 2018
+      cover:
+        src: 2026/10/book-conversational-design.jpg
+        width: 223
+        height: 348
+    - title: Team Mastery
+      author: Geoff Watts
+      year: 2020
+      cover:
+        src: 2026/10/book-team-mastery.jpg
+        width: 335
+        height: 500
+    - title: Le parole sono finestre (oppure muri)
+      author: Marshall B. Rosenberg
+      year: 1999
+      cover:
+        src: 2026/10/book-le-parole-sono-finestre-oppure-muri.jpg
+        width: 320
+        height: 475
+    - title: The Strategy Activation Playbook
+      author: Aric Wood
+    - title: The New CSS Layout
+      author: Rachel Andrew
+      year: 2017
+      cover:
+        src: 2026/10/book-the-new-css-layout.jpg
+        width: 323
+        height: 500
+    - title: Let my people go surfing
+      author: Yvon Chouinard
+      year: 2005
+      cover:
+        src: 2026/10/book-let-my-people-go-surfing.jpg
+        width: 400
+        height: 500
+    - title: L’arte della guerra
+      author: Sun Tzu
+      year: 2013
+      cover:
+        src: 2026/10/book-l-arte-della-guerra.jpg
+        width: 293
+        height: 500
+    - title: Crescere i bambini con la comunicazione nonviolenta
+      author: Marshall B. Rosenberg
+    - title: Authentic communication
+      author: Alexei Ivanov, Sveta Shedina
+    - title: The Ameriguns
+      author: Gabriele Galimberti
+    - title: Click! How to Encourage Clicks Without Shady Tricks
+      author: Paul Boag
+      year: 2020
+      cover:
+        src: 2026/10/book-click-how-to-encourage-clicks-without-shady-tricks.jpg
+        width: 311
+        height: 381
+    - title: Responsible JavaScript
+      author: Jeremy Wagner
+      year: 2021
+    - title: SEO For Everyone
+      author: Rebekah Baggs & Chris Corak
+      year: 2021
+    - title: Better Onboarding
+      author: Krystal Higgins
+      year: 2021
+      cover:
+        src: 2026/10/book-better-onboarding.jpg
+        width: 323
+        height: 500
+    - title: Sustainable Web Design
+      author: Tom Greenwood
+      year: 2021
+    - title: Progressive Web Apps
+      author: Jason Grigsby
+      year: 2018
+    - title: Leonardo da Vinci
+      author: Walter Isaacson
+      year: 2017
+      cover:
+        src: 2026/10/book-leonardo-da-vinci.jpg
+        width: 230
+        height: 346
+    - title: Costituzione Italiana
+      year: 2012
+      cover:
+        src: 2026/10/book-costituzione-italiana.jpg
+        width: 333
+        height: 500
+    - title: Design Systems
+      author: Alla Kholmatova
+      year: 2017
+      cover:
+        src: 2026/10/book-design-systems.jpg
+        width: 354
+        height: 480
+    - title: Product-Led Onboarding
+      author: Ramli John
+    - title: Epic Alignment
+      author: Nils Janse
+    - title: Hiring Product Managers
+      author: Kate Leto
+      year: 2020
+    - title: Leaders Eat Last
+      author: Simon Sinek
+      year: 1900
+      cover:
+        src: 2026/10/book-leaders-eat-last.jpg
+        width: 180
+        height: 271
+    - title: HYPERGROWTH
+      author: David Cancel
+      year: 2017
+      cover:
+        src: 2026/10/book-hypergrowth.jpg
+        width: 328
+        height: 500
+    - title: The Almanack of Naval Ravikant
+      author: Eric Jorgenson
+      year: 2020
+      cover:
+        src: 2026/10/book-the-almanack-of-naval-ravikant.jpg
+        width: 324
+        height: 500
+    - title: "Hieronymus Bosch: L’opera completa"
+      author: Stefan Fischer
+      year: 2014
+      cover:
+        src: 2026/10/book-hieronymus-bosch-l-opera-completa.jpg
+        width: 356
+        height: 500
+    - title: Fooled by Randomness
+      author: Nassim Nicholas Taleb
+      year: 2001
+      cover:
+        src: 2026/10/book-fooled-by-randomness.jpg
+        width: 315
+        height: 475
+    - title: Made in Dance, 1991-1999
+      author: Oleg Codikov
+    - title: Startup, Scaleup, Screwup
+      author: Jurgen Appelo
+      year: 2019
+      cover:
+        src: 2026/10/book-startup-scaleup-screwup.jpg
+        width: 384
+        height: 500
+    - title: Accessibility for Everyone
+      author: Laura Kalbag
+      year: 2017
+      cover:
+        src: 2026/10/book-accessibility-for-everyone.jpg
+        width: 300
+        height: 464
+    - title: The Tipping Point
+      author: Malcolm Gladwell
+      year: 2000
+      cover:
+        src: 2026/10/book-the-tipping-point.jpg
+        width: 346
+        height: 500
+    - title: Scandinavian Style at Home
+      author: Allan Torp
+    - title: The Team That Managed Itself
+      author: Christina Wodtke
+      year: 2019
+      cover:
+        src: 2026/10/book-the-team-that-managed-itself.jpg
+        width: 333
+        height: 500
+    - title: L’unica regola è che non ci sono regole
+      author: Reed Hastings & Erin Meyer
+    - title: “Surely You’re Joking, Mr. Feynman”
+      author: Richard P. Feynman
+      year: 1984
+      cover:
+        src: 2026/10/book-surely-you-re-joking-mr-feynman.jpg
+        width: 180
+        height: 261
+    - title: "What I Eat: Around the World in 80 Diets"
+      author: Peter Menzel
+      year: 2010
+      cover:
+        src: 2026/10/book-what-i-eat-around-the-world-in-80-diets.jpg
+        width: 369
+        height: 500
+    - title: The Workshopper Playbook
+      author: Jonathan Courtney
+    - title: Escaping the Build Trap
+      author: Melissa Perri
+      year: 2019
+      cover:
+        src: 2026/10/book-escaping-the-build-trap.jpg
+        width: 333
+        height: 500
+    - title: Fifty Quick Ideas To Improve Your Retrospectives
+      author: Tom Roden & Ben Williams
+    - title: 97 Things Every Scrum Practitioner Should Know
+      author: Gunther Verheyen
+      year: 2020
+    - title: The Serving Leader
+      author: Ken Jennings & John Stahl-Wert
+      year: 2003
+      cover:
+        src: 2026/10/book-the-serving-leader.jpg
+        width: 329
+        height: 500
+    - title: The Business of Platforms
+      author: Michael A. Cusumano, Annabelle Gawer & David B. Yoffie
+      year: 2019
+      cover:
+        src: 2026/10/book-the-business-of-platforms.jpg
+        width: 331
+        height: 500
+    - title: "Dust & Grooves: Adventures in Record Collecting"
+      author: Eilon Paz
+    - title: Free-Range Kids
+      author: Lenore Skenazy
+      year: 2009
+      cover:
+        src: 2026/10/book-free-range-kids.jpg
+        width: 336
+        height: 500
+    - title: Start with Why
+      author: Simon Sinek
+      year: 2009
+      cover:
+        src: 2026/10/book-start-with-why.jpg
+        width: 375
+        height: 500
+    - title: 17 Anti-Procrastination Hacks
+      author: Dominic Mann
+      year: 2016
+      cover:
+        src: 2026/10/book-17-anti-procrastination-hacks.jpg
+        width: 333
+        height: 500
+    - title: Change by Design
+      author: Tim Brown
+      year: 2009
+      cover:
+        src: 2026/10/book-change-by-design.jpg
+        width: 168
+        height: 253
+    - title: Innovation Lab Excellence
+      author: Richard Turrin
+      year: 2019
+      cover:
+        src: 2026/10/book-innovation-lab-excellence.jpg
+        width: 348
+        height: 500
+    - title: The FINTECH Book
+      author: Susanne Chishti & Janos Barberis
+      year: 2016
+      cover:
+        src: 2026/10/book-the-fintech-book.jpg
+        width: 192
+        height: 149
+    - title: The Subtle Art of Not Giving a F*ck
+      author: Mark Manson
+      year: 2016
+      cover:
+        src: 2026/10/book-the-subtle-art-of-not-giving-a-f-ck.jpg
+        width: 180
+        height: 269
+    - title: Management 3.0
+      author: Jurgen Appelo
+      year: 2011
+      cover:
+        src: 2026/10/book-management-3-0.jpg
+        width: 388
+        height: 500
+    - title: Agile Estimating and Planning
+      author: Mike Cohn
+      year: 2005
+      cover:
+        src: 2026/10/book-agile-estimating-and-planning.jpg
+        width: 379
+        height: 500
+    - title: Dieci ragioni per cancellare subito i tuoi account social
+      author: Jaron Lanier
+      year: 2018
+      cover:
+        src: 2026/10/book-dieci-ragioni-per-cancellare-subito-i-tuoi-account-social.jpg
+        width: 349
+        height: 500
+    - title: AI Superpowers
+      author: Kai-Fu Lee
+      year: 2018
+      cover:
+        src: 2026/10/book-ai-superpowers.jpg
+        width: 331
+        height: 500
+    - title: The New York Times Explorer Cities & Towns
+      author: Barbara Ireland
+    - title: Minimal Film
+      author: Matteo Civaschi
+      year: 2018
+      cover:
+        src: 2026/10/book-minimal-film.jpg
+        width: 349
+        height: 500
+    - title: Practical Design Discovery
+      author: Dan Brown
+      year: 2017
+      cover:
+        src: 2026/10/book-practical-design-discovery.jpg
+        width: 231
+        height: 358
+    - title: Living in Information
+      author: Jorge Arango
+      year: 2018
+      cover:
+        src: 2026/10/book-living-in-information.jpg
+        width: 334
+        height: 500
+    - title: Everything is Negotiable
+      author: Gavin Kennedy
+      year: 1982
+      cover:
+        src: 2026/10/book-everything-is-negotiable.jpg
+        width: 128
+        height: 199
+    - title: The Growth Handbook
+      author: Intercom
+    - title: The Innovator’s Solution
+      author: Clayton M. Christensen & Michael E. Raynor
+      year: 2003
+      cover:
+        src: 2026/10/book-the-innovator-s-solution.jpg
+        width: 329
+        height: 500
+    - title: JavaScript For Web Designers
+      author: Mat Marquis
+      year: 2016
+      cover:
+        src: 2026/10/book-javascript-for-web-designers.jpg
+        width: 307
+        height: 475
+    - title: "Alibaba: The House That Jack Ma Built"
+      author: Duncan Clark
+      year: 2016
+      cover:
+        src: 2026/10/book-alibaba-the-house-that-jack-ma-built.jpg
+        width: 331
+        height: 500
+    - title: Striking Thoughts
+      author: Bruce Lee
+      year: 2000
+      cover:
+        src: 2026/10/book-striking-thoughts.jpg
+        width: 335
+        height: 475
+    - title: Practical SVG
+      author: Chris Coyier
+      year: 2016
+      cover:
+        src: 2026/10/book-practical-svg.jpg
+        width: 307
+        height: 475
+    - title: "WTF?: What’s the Future and Why It’s Up to Us"
+      author: Tim O’Reilly
+      year: 2017
+      cover:
+        src: 2026/10/book-wtf-what-s-the-future-and-why-it-s-up-to-us.jpg
+        width: 140
+        height: 211
+    - title: Product Mastery
+      author: Geoff Watts
+      year: 2017
+      cover:
+        src: 2026/10/book-product-mastery.jpg
+        width: 333
+        height: 500
+    - title: A Practical Guide to Managing Web Projects
+      author: Breandan Knowlton
+      year: 2012
+    - title: Make Space
+      author: Scott Doorley & Scott Witthoft
+      year: 2011
+      cover:
+        src: 2026/10/book-make-space.jpg
+        width: 500
+        height: 498
+    - title: The Elements of Content Strategy
+      author: Erin Kissane
+      year: 2010
+      cover:
+        src: 2026/10/book-the-elements-of-content-strategy.jpg
+        width: 178
+        height: 276
+    - title: Content Strategy for Mobile
+      author: Karen McGrane
+      year: 2012
+      cover:
+        src: 2026/10/book-content-strategy-for-mobile.jpg
+        width: 307
+        height: 475
+    - title: Data-Informed Product Design
+      author: Pamela Pavliscak
+    - title: Front-End Style Guides
+      author: Anna Debenham
+      year: 2013
+    - title: Product Leadership
+      author: Richard Banfield, Martin Eriksson & Nate Walkingshaw
+      year: 2017
+      cover:
+        src: 2026/10/book-product-leadership.jpg
+        width: 333
+        height: 500
+    - title: Le leggi della semplicità
+      author: John Maeda
+      year: 2006
+      cover:
+        src: 2026/10/book-le-leggi-della-semplicita.jpg
+        width: 336
+        height: 500
+    - title: You Don’t Know JS
+      author: Kyle Simpson
+      year: 2014
+      cover:
+        src: 2026/10/book-you-don-t-know-js.jpg
+        width: 333
+        height: 499
+    - title: User Experience Revolution
+      author: Paul Boag
+      year: 2017
+      cover:
+        src: 2026/10/book-user-experience-revolution.jpg
+        width: 327
+        height: 500
+    - title: The Ultimate Guide to Starting a Freelance Web Design Business
+      author: Cory Miller
+    - title: The Ultimate Guide to Remote Work
+      author: Zapier
+    - title: Thinking in JavaScript
+      author: Aravind Shenoy
+    - title: "The Smashing Book 6: New Frontiers In Web Design"
+    - title: "The Smashing Book 5: Real-Life Responsive Web Design – Part 2"
+    - title: "The Smashing Book 5: Real-Life Responsive Web Design – Part 1"
+    - title: "The Smashing Book 4: New Perspectives on Web Design"
+      year: 2013
+      cover:
+        src: 2026/10/book-the-smashing-book-4-new-perspectives-on-web-design.jpg
+        width: 338
+        height: 500
+    - title: "The Smashing Book 3: Redesign The Web"
+    - title: The Smashing Book 2
+      year: 2011
+      cover:
+        src: 2026/10/book-the-smashing-book-2.jpg
+        width: 324
+        height: 500
+    - title: The Smashing Book 1
+    - title: "The Smashing Book: Performance Optimization – Techniques And Strategies"
+    - title: The Mobile Web Handbook
+      author: Peter-Paul Koch
+    - title: "The Smashing Book: The Mobile Book"
+    - title: I Want To Hire You But Your Resume Sucks
+      author: Cory Miller
+    - title: Grow
+      author: Jim Stengel
+      year: 2011
+      cover:
+        src: 2026/10/book-grow.jpg
+        width: 310
+        height: 500
+    - title: Getting Real
+      author: Jason Fried, David Heinemeier Hansson & Matthew Linderman
+      year: 2006
+      cover:
+        src: 2026/10/book-getting-real.jpg
+        width: 333
+        height: 499
+    - title: Come funziona Google
+      author: Eric Schmidt & Jonathan Rosenberg
+    - title: Getting Paid Well To Do What You Love
+      author: Cory Miller
+    - title: "The Entrepreneurial Adventure: Is It For You?"
+      author: Cory Miller
+    - title: Digital Adaptation
+      author: Paul Boag
+      year: 2014
+      cover:
+        src: 2026/10/book-digital-adaptation.jpg
+        width: 342
+        height: 365
+    - title: Designing for Touch
+      author: Josh Clark
+      year: 2015
+      cover:
+        src: 2026/10/book-designing-for-touch.jpg
+        width: 245
+        height: 383
+    - title: Designing for Emotion
+      author: Aarron Walter
+      year: 2011
+      cover:
+        src: 2026/10/book-designing-for-emotion.jpg
+        width: 317
+        height: 500
+    - title: The Conversation Company
+      author: Steven Van Belleghem
+      year: 2012
+      cover:
+        src: 2026/10/book-the-conversation-company.jpg
+        width: 309
+        height: 500
+    - title: Connect The Dots
+      author: Paul Jun
+      year: 2014
+    - title: Come imparare una cosa al giorno e non invecchiare mai
+      author: Roberto Vacca
+    - title: "The Smashing Book: A Career On The Web – On The Road To Success"
+    - title: Le 22 immutabili leggi del marketing
+      author: Al Ries & Jack Trout
+    - title: "Style: Writing from the UnderGround"
+      author: IGTimes
+      year: 1996
+    - title: "M.C. Escher: Grafica e Disegni"
+      author: Taschen
+      year: 1996
+      cover:
+        src: 2026/10/book-m-c-escher-grafica-e-disegni.jpg
+        width: 353
+        height: 500
+    - title: Startup Opportunities
+      author: Sean Wise & Brad Feld
+      year: 2015
+      cover:
+        src: 2026/10/book-startup-opportunities.jpg
+        width: 333
+        height: 500
+    - title: "Essential: Essays by The Minimalists"
+      author: Joshua Fields Millburn & Ryan Nicodemus
+      year: 2015
+      cover:
+        src: 2026/10/book-essential-essays-by-the-minimalists.jpg
+        width: 311
+        height: 500
+    - title: Git for Humans
+      author: David Demaree
+      year: 2016
+    - title: "Responsive Design: Patterns & Principles"
+      author: Ethan Marcotte
+    - title: Do the Work
+      author: Steven Pressfield
+      year: 2011
+      cover:
+        src: 2026/10/book-do-the-work.jpg
+        width: 303
+        height: 500
+    - title: Blind Spot
+      author: Steve Diller, Nathan Shedroff & Sean Sauber
+      year: 2016
+    - title: Why We Fail
+      author: Victor Lombardi
+      year: 2013
+    - title: Hardboiled Web Design
+      author: Andrew Clarke
+      year: 2010
+      cover:
+        src: 2026/10/book-hardboiled-web-design.jpg
+        width: 373
+        height: 500
+    - title: "Nocturnal: Global Highflyers"
+      author: Phil Beddard
+      year: 1998
+      cover:
+        src: 2026/10/book-nocturnal-global-highflyers.jpg
+        width: 375
+        height: 475
+    - title: Wall and Piece
+      author: Banksy
+      year: 2005
+      cover:
+        src: 2026/10/book-wall-and-piece.jpg
+        width: 378
+        height: 500
+    - title: USA On The Road
+      author: Insight Guides
+      year: 2016
+    - title: You Only Live Once
+      author: Lonely Planet
+      year: 2023
+      cover:
+        src: 2026/10/book-you-only-live-once.jpg
+        width: 385
+        height: 500
+    - title: Strengths Finder 2.0
+      author: Gallup
+    - title: Poke the Box
+      author: Seth Godin
+      year: 2013
+      cover:
+        src: 2026/10/book-poke-the-box.jpg
+        width: 341
+        height: 500
+    - title: We Are All Weird
+      author: Seth Godin
+      year: 2011
+      cover:
+        src: 2026/10/book-we-are-all-weird.jpg
+        width: 352
+        height: 500
+    - title: V Is for Vulnerable
+      author: Seth Godin
+      year: 2012
+      cover:
+        src: 2026/10/book-v-is-for-vulnerable.jpg
+        width: 400
+        height: 322
+    - title: All Marketers Are Liars
+      author: Seth Godin
+      year: 2005
+      cover:
+        src: 2026/10/book-all-marketers-are-liars.jpg
+        width: 316
+        height: 500
+    - title: Ignore Everybody
+      author: Hugh MacLeod
+      year: 2009
+      cover:
+        src: 2026/10/book-ignore-everybody.jpg
+        width: 500
+        height: 500
+    - title: Tribes
+      author: Seth Godin
+      year: 2008
+      cover:
+        src: 2026/10/book-tribes.jpg
+        width: 200
+        height: 320
+    - title: The Dip
+      author: Seth Godin
+      year: 2007
+      cover:
+        src: 2026/10/book-the-dip.jpg
+        width: 353
+        height: 500
+    - title: Thinking With Type
+      author: Ellen Lupton
+      year: 2004
+      cover:
+        src: 2026/10/book-thinking-with-type.jpg
+        width: 412
+        height: 500
+    - title: The $1 Prototype
+      author: Greg Nudelman
+      year: 2015
+    - title: Lean UX
+      author: Jeff Gothelf & Josh Seiden
+      year: 2012
+      cover:
+        src: 2026/10/book-lean-ux.jpg
+        width: 266
+        height: 400
+    - title: Microinteractions
+      author: Dan Saffer
+      year: 2013
+      cover:
+        src: 2026/10/book-microinteractions.jpg
+        width: 381
+        height: 500
+    - title: "Badass: Making Users Awesome"
+      author: Kathy Sierra
+      year: 2015
+      cover:
+        src: 2026/10/book-badass-making-users-awesome.jpg
+        width: 333
+        height: 500
+    - title: High Performance Mobile Web
+      author: Maximiliano Firtman
+      year: 2016
+    - title: Using WebPageTest
+      author: Rick Viscomi, Andy Davies & Marcel Duran
+      year: 2015
+      cover:
+        src: 2026/10/book-using-webpagetest.jpg
+        width: 381
+        height: 500
+    - title: Discussing Design
+      author: Adam Connor & Aaron Irizarry
+      year: 2015
+      cover:
+        src: 2026/10/book-discussing-design.jpg
+        width: 333
+        height: 500
+    - title: Your Network Is Your Net Worth
+      author: Porter Gale
+      year: 2013
+      cover:
+        src: 2026/10/book-your-network-is-your-net-worth.jpg
+        width: 309
+        height: 500
+    - title: Web Performance Daybook Volume 2
+      author: Stoyan Stefanov
+      year: 2012
+    - title: Jamie‘s Italy
+      author: Jamie Oliver
+    - title: Scarcity
+      author: Sendhil Mullainathan & Eldar Shafir
+      year: 2013
+      cover:
+        src: 2026/10/book-scarcity.jpg
+        width: 328
+        height: 500
+    - title: The Year Without Pants
+      author: Scott Berkun
+      year: 2013
+      cover:
+        src: 2026/10/book-the-year-without-pants.jpg
+        width: 268
+        height: 400
+    - title: Professional WordPress
+      author: Brad Williams, David Damstra & Hal Stern
+      year: 2011
+      cover:
+        src: 2026/10/book-professional-wordpress.jpg
+        width: 260
+        height: 327
+    - title: Content Rules
+      author: Ann Handley & C. C. Chapman
+      year: 2010
+      cover:
+        src: 2026/10/book-content-rules.jpg
+        width: 380
+        height: 500
+    - title: Illuminate
+      author: Nancy Duarte & Patti Sanchez
+      year: 2016
+      cover:
+        src: 2026/10/book-illuminate.jpg
+        width: 487
+        height: 500
+    - title: Lean Websites
+      author: Barbara Bermes
+      year: 2015
+    - title: The Shape of Design
+      author: Frank Chimero
+      year: 2012
+      cover:
+        src: 2026/10/book-the-shape-of-design.jpg
+        width: 323
+        height: 500
+    - title: Responsive Web Design
+      author: Ethan Marcotte
+      year: 2011
+      cover:
+        src: 2026/10/book-responsive-web-design.jpg
+        width: 200
+        height: 309
+    - title: HTML5 for Web Designers
+      author: Jeremy Keith & Rachel Andrew
+      year: 2010
+      cover:
+        src: 2026/10/book-html5-for-web-designers.jpg
+        width: 308
+        height: 475
+    - title: Digging Into WordPress
+      author: Chris Coyier & Jeff Starr
+      year: 2011
+    - title: Essential Zen Habits
+      author: Leo Babauta
+      year: 2015
+      cover:
+        src: 2026/10/book-essential-zen-habits.jpg
+        width: 313
+        height: 500
+    - title: "Clients From Hell: A collection of anonymously-contributed client horror stories from designers"
+      year: 2010
+      cover:
+        src: 2026/10/book-clients-from-hell-a-collection-of-anonymously-contributed-client-horror-stories-from-designers.jpg
+        width: 315
+        height: 500
+    - title: The Leu Family’s Family Iron
+      author: Fabio Paleari
+      year: 2003
+      cover:
+        src: 2026/10/book-the-leu-family-s-family-iron.jpg
+        width: 387
+        height: 475
+    - title: Disruptive Marketing
+      author: Geoffrey Colon
+      year: 2016
+      cover:
+        src: 2026/10/book-disruptive-marketing.jpg
+        width: 325
+        height: 500
+    - title: Extreme Teams
+      author: Robert Bruce Shaw
+      year: 2017
+      cover:
+        src: 2026/10/book-extreme-teams.jpg
+        width: 305
+        height: 500
+    - title: Subway Art
+      author: Martha Cooper
+      year: 1984
+      cover:
+        src: 2026/10/book-subway-art.jpg
+        width: 368
+        height: 500
+    - title: Career Renegade
+      author: Jonathan Fields
+      year: 2008
+      cover:
+        src: 2026/10/book-career-renegade.jpg
+        width: 100
+        height: 154
+    - title: Show Your Work!
+      author: Austin Kleon
+      year: 2014
+      cover:
+        src: 2026/10/book-show-your-work.jpg
+        width: 260
+        height: 260
+    - title: Steal Like an Artist
+      author: Austin Kleon
+      year: 2012
+      cover:
+        src: 2026/10/book-steal-like-an-artist.jpg
+        width: 318
+        height: 318
+    - title: The Economics Book
+      author: DK Big Ideas
+      year: 2012
+      cover:
+        src: 2026/10/book-the-economics-book.jpg
+        width: 414
+        height: 500
+    - title: The Philosophy Book
+      author: DK Big Ideas
+      year: 2011
+      cover:
+        src: 2026/10/book-the-philosophy-book.jpg
+        width: 415
+        height: 500
+    - title: Practical Empathy
+      author: Indi Young
+      year: 2015
+      cover:
+        src: 2026/10/book-practical-empathy.jpg
+        width: 334
+        height: 500
+    - title: The Conversation Manager
+      author: Steven Van Belleghem
+      year: 2011
+      cover:
+        src: 2026/10/book-the-conversation-manager.jpg
+        width: 337
+        height: 500
+    - title: The 5 Elements of Effective Thinking
+      author: Edward B. Burger & Michael Starbird
+      year: 2012
+      cover:
+        src: 2026/10/book-the-5-elements-of-effective-thinking.jpg
+        width: 286
+        height: 500
+    - title: On Bullshit
+      author: Harry G. Frankfurt
+      year: 2005
+      cover:
+        src: 2026/10/book-on-bullshit.jpg
+        width: 286
+        height: 500
+    - title: How to Win Friends & Influence People
+      author: Dale Carnegie
+      year: 1936
+      cover:
+        src: 2026/10/book-how-to-win-friends-influence-people.jpg
+        width: 328
+        height: 500
+    - title: "Minimalism: Live a Meaningful Life"
+      author: Joshua Fields Millburn & Ryan Nicodemus
+      year: 2016
+      cover:
+        src: 2026/10/book-minimalism-live-a-meaningful-life.jpg
+        width: 299
+        height: 500
+    - title: "Your Money: The Missing Manual"
+      author: J.D. Roth
+    - title: This is Service Design Thinking
+      author: Jakob Schneider
+      year: 2011
+      cover:
+        src: 2026/10/book-this-is-service-design-thinking.jpg
+        width: 380
+        height: 500
+    - title: Delivering Happiness
+      author: Tony Hsieh
+      year: 2010
+      cover:
+        src: 2026/10/book-delivering-happiness.jpg
+        width: 329
+        height: 500
+    - title: Learn Something Every Day
+      author: Kee Malesky
+      year: 2012
+      cover:
+        src: 2026/10/book-learn-something-every-day.jpg
+        width: 305
+        height: 500
+    - title: The Art of Non-Conformity
+      author: Chris Guillebeau
+      year: 2010
+      cover:
+        src: 2026/10/book-the-art-of-non-conformity.jpg
+        width: 356
+        height: 500
+    - title: Hooked
+      author: Nir Eyal
+      year: 2014
+      cover:
+        src: 2026/10/book-hooked.jpg
+        width: 320
+        height: 500
+    - title: Mobile Usability
+      author: Jakob Nielsen & Raluca Budiu
+      year: 2013
+      cover:
+        src: 2026/10/book-mobile-usability.jpg
+        width: 357
+        height: 500
+    - title: The Sketchnote Handbook
+      author: Mike Rohde
+      year: 2012
+      cover:
+        src: 2026/10/book-the-sketchnote-handbook.jpg
+        width: 311
+        height: 400
+    - title: Implementing Responsive Design
+      author: Tim Kadlec
+      year: 2012
+      cover:
+        src: 2026/10/book-implementing-responsive-design.jpg
+        width: 311
+        height: 400
+    - title: 100 Things Every Designer Needs to Know About People
+      author: Susan M. Weinschenk
+      year: 1920
+      cover:
+        src: 2026/10/book-100-things-every-designer-needs-to-know-about-people.jpg
+        width: 389
+        height: 500
+    - title: The $100 Startup
+      author: Chris Guillebeau
+      year: 2012
+      cover:
+        src: 2026/10/book-the-100-startup.jpg
+        width: 297
+        height: 450
+    - title: The 4-Hour Workweek
+      author: Timothy Ferriss
+      year: 2006
+      cover:
+        src: 2026/10/book-the-4-hour-workweek.jpg
+        width: 356
+        height: 500
+    - title: Getting Unstuck
+      author: Hugh Thompson & Bob Sullivan
+    - title: Getting Things Done
+      author: David Allen
+      year: 2001
+      cover:
+        src: 2026/10/book-getting-things-done.jpg
+        width: 320
+        height: 475
+    - title: Designing the Search Experience
+      author: Tony Russell-Rose & Tyler Tate
+      year: 2012
+      cover:
+        src: 2026/10/book-designing-the-search-experience.jpg
+        width: 331
+        height: 400
+    - title: Jab, Jab, Jab, Right Hook
+      author: Gary Vaynerchuk
+      year: 2013
+      cover:
+        src: 2026/10/book-jab-jab-jab-right-hook.jpg
+        width: 395
+        height: 500
+    - title: Knowledge Is Beautiful
+      author: David McCandless
+    - title: Information Is Beautiful
+      author: David McCandless
+      year: 2010
+      cover:
+        src: 2026/10/book-information-is-beautiful.jpg
+        width: 375
+        height: 500
