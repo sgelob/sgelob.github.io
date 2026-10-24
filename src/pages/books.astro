@@ -1,19 +1,33 @@
 ---
 import { pageTitle } from '../lib/site';
 import Reading from '../layouts/Reading.astro';
+import Pic from '../components/Pic.astro';
 import { books } from '../lib/books';
-import { renderInline } from '../lib/markdown';
 ---
 
 <Reading section search={{ type: 'other' }} title={pageTitle('Books')} heading="Books" description="Books Olegs Belousovs has read: favourites on product, design and work, and a mixed shelf." lang="en">
   <p class="lead">Books I have read and keep on my shelf: the favourites first, then a mixed shelf.</p>
   <div class="books">
-    {books.map(({ title, entries }) => {
-      const items = entries.map((entry) => <li set:html={renderInline(entry)} />);
+    {books.map(({ title, books: list }) => {
+      const numbered = title === 'Favourite Books';
+      const items = list.map((book, i) => (
+        <li class="book"><span class="row">
+          {numbered && <span class="number mono" aria-hidden="true">{list.length - i}</span>}
+          {book.cover ? (
+            <Pic src={book.cover.src} width={book.cover.width} height={book.cover.height} alt="" sizes="40px" maxWidth={480} class="cover" />
+          ) : (
+            <span class="cover blank" />
+          )}
+          <span class="name">
+            <span class="title">{book.title}</span>{book.author && <> – <em class="author">{book.author}</em></>}
+          </span>
+          {book.year && <span class="year mono">{book.year}</span>}
+        </span></li>
+      ));
       return (
         <section class="group">
           <h2 class="section mono">{title}</h2>
-          {title === 'Favourite Books' ? <ol reversed class="entries numbered">{items}</ol> : <ul class="entries">{items}</ul>}
+          {numbered ? <ol reversed role="list" class="entries numbered">{items}</ol> : <ul class="entries">{items}</ul>}
         </section>
       );
     })}
@@ -41,24 +55,41 @@ import { renderInline } from '../lib/markdown';
     padding: 0;
     list-style: none;
     font-size: 15px;
-    line-height: 1.5;
+    line-height: 1.4;
   }
 
-  .books .entries.numbered {
-    padding-left: 3em;
-    list-style: decimal;
+
+  /* Cover, title and author, year: the cover keeps the book's 2:3 shape, a placeholder where none was found.
+     The favourites write their number as a first column, centred on the row (a list marker would sit on its last line). */
+  .books .book .row {
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr) auto;
+    gap: 14px;
+    align-items: center;
   }
 
-  .books .entries li + li { margin-top: 8px; }
+  .books .book + .book { margin-top: 10px; }
 
-  .books .entries li::marker {
-    color: var(--muted);
-    font-family: var(--font-mono);
-    font-size: 11px;
+  .books .numbered .row { grid-template-columns: 2.2em 40px minmax(0, 1fr) auto; }
+
+  .books .number { color: var(--muted); text-align: right; }
+
+  .books .book :global(.cover),
+  .books .cover.blank {
+    display: block;
+    width: 40px;
+    height: 60px;
+    object-fit: cover;
+    background: var(--rule);
   }
 
-  .books .entries :global(em) {
+  .books .name { overflow-wrap: anywhere; }
+
+  .books .author {
     color: var(--muted);
     font-style: normal;
   }
+
+  .books .year { color: var(--muted); }
+
 </style>

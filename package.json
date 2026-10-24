@@ -19,7 +19,8 @@
     "track": "tsx scripts/track.ts",
     "trip": "tsx scripts/trip.ts",
     "contours": "tsx scripts/contours.ts",
-    "records": "tsx scripts/records.ts"
+    "records": "tsx scripts/records.ts",
+    "books": "tsx scripts/books.ts"
   },
   "dependencies": {
     "@astrojs/markdown-satteri": "^0.4.5",
