@@ -1,6 +1,5 @@
 ---
 title: Abandoned “Teksid” Cast Iron Foundry – Carmagnola, Italy
-shortTitle: “Teksid” Foundry – Italy
 date: "2009-10-11T12:00:21"
 genre: abandoned-places
 country: italy

@@ -1,6 +1,5 @@
 ---
 title: “Boschetto Crew” Electronic Music Party 1st Edition – Avigliana, Italy
-shortTitle: 1st “Boschetto Crew”
 date: "2007-07-08T23:00:49"
 genre: music-events
 country: italy

@@ -1,6 +1,5 @@
 ---
 title: FED 2 PE0385 (ФЭД) – Soviet 35mm Rangefinder Film Camera
-shortTitle: FED 2 (ФЭД)
 date: "2008-12-29T12:00:26"
 genre: old-film-cameras
 country: russia

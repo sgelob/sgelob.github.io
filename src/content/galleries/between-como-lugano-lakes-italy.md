@@ -1,6 +1,5 @@
 ---
 title: Between Como and Lugano Lakes – Italy
-shortTitle: Como & Lugano Lakes
 date: "2012-05-12T10:40:41"
 genre: world-places
 country: italy

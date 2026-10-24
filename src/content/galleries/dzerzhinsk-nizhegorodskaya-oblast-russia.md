@@ -1,6 +1,5 @@
 ---
 title: Dzerzhinsk, Nizhegorodskaya Oblast – Russia
-shortTitle: Dzerzhinsk – Russia
 date: "2010-05-29T10:25:16"
 genre: world-places
 country: russia

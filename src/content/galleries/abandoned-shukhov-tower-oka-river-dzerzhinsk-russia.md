@@ -1,6 +1,5 @@
 ---
 title: Abandoned Shukhov Tower on the Oka River – Dzerzhinsk, Russia
-shortTitle: Shukhov Tower – Russia
 date: "2009-05-19T20:00:14"
 genre: abandoned-places
 country: russia

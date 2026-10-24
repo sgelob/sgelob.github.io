@@ -15,12 +15,12 @@ describe('gallery front matter', () => {
   const dir = mkdtempSync(join(tmpdir(), 'olegs-gallery-'));
   const gallery = {
     slug: 'g', title: 'T', date: '2012-08-11T09:00:31', genre: 'cities', country: 'italy', cover: 'a.jpg', darkHeader: true,
-    photos: [{ src: 'a.jpg', width: 1, height: 2 }], coverHeight: 2, coverWidth: 1, seoDescription: 'D', seoTitle: 'S', shortTitle: 'Short', oldSlugs: ['x', '', 'x', 'y'], body: '',
+    photos: [{ src: 'a.jpg', width: 1, height: 2 }], coverHeight: 2, coverWidth: 1, seoDescription: 'D', seoTitle: 'S', oldSlugs: ['x', '', 'x', 'y'], body: '',
   };
 
   test('keys in their fixed order; old slugs without empty or repeated entries', () => {
     writeMarkdown(dir, 'g', galleryFrontmatter(gallery), '');
-    expect(keysOf(join(dir, 'g.md'))).toEqual(['title', 'shortTitle', 'date', 'genre', 'country', 'cover', 'coverWidth', 'coverHeight', 'darkHeader', 'seoTitle', 'seoDescription', 'oldSlugs', 'photos']);
+    expect(keysOf(join(dir, 'g.md'))).toEqual(['title', 'date', 'genre', 'country', 'cover', 'coverWidth', 'coverHeight', 'darkHeader', 'seoTitle', 'seoDescription', 'oldSlugs', 'photos']);
     expect(galleryFrontmatter(gallery).oldSlugs).toEqual(['x', 'y']);
   });
 

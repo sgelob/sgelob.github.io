@@ -1,6 +1,5 @@
 ---
 title: Garis – Abandoned Brakes Factory – Nichelino, Italy
-shortTitle: “Garis” – Nichelino, Italy
 date: "2007-05-06T12:00:37"
 genre: abandoned-places
 country: italy

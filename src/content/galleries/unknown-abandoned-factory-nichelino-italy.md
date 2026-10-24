@@ -1,6 +1,5 @@
 ---
 title: Unknown Abandoned Factory – Nichelino, Italy
-shortTitle: Unknown Factory – Italy
 date: "2007-04-25T12:00:22"
 genre: abandoned-places
 country: italy

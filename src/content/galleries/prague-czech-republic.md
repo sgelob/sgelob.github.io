@@ -1,6 +1,5 @@
 ---
 title: Prague – Czech Republic
-shortTitle: Prague – Czechia
 date: "2011-08-03T18:00:39"
 genre: world-places
 country: czech-republic

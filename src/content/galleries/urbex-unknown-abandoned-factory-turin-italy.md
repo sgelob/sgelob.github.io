@@ -1,6 +1,5 @@
 ---
 title: Unknown Abandoned Factory – Turin, Italy
-shortTitle: Unknown Factory – Turin
 date: "2008-11-11T18:00:52"
 genre: abandoned-places
 country: italy

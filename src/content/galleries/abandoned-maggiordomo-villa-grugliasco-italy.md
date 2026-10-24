@@ -1,6 +1,5 @@
 ---
 title: Abandoned “Maggiordomo” Villa – Grugliasco, Italy
-shortTitle: “Maggiordomo” Villa
 date: "2007-10-27T08:00:42"
 genre: abandoned-places
 country: italy

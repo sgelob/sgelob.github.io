@@ -1,6 +1,5 @@
 ---
 title: Zenit-E (Зенит-E) – Soviet 35mm Reflex Film Camera
-shortTitle: Zenit-E (Зенит-E)
 date: "2010-05-08T17:15:48"
 genre: old-film-cameras
 country: russia

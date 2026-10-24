@@ -1,6 +1,5 @@
 ---
 title: Altissimo – Abandoned Factory – Trofarello, Italy
-shortTitle: “Altissimo” – Turin, Italy
 date: "2007-08-26T18:00:41"
 genre: abandoned-places
 country: italy

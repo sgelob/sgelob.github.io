@@ -1,6 +1,5 @@
 ---
 title: Abandoned Cigarette Factory – Turin, Italy
-shortTitle: Cigarette Factory – Turin
 date: "2007-08-26T11:00:59"
 genre: abandoned-places
 country: italy

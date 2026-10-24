@@ -1,6 +1,5 @@
 ---
 title: OGR – Abandoned Train Repairing Workshop – Turin, Italy
-shortTitle: “OGR” – Turin
 date: "2007-02-19T22:00:53"
 genre: abandoned-places
 country: italy
