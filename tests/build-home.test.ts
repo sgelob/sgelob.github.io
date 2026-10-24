@@ -1,6 +1,7 @@
 import { existsSync, readdirSync } from 'node:fs';
 import { describe, expect, test } from 'vitest';
 import { count, read, contentCount } from './helpers/dist';
+import { books } from '../src/lib/books';
 import { quotes } from '../src/lib/quotes';
 
 test('home has the bio with its section links and no link row, 4 gallery cards, 3 posts', () => {
@@ -65,12 +66,31 @@ describe('pages', () => {
     expect(html).not.toContain('](');
   });
 
-  test('books: favourite list keeps reversed numbering, escapes rendered', () => {
+  test('books: favourite list keeps reversed numbering, titles and authors as written', () => {
     const html = read('dist/books/index.html');
     expect(html).toContain('<title>Books – Olegs Belousovs</title>');
     expect(html).toContain('<ol reversed');
-    expect(html).toContain('The Subtle Art of Not Giving a F*ck – <em>Mark Manson</em>');
-    expect(html).toContain('Rework – <em>Jason Fried &amp; David Heinemeier Hansson</em>');
+    const favourites = books.find((s) => s.title === 'Favourite Books')!.books.length;
+    expect(html).toMatch(new RegExp(`<span class="number mono" aria-hidden="true"[^>]*>${favourites}</span>`)); // counting down, first row
+    expect(count(html, 'class="number mono"')).toBe(favourites);
+    expect(html).toMatch(/<span class="title"[^>]*>The Subtle Art of Not Giving a F\*ck<\/span> – <em class="author"[^>]*>Mark Manson<\/em>/);
+    expect(html).toMatch(/<span class="title"[^>]*>Rework<\/span> – <em class="author"[^>]*>Jason Fried &amp; David Heinemeier Hansson<\/em>/);
+  });
+
+  test('books: a row per book with its cover from the site’s image host, the year, and a placeholder where a cover is missing', () => {
+    const html = read('dist/books/index.html');
+    const all = books.flatMap((shelf) => shelf.books);
+    expect(count(html, 'class="book"')).toBe(all.length);
+    const covers = [...html.matchAll(/<img [^>]*>/g)].map((m) => m[0]);
+    expect(covers.length).toBe(all.filter((b) => b.cover).length);
+    for (const img of covers) {
+      expect(img).toMatch(/src="https:\/\/img\.olegs\.be\/uploads\//);
+      expect(img).toMatch(/\salt(=""|[\s>])/); // decorative: the title is next to it
+      expect(img).toContain('loading="lazy"');
+    }
+    expect(count(html, 'class="cover blank"')).toBe(all.filter((b) => !b.cover).length);
+    expect(count(html, 'class="year mono"')).toBe(all.filter((b) => b.year).length);
+    expect(html).not.toMatch(/openlibrary|googleapis|books\.google/);
   });
 });
 
