@@ -2,6 +2,7 @@
 import type { GetStaticPaths } from 'astro';
 import Base from '../../layouts/Base.astro';
 import Pic from '../../components/Pic.astro';
+import RecordPlayer from '../../components/RecordPlayer.astro';
 import { largestVariantUrl } from '../../lib/images';
 import { artistLabel, type RecordEntry } from '../../lib/records';
 import { records } from '../../lib/records-data';
@@ -48,6 +49,7 @@ const search = {
         <p class="artist">{by}</p>
         <p class="meta mono">{facts}</p>
         {styles.length > 0 && <p class="meta mono">{styles.join(', ')}</p>}
+        {(tracks.some((t) => t.video) || videos.length > 0) && <RecordPlayer />}
       </div>
     </div>
 
@@ -155,6 +157,12 @@ const search = {
   }
 
   a.play:hover { color: var(--fg); }
+
+  /* The track playing now. */
+  [aria-current='true'] .name,
+  [aria-current='true'] .play { color: var(--fg); }
+
+  [aria-current='true'] .play { font-weight: 600; }
 
   .more h2 { margin-top: 48px; color: var(--muted); font-weight: 400; }
 

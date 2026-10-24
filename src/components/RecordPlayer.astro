@@ -1,0 +1,43 @@
+---
+// The player of a record page: empty until a ▶ is pressed, then the track's video from youtube-nocookie.com.
+// Nothing is requested from YouTube before that click; without JavaScript each ▶ is a plain link to the video.
+---
+
+<div class="player" data-player hidden></div>
+
+<script>
+  const player = document.querySelector<HTMLElement>('[data-player]');
+  if (player) {
+    document.addEventListener('click', (event) => {
+      const link = (event.target as Element | null)?.closest<HTMLAnchorElement>('a.play[data-video]');
+      // A modified click (new tab, new window) or one already handled keeps the link's own behaviour.
+      if (!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      const frame = document.createElement('iframe');
+      frame.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(link.dataset.video ?? '')}?autoplay=1`;
+      frame.title = link.dataset.title ?? 'Video';
+      frame.allow = 'autoplay; encrypted-media; picture-in-picture';
+      frame.allowFullscreen = true;
+      player.replaceChildren(frame);
+      player.hidden = false;
+      for (const row of document.querySelectorAll('[aria-current="true"]')) row.removeAttribute('aria-current');
+      link.closest('li')?.setAttribute('aria-current', 'true');
+      player.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    });
+  }
+</script>
+
+<style>
+  .player {
+    margin-top: 24px;
+    aspect-ratio: 16 / 9;
+    background: var(--rule);
+  }
+
+  .player :global(iframe) {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+</style>
