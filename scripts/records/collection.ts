@@ -142,5 +142,4 @@ export function matchVideos(tracks: { title: string }[], videos: { title: string
   return { trackVideo, extra: candidates.filter((v) => !v.used).map(({ title, id }) => ({ title: curly(title), id })) };
 }
 
-/** The key the A–Z list sorts by: lowercase, without a leading “The”. */
-export const artistSortKey = (artist: string): string => artist.toLowerCase().replace(/^the\s+/, '');
+export { artistSortKey } from '../../src/lib/records';

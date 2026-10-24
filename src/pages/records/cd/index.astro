@@ -1,0 +1,10 @@
+---
+import { pageTitle } from '../../../lib/site';
+import Base from '../../../layouts/Base.astro';
+import RecordsIndex from '../../../components/RecordsIndex.astro';
+import { RECORDS_LEAD } from '../../../lib/records';
+---
+
+<Base title={pageTitle('CD', 'Records')} description={RECORDS_LEAD}>
+  <RecordsIndex filter="cd" />
+</Base>

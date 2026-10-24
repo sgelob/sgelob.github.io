@@ -2,6 +2,7 @@ import { render } from './helpers/render';
 import JustifiedGrid from '../src/components/JustifiedGrid.astro';
 import { readdirSync } from 'node:fs';
 import { describe, expect, test } from 'vitest';
+import { records } from '../src/lib/records-data';
 import { exists, read, contentCount } from './helpers/dist';
 import { pagefindAttrs } from '../src/lib/search';
 
@@ -47,7 +48,7 @@ describe('search index', () => {
     // Galleries, trips and the English pages; the Italian posts in an index of their own.
     expect(Object.keys(entry.languages).sort()).toEqual(['en', 'it']);
     const pages = Object.values(entry.languages).reduce((sum, l) => sum + l.page_count, 0);
-    expect(pages).toBe(contentCount('galleries') + contentCount('outdoors') + contentCount('posts') + 4); // galleries, trips, posts, and events, books, quotes, about
+    expect(pages).toBe(contentCount('galleries') + contentCount('outdoors') + contentCount('posts') + records.length + 4); // galleries, trips, posts, records, and events, books, quotes, about
     expect(readdirSync('dist/pagefind/filter').filter((f) => f.endsWith('.pf_filter')).length).toBeGreaterThan(0);
   });
 
