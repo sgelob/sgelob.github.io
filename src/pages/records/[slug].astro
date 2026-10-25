@@ -19,11 +19,13 @@ const { title, artist, year, label, format, styles, cover, tracks, videos } = re
 const by = artistLabel(artist);
 const facts = [format, year, label].filter(Boolean).join(' · ');
 const youtube = (id: string) => `https://www.youtube.com/watch?v=${id}`;
+// Variants are never upscaled: a cover narrower than 480 px has only its original.
+const smallCover = cover ? largestVariantUrl(cover.src, Math.min(480, cover.width)) : undefined;
 // The search result row: the small cover and the artist with the format and year.
 const search = {
   type: 'records' as const,
   meta: {
-    image: cover ? largestVariantUrl(cover.src, 480) : undefined,
+    image: smallCover,
     artist: by,
     format: [format, year].filter(Boolean).join(' · '),
   },
@@ -33,7 +35,7 @@ const search = {
 <Base
   title={pageTitle(title, by, 'Records')}
   description={`${title} by ${by}: ${[facts, styles.join(', ')].filter(Boolean).join('. ')}.`}
-  ogImage={cover ? largestVariantUrl(cover.src, 480) : undefined}
+  ogImage={smallCover}
   search={search}
 >
   <article class="record wrap">

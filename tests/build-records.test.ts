@@ -2,6 +2,7 @@ import { readdirSync, readFileSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, test } from 'vitest';
 import { count, exists, read } from './helpers/dist';
+import { originalUrl } from '../src/lib/images';
 import { artistLabel, byKind, recordPath } from '../src/lib/records';
 import { records } from '../src/lib/records-data';
 import { pageTitle } from '../src/lib/site';
@@ -46,6 +47,18 @@ describe('records list', () => {
 describe('record page', () => {
   const record = records.find((r) => r.cover && r.tracks.some((t) => t.video) && r.videos.length) ?? records.find((r) => r.tracks.some((t) => t.video))!;
   const page = read(`dist${recordPath(record)}index.html`);
+
+  test('search and og images never name a variant wider than the cover: those do not exist', () => {
+    const tooWide = records.filter((r) => r.cover).flatMap((r) => {
+      const page = read(`dist${recordPath(r)}index.html`);
+      const urls = [/data-meta-image="([^"]+)"/.exec(page)?.[1], /<meta property="og:image" content="([^"]+)"/.exec(page)?.[1]];
+      const variantWidth = (u: string | undefined) => (u === undefined || u === originalUrl(r.cover!.src) ? 0 : Number(/-(\d+)\.jpg$/.exec(u)?.[1] ?? 0));
+      return urls.filter((u) => variantWidth(u) > r.cover!.width).map((u) => `${r.slug}: ${u}`);
+    });
+    expect(tooWide).toEqual([]);
+    const narrow = read('dist/records/deepchord-atmospherica-vol-2/index.html'); // a 300 px cover
+    expect(narrow).toContain('data-meta-image="https://img.olegs.be/uploads/2026/10/record-deepchord-atmospherica-vol-2.jpg"');
+  });
 
   test('every record has a page', () => {
     const dirs = readdirSync('dist/records').filter((d) => statSync(join('dist/records', d)).isDirectory());
