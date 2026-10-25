@@ -48,7 +48,7 @@ describe('geometry', () => {
     expect(f.high).toMatchObject({ ele: 2176 });
     expect(f.low).toMatchObject({ ele: 1200, km: 0 });
     expect(f.high.km).toBeCloseTo(f.totalKm, 6);
-    expect(f.ticks.every((t) => t.km <= f.totalKm - 4)).toBe(true);
+    expect(f.ticks.map((t) => t.km)).toEqual([0, 5]); // 6.2 km: the 5 km mark ends well before “6.2 km”
     expect(f.line).toMatch(/^M [\d.]+ [\d.]+( L [\d.]+ [\d.]+)+$/);
     expect(f.area.endsWith('Z')).toBe(true);
     expect(profileFigure([{ lat: 1, lon: 2 }, { lat: 1.1, lon: 2 }])).toBeUndefined();
@@ -57,8 +57,21 @@ describe('geometry', () => {
   it('profileFigure on a long track: marks every 5 km, the line drawn from at most max points', () => {
     const long = Array.from({ length: 5000 }, (_, i) => ({ lat: 45 + i * 0.0001, lon: 7, ele: 1000 + Math.sin(i / 500) * 600 }));
     const f = profileFigure(long, 400, 170, 400)!;
-    expect(f.ticks.map((t) => t.km)).toEqual([0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50]); // 55.6 km: 55 would crowd the total
+    expect(f.ticks.map((t) => t.km)).toEqual([0, 5, 10, 15, 20, 25, 30, 35, 40, 45]); // 55.6 km: 50 would run into the total
     expect((f.line.match(/ L /g) ?? []).length).toBeLessThanOrEqual(400);
+  });
+
+  it('profileFigure keeps every km mark clear of the total written at the end of the axis', () => {
+    const track = (km: number) => Array.from({ length: 2000 }, (_, i) => ({ lat: 45 + (i / 1999) * (km / 111.195), lon: 7, ele: 300 + (i % 100) }));
+    // The total is drawn right-aligned at `right`, in 8.5 px mono: about 5.44 units a character; a mark is centred on its x.
+    const clear = (f: NonNullable<ReturnType<typeof profileFigure>>, label: string) =>
+      f.ticks.every((t) => t.x + (String(t.km).length * 5.44) / 2 <= f.right - label.length * 5.44 - 4);
+    for (const [km, label] of [[55.1, '55.1 km'], [51, '51 km'], [27.5, '27.5 km'], [9.6, '9.6 km'], [120.4, '120.4 km']] as const) {
+      const f = profileFigure(track(km), 400, 170, 400, label)!;
+      expect(clear(f, label), label).toBe(true);
+      expect(f.ticks.length, label).toBeGreaterThan(1);
+    }
+    expect(profileFigure(track(55.1), 400, 170, 400, '55.1 km')!.ticks.at(-1)!.km).toBe(45);
   });
 });
 
