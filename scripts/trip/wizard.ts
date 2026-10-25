@@ -6,6 +6,7 @@ import type { ObjectStore } from '../photos/r2';
 import { scaffoldGallery, type TripLink, type TripValues } from '../photos/scaffold';
 import { writeTrack } from '../track';
 import { activityFromSport, type KomootTour } from './komoot';
+import { orderTrips } from './order';
 
 /** Asks one question and returns the answer; `multiline` answers end at an empty line. */
 export type Ask = (question: string, opts?: { default?: string; multiline?: boolean }) => Promise<string>;
@@ -461,9 +462,12 @@ export async function runWizard(deps: WizardDeps): Promise<WizardResult> {
     `area: ${a.area}, ${a.country}`,
     `distance: ${a.distance} km, climb: ${a.climb} m`,
     `date: ${isoDay(date)}`,
+    // The real ride time, for the order among trips that share a published date; it stays here, never on the site.
+    `ride: ${tour?.startedAt && tour.date === isoDay(a.date!) ? tour.startedAt : isoDay(a.date!)}`,
     a.shared ? `${a.approximateEnds ? 'approximate ends (a closed circuit, no start or finish), ' : ''}shared: ${links.map((l) => `${l.label} ${l.url}`).join(', ') || 'no public links'}` : 'DISCREET: no start, parking, access road, exact day or time in the story',
   ];
   writeFileSync(notesPath, `# ${a.title}\n\n${meta.map((m) => `- ${m}`).join('\n')}\n\n## Notes\n\n${(a.notes ?? '').trim()}\n`);
+  orderTrips(deps.contentDir, deps.notesDir, say);
 
   say('');
   say(`Trip file: ${path}`);

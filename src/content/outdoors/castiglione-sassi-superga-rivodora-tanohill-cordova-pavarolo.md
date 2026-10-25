@@ -1,6 +1,7 @@
 ---
 title: Castiglione – Sassi – Superga – Rivodora – Tanohill – Cordova – Pavarolo
 date: "2026-10-01T12:00:00"
+order: 4
 activity: ride
 bike: trail
 distance: 42.3
