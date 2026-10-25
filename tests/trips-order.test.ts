@@ -16,6 +16,15 @@ describe('ride order', () => {
     expect(Object.fromEntries(orders)).toEqual({ a: 1, b: 2, c: 3, alone: undefined });
   });
 
+  test('rideOrders numbers a whole published month, also when one trip shows its day and another only the month', () => {
+    const orders = rideOrders([
+      { slug: 'day', date: '2026-09-20T12:00:00', ride: '2026-09-20T07:57:00Z' },
+      { slug: 'month', date: '2026-09-01T12:00:00', ride: '2026-09-26T05:26:00Z' },
+      { slug: 'august', date: '2026-08-30T12:00:00', ride: '2026-08-30T06:00:00Z' },
+    ]);
+    expect(Object.fromEntries(orders)).toEqual({ day: 1, month: 2, august: undefined });
+  });
+
   test('a trip without a recorded ride time keeps its place untouched and is reported', () => {
     const problems: string[] = [];
     const orders = rideOrders([
@@ -59,5 +68,11 @@ describe('ride order', () => {
     const t = (id: string, date: string, order?: number) => ({ id, data: { date: new Date(date), order } });
     const sorted = sortTrips([t('sept', '2026-09-20T12:00:00'), t('a', '2026-10-01T12:00:00', 1), t('c', '2026-10-01T12:00:00', 3), t('b', '2026-10-01T12:00:00', 2)]);
     expect(sorted.map((x) => x.id)).toEqual(['c', 'b', 'a', 'sept']);
+  });
+
+  test('sortTrips: within a month the ride order wins over the published day', () => {
+    const t = (id: string, date: string, order?: number) => ({ id, data: { date: new Date(date), order } });
+    const sorted = sortTrips([t('august', '2026-08-30T12:00:00'), t('day', '2026-09-20T12:00:00', 1), t('month', '2026-09-01T12:00:00', 2)]);
+    expect(sorted.map((x) => x.id)).toEqual(['month', 'day', 'august']);
   });
 });
