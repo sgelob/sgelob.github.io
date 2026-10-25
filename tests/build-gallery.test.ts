@@ -149,10 +149,9 @@ describe('core web vitals', () => {
     expect(read('dist/gallery/venezia-italy/index.html')).toMatch(/<img src="https:\/\/img\.olegs\.be\/uploads\/2012\/08\/venezia-italy-02-1600\.jpg"[^>]*fetchpriority="high"/);
   });
 
-  test('every embedded iframe on the site loads lazily', () => {
+  test('every embedded iframe left on the site loads lazily (videos and slides are facades)', () => {
     const pages = readdirSync('dist', { recursive: true, encoding: 'utf8' }).filter((f) => f.endsWith('.html'));
     const eager = pages.filter((f) => /<iframe(?![^>]*loading="lazy")/.test(read(`dist/${f}`)));
-    expect(read('dist/2016/09/come-eseguire-test-sintetici-web-performance-webpagetest-org/index.html')).toMatch(/<iframe [^>]*loading="lazy"/); // slides; videos are facades
     expect(eager).toEqual([]);
   });
 

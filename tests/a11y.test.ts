@@ -75,7 +75,7 @@ describe.skipIf(!chrome)('accessibility (axe-core)', () => {
     server = await serve();
     origin = `http://127.0.0.1:${(server.address() as AddressInfo).port}`;
     browser = await puppeteer.launch({ executablePath: chrome, args: ['--no-sandbox'] });
-  });
+  }, 60_000); // Chrome can take more than the default 10 s to start while the rest of the suite runs
 
   afterAll(async () => {
     await browser?.close();

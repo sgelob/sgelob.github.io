@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 import { satteri } from '@astrojs/markdown-satteri';
 import { parse } from 'yaml';
 import { iframeTitles } from './src/lib/iframe-titles.ts';
-import { videoEmbeds } from './src/lib/video-embeds.ts';
+import { embedFacadesPlugin } from './src/lib/video-embeds.ts';
 
 // Redirect stubs and the search page are noindex pages, so they stay out of the sitemap. Read with fs: the `?raw`
 // import of src/lib/redirects.ts does not work here. `from` keeps raw Unicode; sitemap URLs are
@@ -25,8 +25,8 @@ export default defineConfig({
   // Component scripts always go to a file of their own: the Content Security Policy allows scripts from the site
   // itself, not inline ones (Astro would otherwise inline a script under Vite's 4 KB limit).
   vite: { build: { assetsInlineLimit: 0 } },
-  // Video players become click-to-play links (no third-party request before ▶), and every other embedded
+  // Video and slide players become click-to-play links (no third-party request before ▶), and every other embedded
   // <iframe> gets a title from its host, so none is announced as a bare "frame".
-  markdown: { processor: satteri({ hastPlugins: [videoEmbeds, iframeTitles] }) },
+  markdown: { processor: satteri({ hastPlugins: [embedFacadesPlugin, iframeTitles] }) },
   integrations: [sitemap({ filter: (page) => !NOINDEX_PATHS.has(decodeURI(new URL(page).pathname)) })],
 });
