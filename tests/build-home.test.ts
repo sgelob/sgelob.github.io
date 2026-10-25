@@ -3,6 +3,8 @@ import { describe, expect, test } from 'vitest';
 import { count, read, contentCount } from './helpers/dist';
 import { books } from '../src/lib/books';
 import { quotes } from '../src/lib/quotes';
+import { artistLabel } from '../src/lib/records';
+import { records } from '../src/lib/records-data';
 
 test('home has the bio with its section links and no link row, 4 gallery cards, 3 posts', () => {
   const html = read('dist/index.html');
@@ -174,4 +176,20 @@ test('home has the quote of the day under the bio, linked to its author and to a
   expect(block).toContain(`All ${quotes.length} quotes`);
   expect(block).toContain('href="/quotes/"');
   if (quote!.lang) expect(block).toContain(`lang="${quote!.lang}"`);
+});
+
+test('home has the track of the day under the quote: a ▶ for the click-to-play player, its record linked, nothing from YouTube on load', () => {
+  const html = read('dist/index.html');
+  const block = html.match(/<section aria-labelledby="home-track"[\s\S]*?<\/section>/)?.[0] ?? '';
+  expect(html.indexOf('aria-labelledby="home-track"')).toBeGreaterThan(html.indexOf('<figure class="daily-quote'));
+  expect(html.indexOf('aria-labelledby="home-track"')).toBeLessThan(html.indexOf('id="home-photos"'));
+  expect(block).toMatch(/<h2 id="home-track"[^>]*>Track of the day<\/h2>/);
+  expect(block).toContain(`All ${records.length} records`);
+  const video = block.match(/<a class="play" href="https:\/\/www\.youtube\.com\/watch\?v=([\w-]{11})" data-video="\1"/)?.[1];
+  const record = records.find((r) => r.tracks.some((t) => t.video === video));
+  expect(record).toBeDefined();
+  expect(block).toContain(`href="/records/${record!.slug}/"`);
+  expect(block).toContain(artistLabel(record!.artist).replace(/&/g, '&amp;'));
+  expect(block).toMatch(/<div class="player" data-player hidden/);
+  expect(html).not.toMatch(/<iframe|youtube-nocookie|ytimg/);
 });

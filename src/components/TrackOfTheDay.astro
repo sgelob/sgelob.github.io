@@ -1,0 +1,99 @@
+---
+// One track from the record collection under the quote of the day, a different record each day. ▶ plays it in
+// place with the record pages' player: nothing loads from YouTube before the click, and without JavaScript the
+// ▶ is a plain link to the video.
+import Pic from './Pic.astro';
+import RecordPlayer from './RecordPlayer.astro';
+import SectionLabel from './SectionLabel.astro';
+import { trackOfTheDay } from '../lib/home';
+import { artistLabel, recordPath } from '../lib/records';
+import { records } from '../lib/records-data';
+
+const pick = trackOfTheDay();
+---
+
+{pick && (
+  <section aria-labelledby="home-track">
+    <SectionLabel id="home-track" title="Track of the day" href="/records/" link={`All ${records.length} records`} />
+    <div class="daily-track wrap">
+      <div class="row">
+        <a class="cover" href={recordPath(pick.record)} tabindex="-1" aria-hidden="true">
+          {pick.record.cover ? (
+            <Pic src={pick.record.cover.src} width={pick.record.cover.width} height={pick.record.cover.height} alt="" sizes="96px" maxWidth={480} />
+          ) : (
+            <span class="blank" />
+          )}
+        </a>
+        <div class="facts">
+          <p class="name">{pick.track.title}</p>
+          <p class="by mono">
+            {artistLabel(pick.record.artist)} · <a href={recordPath(pick.record)}>{pick.record.title}</a>
+            {pick.record.year && <> · {pick.record.year}</>}
+          </p>
+        </div>
+        <a
+          class="play"
+          href={`https://www.youtube.com/watch?v=${pick.track.video}`}
+          data-video={pick.track.video}
+          data-title={pick.track.title}
+          aria-label={`Play ${pick.track.title} by ${artistLabel(pick.record.artist)}`}
+        >▶</a>
+      </div>
+      <RecordPlayer />
+    </div>
+  </section>
+)}
+
+<style>
+  .daily-track {
+    max-width: calc(900px + 2 * var(--gutter));
+    padding-block: 0 96px; /* as under the grids of the other sections */
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: 96px minmax(0, 1fr) auto;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .cover :global(img),
+  .blank {
+    display: block;
+    width: 96px;
+    height: 96px;
+    object-fit: cover;
+    background: var(--rule);
+  }
+
+  .name { font-size: 21px; line-height: 1.3; letter-spacing: -0.01em; overflow-wrap: anywhere; }
+
+  .by { margin-top: 6px; color: var(--muted); overflow-wrap: anywhere; }
+
+  .by a {
+    border-bottom: 1px solid currentColor;
+    transition: color 120ms ease;
+  }
+
+  .by a:hover,
+  .play:hover { color: var(--fg); }
+
+  .play {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--muted);
+    color: var(--muted);
+    transition: color 120ms ease, border-color 120ms ease;
+  }
+
+  .play:hover { border-color: var(--fg); }
+
+  @media (max-width: 719px) {
+    .row { grid-template-columns: 64px minmax(0, 1fr) auto; gap: 14px; }
+    .cover :global(img),
+    .blank { width: 64px; height: 64px; }
+    .name { font-size: 18px; }
+  }
+</style>
