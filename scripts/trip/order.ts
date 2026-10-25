@@ -1,5 +1,5 @@
-// The hidden ride order: trips that publish only their month share one date, so `order` (1 for the earliest) keeps them in the
-// order they were ridden. The real ride times live only in the git-ignored trip notes (`- ride: <ISO date and time>`).
+// The hidden ride order: a trip that publishes only its month has its date on the 1st, so within a month `order` (1 for the
+// earliest) keeps the trips in the order they were ridden. The real ride times live only in the git-ignored trip notes (`- ride: <ISO date and time>`).
 import { existsSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
@@ -7,14 +7,14 @@ import { join } from 'node:path';
 export const readRideTime = (notes: string): string | undefined => /^- ride: (\S+)\s*$/m.exec(notes)?.[1];
 
 /**
- * The order of each trip among those that share its published date, by ride time (1 for the earliest); undefined for a trip
- * alone on its date. A trip of a shared date without a ride time is left out (its file keeps what it has) and reported.
+ * The order of each trip among those published in the same month, by ride time (1 for the earliest); undefined for a trip
+ * alone in its month. A trip of a shared month without a ride time is left out (its file keeps what it has) and reported.
  */
 export function rideOrders(trips: { slug: string; date: string; ride?: string }[], problems: string[] = []): Map<string, number | undefined> {
-  const byDate = new Map<string, typeof trips>();
-  for (const trip of trips) byDate.set(trip.date, [...(byDate.get(trip.date) ?? []), trip]);
+  const byMonth = new Map<string, typeof trips>();
+  for (const trip of trips) byMonth.set(trip.date.slice(0, 7), [...(byMonth.get(trip.date.slice(0, 7)) ?? []), trip]);
   const orders = new Map<string, number | undefined>();
-  for (const group of byDate.values()) {
+  for (const group of byMonth.values()) {
     if (group.length === 1) {
       orders.set(group[0].slug, undefined);
       continue;
