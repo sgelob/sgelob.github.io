@@ -9,7 +9,7 @@ import { redirectsUnder } from '../../../lib/redirects';
 import { formatDate, isoDate, pageTitle } from '../../../lib/site';
 import { categoryName } from '../../../lib/taxonomies';
 import VideoEmbeds from '../../../components/VideoEmbeds.astro';
-import { hasVideoEmbed } from '../../../lib/video-embeds';
+import { hasEmbedFacade } from '../../../lib/video-embeds';
 
 // getStaticPaths runs isolated from the rest of the frontmatter: everything it uses lives inside it.
 export const getStaticPaths = (async () => {
@@ -69,7 +69,7 @@ const pager = post?.data.lang === 'it'
       ))}
     </Fragment>
     <Content />
-    {hasVideoEmbed(post?.body) && <VideoEmbeds />}
+    {hasEmbedFacade(post?.body) && <VideoEmbeds />}
     <nav class="pager mono" aria-label={pager.label} slot="after" data-pagefind-ignore>
       {props.next ? <a href={postPath(props.next)} rel="next"><span aria-hidden="true">←</span> <span class="visually-hidden">{pager.older}: </span>{props.next.data.title}</a> : <span></span>}
       {props.prev && <a href={postPath(props.prev)} rel="prev"><span class="visually-hidden">{pager.newer}: </span>{props.prev.data.title} <span aria-hidden="true">→</span></a>}
