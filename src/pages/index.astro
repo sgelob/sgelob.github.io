@@ -34,8 +34,6 @@ const title = `${SITE.author} – ${SITE.description}`;
 
   <QuoteOfTheDay />
 
-  <TrackOfTheDay />
-
   <section aria-labelledby="home-photos">
     <SectionLabel id="home-photos" title="Photos" href="/photos/" link={`All ${galleries.length} galleries`} />
     <GalleryGrid galleries={featured} />
@@ -52,6 +50,8 @@ const title = `${SITE.author} – ${SITE.description}`;
     <SectionLabel id="home-blog" title="Blog" href="/blog/" link={`All ${posts.length} posts`} />
     <PostList posts={posts.slice(0, 3)} embedded />
   </section>
+
+  <TrackOfTheDay />
 </Base>
 
 <style>
@@ -77,6 +77,9 @@ const title = `${SITE.author} – ${SITE.description}`;
   }
 
   .lead :global(a:hover) { color: var(--fg); }
+
+  /* The blog is followed by the track of the day: the same space as under the grids of the other sections. */
+  .blog { padding-bottom: 96px; }
 
   @media (max-width: 719px) {
     .intro { padding-block: 40px 40px; }
