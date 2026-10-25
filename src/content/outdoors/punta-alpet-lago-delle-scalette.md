@@ -1,7 +1,7 @@
 ---
 title: Punta Alpet – Lago delle Scalette
 date: "2026-09-06T12:00:00"
-order: 1
+order: 2
 activity: hike
 # bike: xc | trail
 distance: 5.3
