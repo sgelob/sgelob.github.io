@@ -164,13 +164,16 @@ function seriesOf(points: readonly TrackPoint[]): { km: number[]; ele: number[] 
   return { km, ele: withEle.map((p) => p.ele) };
 }
 
-/** The elevation profile of a track (see `drawProfile`). */
-export function profileFigure(points: readonly TrackPoint[], width = 400, height = 170, max = 400): ProfileFigure | undefined {
+/** The elevation profile of a track (see `drawProfile`); `endLabel` is the total written at the end of the distance axis. */
+export function profileFigure(points: readonly TrackPoint[], width = 400, height = 170, max = 400, endLabel?: string): ProfileFigure | undefined {
   const { km, ele } = seriesOf(points);
-  return drawProfile(km, ele, width, height, max);
+  return drawProfile(km, ele, width, height, max, endLabel);
 }
 
-function drawProfile(km: readonly number[], ele: readonly number[], width: number, height: number, max: number): ProfileFigure | undefined {
+// Width of one character of the axis labels in figure units: 8.5 px mono (0.6 em) with 0.04 em spacing, as in RouteBlock's `.axis`.
+const AXIS_CHAR = 8.5 * 0.64;
+
+function drawProfile(km: readonly number[], ele: readonly number[], width: number, height: number, max: number, endLabel?: string): ProfileFigure | undefined {
   if (km.length < 2) return undefined;
   const left = 40, right = width - 10, top = 26, baseline = height - 22;
   const totalKm = km[km.length - 1];
@@ -188,7 +191,9 @@ function drawProfile(km: readonly number[], ele: readonly number[], width: numbe
   const guides: ProfileFigure['guides'] = [];
   for (let e = Math.ceil(floor / 500) * 500; e <= ceil; e += 500) guides.push({ y: round1(y(e)), ele: e });
   const ticks: ProfileFigure['ticks'] = [];
-  for (let d = 0; d <= totalKm - 4; d += 5) ticks.push({ x: round1(x(d)), km: d });
+  // A km mark stays only where it ends before the total, which is right-aligned at the end of the axis.
+  const totalStart = right - (endLabel ?? `${totalKm.toFixed(1)} km`).length * AXIS_CHAR - 4;
+  for (let d = 0; x(d) + (String(d).length * AXIS_CHAR) / 2 <= totalStart; d += 5) ticks.push({ x: round1(x(d)), km: d });
   const mark = (i: number) => ({ x: round1(x(km[i])), y: round1(y(ele[i])), ele: ele[i], km: km[i] });
   return { viewBox: `0 0 ${width} ${height}`, points: drawn, line, area, left, right, baseline, guides, ticks, totalKm, high: mark(hi), low: mark(lo) };
 }
