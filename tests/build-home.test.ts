@@ -178,11 +178,12 @@ test('home has the quote of the day under the bio, linked to its author and to a
   if (quote!.lang) expect(block).toContain(`lang="${quote!.lang}"`);
 });
 
-test('home has the track of the day under the quote: a ▶ for the click-to-play player, its record linked, nothing from YouTube on load', () => {
+test('home has the track of the day as its last block, after the blog: a ▶ for the click-to-play player, its record linked, nothing from YouTube on load', () => {
   const html = read('dist/index.html');
   const block = html.match(/<section aria-labelledby="home-track"[\s\S]*?<\/section>/)?.[0] ?? '';
-  expect(html.indexOf('aria-labelledby="home-track"')).toBeGreaterThan(html.indexOf('<figure class="daily-quote'));
-  expect(html.indexOf('aria-labelledby="home-track"')).toBeLessThan(html.indexOf('id="home-photos"'));
+  expect(html.indexOf('aria-labelledby="home-track"')).toBeGreaterThan(html.indexOf('id="home-blog"'));
+  expect(html.indexOf('aria-labelledby="home-track"')).toBeLessThan(html.indexOf('<footer'));
+  expect(html.slice(html.indexOf('aria-labelledby="home-track"'), html.indexOf('</main>'))).not.toMatch(/<section(?![^>]*home-track)/); // nothing after it in main
   expect(block).toMatch(/<h2 id="home-track"[^>]*>Track of the day<\/h2>/);
   expect(block).toContain(`All ${records.length} records`);
   const video = block.match(/<a class="play" href="https:\/\/www\.youtube\.com\/watch\?v=([\w-]{11})" data-video="\1"/)?.[1];
