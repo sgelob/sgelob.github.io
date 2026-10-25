@@ -1,7 +1,7 @@
 ---
 title: Castiglione – Superga
 date: "2026-09-01T12:00:00"
-order: 1
+order: 2
 activity: ride
 bike: xc
 distance: 27.5
