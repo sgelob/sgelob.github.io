@@ -181,9 +181,8 @@ const lowLabel = profile && placeLabel([profile.low.x, profile.low.y], lowText, 
 
   .credit {
     margin-top: 8px;
-    color: var(--muted);
+    color: var(--muted); /* no extra dimming: at 0.75 opacity it fell to 3.7:1, under the 4.5:1 of WCAG 1.4.3 */
     font-size: 10px;
-    opacity: 0.75;
   }
 
   .stats { color: var(--muted); margin-top: 12px; }
