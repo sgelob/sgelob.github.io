@@ -121,7 +121,8 @@ describe('trip page', () => {
       'castiglione-pavarolo-cordova-baldissero-rivodora-san-martino',
       'castiglione-sassi-cavoretto-revigliasco-maddalena-pecetto-pino-superga',
       'castiglione-bosco-del-vaj-casalborgone-castagneto-po-sand-raffaele',
-      'canosio-gardetta-valle-maira',
+      'castiglione-torinese-colle-della-maddalena', // 26 September, shown as September only
+      'canosio-gardetta-valle-maira', // 20 September
     ]);
   });
 });
