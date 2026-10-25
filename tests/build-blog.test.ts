@@ -138,7 +138,7 @@ describe('post accessibility', () => {
     const videos = html.match(/<a class="video-embed"[^>]*>/g) ?? [];
     expect(videos).toHaveLength(18);
     expect(videos.filter((tag) => !/\sdata-title="[^"]+"/.test(tag))).toEqual([]);
-    expect(videos[0]).toContain('data-title="VideoPress video"');
+    expect(videos[0]).toContain('data-title="VideoPress video: Tammie Lister: Know your users (in inglese)"');
     expect(html).not.toContain('<iframe');
   });
 

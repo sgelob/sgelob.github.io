@@ -23,6 +23,8 @@
       for (const row of document.querySelectorAll('[aria-current="true"]')) row.removeAttribute('aria-current');
       link.closest('li')?.setAttribute('aria-current', 'true');
       player.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+      // Into the player, as on the video facades: a keyboard user is where the video plays, and Tab goes on from it.
+      frame.focus();
     });
   }
 </script>
