@@ -1,5 +1,6 @@
 import { expect, test } from 'vitest';
-import { daySeed, HOME_QUOTE_MAX, leadParagraphs, pickFeatured, pickRandom, quoteOfTheDay } from '../src/lib/home';
+import { daySeed, HOME_QUOTE_MAX, leadParagraphs, pickFeatured, pickRandom, quoteOfTheDay, trackOfTheDay } from '../src/lib/home';
+import { records } from '../src/lib/records-data';
 import { groupByAuthor, quotes } from '../src/lib/quotes';
 
 const galleries = ['a', 'b', 'c', 'd', 'e'].map((id) => ({ id }));
@@ -41,4 +42,29 @@ test('quoteOfTheDay: the same day gives the same quote, the next day another, an
     seen.add(today.text);
   }
   expect(seen.size).toBe(eligible.length); // no repeat before every quote has had its day
+});
+
+test('trackOfTheDay: a track with a video; one record a day, each before any repeats, then its next track', () => {
+  const day = (n: number) => new Date(2026, 9, 25 + n, 4);
+  expect(trackOfTheDay(day(0))).toEqual(trackOfTheDay(new Date(2026, 9, 25, 23))); // a day, not an hour
+  const withVideo = records.filter((r) => r.tracks.some((t) => t.video));
+  expect(withVideo.length).toBeGreaterThan(200);
+  const seen = new Set<string>();
+  for (let n = 0; n < withVideo.length; n++) {
+    const today = trackOfTheDay(day(n))!;
+    expect(today.track.video).toMatch(/^[\w-]{11}$/);
+    expect(today.record.tracks).toContain(today.track);
+    expect(today.record).not.toBe(trackOfTheDay(day(n + 1))!.record);
+    seen.add(today.record.slug);
+  }
+  expect(seen.size).toBe(withVideo.length);
+  // A record with several videos plays a different one on its next turn.
+  const n = [...Array(withVideo.length).keys()].find((k) => trackOfTheDay(day(k))!.record.tracks.filter((t) => t.video).length > 1)!;
+  expect(trackOfTheDay(day(n + withVideo.length))!.record).toBe(trackOfTheDay(day(n))!.record);
+  expect(trackOfTheDay(day(n + withVideo.length))!.track).not.toBe(trackOfTheDay(day(n))!.track);
+});
+
+test('trackOfTheDay: none without a record that has a video', () => {
+  expect(trackOfTheDay(new Date(), [])).toBeUndefined();
+  expect(trackOfTheDay(new Date(), records.map((r) => ({ ...r, tracks: r.tracks.map(({ video, ...t }) => t) })))).toBeUndefined();
 });

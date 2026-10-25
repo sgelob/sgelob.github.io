@@ -1,6 +1,8 @@
 import { parse } from 'yaml';
 import raw from '../data/home.yaml?raw';
 import { quotes, type Quote } from './quotes';
+import type { RecordEntry, RecordTrack } from './records';
+import { records } from './records-data';
 
 export interface Home {
   photosIntro: string;
@@ -66,4 +68,19 @@ export function quoteOfTheDay(date = new Date(), list: readonly Quote[] = quotes
   const short = [...new Map(list.filter((q) => q.text.length <= HOME_QUOTE_MAX).map((q) => [q.text, q])).values()];
   const order = pickRandom(short, short.length, 20261023); // a fixed seed: the order never changes, only the day moves along it
   return order[dayNumber(date) % order.length];
+}
+
+/**
+ * The track for the home on `date`: a track with a video, from the records in one fixed shuffled order, one record
+ * a day. A record with many videos gets no more days than one with a single video: every record comes round before
+ * any repeats, and on its next turn it plays its next track.
+ */
+export function trackOfTheDay(date = new Date(), list: readonly RecordEntry[] = records): { record: RecordEntry; track: RecordTrack & { video: string } } | undefined {
+  const withVideo = list.filter((r) => r.tracks.some((t) => t.video));
+  if (withVideo.length === 0) return undefined;
+  const order = pickRandom(withVideo, withVideo.length, 20261025); // fixed, like the quotes'
+  const day = dayNumber(date);
+  const record = order[day % order.length];
+  const tracks = record.tracks.filter((t): t is RecordTrack & { video: string } => t.video !== undefined);
+  return { record, track: tracks[Math.floor(day / order.length) % tracks.length] };
 }
