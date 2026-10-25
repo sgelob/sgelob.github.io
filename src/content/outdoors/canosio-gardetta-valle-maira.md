@@ -1,6 +1,7 @@
 ---
 title: Canosio – Gardetta
 date: "2026-09-20T12:00:00"
+order: 1
 activity: ride
 bike: trail
 distance: 38.1
