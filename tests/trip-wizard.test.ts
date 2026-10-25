@@ -197,6 +197,14 @@ describe('trip wizard', () => {
     expect(readFileSync(r.notes, 'utf8')).toContain('approximate ends');
   });
 
+  test('the area question offers the area of the latest trip, so Enter keeps it as written there', async () => {
+    const { deps } = setup((photos) => [photos, 'ride', 'trail', 'Ridge loop', '', '', '', '27', '1300', 'd', '2026-10-17', '', 'n', '', '']);
+    writeFileSync(join(deps.contentDir, 'older.md'), '---\ntitle: Older\ndate: "2026-08-01T12:00:00"\narea: Valle Maira\n---\n');
+    writeFileSync(join(deps.contentDir, 'newer.md'), '---\ntitle: Newer\ndate: "2026-10-01T12:00:00"\norder: 2\narea: Metropolitan City of Turin\n---\n');
+    const r = await runWizard(deps);
+    expect(parse(readFileSync(r.path, 'utf8').split('---')[1])).toMatchObject({ area: 'Metropolitan City of Turin' });
+  });
+
   test('a trip that shares its month with another is numbered by ride time, the latest after the earlier one', async () => {
     const { deps } = setup((photos) => [photos, 'ride', 'trail', 'Ridge loop', '', 'Collina torinese', '', '27', '1300', 'a', fixture('track.gpx'), '', '2026-10-17', '', 'n', 'Leaves.', '']);
     mkdirSync(deps.notesDir, { recursive: true });

@@ -63,6 +63,17 @@ export const pathOf = (answer: string): string => {
   return resolve(p.replace(/^~(?=\/|$)/, process.env.HOME ?? '~'));
 };
 
+/** The area of the trip with the latest date in `contentDir`, as written there: the usual answer for the next trip. */
+export function latestArea(contentDir: string): string | undefined {
+  if (!existsSync(contentDir)) return undefined;
+  const trips = readdirSync(contentDir).filter((f) => f.endsWith('.md')).map((f) => readFileSync(join(contentDir, f), 'utf8'));
+  const field = (doc: string, name: string) => new RegExp(`^${name}: "?([^"\\n]+)"?$`, 'm').exec(doc)?.[1].trim();
+  return trips
+    .map((doc) => ({ date: field(doc, 'date') ?? '', area: field(doc, 'area') }))
+    .filter((t) => t.area)
+    .sort((a, b) => b.date.localeCompare(a.date))[0]?.area;
+}
+
 /** Asks until `parse` accepts the answer; a thrown Error is shown and the question repeats. */
 async function until<T>(deps: Pick<WizardDeps, 'ask' | 'say'>, question: string, parse: (answer: string) => T | Promise<T>, opts?: { default?: string }): Promise<T> {
   for (;;) {
@@ -252,7 +263,7 @@ export async function runWizard(deps: WizardDeps): Promise<WizardResult> {
       applies: () => true,
       missing: () => !a.area,
       async ask() {
-        a.area = await until(deps, 'Area, at valley or massif scale (never a trailhead or village)', text('area'), withDefault(a.area));
+        a.area = await until(deps, 'Area, at valley or massif scale (never a trailhead or village)', text('area'), withDefault(a.area, latestArea(deps.contentDir)));
       },
       show: () => a.area!,
     },
