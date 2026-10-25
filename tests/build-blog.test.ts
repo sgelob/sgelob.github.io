@@ -6,7 +6,7 @@ import { count, read, contentCount } from './helpers/dist';
 import { render } from './helpers/render';
 
 test('blog index lists 39 posts; empty category builds', () => { expect(count(read('dist/blog/index.html'), 'class="post-item"')).toBe(39); expect(existsSync('dist/category/product-management/index.html')).toBe(true); });  // Review Focus 4
-test('post page keeps iframe and uses it lang', () => { const html = read('dist/2017/04/video-slide-wordpress-wordcamp-torino-2017/index.html'); expect(html).toContain('<iframe'); expect(html).toContain('<html lang="it"'); });
+test('post page keeps its videos, as click-to-play facades, and uses its lang', () => { const html = read('dist/2017/04/video-slide-wordpress-wordcamp-torino-2017/index.html'); expect(html).toContain('<a class="video-embed"'); expect(html).toContain('<html lang="it"'); });
 test('year and month archives and feed exist', () => { for (const p of ['dist/2016/index.html','dist/2016/05/index.html','dist/feed.xml']) expect(existsSync(p)).toBe(true); expect(read('dist/feed.xml')).toContain('<item>'); });
 test('old post slug redirects', () => { expect(read('dist/2018/01/web-performance-fattore-ranking-siti-web-carlo-piazzano/index.html')).toContain('url=/2018/01/web-performance-fattore-ranking-seo-siti-web-carlo-piazzano/'); });
 
@@ -133,13 +133,13 @@ test('PostList renders a placeholder for an empty list', async () => {
 describe('post accessibility', () => {
   const wordcamp = () => read('dist/2017/04/video-slide-wordpress-wordcamp-torino-2017/index.html');
 
-  test('every iframe has a title (the WordCamp 2017 post embeds 18)', () => {
+  test('every video carries a title for its player (the WordCamp 2017 post embeds 18)', () => {
     const html = wordcamp();
-    const frames = html.match(/<iframe\b[^>]*>/g) ?? [];
-    expect(frames).toHaveLength(18);
-    expect(frames.filter((tag) => !/\stitle=/.test(tag))).toEqual([]);
-    expect(frames[0]).toContain('title="VideoPress video"');
-    expect(frames[0]).toContain('loading="lazy"');
+    const videos = html.match(/<a class="video-embed"[^>]*>/g) ?? [];
+    expect(videos).toHaveLength(18);
+    expect(videos.filter((tag) => !/\sdata-title="[^"]+"/.test(tag))).toEqual([]);
+    expect(videos[0]).toContain('data-title="VideoPress video"');
+    expect(html).not.toContain('<iframe');
   });
 
   test('no built page has an untitled iframe', () => {

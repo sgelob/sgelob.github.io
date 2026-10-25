@@ -152,7 +152,7 @@ describe('core web vitals', () => {
   test('every embedded iframe on the site loads lazily', () => {
     const pages = readdirSync('dist', { recursive: true, encoding: 'utf8' }).filter((f) => f.endsWith('.html'));
     const eager = pages.filter((f) => /<iframe(?![^>]*loading="lazy")/.test(read(`dist/${f}`)));
-    expect(read('dist/gallery/abandoned-beldi-furnace-novara-italy/index.html')).toMatch(/<iframe [^>]*loading="lazy"/); // after the a11y title
+    expect(read('dist/2016/09/come-eseguire-test-sintetici-web-performance-webpagetest-org/index.html')).toMatch(/<iframe [^>]*loading="lazy"/); // slides; videos are facades
     expect(eager).toEqual([]);
   });
 

@@ -14,6 +14,8 @@ import { coverSize } from '../../lib/paths';
 import { largestVariantUrl } from '../../lib/images';
 import { isoDate, pageTitle } from '../../lib/site';
 import { hasContours, readTrack } from '../../lib/tracks';
+import VideoEmbeds from '../../components/VideoEmbeds.astro';
+import { hasVideoEmbed } from '../../lib/video-embeds';
 
 // getStaticPaths runs isolated from the rest of the frontmatter: everything it uses lives inside it.
 export const getStaticPaths = (async () => {
@@ -60,7 +62,7 @@ const moreRow = moreLabels(activity, more);
     {heroMeta(trip.data, photos.length).map((item) => <><span>{item}</span>{' '}</>)}
   </Hero>
   {trip.body?.trim() && (
-    <div class="body wrap"><Content /></div>
+    <div class="body wrap"><Content />{hasVideoEmbed(trip.body) && <VideoEmbeds />}</div>
   )}
   {track !== false && (
     <RouteBlock xml={readTrack(track)} distance={distance} climb={climb} downloadHref={trackPath(trip)} approximateEnds={approximateEnds} links={links} contoursHref={hasContours(track) ? contoursPath(trip) : undefined} />
@@ -99,7 +101,7 @@ const moreRow = moreLabels(activity, more);
 
   .body :global(:is(strong, a)) { color: var(--fg); }
 
-  .body :global(a) { text-decoration: underline; text-underline-offset: 3px; }
+  .body :global(a:not(.video-embed)) { text-decoration: underline; text-underline-offset: 3px; }
 
   .pager {
     display: flex;

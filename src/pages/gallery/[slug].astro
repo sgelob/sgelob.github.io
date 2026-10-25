@@ -14,6 +14,8 @@ import { largestVariantUrl } from '../../lib/images';
 import { isoDate, pageTitle } from '../../lib/site';
 import { countryName, genreName } from '../../lib/taxonomies';
 import { redirectsUnder } from '../../lib/redirects';
+import VideoEmbeds from '../../components/VideoEmbeds.astro';
+import { hasVideoEmbed } from '../../lib/video-embeds';
 
 // getStaticPaths runs isolated from the rest of the frontmatter: everything it uses lives inside it.
 export const getStaticPaths = (async () => {
@@ -65,7 +67,7 @@ const search = gallery && {
   >
     <GalleryHero gallery={gallery} />
     {gallery.body?.trim() && Content && (
-      <div class="body wrap"><Content /></div>
+      <div class="body wrap"><Content />{hasVideoEmbed(gallery?.body) && <VideoEmbeds />}</div>
     )}
     <JustifiedGrid photos={gallery.data.photos} />
     <nav class="pager wrap mono" aria-label="More galleries" data-pagefind-ignore>
@@ -97,7 +99,7 @@ const search = gallery && {
 
   .body :global(:is(strong, a)) { color: var(--fg); }
 
-  .body :global(a) { text-decoration: underline; text-underline-offset: 3px; }
+  .body :global(a:not(.video-embed)) { text-decoration: underline; text-underline-offset: 3px; }
 
   .pager {
     display: flex;

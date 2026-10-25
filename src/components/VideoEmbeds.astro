@@ -1,0 +1,48 @@
+---
+// The players of a page with video facades (src/lib/video-embeds.ts): each ▶ link becomes its player on
+// the click, and nothing is requested from YouTube or VideoPress before that. A modified click (new tab,
+// new window) keeps the link's own behaviour. Rendered only on pages whose content embeds a video.
+---
+
+<script>
+  document.addEventListener('click', (event) => {
+    const link = (event.target as Element | null)?.closest<HTMLAnchorElement>('a.video-embed[data-embed]');
+    if (!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    const frame = document.createElement('iframe');
+    frame.src = link.dataset.embed ?? '';
+    frame.title = link.dataset.title ?? 'Video';
+    frame.className = 'video-embed';
+    frame.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+    frame.allowFullscreen = true;
+    link.replaceWith(frame);
+    frame.focus();
+  });
+</script>
+
+<style is:global>
+  .video-embed {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    max-width: 680px;
+    aspect-ratio: 16 / 9;
+    margin-block: 24px;
+    border: 0;
+    background: var(--rule);
+  }
+
+  a.video-embed { color: var(--fg); }
+
+  .video-play {
+    padding: 10px 16px;
+    border: 1px solid currentColor;
+    transition: background-color 120ms ease, color 120ms ease;
+  }
+
+  a.video-embed:hover .video-play,
+  a.video-embed:focus-visible .video-play {
+    background: var(--fg);
+    color: var(--bg);
+  }
+</style>

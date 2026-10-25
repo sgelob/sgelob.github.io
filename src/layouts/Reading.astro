@@ -108,12 +108,12 @@ const { heading, section = false, search, ...base } = Astro.props;
 
   .prose :global(strong) { font-weight: 600; }
 
-  .prose :global(a) {
+  .prose :global(a:not(.video-embed)) {
     border-bottom: 1px solid var(--muted);
     transition: border-color 120ms ease;
   }
 
-  .prose :global(a:hover) { border-bottom-color: var(--fg); }
+  .prose :global(a:not(.video-embed):hover) { border-bottom-color: var(--fg); }
 
   .prose :global(blockquote) {
     padding-left: 20px;

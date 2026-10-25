@@ -5,6 +5,7 @@ import GalleryGrid from '../components/GalleryGrid.astro';
 import SectionLabel from '../components/SectionLabel.astro';
 import PostList from '../components/PostList.astro';
 import QuoteOfTheDay from '../components/QuoteOfTheDay.astro';
+import TrackOfTheDay from '../components/TrackOfTheDay.astro';
 import TripGrid from '../components/TripGrid.astro';
 import { getGalleries, getPosts, getTrips } from '../lib/collections';
 import { home, leadParagraphs, pickFeatured } from '../lib/home';
@@ -32,6 +33,8 @@ const title = `${SITE.author} – ${SITE.description}`;
   </section>
 
   <QuoteOfTheDay />
+
+  <TrackOfTheDay />
 
   <section aria-labelledby="home-photos">
     <SectionLabel id="home-photos" title="Photos" href="/photos/" link={`All ${galleries.length} galleries`} />
