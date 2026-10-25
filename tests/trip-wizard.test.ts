@@ -1,4 +1,4 @@
-import { copyFileSync, existsSync, mkdirSync, mkdtempSync, readFileSync } from 'node:fs';
+import { copyFileSync, existsSync, mkdirSync, mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { describe, expect, test } from 'vitest';
@@ -86,7 +86,7 @@ describe('trip wizard', () => {
   });
 
   test('a Komoot link prefills activity, title, distance, climb and date, and offers its page as a link', async () => {
-    const tour: KomootTour = { id: '1134841094', name: 'Colle delle Finestre', sport: 'mtb', distanceKm: 38.5, climb: 1700, date: '2026-06-14', recorded: true, images: [], imagesTotal: 0 };
+    const tour: KomootTour = { id: '1134841094', name: 'Colle delle Finestre', sport: 'mtb', distanceKm: 38.5, climb: 1700, date: '2026-06-14', startedAt: '2026-06-14T08:12:40.000+02:00', recorded: true, images: [], imagesTotal: 0 };
     const komoot = async (url: string) => { if (!url.includes('komoot')) throw new Error('not a Komoot tour link'); return tour; };
     // link (bad, then good), activity default, bike, title default, slug default, area, country default, distance default, climb default,
     // shared, gpx, Komoot link yes, no more links, date default, cover default, darkHeader, notes
@@ -97,6 +97,7 @@ describe('trip wizard', () => {
     expect(readFileSync(r.path, 'utf8')).toContain('date: "2026-06-14T12:00:00"');
     expect(said.some((l) => l.includes('not a Komoot tour link'))).toBe(true);
     expect(said.some((l) => l.startsWith('  Found: Colle delle Finestre, mtb, 38.5 km, 1700 m up, 2026-06-14'))).toBe(true);
+    expect(readFileSync(r.notes, 'utf8')).toContain('- ride: 2026-06-14T08:12:40.000+02:00'); // the real time, kept only in the notes
   });
 
   test('with photos on Komoot, Enter at the folder question downloads them and the run goes on from that folder', async () => {
@@ -194,6 +195,17 @@ describe('trip wizard', () => {
     expect(existsSync(join(deps.tracksDir, 'ridge-loop.profile.json'))).toBe(false);
     expect(said.some((l) => l.includes('Approximate: the route is published as a closed circuit with no start or finish'))).toBe(true);
     expect(readFileSync(r.notes, 'utf8')).toContain('approximate ends');
+  });
+
+  test('a trip that shares its month with another is numbered by ride time, the latest after the earlier one', async () => {
+    const { deps } = setup((photos) => [photos, 'ride', 'trail', 'Ridge loop', '', 'Collina torinese', '', '27', '1300', 'a', fixture('track.gpx'), '', '2026-10-17', '', 'n', 'Leaves.', '']);
+    mkdirSync(deps.notesDir, { recursive: true });
+    writeFileSync(join(deps.contentDir, 'earlier-loop.md'), '---\ntitle: Earlier loop\ndate: "2026-10-01T12:00:00"\nactivity: ride\n---\nStory.\n');
+    writeFileSync(join(deps.notesDir, 'earlier-loop.md'), '# Earlier loop\n\n- ride: 2026-10-03T09:00:00+02:00\n');
+    const r = await runWizard(deps);
+    expect(readFileSync(r.notes, 'utf8')).toContain('- ride: 2026-10-17'); // no Komoot tour: the day given
+    expect(readFileSync(r.path, 'utf8')).toMatch(/^date: "2026-10-01T12:00:00"\norder: 2$/m);
+    expect(readFileSync(join(deps.contentDir, 'earlier-loop.md'), 'utf8')).toMatch(/^date: "2026-10-01T12:00:00"\norder: 1$/m);
   });
 
   test('a discreet trip gets no contour layer', async () => {

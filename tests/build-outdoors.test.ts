@@ -112,4 +112,16 @@ describe('trip page', () => {
     expect(points.length).toBeGreaterThan(5000);
     expect(points[points.length - 1]).toBe(points[0]); // the circuit closes where it starts
   });
+
+  test('trips that share a published month are listed by their real ride order, latest first', () => {
+    const html = read('dist/outdoors/index.html');
+    const slugs = [...html.matchAll(/<a class="trip-card" href="\/outdoors\/([a-z0-9-]+)\/"/g)].map((m) => m[1]);
+    expect(slugs).toEqual([
+      'castiglione-sassi-superga-rivodora-tanohill-cordova-pavarolo',
+      'castiglione-pavarolo-cordova-baldissero-rivodora-san-martino',
+      'castiglione-sassi-cavoretto-revigliasco-maddalena-pecetto-pino-superga',
+      'castiglione-bosco-del-vaj-casalborgone-castagneto-po-sand-raffaele',
+      'canosio-gardetta-valle-maira',
+    ]);
+  });
 });

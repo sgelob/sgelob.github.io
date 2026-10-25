@@ -18,6 +18,8 @@ export interface KomootTour {
   climb: number;
   /** The tour's date (the recording date for a recorded tour), local day as YYYY-MM-DD. */
   date: string;
+  /** The same moment as Komoot gives it (ISO 8601 with the time), for ordering rides of the same day or month. */
+  startedAt?: string;
   recorded: boolean;
 }
 
@@ -89,7 +91,7 @@ export async function fetchKomootTour(url: string, fetchImpl: FetchLike, auth?: 
   const when = new Date(date);
   const day = `${when.getFullYear()}-${String(when.getMonth() + 1).padStart(2, '0')}-${String(when.getDate()).padStart(2, '0')}`;
   const { images, total } = await fetchKomootImages(id, fetchImpl, auth);
-  return { id, name, sport, distanceKm: Math.round(distance / 100) / 10, climb: Math.round(up), date: day, recorded: type === 'tour_recorded', images, imagesTotal: total };
+  return { id, name, sport, distanceKm: Math.round(distance / 100) / 10, climb: Math.round(up), date: day, startedAt: date, recorded: type === 'tour_recorded', images, imagesTotal: total };
 }
 
 /**

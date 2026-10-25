@@ -1,6 +1,7 @@
 ---
 title: Castiglione – Bosco del Vaj – Casalborgone – Castagneto Po – Sand Raffaele
 date: "2026-10-01T12:00:00"
+order: 1
 activity: ride
 bike: trail
 distance: 47.7
