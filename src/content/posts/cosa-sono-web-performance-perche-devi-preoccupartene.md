@@ -455,7 +455,7 @@ Il web lo facciamo tutti noi, per altre persone come noi, e anche se questo argo
 
 ## Il video intero del mio talk
 
-<iframe loading="lazy" width="560" height="315" src="https://videopress.com/embed/2qGsKO6U" frameborder="0" allowfullscreen="" allow="clipboard-write"></iframe><script src="https://videopress.com/videopress-iframe.js"></script>
+<iframe loading="lazy" width="560" height="315" src="https://videopress.com/embed/2qGsKO6U" frameborder="0" allowfullscreen="" allow="clipboard-write"></iframe>
 
 Grazie per l’attenzione!
 
