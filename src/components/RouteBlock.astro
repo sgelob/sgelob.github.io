@@ -36,7 +36,7 @@ const [startX, startY] = fit.project(all[0]).map(r1);
 const top = all.reduce<(typeof all)[number] | undefined>((best, p) => (p.ele !== undefined && (best?.ele === undefined || p.ele > best.ele) ? p : best), undefined);
 const [topX, topY] = top ? fit.project(top).map(r1) : [0, 0];
 
-const profile = profileFigure(all);
+const profile = profileFigure(all, 400, 170, 400, formatKm(distance));
 const metres = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 });
 const kmOne = new Intl.NumberFormat('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 const stats = `${formatKm(distance)} · ${formatClimb(climb)}${approximateEnds ? ' · start and finish not shown' : ''}`;
