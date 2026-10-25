@@ -1,6 +1,6 @@
 // Astro-runtime only (uses getCollection). Pure helpers live in paths.ts.
 import { getCollection } from 'astro:content';
-import type { Activity, Trip } from './outdoors';
+import { sortTrips, type Activity, type Trip } from './outdoors';
 import { sortByDateDesc, type Gallery, type Post } from './paths';
 
 export { galleryPath, groupGalleries, mergeSmallGroups, neighbours, postPath, related, sortByDateDesc } from './paths';
@@ -17,7 +17,7 @@ export async function getGalleriesBy(tax: 'genre' | 'country', slug: string): Pr
 }
 
 export async function getTrips(): Promise<Trip[]> {
-  return sortByDateDesc(await getCollection('outdoors'));
+  return sortTrips(await getCollection('outdoors'));
 }
 
 export async function getTripsBy(activity: Activity): Promise<Trip[]> {
