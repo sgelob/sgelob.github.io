@@ -21,7 +21,10 @@ describe('outdoors index', () => {
     expect(read('dist/outdoors/hikes/index.html')).toMatch(/<a href="\/outdoors\/hikes\/" aria-current="page"[^>]*>Hikes<\/a>/);
     expect(read('dist/outdoors/rides/index.html')).toMatch(/<a href="\/outdoors\/rides\/" aria-current="page"[^>]*>Rides<\/a>/);
     expect(read('dist/outdoors/rides/index.html')).toContain('<title>Rides · Outdoors – Olegs Belousovs</title>');
-    expect(read('dist/outdoors/hikes/index.html')).toContain('No hikes yet.');
+    const hikes = read('dist/outdoors/hikes/index.html');
+    expect(hikes).toContain('href="/outdoors/punta-alpet-lago-delle-scalette/"');
+    expect(hikes).not.toContain('href="/outdoors/canosio-gardetta-valle-maira/"'); // a ride
+    expect(hikes).not.toContain('No hikes yet.');
     expect(read('dist/outdoors/rides/index.html')).toContain('href="/outdoors/canosio-gardetta-valle-maira/"');
   });
 });
