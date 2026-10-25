@@ -1,7 +1,7 @@
 ---
 title: Castiglione Torinese – Colle della Maddalena
 date: "2026-09-01T12:00:00"
-order: 3
+order: 4
 activity: ride
 bike: trail
 distance: 46.5
