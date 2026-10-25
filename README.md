@@ -11,6 +11,8 @@ npm test         # vitest (builds the site once, then checks the output)
 npm run build    # static site into dist/, then its search index into dist/pagefind/
 ```
 
+`npm test` also runs every built page through [axe-core](https://github.com/dequelabs/axe-core) (WCAG 2.2 A and AA plus best practices) at 1280 and 390 px in headless Chrome, which takes about three minutes. It finds Chrome at `CHROME_PATH` or the usual install paths; without one the scan is skipped locally, and on CI it fails.
+
 Search (`/search/`) runs on a [Pagefind](https://pagefind.app) index that `npm run build` writes after the Astro build; the dev server has no index, so try search with `npm run build && npm run preview`.
 
 ## Add a gallery
