@@ -14,7 +14,8 @@ export type Bike = (typeof BIKES)[number];
 export const tripSchema = z.object({
   title: z.string(),
   date: z.coerce.date(),
-  // Position among the trips that share this published date (a trip that shows only its month), by the real ride time: 1 for the earliest. Set by `npm run trips-order`.
+  // Position among the trips published in the same month, by the real ride time: 1 for the earliest. A trip that shows only its month
+  // has its date on the 1st, so the day alone cannot order it. Set by `npm run trips-order`.
   order: z.number().int().positive().optional(),
   activity: z.enum(ACTIVITIES),
   bike: z.enum(BIKES).optional(),
@@ -137,9 +138,15 @@ export function moreLabels(activity: Activity, more: readonly { data: { activity
 export const OUTDOORS_LEAD =
   'Hikes and mountain-bike rides, mostly in the Alps: time in the woods and on the trails for the landscape and the quiet, a kind of shinrin-yoku on foot or on two wheels. Distance and climb are there to describe the day, not to measure it.';
 
-/** Newest published date first; among trips that share it, the latest ride first (`order`); then by id, so the order is stable. */
+const monthOf = (d: Date) => d.getFullYear() * 12 + d.getMonth();
+
+/** Newest month first; within a month the latest ride first (`order`), then the published date, then the id, so the order is stable. */
 export function sortTrips<T extends { id: string; data: { date: Date; order?: number } }>(entries: readonly T[]): T[] {
   return [...entries].sort(
-    (a, b) => b.data.date.getTime() - a.data.date.getTime() || (b.data.order ?? 0) - (a.data.order ?? 0) || a.id.localeCompare(b.id),
+    (a, b) =>
+      monthOf(b.data.date) - monthOf(a.data.date) ||
+      (b.data.order ?? 0) - (a.data.order ?? 0) ||
+      b.data.date.getTime() - a.data.date.getTime() ||
+      a.id.localeCompare(b.id),
   );
 }
