@@ -1,6 +1,7 @@
 ---
 title: Castiglione – Pavarolo – Cordova – Baldissero – Rivodora – San Martino
 date: "2026-10-01T12:00:00"
+order: 3
 activity: ride
 bike: trail
 distance: 30.1
