@@ -1,7 +1,7 @@
 ---
 title: Ceresole Reale – Colle Leynir
 date: "2026-07-12T12:00:00"
-order: 1
+order: 2
 activity: ride
 bike: trail
 distance: 45.3
