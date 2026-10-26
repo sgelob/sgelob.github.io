@@ -1,7 +1,7 @@
 ---
 title: Bobbio Pellice – Anello dei rifugi (Barbara/Barant/Jervis)
 date: "2026-06-13T12:00:00"
-order: 1
+order: 2
 activity: ride
 bike: xc
 distance: 37.9

@@ -1,7 +1,7 @@
 ---
 title: Gabiet
 date: "2026-06-27T12:00:00"
-order: 4
+order: 5
 activity: hike
 # bike: xc | trail
 distance: 2.1

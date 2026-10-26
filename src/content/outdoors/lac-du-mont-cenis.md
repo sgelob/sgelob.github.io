@@ -1,7 +1,7 @@
 ---
 title: Lac du Mont-Cenis
 date: "2026-06-28T12:00:00"
-order: 5
+order: 6
 activity: ride
 bike: xc
 distance: 22.2
