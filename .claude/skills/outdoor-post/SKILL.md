@@ -46,7 +46,7 @@ Look at every photo (`photos/NN.jpg`). Note what each shows; name a place only w
 
 - `npm test` and `npm run check` must pass.
 - A content-only post goes straight to `main`: `git add src/content/outdoors`, commit as `content(outdoors): <title>`, push. If the change touched code or tests, use a branch and a pull request instead. If the push to `main` is refused, push a branch, open a pull request and tell the user.
-- Wait for the deploy, then check that the trip page, its photos on img.olegs.be and the GPX download (`/outdoors/<slug>-olegs-be.gpx`) answer 200. For an approximate or discreet trip, also check that the real day is not on the page.
+- Wait for the deploy, then check that the trip page, its photos on img.olegs.be and the GPX download (`/outdoors/<slug>-olegs-be.gpx`) answer 200. Use `curl -A 'olegs.be post check'`, so the checks show up as ours in the site's analytics and not as bot traffic. For an approximate or discreet trip, also check that the real day is not on the page.
 - Tell the user what is live, what the story covers, the sources, and the next tours not yet on the site if known.
 
 ## Cloud environment (Claude Code on the phone)
