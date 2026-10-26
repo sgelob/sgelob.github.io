@@ -1,7 +1,7 @@
 ---
 title: Castiglione – Sassi – Chieri – Moncalieri – Madda – Superga
 date: "2026-08-01T12:00:00"
-order: 7
+order: 8
 activity: ride
 bike: xc
 distance: 72

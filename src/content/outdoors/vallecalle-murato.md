@@ -1,7 +1,7 @@
 ---
 title: Vallecalle – Murato
 date: "2026-08-12T12:00:00"
-order: 4
+order: 5
 activity: hike
 # bike: xc | trail
 distance: 9

@@ -1,7 +1,7 @@
 ---
 title: Terme di Valdieri – Piano del Valasco
 date: "2026-08-02T12:00:00"
-order: 1
+order: 2
 activity: hike
 # bike: xc | trail
 distance: 11.8
