@@ -1,7 +1,7 @@
 ---
 title: Pinarellu – Capu di Fora
 date: "2026-08-17T12:00:00"
-order: 3
+order: 4
 activity: hike
 # bike: xc | trail
 distance: 5.9
