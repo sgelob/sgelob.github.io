@@ -1,7 +1,7 @@
 ---
 title: Marsaglia – Salvin
 date: "2026-07-11T12:00:00"
-order: 1
+order: 2
 activity: hike
 # bike: xc | trail
 distance: 5.2
@@ -39,7 +39,7 @@ photos:
     alt: The sanctuary far down in a wooded valley, peaks beyond
 ---
 
-Five kilometres and 253 metres of climbing, a short loop from Marsaglia up to the refuge at Salvin, in the Valli di Lanzo above Monastero di Lanzo. I had found the refuge on a mountain-bike ride, and came back on foot with friends.
+Five kilometres and 253 metres of climbing, a short loop from Marsaglia up to the refuge at Salvin, in the Valli di Lanzo above Monastero di Lanzo. I had found the refuge on [a mountain-bike ride](/outdoors/lanzo-torinese-lago-di-monastero-rifugio-salvin/), and came back on foot with friends.
 
 Marsaglia is a few stone houses with slate roofs round a bell tower and its sanctuary, whose white façade stands out against the woods. The sanctuary dates from 1771, on the site of an older chapel, and its walls hold more than two hundred votive offerings. Like the other hamlets of Monastero, it has been emptying since the late nineteenth century, when the commune still had about two thousand people.
 
