@@ -1,7 +1,7 @@
 ---
 title: Castiglione – San Mauro – Pino – Baldissero
 date: "2026-05-01T12:00:00"
-order: 3
+order: 4
 activity: ride
 bike: xc
 distance: 47.8

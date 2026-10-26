@@ -1,7 +1,7 @@
 ---
 title: Castiglione – San Mauro – Baldissero – Pavarolo – Montaldo – Marentino – Moncucco – Cinzano – Sciolze – Gassino
 date: "2026-05-01T12:00:00"
-order: 1
+order: 2
 activity: ride
 bike: xc
 distance: 53.1
