@@ -25,6 +25,9 @@ export default defineConfig({
   // Component scripts always go to a file of their own: the Content Security Policy allows scripts from the site
   // itself, not inline ones (Astro would otherwise inline a script under Vite's 4 KB limit).
   vite: { build: { assetsInlineLimit: 0 } },
+  // Every internal link loads its page in the background when hovered or focused, so the click lands on a page
+  // already in the browser cache. A small script file of Astro's, allowed by the security policy like the others.
+  prefetch: { prefetchAll: true, defaultStrategy: 'hover' },
   // Video and slide players become click-to-play links (no third-party request before ▶), and every other embedded
   // <iframe> gets a title from its host, so none is announced as a bare "frame".
   markdown: { processor: satteri({ hastPlugins: [embedFacadesPlugin, iframeTitles] }) },

@@ -65,7 +65,7 @@ describe('gallery page', () => {
   test('the lightbox is a small module that imports PhotoSwipe on demand', () => {
     const html = venezia();
     expect(html).not.toContain('photoswipe'); // neither its stylesheet nor its code up front
-    const src = /<script type="module" src="(\/_astro\/[^"]+\.js)"><\/script>/.exec(html)?.[1];
+    const src = /<script type="module" src="(\/_astro\/Lightbox[^"]+\.js)"><\/script>/.exec(html)?.[1];
     expect(src).toBeDefined();
     const entry = read(`dist${src}`);
     expect(Buffer.byteLength(entry)).toBeLessThan(5 * 1024); // ~4 KB with the caption and hash history code
@@ -84,7 +84,7 @@ describe('gallery page', () => {
 
   test('the lightbox shows the photo description as a caption and keeps the open photo in the hash', () => {
     const html = venezia();
-    const src = /<script type="module" src="(\/_astro\/[^"]+\.js)"><\/script>/.exec(html)?.[1];
+    const src = /<script type="module" src="(\/_astro\/Lightbox[^"]+\.js)"><\/script>/.exec(html)?.[1];
     const entry = read(`dist${src}`);
     expect(entry).toContain('registerElement'); // the caption element, filled from the slide's alt
     expect(entry).toMatch(/Photo \\d\+/); // the "Photo n" fallback is not shown as a caption
