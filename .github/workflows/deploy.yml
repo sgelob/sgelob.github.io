@@ -48,3 +48,21 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
+      # Cloudflare keeps the pages of olegs.be at its edge (a cache rule on the zone), so each deploy purges them.
+      # Only the site's host: the photos on img.olegs.be never change under the same name and stay cached.
+      # The short wait lets GitHub's own CDN serve the new build before Cloudflare fetches it again.
+      - name: Purge the Cloudflare cache
+        env:
+          CF_PURGE_TOKEN: ${{ secrets.CF_PURGE_TOKEN }}
+          CF_ZONE_ID: 409280aaf9e4fc9a4970cdbafb869852
+        run: |
+          if [ -z "$CF_PURGE_TOKEN" ]; then
+            echo "::warning::CF_PURGE_TOKEN is not set: the Cloudflare cache was not purged."
+            exit 0
+          fi
+          sleep 30
+          curl --silent --show-error --fail --request POST \
+            "https://api.cloudflare.com/client/v4/zones/$CF_ZONE_ID/purge_cache" \
+            --header "Authorization: Bearer $CF_PURGE_TOKEN" \
+            --header 'Content-Type: application/json' \
+            --data '{"hosts":["olegs.be"]}'

@@ -112,7 +112,7 @@ describe('the player', () => {
 
   test('an empty, hidden player, and a bundled script that plays a track’s video only after a click', () => {
     expect(page).toMatch(/<div class="player"[^>]*data-player[^>]*hidden/);
-    const src = /<script type="module" src="(\/_astro\/[^"]+\.js)"><\/script>/.exec(page)?.[1];
+    const src = /<script type="module" src="(\/_astro\/RecordPlayer[^"]+\.js)"><\/script>/.exec(page)?.[1];
     expect(src).toBeDefined();
     const code = read(`dist${src}`);
     expect(code).toContain('youtube-nocookie.com/embed/');
