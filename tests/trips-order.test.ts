@@ -2,7 +2,7 @@ import { mkdtempSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { describe, expect, test } from 'vitest';
-import { orderTrips, readRideTime, rideOrders, writeOrder } from '../scripts/trip/order';
+import { komootTourId, missingRideTimes, orderTrips, readRideTime, recordRideTime, rideOrders, writeOrder } from '../scripts/trip/order';
 import { sortTrips } from '../src/lib/outdoors';
 
 describe('ride order', () => {
@@ -74,5 +74,24 @@ describe('ride order', () => {
     const t = (id: string, date: string, order?: number) => ({ id, data: { date: new Date(date), order } });
     const sorted = sortTrips([t('august', '2026-08-30T12:00:00'), t('day', '2026-09-20T12:00:00', 1), t('month', '2026-09-01T12:00:00', 2)]);
     expect(sorted.map((x) => x.id)).toEqual(['month', 'day', 'august']);
+  });
+
+  test('komootTourId: the tour behind a trip’s Komoot link, or nothing for a trip without one', () => {
+    expect(komootTourId('---\nlinks:\n  - label: Komoot\n    url: https://www.komoot.com/tour/3105861221\n---\n')).toBe('3105861221');
+    expect(komootTourId('---\ntrack: false\n---\n')).toBeUndefined();
+  });
+
+  test('missingRideTimes lists the trips whose notes have no ride time; recordRideTime fills them in once', () => {
+    const base = mkdtempSync(join(tmpdir(), 'ride-'));
+    const content = join(base, 'outdoors'); const notes = join(base, 'notes');
+    mkdirSync(content); mkdirSync(notes);
+    const trip = (slug: string, tour?: string) => writeFileSync(join(content, `${slug}.md`), `---\ntitle: ${slug}\ndate: "2026-10-01T12:00:00"\n${tour ? `links:\n  - label: Komoot\n    url: https://www.komoot.com/tour/${tour}\n` : ''}---\n`);
+    trip('noted', '1'); trip('unnoted', '2'); trip('discreet');
+    writeFileSync(join(notes, 'noted.md'), '# noted\n\n- ride: 2026-10-03T07:00:00Z\n');
+    expect(missingRideTimes(content, notes)).toEqual([{ slug: 'discreet', tourId: undefined }, { slug: 'unnoted', tourId: '2' }]);
+    recordRideTime(notes, 'unnoted', '2026-10-10T07:00:00Z');
+    recordRideTime(notes, 'unnoted', '2026-10-10T07:00:00Z');
+    expect(readFileSync(join(notes, 'unnoted.md'), 'utf8').match(/- ride: /g)).toHaveLength(1);
+    expect(missingRideTimes(content, notes).map((t) => t.slug)).toEqual(['discreet']);
   });
 });

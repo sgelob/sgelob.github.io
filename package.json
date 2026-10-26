@@ -21,7 +21,8 @@
     "contours": "tsx scripts/contours.ts",
     "records": "tsx scripts/records.ts",
     "books": "tsx scripts/books.ts",
-    "trips-order": "tsx scripts/trips-order.ts"
+    "trips-order": "tsx scripts/trips-order.ts",
+    "trip-fetch": "tsx scripts/trip-fetch.ts"
   },
   "dependencies": {
     "@astrojs/markdown-satteri": "^0.4.5",

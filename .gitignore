@@ -5,7 +5,9 @@ dist
 .env
 .photos-cache/
 .gstack/
-.claude/
+.claude/*
+# Project skills are shared with every session, including cloud ones
+!.claude/skills/
 .DS_Store
 olegs-be-data/
 olegs-be-drafts/
