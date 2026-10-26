@@ -2,7 +2,7 @@ import { describe, expect, test } from 'vitest';
 import { mkdtempSync, readdirSync, readFileSync as readSync, statSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { activityFromSport, downloadKomootImages, fetchKomootImages, fetchKomootTour, komootLogin, tourIdFromUrl, type FetchLike } from '../scripts/trip/komoot';
+import { activityFromSport, downloadKomootImages, fetchKomootGpx, fetchKomootImages, fetchKomootTour, komootLogin, tourIdFromUrl, type FetchLike } from '../scripts/trip/komoot';
 
 const body = readSync(new URL('./fixtures/komoot-tour.json', import.meta.url), 'utf8');
 const imagesBody = readSync(new URL('./fixtures/komoot-images.json', import.meta.url), 'utf8');
@@ -107,5 +107,13 @@ describe('komoot login and paging', () => {
     expect(await komootLogin('a@b.c', 's3cret', ok)).toEqual({ username: '601', token: 'tok' });
     expect(seen).toBe(`https://api.komoot.de/v006/account/email/a%40b.c/ Basic ${Buffer.from('a@b.c:s3cret').toString('base64')}`);
     await expect(komootLogin('a@b.c', 'wrong', async () => respond('', 401))).rejects.toThrow('Komoot refused the login');
+  });
+
+  test('gpx: the export of a tour, asked for with the token; a refusal is a plain message', async () => {
+    let seen = '';
+    const ok: FetchLike = async (url, init) => { seen = `${url} ${init?.headers?.Authorization}`; return respond('<gpx><trk/></gpx>'); };
+    expect(await fetchKomootGpx('3105861221', ok, { username: '601', token: 'tok' })).toBe('<gpx><trk/></gpx>');
+    expect(seen).toBe(`https://api.komoot.de/v007/tours/3105861221.gpx Basic ${Buffer.from('601:tok').toString('base64')}`);
+    await expect(fetchKomootGpx('1', async () => respond('', 403), { username: '601', token: 'tok' })).rejects.toThrow('Komoot refuses the GPX of tour 1');
   });
 });
