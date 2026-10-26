@@ -1,7 +1,7 @@
 ---
 title: Castiglione (Cordova)
 date: "2026-05-01T12:00:00"
-order: 1
+order: 2
 activity: ride
 bike: trail
 distance: 23.1
