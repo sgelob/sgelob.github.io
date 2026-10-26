@@ -10,6 +10,7 @@ The terminal wizard (`npm run trip`) asks its questions on stdin. This is the sa
 ## 0. Before starting
 
 - `KOMOOT_EMAIL`, `KOMOOT_PASSWORD`, `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY` and `R2_BUCKET` must be set (in `.env`, or in the cloud environment). Check that they exist; never print their values.
+- `node -v` is at least the version Astro asks for (v22.23.4 today): an older Node makes `npm test` and `npm run check` stop with "Node.js … is not supported by Astro". In the cloud, `UPLOADS_DIR` is not set: the folder there holds only this session’s uploads, so the originals check in `npm test` would fail on old posts (CI skips it too). If either is wrong, tell the user what to fix in the environment and stop.
 - `npm ci` has run. Start from an up-to-date `main` with a clean tree.
 
 ## 1. Fetch
@@ -53,8 +54,8 @@ Look at every photo (`photos/NN.jpg`). Note what each shows; name a place only w
 
 A cloud session sees only the repository. It needs an environment with:
 
-- **Environment variables:** the six above.
+- **Environment variables:** the six above, and not `UPLOADS_DIR`.
 - **Network access** to `api.komoot.de`, `www.komoot.com`, `d2exd72xrrp1s7.cloudfront.net` (Komoot's photos), `<account id>.r2.cloudflarestorage.com` (R2 uploads), `s3.amazonaws.com` (Terrain Tiles for the contours), `nominatim.openstreetmap.org`, `olegs.be` and `img.olegs.be`, plus the npm registry and GitHub.
-- **Setup script:** `npm ci`.
+- **Setup script:** install a Node 22 recent enough for Astro (download it from nodejs.org, check it against `SHASUMS256.txt`, replace the `node` binary the container has), then `npm ci`. Add `nodejs.org` to the network access.
 
 Notes and drafts written there are lost with the session; the trip files and the photos on R2 are what lasts.
