@@ -1,7 +1,7 @@
 ---
 title: Serra-di-Ferro – Plage de Cupabia
 date: "2026-08-21T12:00:00"
-order: 4
+order: 5
 activity: hike
 # bike: xc | trail
 distance: 4
