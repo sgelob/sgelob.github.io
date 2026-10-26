@@ -1,7 +1,7 @@
 ---
 title: Sassi – Leopardi – Madda – Superga
 date: "2026-07-15T12:00:00"
-order: 2
+order: 3
 activity: ride
 bike: trail
 distance: 38.1
