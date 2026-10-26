@@ -1,3 +1,4 @@
+import { vi, afterEach } from 'vitest';
 import { createServer, type Server } from 'node:http';
 import type { AddressInfo } from 'node:net';
 import { afterAll, beforeAll, expect, test } from 'vitest';
@@ -45,4 +46,18 @@ test('checkUrls reports a redirect as is instead of following it', async () => {
 test('checkUrls keeps input order across the concurrency limit', async () => {
   const paths = Array.from({ length: 20 }, (_, i) => `/n${i}/`);
   expect((await checkUrls(base, paths)).map((r) => r.path)).toEqual(paths);
+});
+
+afterEach(() => vi.unstubAllGlobals());
+
+test('checkUrls names itself in the User-Agent, so the site’s analytics can tell our checks from bots', async () => {
+  const seen: { url: string; ua: string | undefined }[] = [];
+  vi.stubGlobal('fetch', async (url: URL, init?: RequestInit) => {
+    seen.push({ url: String(url), ua: new Headers(init?.headers).get('user-agent') ?? undefined });
+    return new Response(null, { status: 200 });
+  });
+  const results = await checkUrls('https://example.test', ['/a/', '/b c/']);
+  expect(results.map((r) => r.status)).toEqual([200, 200]);
+  expect(seen.map((s) => s.url)).toEqual(['https://example.test/a/', 'https://example.test/b%20c/']);
+  expect(seen.every((s) => s.ua === 'olegs.be check-urls')).toBe(true);
 });
