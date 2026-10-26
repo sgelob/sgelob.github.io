@@ -5,7 +5,7 @@ const SITEMAP_INDEX = 'https://olegs.be/sitemap.xml';
 const NOT_A_PAGE = /\.(xml|xsl|jpe?g|png|gif|webp|avif|svg|pdf)$|\/feed\/?$/i;
 
 async function fetchText(url: string): Promise<string> {
-  const response = await fetch(url);
+  const response = await fetch(url, { headers: { 'User-Agent': 'olegs.be check-urls' } });
   if (!response.ok) throw new Error(`${url} answered ${response.status}`);
   return response.text();
 }

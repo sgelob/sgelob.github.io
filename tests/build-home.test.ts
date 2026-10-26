@@ -135,6 +135,17 @@ test('the WordPress sitemap URLs serve the index of the sitemap Astro writes', (
   expect(read('dist/robots.txt')).toContain('Sitemap: https://olegs.be/sitemap.xml');
 });
 
+test('robots.txt: everyone may crawl, except the AI crawlers and SEO scrapers named in one group', () => {
+  const robots = read('dist/robots.txt');
+  expect(robots).toMatch(/^User-agent: \*\nAllow: \/$/m);
+  for (const bot of ['GPTBot', 'ClaudeBot', 'PerplexityBot', 'Amazonbot', 'meta-externalagent', 'CCBot', 'Bytespider', 'AhrefsBot', 'QlyzeBot', 'SemanticVisionsBot', 'PetalBot', 'ibou-search']) {
+    expect(robots).toMatch(new RegExp(`^User-agent: ${bot}$`, 'm'));
+  }
+  // One Disallow for the whole group, right after its last User-agent line; the general rule keeps its Allow.
+  expect(robots.match(/^Disallow: \/$/gm)).toHaveLength(1);
+  expect(robots).toMatch(/^User-agent: ibou-search\nDisallow: \/$/m);
+});
+
 describe('home accessibility', () => {
   test('arrow glyphs are hidden from assistive tech', () => {
     const html = read('dist/index.html');

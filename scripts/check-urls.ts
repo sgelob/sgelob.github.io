@@ -3,6 +3,8 @@ import { parseArgs } from 'node:util';
 import { pathToFileURL } from 'node:url';
 
 const CONCURRENCY = 8;
+// Named so the site's analytics can tell these checks from bots: every run requests every page.
+const HEADERS = { 'User-Agent': 'olegs.be check-urls' };
 
 export interface UrlResult {
   path: string;
@@ -17,7 +19,7 @@ export async function checkUrls(base: string, paths: string[]): Promise<UrlResul
     while (next < paths.length) {
       const index = next++;
       const path = paths[index]!;
-      const response = await fetch(new URL(encodeURI(path), base), { redirect: 'manual' });
+      const response = await fetch(new URL(encodeURI(path), base), { redirect: 'manual', headers: HEADERS });
       await response.body?.cancel();
       results[index] = { path, status: response.status };
     }
