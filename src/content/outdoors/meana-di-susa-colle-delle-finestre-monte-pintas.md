@@ -1,7 +1,7 @@
 ---
 title: Meana di Susa – Colle delle Finestre – Monte Pintas
 date: "2026-07-25T12:00:00"
-order: 2
+order: 3
 activity: ride
 bike: xc
 distance: 36.9
