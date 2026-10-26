@@ -94,6 +94,14 @@ export async function fetchKomootTour(url: string, fetchImpl: FetchLike, auth?: 
   return { id, name, sport, distanceKm: Math.round(distance / 100) / 10, climb: Math.round(up), date: day, startedAt: date, recorded: type === 'tour_recorded', images, imagesTotal: total };
 }
 
+/** The tour's GPX export, as the Komoot app gives it (needs the login: Komoot sends it only to the tour's owner). */
+export async function fetchKomootGpx(id: string, fetchImpl: FetchLike, auth: KomootAuth): Promise<string> {
+  const res = await fetchImpl(`https://api.komoot.de/v007/tours/${id}.gpx`, { headers: { ...headers(auth), Accept: 'application/gpx+xml' } });
+  if (res.status === 401 || res.status === 403) throw new Error(`Komoot refuses the GPX of tour ${id} to this account`);
+  if (!res.ok) throw new Error(`Komoot answered ${res.status} for the GPX of tour ${id}`);
+  return res.text();
+}
+
 /**
  * The tour's own photos, following Komoot's `next` links page by page, sorted by their position along the track.
  * Without a login Komoot answers every page with the first one: the loop stops when a page brings nothing new,
