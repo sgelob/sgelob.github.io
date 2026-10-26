@@ -1,7 +1,7 @@
 ---
 title: Champorcher – Finestra
 date: "2026-06-20T12:00:00"
-order: 1
+order: 2
 activity: ride
 bike: xc
 distance: 27

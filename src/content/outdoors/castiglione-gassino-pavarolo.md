@@ -1,7 +1,7 @@
 ---
 title: Castiglione – Gassino – Pavarolo
 date: "2026-06-01T12:00:00"
-order: 2
+order: 3
 activity: ride
 bike: trail
 distance: 21.9
