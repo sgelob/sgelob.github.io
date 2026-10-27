@@ -1,7 +1,7 @@
 ---
 title: Sassi – Bob x2 – Madda – Tango – 600
 date: "2026-04-11T12:00:00"
-order: 2
+order: 3
 activity: ride
 bike: trail
 distance: 36.8
