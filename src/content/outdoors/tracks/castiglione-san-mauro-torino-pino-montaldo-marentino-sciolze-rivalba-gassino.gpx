@@ -3,6 +3,22 @@
   <trk>
     <name>castiglione-san-mauro-torino-pino-montaldo-marentino-sciolze-rivalba-gassino</name>
     <trkseg>
+      <trkpt lat="45.115692" lon="7.803837"><ele>238.897619</ele></trkpt>
+      <trkpt lat="45.115718" lon="7.803717"><ele>238.537477</ele></trkpt>
+      <trkpt lat="45.115753" lon="7.803602"><ele>238.178166</ele></trkpt>
+      <trkpt lat="45.115793" lon="7.80349"><ele>237.48102</ele></trkpt>
+      <trkpt lat="45.115835" lon="7.80338"><ele>236.769689</ele></trkpt>
+      <trkpt lat="45.11588" lon="7.803276"><ele>236.075851</ele></trkpt>
+      <trkpt lat="45.115925" lon="7.803174"><ele>235.391685</ele></trkpt>
+      <trkpt lat="45.115968" lon="7.803073"><ele>234.720802</ele></trkpt>
+      <trkpt lat="45.11601" lon="7.802968"><ele>234.03435</ele></trkpt>
+      <trkpt lat="45.116055" lon="7.802858"><ele>233.311202</ele></trkpt>
+      <trkpt lat="45.116101" lon="7.802744"><ele>232.564317</ele></trkpt>
+      <trkpt lat="45.11615" lon="7.802626"><ele>231.785621</ele></trkpt>
+      <trkpt lat="45.116206" lon="7.802502"><ele>230.948317</ele></trkpt>
+      <trkpt lat="45.116264" lon="7.802368"><ele>230.054257</ele></trkpt>
+      <trkpt lat="45.116326" lon="7.802233"><ele>229.138165</ele></trkpt>
+      <trkpt lat="45.116389" lon="7.802087"><ele>228.164858</ele></trkpt>
       <trkpt lat="45.116457" lon="7.801939"><ele>227.160421</ele></trkpt>
       <trkpt lat="45.116521" lon="7.801791"><ele>226.173207</ele></trkpt>
       <trkpt lat="45.116591" lon="7.801646"><ele>225.174014</ele></trkpt>
@@ -16713,25 +16729,6 @@
       <trkpt lat="45.117627" lon="7.816677"><ele>228.588922</ele></trkpt>
       <trkpt lat="45.11759" lon="7.816682"><ele>228.688211</ele></trkpt>
       <trkpt lat="45.117553" lon="7.816686"><ele>228.787339</ele></trkpt>
-    </trkseg>
-    <trkseg>
-      <trkpt lat="45.115692" lon="7.803837"><ele>238.897619</ele></trkpt>
-      <trkpt lat="45.115718" lon="7.803717"><ele>238.537477</ele></trkpt>
-      <trkpt lat="45.115753" lon="7.803602"><ele>238.178166</ele></trkpt>
-      <trkpt lat="45.115793" lon="7.80349"><ele>237.48102</ele></trkpt>
-      <trkpt lat="45.115835" lon="7.80338"><ele>236.769689</ele></trkpt>
-      <trkpt lat="45.11588" lon="7.803276"><ele>236.075851</ele></trkpt>
-      <trkpt lat="45.115925" lon="7.803174"><ele>235.391685</ele></trkpt>
-      <trkpt lat="45.115968" lon="7.803073"><ele>234.720802</ele></trkpt>
-      <trkpt lat="45.11601" lon="7.802968"><ele>234.03435</ele></trkpt>
-      <trkpt lat="45.116055" lon="7.802858"><ele>233.311202</ele></trkpt>
-      <trkpt lat="45.116101" lon="7.802744"><ele>232.564317</ele></trkpt>
-      <trkpt lat="45.11615" lon="7.802626"><ele>231.785621</ele></trkpt>
-      <trkpt lat="45.116206" lon="7.802502"><ele>230.948317</ele></trkpt>
-      <trkpt lat="45.116264" lon="7.802368"><ele>230.054257</ele></trkpt>
-      <trkpt lat="45.116326" lon="7.802233"><ele>229.138165</ele></trkpt>
-      <trkpt lat="45.116389" lon="7.802087"><ele>228.164858</ele></trkpt>
-      <trkpt lat="45.116457" lon="7.801939"><ele>227.160421</ele></trkpt>
     </trkseg>
   </trk>
 </gpx>
