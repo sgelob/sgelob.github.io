@@ -10,9 +10,6 @@ area: Metropolitan City of Turin
 country: italy
 track: castiglione-san-mauro-baldissero-pavarolo-montaldo-marentino-moncucco-cinzano-sciolze-gassino.gpx
 approximateEnds: true
-links:
-  - label: Komoot
-    url: https://www.komoot.com/tour/2958147260
 cover: 2026/05/castiglione-san-mauro-baldissero-pavarolo-montaldo-marentino-moncucco-cinzano-sciolze-gassino-02.jpg
 coverWidth: 2048
 coverHeight: 1536

@@ -10,9 +10,6 @@ area: Metropolitan City of Turin
 country: italy
 track: castiglione-pavarolo-cordova-baldissero-rivodora-san-martino.gpx
 approximateEnds: true
-links:
-  - label: Komoot
-    url: https://www.komoot.com/tour/3352410239
 cover: 2026/10/castiglione-pavarolo-cordova-baldissero-rivodora-san-martino-01.jpg
 coverWidth: 1536
 coverHeight: 2048

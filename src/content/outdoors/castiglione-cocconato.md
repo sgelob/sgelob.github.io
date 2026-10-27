@@ -10,9 +10,6 @@ area: Metropolitan City of Turin
 country: italy
 track: castiglione-cocconato.gpx
 approximateEnds: true
-links:
-  - label: Komoot
-    url: https://www.komoot.com/tour/3258985599
 cover: 2026/09/castiglione-cocconato-05.jpg
 coverWidth: 2048
 coverHeight: 1536

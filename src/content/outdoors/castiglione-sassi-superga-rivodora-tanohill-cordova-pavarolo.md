@@ -10,9 +10,6 @@ area: Metropolitan City of Turin
 country: italy
 track: castiglione-sassi-superga-rivodora-tanohill-cordova-pavarolo.gpx
 approximateEnds: true
-links:
-  - label: Komoot
-    url: https://www.komoot.com/tour/3363642090
 cover: 2026/10/castiglione-sassi-superga-rivodora-tanohill-cordova-pavarolo-02.jpg
 coverWidth: 2048
 coverHeight: 1536

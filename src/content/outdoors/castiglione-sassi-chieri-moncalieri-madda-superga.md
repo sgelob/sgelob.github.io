@@ -10,9 +10,6 @@ area: Metropolitan City of Turin
 country: italy
 track: castiglione-sassi-chieri-moncalieri-madda-superga.gpx
 approximateEnds: true
-links:
-  - label: Komoot
-    url: https://www.komoot.com/tour/3240995204
 cover: 2026/08/castiglione-sassi-chieri-moncalieri-madda-superga-07.jpg
 coverWidth: 2048
 coverHeight: 1536

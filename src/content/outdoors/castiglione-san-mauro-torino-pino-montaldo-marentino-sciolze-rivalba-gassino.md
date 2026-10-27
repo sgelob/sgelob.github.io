@@ -10,9 +10,6 @@ area: Metropolitan City of Turin
 country: italy
 track: castiglione-san-mauro-torino-pino-montaldo-marentino-sciolze-rivalba-gassino.gpx
 approximateEnds: true
-links:
-  - label: Komoot
-    url: https://www.komoot.com/tour/3016681222
 cover: 2026/06/castiglione-san-mauro-torino-pino-montaldo-marentino-sciolze-rivalba-gassino-06.jpg
 coverWidth: 2048
 coverHeight: 1536

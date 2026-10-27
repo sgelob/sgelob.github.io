@@ -10,9 +10,6 @@ area: Metropolitan City of Turin
 country: italy
 track: castiglione-gassino-pavarolo-baldissero-san-mauro.gpx
 approximateEnds: true
-links:
-  - label: Komoot
-    url: https://www.komoot.com/tour/2862271716
 cover: 2026/04/castiglione-gassino-pavarolo-baldissero-san-mauro-01.jpg
 coverWidth: 2048
 coverHeight: 1536

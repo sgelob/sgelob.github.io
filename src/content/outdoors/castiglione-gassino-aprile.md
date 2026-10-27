@@ -10,9 +10,6 @@ area: Metropolitan City of Turin
 country: italy
 track: castiglione-gassino-aprile.gpx
 approximateEnds: true
-links:
-  - label: Komoot
-    url: https://www.komoot.com/tour/2861000102
 cover: 2026/04/castiglione-gassino-aprile-01.jpg
 coverWidth: 2048
 coverHeight: 1536

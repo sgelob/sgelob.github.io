@@ -10,9 +10,6 @@ area: Metropolitan City of Turin
 country: italy
 track: castiglione-cordova.gpx
 approximateEnds: true
-links:
-  - label: Komoot
-    url: https://www.komoot.com/tour/2970969431
 cover: 2026/05/castiglione-cordova-04.jpg
 coverWidth: 1536
 coverHeight: 2048

@@ -10,9 +10,6 @@ area: Metropolitan City of Turin
 country: italy
 track: castiglione-montafia.gpx
 approximateEnds: true
-links:
-  - label: Komoot
-    url: https://www.komoot.com/tour/3159697219
 cover: 2026/08/castiglione-montafia-01.jpg
 coverWidth: 2048
 coverHeight: 1536

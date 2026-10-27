@@ -10,9 +10,6 @@ area: Metropolitan City of Turin
 country: italy
 track: castiglione-sassi-cavoretto-revigliasco-maddalena-pecetto-pino-superga.gpx
 approximateEnds: true
-links:
-  - label: Komoot
-    url: https://www.komoot.com/tour/3339999343
 cover: 2026/10/castiglione-sassi-cavoretto-revigliasco-maddalena-pecetto-pino-superga-06.jpg
 coverWidth: 1536
 coverHeight: 2048

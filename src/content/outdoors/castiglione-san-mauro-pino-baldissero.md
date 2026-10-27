@@ -10,9 +10,6 @@ area: Metropolitan City of Turin
 country: italy
 track: castiglione-san-mauro-pino-baldissero.gpx
 approximateEnds: true
-links:
-  - label: Komoot
-    url: https://www.komoot.com/tour/2997774336
 cover: 2026/05/castiglione-san-mauro-pino-baldissero-01.jpg
 coverWidth: 1536
 coverHeight: 2048

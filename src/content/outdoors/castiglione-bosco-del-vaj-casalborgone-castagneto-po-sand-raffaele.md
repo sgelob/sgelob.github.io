@@ -10,9 +10,6 @@ area: Metropolitan City of Turin
 country: italy
 track: castiglione-bosco-del-vaj-casalborgone-castagneto-po-sand-raffaele.gpx
 approximateEnds: true
-links:
-  - label: Komoot
-    url: https://www.komoot.com/tour/3325569008
 cover: 2026/10/castiglione-bosco-del-vaj-casalborgone-castagneto-po-sand-raffaele-09.jpg
 coverWidth: 2048
 coverHeight: 1536

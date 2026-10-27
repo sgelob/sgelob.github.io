@@ -10,9 +10,6 @@ area: Metropolitan City of Turin
 country: italy
 track: castiglione-san-mauro-baldissero-pavarolo-montaldo-sciolze-rivalba-gassino.gpx
 approximateEnds: true
-links:
-  - label: Komoot
-    url: https://www.komoot.com/tour/3276611159
 cover: 2026/09/castiglione-san-mauro-baldissero-pavarolo-montaldo-sciolze-rivalba-gassino-09.jpg
 coverWidth: 2048
 coverHeight: 1536

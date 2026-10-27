@@ -10,9 +10,6 @@ area: Metropolitan City of Turin
 country: italy
 track: castiglione-superga.gpx
 approximateEnds: true
-links:
-  - label: Komoot
-    url: https://www.komoot.com/tour/3294730973
 cover: 2026/09/castiglione-superga-03.jpg
 coverWidth: 2048
 coverHeight: 1536

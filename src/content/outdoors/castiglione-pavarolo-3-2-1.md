@@ -10,9 +10,6 @@ area: Metropolitan City of Turin
 country: italy
 track: castiglione-pavarolo-3-2-1.gpx
 approximateEnds: true
-links:
-  - label: Komoot
-    url: https://www.komoot.com/tour/3178198672
 cover: 2026/08/castiglione-pavarolo-3-2-1-02.jpg
 coverWidth: 1536
 coverHeight: 2048

@@ -10,9 +10,6 @@ area: Metropolitan City of Turin
 country: italy
 track: castiglione-torinese-colle-della-maddalena.gpx
 approximateEnds: true
-links:
-  - label: Komoot
-    url: https://www.komoot.com/tour/3309291590
 cover: 2026/09/castiglione-torinese-colle-della-maddalena-01.jpg
 coverWidth: 2048
 coverHeight: 1536

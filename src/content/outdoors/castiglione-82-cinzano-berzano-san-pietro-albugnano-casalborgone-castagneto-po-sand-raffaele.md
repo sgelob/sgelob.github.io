@@ -10,9 +10,6 @@ area: Metropolitan City of Turin
 country: italy
 track: castiglione-82-cinzano-berzano-san-pietro-albugnano-casalborgone-castagneto-po-sand-raffaele.gpx
 approximateEnds: true
-links:
-  - label: Komoot
-    url: https://www.komoot.com/tour/2943395321
 cover: 2026/05/castiglione-82-cinzano-berzano-san-pietro-albugnano-casalborgone-castagneto-po-sand-raffaele-05.jpg
 coverWidth: 2048
 coverHeight: 1536

@@ -9,9 +9,6 @@ area: Metropolitan City of Turin
 country: italy
 track: castiglione-torinese-hidden-trails-discovery.gpx
 approximateEnds: true
-links:
-  - label: Komoot
-    url: https://www.komoot.com/tour/2849892225
 cover: 2026/03/castiglione-torinese-hidden-trails-discovery-06.jpg
 coverWidth: 1536
 coverHeight: 2048
