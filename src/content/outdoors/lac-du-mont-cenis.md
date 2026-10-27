@@ -85,8 +85,8 @@ photos:
 
 Twenty-two kilometres and 390 metres of climbing on the cross-country bike, a loop round the Lac du Mont-Cenis, the lake that fills the high pass between the Maurienne and the Susa valley at almost 2,000 metres.
 
-The lake lies entirely in France but on the Italian side of the pass. It is a reservoir, made when a dam was built across the plateau in the 1960s, and the water covered the pastures, the chalets and the old hospice. The hospice went back to the ninth century, founded by the emperor Lothair I for travellers crossing the pass. In its memory a concrete chapel in the shape of a pyramid now stands on the meadow by the shore.
+The lake lies entirely in France but on the Italian side of the pass. It is a reservoir, made when a dam was built across the plateau in the 1960s, flooding pastures, chalets and the old hospice. The hospice went back to the ninth century, founded by the emperor Lothair I for travellers crossing the pass. In its memory a concrete chapel in the shape of a pyramid now stands on the meadow by the shore.
 
-The way round follows the road along the turquoise water, past cows grazing with their bells, then small roads through flowering pastures towards the Petit Mont-Cenis, and gravel tracks past boulders across the open plateau.
+The way round follows the road along the turquoise water, past cows with bells, then small roads through flowering pastures towards the Petit Mont-Cenis, and gravel tracks across the plateau, rolling enough that riders on Utagawa VTT call the tour of the lake a family outing.
 
-On the far side the clouds that had been building all day turned dark over the mountains, and the last stretch ran back across the stony top of the dam under a grey sky.
+On the far side the clouds turned dark over the mountains, and the last stretch ran back across the top of the dam.

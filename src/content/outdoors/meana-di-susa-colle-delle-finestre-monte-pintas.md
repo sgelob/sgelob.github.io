@@ -141,8 +141,8 @@ photos:
 
 Thirty-seven kilometres and 2,003 metres of climbing on the cross-country bike, ridden in two: up the Colle delle Finestre from Meana di Susa, on along the ridge to Monte Pintas, and down through the larches to Gravere.
 
-The road up the Finestre is one of the great climbs of the Giro d’Italia: eighteen and a half kilometres at over nine per cent, 45 hairpins, and the last eight kilometres on gravel. It starts among the orchards above Meana and climbs through the woods on tarmac still painted with writing, then leaves the trees for the pastures, with cows on the road and the switchbacks stacked one above the other below. The Giro first came up here in 2005, and in 2018 Chris Froome attacked on this gravel, 80 kilometres from the finish, and won the race.
+The road up the Finestre is one of the great climbs of the Giro d’Italia: eighteen and a half kilometres at over nine per cent, 45 hairpins, and the last eight kilometres on gravel. It climbs from the orchards above Meana through the woods, on tarmac still painted with writing, then out into the pastures, with cows on the road and the switchbacks stacked below. The Giro first came up here in 2005, and in 2018 Chris Froome attacked on this gravel, 80 kilometres from the finish, and won the race.
 
-Above the pass a path follows the grassy ridge to Monte Pintas, at about 2,520 metres, with the Susa valley far below and the clouds coming and going over the peaks.
+Above the pass a path follows the grassy ridge to Monte Pintas, at about 2,520 metres, with the Susa valley far below: riders on Gulliver call the last stretch to the top the one part of the loop that cannot be ridden.
 
-The way down is a long trail across the slope and into the larch woods, past Pian Gelassa and the hamlets above Gravere, and back to Meana.
+The way down is a long trail into the larch woods, past Pian Gelassa and the hamlets above Gravere, back to Meana.

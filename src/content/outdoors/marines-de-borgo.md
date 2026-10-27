@@ -85,6 +85,6 @@ photos:
 
 Five and a half kilometres, flat, on the lido of the Marana south of Bastia: the strip of sand and pines, nowhere more than a kilometre wide, that separates the sea from the Biguglia lagoon, the largest in Corsica and a nature reserve since 1994.
 
-The walk follows the beach, long and almost empty, with driftwood and a few upturned boats on the sand, a shelter someone had built of sticks and canvas, and the mountains around Bastia blue in the haze to the north. The way back runs through the dunes behind it, on sandy paths between old wooden fences, through low scrub and patches of ice plant turning red and yellow in the heat, past a single big tree that gave the only shade.
+The walk follows the beach, almost empty, with driftwood and a few upturned boats on the sand, a shelter someone had built of sticks and canvas, and the mountains around Bastia blue in the haze. The way back follows the lido’s marked trail through the dunes and pines behind it, on sandy paths between old fences, through low scrub and patches of ice plant turning red and yellow in the heat, past a big tree that gave the only shade.
 
 It was 12 August, and later that day came the walk between Vallecalle and Murato, and the eclipse.

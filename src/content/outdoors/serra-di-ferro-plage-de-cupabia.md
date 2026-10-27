@@ -149,8 +149,8 @@ photos:
 
 Three walks to the same beach in the last week of August, from the hillside above Serra-di-Ferro down to the Plage de Cupabia on the Gulf of Valinco. The map shows the first of them: four kilometres and 132 metres of climbing, down to the sea on one path and back up on another.
 
-The way down is a dirt track through the maquis, the dense scrub that covers the hills here, dry and brown at the end of summer, with the gulf opening up below and the mountains across the water. At the bottom the path comes out on small coves of granite and coarse sand, then onto the beach itself, a long curve of pale sand split by rocky spurs. A green lizard was sunning itself on a root along the way.
+The way down is a dirt track through the maquis, the dense scrub that covers the hills here, brown at the end of summer, with the gulf opening up below and the mountains across the water. At the bottom the path comes out on small coves of granite and coarse sand, then onto the beach itself, a long curve of pale sand split by rocky spurs. A green lizard was sunning itself on a root along the way.
 
-The way back climbs on a different path, past a yellow signpost and up an old stone path between low walls, under trees that arch over it.
+The way back climbs on a different path, past a yellow signpost and up the old path between low walls that walkers on Visorando take from the village down to the beach.
 
-Four days later came a short walk along the beach, on sand paths fenced through the dunes behind it, with the water clear over the granite rocks. The next day the same loop again, this time under a grey sky, with sailing boats sheltering behind the rocks.
+Four days later came a short walk along the beach, on sand paths fenced through the dunes behind it, the water clear over the granite. The next day the same loop again, under a grey sky, with sailing boats sheltering behind the rocks.

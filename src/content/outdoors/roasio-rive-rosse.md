@@ -81,8 +81,8 @@ photos:
 
 Forty and a half kilometres and 1,459 metres of climbing on the trail bike, from Roasio up into the Rive Rosse, the red hills on the eastern edge of the Biellese, and back.
 
-The first part climbs through clearings of tall grass and the vineyards round Castelletto Villa, where a giant wine glass made of iron strips stands on a mound among the vines, with yellow broom already in flower along the tracks. Then up past Curino and San Nicolao, on rocky trails between birch trunks, to the highest point of the day, about 717 metres above Soprana.
+The first part climbs through clearings of tall grass and the vineyards round Castelletto Villa, where a giant wine glass made of iron strips stands on a mound among the vines, with yellow broom in flower. Then up past Curino and San Nicolao, on rocky trails between birch trunks, to the top of the day, about 717 metres above Soprana.
 
-Up there the ground changes. The Rive Rosse take their name from the orange and reddish rock that shows through everywhere, and the trails run over bare ochre slabs and sandy crests between low scrub, with a lake shining far off below. The hills border the Baraggia and spread over twelve villages between the provinces of Biella and Vercelli: dry, rocky ridges with heathland on top, two reservoirs, and part of the area protected as a site of regional interest.
+Up there the ground changes. The Rive Rosse take their name from the orange and reddish rock that shows through everywhere, and the trails run over bare ochre slabs and sandy crests between low scrub, with a lake shining far off below. The hills spread over twelve villages between Biella and Vercelli, and riders who share the best loop of their trails on Komoot rate it hard: red gravel underfoot, short climbs and drops one after another, and stretches where the bike has to be pushed.
 
 The way back comes down past Livera and Masserano, on a gravel road along a dry stone wall, past a green pond sunk in a hollow in the woods, and on through the trees to Roasio.

@@ -105,10 +105,10 @@ photos:
 
 Nine kilometres and 228 metres of climbing in the Nebbio, the hill country behind Saint-Florent, on old paths between Vallecalle and Murato and down into the valley between them.
 
-The track leaves the road through dry maquis, with the villages scattered on the slopes across the valley, then drops to the river. In mid-August the water barely moved: still green pools between pale slabs of rock, smooth stones in the riverbed, and the light coming low through the trees.
+The track leaves the road through dry maquis, villages scattered on the slopes across the valley, and drops to the river. In mid-August the water barely moved: still green pools between pale slabs of rock, and smooth stones in the riverbed.
 
-From the river a path climbs back up through the holm oaks, between old dry-stone walls, past a rock face pitted with hollows, a cow standing in the bracken and an animal’s skull bleaching among the dry stems.
+From the river an old mule path climbs back through the holm oaks between dry-stone walls, one of the village paths walkers on Visorando say were recently reopened, past a rock face pitted with hollows, a cow standing in the bracken and an animal’s skull in the dry stems.
 
-Murato, at the top, is where Pasquale Paoli kept his headquarters in the eighteenth century, during the fight for Corsican independence, and had the coins of the Corsican state struck. Just outside the village stands San Michele, a Pisan church of around 1140 built in green serpentine from the bed of the Bevinco and white limestone from Saint-Florent.
+Murato, at the top, is where Pasquale Paoli kept his headquarters in the eighteenth century, during the fight for Corsican independence, and struck the coins of the Corsican state. Just outside the village stands San Michele, a Pisan church of around 1140 built in green serpentine from the bed of the Bevinco and white limestone from Saint-Florent.
 
-It was 12 August, the day of the solar eclipse. Here the Moon covered almost all of the Sun just as it reached the horizon, and on the way back it set behind the hills as a thin orange crescent.
+It was 12 August, the day of the solar eclipse. Here the Moon covered almost all the Sun as it reached the horizon, and on the way back it set behind the hills as a thin orange crescent.

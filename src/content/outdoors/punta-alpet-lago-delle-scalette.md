@@ -67,10 +67,10 @@ photos:
     alt: Large letters along the top of a grassy slope
 ---
 
-Five kilometres and barely 75 metres of climbing: an easy walk at almost 1,900 metres above Prato Nevoso, out to the Lago delle Scalette and back, under the north side of the Mondolè.
+Five kilometres and barely 75 metres of climbing: an easy walk at almost 1,900 metres above Prato Nevoso, to the Lago delle Scalette and back, under the Mondolè.
 
 It starts at Punta Alpet, a grassy top on the ski slopes of Prato Nevoso, the resort where the Tour de France finished a stage in 2008 and the Giro d’Italia in 2018. Out of season it is open pasture, with the hills falling away towards the plain on one side and the limestone peaks of the Ligurian Alps on the other.
 
-The track runs almost level to the Rifugio Balma, a hut that has stood under the Mondolè since 1906 and is still run by the same family, and on to a signpost where a path turns off for the lake. The Lago delle Scalette is a small reservoir at 1,860 metres, in a hollow under grey rock walls. Cows were grazing along the shore, and their reflections lay still in the water.
+The track runs almost level to the Rifugio Balma, a hut that has stood under the Mondolè since 1906 and is still run by the same family, and on along a wide dirt road that walkers on Komoot call easy enough for children and pushchairs. The Lago delle Scalette is a small reservoir at 1,860 metres, in a hollow under grey rock walls. Cows grazed along the shore, their reflections still in the water.
 
 Then back the same way, with the summit of the Mondolè, 2,382 metres, in and out of the clouds above.

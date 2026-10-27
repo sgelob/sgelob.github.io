@@ -101,8 +101,8 @@ photos:
 
 Six kilometres, almost flat, round the headland of Capu di Fora at Pinarellu, on the east coast of Corsica north of Porto-Vecchio.
 
-The walk starts along the beach, its edge thick with the dried leaves of posidonia, the seagrass that grows in meadows across the bay and that the sea throws up on the shore. Then it follows the old customs path round the headland: a narrow trail through the maquis and the holm oaks just above the water, past red granite falling into small coves, with the mountains of the interior behind the bay.
+The walk starts along the beach, its edge thick with the dried leaves of posidonia, the seagrass the sea throws up on the shore. Then it follows the coastal path round the headland, a waymarked trail that runs on towards Villata: a narrow trail through the maquis and the holm oaks just above the water, past red granite falling into small coves, with the mountains of the interior behind the bay.
 
 At the tip the Genoese tower of Pinarellu comes into view on its islet, the Isula di Corsi, the island of the corsairs. It was built at the end of the sixteenth century as a lookout against pirate raids and, unusually for the south of the island, it is square.
 
-The way back cuts across the neck of the headland, past one of the ponds behind the beach, now a protected Natura 2000 site, and through the pine wood that shades the bay.
+The way back cuts across the neck of the headland, past one of the ponds behind the beach, now a Natura 2000 site, and through the pine wood that shades the bay.
