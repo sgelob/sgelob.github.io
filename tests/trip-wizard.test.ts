@@ -196,7 +196,7 @@ describe('trip wizard', () => {
     expect(data.links).toBeUndefined(); // a Komoot page would show the real day and time
     expect(text).toContain('date: "2026-10-01T12:00:00"'); // approximate: the 1st of the month, as for a discreet trip
     expect(existsSync(join(deps.tracksDir, 'ridge-loop.profile.json'))).toBe(false);
-    expect(said.some((l) => l.includes('Approximate: the route is published as a closed circuit with no start or finish'))).toBe(true);
+    expect(said.some((l) => l.includes('Approximate: the route is published without the privacy zone, so with no start or finish'))).toBe(true);
     expect(readFileSync(r.notes, 'utf8')).toContain('approximate ends');
   });
 

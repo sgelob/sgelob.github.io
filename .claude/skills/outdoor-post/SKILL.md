@@ -21,7 +21,7 @@ Look at every photo (`photos/NN.jpg`). Note what each shows; name a place only w
 
 ## 2. Ask (AskUserQuestion, up to four questions at a time)
 
-- **Route:** shared (map, GPX, real day), approximate (the route without the privacy zone around home, no start or finish, no links, day on the 1st of the month) or discreet (no map, no GPX, no links, day on the 1st). If earlier trips that start from the same place are `approximateEnds: true`, do the same and only say so; otherwise ask, recommending shared.
+- **Route:** shared (map, GPX, real day), approximate (the route without the privacy zone around home, so it starts and ends on the zone's edge; no links, day on the 1st of the month) or discreet (no map, no GPX, no links, day on the 1st). If earlier trips that start from the same place are `approximateEnds: true`, do the same and only say so; otherwise ask, recommending shared.
 - **Bike** for a ride: `xc` or `trail`.
 - **Cover:** three or four candidates, each described in a line. Point out a photo that gives away the time of day.
 - **Area** when nearby trips do not settle it: a valley, massif, gulf or coast, never a village or trailhead (`grep -h '^area:' src/content/outdoors/*.md` lists the ones in use).

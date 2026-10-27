@@ -15,7 +15,7 @@ interface Props {
   links?: { label: string; url: string }[];
   /** The contour layer drawn for this route's map box (`/outdoors/<slug>.contours.svg`), when there is one. */
   contoursHref?: string;
-  /** The track is a closed circuit with no start or finish (approximate ends): no start ring, and the stats say so. */
+  /** The track starts at home and is published only outside the privacy zone (approximate ends): no start ring, and the stats say so. */
   approximateEnds?: boolean;
 }
 

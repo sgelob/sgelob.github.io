@@ -27,23 +27,20 @@ test('writeTrack refuses a slug that is not a plain file name, and an export wit
   expect(() => writeTrack(empty, 'x', dir)).toThrow(/no track points/);
 });
 
-test('writeTrack with approximate ends: a circuit starting at least 1 km from the export’s start, with nothing inside the privacy zone, and no profile file', () => {
+test('writeTrack with approximate ends: in ride order, starting and ending on the edge of the privacy zone, nothing inside it, and no profile file', () => {
   const dir = mkdtempSync(join(tmpdir(), 'tracks-'));
   const original = parseGpx(readFileSync(EXPORT, 'utf8'));
   const zone = { lat: original[0].lat, lon: original[0].lon, radiusKm: 0.3 };
-  const { path, points } = writeTrack(EXPORT, 'approx', dir, { approximateEnds: { random: () => 0 }, privacyZone: zone });
-  const text = readFileSync(path, 'utf8');
-  const written = parseGpx(text);
+  const { path, points } = writeTrack(EXPORT, 'approx', dir, { approximateEnds: true, privacyZone: zone });
+  const written = parseGpx(readFileSync(path, 'utf8'));
   expect(points).toBe(written.length);
-  expect(points).toBeLessThan(original.length);
-  expect(distanceKm(written[0], original[0])).toBeGreaterThanOrEqual(1);
-  for (const p of written) expect(distanceKm(p, zone)).toBeGreaterThan(zone.radiusKm);
+  expect(written).toEqual(original.filter((p) => distanceKm(p, zone) > zone.radiusKm)); // the points outside, in the order they were ridden: it begins where the ride leaves the zone
   expect(existsSync(join(dir, 'approx.profile.json'))).toBe(false);
 });
 
 test('writeTrack refuses approximate ends without a privacy zone', () => {
   const dir = mkdtempSync(join(tmpdir(), 'tracks-'));
-  expect(() => writeTrack(EXPORT, 'approx', dir, { approximateEnds: {}, privacyZone: null })).toThrow(/PRIVACY_ZONE/);
+  expect(() => writeTrack(EXPORT, 'approx', dir, { approximateEnds: true, privacyZone: null })).toThrow(/PRIVACY_ZONE/);
   expect(existsSync(join(dir, 'approx.gpx'))).toBe(false);
 });
 

@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { asCircuit, distanceKm, outsideZone, parseGpx, parsePrivacyZone, parseSegments, profileFigure, routeFit, routeShape, sanitizeGpx, simplifyPoints, type TrackPoint } from '../src/lib/gpx';
+import { distanceKm, outsideZone, parseGpx, parsePrivacyZone, parseSegments, profileFigure, routeFit, routeShape, sanitizeGpx, simplifyPoints, type TrackPoint } from '../src/lib/gpx';
 
 const xml = readFileSync('tests/fixtures/track.gpx', 'utf8');
 
@@ -87,34 +87,6 @@ describe('sanitizeGpx', () => {
   it('round-trips through parseGpx and refuses an empty track', () => {
     expect(parseGpx(sanitizeGpx(xml, 'x'))).toEqual(parseGpx(xml));
     expect(() => sanitizeGpx('<gpx></gpx>', 'x')).toThrow('no track points');
-  });
-});
-
-describe('asCircuit', () => {
-  // About 0.1 km a step: 0.0009° of latitude.
-  const north = (from: TrackPoint, steps: number): TrackPoint[] => Array.from({ length: steps }, (_, i) => ({ lat: from.lat + 0.0009 * (i + 1), lon: from.lon, ele: 300 }));
-  const origin: TrackPoint = { lat: 45, lon: 7.5, ele: 250 };
-  const line = [origin, ...north(origin, 100)]; // 10 km north, one point every 100 m
-
-  it('one closed loop through every point, starting and ending 1 to 1.5 km along the path from the real start', () => {
-    for (const r of [0, 0.5, 0.999]) {
-      const loop = asCircuit(line, { random: () => r });
-      const at = line.indexOf(loop[0]);
-      expect(loop).toEqual([...line.slice(at), ...line.slice(0, at), line[at]]); // to the real finish, then from the real start round to where it began
-      expect(loop[loop.length - 1]).toBe(loop[0]); // closed: no start or finish of its own
-      const d = distanceKm(loop[0], origin);
-      expect(d).toBeGreaterThanOrEqual(1 + 0.5 * r);
-      expect(d).toBeLessThan(1 + 0.5 * r + 0.11);
-    }
-  });
-
-  it('a new draw each time unless the caller fixes the randomness', () => {
-    const draws = new Set(Array.from({ length: 20 }, () => line.indexOf(asCircuit(line)[0])));
-    expect(draws.size).toBeGreaterThan(1);
-  });
-
-  it('refuses a route that never gets 1 km from its start', () => {
-    expect(() => asCircuit([origin, ...north(origin, 8)], { random: () => 0 })).toThrow(/never gets/);
   });
 });
 
