@@ -101,6 +101,6 @@ The first part follows the wide gravel road up the valley, between larches, my s
 
 Above Dondena the larches thin out, the track turns to stones, and in late June banks of old snow were still lying along it. At about 2,580 metres the sanctuary of Notre-Dame-des-Neiges stands on a meadow by Lake Misérin. A chapel was first built here in 1658; the present building dates from 1881, and every 5 August a procession climbs to it from Champorcher by torchlight, with pilgrims coming over the passes from Cogne and the Val Soana too.
 
-From the lake the trail to the Finestra climbs through scree and loose rock, narrow and stony, with snow patches still on the slopes around. Walkers were going up the same way. At the top a yellow sign on a stone wall marks the trail, and the view opens over green valleys and snowy peaks, with clouds building over them.
+From the lake the trail to the Finestra climbs through scree and loose rock, narrow and stony, the stretch MTB guides warn is often pushed, with snow still on the slopes around. Walkers were going up the same way. At the top a yellow sign on a stone wall marks the trail, and the view opens over green valleys and snowy peaks.
 
 The way down came back past the lake and Dondena, by streams running out from under the snow, to the wide road and the bends back to the village.

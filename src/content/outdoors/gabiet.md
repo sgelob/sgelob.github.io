@@ -37,6 +37,6 @@ photos:
 
 Two kilometres and 53 metres of climbing, a short walk at about 2,330 metres round the Lago Gabiet, high above Gressoney-La-Trinité in the valley that runs up to Monte Rosa.
 
-From where the cable car arrives, a gravel path crosses the meadows to the lake, held back by a dam at the head of a green basin. Streams run across the grass from the snow still lying under the rock walls, and the dark ridges above were half in cloud.
+From the cable car, which most walkers take up from Staffal rather than the steep path, a gravel path crosses the meadows to the lake, held back by a dam at the head of a green basin. Streams run across the grass from the snow under the rock walls, and the dark ridges above were half in cloud.
 
-The valley below is Walser country. Settlers from the Valais came over the passes from the north in the thirteenth century, and Gressoney still keeps their German dialect, Titsch, and the wooden houses of its hamlets. On the way back the path drops past a few houses on the slope, with the valley opening out below.
+The valley below is Walser country. Settlers from the Valais came over the passes from the north in the thirteenth century, and Gressoney still keeps their German dialect, Titsch, and its wooden houses. On the way back the path drops past a few houses, the valley opening below.

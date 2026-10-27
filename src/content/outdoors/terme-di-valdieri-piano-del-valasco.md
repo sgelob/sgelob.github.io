@@ -73,8 +73,8 @@ photos:
 
 Twelve kilometres and 434 metres of climbing, up from Terme di Valdieri to the Piano del Valasco and back down the same way, in the Valle Gesso, inside the Maritime Alps park.
 
-The way up follows the old road through the Vallone del Valasco, first through beech woods full of mossy boulders, then under the larches beside the stream, on a track of loose stones below grey rock walls.
+The way up follows the old military road through the Vallone del Valasco, an hour to the plain for most walkers, first through beech woods and mossy boulders, then under the larches beside the stream, on a track of loose stones below grey rock walls.
 
-At the top the valley opens into the Piano del Valasco, a wide grassy plain at about 1,760 metres that was once a lake, with the peaks all round it. In the middle stands the hunting lodge of Victor Emmanuel II, who made Valdieri and Entracque a royal hunting reserve in 1857, drawn by the chamois and by the hot springs at the bottom of the valley. Today it is a mountain hut.
+At the top the valley opens into the Piano del Valasco, a wide grassy plain at about 1,760 metres that was once a lake, ringed by peaks. In the middle stands the hunting lodge of Victor Emmanuel II, who made Valdieri and Entracque a royal hunting reserve in 1857, drawn by the chamois and the hot springs below. Today it is a mountain hut.
 
-The sun lasted as far as the plain. On the way back the clouds came down the valley, the peaks disappeared one by one, and the last stretch down to the springs was in the rain.
+The sun lasted as far as the plain. On the way back the clouds came down the valley, the peaks went one by one, and the last stretch to the springs was in the rain.

@@ -115,10 +115,10 @@ Thirty-eight kilometres and 1,800 metres of climbing on the cross-country bike, 
 
 The climb starts on a narrow road along the gorge, cracked tarmac between leafy trees, then hairpins up through the larches into the Comba dei Carbonieri. The Barbara refuge stands at about 1,750 metres near its head. It was built in 1928 as a hunting lodge for Walter and Barbara Lowrie, and the CAI UGET bought it and opened it as a refuge in 1931.
 
-Above it the road turns to dirt and gravel, and in mid-June the old snow was still lying across it: in places the track runs through a cut in a bank of snow taller than the bike. Higher up it follows a dry stone wall and an open crest, with yellow flowers on the stony ground and the slopes all around still streaked white.
+Above it the old military road turns to dirt, a magnificent climb for riders on Gulliver, and in mid-June the old snow was still lying across it: in places the track runs through a cut in a bank of snow taller than the bike. Higher up it follows a dry stone wall and an open crest, with yellow flowers on the stony ground and the slopes all around still streaked white.
 
-The Barant refuge sits on the col at 2,373 metres, a firewood pile stacked outside. Both the building and the road up to it were built by the army in the 1930s. From the col, Monviso stands out to the south among the clouds.
+The Barant refuge sits on the col at 2,373 metres. Both the building and the road up to it were built by the army in the 1930s. From the col, Monviso stands out to the south among the clouds.
 
-The way down crosses smooth wet rock and runs through the larches to the Conca del Prà, a wide green basin under the snowy head of the valley. The Jervis refuge there is named after Willy Jervis, an Olivetti engineer and partisan of the Giustizia e Libertà brigades, captured in March 1944 and shot on 5 August that year; his body was displayed in Villar Pellice, further down the valley.
+The way down crosses smooth wet rock and runs through the larches to the Conca del Prà, a wide green basin under the snowy head of the valley. The Jervis refuge there is named after Willy Jervis, an Olivetti engineer and partisan of the Giustizia e Libertà brigades, captured in March 1944 and shot that August; his body was displayed in Villar Pellice, further down the valley.
 
 The last part runs down past a waterfall pouring off a dark rock face and back along the valley floor to Bobbio.

@@ -141,9 +141,9 @@ photos:
 
 Forty-five kilometres and 1,861 metres of climbing on the trail bike, ridden in two: from Ceresole Reale up the Nivolet road and on to the Colle Leynir, at about 3,085 metres, on the border between Piedmont and the Aosta Valley, in the Gran Paradiso National Park.
 
-The road climbs out of the Valle Orco in long bends through the pink of the willowherb, past the dams of the Serrù and Agnel lakes, with a waterfall coming down the rock above the water. Above the lakes the view opens over the whole head of the valley, its peaks still streaked with snow.
+The road climbs out of the Valle Orco in long bends through the pink of the willowherb, past the dams of the Serrù and Agnel lakes, with a waterfall above the water. Above the lakes the view opens over the whole head of the valley, its peaks streaked with snow.
 
-Near the Nivolet the route leaves the road for the path to Lago Rosset, round its shore below the snowfields, then climbs into bare rock and scree. The last stretch to the pass is too steep and loose to ride, and the bikes went up it pushed, past the last patches of snow. From the top the view runs over range after range to the glaciers on the horizon.
+Near the Nivolet the route leaves the road for the path to Lago Rosset, round its shore below the snowfields, then climbs into bare rock and scree. Riders on Gulliver reckon most of the trail from the Nivolet can be ridden, but not the last stretch to the pass: too steep and loose, so the bikes went up it pushed. From the top the view runs over range after range to the glaciers on the horizon.
 
 The way down from the Colle Leynir is one I would avoid on a bike, unless you enjoy bike mountaineering: it means carrying the bike down above a sheer drop. Better to come back down the way you went up. Below it the route crosses the high plateau and drops back past the lakes and the waterfalls, where a fox trotted along the track ahead.
 

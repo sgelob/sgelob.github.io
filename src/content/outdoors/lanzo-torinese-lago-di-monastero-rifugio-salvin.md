@@ -81,9 +81,9 @@ photos:
 
 Forty-five kilometres and 1,679 metres of climbing on the trail bike, ridden in three: from Lanzo Torinese, at the mouth of the Valli di Lanzo, up to the Lago di Monastero and back down past the Salvin refuge.
 
-The first part climbs out of Lanzo on the old road towards Sant’Ignazio, on gravel under the larches and narrow trails through the woods, then on the tarmac past Chiaves, with the hills dropping away to the plain behind. From Chiaves the Strada Sistina winds on up the slope, between birches and boulder fields, out onto the high pastures.
+The first part climbs out of Lanzo on the old road towards Sant’Ignazio, on gravel under the larches and narrow trails through the woods, then tarmac past Chiaves, the hills dropping away to the plain. From Chiaves the Strada Sistina winds up between birches and boulder fields to the high pastures, in good shape, riders on Gulliver say, but for a few rough, steep pitches below the lake.
 
-At the top, at about 1,940 metres, the gravel road runs across the grass with snow still on the peaks along the horizon, and the Lago di Monastero lies in a hollow among the pastures, with grassy ridges looking out over the plain.
+At the top, at about 1,940 metres, the gravel road runs across the grass with snow on the peaks on the horizon, and the Lago di Monastero lies in a hollow among the pastures.
 
 From the lake we went down to the Salvin refuge, which is how I found it, and later came back on foot for [the walk from Marsaglia](/outdoors/marsaglia-salvin/). On a bike I would advise strongly against that stretch: it means hard carrying the whole way, downhill too, for all 400 metres of descent. Below the refuge the route drops back through the woods to Lanzo.
 

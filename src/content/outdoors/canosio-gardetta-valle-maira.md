@@ -123,8 +123,8 @@ photos:
     alt: Singletrack winding down through larch woods
 ---
 
-A loop from Canosio up to the Gardetta plateau and back, on a clear day at the end of September with the larches just starting to turn.
+A loop from Canosio up to the Gardetta plateau and back, on a clear late-September day, the larches just starting to turn.
 
 The climb follows the Preit valley on a narrow paved road, through larch woods and past summer pastures, to the Colle del Preit at 2,083 metres. From there it turns to gravel and the country opens up: the Gardetta is a high, bare plateau above 2,000 metres, with pale scree ridges on one side and Rocca la Meja, a dolomite tooth, standing over everything. The rippled rock here was a muddy shoreline 250 million years ago, and the footprints of reptiles older than the first dinosaurs are still in it. The refuge at 2,335 metres was busy with hikers, so I didn’t stop long.
 
-The high point is the Passo della Gardetta at 2,437 metres, marked by two poles covered in stickers. Then the long way down into the Vallone di Unerzio begins: loose and rocky at first, past an old stone ruin, then a smoother line through the larches down to Acceglio. The trail bike was the right call for that top section. The last stretch follows the Maira down the valley before one final climb back up to Canosio.
+The high point is the Passo della Gardetta at 2,437 metres, marked by two poles covered in stickers. Then the long way down into the Vallone di Unerzio begins, the classic descent here for riders on Gulliver: loose and rocky at first, past an old stone ruin, then a smoother line through the larches down to Acceglio. The trail bike was the right call for that top section. Then down the Maira and one last climb back to Canosio.
