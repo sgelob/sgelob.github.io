@@ -94,6 +94,33 @@ export async function fetchKomootTour(url: string, fetchImpl: FetchLike, auth?: 
   return { id, name, sport, distanceKm: Math.round(distance / 100) / 10, climb: Math.round(up), date: day, startedAt: date, recorded: type === 'tour_recorded', images, imagesTotal: total };
 }
 
+/** A recorded tour as the account's list gives it: enough to recognise a trip that no longer links to its tour. */
+export interface KomootListedTour {
+  id: string;
+  /** Kilometres, one decimal, as fetchKomootTour rounds them. */
+  distanceKm: number;
+  /** Metres, whole. */
+  climb: number;
+  startedAt: string;
+}
+
+/** Every recorded tour of the logged-in account, page by page. Only id, distance, climb and time are read. */
+export async function listKomootTours(fetchImpl: FetchLike, auth: KomootAuth): Promise<KomootListedTour[]> {
+  const tours: KomootListedTour[] = [];
+  for (let page = 0; ; page++) {
+    const res = await fetchImpl(`https://api.komoot.de/v007/users/${encodeURIComponent(auth.username)}/tours/?type=tour_recorded&page=${page}&limit=100`, { headers: headers(auth) });
+    if (!res.ok) throw new Error(`Komoot answered ${res.status} for the list of tours`);
+    const data = JSON.parse(await res.text()) as { _embedded?: { tours?: Record<string, unknown>[] }; page?: { totalPages?: number } };
+    for (const t of data._embedded?.tours ?? []) {
+      const { id, distance, elevation_up: up, date } = t;
+      if ((typeof id === 'number' || typeof id === 'string') && typeof distance === 'number' && typeof up === 'number' && typeof date === 'string') {
+        tours.push({ id: String(id), distanceKm: Math.round(distance / 100) / 10, climb: Math.round(up), startedAt: date });
+      }
+    }
+    if (page + 1 >= (data.page?.totalPages ?? 0)) return tours;
+  }
+}
+
 /** The tour's GPX export, as the Komoot app gives it (needs the login: Komoot sends it only to the tour's owner). */
 export async function fetchKomootGpx(id: string, fetchImpl: FetchLike, auth: KomootAuth): Promise<string> {
   const res = await fetchImpl(`https://api.komoot.de/v007/tours/${id}.gpx`, { headers: { ...headers(auth), Accept: 'application/gpx+xml' } });

@@ -21,7 +21,7 @@ Look at every photo (`photos/NN.jpg`). Note what each shows; name a place only w
 
 ## 2. Ask (AskUserQuestion, up to four questions at a time)
 
-- **Route:** shared (map, GPX, real day), approximate (one closed circuit with no start or finish, day on the 1st of the month) or discreet (no map, no GPX, no links, day on the 1st). If earlier trips that start from the same place are `approximateEnds: true`, do the same and only say so; otherwise ask, recommending shared.
+- **Route:** shared (map, GPX, real day), approximate (the route without the privacy zone around home, so it starts and ends on the zone's edge; no links, day on the 1st of the month) or discreet (no map, no GPX, no links, day on the 1st). If earlier trips that start from the same place are `approximateEnds: true`, do the same and only say so; otherwise ask, recommending shared.
 - **Bike** for a ride: `xc` or `trail`.
 - **Cover:** three or four candidates, each described in a line. Point out a photo that gives away the time of day.
 - **Area** when nearby trips do not settle it: a valley, massif, gulf or coast, never a village or trailhead (`grep -h '^area:' src/content/outdoors/*.md` lists the ones in use).
@@ -31,10 +31,10 @@ Look at every photo (`photos/NN.jpg`). Note what each shows; name a place only w
 
 - **Title:** Komoot's name, with emoji removed. **Slug:** from Komoot's name, as the wizard makes it (`slugify` in `scripts/trip/wizard.ts`).
 - `npm run photos -- --new --outdoors <slug> olegs-be-drafts/komoot/<id>/photos --date <YYYY-MM-DD>`: uploads the photos and writes `src/content/outdoors/<slug>.md`. The date is the real day for a shared trip and the 1st of the month otherwise. It needs `UPLOADS_DIR`: in the cloud, give it to this command only, `UPLOADS_DIR=./olegs-be-data/uploads npm run photos -- …`.
-- Fill the front matter: `title`, `activity`, `bike` (rides), `distance` and `climb` (Komoot's), `area`, `country`, `track` (`<slug>.gpx`, or `false` when discreet), `approximateEnds: true` when approximate, `links` (Komoot, not for a discreet trip), `cover` with `coverWidth`/`coverHeight`, `darkHeader: true` when the cover is light at the top or bottom.
+- Fill the front matter: `title`, `activity`, `bike` (rides), `distance` and `climb` (Komoot's), `area`, `country`, `track` (`<slug>.gpx`, or `false` when discreet), `approximateEnds: true` when approximate, `links` (Komoot, only for a shared trip: a public Komoot tour shows the real day and time), `cover` with `coverWidth`/`coverHeight`, `darkHeader: true` when the cover is light at the top or bottom.
 - `npm run track -- olegs-be-drafts/komoot/<id>/<id>.gpx <slug>` (add `--approximate-ends` when approximate): it leaves out everything inside `PRIVACY_ZONE`, the circle around home, and refuses approximate ends without it. Never print or quote `PRIVACY_ZONE`, then `npm run contours -- <slug>` (not for a discreet trip).
 - Notes in `olegs-be-drafts/outdoors/<slug>.md`, with `- ride: <startedAt from tour.json>` and anything the user said.
-- `npm run trips-order -- --komoot`: numbers trips that share a month by their real ride time, taking missing ride times from Komoot.
+- `npm run trips-order -- --komoot`: numbers trips that share a month by their real ride time, taking missing ride times from Komoot (a trip without a link is found in the account by its month, distance and climb).
 
 ## 4. Write
 

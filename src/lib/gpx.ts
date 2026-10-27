@@ -56,26 +56,6 @@ export function distanceKm(a: TrackPoint, b: TrackPoint): number {
   return 2 * EARTH_RADIUS_KM * Math.asin(Math.sqrt(h));
 }
 
-export interface CircuitOptions {
-  /** A number in [0, 1); `Math.random` unless a test fixes it. The draw is made once, when the track is written, never again. */
-  random?: () => number;
-  /** How far, in a straight line, the circuit begins from the real start: a random distance between the two. */
-  minKm?: number;
-  maxKm?: number;
-}
-
-/**
- * A route with approximate ends as a closed circuit: every point once, from a point on the path 1 to 1.5 km (straight
- * line) from the real start to the real finish, then from the real start back round to where it began. It has no start
- * or finish of its own: nothing marks where the ride really began or ended.
- */
-export function asCircuit(points: readonly TrackPoint[], { random = Math.random, minKm = 1, maxKm = 1.5 }: CircuitOptions = {}): TrackPoint[] {
-  const target = minKm + random() * (maxKm - minKm);
-  const at = points.findIndex((p) => distanceKm(p, points[0]) >= target);
-  if (at < 1) throw new Error(`the route never gets ${target.toFixed(1)} km from its start: there is nowhere to begin the circuit`);
-  return [...points.slice(at), ...points.slice(0, at), points[at]];
-}
-
 /**
  * A circle around home that no published track enters. Its centre is deliberately not home: it is offset a few hundred
  * metres in a random direction, so the hole that every track leaves there does not point at the house.

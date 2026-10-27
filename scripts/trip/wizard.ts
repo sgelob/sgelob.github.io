@@ -306,7 +306,7 @@ export async function runWizard(deps: WizardDeps): Promise<WizardResult> {
       missing: () => a.shared === undefined,
       async ask() {
         say('  A shared trip gets its route drawn on the page and the GPX offered for download.');
-        say('  An approximate trip gets the same as a closed circuit with no start or finish, and its date on the 1st of the month.');
+        say('  An approximate trip gets the same without the privacy zone around home, so no start or finish, its date on the 1st of the month, and no links (a Komoot page shows the real day and time).');
         say('  A discreet trip gets no route, no download, no links, and its date on the 1st of the month.');
         const was = a.shared;
         const current = a.shared === undefined ? 'd' : a.approximateEnds ? 'a' : a.shared ? 's' : 'd';
@@ -319,7 +319,7 @@ export async function runWizard(deps: WizardDeps): Promise<WizardResult> {
         }, { default: current });
         a.shared = route !== 'd';
         a.approximateEnds = route === 'a';
-        if (a.approximateEnds) say('  Approximate: the route is published as a closed circuit with no start or finish; the date is set to the 1st of the month.');
+        if (a.approximateEnds) say('  Approximate: the route is published without the privacy zone, so with no start or finish; the date is set to the 1st of the month.');
         if (a.shared && !was) {
           a.gpx = undefined;
           a.links = undefined;
@@ -328,6 +328,7 @@ export async function runWizard(deps: WizardDeps): Promise<WizardResult> {
           a.gpx = undefined;
           a.links = [];
         }
+        if (a.approximateEnds) a.links = [];
       },
       show: () => (a.approximateEnds ? 'approximate' : a.shared ? 'shared' : 'discreet'),
     },
@@ -349,7 +350,7 @@ export async function runWizard(deps: WizardDeps): Promise<WizardResult> {
     },
     {
       label: 'Links',
-      applies: () => a.shared === true,
+      applies: () => a.shared === true && !a.approximateEnds,
       missing: () => a.links === undefined,
       async ask() {
         const links: TripLink[] = [];
@@ -458,8 +459,7 @@ export async function runWizard(deps: WizardDeps): Promise<WizardResult> {
   // Checked before any photo is uploaded: writeTrack would refuse later, with the trip half made.
   if (a.shared && a.gpx && a.approximateEnds && !privacyZone) throw new Error('approximate ends need PRIVACY_ZONE ("lat,lon,radiusKm") in .env: without it the track still passes the door');
   const path = await scaffoldGallery({ slug, folder: a.folder!.dir, store: deps.store, contentDir: deps.contentDir, uploadsDir: deps.uploadsDir, date, kind: 'outdoors', trip });
-  const approximateEnds = a.approximateEnds ? {} : undefined;
-  const track = a.shared && a.gpx ? writeTrack(a.gpx, slug, deps.tracksDir, { approximateEnds, privacyZone }).path : undefined;
+  const track = a.shared && a.gpx ? writeTrack(a.gpx, slug, deps.tracksDir, { approximateEnds: a.approximateEnds, privacyZone }).path : undefined;
   let contours: string | undefined;
   if (track && deps.contours) {
     say('  Drawing the contour lines behind the route map…');
@@ -480,7 +480,7 @@ export async function runWizard(deps: WizardDeps): Promise<WizardResult> {
     `date: ${isoDay(date)}`,
     // The real ride time, for the order among trips that share a published date; it stays here, never on the site.
     `ride: ${tour?.startedAt && tour.date === isoDay(a.date!) ? tour.startedAt : isoDay(a.date!)}`,
-    a.shared ? `${a.approximateEnds ? 'approximate ends (a closed circuit, no start or finish), ' : ''}shared: ${links.map((l) => `${l.label} ${l.url}`).join(', ') || 'no public links'}` : 'DISCREET: no start, parking, access road, exact day or time in the story',
+    a.shared ? `${a.approximateEnds ? 'approximate ends (outside the privacy zone, no start or finish), ' : ''}shared: ${links.map((l) => `${l.label} ${l.url}`).join(', ') || 'no public links'}` : 'DISCREET: no start, parking, access road, exact day or time in the story',
   ];
   writeFileSync(notesPath, `# ${a.title}\n\n${meta.map((m) => `- ${m}`).join('\n')}\n\n## Notes\n\n${(a.notes ?? '').trim()}\n`);
   orderTrips(deps.contentDir, deps.notesDir, say);
