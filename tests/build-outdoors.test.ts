@@ -100,20 +100,18 @@ describe('trip page', () => {
   });
 
   test.each(['castiglione-pavarolo-cordova-baldissero-rivodora-san-martino', 'castiglione-sassi-superga-rivodora-tanohill-cordova-pavarolo'])(
-    'approximate ends (%s): a closed circuit with no start or finish on the map, in the GPX or on the profile', (slug) => {
+    'approximate ends (%s): no start or finish on the map, in the GPX or on the profile, and a gap where the privacy zone cuts the route', (slug) => {
     const html = read(`dist/outdoors/${slug}/index.html`);
     const route = html.slice(html.indexOf('<section class="route'), html.indexOf('</section>', html.indexOf('<section class="route')));
     expect(route).toContain('start and finish not shown');
     const map = route.slice(route.indexOf('<svg class="shape"'), route.indexOf('</svg>', route.indexOf('<svg class="shape"')));
     expect(map).not.toMatch(/<circle class="start"/); // no start ring on the map (the profile marks its low point with the same class)
-    const d = route.match(/<path class="line" d="([^"]+)"/)?.[1] ?? '';
-    expect(d.match(/M/g)).toHaveLength(1); // one unbroken line
     expect(exists(`dist/outdoors/${slug}.profile.json`)).toBe(false);
     const gpx = read(`dist/outdoors/${slug}-olegs-be.gpx`);
-    expect(gpx.match(/<trkseg>/g)).toHaveLength(1);
-    const points = [...gpx.matchAll(/<trkpt lat="([^"]+)" lon="([^"]+)"/g)].map((m) => `${m[1]},${m[2]}`);
-    expect(points.length).toBeGreaterThan(5000);
-    expect(points[points.length - 1]).toBe(points[0]); // the circuit closes where it starts
+    const segments = gpx.match(/<trkseg>/g)?.length ?? 0;
+    const d = route.match(/<path class="line" d="([^"]+)"/)?.[1] ?? '';
+    expect(d.match(/M/g)).toHaveLength(segments); // one line per segment: nothing drawn across the zone
+    expect([...gpx.matchAll(/<trkpt /g)].length).toBeGreaterThan(5000);
   });
 
   test('trips that share a published month are listed by their real ride order, latest first', () => {
@@ -121,13 +119,13 @@ describe('trip page', () => {
     const slugs = [...html.matchAll(/<a class="trip-card" href="\/outdoors\/([a-z0-9-]+)\/"/g)].map((m) => m[1]);
     // Known rides, latest ride first; new trips may fall anywhere around them.
     const known = [
-      'castiglione-sassi-superga-rivodora-tanohill-cordova-pavarolo', // 24 October
-      'castiglione-pavarolo-cordova-baldissero-rivodora-san-martino', // 17 October
-      'castiglione-sassi-cavoretto-revigliasco-maddalena-pecetto-pino-superga', // 10 October
-      'castiglione-bosco-del-vaj-casalborgone-castagneto-po-sand-raffaele', // 3 October
-      'castiglione-torinese-colle-della-maddalena', // 26 September, shown as September only
+      'castiglione-sassi-superga-rivodora-tanohill-cordova-pavarolo',
+      'castiglione-pavarolo-cordova-baldissero-rivodora-san-martino',
+      'castiglione-sassi-cavoretto-revigliasco-maddalena-pecetto-pino-superga',
+      'castiglione-bosco-del-vaj-casalborgone-castagneto-po-sand-raffaele',
+      'castiglione-torinese-colle-della-maddalena', // shown as September only
       'canosio-gardetta-valle-maira', // 20 September, shown with its day
-      'castiglione-superga', // 19 September, shown as September only
+      'castiglione-superga', // shown as September only
     ];
     expect(slugs.filter((s) => known.includes(s))).toEqual(known);
   });

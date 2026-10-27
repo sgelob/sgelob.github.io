@@ -1,10 +1,10 @@
 // The questions behind `npm run trip`, kept apart from the terminal so a test can script the answers.
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
-import { parseGpx } from '../../src/lib/gpx';
+import { parseGpx, type PrivacyZone } from '../../src/lib/gpx';
 import type { ObjectStore } from '../photos/r2';
 import { scaffoldGallery, type TripLink, type TripValues } from '../photos/scaffold';
-import { writeTrack } from '../track';
+import { writeTrack, zoneFromEnv } from '../track';
 import { activityFromSport, type KomootTour } from './komoot';
 import { orderTrips } from './order';
 
@@ -32,6 +32,8 @@ export interface WizardDeps {
   reveal?: (dir: string) => void;
   /** Draws the contour layer behind a shared trip's route map from its committed track; returns the file written. */
   contours?: (track: string) => Promise<string>;
+  /** The circle no track enters; PRIVACY_ZONE when left out. */
+  privacyZone?: PrivacyZone | null;
 }
 
 export interface WizardResult {
@@ -452,9 +454,12 @@ export async function runWizard(deps: WizardDeps): Promise<WizardResult> {
     title: a.title, activity: a.activity, bike: a.bike, distance: a.distance, climb: a.climb, area: a.area, country: a.country,
     track: a.shared ? `${slug}.gpx` : false, approximateEnds: a.approximateEnds || undefined, links: links.length ? links : undefined, cover: a.cover, darkHeader: a.darkHeader,
   };
+  const privacyZone = deps.privacyZone !== undefined ? deps.privacyZone : zoneFromEnv();
+  // Checked before any photo is uploaded: writeTrack would refuse later, with the trip half made.
+  if (a.shared && a.gpx && a.approximateEnds && !privacyZone) throw new Error('approximate ends need PRIVACY_ZONE ("lat,lon,radiusKm") in .env: without it the track still passes the door');
   const path = await scaffoldGallery({ slug, folder: a.folder!.dir, store: deps.store, contentDir: deps.contentDir, uploadsDir: deps.uploadsDir, date, kind: 'outdoors', trip });
   const approximateEnds = a.approximateEnds ? {} : undefined;
-  const track = a.shared && a.gpx ? writeTrack(a.gpx, slug, deps.tracksDir, { approximateEnds }).path : undefined;
+  const track = a.shared && a.gpx ? writeTrack(a.gpx, slug, deps.tracksDir, { approximateEnds, privacyZone }).path : undefined;
   let contours: string | undefined;
   if (track && deps.contours) {
     say('  Drawing the contour lines behind the route map…');

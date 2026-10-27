@@ -34,6 +34,8 @@ function setup(script: (photos: string) => string[], komoot?: (url: string) => P
     countries: ['italy', 'france', 'croatia'],
     komoot,
     komootPhotos,
+    // Far from every fixture route: the tracks are written whole.
+    privacyZone: { lat: 0, lon: 0, radiusKm: 1 },
   };
   mkdirSync(deps.tracksDir, { recursive: true });
   return { photos, deps, said, queue };

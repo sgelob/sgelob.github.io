@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { asCircuit, distanceKm, parseGpx, parseSegments, profileFigure, routeFit, routeShape, sanitizeGpx, simplifyPoints, type TrackPoint } from '../src/lib/gpx';
+import { asCircuit, distanceKm, outsideZone, parseGpx, parsePrivacyZone, parseSegments, profileFigure, routeFit, routeShape, sanitizeGpx, simplifyPoints, type TrackPoint } from '../src/lib/gpx';
 
 const xml = readFileSync('tests/fixtures/track.gpx', 'utf8');
 
@@ -115,6 +115,30 @@ describe('asCircuit', () => {
 
   it('refuses a route that never gets 1 km from its start', () => {
     expect(() => asCircuit([origin, ...north(origin, 8)], { random: () => 0 })).toThrow(/never gets/);
+  });
+});
+
+describe('privacy zone', () => {
+  const north = (steps: number): TrackPoint[] => Array.from({ length: steps }, (_, i) => ({ lat: 45 + 0.0009 * i, lon: 7.5 }));
+  const line = north(41); // 4 km north, one point every 100 m
+
+  it('parsePrivacyZone reads "lat,lon,radiusKm" and refuses anything else', () => {
+    expect(parsePrivacyZone(' 45.1, 7.8 ,1.2')).toEqual({ lat: 45.1, lon: 7.8, radiusKm: 1.2 });
+    for (const bad of ['45,7', '45,7,1,2', 'a,b,c', '45,7,0']) expect(() => parsePrivacyZone(bad)).toThrow(/PRIVACY_ZONE/);
+  });
+
+  it('outsideZone drops every point inside the circle and splits the route where it passes through', () => {
+    const zone = { lat: line[20].lat, lon: 7.5, radiusKm: 0.55 };
+    const runs = outsideZone(line, zone);
+    expect(runs).toHaveLength(2);
+    expect(runs[0]).toEqual(line.slice(0, 15));
+    expect(runs[1]).toEqual(line.slice(26));
+    for (const p of runs.flat()) expect(distanceKm(p, zone)).toBeGreaterThan(zone.radiusKm);
+  });
+
+  it('outsideZone drops runs of a single point, and leaves nothing of a route wholly inside', () => {
+    expect(outsideZone(line, { lat: line[1].lat, lon: 7.5, radiusKm: 0.15 })).toEqual([line.slice(3)]);
+    expect(outsideZone(line, { lat: line[20].lat, lon: 7.5, radiusKm: 5 })).toEqual([]);
   });
 });
 

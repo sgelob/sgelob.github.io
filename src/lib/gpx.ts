@@ -76,6 +76,33 @@ export function asCircuit(points: readonly TrackPoint[], { random = Math.random,
   return [...points.slice(at), ...points.slice(0, at), points[at]];
 }
 
+/**
+ * A circle around home that no published track enters. Its centre is deliberately not home: it is offset a few hundred
+ * metres in a random direction, so the hole that every track leaves there does not point at the house.
+ */
+export interface PrivacyZone {
+  lat: number;
+  lon: number;
+  radiusKm: number;
+}
+
+/** `lat,lon,radiusKm`, the form PRIVACY_ZONE takes. */
+export function parsePrivacyZone(value: string): PrivacyZone {
+  const [lat, lon, radiusKm, ...rest] = value.split(',').map((s) => Number(s.trim()));
+  if (rest.length || ![lat, lon, radiusKm].every(Number.isFinite) || radiusKm <= 0) throw new Error(`PRIVACY_ZONE must be "lat,lon,radiusKm", not "${value}"`);
+  return { lat, lon, radiusKm };
+}
+
+/** The runs of the route outside the zone, each one a segment: what lies inside is dropped, and a run of a single point with it. */
+export function outsideZone(points: readonly TrackPoint[], zone: PrivacyZone): TrackPoint[][] {
+  const runs: TrackPoint[][] = [[]];
+  for (const p of points) {
+    if (distanceKm(p, zone) > zone.radiusKm) runs[runs.length - 1].push(p);
+    else if (runs[runs.length - 1].length) runs.push([]);
+  }
+  return runs.filter((run) => run.length > 1);
+}
+
 const round1 = (n: number): number => Math.round(n * 10) / 10;
 
 function pathOf(coords: readonly [number, number][]): string {
