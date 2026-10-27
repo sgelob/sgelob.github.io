@@ -1,7 +1,7 @@
 ---
 title: Castiglione – 82 – Cinzano – Berzano San Pietro – Albugnano – Casalborgone – Castagneto Po – Sand Raffaele
 date: "2026-05-01T12:00:00"
-order: 1
+order: 2
 activity: ride
 bike: xc
 distance: 55.5
