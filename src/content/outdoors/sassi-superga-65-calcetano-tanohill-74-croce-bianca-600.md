@@ -23,10 +23,10 @@ photos:
     alt: Narrow path into a thick green wood
 ---
 
-Thirty-six kilometres and 1,407 metres of climbing on the trail bike, from Sassi by the Po up to Superga and round its slopes, twice over the top. The title is a list of the trails: path 65 from Superga, Calcetano and Tanohill, path 74, Croce Bianca and path 600.
+Thirty-six kilometres and 1,407 metres of climbing on the trail bike, from Sassi by the Po up to Superga and round its slopes, twice over the top. The title is a list of the trails: path 65 from Superga, Calcetano and Tanohill, path 74, Croce Bianca, whose last pitch up to the cross riders on Komoot warn is steep, and path 600.
 
-The first climb goes up from the river through Reaglie and Tetti Rocco to the basilica, at about 670 metres, more than 440 metres above the start. From there the trails drop off the north side of the hill towards Rivodora, narrow paths through thick green woods, in early May already closing in on both sides.
+The first climb goes up from the river through Reaglie and Tetti Rocco to the basilica, at about 670 metres. From there the trails drop off the north side of the hill towards Rivodora, narrow paths through thick green woods, in early May already closing in on both sides.
 
 The second climb comes back up from Rivodora past Tetti Pietraforata to the top again, then along the Via dei Colli towards Monte Aman before the last trails and the long way down the Strada del Cartman to Sassi.
 
-Much of the riding is in the Parco naturale della Collina di Superga, created in 1991: about 750 hectares between Turin, San Mauro, Baldissero and Pino, most of it oak and chestnut woods.
+Much of the riding is in the Parco naturale della Collina di Superga, created in 1991: about 750 hectares, mostly oak and chestnut woods.

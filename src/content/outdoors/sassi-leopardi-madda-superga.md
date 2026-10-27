@@ -35,8 +35,8 @@ photos:
     alt: White parapet at Superga, the sky orange beyond the trees
 ---
 
-Thirty-eight kilometres and 1,057 metres of climbing on the trail bike, a loop over the Turin hill from the city: along the Po and up through the parks on the hillside to the Colle della Maddalena, then along the ridge to Superga and down again.
+Thirty-eight kilometres and 1,057 metres of climbing on the trail bike, a loop over the Turin hill from the city: up through the parks to the Colle della Maddalena, along the ridge to Superga and down again.
 
-The first part follows the river past the Murazzi to the Parco Leopardi on Corso Moncalieri, where the Sentiero dei Parchi starts up the hill. It links the parks of San Vito and the Maddalena through the woods, with bamboo crowding in on the tracks in places. On the way up we were caught in heavy rain.
+The first part follows the river past the Murazzi to the Parco Leopardi, where the Sentiero dei Parchi starts up the hill. It links the parks of San Vito and the Maddalena through the woods, bamboo crowding in on the tracks; riders on Gulliver call it easy and flowing, but for a short stretch up a stream bed, always wet and stepped. On the way up we were caught in heavy rain.
 
-At the top, at about 712 metres, the meadows of the Parco della Rimembranza look straight down on the city. Up there we did an excellent mountain-bike course with Raida Come Mangi (RCM). From there the route follows the ridge east, past the Eremo, Cento Croci and the Via dei Colli to Superga, and takes the old road down to Sassi, where it began.
+At the top, at about 712 metres, the meadows of the Parco della Rimembranza look straight down on the city. Up there we did an excellent mountain-bike course with Raida Come Mangi (RCM). From there the route follows the ridge east, past the Eremo, Cento Croci and the Via dei Colli to Superga, and drops back to Sassi.
