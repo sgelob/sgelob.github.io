@@ -2,7 +2,7 @@ import { describe, expect, test } from 'vitest';
 import { mkdtempSync, readdirSync, readFileSync as readSync, statSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { activityFromSport, downloadKomootImages, fetchKomootGpx, fetchKomootImages, fetchKomootTour, komootLogin, tourIdFromUrl, type FetchLike } from '../scripts/trip/komoot';
+import { activityFromSport, downloadKomootImages, fetchKomootGpx, fetchKomootImages, fetchKomootTour, komootLogin, listKomootTours, tourIdFromUrl, type FetchLike } from '../scripts/trip/komoot';
 
 const body = readSync(new URL('./fixtures/komoot-tour.json', import.meta.url), 'utf8');
 const imagesBody = readSync(new URL('./fixtures/komoot-images.json', import.meta.url), 'utf8');
@@ -86,6 +86,21 @@ describe('komoot login and paging', () => {
     expect(images.map((i) => i.id)).toEqual([1, 2]);
     expect(total).toBe(26);
     expect(calls).toHaveLength(2);
+  });
+
+  test('list: every recorded tour of the account, page by page, with distance to one decimal and climb rounded', async () => {
+    const tour = (id: number, distance: number) => ({ id, name: `T${id}`, distance, elevation_up: 1054.6, date: `2026-05-0${id}T07:00:00.000Z`, start_point: { lat: 45, lng: 7 } });
+    const pages: Record<string, string> = {
+      'https://api.komoot.de/v007/users/601/tours/?type=tour_recorded&page=0&limit=100': JSON.stringify({ _embedded: { tours: [tour(1, 23149), tour(2, 10370)] }, page: { totalPages: 2 } }),
+      'https://api.komoot.de/v007/users/601/tours/?type=tour_recorded&page=1&limit=100': JSON.stringify({ _embedded: { tours: [tour(3, 7712)] }, page: { totalPages: 2 } }),
+    };
+    const authed: FetchLike = async (url) => respond(pages[url] ?? '', pages[url] ? 200 : 404);
+    expect(await listKomootTours(authed, { username: '601', token: 'tok' })).toEqual([
+      { id: '1', distanceKm: 23.1, climb: 1055, startedAt: '2026-05-01T07:00:00.000Z' },
+      { id: '2', distanceKm: 10.4, climb: 1055, startedAt: '2026-05-02T07:00:00.000Z' },
+      { id: '3', distanceKm: 7.7, climb: 1055, startedAt: '2026-05-03T07:00:00.000Z' },
+    ]);
+    await expect(listKomootTours(async () => respond('', 403), { username: '601', token: 'tok' })).rejects.toThrow(/403/);
   });
 
   test('logged in: every page is followed through its next link, with the token in the Authorization header', async () => {

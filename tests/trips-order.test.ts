@@ -2,7 +2,7 @@ import { mkdtempSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { describe, expect, test } from 'vitest';
-import { komootTourId, missingRideTimes, orderTrips, readRideTime, recordRideTime, rideOrders, writeOrder } from '../scripts/trip/order';
+import { komootTourId, matchRideTime, missingRideTimes, orderTrips, readRideTime, recordRideTime, rideOrders, writeOrder } from '../scripts/trip/order';
 import { sortTrips } from '../src/lib/outdoors';
 
 describe('ride order', () => {
@@ -85,13 +85,28 @@ describe('ride order', () => {
     const base = mkdtempSync(join(tmpdir(), 'ride-'));
     const content = join(base, 'outdoors'); const notes = join(base, 'notes');
     mkdirSync(content); mkdirSync(notes);
-    const trip = (slug: string, tour?: string) => writeFileSync(join(content, `${slug}.md`), `---\ntitle: ${slug}\ndate: "2026-10-01T12:00:00"\n${tour ? `links:\n  - label: Komoot\n    url: https://www.komoot.com/tour/${tour}\n` : ''}---\n`);
+    const trip = (slug: string, tour?: string) => writeFileSync(join(content, `${slug}.md`), `---\ntitle: ${slug}\ndate: "2026-10-01T12:00:00"\ndistance: 23.1\nclimb: 1055\n${tour ? `links:\n  - label: Komoot\n    url: https://www.komoot.com/tour/${tour}\n` : ''}---\n`);
     trip('noted', '1'); trip('unnoted', '2'); trip('discreet');
     writeFileSync(join(notes, 'noted.md'), '# noted\n\n- ride: 2026-10-03T07:00:00Z\n');
-    expect(missingRideTimes(content, notes)).toEqual([{ slug: 'discreet', tourId: undefined }, { slug: 'unnoted', tourId: '2' }]);
+    expect(missingRideTimes(content, notes)).toEqual([
+      { slug: 'discreet', tourId: undefined, month: '2026-10', distanceKm: 23.1, climb: 1055 },
+      { slug: 'unnoted', tourId: '2', month: '2026-10', distanceKm: 23.1, climb: 1055 },
+    ]);
     recordRideTime(notes, 'unnoted', '2026-10-10T07:00:00Z');
     recordRideTime(notes, 'unnoted', '2026-10-10T07:00:00Z');
     expect(readFileSync(join(notes, 'unnoted.md'), 'utf8').match(/- ride: /g)).toHaveLength(1);
     expect(missingRideTimes(content, notes).map((t) => t.slug)).toEqual(['discreet']);
+  });
+  test('matchRideTime: the one tour of the trip’s month with its distance and climb, in Italian time; nothing when none or several match', () => {
+    const trip = { slug: 'loop', month: '2026-05', distanceKm: 23.1, climb: 1055 };
+    const tours = [
+      { distanceKm: 23.1, climb: 1055, startedAt: '2026-05-21T14:43:50.000Z' },
+      { distanceKm: 23.1, climb: 1055, startedAt: '2026-06-21T14:43:50.000Z' }, // another month
+      { distanceKm: 23.2, climb: 1055, startedAt: '2026-05-02T07:00:00.000Z' }, // another distance
+    ];
+    expect(matchRideTime(trip, tours)).toBe('2026-05-21T14:43:50.000Z');
+    expect(matchRideTime({ ...trip, month: '2026-06' }, [{ distanceKm: 23.1, climb: 1055, startedAt: '2026-05-31T22:30:00.000Z' }])).toBe('2026-05-31T22:30:00.000Z'); // 00:30 on 1 June in Turin
+    expect(matchRideTime(trip, [...tours, { distanceKm: 23.1, climb: 1055, startedAt: '2026-05-28T07:00:00.000Z' }])).toBeUndefined();
+    expect(matchRideTime({ ...trip, climb: undefined }, tours)).toBeUndefined();
   });
 });

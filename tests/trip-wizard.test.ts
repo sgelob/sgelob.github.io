@@ -186,13 +186,14 @@ describe('trip wizard', () => {
     expect(failing.said.some((l) => l.includes('were not drawn (terrain tile 13/1/1 answered 503); run npm run contours -- musine later'))).toBe(true);
   });
 
-  test('approximate ends: the GPX and links as for a shared trip, the ends moved along the path, the day on the 1st', async () => {
-    const { deps, said } = setup((photos) => [photos, 'ride', 'trail', 'Ridge loop', '', 'Collina torinese', '', '27', '1300', 'a', fixture('track.gpx'), 'Komoot=https://www.komoot.com/tour/2', '', '2026-10-17', '', 'n', 'Leaves.', '']);
+  test('approximate ends: the GPX as for a shared trip but no links, the ends moved along the path, the day on the 1st', async () => {
+    const { deps, said } = setup((photos) => [photos, 'ride', 'trail', 'Ridge loop', '', 'Collina torinese', '', '27', '1300', 'a', fixture('track.gpx'), '2026-10-17', '', 'n', 'Leaves.', '']);
     const r = await runWizard(deps);
     expect(r.discreet).toBe(false);
     const text = readFileSync(r.path, 'utf8');
     const data = parse(text.split('---')[1]);
-    expect(data).toMatchObject({ track: 'ridge-loop.gpx', approximateEnds: true, links: [{ label: 'Komoot', url: 'https://www.komoot.com/tour/2' }] });
+    expect(data).toMatchObject({ track: 'ridge-loop.gpx', approximateEnds: true });
+    expect(data.links).toBeUndefined(); // a Komoot page would show the real day and time
     expect(text).toContain('date: "2026-10-01T12:00:00"'); // approximate: the 1st of the month, as for a discreet trip
     expect(existsSync(join(deps.tracksDir, 'ridge-loop.profile.json'))).toBe(false);
     expect(said.some((l) => l.includes('Approximate: the route is published as a closed circuit with no start or finish'))).toBe(true);

@@ -306,7 +306,7 @@ export async function runWizard(deps: WizardDeps): Promise<WizardResult> {
       missing: () => a.shared === undefined,
       async ask() {
         say('  A shared trip gets its route drawn on the page and the GPX offered for download.');
-        say('  An approximate trip gets the same as a closed circuit with no start or finish, and its date on the 1st of the month.');
+        say('  An approximate trip gets the same as a closed circuit with no start or finish, its date on the 1st of the month, and no links (a Komoot page shows the real day and time).');
         say('  A discreet trip gets no route, no download, no links, and its date on the 1st of the month.');
         const was = a.shared;
         const current = a.shared === undefined ? 'd' : a.approximateEnds ? 'a' : a.shared ? 's' : 'd';
@@ -328,6 +328,7 @@ export async function runWizard(deps: WizardDeps): Promise<WizardResult> {
           a.gpx = undefined;
           a.links = [];
         }
+        if (a.approximateEnds) a.links = [];
       },
       show: () => (a.approximateEnds ? 'approximate' : a.shared ? 'shared' : 'discreet'),
     },
@@ -349,7 +350,7 @@ export async function runWizard(deps: WizardDeps): Promise<WizardResult> {
     },
     {
       label: 'Links',
-      applies: () => a.shared === true,
+      applies: () => a.shared === true && !a.approximateEnds,
       missing: () => a.links === undefined,
       async ask() {
         const links: TripLink[] = [];

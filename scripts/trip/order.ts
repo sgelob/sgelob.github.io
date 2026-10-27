@@ -64,14 +64,43 @@ export function komootTourId(doc: string): string | undefined {
   return url ? tourIdFromUrl(url) : undefined;
 }
 
-/** The trips whose notes have no ride time (notes are kept only where they were written), with their Komoot tour if they link one. */
-export function missingRideTimes(contentDir: string, notesDir: string): { slug: string; tourId?: string }[] {
+/** A trip whose notes have no ride time: its Komoot tour if it links one, else what can recognise it in the account's list. */
+export interface MissingRideTime {
+  slug: string;
+  tourId?: string;
+  /** The published month, YYYY-MM: the real ride falls in it. */
+  month: string;
+  distanceKm?: number;
+  climb?: number;
+}
+
+/** The trips whose notes have no ride time (notes are kept only where they were written). */
+export function missingRideTimes(contentDir: string, notesDir: string): MissingRideTime[] {
   return readdirSync(contentDir).filter((f) => f.endsWith('.md')).sort().flatMap((f) => {
     const notes = join(notesDir, f);
     if (existsSync(notes) && readRideTime(readFileSync(notes, 'utf8'))) return [];
-    return [{ slug: f.slice(0, -3), tourId: komootTourId(readFileSync(join(contentDir, f), 'utf8')) }];
+    const doc = readFileSync(join(contentDir, f), 'utf8');
+    const number = (key: string) => {
+      const m = new RegExp(`^${key}: ([\\d.]+)$`, 'm').exec(doc);
+      return m ? Number(m[1]) : undefined;
+    };
+    const month = /^date: "?(\d{4}-\d{2})/m.exec(doc)?.[1] ?? '';
+    return [{ slug: f.slice(0, -3), tourId: komootTourId(doc), month, distanceKm: number('distance'), climb: number('climb') }];
   });
 }
+
+/**
+ * The ride time of a trip that does not link to its tour (a trip with approximate ends must not): the one tour of the account
+ * ridden in the trip's month with its distance and climb. Undefined when none matches, or more than one does.
+ */
+export function matchRideTime(trip: MissingRideTime, tours: readonly { distanceKm: number; climb: number; startedAt: string }[]): string | undefined {
+  if (trip.distanceKm === undefined || trip.climb === undefined) return undefined;
+  const hits = tours.filter((t) => t.distanceKm === trip.distanceKm && t.climb === trip.climb && localMonth(t.startedAt) === trip.month);
+  return hits.length === 1 ? hits[0].startedAt : undefined;
+}
+
+/** The month of a moment in Italian time, where the rides are: a ride just after midnight on the 1st belongs to the new month. */
+const localMonth = (iso: string): string => new Date(iso).toLocaleDateString('sv-SE', { timeZone: 'Europe/Rome' }).slice(0, 7);
 
 /** Writes a ride time into a trip's notes, creating them if needed; a time already there is kept. */
 export function recordRideTime(notesDir: string, slug: string, iso: string): void {
