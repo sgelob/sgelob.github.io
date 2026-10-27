@@ -38,7 +38,7 @@ Look at every photo (`photos/NN.jpg`). Note what each shows; name a place only w
 
 ## 4. Write
 
-- **Story** below the front matter, first person, concrete, a few short paragraphs. Open with the distance and climb in words. Then the route as it went, what the photos show, and a few facts found by searching the web (history, the place, a race), checked and given to the user as sources. Read the stories of nearby trips first and do not repeat their facts.
+- **Story** below the front matter, first person, concrete, a few short paragraphs. Open with the distance and climb in words. Then the route as it went, what the photos show, and a few facts found by searching the web (history, the place, a race), checked and given to the user as sources. Read the stories of nearby trips first and do not repeat their facts. Search too for what others who rode or walked the same trails say about them (Komoot highlights and tips, Gulliver, hiking and MTB reports) and work it in, credited ("riders on Komoot describe it as…"), only for stretches this ride really took, and given to the user as sources.
 - **Alt text** for every photo: English, 4 to 12 words, no "photo of". People are "a rider ahead" or "walkers in the distance".
 - **Privacy:** no brands, products or gear. Nothing the user did not say about who they were with or where they stay. For an approximate or discreet trip: no start, parking, access road, real day or time of day, in the story, the alt texts or the title.
 - **Style:** curly apostrophes (’), an en dash with spaces between the places of a title, no em dashes, numbers like 1,861 metres.
