@@ -1,7 +1,7 @@
 ---
 title: Roasio – Rive Rosse
 date: "2026-04-18T12:00:00"
-order: 2
+order: 3
 activity: ride
 bike: trail
 distance: 40.5
