@@ -1,6 +1,7 @@
 ---
 title: Castiglione (Torinese) – Pino (d’Asti)
 date: "2026-01-01T12:00:00"
+order: 2
 activity: ride
 bike: xc
 distance: 51.6
