@@ -1,7 +1,7 @@
 ---
 title: Sassi – 600 – Leopardi – Madda – Cappuccini – Val San Martino
 date: "2026-01-10T12:00:00"
-order: 1
+order: 2
 activity: ride
 bike: xc
 distance: 45.3
