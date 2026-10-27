@@ -3,6 +3,31 @@
   <trk>
     <name>castiglione-sassi-chieri-moncalieri-madda-superga</name>
     <trkseg>
+      <trkpt lat="45.1157" lon="7.803895"><ele>239.277785</ele></trkpt>
+      <trkpt lat="45.11572" lon="7.803769"><ele>238.601293</ele></trkpt>
+      <trkpt lat="45.115754" lon="7.803647"><ele>237.90458</ele></trkpt>
+      <trkpt lat="45.115797" lon="7.803527"><ele>237.189726</ele></trkpt>
+      <trkpt lat="45.115842" lon="7.803415"><ele>236.505166</ele></trkpt>
+      <trkpt lat="45.11589" lon="7.803306"><ele>235.822726</ele></trkpt>
+      <trkpt lat="45.115936" lon="7.803201"><ele>235.166279</ele></trkpt>
+      <trkpt lat="45.115979" lon="7.80309"><ele>234.493702</ele></trkpt>
+      <trkpt lat="45.116024" lon="7.802982"><ele>233.827524</ele></trkpt>
+      <trkpt lat="45.116065" lon="7.802879"><ele>233.199399</ele></trkpt>
+      <trkpt lat="45.116104" lon="7.802772"><ele>232.559732</ele></trkpt>
+      <trkpt lat="45.116151" lon="7.802662"><ele>231.876711</ele></trkpt>
+      <trkpt lat="45.116201" lon="7.802547"><ele>231.159256</ele></trkpt>
+      <trkpt lat="45.116254" lon="7.802429"><ele>230.416311</ele></trkpt>
+      <trkpt lat="45.116309" lon="7.802312"><ele>229.669602</ele></trkpt>
+      <trkpt lat="45.116364" lon="7.802193"><ele>228.914029</ele></trkpt>
+      <trkpt lat="45.116414" lon="7.802076"><ele>228.18751</ele></trkpt>
+      <trkpt lat="45.116464" lon="7.801968"><ele>227.501435</ele></trkpt>
+      <trkpt lat="45.116508" lon="7.801863"><ele>226.852807</ele></trkpt>
+      <trkpt lat="45.116555" lon="7.801758"><ele>226.192364</ele></trkpt>
+      <trkpt lat="45.116601" lon="7.801657"><ele>225.623709</ele></trkpt>
+      <trkpt lat="45.116642" lon="7.801552"><ele>225.24285</ele></trkpt>
+      <trkpt lat="45.116686" lon="7.801455"><ele>224.87688</ele></trkpt>
+      <trkpt lat="45.116732" lon="7.801366"><ele>224.526756</ele></trkpt>
+      <trkpt lat="45.116779" lon="7.801273"><ele>224.163712</ele></trkpt>
       <trkpt lat="45.116828" lon="7.801186"><ele>223.810433</ele></trkpt>
       <trkpt lat="45.116873" lon="7.801103"><ele>223.478242</ele></trkpt>
       <trkpt lat="45.116917" lon="7.801025"><ele>223.161316</ele></trkpt>
@@ -19541,34 +19566,6 @@
       <trkpt lat="45.102502" lon="7.801327"><ele>399.218373</ele></trkpt>
       <trkpt lat="45.102505" lon="7.801377"><ele>398.827758</ele></trkpt>
       <trkpt lat="45.102505" lon="7.801424"><ele>398.4619</ele></trkpt>
-    </trkseg>
-    <trkseg>
-      <trkpt lat="45.1157" lon="7.803895"><ele>239.277785</ele></trkpt>
-      <trkpt lat="45.11572" lon="7.803769"><ele>238.601293</ele></trkpt>
-      <trkpt lat="45.115754" lon="7.803647"><ele>237.90458</ele></trkpt>
-      <trkpt lat="45.115797" lon="7.803527"><ele>237.189726</ele></trkpt>
-      <trkpt lat="45.115842" lon="7.803415"><ele>236.505166</ele></trkpt>
-      <trkpt lat="45.11589" lon="7.803306"><ele>235.822726</ele></trkpt>
-      <trkpt lat="45.115936" lon="7.803201"><ele>235.166279</ele></trkpt>
-      <trkpt lat="45.115979" lon="7.80309"><ele>234.493702</ele></trkpt>
-      <trkpt lat="45.116024" lon="7.802982"><ele>233.827524</ele></trkpt>
-      <trkpt lat="45.116065" lon="7.802879"><ele>233.199399</ele></trkpt>
-      <trkpt lat="45.116104" lon="7.802772"><ele>232.559732</ele></trkpt>
-      <trkpt lat="45.116151" lon="7.802662"><ele>231.876711</ele></trkpt>
-      <trkpt lat="45.116201" lon="7.802547"><ele>231.159256</ele></trkpt>
-      <trkpt lat="45.116254" lon="7.802429"><ele>230.416311</ele></trkpt>
-      <trkpt lat="45.116309" lon="7.802312"><ele>229.669602</ele></trkpt>
-      <trkpt lat="45.116364" lon="7.802193"><ele>228.914029</ele></trkpt>
-      <trkpt lat="45.116414" lon="7.802076"><ele>228.18751</ele></trkpt>
-      <trkpt lat="45.116464" lon="7.801968"><ele>227.501435</ele></trkpt>
-      <trkpt lat="45.116508" lon="7.801863"><ele>226.852807</ele></trkpt>
-      <trkpt lat="45.116555" lon="7.801758"><ele>226.192364</ele></trkpt>
-      <trkpt lat="45.116601" lon="7.801657"><ele>225.623709</ele></trkpt>
-      <trkpt lat="45.116642" lon="7.801552"><ele>225.24285</ele></trkpt>
-      <trkpt lat="45.116686" lon="7.801455"><ele>224.87688</ele></trkpt>
-      <trkpt lat="45.116732" lon="7.801366"><ele>224.526756</ele></trkpt>
-      <trkpt lat="45.116779" lon="7.801273"><ele>224.163712</ele></trkpt>
-      <trkpt lat="45.116828" lon="7.801186"><ele>223.810433</ele></trkpt>
     </trkseg>
   </trk>
 </gpx>
