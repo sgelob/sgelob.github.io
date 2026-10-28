@@ -1,6 +1,7 @@
 ---
 import TripGrid from './TripGrid.astro';
 import SectionLabel from './SectionLabel.astro';
+import { getTrips } from '../lib/collections';
 import { groupByYear, OUTDOORS_LEAD, type Trip } from '../lib/outdoors';
 
 interface Props {
@@ -9,10 +10,12 @@ interface Props {
 }
 
 const { trips, filter } = Astro.props;
+// The counts are of every trip, whichever filter this page shows, as on /records/.
+const all = await getTrips();
 const filters = [
-  { slug: 'all', name: 'All', href: '/outdoors/' },
-  { slug: 'hikes', name: 'Hikes', href: '/outdoors/hikes/' },
-  { slug: 'rides', name: 'Rides', href: '/outdoors/rides/' },
+  { slug: 'all', name: 'All', href: '/outdoors/', count: all.length },
+  { slug: 'hikes', name: 'Hikes', href: '/outdoors/hikes/', count: all.filter((t) => t.data.activity === 'hike').length },
+  { slug: 'rides', name: 'Rides', href: '/outdoors/rides/', count: all.filter((t) => t.data.activity === 'ride').length },
 ];
 const years = groupByYear(trips);
 const empty = { all: 'No trips yet.', hikes: 'No hikes yet.', rides: 'No rides yet.' };
@@ -23,9 +26,9 @@ const empty = { all: 'No trips yet.', hikes: 'No hikes yet.', rides: 'No rides y
   <p class="description">{OUTDOORS_LEAD}</p>
   <nav aria-label="Activities">
     <ul class="filters mono">
-      {filters.map(({ slug, name, href }) => (
+      {filters.map(({ slug, name, href, count }) => (
         <li>
-          <a href={href} aria-current={slug === filter ? 'page' : undefined}>{name}</a>
+          <a href={href} aria-current={slug === filter ? 'page' : undefined}>{name} <span class="count">{count}</span></a>
         </li>
       ))}
     </ul>
@@ -87,6 +90,9 @@ const empty = { all: 'No trips yet.', hikes: 'No hikes yet.', rides: 'No rides y
   .filters a[aria-current] { color: var(--fg); }
 
   .filters a[aria-current] { border-bottom-color: currentColor; }
+
+  /* Dimmed only beside the current filter, in the light text: on the muted links it would fall under 4.5:1 (WCAG 1.4.3). */
+  .filters a[aria-current] .count { opacity: 0.7; }
 
   /* Each embedded grid ends 64px below; the page ends 96px below the last one, like a plain grid. */
   .sections { padding-bottom: 32px; }

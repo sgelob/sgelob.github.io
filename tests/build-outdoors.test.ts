@@ -1,5 +1,11 @@
+import { readdirSync, readFileSync } from 'node:fs';
 import { describe, expect, test } from 'vitest';
 import { count, exists, read } from './helpers/dist';
+
+/** The activity of every trip file, read from the content folder so the counts follow new trips. */
+const activities = readdirSync('src/content/outdoors')
+  .filter((f) => f.endsWith('.md'))
+  .map((f) => /^activity: (\w+)$/m.exec(readFileSync(`src/content/outdoors/${f}`, 'utf8'))?.[1]);
 
 const TRIP = 'dist/outdoors/canosio-gardetta-valle-maira/index.html';
 
@@ -10,7 +16,12 @@ describe('outdoors index', () => {
     expect(html).toMatch(/<h1[^>]*>Outdoors<\/h1>/);
     expect(html).toContain('a kind of shinrin-yoku on foot or on two wheels');
     expect(html).toContain('Distance and climb are there to describe the day, not to measure it.');
-    expect(html).toMatch(/<a href="\/outdoors\/" aria-current="page"[^>]*>All<\/a>/);
+    const hikes = activities.filter((a) => a === 'hike').length;
+    const rides = activities.filter((a) => a === 'ride').length;
+    expect(hikes + rides).toBe(activities.length);
+    expect(html).toMatch(new RegExp(`<a href="/outdoors/" aria-current="page"[^>]*>All <span class="count"[^>]*>${activities.length}</span></a>`));
+    expect(html).toMatch(new RegExp(`<a href="/outdoors/hikes/"[^>]*>Hikes <span class="count"[^>]*>${hikes}</span></a>`));
+    expect(html).toMatch(new RegExp(`<a href="/outdoors/rides/"[^>]*>Rides <span class="count"[^>]*>${rides}</span></a>`));
     expect(html).toContain('href="/outdoors/hikes/"'); expect(html).toContain('href="/outdoors/rides/"');
     expect(html).toMatch(/<h2 id="year-2026"[^>]*>2026<\/h2>/);
     expect(html).toMatch(/<a class="trip-card" href="\/outdoors\/canosio-gardetta-valle-maira\/"/);
@@ -18,8 +29,8 @@ describe('outdoors index', () => {
     expect(html).not.toContain('No trips yet.');
   });
   test('hikes and rides pages exist with their filter active', () => {
-    expect(read('dist/outdoors/hikes/index.html')).toMatch(/<a href="\/outdoors\/hikes\/" aria-current="page"[^>]*>Hikes<\/a>/);
-    expect(read('dist/outdoors/rides/index.html')).toMatch(/<a href="\/outdoors\/rides\/" aria-current="page"[^>]*>Rides<\/a>/);
+    expect(read('dist/outdoors/hikes/index.html')).toMatch(/<a href="\/outdoors\/hikes\/" aria-current="page"[^>]*>Hikes <span class="count"/);
+    expect(read('dist/outdoors/rides/index.html')).toMatch(/<a href="\/outdoors\/rides\/" aria-current="page"[^>]*>Rides <span class="count"/);
     expect(read('dist/outdoors/rides/index.html')).toContain('<title>Rides · Outdoors – Olegs Belousovs</title>');
     const hikes = read('dist/outdoors/hikes/index.html');
     expect(hikes).toContain('href="/outdoors/punta-alpet-lago-delle-scalette/"');
