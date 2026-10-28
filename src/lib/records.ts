@@ -38,9 +38,9 @@ export const recordPath = (record: Pick<RecordEntry, 'slug'>): string => `/recor
 
 export type RecordFilter = 'all' | 'vinyl' | 'cd';
 
-/** The records a filter page lists; DVDs only under all. */
+/** The records a filter page lists. DVDs are CD-sized discs and too few for a page of their own, so they sit under CD. */
 export const byKind = (list: readonly RecordEntry[], filter: RecordFilter): RecordEntry[] =>
-  filter === 'all' ? [...list] : list.filter((r) => r.kind === filter);
+  filter === 'all' ? [...list] : list.filter((r) => (r.kind === 'dvd' ? 'cd' : r.kind) === filter);
 
 /** “Various” is how Discogs names the artist of a compilation. */
 export const artistLabel = (artist: string): string => (artist === 'Various' ? 'Various artists' : artist);
