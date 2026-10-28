@@ -1,7 +1,7 @@
 ---
 title: Città – Rifugio Amprimo
 date: "2026-01-04T12:00:00"
-order: 1
+order: 2
 activity: hike
 distance: 7
 climb: 314

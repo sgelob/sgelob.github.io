@@ -1,7 +1,7 @@
 ---
 title: Castiglione – San Mauro – Baldissero – Montaldo – Sciolze – Rivalba – Castagneto Po – San Raffaele – Gassino
 date: "2026-01-01T12:00:00"
-order: 3
+order: 4
 activity: ride
 bike: xc
 distance: 47.6
