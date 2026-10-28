@@ -24,6 +24,7 @@ describe('records list', () => {
   test('a filter row with counts; Vinyl and CD pages list only their kind', () => {
     const vinyl = byKind(records, 'vinyl').length;
     const cd = byKind(records, 'cd').length;
+    expect(vinyl + cd).toBe(records.length);
     expect(list).toMatch(new RegExp(`<a href="/records/" aria-current="page"[^>]*>All <span class="count"[^>]*>${records.length}</span>`));
     expect(list).toMatch(new RegExp(`<a href="/records/vinyl/"[^>]*>Vinyl <span class="count"[^>]*>${vinyl}</span>`));
     expect(list).toMatch(new RegExp(`<a href="/records/cd/"[^>]*>CD <span class="count"[^>]*>${cd}</span>`));

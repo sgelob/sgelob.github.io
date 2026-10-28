@@ -13,11 +13,11 @@ test('groupByLetter: a “#” group for names starting with a digit or symbol, 
   expect(groups.find((g) => g.letter === 'P')!.records[0].artist).toBe('The Prodigy');
 });
 
-test('byKind: all, vinyl or CD; DVDs only under all', () => {
+test('byKind: all, vinyl or CD; DVDs under CD', () => {
   const mixed = [entry('A'), entry('B', 'cd'), entry('C', 'dvd'), entry('D')];
   expect(byKind(mixed, 'all')).toHaveLength(4);
   expect(byKind(mixed, 'vinyl').map((r) => r.artist)).toEqual(['A', 'D']);
-  expect(byKind(mixed, 'cd').map((r) => r.artist)).toEqual(['B']);
+  expect(byKind(mixed, 'cd').map((r) => r.artist)).toEqual(['B', 'C']);
 });
 
 test('artistLabel and recordPath', () => {
