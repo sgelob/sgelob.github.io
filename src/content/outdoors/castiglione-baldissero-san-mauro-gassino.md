@@ -1,7 +1,7 @@
 ---
 title: Castiglione – Baldissero – San Mauro – Gassino
 date: "2025-11-01T12:00:00"
-order: 4
+order: 5
 activity: ride
 bike: xc
 distance: 43.6

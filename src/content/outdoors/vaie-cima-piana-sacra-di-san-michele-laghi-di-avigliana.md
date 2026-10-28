@@ -1,7 +1,7 @@
 ---
 title: Vaie – Cima Piana – Sacra di San Michele – Laghi di Avigliana
 date: "2025-11-08T12:00:00"
-order: 1
+order: 2
 activity: ride
 bike: xc
 distance: 41.6
