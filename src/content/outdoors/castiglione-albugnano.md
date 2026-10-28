@@ -10,7 +10,7 @@ area: Metropolitan City of Turin
 country: italy
 track: castiglione-albugnano.gpx
 approximateEnds: true
-cover: 2025/12/castiglione-albugnano-04.jpg
+cover: 2025/12/castiglione-albugnano-05.jpg
 coverWidth: 2048
 coverHeight: 1536
 darkHeader: true
