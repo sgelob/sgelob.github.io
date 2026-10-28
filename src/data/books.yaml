@@ -1,5 +1,8 @@
 - title: Favourite Books
   books:
+    - title: The Culture Map
+      author: Erin Meyer
+      year: 2014
     - title: The Anxious Generation
       author: Jonathan Haidt
       year: 2024
