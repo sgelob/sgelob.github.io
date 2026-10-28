@@ -1,7 +1,7 @@
 ---
 title: Sassi – Maddalena – Moncalieri – Pecetto – Pino
 date: "2025-11-22T12:00:00"
-order: 2
+order: 3
 activity: ride
 bike: xc
 distance: 45.1

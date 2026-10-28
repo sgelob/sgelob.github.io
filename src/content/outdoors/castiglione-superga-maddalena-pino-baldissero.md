@@ -1,7 +1,7 @@
 ---
 title: Castiglione – Superga – Maddalena – Pino – Baldissero
 date: "2025-11-01T12:00:00"
-order: 1
+order: 2
 activity: ride
 bike: xc
 distance: 45
