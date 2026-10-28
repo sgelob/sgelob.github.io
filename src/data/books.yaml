@@ -3,6 +3,10 @@
     - title: The Culture Map
       author: Erin Meyer
       year: 2014
+      cover:
+        src: 2026/10/book-the-culture-map.jpg
+        width: 333
+        height: 500
     - title: The Anxious Generation
       author: Jonathan Haidt
       year: 2024
@@ -1209,6 +1213,11 @@
       year: 2012
     - title: Jamie‘s Italy
       author: Jamie Oliver
+      year: 2005
+      cover:
+        src: 2026/10/book-jamie-s-italy.jpg
+        width: 380
+        height: 500
     - title: Scarcity
       author: Sendhil Mullainathan & Eldar Shafir
       year: 2013
