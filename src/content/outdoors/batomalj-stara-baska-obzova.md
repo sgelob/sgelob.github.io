@@ -1,7 +1,7 @@
 ---
 title: Batomalj – Stara Baška – Obzova
 date: "2025-08-20T12:00:00"
-order: 3
+order: 4
 activity: hike
 distance: 15
 climb: 879

@@ -1,7 +1,7 @@
 ---
 title: Sabunike – Nin – Bilotinjak
 date: "2025-08-13T12:00:00"
-order: 2
+order: 3
 activity: hike
 distance: 12.6
 climb: 77

@@ -1,7 +1,7 @@
 ---
 title: Makar – Štrbina – Vošac (Biokovo Nature Park)
 date: "2025-08-07T12:00:00"
-order: 1
+order: 2
 activity: hike
 distance: 13.1
 climb: 1233

@@ -1,7 +1,7 @@
 ---
 title: Settimo – Castiglione – Gassino
 date: "2025-08-01T12:00:00"
-order: 4
+order: 5
 activity: hike
 distance: 16.9
 climb: 432
