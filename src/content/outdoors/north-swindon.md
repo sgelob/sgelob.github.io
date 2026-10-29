@@ -1,7 +1,7 @@
 ---
 title: North Swindon
 date: "2025-06-18T12:00:00"
-order: 2
+order: 3
 activity: hike
 distance: 15.1
 climb: 135

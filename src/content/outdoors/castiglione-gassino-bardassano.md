@@ -1,7 +1,7 @@
 ---
 title: Castiglione – Gassino – Bardassano
 date: "2025-06-01T12:00:00"
-order: 1
+order: 2
 activity: hike
 distance: 15.1
 climb: 527
