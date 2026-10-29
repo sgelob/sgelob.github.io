@@ -36,7 +36,7 @@ describe('home', () => {
     for (const href of ['/events/', '/books/', '/quotes/', 'mailto:44_tildes_agog@icloud.com?subject=Message%20from%20olegs.be', '/photos/', '/blog/']) {
       expect(html).toContain(`href="${href}"`);
     }
-    expect(html).toContain('All 39 posts');
+    expect(html).toContain(`All ${contentCount('posts')} posts`);
   });
 });
 
