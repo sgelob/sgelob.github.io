@@ -58,7 +58,9 @@ What the existing posts do, and the new ones keep doing:
 
 ## 5. Show, check, publish
 
-- Show the user the draft (title, excerpt, the text) before publishing, and change what they ask. Do not publish a post the user has not seen.
+- Show the user the draft (title, excerpt, the text) before publishing, and change what they ask.
+- **Nothing goes to GitHub until the user has read and approved the content locally**: no commit and no push, not even to a draft branch, until they say to publish. The draft stays an uncommitted file in the working tree; send it to the user (SendUserFile) after each change. If a hook asks to commit the untracked draft, do not: tell the user the draft is waiting for their approval.
+- Code the post needs (a test that counts posts, for example) goes in its own pull request, without the post.
 - `npm test` and `npm run check` must pass (in the cloud run `npm test` with `UPLOADS_DIR` unset, as CI does).
 - A content-only post goes straight to `main`: `git add src/content/posts` (and the data or image files it needs), commit as `content(blog): <title>`, push. If the push to `main` is refused, push a branch, open a pull request and tell the user.
 - Wait for the deploy, then check that `/YYYY/MM/<slug>/` and its images answer 200, with `curl -A 'olegs.be post check'`.
