@@ -1,7 +1,7 @@
 ---
 title: Place Moulin – Prarayer Hut – Les Broulé (Bionaz)
 date: "2025-07-12T12:00:00"
-order: 1
+order: 2
 activity: hike
 distance: 15.7
 climb: 553
