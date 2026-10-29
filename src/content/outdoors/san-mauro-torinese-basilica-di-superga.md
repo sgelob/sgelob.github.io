@@ -1,7 +1,7 @@
 ---
 title: San Mauro Torinese – Basilica di Superga
 date: "2025-07-25T12:00:00"
-order: 2
+order: 3
 activity: hike
 distance: 10.2
 climb: 469

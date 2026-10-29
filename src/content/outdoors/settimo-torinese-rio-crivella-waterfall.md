@@ -1,7 +1,7 @@
 ---
 title: Settimo Torinese – Rio Crivella Waterfall
 date: "2025-07-17T12:00:00"
-order: 1
+order: 2
 activity: hike
 distance: 18.7
 climb: 512

@@ -1,7 +1,7 @@
 ---
 title: Castiglione – Arignano – Cinzano – Castagneto Po (+ Bosc Grand & Bosco del Vaj)
 date: "2025-07-01T12:00:00"
-order: 3
+order: 4
 activity: ride
 bike: xc
 distance: 53.7
