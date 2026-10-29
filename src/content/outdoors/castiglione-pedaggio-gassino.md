@@ -1,7 +1,7 @@
 ---
 title: Castiglione – Pedaggio (Gassino)
 date: "2025-05-01T12:00:00"
-order: 2
+order: 5
 activity: hike
 distance: 13.3
 climb: 467

@@ -1,7 +1,7 @@
 ---
 title: Balangero – Monti Giovetto-Rolei-San Vittore – Bric Forcola
 date: "2025-05-29T12:00:00"
-order: 1
+order: 4
 activity: hike
 distance: 15.3
 climb: 677
