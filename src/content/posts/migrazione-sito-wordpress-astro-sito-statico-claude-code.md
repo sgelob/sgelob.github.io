@@ -75,4 +75,6 @@ Anche la privacy è stata pensata da subito: per ogni giro decido cosa mostrare 
 
 Non ho dovuto aggiornare nessun plugin, e non ho nessun server da tenere d’occhio.
 
-*E tu, hai anche tu un sito che cambia poco ma che continui ad aggiornare?…*
+Un grazie speciale a Matteo Breda, mio collega di Carol, che mi ha suggerito Astro 🙂
+
+*E tu, hai un sito che cambia poco ma che continui ad aggiornare?…*
