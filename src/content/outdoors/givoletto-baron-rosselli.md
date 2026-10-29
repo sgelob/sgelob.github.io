@@ -1,6 +1,7 @@
 ---
 title: Givoletto – Baron – Rosselli
 date: "2025-03-19T12:00:00"
+order: 2
 activity: hike
 distance: 13.1
 climb: 925
