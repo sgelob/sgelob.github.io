@@ -44,6 +44,8 @@ countries:
     name: Spain
   - slug: netherlands
     name: The Netherlands
+  - slug: united-kingdom
+    name: United Kingdom
   - slug: usa
     name: USA
   - slug: world
