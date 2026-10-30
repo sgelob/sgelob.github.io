@@ -1,6 +1,7 @@
 ---
 title: Castiglione Torinese – San Raffaele Cimena
 date: "2024-06-01T12:00:00"
+order: 2
 activity: ride
 bike: gravel
 distance: 21

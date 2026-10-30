@@ -1,7 +1,7 @@
 ---
 title: Castiglione – Cordova – 76 – San Martino – Tanohill – Pavarolo – Gassino
 date: "2026-04-01T12:00:00"
-order: 6
+order: 7
 activity: ride
 bike: trail
 distance: 31

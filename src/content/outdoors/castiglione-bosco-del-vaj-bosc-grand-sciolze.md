@@ -1,7 +1,7 @@
 ---
 title: Castiglione – Bosco del Vaj – Bosc Grand – Sciolze
 date: "2025-10-01T12:00:00"
-order: 4
+order: 5
 activity: ride
 bike: xc
 distance: 44.4

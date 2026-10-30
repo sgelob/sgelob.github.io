@@ -1,7 +1,7 @@
 ---
 title: Celle
 date: "2026-04-06T12:00:00"
-order: 3
+order: 4
 activity: hike
 # bike: xc | trail | gravel
 distance: 1.9
