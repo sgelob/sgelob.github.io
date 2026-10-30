@@ -1,7 +1,7 @@
 ---
 title: Alagna Valsesia – Laghi del Corno
 date: "2020-07-31T12:00:00"
-order: 6
+order: 8
 activity: hike
 distance: 13.2
 climb: 1250

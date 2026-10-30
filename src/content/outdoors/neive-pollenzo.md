@@ -1,7 +1,7 @@
 ---
 title: Castagnito – Alba – Pollenzo
 date: "2020-07-18T12:00:00"
-order: 4
+order: 6
 activity: ride
 bike: gravel
 distance: 55.8

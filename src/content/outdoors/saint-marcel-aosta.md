@@ -1,7 +1,7 @@
 ---
 title: Saint-Marcel – Aosta
 date: "2020-07-17T12:00:00"
-order: 3
+order: 5
 activity: ride
 bike: gravel
 distance: 32.7

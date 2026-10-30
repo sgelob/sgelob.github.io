@@ -1,7 +1,7 @@
 ---
 title: Lago di Varese – Lago di Comabbio
 date: "2020-07-25T12:00:00"
-order: 5
+order: 7
 activity: ride
 bike: gravel
 distance: 50.1

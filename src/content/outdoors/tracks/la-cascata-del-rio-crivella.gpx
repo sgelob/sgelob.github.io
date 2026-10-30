@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="olegs.be" xmlns="http://www.topografix.com/GPX/1/1">
+  <trk>
+    <name>la-cascata-del-rio-crivella</name>
+    <trkseg>
+      <trkpt lat="45.099812" lon="7.803946"><ele>309.928269</ele></trkpt>
+      <trkpt lat="45.099565" lon="7.80352"><ele>311.409816</ele></trkpt>
+      <trkpt lat="45.099059" lon="7.803346"><ele>313.39221</ele></trkpt>
+      <trkpt lat="45.098595" lon="7.803385"><ele>315.666291</ele></trkpt>
+      <trkpt lat="45.098298" lon="7.803279"><ele>317.414399</ele></trkpt>
+      <trkpt lat="45.098212" lon="7.803248"><ele>317.920888</ele></trkpt>
+      <trkpt lat="45.097882" lon="7.803248"><ele>319.804376</ele></trkpt>
+      <trkpt lat="45.097733" lon="7.803248"><ele>320.6548</ele></trkpt>
+      <trkpt lat="45.097556" lon="7.803423"><ele>321.886747</ele></trkpt>
+      <trkpt lat="45.096866" lon="7.803534"><ele>326.465524</ele></trkpt>
+      <trkpt lat="45.096715" lon="7.803559"><ele>327.705738</ele></trkpt>
+      <trkpt lat="45.096373" lon="7.80352"><ele>330.504735</ele></trkpt>
+      <trkpt lat="45.096195" lon="7.803306"><ele>332.409284</ele></trkpt>
+      <trkpt lat="45.09608" lon="7.803323"><ele>333.352526</ele></trkpt>
+      <trkpt lat="45.095907" lon="7.803346"><ele>334.77003</ele></trkpt>
+      <trkpt lat="45.09538" lon="7.80292"><ele>339.376719</ele></trkpt>
+      <trkpt lat="45.095094" lon="7.802997"><ele>340.457526</ele></trkpt>
+      <trkpt lat="45.094522" lon="7.803014"><ele>342.581592</ele></trkpt>
+      <trkpt lat="45.094205" lon="7.803044"><ele>343.761106</ele></trkpt>
+      <trkpt lat="45.093913" lon="7.803211"><ele>344.930203</ele></trkpt>
+      <trkpt lat="45.093057" lon="7.804058"><ele>345.907129</ele></trkpt>
+      <trkpt lat="45.094424" lon="7.80305"><ele>346.472471</ele></trkpt>
+      <trkpt lat="45.094424" lon="7.803048"><ele>346.473474</ele></trkpt>
+      <trkpt lat="45.094451" lon="7.803015"><ele>346.498798</ele></trkpt>
+      <trkpt lat="45.095094" lon="7.802997"><ele>346.955499</ele></trkpt>
+      <trkpt lat="45.094999" lon="7.803099"><ele>347.04015</ele></trkpt>
+      <trkpt lat="45.094943" lon="7.803328"><ele>347.161641</ele></trkpt>
+      <trkpt lat="45.095006" lon="7.803766"><ele>347.688869</ele></trkpt>
+      <trkpt lat="45.095058" lon="7.803929"><ele>348.568628</ele></trkpt>
+      <trkpt lat="45.095182" lon="7.804323"><ele>350.690328</ele></trkpt>
+      <trkpt lat="45.095343" lon="7.804563"><ele>352.318709</ele></trkpt>
+      <trkpt lat="45.095386" lon="7.804722"><ele>353.15615</ele></trkpt>
+      <trkpt lat="45.095603" lon="7.804862"><ele>354.817452</ele></trkpt>
+      <trkpt lat="45.095898" lon="7.804882"><ele>356.875134</ele></trkpt>
+      <trkpt lat="45.096087" lon="7.805079"><ele>358.509989</ele></trkpt>
+      <trkpt lat="45.096143" lon="7.804944"><ele>359.280108</ele></trkpt>
+      <trkpt lat="45.096227" lon="7.804913"><ele>359.879844</ele></trkpt>
+      <trkpt lat="45.096306" lon="7.804738"><ele>358.368908</ele></trkpt>
+      <trkpt lat="45.09631" lon="7.80473"><ele>358.2976</ele></trkpt>
+      <trkpt lat="45.096446" lon="7.804634"><ele>356.731916</ele></trkpt>
+      <trkpt lat="45.096568" lon="7.804537"><ele>355.290362</ele></trkpt>
+      <trkpt lat="45.096787" lon="7.804344"><ele>352.632753</ele></trkpt>
+      <trkpt lat="45.097082" lon="7.804411"><ele>349.554252</ele></trkpt>
+      <trkpt lat="45.09734" lon="7.804526"><ele>346.767326</ele></trkpt>
+      <trkpt lat="45.097499" lon="7.804761"><ele>344.399654</ele></trkpt>
+      <trkpt lat="45.097658" lon="7.804773"><ele>342.758994</ele></trkpt>
+      <trkpt lat="45.097764" lon="7.80472"><ele>341.600734</ele></trkpt>
+      <trkpt lat="45.097901" lon="7.804686"><ele>340.687831</ele></trkpt>
+      <trkpt lat="45.098082" lon="7.804752"><ele>339.609618</ele></trkpt>
+      <trkpt lat="45.098167" lon="7.804768"><ele>339.114948</ele></trkpt>
+      <trkpt lat="45.098256" lon="7.80473"><ele>338.5787</ele></trkpt>
+      <trkpt lat="45.09834" lon="7.804741"><ele>338.092044</ele></trkpt>
+      <trkpt lat="45.098461" lon="7.804795"><ele>337.360185</ele></trkpt>
+      <trkpt lat="45.098605" lon="7.804848"><ele>336.501879</ele></trkpt>
+      <trkpt lat="45.098977" lon="7.805102"><ele>334.119576</ele></trkpt>
+      <trkpt lat="45.099029" lon="7.805137"><ele>333.787455</ele></trkpt>
+      <trkpt lat="45.099143" lon="7.805181"><ele>333.105825</ele></trkpt>
+      <trkpt lat="45.099286" lon="7.805149"><ele>332.270639</ele></trkpt>
+      <trkpt lat="45.099423" lon="7.805244"><ele>331.390695</ele></trkpt>
+      <trkpt lat="45.099559" lon="7.805244"><ele>330.370743</ele></trkpt>
+      <trkpt lat="45.099703" lon="7.805288"><ele>328.976234</ele></trkpt>
+    </trkseg>
+  </trk>
+</gpx>

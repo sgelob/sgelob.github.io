@@ -1,7 +1,7 @@
 ---
 title: Castiglione – Bric della Croce Bianca
 date: "2025-06-01T12:00:00"
-order: 4
+order: 6
 activity: hike
 distance: 12.4
 climb: 462
