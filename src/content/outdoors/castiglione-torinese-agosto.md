@@ -1,6 +1,7 @@
 ---
 title: Castiglione Torinese
 date: "2024-08-01T12:00:00"
+order: 6
 activity: hike
 distance: 8.3
 climb: 259
