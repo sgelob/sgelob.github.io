@@ -116,6 +116,14 @@ photos:
     width: 2048
     height: 1536
     alt: Gravel track past huts on the slopes
+  - src: 2020/07/gabiet-lake-2020-01.jpg
+    width: 1536
+    height: 2048
+    alt: Track up a green valley below the peaks
+  - src: 2020/07/gabiet-lake-2020-02.jpg
+    width: 1536
+    height: 2048
+    alt: Hut below a green peak
 ---
 
 Nearly ten kilometres and 141 metres of climbing on foot, round the Lago Gabiet above Gressoney-La-Trinité and down on foot to Staffal, at the end of July.
@@ -123,3 +131,5 @@ Nearly ten kilometres and 141 metres of climbing on foot, round the Lago Gabiet 
 The way starts high, at about 2,300 metres, and crosses green slopes below jagged peaks to the lake. That summer it looked very different from usual: the water had sunk far below its dam, leaving wide bare shores of grey rock and mud. The reservoir is a hydroelectric one, built early in the last century and working since 1921, according to montagna.tv, and in June 2024 its operator began emptying it to replace the valves at the foot of the dam. Legambiente warned about possible damage to the environment, while a local exhibition invited visitors to see the natural lake as it was before the dam.
 
 The path follows the rocky slopes above the water to the curved concrete wall and the stone face of the dam. The way down to the valley crosses meadows with clumps of alpenrose in bloom, past a waterfall on the grassy slope and old snow under the dark crags, and down a gravel track past the huts to Staffal.
+
+Four years earlier, in the middle of July 2020, a much shorter walk from Staffal had come up to the same lake: two kilometres on a gravel track up a green valley below the peaks, past a hut under a grassy peak, with big clouds over the mountains.
