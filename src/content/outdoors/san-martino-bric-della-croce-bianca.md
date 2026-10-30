@@ -1,6 +1,7 @@
 ---
 title: San Martino – Bric della Croce Bianca
 date: "2024-04-30T12:00:00"
+order: 4
 activity: hike
 distance: 8.2
 climb: 287
