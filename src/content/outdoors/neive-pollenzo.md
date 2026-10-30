@@ -12,9 +12,9 @@ track: neive-pollenzo.gpx
 links:
   - label: Komoot
     url: https://www.komoot.com/tour/221818527
-cover: 2020/07/neive-pollenzo-07.jpg
-coverWidth: 1536
-coverHeight: 2048
+cover: 2020/07/neive-pollenzo-08.jpg
+coverWidth: 2048
+coverHeight: 1536
 darkHeader: true
 photos:
   - src: 2020/07/neive-pollenzo-01.jpg

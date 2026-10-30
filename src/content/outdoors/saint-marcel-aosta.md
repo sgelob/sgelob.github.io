@@ -33,10 +33,6 @@ photos:
     width: 2048
     height: 1536
     alt: Square with an arcaded town hall
-  - src: 2020/07/saint-marcel-aosta-05.jpg
-    width: 2048
-    height: 1536
-    alt: Bikes parked by a fence in a park
 ---
 
 Thirty-three kilometres and 191 metres of climbing by bike, from Saint-Marcel along the Dora to Aosta and back, in July.
