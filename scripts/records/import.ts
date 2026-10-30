@@ -112,7 +112,8 @@ export async function importRecords(opts: ImportOptions): Promise<{ records: Rec
   }
 
   if (covers.length) {
-    const { sizes, errors } = await processUploads({ uploadsDir, store, files: covers, log });
+    // Record covers keep their jpg variants: the record page's link preview and search result use the 480 jpg.
+    const { sizes, errors } = await processUploads({ uploadsDir, store, files: covers, jpgFor: new Set(covers), log });
     problems.push(...errors);
     for (const entry of records) {
       const src = covers.find((c) => c === `${month}/record-${entry.slug}.jpg`);

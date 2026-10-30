@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs';
 import sharp from 'sharp';
 import { describe, expect, test } from 'vitest';
 import { IMG_BASE, variantUrl } from '../src/lib/images';
-import { imageSize, resizeVariants } from '../scripts/photos/resize';
+import { imageSize, resizeVariants, variantKeys } from '../scripts/photos/resize';
 
 const fixture = (name: string) => readFileSync(new URL(`./fixtures/${name}`, import.meta.url));
 const sample1620 = fixture('sample-1620x1080.jpg');
@@ -11,13 +11,20 @@ const sample900 = fixture('sample-900x600.jpg');
 describe('resizeVariants', () => {
   test('variants never exceed the original width', async () => {
     const r = await resizeVariants(sample900, 'uploads/2020/01/s.jpg');
-    expect(r.variants.map((v) => v.width)).toEqual([480, 480]); // webp + jpg at 480 only
-    expect(r.variants.map((v) => v.format)).toEqual(['webp', 'jpg']);
+    expect(r.variants.map((v) => v.width)).toEqual([480]);
+    expect(r.variants.map((v) => v.format)).toEqual(['webp']);
     expect({ width: r.width, height: r.height }).toEqual({ width: 900, height: 600 });
   });
 
-  test('1620 source yields 480, 960, 1600 in both formats', async () => {
+  test('only webp by default: jpg variants are made for covers alone (issue #69)', async () => {
     const r = await resizeVariants(sample1620, 'uploads/2012/08/a.jpg');
+    expect(r.variants.map((v) => v.key)).toEqual(['uploads/2012/08/a-480.webp', 'uploads/2012/08/a-960.webp', 'uploads/2012/08/a-1600.webp']);
+    expect(variantKeys('uploads/2012/08/a.jpg', 1620)).toEqual(r.variants.map((v) => v.key));
+  });
+
+  test('a cover yields 480, 960, 1600 in both formats', async () => {
+    const r = await resizeVariants(sample1620, 'uploads/2012/08/a.jpg', undefined, { jpg: true });
+    expect(variantKeys('uploads/2012/08/a.jpg', 1620, undefined, { jpg: true })).toEqual(r.variants.map((v) => v.key));
     expect(r.variants).toHaveLength(6);
     expect(r.variants.map((v) => v.key)).toEqual([
       'uploads/2012/08/a-480.webp',
@@ -45,13 +52,13 @@ describe('resizeVariants', () => {
   });
 
   test('an extra width is honoured and keys keep the original basename', async () => {
-    const r = await resizeVariants(sample1620, 'uploads/2012/08/photo.final.png', [1200]);
+    const r = await resizeVariants(sample1620, 'uploads/2012/08/photo.final.png', [1200], { jpg: true });
     expect(r.variants.map((v) => v.key)).toEqual(['uploads/2012/08/photo.final-1200.webp', 'uploads/2012/08/photo.final-1200.jpg']);
   });
 
   test('png with transparency becomes an opaque jpg', async () => {
     const png = await sharp({ create: { width: 600, height: 400, channels: 4, background: { r: 0, g: 0, b: 0, alpha: 0 } } }).png().toBuffer();
-    const r = await resizeVariants(png, 'uploads/2020/01/t.png');
+    const r = await resizeVariants(png, 'uploads/2020/01/t.png', undefined, { jpg: true });
     const jpg = r.variants.find((v) => v.format === 'jpg');
     expect((await sharp(jpg?.body).metadata()).hasAlpha).toBe(false);
   });

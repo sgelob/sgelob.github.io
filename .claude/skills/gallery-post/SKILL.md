@@ -41,6 +41,7 @@ description: Publish a photo gallery to /photos from a folder of photos on the M
 - **Slug:** from the title, as `slugify` in `scripts/trip/wizard.ts` makes it (`Alassio (Liguria) – Italy` → `alassio-liguria-italy`). Check it is not taken in `src/content/galleries/`.
 - `npm run photos -- --new <slug> "<folder>" --date <YYYY-MM-DD>` copies the photos into `UPLOADS_DIR/yyyy/mm/`, uploads them with their variants, renames them `<slug>-01.jpg`… and writes `src/content/galleries/<slug>.md`. It refuses to overwrite a gallery.
 - Fill the front matter: `title` (and `cardTitle` if needed), `date` (`"YYYY-MM-DDT12:00:00"` when only the day is known), `genre`, `country` (a slug from `countries` in `src/data/taxonomies.yaml`; add the country there, in alphabetical order of its name, if it is new), `cover` with `coverWidth`/`coverHeight` from the cover photo's entry, `darkHeader: true` when the cover is light at the top or bottom.
+- `npm run photos -- --covers`: makes the jpg variants of a cover that is not the first photo. Photos are webp only; covers keep jpg for link previews, search results and the feed (issue #69).
 - Reorder the photos only if the user asks.
 
 ## 4. Write

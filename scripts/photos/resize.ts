@@ -19,23 +19,36 @@ export const variantKey = (key: string, width: number, format: Variant['format']
 /** The key without its extension: files that share a stem (`a.jpg`, `a.png`) share variant keys. */
 export const variantStem = (key: string): string => key.replace(/\.[^./]+$/, '');
 
+/**
+ * Which formats to make. Photos get webp only; a cover also gets jpg, which link previews, search results and the
+ * feed want (issue #69). `webp: false` makes the jpg alone, for a cover whose webp variants already exist.
+ */
+export type Formats = { jpg?: boolean; webp?: boolean };
+
+const formatsOf = ({ jpg = false, webp = true }: Formats): Variant['format'][] => [...(webp ? ['webp' as const] : []), ...(jpg ? ['jpg' as const] : [])];
+
 /** The variant keys `resizeVariants` produces for an image of the given width (never upscaled), webp before jpg. */
-export function variantKeys(key: string, imageWidth: number, widths: readonly number[] = WIDTHS): string[] {
-  return widths.filter((w) => w <= imageWidth).flatMap((w) => [variantKey(key, w, 'webp'), variantKey(key, w, 'jpg')]);
+export function variantKeys(key: string, imageWidth: number, widths: readonly number[] = WIDTHS, formats: Formats = {}): string[] {
+  return widths.filter((w) => w <= imageWidth).flatMap((w) => formatsOf(formats).map((f) => variantKey(key, w, f)));
 }
 
 export async function resizeVariants(
   input: Buffer,
   key: string,
   widths: readonly number[] = WIDTHS,
+  formats: Formats = {},
 ): Promise<{ width: number; height: number; variants: Variant[] }> {
   const { width, height } = await imageSize(input);
   const variants: Variant[] = [];
   for (const w of widths.filter((w) => w <= width)) {
     const resized = () => sharp(input).rotate().resize({ width: w, withoutEnlargement: true });
-    const webp = await resized().webp({ quality: QUALITY }).toBuffer();
-    const jpg = await resized().flatten({ background: '#ffffff' }).jpeg({ quality: QUALITY }).toBuffer();
-    variants.push({ width: w, format: 'webp', body: webp, key: variantKey(key, w, 'webp') }, { width: w, format: 'jpg', body: jpg, key: variantKey(key, w, 'jpg') });
+    for (const format of formatsOf(formats)) {
+      const body =
+        format === 'webp'
+          ? await resized().webp({ quality: QUALITY }).toBuffer()
+          : await resized().flatten({ background: '#ffffff' }).jpeg({ quality: QUALITY }).toBuffer();
+      variants.push({ width: w, format, body, key: variantKey(key, w, format) });
+    }
   }
   return { width, height, variants };
 }

@@ -1,8 +1,9 @@
-import { existsSync } from 'node:fs';
-import { resolve } from 'node:path';
+import { existsSync, readFileSync } from 'node:fs';
+import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseArgs } from 'node:util';
-import { WIDTHS } from '../src/lib/images';
+import { originalUrl, WIDTHS } from '../src/lib/images';
+import { coverImages, ensureCoverJpgs, jpgVariantsToDelete, keptJpgKeys } from './photos/covers';
 import { fixSizes } from './photos/fill-sizes';
 import { processUploads } from './photos/process';
 import { r2Env, storeFromEnv, type ObjectStore } from './photos/r2';
@@ -10,11 +11,14 @@ import { scaffoldGallery } from './photos/scaffold';
 
 const GALLERIES_DIR = fileURLToPath(new URL('../src/content/galleries', import.meta.url));
 const OUTDOORS_DIR = fileURLToPath(new URL('../src/content/outdoors', import.meta.url));
+const ROOT = fileURLToPath(new URL('..', import.meta.url));
 const USAGE = `Usage:
   npm run photos -- --uploads <dir> [--dry-run] [--width <n>]   resize and upload every original under <dir>
   npm run photos -- --new <slug> <folder> [--date YYYY-MM-DD]   copy a folder of photos into UPLOADS_DIR/<yyyy>/<mm> of the shooting date, upload, write the gallery file
   npm run photos -- --new --outdoors <slug> <folder> [--date ...]  the same for a trip: writes src/content/outdoors/<slug>.md
-  npm run photos -- --fix-sizes                                 fill photos with width 0 in the gallery files from UPLOADS_DIR`;
+  npm run photos -- --fix-sizes                                 fill photos with width 0 in the gallery files from UPLOADS_DIR
+  npm run photos -- --covers [--dry-run]                        make the jpg variants a cover lacks (after changing a cover)
+  npm run photos -- --prune-jpg [--apply]                       list (or with --apply delete) the jpg variants of photos that are not covers`;
 
 const { values, positionals } = parseArgs({
   allowPositionals: true,
@@ -26,6 +30,9 @@ const { values, positionals } = parseArgs({
     outdoors: { type: 'boolean' },
     date: { type: 'string' },
     'fix-sizes': { type: 'boolean' },
+    covers: { type: 'boolean' },
+    'prune-jpg': { type: 'boolean' },
+    apply: { type: 'boolean' },
   },
 });
 
@@ -39,6 +46,15 @@ const nothingStored: ObjectStore = {
   },
 };
 
+/** A cover's original: the local copy under UPLOADS_DIR when there is one, else the public one on img.olegs.be. */
+async function readOriginal(path: string): Promise<Buffer> {
+  const local = process.env.UPLOADS_DIR && join(process.env.UPLOADS_DIR, path);
+  if (local && existsSync(local)) return readFileSync(local);
+  const res = await fetch(originalUrl(path));
+  if (!res.ok) throw new Error(`${originalUrl(path)}: HTTP ${res.status}`);
+  return Buffer.from(await res.arrayBuffer());
+}
+
 
 async function main(): Promise<number> {
   const log = console.log;
@@ -49,6 +65,28 @@ async function main(): Promise<number> {
     const r = await fixSizes({ contentDir: GALLERIES_DIR, uploadsDir, log });
     log(`${r.files} gallery files updated, ${r.photos} sizes filled, ${r.missing.length} photos not found`);
     return r.missing.length ? 1 : 0;
+  }
+
+  if (values.covers) {
+    const dryRun = Boolean(values['dry-run']);
+    const store = dryRun && !r2Env() ? nothingStored : storeFromEnv();
+    const r = await ensureCoverJpgs({ covers: coverImages(ROOT), store, readOriginal, dryRun, log });
+    log(dryRun ? `${r.planned} cover jpg variants would be made (dry run)` : `${r.created} cover jpg variants made, ${r.errors.length} errors`);
+    for (const e of r.errors) console.error(`error: ${e}`);
+    return r.errors.length ? 1 : 0;
+  }
+
+  if (values['prune-jpg']) {
+    const store = storeFromEnv();
+    const doomed = jpgVariantsToDelete(await store.listKeys('uploads/'), keptJpgKeys(ROOT));
+    for (const k of doomed.slice(0, 10)) log(`  ${k}`);
+    if (!values.apply) {
+      log(`${doomed.length} jpg variants would be deleted (dry run; --apply deletes them)`);
+      return 0;
+    }
+    await store.delete(doomed);
+    log(`${doomed.length} jpg variants deleted`);
+    return 0;
   }
 
   if (values.new) {
