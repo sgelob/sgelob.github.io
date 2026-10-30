@@ -11,10 +11,10 @@ track: caselette-monte-calvo-monte-musine.gpx
 links:
   - label: Komoot
     url: https://www.komoot.com/tour/1746146161
-cover: 2024/07/caselette-monte-calvo-monte-musine-26.jpg
-coverWidth: 1536
-coverHeight: 2048
-darkHeader: false
+cover: 2024/07/caselette-monte-calvo-monte-musine-19.jpg
+coverWidth: 2048
+coverHeight: 1536
+darkHeader: true
 photos:
   - src: 2024/07/caselette-monte-calvo-monte-musine-01.jpg
     width: 1536

@@ -12,7 +12,7 @@ track: piossasco-monte-san-giorgio-cumiana-truc-mongrosso-sangano.gpx
 links:
   - label: Komoot
     url: https://www.komoot.com/tour/2738772023
-cover: 2026/01/piossasco-monte-san-giorgio-cumiana-truc-mongrosso-sangano-03.jpg
+cover: 2026/01/piossasco-monte-san-giorgio-cumiana-truc-mongrosso-sangano-05.jpg
 coverWidth: 2048
 coverHeight: 1536
 darkHeader: true

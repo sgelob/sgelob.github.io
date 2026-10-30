@@ -11,9 +11,9 @@ track: monasterolo-roc-del-merlo-monte-corno.gpx
 links:
   - label: Komoot
     url: https://www.komoot.com/tour/2134716200
-cover: 2025/04/monasterolo-roc-del-merlo-monte-corno-13.jpg
-coverWidth: 1536
-coverHeight: 2048
+cover: 2025/04/monasterolo-roc-del-merlo-monte-corno-07.jpg
+coverWidth: 2048
+coverHeight: 1536
 darkHeader: true
 photos:
   - src: 2025/04/monasterolo-roc-del-merlo-monte-corno-01.jpg

@@ -10,10 +10,10 @@ track: san-martino-bric-della-croce-bianca.gpx
 links:
   - label: Komoot
     url: https://www.komoot.com/tour/1542752621
-cover: 2024/04/san-martino-bric-della-croce-bianca-18.jpg
-coverWidth: 1536
-coverHeight: 2048
-darkHeader: false
+cover: 2024/04/san-martino-bric-della-croce-bianca-21.jpg
+coverWidth: 2048
+coverHeight: 1536
+darkHeader: true
 photos:
   - src: 2024/04/san-martino-bric-della-croce-bianca-01.jpg
     width: 2048
