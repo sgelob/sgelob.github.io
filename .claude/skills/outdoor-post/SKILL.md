@@ -22,7 +22,7 @@ Look at every photo (`photos/NN.jpg`). Note what each shows; name a place only w
 ## 2. Ask (AskUserQuestion, up to four questions at a time)
 
 - **Route:** shared (map, GPX, real day), approximate (the route without the privacy zone around home, so it starts and ends on the zone's edge; no links, day on the 1st of the month) or discreet (no map, no GPX, no links, day on the 1st). If earlier trips that start from the same place are `approximateEnds: true`, do the same and only say so; otherwise ask, recommending shared.
-- **Bike** for a ride: `xc` or `trail`.
+- **Bike** for a ride: `xc`, `trail` or `gravel`. Komoot's `touringbicycle` tours were ridden on a city/trekking bike: mark them `gravel` without asking (they show as «Ride · Gravel», not MTB).
 - **Cover:** three or four candidates, each described in a line. Point out a photo that gives away the time of day.
 - **Area** when nearby trips do not settle it: a valley, massif, gulf or coast, never a village or trailhead (`grep -h '^area:' src/content/outdoors/*.md` lists the ones in use).
 - **Notes:** offer to take the user's own words for the story. Ask too about anything the photos raise: other riders or walkers (mention them only if the user agrees, never by name), a private-looking house, an odd name in the title.

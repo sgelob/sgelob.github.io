@@ -37,6 +37,7 @@ describe('labels and paths', () => {
   it('cardMeta: the country first; hike without bike, ride with the short bike name, no "up"', () => {
     expect(cardMeta({ country: 'italy', activity: 'hike', distance: 16, climb: 1350 })).toBe('Italy · Hike · 16 km · 1,350 m');
     expect(cardMeta({ country: 'france', activity: 'ride', bike: 'trail', distance: 38, climb: 1700 })).toBe('France · MTB · Trail · 38 km · 1,700 m');
+    expect(cardMeta({ country: 'italy', activity: 'ride', bike: 'gravel', distance: 26, climb: 74 })).toBe('Italy · Ride · Gravel · 26 km · 74 m');
   });
   it('heroMeta: country, activity, bike, numbers, area, month, photos', () => {
     expect(heroMeta(tripSchema.parse(base), 41)).toEqual(['Italy', 'MTB', 'Trail bike', '38 km', '1,700 m up', 'Val di Susa', 'June 2026', '41 photos']);

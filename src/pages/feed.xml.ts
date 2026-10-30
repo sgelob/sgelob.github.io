@@ -49,8 +49,8 @@ export const GET: APIRoute = async (context) => {
   });
 
   const tripItems = trips.map((trip) => {
-    const { title, date, cover, activity, area } = trip.data;
-    const description = firstParagraph(trip.body ?? '') || `${activityLabel(activity)} in ${area}.`;
+    const { title, date, cover, activity, bike, area } = trip.data;
+    const description = firstParagraph(trip.body ?? '') || `${activityLabel(activity, bike)} in ${area}.`;
     const size = coverSize(trip);
     const image = size ? largestVariantUrl(cover, Math.min(size.width, 960)) : originalUrl(cover);
     return {
@@ -58,7 +58,7 @@ export const GET: APIRoute = async (context) => {
       pubDate: date,
       description,
       link: tripPath(trip),
-      categories: ['Outdoors', activityLabel(activity)],
+      categories: ['Outdoors', activityLabel(activity, bike)],
       content: `<p><img src="${image}" alt="" /></p><p>${escapeHtml(description)}</p>`,
     };
   });

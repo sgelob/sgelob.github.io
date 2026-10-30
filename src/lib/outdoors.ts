@@ -7,7 +7,7 @@ import { countries, countryName } from './taxonomies';
 export const ACTIVITIES = ['hike', 'ride'] as const;
 export type Activity = (typeof ACTIVITIES)[number];
 
-export const BIKES = ['xc', 'trail'] as const;
+export const BIKES = ['xc', 'trail', 'gravel'] as const;
 export type Bike = (typeof BIKES)[number];
 
 /** Front matter of a trip. Lives here (not in content.config.ts) so vitest can import it too. */
@@ -59,16 +59,18 @@ export function contoursPath(trip: Pick<Trip, 'id'>): string {
   return `/outdoors/${trip.id}.contours.svg`;
 }
 
-export function activityLabel(a: Activity): 'Hike' | 'MTB' {
-  return a === 'hike' ? 'Hike' : 'MTB';
+/** A ride is MTB, except on the gravel bike (a city/trekking bike on roads and dirt tracks), which is just a ride. */
+export function activityLabel(a: Activity, bike?: Bike): 'Hike' | 'MTB' | 'Ride' {
+  if (a === 'hike') return 'Hike';
+  return bike === 'gravel' ? 'Ride' : 'MTB';
 }
 
-export function bikeLabel(b: Bike): 'XC bike' | 'Trail bike' {
-  return b === 'xc' ? 'XC bike' : 'Trail bike';
+export function bikeLabel(b: Bike): 'XC bike' | 'Trail bike' | 'Gravel bike' {
+  return b === 'xc' ? 'XC bike' : b === 'trail' ? 'Trail bike' : 'Gravel bike';
 }
 
-export function bikeShort(b: Bike): 'XC' | 'Trail' {
-  return b === 'xc' ? 'XC' : 'Trail';
+export function bikeShort(b: Bike): 'XC' | 'Trail' | 'Gravel' {
+  return b === 'xc' ? 'XC' : b === 'trail' ? 'Trail' : 'Gravel';
 }
 
 const numbers = new Intl.NumberFormat('en-US');
@@ -85,7 +87,7 @@ export function formatClimb(m: number): string {
 
 /** Card line, led by the country as on gallery cards: `Italy · Hike · 16 km · 1,350 m`, `Italy · MTB · Trail · 38 km · 1,700 m` (no "up" here). */
 export function cardMeta(d: Pick<TripData, 'country' | 'activity' | 'bike' | 'distance' | 'climb'>): string {
-  const parts: string[] = [countryName(d.country), activityLabel(d.activity)];
+  const parts: string[] = [countryName(d.country), activityLabel(d.activity, d.bike)];
   if (d.activity === 'ride' && d.bike) parts.push(bikeShort(d.bike));
   parts.push(formatKm(d.distance), `${numbers.format(d.climb)} m`);
   return parts.join(' · ');
@@ -93,7 +95,7 @@ export function cardMeta(d: Pick<TripData, 'country' | 'activity' | 'bike' | 'di
 
 /** Hero facts, in display order; the bike is for rides only. */
 export function heroMeta(d: TripData, photoCount: number): string[] {
-  const parts: string[] = [countryName(d.country), activityLabel(d.activity)];
+  const parts: string[] = [countryName(d.country), activityLabel(d.activity, d.bike)];
   if (d.activity === 'ride' && d.bike) parts.push(bikeLabel(d.bike));
   parts.push(
     formatKm(d.distance),

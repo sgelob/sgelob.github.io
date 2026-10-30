@@ -34,7 +34,7 @@ interface Props {
 }
 
 const { trip, prev, next, more } = Astro.props;
-const { title, date, activity, distance, climb, area, track, approximateEnds, links, cover, darkHeader, seoDescription, photos } = trip.data;
+const { title, date, activity, bike, distance, climb, area, track, approximateEnds, links, cover, darkHeader, seoDescription, photos } = trip.data;
 const { Content } = await render(trip);
 const size = coverSize(trip);
 // The cover is decorative when the grid shows it again; otherwise this is its only appearance.
@@ -45,15 +45,15 @@ const search = {
   meta: {
     date: isoDate(date),
     image: largestVariantUrl(cover, Math.min(480, size?.width ?? 0)),
-    activity: activityLabel(activity),
+    activity: activityLabel(activity, bike),
   },
 };
 const moreRow = moreLabels(activity, more);
 ---
 
 <Base
-  title={pageTitle(title, activityLabel(activity), area, date.getFullYear(), 'Outdoors')} // what, where, when
-  description={seoDescription ?? `${activityLabel(activity)} in ${area}: ${formatKm(distance)}, ${formatClimb(climb)}.`}
+  title={pageTitle(title, activityLabel(activity, bike), area, date.getFullYear(), 'Outdoors')} // what, where, when
+  description={seoDescription ?? `${activityLabel(activity, bike)} in ${area}: ${formatKm(distance)}, ${formatClimb(climb)}.`}
   ogImage={largestVariantUrl(cover, Math.min(1600, size?.width ?? 0))}
   overlayNav
   search={search}
