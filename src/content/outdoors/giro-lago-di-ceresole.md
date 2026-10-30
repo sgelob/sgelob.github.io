@@ -1,6 +1,7 @@
 ---
 title: Giro del Lago di Ceresole
 date: "2020-06-28T12:00:00"
+order: 2
 activity: ride
 bike: gravel
 distance: 8.8
