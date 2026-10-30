@@ -41,6 +41,7 @@ What the existing posts do, and the new ones keep doing:
 - **Typography:** Italian quotation marks «…», curly apostrophes (’), an en dash with spaces (–) in titles and asides, no em dashes, the ellipsis character (…).
 - **Length:** like the posts of the same kind: a recap or a podcast summary is short; a how-to with sections is long. Do not pad.
 - **Privacy:** nothing about other people the user did not say; family and friends only as the user names them.
+- **No company or brand names**: no companies, brands, products or services (also as comparisons, «like X»), in the post, its title, excerpt, alt texts and in the idea issues, unless the user explicitly asks for a name. Describe them generically instead.
 
 ## 4. Build
 
