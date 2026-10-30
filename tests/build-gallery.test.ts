@@ -26,14 +26,14 @@ describe('gallery page', () => {
   test('hero: eager full-width cover, heading and meta row', () => {
     const html = venezia();
     expect(html).toContain('venezia-italy-02-1600.webp 1600w" sizes="100vw">');
-    expect(html).toMatch(/<img src="https:\/\/img\.olegs\.be\/uploads\/2012\/08\/venezia-italy-02-1600\.jpg"[^>]*loading="eager"/);
+    expect(html).toMatch(/<img src="https:\/\/img\.olegs\.be\/uploads\/2012\/08\/venezia-italy-02\.jpg"[^>]*loading="eager"/);
     expect(html).toMatch(/<h1[^>]*>Venezia – Italy<\/h1>/);
     expect(html).toMatch(/<a href="\/photos\/country\/italy\/"[^>]*>Italy<\/a>\s*<a href="\/photos\/genre\/world-places\/"[^>]*>World Places<\/a>\s*<span[^>]*>August 2012<\/span>\s*<span[^>]*>81 photos<\/span>/);
   });
 
   test('grid: photos in frontmatter order, linking to the originals, the lightbox at 1600, with their ratio', () => {
     const html = venezia();
-    expect(html).toContain('<a class="ph" href="https://img.olegs.be/uploads/2012/08/venezia-italy-01.jpg" data-pswp-src="https://img.olegs.be/uploads/2012/08/venezia-italy-01-1600.jpg" style="--r:1.5"');
+    expect(html).toContain('<a class="ph" href="https://img.olegs.be/uploads/2012/08/venezia-italy-01.jpg" data-pswp-src="https://img.olegs.be/uploads/2012/08/venezia-italy-01-1600.webp" style="--r:1.5"');
     expect(html).not.toContain('data-pswp-width'); // the lightbox reads the size from the img
     expect(html.indexOf('venezia-italy-01.jpg"')).toBeLessThan(html.indexOf('venezia-italy-81.jpg"'));
     expect(html).toContain('class="spacer"');
@@ -146,7 +146,7 @@ describe('gallery redirects', () => {
 
 describe('core web vitals', () => {
   test('the gallery cover is fetched at high priority', () => {
-    expect(read('dist/gallery/venezia-italy/index.html')).toMatch(/<img src="https:\/\/img\.olegs\.be\/uploads\/2012\/08\/venezia-italy-02-1600\.jpg"[^>]*fetchpriority="high"/);
+    expect(read('dist/gallery/venezia-italy/index.html')).toMatch(/<img src="https:\/\/img\.olegs\.be\/uploads\/2012\/08\/venezia-italy-02\.jpg"[^>]*fetchpriority="high"/);
   });
 
   test('every embedded iframe left on the site loads lazily (videos and slides are facades)', () => {

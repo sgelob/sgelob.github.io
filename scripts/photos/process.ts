@@ -14,6 +14,8 @@ export type ProcessOptions = {
   dryRun?: boolean;
   /** Relative `yyyy/mm/file` paths to process instead of walking the whole directory. */
   files?: readonly string[];
+  /** Relative paths of covers: they get jpg variants as well as webp (issue #69). */
+  jpgFor?: ReadonlySet<string>;
   log: (s: string) => void;
 };
 
@@ -71,9 +73,9 @@ async function findCollisions(uploadsDir: string, files: readonly string[], widt
   return { skip, errors };
 }
 
-/** Uploads every original under `uploadsDir` plus webp/jpg variants of the raster images, skipping keys the store already has. */
+/** Uploads every original under `uploadsDir` plus webp variants of the raster images (jpg too for covers), skipping keys the store already has. */
 export async function processUploads(opts: ProcessOptions): Promise<ProcessResult> {
-  const { uploadsDir, store, widths = WIDTHS, dryRun = false, log } = opts;
+  const { uploadsDir, store, widths = WIDTHS, dryRun = false, jpgFor = new Set<string>(), log } = opts;
   const files = [...(opts.files ?? listUploadFiles(uploadsDir))];
   const existing = await store.listKeys('uploads/');
   const collisions = await findCollisions(uploadsDir, files, widths);
@@ -103,11 +105,13 @@ export async function processUploads(opts: ProcessOptions): Promise<ProcessResul
         const size = await imageSize(original);
         result.sizes.set(path, size);
         if (collisions.skip.has(path)) return;
-        if (variantKeys(key, size.width, widths).some((k) => !existing.has(k))) {
-          const { variants } = await resizeVariants(original, key, widths);
+        const formats = { jpg: jpgFor.has(path) };
+        const keys = variantKeys(key, size.width, widths, formats);
+        if (keys.some((k) => !existing.has(k))) {
+          const { variants } = await resizeVariants(original, key, widths, formats);
           for (const v of variants) await send(v.key, v.body, contentTypeFor(v.key));
         } else {
-          result.skipped += variantKeys(key, size.width, widths).length;
+          result.skipped += keys.length;
         }
       }
     } catch (error) {

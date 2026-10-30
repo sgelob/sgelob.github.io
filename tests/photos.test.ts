@@ -53,20 +53,16 @@ describe('processUploads', () => {
 
     expect(r.files).toBe(2); // the -768x512 file is ignored
     expect(r.skipped).toBe(2); // b.jpg and b-480.webp already exist
-    expect(r.uploaded).toBe(7 + 1); // a: original + 6 variants, b: only b-480.jpg
+    expect(r.uploaded).toBe(4); // a: original + 3 webp variants; b has all it needs
     expect(r.errors).toEqual([]);
     expect([...store.objects.keys()].sort()).toEqual(
       [
         'uploads/2012/08/a.jpg',
         'uploads/2012/08/a-480.webp',
-        'uploads/2012/08/a-480.jpg',
         'uploads/2012/08/a-960.webp',
-        'uploads/2012/08/a-960.jpg',
         'uploads/2012/08/a-1600.webp',
-        'uploads/2012/08/a-1600.jpg',
         'uploads/2012/08/b.jpg',
         'uploads/2012/08/b-480.webp',
-        'uploads/2012/08/b-480.jpg',
       ].sort(),
     );
     expect(store.objects.get('uploads/2012/08/a.jpg')?.body.equals(readFileSync(fixture('sample-1620x1080.jpg')))).toBe(true);
@@ -85,7 +81,7 @@ describe('processUploads', () => {
     expect(type('uploads/2013/01/data.bin')).toBe('application/octet-stream');
     expect(type('uploads/2013/01/c.JPG')).toBe('image/jpeg');
     expect(type('uploads/2013/01/c-480.webp')).toBe('image/webp');
-    expect(type('uploads/2013/01/c-480.jpg')).toBe('image/jpeg');
+    expect(type('uploads/2013/01/c-480.jpg')).toBeUndefined(); // jpg variants only for covers
     expect([...store.objects.keys()].filter((k) => k.includes('menu') || k.includes('data')).sort()).toEqual(['uploads/2013/01/data.bin', 'uploads/2013/01/menu.pdf']);
   });
 
@@ -94,7 +90,7 @@ describe('processUploads', () => {
     const r = await processUploads({ uploadsDir: uploads, store, dryRun: true, log });
     expect(store.objects.size).toBe(0);
     expect(store.listed).toEqual(['uploads/']);
-    expect(r).toMatchObject({ files: 1, uploaded: 0, planned: 7 });
+    expect(r).toMatchObject({ files: 1, uploaded: 0, planned: 4 });
   });
 
   test('reports variant-key collisions between files that differ only by extension', async () => {
@@ -111,11 +107,11 @@ describe('processUploads', () => {
     expect(r.errors[0]).toContain('uploads/2026/01/x-480.webp');
     expect(store.objects.has('uploads/2026/01/x.jpg')).toBe(true);
     expect(store.objects.has('uploads/2026/01/x.png')).toBe(true);
-    expect(store.puts.filter((k) => k.includes('x-480'))).toEqual(['uploads/2026/01/x-480.webp', 'uploads/2026/01/x-480.jpg']); // generated once
-    expect(r.uploaded).toBe(4);
+    expect(store.puts.filter((k) => k.includes('x-480'))).toEqual(['uploads/2026/01/x-480.webp']); // generated once
+    expect(r.uploaded).toBe(3);
 
     const dry = await processUploads({ uploadsDir: uploads, store: new MemoryStore(), dryRun: true, log });
-    expect(dry.planned).toBe(4); // two originals + one set of variants
+    expect(dry.planned).toBe(3); // two originals + one set of variants
   });
 
   test('an extra width produces extra variants', async () => {
@@ -130,7 +126,19 @@ describe('processUploads', () => {
     const r = await processUploads({ uploadsDir: uploads, store, log });
     expect(r.errors).toHaveLength(1);
     expect(r.errors[0]).toContain('2012/08/broken.jpg');
-    expect(store.objects.has('uploads/2012/08/a-480.jpg')).toBe(true);
+    expect(store.objects.has('uploads/2012/08/a-480.webp')).toBe(true);
+  });
+
+  test('covers get jpg variants too, for link previews and search results', async () => {
+    put(uploads, '2012/08/a.jpg', fixture('sample-1620x1080.jpg'));
+    put(uploads, '2012/08/b.jpg', fixture('sample-900x600.jpg'));
+    store.objects.set('uploads/2012/08/a-480.webp', { body: Buffer.from('x'), contentType: 'image/webp' });
+    await processUploads({ uploadsDir: uploads, store, jpgFor: new Set(['2012/08/a.jpg']), log });
+    const keys = [...store.objects.keys()];
+    expect(keys.filter((k) => k.startsWith('uploads/2012/08/a-') && k.endsWith('.jpg')).sort()).toEqual(
+      ['uploads/2012/08/a-1600.jpg', 'uploads/2012/08/a-480.jpg', 'uploads/2012/08/a-960.jpg'],
+    );
+    expect(keys.some((k) => k.startsWith('uploads/2012/08/b-') && k.endsWith('.jpg'))).toBe(false);
   });
 });
 
@@ -149,6 +157,10 @@ describe('scaffoldGallery', () => {
     expect(readdirSync(join(uploads, '2024/05')).sort()).toEqual(['lake-como-italy-01.jpg', 'lake-como-italy-02.jpg']);
     expect(store.objects.has('uploads/2024/05/lake-como-italy-01.jpg')).toBe(true);
     expect(store.objects.has('uploads/2024/05/lake-como-italy-02-480.webp')).toBe(true);
+    // Only the cover (the first photo until it is changed) gets jpg variants.
+    expect([...store.objects.keys()].filter((k) => /-(480|960|1600)\.jpg$/.test(k)).sort()).toEqual(
+      ['uploads/2024/05/lake-como-italy-01-1600.jpg', 'uploads/2024/05/lake-como-italy-01-480.jpg', 'uploads/2024/05/lake-como-italy-01-960.jpg'],
+    );
 
     const text = readFileSync(path, 'utf8');
     expect(text.indexOf('title:')).toBeLessThan(text.indexOf('date:'));
@@ -285,5 +297,19 @@ describe('R2Store', () => {
     expect(calls).toEqual([
       { Bucket: 'bkt', Key: 'uploads/a.webp', Body: Buffer.from('x'), ContentType: 'image/webp', CacheControl: 'public, max-age=31536000, immutable' },
     ]);
+  });
+
+  test('delete sends at most 1000 keys per request and reports keys R2 refused', async () => {
+    const calls: { Bucket: string; Delete: { Objects: { Key: string }[]; Quiet: boolean } }[] = [];
+    const client = {
+      send: async (cmd: { input: (typeof calls)[number] }) => {
+        calls.push(cmd.input);
+        return calls.length === 2 ? { Errors: [{ Key: 'uploads/k1000.jpg', Message: 'nope' }] } : {};
+      },
+    };
+    const keys = Array.from({ length: 1001 }, (_, i) => `uploads/k${i}.jpg`);
+    await expect(new R2Store(env, client).delete(keys)).rejects.toThrow(/uploads\/k1000\.jpg: nope/);
+    expect(calls.map((c) => c.Delete.Objects.length)).toEqual([1000, 1]);
+    expect(calls[0]).toMatchObject({ Bucket: 'bkt', Delete: { Quiet: true } });
   });
 });

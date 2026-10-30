@@ -137,7 +137,9 @@ export async function scaffoldGallery(opts: ScaffoldOptions): Promise<string> {
   }
 
   const paths = photos.map(({ name }) => `${month}/${name}`);
-  const { sizes, errors } = await processUploads({ uploadsDir, store, files: paths, log: console.log });
+  // The cover alone gets jpg variants; a different one picked later needs `npm run photos -- --covers`.
+  const cover = (kind === 'outdoors' ? paths[(opts.trip?.cover ?? 1) - 1] : undefined) ?? paths[0];
+  const { sizes, errors } = await processUploads({ uploadsDir, store, files: paths, jpgFor: new Set([cover]), log: console.log });
   if (errors.length) throw new Error(`could not process:\n${errors.join('\n')}`);
 
   const photoDocs = paths.map((src): Photo => ({ src, ...(sizes.get(src) ?? { width: 0, height: 0 }) }));
@@ -156,7 +158,7 @@ export async function scaffoldGallery(opts: ScaffoldOptions): Promise<string> {
       track: given.track,
       approximateEnds: given.approximateEnds,
       links: given.links,
-      cover: paths[(given.cover ?? 1) - 1] ?? paths[0],
+      cover,
       darkHeader: given.darkHeader ?? false,
       photos: photoDocs,
     };
@@ -171,7 +173,7 @@ export async function scaffoldGallery(opts: ScaffoldOptions): Promise<string> {
     date: timestamp(date),
     genre: 'world-places',
     country: 'world',
-    cover: paths[0],
+    cover,
     darkHeader: false,
     oldSlugs: [],
     photos: photoDocs,

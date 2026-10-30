@@ -1,4 +1,4 @@
-import { ListObjectsV2Command, PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
+import { DeleteObjectsCommand, ListObjectsV2Command, PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
 
 export interface ObjectStore {
   listKeys(prefix: string): Promise<Set<string>>;
@@ -14,7 +14,7 @@ export function r2Env(env: NodeJS.ProcessEnv = process.env): R2Env | undefined {
 }
 
 /** The real store from the environment; the error names the variables. */
-export function storeFromEnv(env: NodeJS.ProcessEnv = process.env): ObjectStore {
+export function storeFromEnv(env: NodeJS.ProcessEnv = process.env): R2Store {
   const r2 = r2Env(env);
   if (!r2) throw new Error('R2_ACCOUNT_ID, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY and R2_BUCKET must be set (see .env.example)');
   return new R2Store(r2);
@@ -55,5 +55,16 @@ export class R2Store implements ObjectStore {
     await this.client.send(
       new PutObjectCommand({ Bucket: this.env.bucket, Key: key, Body: body, ContentType: contentType, CacheControl: 'public, max-age=31536000, immutable' }),
     );
+  }
+
+  /** Deletes in batches of 1000, the most one request takes; throws with the keys R2 refused. */
+  async delete(keys: readonly string[]): Promise<void> {
+    const refused: string[] = [];
+    for (let i = 0; i < keys.length; i += 1000) {
+      const objects = keys.slice(i, i + 1000).map((Key) => ({ Key }));
+      const r = await this.client.send(new DeleteObjectsCommand({ Bucket: this.env.bucket, Delete: { Objects: objects, Quiet: true } }));
+      for (const e of r?.Errors ?? []) refused.push(`${e.Key}: ${e.Message}`);
+    }
+    if (refused.length) throw new Error(`R2 refused to delete ${refused.length} keys:\n${refused.join('\n')}`);
   }
 }
