@@ -29,10 +29,6 @@ photos:
     width: 2048
     height: 1536
     alt: Calm lake under a clear sky
-  - src: 2020/07/lago-di-varese-lago-di-comabbio-04.jpg
-    width: 2048
-    height: 1536
-    alt: Bike parked on the grass by the lake
   - src: 2020/07/lago-di-varese-lago-di-comabbio-05.jpg
     width: 2048
     height: 1536
