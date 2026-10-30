@@ -104,7 +104,7 @@ const yn = (b: boolean | undefined) => (b === undefined ? undefined : b ? 'y' : 
 interface Answers {
   folder?: { dir: string; photos: string[]; fromKomoot: boolean };
   activity?: 'hike' | 'ride';
-  bike?: 'xc' | 'trail';
+  bike?: 'xc' | 'trail' | 'gravel';
   title?: string;
   slug?: string;
   area?: string;
@@ -227,11 +227,11 @@ export async function runWizard(deps: WizardDeps): Promise<WizardResult> {
       applies: () => a.activity === 'ride',
       missing: () => !a.bike,
       async ask() {
-        a.bike = await until(deps, 'Which bike? (xc/trail)', (s): 'xc' | 'trail' => {
+        a.bike = await until(deps, 'Which bike? (xc/trail/gravel)', (s): 'xc' | 'trail' | 'gravel' => {
           const b = s.trim().toLowerCase();
-          if (b === 'xc' || b === 'trail') return b;
+          if (b === 'xc' || b === 'trail' || b === 'gravel') return b;
           if (b === 'enduro') return 'trail';
-          throw new Error('answer xc or trail');
+          throw new Error('answer xc, trail or gravel');
         }, withDefault(a.bike));
       },
       show: () => a.bike!,

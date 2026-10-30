@@ -28,7 +28,7 @@ export type TripLink = { label: string; url: string };
 export type TripValues = {
   title?: string;
   activity?: 'hike' | 'ride';
-  bike?: 'xc' | 'trail';
+  bike?: 'xc' | 'trail' | 'gravel';
   distance?: number;
   climb?: number;
   area?: string;
@@ -47,7 +47,7 @@ export type TripDoc = {
   title: string;
   date: string;
   activity: 'hike' | 'ride' | undefined;
-  bike?: 'xc' | 'trail';
+  bike?: 'xc' | 'trail' | 'gravel';
   distance: number | undefined;
   climb: number | undefined;
   area: string;
@@ -74,7 +74,7 @@ export function tripFrontmatter(doc: TripDoc): string {
     field('title', doc.title) +
     `date: ${JSON.stringify(doc.date)}\n` +
     (doc.activity === undefined ? 'activity:\n' : field('activity', doc.activity)) +
-    (doc.bike === undefined ? '# bike: xc | trail\n' : field('bike', doc.bike)) +
+    (doc.bike === undefined ? '# bike: xc | trail | gravel\n' : field('bike', doc.bike)) +
     (doc.distance === undefined ? 'distance:\n' : field('distance', doc.distance)) +
     (doc.climb === undefined ? 'climb:\n' : field('climb', doc.climb)) +
     field('area', doc.area) +

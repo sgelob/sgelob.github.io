@@ -10,7 +10,7 @@ test('tripFrontmatter leaves activity, distance, climb and track undecided and l
   const fm = tripFrontmatter({ slug: 'x', title: 'X', date: '2026-06-14T12:00:00', activity: undefined, distance: undefined, climb: undefined, area: '', country: 'italy', track: undefined, cover: '2026/06/a.jpg', darkHeader: false, photos: [{ src: '2026/06/a.jpg', width: 1620, height: 1080 }] });
   expect(fm).toMatch(/^---\ntitle: X\n/);
   for (const key of ['activity', 'distance', 'climb', 'track']) expect(fm, key).toContain(`\n${key}:\n`);
-  expect(fm).toContain('# bike: xc | trail');
+  expect(fm).toContain('# bike: xc | trail | gravel');
   expect(fm).toContain('  - src: 2026/06/a.jpg\n    width: 1620\n    height: 1080\n');
 });
 
