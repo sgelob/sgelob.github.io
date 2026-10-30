@@ -5,6 +5,7 @@ categories:
   - wordpress
   - web-performance
   - product-management
+  - ai
 lang: it
 seoTitle: Da WordPress ad Astro, un sito statico fatto con Claude Code
 seoDescription: Dopo 17 anni con WordPress ho migrato il mio sito ad Astro, un sito statico. Perché l’ho fatto, come, con Claude Code, e lo stack di oggi.

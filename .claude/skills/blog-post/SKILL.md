@@ -23,7 +23,7 @@ Posts are Markdown files in `src/content/posts/`. This is the whole flow run in 
 
 - **Angle:** what the post should leave the reader with, and who it is for, when the source does not settle it. Offer two or three angles, recommending one.
 - **Personal side:** the posts are first person and anchored in Oleg's own experience. Ask for the personal story or example that opens it, if the notes have none. Never make one up.
-- **Category:** one or two slugs from `categories` in `src/data/taxonomies.yaml` (`design`, `meetup`, `organization`, `personal-growth`, `product-management`, `user-experience`, `web-performance`, `wordpress`), recommending one.
+- **Category:** one or two slugs from `categories` in `src/data/taxonomies.yaml` (`ai`, `design`, `meetup`, `organization`, `personal-growth`, `product-management`, `user-experience`, `web-performance`, `wordpress`), recommending one.
 - **Cover:** none, or one of the user's images (a path, or an attachment), or a photo already on the site. People who can be recognised are shown only if the user agrees.
 - **Date:** today unless the user says otherwise.
 

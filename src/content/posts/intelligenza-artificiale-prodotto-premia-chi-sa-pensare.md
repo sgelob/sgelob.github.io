@@ -2,6 +2,7 @@
 title: L’intelligenza artificiale non sostituisce chi sa pensare – lo rende più visibile
 date: "2026-10-30T15:57:00"
 categories:
+  - ai
   - product-management
 lang: it
 seoTitle: L’intelligenza artificiale premia chi sa pensare

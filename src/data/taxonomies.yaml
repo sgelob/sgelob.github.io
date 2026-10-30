@@ -51,6 +51,8 @@ countries:
   - slug: world
     name: World
 categories:
+  - slug: ai
+    name: AI
   - slug: design
     name: Design
   - slug: meetup
