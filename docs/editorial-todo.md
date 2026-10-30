@@ -33,7 +33,7 @@ Added by Oleg on 2026-10-22. One gallery per line; the dates are the trip dates 
 - San Marino 06-2013
 - Verona 02-2013
 - Ciaspolata, Planpincieux 01-2014
-- Cinque Terre 07-2014
+- [x] Cinque Terre 07-2014 (covered by Outdoors, 2026-10-30)
 - Forte di Fenestrelle 06-04-2014
 - Gradara 06-2014
 - Pesaro e Urbino 06-2014
@@ -42,8 +42,8 @@ Added by Oleg on 2026-10-22. One gallery per line; the dates are the trip dates 
 - Sicilia 2016
 - Dolomiti 2018
 - Sardegna 2019
-- Livigno 2021
-- Dolomiti 2022
+- [x] Livigno 2021 (covered by Outdoors, 2026-10-30)
+- [x] Dolomiti 2022 (covered by Outdoors, 2026-10-30)
 
 ### Rest of Europe
 - Budapest 04-2013
@@ -64,9 +64,9 @@ Added by Oleg on 2026-10-22. One gallery per line; the dates are the trip dates 
 - Lyon 2017
 - Athenes 2017
 - Crete 2017
-- Corsica 2023
-- Maiorca 2024
-- London 2024/2025
+- [x] Corsica 2023 (covered by Outdoors, 2026-10-30)
+- [x] Maiorca 2024 (covered by Outdoors, 2026-10-30)
+- [x] London 2024/2025 (covered by Outdoors, 2026-10-30)
 
 ### USA
 - Antelope Canyon, Page
