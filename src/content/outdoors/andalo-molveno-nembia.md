@@ -3,7 +3,7 @@ title: Andalo – Molveno – Nembia
 date: "2022-08-10T12:00:00"
 order: 4
 activity: ride
-bike: gravel
+bike: trail
 distance: 29.8
 climb: 557
 area: Altopiano della Paganella
@@ -43,6 +43,6 @@ photos:
     alt: Road through a village below the peaks
 ---
 
-Thirty kilometres and 557 metres of climbing by bike, from Andalo down along Lake Molveno to the small Lake Nembia and back, in August.
+Thirty kilometres and 557 metres of climbing on the trail bike, from Andalo down along Lake Molveno to the small Lake Nembia and back, in August.
 
 The way drops through the woods to Molveno and follows the turquoise lake between its wooded mountains, then goes on south along the valley to Nembia, a small lake at about 838 metres below a towering cliff, in the Adamello Brenta park. It is a WWF oasis, with a loop path round it and boards about its wildlife. The way back climbs again through the pine woods and the village below the peaks.
