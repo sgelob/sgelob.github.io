@@ -70,7 +70,7 @@ Reviews of books the user has read and owns follow the same flow, with these rul
   - `seoTitle` and `seoDescription`: only when the title is not a good search title or is longer than about 60 characters; the description under about 160 characters.
   - `oldSlugs: []`.
   - `excerpt`: one or two sentences in the post's voice that tell the reader what they will get; it shows on the blog index and in feeds. Quote it if it holds a colon.
-- **Images:** put the file in `UPLOADS_DIR/yyyy/mm/` with a descriptive name, run `npm run photos -- --uploads <UPLOADS_DIR>` (in the cloud, `UPLOADS_DIR=./olegs-be-data/uploads` before it), then reference a variant: `![Alt in Italian](https://img.olegs.be/uploads/yyyy/mm/name-960.jpg)`. `-960` only when the original is at least 960 px wide, `-480` when narrower, the original below 480 px; a GIF always as the original. Every image has an Italian alt text that says what it shows.
+- **Images:** put the file in `UPLOADS_DIR/yyyy/mm/` with a descriptive name, run `npm run photos -- --uploads <UPLOADS_DIR>` (in the cloud, `UPLOADS_DIR=./olegs-be-data/uploads` before it), then reference a variant: `![Alt in Italian](https://img.olegs.be/uploads/yyyy/mm/name-960.webp)`. Uploads make webp variants only (issue #69), so a `-960.jpg` link would answer 404. `-960` only when the original is at least 960 px wide, `-480` when narrower, the original below 480 px; a GIF always as the original. Before uploading a photo the user took, remove its EXIF data (place and camera). Every image has an Italian alt text that says what it shows.
 
 ## 5. Show, check, publish
 
