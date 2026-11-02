@@ -78,4 +78,4 @@ Non ho dovuto aggiornare nessun plugin, e non ho nessun server da tenere d’occ
 
 Un grazie speciale a Matteo Breda, mio collega di Carol, che mi ha suggerito Astro 🙂
 
-*E tu, hai un sito che cambia poco ma che continui ad aggiornare?…*
+*E tu, hai un sito che cambia poco ma che continui ad aggiornare? Se ti va, [raccontamelo via email](mailto:44_tildes_agog@icloud.com).*

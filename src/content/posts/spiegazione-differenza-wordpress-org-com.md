@@ -88,4 +88,4 @@ WordPress One Love!
 
 *Alcune informazioni sono state rielaborate dalle slide «[Get Involved with WordPress](https://www.slideshare.net/mpeshev/get-involved-with-wordpress)» di Mario Peshev e dalla pagina su WordPress.com con [le spiegazioni sulle differenze](https://en.support.wordpress.com/com-vs-org/).*
 
-*Se hai domande o vorresti aggiungere altre informazioni o correzioni su questo argomento, fallo pure nei commenti* 😉 Grazie!
+*Se hai domande o vorresti aggiungere altre informazioni o correzioni su questo argomento, [scrivimi pure via email](mailto:44_tildes_agog@icloud.com)* 😉 Grazie!

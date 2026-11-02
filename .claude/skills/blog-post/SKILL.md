@@ -37,7 +37,7 @@ What the existing posts do, and the new ones keep doing:
 - **Emphasis:** the key phrase of a paragraph in **bold**, one or two per paragraph at most; *italics* for a term or a light aside.
 - **Links:** inline on the words they support, to the primary source (studies, docs, the speaker's site, the book), never a bare URL in running text. Quotes in a `>` blockquote with the person named before it.
 - **Tone marks:** an aside in parentheses, an ellipsis (`…`) to trail off, the occasional emoji in personal and lighter posts (🙂 😉), none in technical ones. Recent posts are more sober than the 2016 ones: match the most recent unless the subject is personal and light.
-- **Ending:** a short closing thought, often a thank-you to the people involved, and for personal or practical topics an italic question to the reader («*E tu tieni traccia dei tuoi soldi?…*»).
+- **Ending:** a short closing thought, often a thank-you to the people involved. The site has no comments and never will: never ask the reader to comment. For personal or practical topics, close with an italic question that invites the reader to write by email, linked to the site’s address in `src/lib/site.ts` («*E tu tieni traccia dei tuoi soldi? Se ti va, [raccontamelo via email](mailto:44_tildes_agog@icloud.com).*»).
 - **Typography:** Italian quotation marks «…», curly apostrophes (’), an en dash with spaces (–) in titles and asides, no em dashes, the ellipsis character (…).
 - **Length:** like the posts of the same kind: a recap or a podcast summary is short; a how-to with sections is long. Do not pad.
 - **Privacy:** nothing about other people the user did not say; family and friends only as the user names them.
@@ -52,7 +52,7 @@ Reviews of books the user has read and owns follow the same flow, with these rul
 - **Quotes:** one short quote in the original language, with author and source, as the law allows for criticism and review (Italian copyright law, art. 70). The rest in the user’s own words, attributed («secondo l’autrice…»).
 - **Fair to the author:** criticism of the content, never of the person; nothing that could read as defamatory. When an idea seems weakly supported, say how you would read it («lo prenderei come una lente, non come un metodo»), not that the author is wrong.
 - **Links:** to the publisher’s page or the author’s site, never to a store.
-- **Shape:** title «Title» di Author – a short line on the core idea; `seoTitle` «Title» di Author, recensione. Then the opening, the ideas, «La mia lettura» linked to the user’s principles, «A chi lo consiglio», and an italic question to the reader.
+- **Shape:** title «Title» di Author – a short line on the core idea; `seoTitle` «Title» di Author, recensione. Then the opening, the ideas, «La mia lettura» linked to the user’s principles, «A chi lo consiglio», and the italic question with the email invitation (see **Ending**).
 - **Date:** the day the user finished reading the book, which the user gives.
 - **Cover:** a photo of the user’s own copy (in hand, on the desk, on the shelf: the book as the subject, not a flat scan) as the post `cover` and the image at the top. The `/books` page keeps the catalogue cover.
 - **Cross-post with Books:** when the review is published, add `review: /YYYY/MM/<slug>/` to that book in `src/data/books.yaml` in the same commit, so its title on `/books` links to the review; and end the review with a link to the page, such as «Gli altri libri della mia libreria sono nella pagina [Books](/books/).». A test checks that every `review` points to a published post.
@@ -70,7 +70,7 @@ Reviews of books the user has read and owns follow the same flow, with these rul
   - `seoTitle` and `seoDescription`: only when the title is not a good search title or is longer than about 60 characters; the description under about 160 characters.
   - `oldSlugs: []`.
   - `excerpt`: one or two sentences in the post's voice that tell the reader what they will get; it shows on the blog index and in feeds. Quote it if it holds a colon.
-- **Images:** put the file in `UPLOADS_DIR/yyyy/mm/` with a descriptive name, run `npm run photos -- --uploads <UPLOADS_DIR>` (in the cloud, `UPLOADS_DIR=./olegs-be-data/uploads` before it), then reference a variant: `![Alt in Italian](https://img.olegs.be/uploads/yyyy/mm/name-960.jpg)`. `-960` only when the original is at least 960 px wide, `-480` when narrower, the original below 480 px; a GIF always as the original. Every image has an Italian alt text that says what it shows.
+- **Images:** put the file in `UPLOADS_DIR/yyyy/mm/` with a descriptive name, run `npm run photos -- --uploads <UPLOADS_DIR>` (in the cloud, `UPLOADS_DIR=./olegs-be-data/uploads` before it), then reference a variant: `![Alt in Italian](https://img.olegs.be/uploads/yyyy/mm/name-960.webp)`. Uploads make webp variants only (issue #69), so a `-960.jpg` link would answer 404. `-960` only when the original is at least 960 px wide, `-480` when narrower, the original below 480 px; a GIF always as the original. Before uploading a photo the user took, remove its EXIF data (place and camera). Every image has an Italian alt text that says what it shows.
 
 ## 5. Show, check, publish
 

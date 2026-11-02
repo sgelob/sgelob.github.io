@@ -31,4 +31,4 @@ Nel HTML del mio sito web, l’elemento che deve mostrare l’immagine di sfondo
 
 Anche se metti un po’ di CSS in linea, è sempre meglio che caricare immagini pesanti e di grandi dimensioni anche su **dispositivi con schermi più piccoli e meno performanti di un computer**, senza il rispetto per i visitatori mobile, sprecando il loro traffico dati Internet, consumando la batteria e rendendo la loro esperienza utente frustrante.
 
-*Tu che tecniche usi per le immagini di sfondo responsive e per ottimizzare la velocità di caricamento dei tuoi siti web?*
+*Tu che tecniche usi per le immagini di sfondo responsive e per ottimizzare la velocità di caricamento dei tuoi siti web? Se ti va, [raccontamelo via email](mailto:44_tildes_agog@icloud.com).*

@@ -123,4 +123,4 @@ Non dico di arrivare a «[Inbox Zero](https://whatis.techtarget.com/definition/i
 
 Il mondo di oggi è caotico. **Email è caotica**. Prendi il controllo della tua vita, del tuo tempo prezioso e usa email in modo efficace e responsabile 😉
 
-Hai domande o idee su come usare email in modo più efficace e produttivo? Hai esperienze dirette di utilizzo nella tua vita quotidiana e nel lavoro? Fammi sapere qui sotto nei [commenti](#disqus_thread), sono curioso di sapere le tue considerazioni, le tue tecniche, le tue abitudini e se vuoi raccontare dei casi di successo.
+Hai domande o idee su come usare email in modo più efficace e produttivo? Hai esperienze dirette di utilizzo nella tua vita quotidiana e nel lavoro? [Scrivimi via email](mailto:44_tildes_agog@icloud.com), sono curioso di sapere le tue considerazioni, le tue tecniche, le tue abitudini e se vuoi raccontare dei casi di successo.

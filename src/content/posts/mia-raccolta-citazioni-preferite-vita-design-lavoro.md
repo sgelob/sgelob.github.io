@@ -24,4 +24,4 @@ Enjoy 😉
 
 P.S. Se ti interessa, qui c’è [una lista di libri](/books/) che ho letto e che vorrei leggere.
 
-*Fai anche tu una raccolta di frasi e citazioni e l’hai condivisa con tutti? Lasciami il link nei commenti e la andrò sicuramente a leggere. Grazie* 😉
+*Fai anche tu una raccolta di frasi e citazioni e l’hai condivisa con tutti? [Mandami il link via email](mailto:44_tildes_agog@icloud.com) e la andrò sicuramente a leggere. Grazie* 😉

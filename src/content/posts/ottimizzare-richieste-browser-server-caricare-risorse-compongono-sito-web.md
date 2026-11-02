@@ -37,4 +37,4 @@ Per fare gli audit di velocità di caricamento di un sito web e **per simulare l
 
 Alcune di queste tecniche, come per esempio il concatenamento dei file CSS/JS oppure unire le immagini in sprite, potrebbero diventare presto del tutto obsolete se non controproducenti con la sempre più reale diffusione del protocollo web [HTTP/2](https://http2.github.io/faq/). **Su questo mio sito web il protocollo HTTP/2 è già attivo e i risultati si vedono unitamente al certificato SSL** (per funzionare, questo protocollo richiede per forza di cose una connessione attiva via HTTPS) e per questo ringrazio il mio hosting fantastico [SiteGround](https://www.siteground.com/index.htm?afcode=643d883698337aa8cdd2ff223ee5634b).
 
-*Conoscevi già queste tecniche di ottimizzazione delle richieste che fa il tuo browser al server? Ne conosci altre che non ho elencato? Fammi sapere qui sotto nei commenti* 🙃
+*Conoscevi già queste tecniche di ottimizzazione delle richieste che fa il tuo browser al server? Ne conosci altre che non ho elencato? [Fammelo sapere via email](mailto:44_tildes_agog@icloud.com)* 🙃

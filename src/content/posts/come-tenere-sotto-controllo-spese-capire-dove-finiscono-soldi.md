@@ -50,6 +50,6 @@ Ammeto però una cosa, che con tutto questo sistema, con mia moglie non siamo ma
 
 Ringrazio tantissimo il mio amico [Fabio Sirna](https://www.linkedin.com/in/fabiosirna/) per i consigli sui primi due libri che mi hanno cambiato un po’ la vita e mi hanno preparato per un periodo economicamente difficile che passai nel 2015…
 
-*E tu tieni traccia dei tuoi soldi? Sai dove finiscono ogni mese e hai idea in quali spese puoi risparmiare?*
+*E tu tieni traccia dei tuoi soldi? Sai dove finiscono ogni mese e hai idea in quali spese puoi risparmiare? Se ti va, [raccontamelo via email](mailto:44_tildes_agog@icloud.com).*
 
-*Fammi sapere se ti servono altre info, se qualcosa non è chiaro o se hai dei suggerimenti su come migliorare questa tecnica, leggerei volentieri il tuo parere nei commenti qui sotto. Grazie!* 😉
+*Fammi sapere se ti servono altre info, se qualcosa non è chiaro o se hai dei suggerimenti su come migliorare questa tecnica: [scrivimi via email](mailto:44_tildes_agog@icloud.com), leggerò volentieri il tuo parere. Grazie!* 😉

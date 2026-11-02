@@ -57,12 +57,12 @@ Sono [numerosi](https://github.com/davidsonfellipe/awesome-wpo#events) i gruppi 
 
 ## Vuoi fare una presentazione a uno dei meetup di Turin Web Performance Group?
 
-**Siamo sempre alla ricerca di nuovi speaker provenienti da tutti i settori inerenti al web** e di ogni livello di preparazione. Se ti interessa fare una presentazione al meetup di Turin Web Performance Group, [scrivimi un’email](mailto:olegs.belousovs@gmail.com), oppure rispondi qui nei commenti e ti contatto io.
+**Siamo sempre alla ricerca di nuovi speaker provenienti da tutti i settori inerenti al web** e di ogni livello di preparazione. Se ti interessa fare una presentazione al meetup di Turin Web Performance Group, [scrivimi un’email](mailto:olegs.belousovs@gmail.com) e ti ricontatto io.
 
 **Il prossimo incontro sarà a settembre** e non ho ancora deciso la data, che sarà comunque un martedì o giovedì sempre verso le 19:00/19:30 da Login Coworking Torino di [Via Pietro Micca 12/c](https://goo.gl/maps/ixEJq8rGHB12). Se ti interessa sapere di più e restare *up-to-date* sugli incontri del Turin Web Performance Group, **seguici sul sito web [meetup.com](#), su [Twitter](#) o sul gruppo nazionale [Web Performance Italia](#) di Facebook**.
 
 Per ora abbiamo un luogo definito per i prossimi 2 mesi con Login Coworking Torino, ma dopo non sappiamo se continueremo sempre da loro e per ora non ci sono alternative. Non ho nemmeno uno sponsor per offrire un rinfresco ai partecipanti o dello swag, se hai idee su questo punto contattami e te ne sarò molto grato. **Se vuoi aiutarmi con l’organizzazione – You Are Welcome!**, scrivimi le tue proposte e come vorresti dare il tuo contributo.
 
-Se hai domande, scrivile qui nei commenti o nei contatti indicati in precedenza.
+Se hai domande, [scrivimi via email](mailto:44_tildes_agog@icloud.com) o usa i contatti indicati in precedenza.
 
 Grazie per aver letto questo articolo! **Spero di vederti presto** e spero che ne parlerai al tuo team e amici che lavorano nel web, così **insieme cambieremo il web in meglio in Italia e automaticamente anche in tutto il mondo**.
