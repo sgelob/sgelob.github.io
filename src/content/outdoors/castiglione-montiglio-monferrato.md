@@ -10,7 +10,7 @@ area: Monferrato
 country: italy
 track: castiglione-montiglio-monferrato.gpx
 approximateEnds: true
-cover: 2026/10/castiglione-montiglio-monferrato-24.jpg
+cover: 2026/10/castiglione-montiglio-monferrato-23.jpg
 coverWidth: 2048
 coverHeight: 1536
 darkHeader: true
