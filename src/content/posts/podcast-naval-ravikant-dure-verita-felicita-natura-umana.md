@@ -1,5 +1,5 @@
 ---
-title: Podcast con Naval Ravikant – Dure verità sulla felicità e la natura umana
+title: "Podcast con Naval Ravikant: dure verità sulla felicità e la natura umana"
 date: "2025-04-16T15:00:56"
 categories:
   - personal-growth

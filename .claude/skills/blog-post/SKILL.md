@@ -38,7 +38,7 @@ What the existing posts do, and the new ones keep doing:
 - **Links:** inline on the words they support, to the primary source (studies, docs, the speaker's site, the book), never a bare URL in running text. Quotes in a `>` blockquote with the person named before it.
 - **Tone marks:** an aside in parentheses, an ellipsis (`…`) to trail off, the occasional emoji in personal and lighter posts (🙂 😉), none in technical ones. Recent posts are more sober than the 2016 ones: match the most recent unless the subject is personal and light.
 - **Ending:** a short closing thought, often a thank-you to the people involved. The site has no comments and never will: never ask the reader to comment. For personal or practical topics, close with an italic question that invites the reader to write by email, linked to the site’s address in `src/lib/site.ts` («*E tu tieni traccia dei tuoi soldi? Se ti va, [raccontamelo via email](mailto:44_tildes_agog@icloud.com).*»).
-- **Typography:** Italian quotation marks «…», curly apostrophes (’), an en dash with spaces (–) in titles and asides, no em dashes, the ellipsis character (…).
+- **Typography:** Italian quotation marks «…», curly apostrophes (’), an en dash with spaces (–) in asides (never to split a post title: use a colon), no em dashes, the ellipsis character (…).
 - **Length:** like the posts of the same kind: a recap or a podcast summary is short; a how-to with sections is long. Do not pad.
 - **Privacy:** nothing about other people the user did not say; family and friends only as the user names them.
 - **No company or brand names**: no companies, brands, products or services (also as comparisons, «like X»), in the post, its title, excerpt, alt texts and in the idea issues, unless the user explicitly asks for a name. Describe them generically instead.
@@ -62,7 +62,7 @@ Reviews of books the user has read and owns follow the same flow, with these rul
 
 - **File name (slug):** Italian keywords of the title, lowercase, words joined by `-`, articles and most prepositions dropped, accents removed (`come-essere-produttivo-usando-email-modo-efficiente-ridurre-distrazioni`, `podcast-naval-ravikant-dure-verita-felicita-natura-umana`). It becomes `/YYYY/MM/<slug>/`. Check it is not taken.
 - **Front matter**, in this order:
-  - `title`: the headline as a sentence, «…» for titles of books or talks, an en dash before a subtitle.
+  - `title`: the headline as a sentence, «…» for titles of books or talks, a colon before a subtitle, never an en dash (`«Badass – Making Users Awesome» di Kathy Sierra: non migliorare il prodotto, migliora chi lo usa`); quote the value, since it holds a colon. A dash inside a book’s own title stays.
   - `date`: quoted local time, `"YYYY-MM-DDTHH:MM:SS"` (unquoted, YAML reads it as UTC).
   - `categories`: the slugs chosen.
   - `cover`: `yyyy/mm/file.jpg` under uploads, or left out.
