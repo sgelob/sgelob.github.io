@@ -67,10 +67,10 @@ describe('blog lists', () => {
 describe('post page', () => {
   test('title, description, og image, heading and meta line', () => {
     const html = read('dist/2025/04/podcast-naval-ravikant-dure-verita-felicita-natura-umana/index.html');
-    expect(html).toContain('<title>Podcast con Naval Ravikant – Dure verità sulla felicità e la natura umana – Olegs Belousovs</title>');
+    expect(html).toContain('<title>Podcast con Naval Ravikant: dure verità sulla felicità e la natura umana – Olegs Belousovs</title>');
     expect(html).toContain('<meta name="description" content="Riflessioni essenziali su felicità');
     expect(html).toContain('<meta property="og:image" content="https://img.olegs.be/uploads/2025/04/you-have-one-life-naval-ravikant.jpg">');
-    expect(html).toMatch(/<h1[^>]*>Podcast con Naval Ravikant – Dure verità sulla felicità e la natura umana<\/h1>/);
+    expect(html).toMatch(/<h1[^>]*>Podcast con Naval Ravikant: dure verità sulla felicità e la natura umana<\/h1>/);
     expect(html).toMatch(/16 aprile 2025[\s\S]{0,300}<a href="\/category\/personal-growth\/"[^>]*>Personal Growth<\/a>/);
     expect(html).toMatch(/<h2[^>]*>Sulla felicità<\/h2>/);
   });
