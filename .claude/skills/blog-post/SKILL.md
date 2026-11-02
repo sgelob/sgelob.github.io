@@ -43,6 +43,21 @@ What the existing posts do, and the new ones keep doing:
 - **Privacy:** nothing about other people the user did not say; family and friends only as the user names them.
 - **No company or brand names**: no companies, brands, products or services (also as comparisons, «like X»), in the post, its title, excerpt, alt texts and in the idea issues, unless the user explicitly asks for a name. Describe them generically instead.
 
+## Book reviews
+
+Reviews of books the user has read and owns follow the same flow, with these rules on top:
+
+- **Source:** the user’s own reading notes on the book, read whole. Facts about the book (year, subtitle, authors) are checked; the subtitle is the one printed on the cover.
+- **Not a summary:** three or four ideas the user actually took away, each with the user’s own experience or opinion. More commentary than summary. The review must never stand in for the book: no chapter-by-chapter walk-through, no complete method, no operational details or numeric thresholds (they stay in the book for whoever buys it), no diagrams or figures from the book.
+- **Quotes:** one short quote in the original language, with author and source, as the law allows for criticism and review (Italian copyright law, art. 70). The rest in the user’s own words, attributed («secondo l’autrice…»).
+- **Fair to the author:** criticism of the content, never of the person; nothing that could read as defamatory. When an idea seems weakly supported, say how you would read it («lo prenderei come una lente, non come un metodo»), not that the author is wrong.
+- **Links:** to the publisher’s page or the author’s site, never to a store.
+- **Shape:** title «Title» di Author – a short line on the core idea; `seoTitle` «Title» di Author, recensione. Then the opening, the ideas, «La mia lettura» linked to the user’s principles, «A chi lo consiglio», and an italic question to the reader.
+- **Date:** the day the user finished reading the book, which the user gives.
+- **Cover:** a photo of the user’s own copy (in hand, on the desk, on the shelf: the book as the subject, not a flat scan) as the post `cover` and the image at the top. The `/books` page keeps the catalogue cover.
+- **Cross-post with Books:** when the review is published, add `review: /YYYY/MM/<slug>/` to that book in `src/data/books.yaml` in the same commit, so its title on `/books` links to the review; and end the review with a link to the page, such as «Gli altri libri della mia libreria sono nella pagina [Books](/books/).». A test checks that every `review` points to a published post.
+- **One at a time:** show each review to the user as a rendered page and publish it only once approved.
+
 ## 4. Build
 
 - **File name (slug):** Italian keywords of the title, lowercase, words joined by `-`, articles and most prepositions dropped, accents removed (`come-essere-produttivo-usando-email-modo-efficiente-ridurre-distrazioni`, `podcast-naval-ravikant-dure-verita-felicita-natura-umana`). It becomes `/YYYY/MM/<slug>/`. Check it is not taken.

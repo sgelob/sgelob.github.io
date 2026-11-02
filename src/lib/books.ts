@@ -8,6 +8,8 @@ export interface Book {
   year?: number;
   /** Under uploads/ on R2; absent until a cover is found, and the page shows a plain placeholder. */
   cover?: { src: string; width: number; height: number };
+  /** The path of the blog review of this book (`/YYYY/MM/<slug>/`), once it is published. */
+  review?: string;
 }
 
 /** A titled shelf of books ('Favourite Books', 'Mixed Books'), in the order they are listed. */
