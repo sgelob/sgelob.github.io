@@ -92,6 +92,20 @@ describe('pages', () => {
     expect(html).toMatch(/<p class="lead"[^>]*>[^<]*still waiting to be read/);
   });
 
+  test('books: a row of tabs with counts jumps to each shelf, like the sub-categories of the other sections', () => {
+    const html = read('dist/books/index.html');
+    const nav = /<nav [^>]*aria-label="Shelves"[^>]*>([\s\S]*?)<\/nav>/.exec(html)?.[1] ?? '';
+    const tabs = [...nav.matchAll(/<a href="#([a-z-]+)"[^>]*>([^<]+) <span class="count"[^>]*>(\d+)<\/span><\/a>/g)].map((m) => [m[1], m[2], Number(m[3])]);
+    expect(tabs).toEqual([
+      ['reading-now', 'Reading Now', books[0]!.books.length],
+      ['favourites', 'Favourites', books[1]!.books.length],
+      ['mixed', 'Mixed', books[2]!.books.length],
+      ['to-read', 'To Read', books[3]!.books.length],
+    ]);
+    for (const [id] of tabs) expect(html).toMatch(new RegExp(`<section class="group" id="${id}"`));
+    expect(nav).toContain('class="filters mono"');
+  });
+
   test('books: a row per book with its cover from the site’s image host, the year, and a placeholder where a cover is missing', () => {
     const html = read('dist/books/index.html');
     const all = books.flatMap((shelf) => shelf.books);

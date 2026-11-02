@@ -3,10 +3,26 @@ import { pageTitle } from '../lib/site';
 import Reading from '../layouts/Reading.astro';
 import Pic from '../components/Pic.astro';
 import { books } from '../lib/books';
+
+// The tab and anchor of each shelf: a short name, as the sub-categories of the other sections have.
+const tabs: Record<string, { id: string; name: string }> = {
+  'Reading Now': { id: 'reading-now', name: 'Reading Now' },
+  'Favourite Books': { id: 'favourites', name: 'Favourites' },
+  'Mixed Books': { id: 'mixed', name: 'Mixed' },
+  'On the Shelf, To Read': { id: 'to-read', name: 'To Read' },
+};
+const tab = (title: string) => tabs[title] ?? { id: title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''), name: title };
 ---
 
 <Reading section search={{ type: 'other' }} title={pageTitle('Books')} heading="Books" description="Books Olegs Belousovs is reading now, has read (favourites on product, design and work, and a mixed shelf) and still to read on his shelf." lang="en">
   <p class="lead">What I am reading now, then the books I have read and keep on my shelf, the favourites first and a mixed shelf, and last the ones still waiting to be read.</p>
+  <nav class="shelves" aria-label="Shelves">
+    <ul class="filters mono">
+      {books.map(({ title, books: list }) => (
+        <li><a href={`#${tab(title).id}`}>{tab(title).name} <span class="count">{list.length}</span></a></li>
+      ))}
+    </ul>
+  </nav>
   <div class="books">
     {books.map(({ title, books: list }) => {
       const numbered = title === 'Favourite Books';
@@ -25,7 +41,7 @@ import { books } from '../lib/books';
         </span></li>
       ));
       return (
-        <section class="group">
+        <section class="group" id={tab(title).id}>
           <h2 class="section mono">{title}</h2>
           {numbered ? <ol reversed role="list" class="entries numbered">{items}</ol> : <ul class="entries">{items}</ul>}
         </section>
@@ -35,7 +51,38 @@ import { books } from '../lib/books';
 </Reading>
 
 <style>
-  .lead { color: var(--muted); margin: 0 0 40px; }
+  .lead { color: var(--muted); margin: 0 0 32px; }
+
+  /* The shelves as tabs, styled like the sub-categories of Records and Photos; here they jump down the page.
+     Under .shelves so they win over the list and link styles of the layout's prose. */
+  .shelves .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 28px;
+    margin: 0 0 40px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .shelves .filters li a {
+    display: inline-block;
+    padding: 6px 0 3px;
+    margin-top: -6px;
+    border-bottom: 1px solid transparent;
+    color: var(--muted);
+    transition: color 120ms ease;
+  }
+
+  .shelves .filters li a:hover { color: var(--fg); border-bottom-color: currentColor; }
+
+  /* The prose spaces list items apart; tabs on one line need none. */
+  .shelves .filters li { margin: 0; }
+
+  @media (max-width: 719px) {
+    .shelves .filters { gap: 10px 20px; }
+  }
+
+  .books .group { scroll-margin-top: 24px; }
 
   .books .group { padding-block: 24px; border-top: 1px solid var(--rule); }
 
