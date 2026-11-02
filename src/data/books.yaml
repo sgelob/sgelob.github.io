@@ -1,3 +1,14 @@
+- title: Reading Now
+  books:
+    - title: I, Robot
+      author: Isaac Asimov
+      year: 1950
+      cover:
+        src: 2026/11/book-i-robot.jpg
+        width: 327
+        height: 500
+    - title: Aligned
+      author: Bruce McCarthy & Melissa Appel
 - title: Favourite Books
   books:
     - title: The Culture Map
@@ -1515,4 +1526,363 @@
       cover:
         src: 2026/10/book-information-is-beautiful.jpg
         width: 375
+        height: 500
+- title: On the Shelf, To Read
+  books:
+    - title: Mental Traps
+      author: André Kukla
+      year: 2006
+      cover:
+        src: 2026/11/book-mental-traps.jpg
+        width: 321
+        height: 500
+    - title: The Leadership Mystique
+      author: Manfred Kets de Vries
+      year: 2001
+      cover:
+        src: 2026/11/book-the-leadership-mystique.jpg
+        width: 331
+        height: 500
+    - title: Learned Optimism
+      author: Martin Seligman
+      year: 1990
+      cover:
+        src: 2026/11/book-learned-optimism.jpg
+        width: 302
+        height: 475
+    - title: Как общаться с трудными людьми
+      author: Майк Эннесли
+    - title: Evil
+      author: Julia Shaw
+      year: 2019
+      cover:
+        src: 2026/11/book-evil.jpg
+        width: 331
+        height: 500
+    - title: The Story of Art
+      author: E. H. Gombrich
+      year: 1950
+      cover:
+        src: 2026/11/book-the-story-of-art.jpg
+        width: 337
+        height: 475
+    - title: How Buildings Learn
+      author: Stewart Brand
+      year: 1994
+      cover:
+        src: 2026/11/book-how-buildings-learn.jpg
+        width: 500
+        height: 388
+    - title: Codex Seraphinianus
+      author: Luigi Serafini
+      year: 1981
+      cover:
+        src: 2026/11/book-codex-seraphinianus.jpg
+        width: 333
+        height: 500
+    - title: "Einstein: His Life and Universe"
+      author: Walter Isaacson
+      year: 2007
+      cover:
+        src: 2026/11/book-einstein-his-life-and-universe.jpg
+        width: 336
+        height: 500
+    - title: On the Origin of Species
+      author: Charles Darwin
+      year: 1859
+      cover:
+        src: 2026/11/book-on-the-origin-of-species.jpg
+        width: 308
+        height: 500
+    - title: Guns, Germs, and Steel
+      author: Jared Diamond
+      year: 1997
+      cover:
+        src: 2026/11/book-guns-germs-and-steel.jpg
+        width: 317
+        height: 500
+    - title: Do Androids Dream of Electric Sheep?
+      author: Philip K. Dick
+      year: 1968
+      cover:
+        src: 2026/11/book-do-androids-dream-of-electric-sheep.jpg
+        width: 289
+        height: 475
+    - title: Out of This Century
+      author: Peggy Guggenheim
+      year: 1946
+      cover:
+        src: 2026/11/book-out-of-this-century.jpg
+        width: 311
+        height: 475
+    - title: Evocations of Italy
+      author: Pavel Muratov
+      year: 1911
+    - title: The Idiot
+      author: Fyodor Dostoevsky
+      year: 1869
+    - title: The Unbearable Lightness of Being
+      author: Milan Kundera
+      year: 1984
+    - title: Twenty Thousand Leagues Under the Sea
+      author: Jules Verne
+      year: 1870
+      cover:
+        src: 2026/11/book-twenty-thousand-leagues-under-the-sea.jpg
+        width: 342
+        height: 500
+    - title: History of My Life
+      author: Giacomo Casanova
+      year: 1822
+      cover:
+        src: 2026/11/book-history-of-my-life.jpg
+        width: 128
+        height: 205
+    - title: 5 минут на размышление
+    - title: Живу беспокойно…
+      author: Евгений Шварц
+    - title: Thinking, Fast and Slow
+      author: Daniel Kahneman
+      year: 2011
+      cover:
+        src: 2026/11/book-thinking-fast-and-slow.jpg
+        width: 386
+        height: 500
+    - title: Nineteen Eighty-Four
+      author: George Orwell
+      year: 1949
+      cover:
+        src: 2026/11/book-nineteen-eighty-four.jpg
+        width: 330
+        height: 500
+    - title: The Wealth of Nations
+      author: Adam Smith
+      year: 1776
+      cover:
+        src: 2026/11/book-the-wealth-of-nations.jpg
+        width: 333
+        height: 500
+    - title: The Plague
+      author: Albert Camus
+      year: 1947
+    - title: Design for Privacy
+      author: Robert Stribley
+      year: 2025
+    - title: Can’t Just Stop
+      author: Sharon Begley
+      year: 2017
+      cover:
+        src: 2026/11/book-can-t-just-stop.jpg
+        width: 324
+        height: 500
+    - title: Good Girls Go to Heaven, Bad Girls Go Everywhere
+      author: Ute Ehrhardt
+      year: 1994
+      cover:
+        src: 2026/11/book-good-girls-go-to-heaven-bad-girls-go-everywhere.jpg
+        width: 307
+        height: 475
+    - title: Noise
+      author: Daniel Kahneman, Olivier Sibony & Cass R. Sunstein
+      year: 2021
+      cover:
+        src: 2026/11/book-noise.jpg
+        width: 325
+        height: 500
+    - title: Psych 101
+      author: Paul Kleinman
+      year: 2012
+      cover:
+        src: 2026/11/book-psych-101.jpg
+        width: 368
+        height: 500
+    - title: Mapping Experiences
+      author: Jim Kalbach
+      year: 2016
+      cover:
+        src: 2026/11/book-mapping-experiences.jpg
+        width: 500
+        height: 404
+    - title: Visual Teams
+      author: David Sibbet
+      year: 2011
+    - title: Flow
+      author: Mihaly Csikszentmihalyi
+      year: 1990
+      cover:
+        src: 2026/11/book-flow.jpg
+        width: 325
+        height: 500
+    - title: Doorbells, Danger, and Dead Batteries
+      author: Steve Portigal
+      year: 2016
+    - title: Validating Product Ideas
+      author: Tomer Sharon
+      year: 2016
+      cover:
+        src: 2026/11/book-validating-product-ideas.jpg
+        width: 333
+        height: 500
+    - title: Liftoff!
+      author: Chris Avore & Russ Unger
+      year: 2019
+      cover:
+        src: 2026/11/book-liftoff.jpg
+        width: 333
+        height: 500
+    - title: From Solo to Scaled
+      author: Natalie Marie Dunbar
+      year: 2022
+    - title: The Currents of Space
+      author: Isaac Asimov
+      year: 1952
+      cover:
+        src: 2026/11/book-the-currents-of-space.jpg
+        width: 277
+        height: 500
+    - title: The Gods Themselves
+      author: Isaac Asimov
+      year: 1972
+      cover:
+        src: 2026/11/book-the-gods-themselves.jpg
+        width: 332
+        height: 500
+    - title: How to Make Big Money in Multi-Level Marketing
+      author: David Roller
+      year: 1989
+      cover:
+        src: 2026/11/book-how-to-make-big-money-in-multi-level-marketing.jpg
+        width: 128
+        height: 192
+    - title: Principles
+      author: Ray Dalio
+      year: 2017
+    - title: Blue Ocean Strategy
+      author: W. Chan Kim & Renée Mauborgne
+      year: 2005
+    - title: What to Think About Machines That Think
+      author: John Brockman
+      year: 2015
+      cover:
+        src: 2026/11/book-what-to-think-about-machines-that-think.jpg
+        width: 322
+        height: 500
+    - title: Warren Buffett’s Ground Rules
+      author: Jeremy Miller
+      year: 2016
+      cover:
+        src: 2026/11/book-warren-buffett-s-ground-rules.jpg
+        width: 325
+        height: 500
+    - title: The Black Swan
+      author: Nassim Nicholas Taleb
+      year: 2007
+      cover:
+        src: 2026/11/book-the-black-swan.jpg
+        width: 140
+        height: 212
+    - title: Antifragile
+      author: Nassim Nicholas Taleb
+      year: 2012
+      cover:
+        src: 2026/11/book-antifragile.jpg
+        width: 322
+        height: 500
+    - title: Skin in the Game
+      author: Nassim Nicholas Taleb
+      year: 2018
+      cover:
+        src: 2026/11/book-skin-in-the-game.jpg
+        width: 316
+        height: 500
+    - title: The Visual MBA
+      author: Jason Barron
+      year: 2019
+      cover:
+        src: 2026/11/book-the-visual-mba.jpg
+        width: 333
+        height: 500
+    - title: Designing Products People Love
+      author: Scott Hurff
+      year: 2015
+      cover:
+        src: 2026/11/book-designing-products-people-love.jpg
+        width: 381
+        height: 500
+    - title: Loved
+      author: Martina Lauchengco
+      year: 2022
+      cover:
+        src: 2026/11/book-loved.jpg
+        width: 338
+        height: 500
+    - title: Transformed
+      author: Marty Cagan
+      year: 2024
+      cover:
+        src: 2026/11/book-transformed.jpg
+        width: 316
+        height: 466
+    - title: The Sign of the Four
+      author: Arthur Conan Doyle
+      year: 1890
+      cover:
+        src: 2026/11/book-the-sign-of-the-four.jpg
+        width: 331
+        height: 500
+    - title: A Study in Scarlet
+      author: Arthur Conan Doyle
+      year: 1887
+      cover:
+        src: 2026/11/book-a-study-in-scarlet.jpg
+        width: 304
+        height: 500
+    - title: The Hound of the Baskervilles
+      author: Arthur Conan Doyle
+      year: 1902
+      cover:
+        src: 2026/11/book-the-hound-of-the-baskervilles.jpg
+        width: 317
+        height: 500
+    - title: The Art of Loving
+      author: Erich Fromm
+      year: 1956
+      cover:
+        src: 2026/11/book-the-art-of-loving.jpg
+        width: 128
+        height: 194
+    - title: The Dead Zone
+      author: Stephen King
+      year: 1979
+      cover:
+        src: 2026/11/book-the-dead-zone.jpg
+        width: 326
+        height: 500
+    - title: Cell
+      author: Stephen King
+      year: 2006
+      cover:
+        src: 2026/11/book-cell.jpg
+        width: 325
+        height: 500
+    - title: Night Shift
+      author: Stephen King
+      year: 1978
+      cover:
+        src: 2026/11/book-night-shift.jpg
+        width: 327
+        height: 500
+    - title: Articulating Design Decisions
+      author: Tom Greever
+      year: 2015
+      cover:
+        src: 2026/11/book-articulating-design-decisions.jpg
+        width: 333
+        height: 499
+    - title: UX Strategy
+      author: Jaime Levy
+      year: 2015
+      cover:
+        src: 2026/11/book-ux-strategy.jpg
+        width: 317
         height: 500

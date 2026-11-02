@@ -5,8 +5,8 @@ import Pic from '../components/Pic.astro';
 import { books } from '../lib/books';
 ---
 
-<Reading section search={{ type: 'other' }} title={pageTitle('Books')} heading="Books" description="Books Olegs Belousovs has read: favourites on product, design and work, and a mixed shelf." lang="en">
-  <p class="lead">Books I have read and keep on my shelf: the favourites first, then a mixed shelf.</p>
+<Reading section search={{ type: 'other' }} title={pageTitle('Books')} heading="Books" description="Books Olegs Belousovs is reading now, has read (favourites on product, design and work, and a mixed shelf) and still to read on his shelf." lang="en">
+  <p class="lead">What I am reading now, then the books I have read and keep on my shelf, the favourites first and a mixed shelf, and last the ones still waiting to be read.</p>
   <div class="books">
     {books.map(({ title, books: list }) => {
       const numbered = title === 'Favourite Books';
