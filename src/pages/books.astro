@@ -35,7 +35,7 @@ const tab = (title: string) => tabs[title] ?? { id: title.toLowerCase().replace(
             <span class="cover blank" />
           )}
           <span class="name">
-            <span class="title">{book.title}</span>{book.author && <> – <em class="author">{book.author}</em></>}
+            <span class="title">{book.review ? <a href={book.review}>{book.title}</a> : book.title}</span>{book.author && <> – <em class="author">{book.author}</em></>}
           </span>
           {book.year && <span class="year mono">{book.year}</span>}
         </span></li>
@@ -138,5 +138,7 @@ const tab = (title: string) => tabs[title] ?? { id: title.toLowerCase().replace(
   }
 
   .books .year { color: var(--muted); }
+
+  .books .title a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
 
 </style>
