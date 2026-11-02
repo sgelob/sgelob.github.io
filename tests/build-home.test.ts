@@ -79,6 +79,19 @@ describe('pages', () => {
     expect(html).toMatch(/<span class="title"[^>]*>Rework<\/span> – <em class="author"[^>]*>Jason Fried &amp; David Heinemeier Hansson<\/em>/);
   });
 
+  test('books: what I am reading now comes first, the books still to read on the shelf come last (#73)', () => {
+    const html = read('dist/books/index.html');
+    const shelves = [...html.matchAll(/<h2 class="section mono"[^>]*>([^<]+)<\/h2>/g)].map((m) => m[1]);
+    expect(shelves).toEqual(['Reading Now', 'Favourite Books', 'Mixed Books', 'On the Shelf, To Read']);
+    const reading = books.find((s) => s.title === 'Reading Now')!.books.map((b) => b.title);
+    expect(reading).toEqual(['I, Robot', 'Aligned']);
+    expect(html).toMatch(/<span class="title"[^>]*>I, Robot<\/span> – <em class="author"[^>]*>Isaac Asimov<\/em>/);
+    expect(books.at(-1)!.books.length).toBeGreaterThan(50);
+    expect(count(html, 'class="number mono"')).toBe(books.find((s) => s.title === 'Favourite Books')!.books.length); // only the favourites are numbered
+    expect(html).toMatch(/<meta name="description" content="[^"]*reading now[^"]*still to read[^"]*">/);
+    expect(html).toMatch(/<p class="lead"[^>]*>[^<]*still waiting to be read/);
+  });
+
   test('books: a row per book with its cover from the site’s image host, the year, and a placeholder where a cover is missing', () => {
     const html = read('dist/books/index.html');
     const all = books.flatMap((shelf) => shelf.books);
