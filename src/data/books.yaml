@@ -9,6 +9,10 @@
         height: 500
     - title: Aligned
       author: Bruce McCarthy & Melissa Appel
+      cover:
+        src: 2026/11/book-aligned.jpg
+        width: 600
+        height: 787
 - title: Favourite Books
   books:
     - title: The Culture Map
@@ -28,6 +32,10 @@
     - title: The 5 Types of Wealth
       author: Sahil Bloom
       year: 2025
+      cover:
+        src: 2026/11/book-the-5-types-of-wealth.jpg
+        width: 596
+        height: 900
     - title: Liminal Thinking
       author: Dave Gray
       year: 2016
@@ -107,6 +115,10 @@
         height: 499
     - title: You Have Too Much Shit
       author: Chris Ballantine-Thomas
+      cover:
+        src: 2026/11/book-you-have-too-much-shit.jpg
+        width: 600
+        height: 831
     - title: What You Do Is Who You Are
       author: Ben Horowitz
       year: 2019
@@ -264,6 +276,10 @@
         height: 500
     - title: La guerra nel team
       author: Patrick Lencioni
+      cover:
+        src: 2026/11/book-la-guerra-nel-team.jpg
+        width: 600
+        height: 873
     - title: Empowered
       author: Marty Cagan
       year: 2020
@@ -376,6 +392,10 @@
         height: 500
     - title: Evidence-Guided
       author: Itamar Gilad
+      cover:
+        src: 2026/11/book-evidence-guided.jpg
+        width: 600
+        height: 900
     - title: Fifty Quick Ideas to Improve Your User Stories
       author: Gojko Adzic & David Evans
       year: 2014
@@ -440,9 +460,17 @@
     - title: Product Operations
       author: Melissa Perri & Denise Tilles
       year: 2023
+      cover:
+        src: 2026/11/book-product-operations.jpg
+        width: 600
+        height: 899
     - title: Job Moves
       author: Ethan Bernstein, Michael B. Horn, and Bob Moesta
       year: 2024
+      cover:
+        src: 2026/11/book-job-moves.jpg
+        width: 593
+        height: 900
     - title: A Pocket Guide to Front-End Style Guides
       author: Anna Debenham
     - title: Surviving Change at Work
@@ -521,9 +549,17 @@
     - title: Product Management for UX People
       author: Christian Crumlish
       year: 2022
+      cover:
+        src: 2026/11/book-product-management-for-ux-people.jpg
+        width: 600
+        height: 900
     - title: Deliberate Intervention
       author: Alexandra Schmidt
       year: 2022
+      cover:
+        src: 2026/11/book-deliberate-intervention.jpg
+        width: 600
+        height: 900
     - title: Conversational Design
       author: Erika Hall
       year: 2018
@@ -600,6 +636,10 @@
     - title: Progressive Web Apps
       author: Jason Grigsby
       year: 2018
+      cover:
+        src: 2026/11/book-progressive-web-apps.jpg
+        width: 583
+        height: 900
     - title: Leonardo da Vinci
       author: Walter Isaacson
       year: 2017
@@ -696,6 +736,10 @@
         height: 500
     - title: L’unica regola è che non ci sono regole
       author: Reed Hastings & Erin Meyer
+      cover:
+        src: 2026/11/book-l-unica-regola-e-che-non-ci-sono-regole.jpg
+        width: 594
+        height: 900
     - title: “Surely You’re Joking, Mr. Feynman”
       author: Richard P. Feynman
       year: 1984
@@ -724,6 +768,10 @@
     - title: 97 Things Every Scrum Practitioner Should Know
       author: Gunther Verheyen
       year: 2020
+      cover:
+        src: 2026/11/book-97-things-every-scrum-practitioner-should-know.jpg
+        width: 600
+        height: 900
     - title: The Serving Leader
       author: Ken Jennings & John Stahl-Wert
       year: 2003
@@ -740,6 +788,10 @@
         height: 500
     - title: "Dust & Grooves: Adventures in Record Collecting"
       author: Eilon Paz
+      cover:
+        src: 2026/11/book-dust-grooves-adventures-in-record-collecting.jpg
+        width: 600
+        height: 780
     - title: Free-Range Kids
       author: Lenore Skenazy
       year: 2009
@@ -963,7 +1015,15 @@
       author: Aravind Shenoy
     - title: "The Smashing Book 6: New Frontiers In Web Design"
     - title: "The Smashing Book 5: Real-Life Responsive Web Design – Part 2"
+      cover:
+        src: 2026/11/book-the-smashing-book-5-real-life-responsive-web-design-part-2.jpg
+        width: 600
+        height: 777
     - title: "The Smashing Book 5: Real-Life Responsive Web Design – Part 1"
+      cover:
+        src: 2026/11/book-the-smashing-book-5-real-life-responsive-web-design-part-1.jpg
+        width: 600
+        height: 777
     - title: "The Smashing Book 4: New Perspectives on Web Design"
       year: 2013
       cover:
@@ -978,9 +1038,17 @@
         width: 324
         height: 500
     - title: The Smashing Book 1
+      cover:
+        src: 2026/11/book-the-smashing-book-1.jpg
+        width: 598
+        height: 900
     - title: "The Smashing Book: Performance Optimization – Techniques And Strategies"
     - title: The Mobile Web Handbook
       author: Peter-Paul Koch
+      cover:
+        src: 2026/11/book-the-mobile-web-handbook.jpg
+        width: 600
+        height: 777
     - title: "The Smashing Book: The Mobile Book"
     - title: I Want To Hire You But Your Resume Sucks
       author: Cory Miller
@@ -1000,6 +1068,10 @@
         height: 499
     - title: Come funziona Google
       author: Eric Schmidt & Jonathan Rosenberg
+      cover:
+        src: 2026/11/book-come-funziona-google.jpg
+        width: 579
+        height: 900
     - title: Getting Paid Well To Do What You Love
       author: Cory Miller
     - title: "The Entrepreneurial Adventure: Is It For You?"
@@ -1037,6 +1109,10 @@
       year: 2014
     - title: Come imparare una cosa al giorno e non invecchiare mai
       author: Roberto Vacca
+      cover:
+        src: 2026/11/book-come-imparare-una-cosa-al-giorno-e-non-invecchiare-mai.jpg
+        width: 585
+        height: 900
     - title: "The Smashing Book: A Career On The Web – On The Road To Success"
     - title: Le 22 immutabili leggi del marketing
       author: Al Ries & Jack Trout
@@ -1067,8 +1143,16 @@
     - title: Git for Humans
       author: David Demaree
       year: 2016
+      cover:
+        src: 2026/11/book-git-for-humans.jpg
+        width: 583
+        height: 900
     - title: "Responsive Design: Patterns & Principles"
       author: Ethan Marcotte
+      cover:
+        src: 2026/11/book-responsive-design-patterns-principles.jpg
+        width: 247
+        height: 385
     - title: Do the Work
       author: Steven Pressfield
       year: 2011
@@ -1079,6 +1163,10 @@
     - title: Blind Spot
       author: Steve Diller, Nathan Shedroff & Sean Sauber
       year: 2016
+      cover:
+        src: 2026/11/book-blind-spot.jpg
+        width: 563
+        height: 900
     - title: Discussing Design
       author: Adam Connor & Aaron Irizarry
       year: 2015
@@ -1089,6 +1177,10 @@
     - title: Why We Fail
       author: Victor Lombardi
       year: 2013
+      cover:
+        src: 2026/11/book-why-we-fail.jpg
+        width: 563
+        height: 900
     - title: Hardboiled Web Design
       author: Andrew Clarke
       year: 2010
@@ -1205,6 +1297,10 @@
     - title: High Performance Mobile Web
       author: Maximiliano Firtman
       year: 2016
+      cover:
+        src: 2026/11/book-high-performance-mobile-web.jpg
+        width: 600
+        height: 787
     - title: Using WebPageTest
       author: Rick Viscomi, Andy Davies & Marcel Duran
       year: 2015
@@ -1229,6 +1325,10 @@
     - title: Web Performance Daybook Volume 2
       author: Stoyan Stefanov
       year: 2012
+      cover:
+        src: 2026/11/book-web-performance-daybook-volume-2.jpg
+        width: 600
+        height: 787
     - title: Jamie‘s Italy
       author: Jamie Oliver
       year: 2005
@@ -1418,6 +1518,10 @@
         height: 500
     - title: "Your Money: The Missing Manual"
       author: J.D. Roth
+      cover:
+        src: 2026/11/book-your-money-the-missing-manual.jpg
+        width: 185
+        height: 278
     - title: This is Service Design Thinking
       author: Jakob Schneider
       year: 2011
@@ -1497,6 +1601,10 @@
         height: 500
     - title: Getting Unstuck
       author: Hugh Thompson & Bob Sullivan
+      cover:
+        src: 2026/11/book-getting-unstuck.jpg
+        width: 598
+        height: 900
     - title: Getting Things Done
       author: David Allen
       year: 2001
@@ -1520,6 +1628,10 @@
         height: 500
     - title: Knowledge Is Beautiful
       author: David McCandless
+      cover:
+        src: 2026/11/book-knowledge-is-beautiful.jpg
+        width: 600
+        height: 787
     - title: Information Is Beautiful
       author: David McCandless
       year: 2010
@@ -1552,6 +1664,10 @@
         height: 475
     - title: Как общаться с трудными людьми
       author: Майк Эннесли
+      cover:
+        src: 2026/11/book-kak-obshchatsya-s-trudnymi-lyudmi.jpg
+        width: 600
+        height: 884
     - title: Evil
       author: Julia Shaw
       year: 2019
@@ -1621,9 +1737,17 @@
     - title: The Idiot
       author: Fyodor Dostoevsky
       year: 1869
+      cover:
+        src: 2026/11/book-the-idiot.jpg
+        width: 600
+        height: 900
     - title: The Unbearable Lightness of Being
       author: Milan Kundera
       year: 1984
+      cover:
+        src: 2026/11/book-the-unbearable-lightness-of-being.jpg
+        width: 596
+        height: 900
     - title: Twenty Thousand Leagues Under the Sea
       author: Jules Verne
       year: 1870
@@ -1665,6 +1789,10 @@
     - title: The Plague
       author: Albert Camus
       year: 1947
+      cover:
+        src: 2026/11/book-the-plague.jpg
+        width: 600
+        height: 900
     - title: Design for Privacy
       author: Robert Stribley
       year: 2025
@@ -1716,6 +1844,10 @@
     - title: Doorbells, Danger, and Dead Batteries
       author: Steve Portigal
       year: 2016
+      cover:
+        src: 2026/11/book-doorbells-danger-and-dead-batteries.jpg
+        width: 563
+        height: 900
     - title: Validating Product Ideas
       author: Tomer Sharon
       year: 2016
@@ -1733,6 +1865,10 @@
     - title: From Solo to Scaled
       author: Natalie Marie Dunbar
       year: 2022
+      cover:
+        src: 2026/11/book-from-solo-to-scaled.jpg
+        width: 600
+        height: 900
     - title: The Currents of Space
       author: Isaac Asimov
       year: 1952
