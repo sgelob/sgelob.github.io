@@ -2038,3 +2038,9 @@
         src: 2026/11/book-ux-strategy.jpg
         width: 317
         height: 500
+    - title: The Odyssey
+      author: Homer
+      cover:
+        src: 2026/11/book-the-odyssey.jpg
+        width: 318
+        height: 475
