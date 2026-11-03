@@ -1189,6 +1189,7 @@
         src: 2026/10/book-discussing-design.jpg
         width: 333
         height: 500
+      review: /2017/04/recensione-discussing-design-critica-design-connor-irizarry/
     - title: Why We Fail
       author: Victor Lombardi
       year: 2013
@@ -1323,13 +1324,6 @@
       cover:
         src: 2026/10/book-using-webpagetest.jpg
         width: 381
-        height: 500
-    - title: Discussing Design
-      author: Adam Connor & Aaron Irizarry
-      year: 2015
-      cover:
-        src: 2026/10/book-discussing-design.jpg
-        width: 333
         height: 500
     - title: Your Network Is Your Net Worth
       author: Porter Gale
