@@ -59,4 +59,12 @@ describe('enrichBooks', () => {
     expect(second.books).toEqual(first.books);
     expect(w.put.length).toBe(uploads);
   });
+
+  test('a book keeps its review link, and any other field, through a run', async () => {
+    const w = world();
+    const review = '/2017/05/recensione-badass-making-users-awesome-kathy-sierra/';
+    const withReview = [{ title: 'Favourite Books', books: [{ title: 'Badass', author: 'Kathy Sierra', year: 2015, review }] }];
+    const { books } = await enrichBooks({ sections: withReview, lookup: w.withCover, store: w.store, uploadsDir: join(w.base, 'uploads'), month: '2026/11', log: () => {} });
+    expect(books[0].books[0]).toEqual({ title: 'Badass', author: 'Kathy Sierra', year: 2015, review });
+  });
 });
