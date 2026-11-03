@@ -3,7 +3,7 @@ title: Utilizzo di Chrome DevTools per fare audit di web performance con Oleg e 
 date: "2017-06-26T19:00:31"
 categories:
   - web-performance
-  - meetup
+  - events
 lang: it
 seoTitle: Come utilizzare Chrome DevTools per fare audit di web performance con Oleg e Matteo
 oldSlugs: []

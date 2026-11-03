@@ -3,7 +3,7 @@ title: Come eseguire i test sintetici delle Web Performance con WebPageTest.org
 date: "2016-09-30T13:43:51"
 categories:
   - web-performance
-  - meetup
+  - events
 cover: 2016/10/olegs-belousovs-eseguire-test-sintetici-web-performance-webpagetest-turin-meetup.jpg
 lang: it
 oldSlugs: []

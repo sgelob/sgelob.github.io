@@ -3,7 +3,7 @@ title: HTTP/2 – Finalmente! con Simone Bordet
 date: "2016-07-21T10:00:16"
 categories:
   - web-performance
-  - meetup
+  - events
 cover: 2016/07/webperf-meetup-torino-http2-finalmente-con-simone-bordet-07-2016.jpg
 lang: it
 oldSlugs: []

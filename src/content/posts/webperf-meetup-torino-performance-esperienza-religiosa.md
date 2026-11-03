@@ -3,7 +3,7 @@ title: Le performance come esperienza religiosa con Andrea De Carolis
 date: "2017-04-01T10:00:18"
 categories:
   - web-performance
-  - meetup
+  - events
 cover: 2017/06/webperf-meetup-torino-performance-esperienza-religiosa-03-2017.jpg
 lang: it
 seoTitle: Le web performance come esperienza religiosa con Andrea De Carolis

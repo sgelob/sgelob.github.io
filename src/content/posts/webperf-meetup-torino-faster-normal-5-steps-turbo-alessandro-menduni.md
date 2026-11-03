@@ -3,7 +3,7 @@ title: Faster than normal – 5 steps to turbo con Alessandro Menduni
 date: "2017-12-19T19:00:10"
 categories:
   - web-performance
-  - meetup
+  - events
 cover: 2017/12/faster-than-normal-5-steps-to-turbo-alessandro-menduni.png
 lang: it
 seoTitle: Faster than normal – 5 steps to turbo con Alessandro Menduni

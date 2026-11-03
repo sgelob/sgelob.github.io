@@ -3,7 +3,7 @@ title: Real User Monitoring con Navigation Timing API, GTM e Google Analytics di
 date: "2018-09-22T12:30:47"
 categories:
   - web-performance
-  - meetup
+  - events
 cover: 2018/09/olegs-belousovs-real-user-monitoring-navigation-timing-api-gtm-google-nalytics.jpg
 lang: it
 seoTitle: Real User Monitoring con Navigation Timing API, GTM e Google Analytics di Olegs Belousovs Real User Monitoring con Navigation Timing API, GTM e Google Analytics

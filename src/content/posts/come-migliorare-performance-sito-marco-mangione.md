@@ -3,7 +3,7 @@ title: Come migliorare le performance di un sito di Marco Mangione
 date: "2018-10-23T19:00:06"
 categories:
   - web-performance
-  - meetup
+  - events
 cover: 2018/10/come-migliorare-performance-sito-marco-mangione-turin-meetup-10-2018.jpg
 lang: it
 oldSlugs: []

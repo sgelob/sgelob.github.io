@@ -3,7 +3,7 @@ title: "Service Workers: forza lavoro al servizio della tua performance di Piero
 date: "2018-11-27T19:00:26"
 categories:
   - web-performance
-  - meetup
+  - events
 cover: 2018/11/service-workers-forza-lavoro-servizio-performance-piero-bellomo-turin-meetup-11-2018.jpg
 lang: it
 oldSlugs: []

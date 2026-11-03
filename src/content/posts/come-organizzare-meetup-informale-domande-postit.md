@@ -3,7 +3,7 @@ title: Come organizzare un Meetup informale con le domande sui Post-it
 date: "2016-01-18T19:56:13"
 categories:
   - wordpress
-  - meetup
+  - events
 lang: it
 seoTitle: Come organizzare un WordPress Meetup informale con Post-it
 seoDescription: Come organizzare un WordPress Meetup informale, con domande sui Post-it sotto le sedie dei partecipanti, facendo partecipare alle discussioni tutti i membri

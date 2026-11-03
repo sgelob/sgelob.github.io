@@ -3,7 +3,7 @@ title: Spiegazione della differenza tra WordPress.org e WordPress.com
 date: "2016-03-09T11:11:36"
 categories:
   - wordpress
-  - meetup
+  - events
 cover: 2016/03/olegs-belousovs-meetup-torino-spiegazione-differenza-wordpress-org-com.jpg
 lang: it
 oldSlugs: []

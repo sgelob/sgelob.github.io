@@ -3,7 +3,7 @@ title: "SpeedCurve: monitorare le performance del vostro sito e della concorrenz
 date: "2019-02-20T19:00:08"
 categories:
   - web-performance
-  - meetup
+  - events
 cover: 2019/07/SpeedCurve.png
 lang: it
 oldSlugs: []

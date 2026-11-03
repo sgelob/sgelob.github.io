@@ -2,6 +2,7 @@
 title: Resoconto del team WordPress TV dal Contributor Day di WordCamp Europe 2016
 date: "2016-07-02T08:11:26"
 categories:
+  - events
   - wordpress
 cover: 2016/07/olegs-belousovs-wceu-2016-contributor-day-wordpress-tv-team-03.jpg
 lang: it

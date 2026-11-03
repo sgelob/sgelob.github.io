@@ -3,7 +3,7 @@ title: "Quiz interattivo: Quanto ne sai di Web Performance?"
 date: "2018-05-22T12:30:15"
 categories:
   - web-performance
-  - meetup
+  - events
 lang: it
 seoTitle: "Quiz interattivo: «Quanto ne sai di Web Performance?»"
 oldSlugs: []

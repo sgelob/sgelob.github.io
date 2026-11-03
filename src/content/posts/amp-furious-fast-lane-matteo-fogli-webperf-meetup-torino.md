@@ -3,7 +3,7 @@ title: AMP & FURIOUS – in the fast lane di Matteo Fogli
 date: "2018-04-17T12:00:00"
 categories:
   - web-performance
-  - meetup
+  - events
 cover: 2018/04/amp-furious-fast-lane-matteo-fogli.png
 lang: it
 seoTitle: "AMP & FURIOUS: in the fast lane di Matteo Fogli"

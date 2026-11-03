@@ -3,7 +3,7 @@ title: Le novità e le performance di PHP 7 con Enrico Zimuel
 date: "2017-05-17T09:00:04"
 categories:
   - web-performance
-  - meetup
+  - events
 cover: 2017/05/enrico-zimuel-PHP7-meetup-turin-web-performance-group-05-2017.jpg
 lang: it
 seoTitle: Le novità e le performance di PHP 7 con Enrico Zimuel

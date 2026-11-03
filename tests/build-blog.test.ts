@@ -185,3 +185,22 @@ describe('post accessibility', () => {
     expect(count(read('dist/blog/index.html'), '<article class="post-item" lang="')).toBe(contentCount('posts'));
   });
 });
+
+describe('blog category filters', () => {
+  test('/blog/ shows All as current, then the main categories with counts, without WordPress', () => {
+    const html = read('dist/blog/index.html');
+    expect(html).toMatch(/<nav aria-label="Categories"/);
+    expect(html).toMatch(/<a href="\/blog\/" aria-current="page"[^>]*>All <span class="count"[^>]*>\d+<\/span><\/a>/);
+    expect(html).toMatch(/<a href="\/category\/events\/"[^>]*>Events <span/);
+    expect(html).not.toContain('href="/category/wordpress/"');
+  });
+
+  test('a category page marks its own filter as current', () => {
+    const html = read('dist/category/web-performance/index.html');
+    expect(html).toMatch(/<a href="\/category\/web-performance\/" aria-current="page"/);
+  });
+
+  test('the renamed Meetup category redirects to Events', () => {
+    expect(read('dist/category/meetup/index.html')).toContain('url=/category/events/');
+  });
+});

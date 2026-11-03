@@ -40,3 +40,5 @@
   to: /photos/genre/world-places/
 - from: /photos/country/portugal/
   to: /photos/genre/world-places/
+- from: /category/meetup/
+  to: /category/events/

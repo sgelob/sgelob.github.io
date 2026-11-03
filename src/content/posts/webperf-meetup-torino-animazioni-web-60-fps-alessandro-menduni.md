@@ -4,7 +4,7 @@ date: "2017-07-27T19:00:28"
 categories:
   - web-performance
   - user-experience
-  - meetup
+  - events
 lang: it
 seoTitle: Web performance e animazioni per il web a 60 fps con Alessandro Menduni
 oldSlugs: []

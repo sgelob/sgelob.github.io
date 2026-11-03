@@ -3,20 +3,33 @@ import { pageTitle } from '../../lib/site';
 import type { GetStaticPaths } from 'astro';
 import Base from '../../layouts/Base.astro';
 import PostList from '../../components/PostList.astro';
+import Redirect from '../../components/Redirect.astro';
 import { getPostsBy } from '../../lib/collections';
+import { redirectsUnder } from '../../lib/redirects';
 import { categories, type Term } from '../../lib/taxonomies';
 
 // From taxonomies.yaml, not from the posts, so a category without posts still gets a page.
-export const getStaticPaths = (() => categories.map((category) => ({ params: { slug: category.slug }, props: { category } }))) satisfies GetStaticPaths;
+// A renamed category (/category/meetup/ → /category/events/) redirects instead of vanishing.
+export const getStaticPaths = (() => {
+  const PREFIX = '/category/';
+  const redirects = redirectsUnder(PREFIX)
+    .map(({ from, to }) => ({ slug: from.slice(PREFIX.length).replace(/\/$/, ''), to }))
+    .filter(({ slug }) => !categories.some((c) => c.slug === slug))
+    .map(({ slug, to }) => ({ params: { slug }, props: { redirectTo: to } }));
+  return [...categories.map((category) => ({ params: { slug: category.slug }, props: { category } })), ...redirects];
+}) satisfies GetStaticPaths;
 
-interface Props {
-  category: Term;
-}
+type Props = { category: Term; redirectTo?: undefined } | { redirectTo: string; category?: undefined };
 
-const { category } = Astro.props;
-const posts = await getPostsBy(category.slug);
+const props = Astro.props as Props;
+const category = props.category;
+const posts = category ? await getPostsBy(category.slug) : [];
 ---
 
-<Base title={pageTitle(category.name, 'Blog')} description={category.description} lang="it">
-  <PostList posts={posts} heading={category.name} />
-</Base>
+{props.redirectTo !== undefined ? (
+  <Redirect to={props.redirectTo} />
+) : category && (
+  <Base title={pageTitle(category.name, 'Blog')} description={category.description} lang="it">
+    <PostList posts={posts} heading={category.name} filter={category.slug} />
+  </Base>
+)}

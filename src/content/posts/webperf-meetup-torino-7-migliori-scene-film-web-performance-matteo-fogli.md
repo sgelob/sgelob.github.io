@@ -3,7 +3,7 @@ title: Le 7 migliori scene di film sulle web performance con Matteo Fogli
 date: "2017-04-27T10:30:39"
 categories:
   - web-performance
-  - meetup
+  - events
 cover: 2017/04/webperf-meetup-torino-7-migliori-scene-film-web-performance-matteo-fogli-04-2017.jpg
 lang: it
 seoTitle: Le 7 migliori scene di film sulle web performance con Matteo Fogli
