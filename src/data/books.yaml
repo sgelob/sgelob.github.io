@@ -438,6 +438,13 @@
         src: 2026/10/book-unsubscribe.jpg
         width: 384
         height: 500
+    - title: Codex Seraphinianus
+      author: Luigi Serafini
+      year: 1981
+      cover:
+        src: 2026/11/book-codex-seraphinianus.jpg
+        width: 333
+        height: 500
 - title: Mixed Books
   books:
     - title: Made in Italy?
@@ -1699,13 +1706,6 @@
         src: 2026/11/book-how-buildings-learn.jpg
         width: 500
         height: 388
-    - title: Codex Seraphinianus
-      author: Luigi Serafini
-      year: 1981
-      cover:
-        src: 2026/11/book-codex-seraphinianus.jpg
-        width: 333
-        height: 500
     - title: "Einstein: His Life and Universe"
       author: Walter Isaacson
       year: 2007
