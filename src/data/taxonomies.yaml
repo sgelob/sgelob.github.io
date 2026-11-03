@@ -67,7 +67,9 @@ categories:
     name: Uncategorized
   - slug: user-experience
     name: User Experience
+    short: UX
   - slug: web-performance
     name: Web Performance
+    short: Web Perf
   - slug: wordpress
     name: WordPress
