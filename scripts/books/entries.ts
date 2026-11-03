@@ -80,7 +80,8 @@ export async function enrichBooks(opts: EnrichOptions): Promise<{ books: BookShe
       if (size) book.cover = { src: path, width: size.width, height: size.height };
     }
   }
-  // Key order in the written file: title, author, year, cover.
-  const ordered = shelves.map((s) => ({ title: s.title, books: s.books.map(({ title, author, year, cover }) => ({ title, ...(author ? { author } : {}), ...(year ? { year } : {}), ...(cover ? { cover } : {}) })) }));
+  // Key order in the written file: title, author, year, cover, then anything else a book has (the `review` link of
+  // a published review): the script fills years and covers, and never drops what it does not know.
+  const ordered = shelves.map((s) => ({ title: s.title, books: s.books.map(({ title, author, year, cover, ...rest }) => ({ title, ...(author ? { author } : {}), ...(year ? { year } : {}), ...(cover ? { cover } : {}), ...rest })) }));
   return { books: ordered, problems };
 }
