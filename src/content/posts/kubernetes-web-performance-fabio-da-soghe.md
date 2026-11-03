@@ -3,7 +3,7 @@ title: Kubernetes – orchestratori di container e web performance di Fabio Da S
 date: "2018-02-23T12:00:26"
 categories:
   - web-performance
-  - meetup
+  - events
 cover: 2018/02/fabio-da-soghe-kubernetes-web-performance-turin.png
 lang: it
 seoTitle: "Kubernetes: orchestratori di container e web performance di Fabio Da Soghe"

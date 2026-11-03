@@ -3,7 +3,7 @@ title: 10 Million hits a day on WordPress using a $15 VPS con Paolo Tonin
 date: "2017-10-26T19:00:28"
 categories:
   - web-performance
-  - meetup
+  - events
 lang: it
 seoTitle: 10 Million hits a day on WordPress using a $15 VPS con Paolo Tonin
 oldSlugs: []

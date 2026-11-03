@@ -2,6 +2,7 @@
 title: Tutti i video e le slide dal WordCamp Torino 2017
 date: "2017-04-15T11:00:16"
 categories:
+  - events
   - wordpress
 cover: 2017/04/wordcamp-torino-2017.jpg
 lang: it

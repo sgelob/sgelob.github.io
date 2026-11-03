@@ -3,7 +3,7 @@ title: Web performance come fattore di ranking SEO per i siti web con Carlo Piaz
 date: "2018-01-24T23:00:25"
 categories:
   - web-performance
-  - meetup
+  - events
 lang: it
 seoTitle: Web performance come fattore di ranking SEO per i siti web con Carlo Piazzano
 oldSlugs:

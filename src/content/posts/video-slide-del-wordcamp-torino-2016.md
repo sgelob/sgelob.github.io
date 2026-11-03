@@ -2,6 +2,7 @@
 title: Tutti i video e le slide dal WordCamp Torino 2016
 date: "2016-04-27T09:26:27"
 categories:
+  - events
   - wordpress
 cover: 2016/07/wordcamp-torino-2016-cover.jpg
 lang: it

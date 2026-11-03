@@ -3,7 +3,7 @@ title: Fast and Beautiful Images di Doug Sillars
 date: "2018-07-24T12:30:04"
 categories:
   - web-performance
-  - meetup
+  - events
 cover: 2018/07/fast-beautiful-images-doug-sillars-web-perf-meetup-torino.jpg
 lang: it
 oldSlugs: []

@@ -2,6 +2,7 @@
 title: Note e impressioni dalla conferenza WebPerfDays di Amsterdam
 date: "2016-11-15T07:00:06"
 categories:
+  - events
   - web-performance
 lang: it
 oldSlugs: []

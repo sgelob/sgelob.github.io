@@ -5,7 +5,7 @@ categories:
   - wordpress
   - web-performance
   - user-experience
-  - meetup
+  - events
 cover: 2015/02/olegs-belousovs-web-performance.jpg
 lang: it
 oldSlugs: []

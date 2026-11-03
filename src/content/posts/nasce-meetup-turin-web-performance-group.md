@@ -3,7 +3,7 @@ title: Nasce a Torino il gruppo meetup «Turin Web Performance Group»
 date: "2016-07-01T13:06:24"
 categories:
   - web-performance
-  - meetup
+  - events
 cover: 2016/07/turin-web-performance-logo.jpg
 lang: it
 seoDescription: Nasce a Torino il gruppo Turin Web Performance Group. Tratterà i temi web performance e ottimizzazioni di velocità dei siti web lato front-end e back-end.

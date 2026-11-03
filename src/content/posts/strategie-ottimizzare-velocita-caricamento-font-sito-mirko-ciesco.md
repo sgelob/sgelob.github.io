@@ -3,7 +3,7 @@ title: Strategie per ottimizzare la velocità di caricamento dei font sul propri
 date: "2019-01-29T19:00:49"
 categories:
   - web-performance
-  - meetup
+  - events
 cover: 2019/01/strategie-ottimizzare-velocita-caricamento-font-sito-mirko-ciesco.jpg
 lang: it
 oldSlugs: []
