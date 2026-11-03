@@ -4,6 +4,8 @@ import raw from '../data/taxonomies.yaml?raw';
 export interface Term {
   slug: string;
   name: string;
+  /** A shorter name where space is tight, as in the blog filters ("Web Perf", "UX"). */
+  short?: string;
   description?: string;
 }
 

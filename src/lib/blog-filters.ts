@@ -22,7 +22,7 @@ export function blogFilters(posts: { data: { categories: string[] } }[], categor
     .filter((c) => !FILTER_EXCLUDED.has(c.slug))
     .map((c) => ({
       slug: c.slug,
-      name: c.name,
+      name: c.short ?? c.name,
       href: `/category/${c.slug}/`,
       count: posts.filter((p) => p.data.categories.includes(c.slug)).length,
     }))

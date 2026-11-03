@@ -5,12 +5,12 @@ const terms = [
   { slug: 'ai', name: 'AI' },
   { slug: 'events', name: 'Events' },
   { slug: 'uncategorized', name: 'Uncategorized' },
-  { slug: 'web-performance', name: 'Web Performance' },
+  { slug: 'web-performance', name: 'Web Performance', short: 'Web Perf' },
   { slug: 'wordpress', name: 'WordPress' },
 ];
 const post = (...categories: string[]) => ({ data: { categories } });
 
-test('All first, then the categories with enough posts, most posts first; WordPress never', () => {
+test('All first, then the categories with enough posts, by their short name if any, most posts first; WordPress never', () => {
   const posts = [
     ...Array.from({ length: 5 }, () => post('web-performance', 'events')),
     ...Array.from({ length: FILTER_MIN_POSTS }, () => post('events', 'wordpress')),
@@ -20,6 +20,6 @@ test('All first, then the categories with enough posts, most posts first; WordPr
   expect(blogFilters(posts, terms)).toEqual([
     { slug: 'all', name: 'All', href: '/blog/', count: posts.length },
     { slug: 'events', name: 'Events', href: '/category/events/', count: 5 + FILTER_MIN_POSTS },
-    { slug: 'web-performance', name: 'Web Performance', href: '/category/web-performance/', count: 5 },
+    { slug: 'web-performance', name: 'Web Perf', href: '/category/web-performance/', count: 5 },
   ]);
 });
