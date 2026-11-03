@@ -83,9 +83,11 @@ describe('pages', () => {
     const html = read('dist/books/index.html');
     const shelves = [...html.matchAll(/<h2 class="section mono"[^>]*>([^<]+)<\/h2>/g)].map((m) => m[1]);
     expect(shelves).toEqual(['Reading Now', 'Favourite Books', 'Mixed Books', 'On the Shelf, To Read']);
-    const reading = books.find((s) => s.title === 'Reading Now')!.books.map((b) => b.title);
-    expect(reading).toEqual(['I, Robot', 'Aligned']);
-    expect(html).toMatch(/<span class="title"[^>]*>I, Robot<\/span> – <em class="author"[^>]*>Isaac Asimov<\/em>/);
+    // The Reading Now shelf changes as I read: any book on it renders with its title and author.
+    const [first] = books.find((s) => s.title === 'Reading Now')!.books;
+    expect(first).toBeDefined();
+    const esc = (t: string) => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    expect(html).toMatch(new RegExp(`<span class="title"[^>]*>${esc(first.title)}</span> – <em class="author"[^>]*>${esc(first.author!)}</em>`));
     expect(books.at(-1)!.books.length).toBeGreaterThan(50);
     expect(count(html, 'class="number mono"')).toBe(books.find((s) => s.title === 'Favourite Books')!.books.length); // only the favourites are numbered
     expect(html).toMatch(/<meta name="description" content="[^"]*reading now[^"]*still to read[^"]*">/);
