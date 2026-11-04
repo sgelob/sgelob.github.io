@@ -73,6 +73,7 @@ categories:
     description: "Crescita personale: abitudini, decisioni, carriera e le idee che mi aiutano a vivere e lavorare meglio."
   - slug: product-management
     name: Product Management
+    short: Product
     description: "Il lavoro di prodotto: strategia, scoperta, priorità e metriche, per costruire cose che servono davvero alle persone."
   - slug: user-experience
     name: User Experience
