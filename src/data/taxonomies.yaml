@@ -52,7 +52,8 @@ countries:
     name: World
 categories:
   - slug: ai
-    name: AI
+    name: Artificial Intelligence
+    short: AI
     description: "Come l’intelligenza artificiale cambia il lavoro di prodotto, i ruoli e il modo in cui pensiamo e decidiamo."
   - slug: books
     name: Books
