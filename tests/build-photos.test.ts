@@ -111,4 +111,12 @@ describe('breadcrumbs', () => {
     expect(read('dist/outdoors/airasca-moretta/index.html')).toMatch(crumb('Outdoors', '/outdoors/', '(Hike|Ride)'));
     expect(read('dist/outdoors/index.html')).not.toContain('aria-label="Breadcrumb"');
   });
+
+  test('hikes and rides are headed by their activity, under «Outdoors / Activity»', () => {
+    for (const [path, name] of [['hikes', 'Hikes'], ['rides', 'Rides']]) {
+      const html = read(`dist/outdoors/${path}/index.html`);
+      expect(html).toMatch(crumb('Outdoors', '/outdoors/', 'Activity'));
+      expect(html).toMatch(new RegExp(`<h1 class="heading"[^>]*>${name}</h1>`));
+    }
+  });
 });

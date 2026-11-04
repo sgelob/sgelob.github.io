@@ -1,4 +1,5 @@
 ---
+import Breadcrumb from './Breadcrumb.astro';
 import TripGrid from './TripGrid.astro';
 import SectionLabel from './SectionLabel.astro';
 import { getTrips } from '../lib/collections';
@@ -19,10 +20,13 @@ const filters = [
 ];
 const years = groupByYear(trips);
 const empty = { all: 'No trips yet.', hikes: 'No hikes yet.', rides: 'No rides yet.' };
+// On a filter, as on a photo genre: the activity is the heading, with «Outdoors / Activity» above it.
+const heading = { all: 'Outdoors', hikes: 'Hikes', rides: 'Rides' }[filter];
 ---
 
 <header class="outdoors-header wrap">
-  <h1 class="heading">Outdoors</h1>
+  {filter !== 'all' && <Breadcrumb section={{ label: 'Outdoors', href: '/outdoors/' }} kind="Activity" />}
+  <h1 class="heading">{heading}</h1>
   <p class="description">{OUTDOORS_LEAD}</p>
   <nav aria-label="Activities">
     <ul class="filters mono">
