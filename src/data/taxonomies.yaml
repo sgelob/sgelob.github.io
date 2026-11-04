@@ -62,6 +62,7 @@ categories:
     name: Events
   - slug: organization
     name: Organization
+    short: Org
   - slug: personal-growth
     name: Personal Growth
   - slug: product-management
