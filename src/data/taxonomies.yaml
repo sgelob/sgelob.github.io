@@ -56,6 +56,7 @@ categories:
   - slug: books
     name: Books
     description: Recensioni dei libri che ho letto, dalla mia libreria.
+    lead: 'Le recensioni dei libri che ho letto. Tutti i libri, anche quelli che sto leggendo e quelli ancora da leggere, sono sulla mia <a href="/books/" lang="en">Bookshelf</a>.'
   - slug: design
     name: Design
   - slug: events

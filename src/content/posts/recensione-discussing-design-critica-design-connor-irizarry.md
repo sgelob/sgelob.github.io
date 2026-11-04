@@ -46,6 +46,6 @@ I miei appunti su questo libro sono pochi, ma sono tra quelli che uso di più: a
 
 A designer, product manager e sviluppatori che partecipano alle revisioni del design, e a chiunque debba facilitarle. Se nel tuo team le revisioni finiscono spesso in discussioni sui gusti, parti da qui.
 
-Gli altri libri della mia libreria sono nella pagina [Books](/books/).
+Gli altri libri della mia libreria sono nella pagina [Bookshelf](/books/).
 
 *E tu, come si svolgono le revisioni del design nel tuo team? Se ti va, [raccontamelo via email](mailto:44_tildes_agog@icloud.com).*

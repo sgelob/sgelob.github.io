@@ -30,6 +30,6 @@ const posts = category ? await getPostsBy(category.slug) : [];
   <Redirect to={props.redirectTo} />
 ) : category && (
   <Base title={pageTitle(category.name, 'Blog')} description={category.description} lang="it">
-    <PostList posts={posts} heading={category.name} filter={category.slug} />
+    <PostList posts={posts} heading={category.name} lead={category.lead} filter={category.slug} />
   </Base>
 )}

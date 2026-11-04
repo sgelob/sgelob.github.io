@@ -1,0 +1,80 @@
+---
+// The books I am reading now, from the Reading Now shelf of the Bookshelf, between the blog and the track of the
+// day on the home page. Each title links to its review once there is one. No block when the shelf is empty.
+import Pic from './Pic.astro';
+import SectionLabel from './SectionLabel.astro';
+import { books } from '../lib/books';
+
+const reading = books.find((s) => s.title === 'Reading Now')?.books ?? [];
+const total = books.reduce((n, s) => n + s.books.length, 0);
+---
+
+{reading.length > 0 && (
+  <section class="reading" aria-labelledby="home-reading">
+    <SectionLabel id="home-reading" title="Reading now" href="/books/" link={`All ${total} books on my bookshelf`} />
+    <ul class="books wrap" role="list">
+      {reading.map((book) => (
+        <li class="book">
+          {book.cover ? (
+            <Pic src={book.cover.src} width={book.cover.width} height={book.cover.height} alt="" sizes="48px" maxWidth={480} class="cover" />
+          ) : (
+            <span class="cover blank" />
+          )}
+          <span class="name">
+            <span class="title">{book.review ? <a href={book.review}>{book.title}</a> : book.title}</span>
+            {book.author && <span class="author mono">{book.author}</span>}
+          </span>
+        </li>
+      ))}
+    </ul>
+  </section>
+)}
+
+<style>
+  /* Followed by the track of the day: the same space as under the blog. */
+  .reading { padding-bottom: 96px; }
+
+  /* Two columns of cover, title and author; one on a phone. */
+  .books {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px 32px;
+    max-width: calc(900px + 2 * var(--gutter));
+    margin: 0;
+    list-style: none;
+  }
+
+  .book {
+    display: grid;
+    grid-template-columns: 48px minmax(0, 1fr);
+    gap: 16px;
+    align-items: center;
+  }
+
+  .book :global(.cover),
+  .blank {
+    display: block;
+    width: 48px;
+    height: 72px;
+    object-fit: cover;
+    background: var(--rule);
+  }
+
+  .name { display: grid; gap: 4px; }
+
+  .title { font-size: 17px; line-height: 1.3; letter-spacing: -0.01em; }
+
+  .title a {
+    border-bottom: 1px solid currentColor;
+    transition: color 120ms ease;
+  }
+
+  .title a:hover { color: var(--muted); }
+
+  .author { color: var(--muted); }
+
+  @media (max-width: 719px) {
+    .reading { padding-bottom: 64px; }
+    .books { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  }
+</style>

@@ -7,6 +7,8 @@ export interface Term {
   /** A shorter name where space is tight, as in the blog filters ("Web Perf", "UX"). */
   short?: string;
   description?: string;
+  /** One line under the heading of the category page, in HTML written by us (it may carry a link). */
+  lead?: string;
 }
 
 const data = parse(raw) as { genres: Term[]; countries: Term[]; categories: Term[] };

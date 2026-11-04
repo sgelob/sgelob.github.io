@@ -70,7 +70,7 @@ describe('pages', () => {
 
   test('books: every shelf counts down from its size, titles and authors as written', () => {
     const html = read('dist/books/index.html');
-    expect(html).toContain('<title>Books – Olegs Belousovs</title>');
+    expect(html).toContain('<title>Bookshelf – Olegs Belousovs</title>');
     for (const shelf of books) {
       // Each shelf's first row carries its size: the count restarts on every shelf.
       expect(html).toMatch(new RegExp(`<span class="number mono" aria-hidden="true"[^>]*>${shelf.books.length}</span>`));
@@ -234,4 +234,15 @@ test('home has the track of the day as its last block, after the blog: a ▶ for
   expect(block).toContain(artistLabel(record!.artist).replace(/&/g, '&amp;'));
   expect(block).toMatch(/<div class="player" data-player hidden/);
   expect(html).not.toMatch(/<iframe|youtube-nocookie|ytimg/);
+});
+
+test('home has the books I am reading now between the blog and the track of the day, linked to the bookshelf', () => {
+  const html = read('dist/index.html');
+  const block = html.match(/<section class="reading"[^>]*aria-labelledby="home-reading"[\s\S]*?<\/section>/)?.[0] ?? '';
+  expect(html.indexOf('id="home-reading"')).toBeGreaterThan(html.indexOf('id="home-blog"'));
+  expect(html.indexOf('id="home-reading"')).toBeLessThan(html.indexOf('id="home-track"'));
+  const reading = books.find((s) => s.title === 'Reading Now')!.books;
+  expect(count(block, 'class="book"')).toBe(reading.length);
+  expect(block).toContain(`All ${books.reduce((n, s) => n + s.books.length, 0)} books on my bookshelf`);
+  expect(block).toContain('href="/books/"');
 });
