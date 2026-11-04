@@ -117,6 +117,8 @@ describe('breadcrumbs', () => {
       const html = read(`dist/outdoors/${path}/index.html`);
       expect(html).toMatch(crumb('Outdoors', '/outdoors/', 'Activity'));
       expect(html).toMatch(new RegExp(`<h1 class="heading"[^>]*>${name}</h1>`));
+      expect(html).not.toContain('a kind of shinrin-yoku'); // its own lead, not the one of /outdoors/
+      expect(html).toMatch(new RegExp(`<meta name="description" content="${name} on `));
     }
   });
 });

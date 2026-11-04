@@ -3,11 +3,11 @@ import { pageTitle } from '../../../lib/site';
 import Base from '../../../layouts/Base.astro';
 import OutdoorsIndex from '../../../components/OutdoorsIndex.astro';
 import { getTripsBy } from '../../../lib/collections';
-import { OUTDOORS_LEAD } from '../../../lib/outdoors';
+import { RIDES_LEAD } from '../../../lib/outdoors';
 
 const trips = await getTripsBy('ride');
 ---
 
-<Base title={pageTitle('Rides', 'Outdoors')} description={OUTDOORS_LEAD}>
+<Base title={pageTitle('Rides', 'Outdoors')} description={RIDES_LEAD}>
   <OutdoorsIndex trips={trips} filter="rides" />
 </Base>

@@ -140,6 +140,12 @@ export function moreLabels(activity: Activity, more: readonly { data: { activity
 export const OUTDOORS_LEAD =
   'Hikes and mountain-bike rides, mostly in the Alps: time in the woods and on the trails for the landscape and the quiet, a kind of shinrin-yoku on foot or on two wheels. Distance and climb are there to describe the day, not to measure it.';
 
+/** The leads of the Hikes and Rides filters, also their meta descriptions. */
+export const HIKES_LEAD =
+  'Hikes on foot, from the hills around Turin to lakes, huts and passes in the Alps, and a few further away: the slow way to get to know a place, at the pace of the path.';
+export const RIDES_LEAD =
+  'Rides on cross-country, trail and gravel bikes, from the hills of the Monferrato to the forest tracks of the Alps: a bike covers more ground, and still leaves time to stop and look.';
+
 const monthOf = (d: Date) => d.getFullYear() * 12 + d.getMonth();
 
 /** Newest month first; within a month the latest ride first (`order`), then the published date, then the id, so the order is stable. */
