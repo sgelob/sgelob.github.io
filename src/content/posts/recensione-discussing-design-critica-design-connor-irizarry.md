@@ -5,7 +5,7 @@ categories:
   - books
   - design
   - user-experience
-cover: 2017/04/discussing-design-copia-libro.jpg
+cover: 2017/04/discussing-design-libro.jpg
 lang: it
 seoTitle: «Discussing Design» di Connor e Irizarry, recensione
 seoDescription: "Recensione di «Discussing Design» di Adam Connor e Aaron Irizarry: obiettivi, personas, scenari e principi, e le quattro domande per una critica utile."
@@ -13,7 +13,7 @@ oldSlugs: []
 excerpt: Una critica del design non è dire «mi piace» o «non mi piace». Ti racconto le quattro domande di «Discussing Design» che uso ancora oggi nelle revisioni con il team.
 ---
 
-![La mia copia di «Discussing Design» di Adam Connor e Aaron Irizarry, appoggiata su un parquet di legno](https://img.olegs.be/uploads/2017/04/discussing-design-copia-libro-960.webp)
+![La mia copia di «Discussing Design» di Adam Connor e Aaron Irizarry, appoggiata su un parquet di legno](https://img.olegs.be/uploads/2017/04/discussing-design-libro-960.webp)
 
 L’ho letto tra dicembre 2016 e aprile 2017. Quante volte ti è capitato di presentare un lavoro e ricevere solo «mi piace», «non mi convince» o «metterei il pulsante più grande»? [«Discussing Design – Improving Communication and Collaboration Through Critique»](https://www.oreilly.com/library/view/discussing-design/9781491902394/) di Adam Connor e Aaron Irizarry, uscito nel 2015, nasce proprio per uscire da lì: **trasformare le opinioni in una conversazione utile**.
 

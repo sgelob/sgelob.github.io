@@ -5,7 +5,7 @@ categories:
   - books
   - design
   - organization
-cover: 2013/01/design-is-a-job-copia-libro.jpg
+cover: 2013/01/design-is-a-job-libro.jpg
 lang: it
 seoTitle: «Design is a Job» di Mike Monteiro, recensione e appunti
 seoDescription: "Recensione di «Design is a Job» di Mike Monteiro: trovare e scegliere i clienti, farsi pagare il giusto, non lavorare gratis. Le lezioni che mi sono rimaste."
@@ -13,7 +13,7 @@ oldSlugs: []
 excerpt: Un libro breve e diretto su cosa vuol dire fare il designer di mestiere. Ti racconto gli appunti che ho preso su clienti, preventivi e su come farsi pagare il giusto.
 ---
 
-![La mia copia di «Design is a Job» di Mike Monteiro, appoggiata su un parquet di legno](https://img.olegs.be/uploads/2013/01/design-is-a-job-copia-libro-960.webp)
+![La mia copia di «Design is a Job» di Mike Monteiro, appoggiata su un parquet di legno](https://img.olegs.be/uploads/2013/01/design-is-a-job-libro-960.webp)
 
 L’ho letto a gennaio 2013. [«Design is a Job»](https://designisajob.com/) di Mike Monteiro è uscito nel 2012 ed è un libro breve e molto diretto. Ne ho preso parecchi appunti, in italiano.
 
