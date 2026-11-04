@@ -3,7 +3,7 @@ title: Smena Symbol (Смена Символ) – Soviet 35mm Camera
 date: "2007-09-15T17:40:42"
 genre: old-film-cameras
 country: russia
-cover: 2015/09/smena-symbol-soviet-35mm-rangefinder-film-camera-cover.jpg
+cover: 2015/09/smena-symbol-soviet-35mm-rangefinder-film-camera-12.jpg
 coverWidth: 1620
 coverHeight: 1080
 darkHeader: false

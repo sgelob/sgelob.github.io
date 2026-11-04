@@ -84,8 +84,8 @@ describe('photos pages', () => {
 
   test('a cover missing from its photos is sized from coverWidth/coverHeight and gets variants', () => {
     const html = read('dist/photos/genre/old-film-cameras/index.html');
-    expect(html).toContain('smena-symbol-soviet-35mm-rangefinder-film-camera-cover-480.webp 480w');
-    expect(html).toMatch(/<img src="https:\/\/img\.olegs\.be\/uploads\/2015\/09\/smena-symbol-soviet-35mm-rangefinder-film-camera-cover\.jpg" width="1620" height="1080"/);
+    expect(html).toContain('zenit-e-soviet-35mm-reflex-film-camera-cover-480.webp 480w');
+    expect(html).toMatch(/<img src="https:\/\/img\.olegs\.be\/uploads\/2015\/09\/zenit-e-soviet-35mm-reflex-film-camera-cover\.jpg" width="1620" height="1080"/);
   });
 });
 
