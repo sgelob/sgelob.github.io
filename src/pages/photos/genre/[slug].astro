@@ -25,7 +25,7 @@ const plural = (n: number) => `${n} ${n === 1 ? 'gallery' : 'galleries'}`;
 ---
 
 <Base title={pageTitle(genre.name, 'Photos')} description={genre.description}>
-  <PhotosHeader heading={genre.name} description={genre.description} active={genre.slug} />
+  <PhotosHeader heading={genre.name} description={genre.description} active={genre.slug} crumb="Genre" />
   {sections ? (
     <div class="sections">
       {sections.map(({ key, galleries: items }) => (

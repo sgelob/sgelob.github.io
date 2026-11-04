@@ -1,4 +1,5 @@
 ---
+import Breadcrumb from './Breadcrumb.astro';
 import { genres } from '../lib/taxonomies';
 
 interface Props {
@@ -7,13 +8,16 @@ interface Props {
   description?: string;
   /** `all`, a genre slug, or nothing (country pages). */
   active?: string;
+  /** On a genre or country page: the kind of page, for the «Photos / …» breadcrumb above the heading. */
+  crumb?: string;
 }
 
-const { intro, heading, description, active } = Astro.props;
+const { intro, heading, description, active, crumb } = Astro.props;
 const filters = [{ slug: 'all', name: 'All', href: '/photos/' }, ...genres.map((g) => ({ ...g, href: `/photos/genre/${g.slug}/` }))];
 ---
 
 <header class="photos-header wrap">
+  {crumb && <Breadcrumb section={{ label: 'Photos', href: '/photos/' }} kind={crumb} />}
   {heading ? <h1 class="heading">{heading}</h1> : <h1 class="visually-hidden">Photos</h1>}
   {intro && <p class="intro">{intro}</p>}
   {description && <p class="description">{description}</p>}

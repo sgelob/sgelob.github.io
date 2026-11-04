@@ -36,7 +36,7 @@ const galleries = country ? await getGalleriesBy('country', country.slug) : [];
   <Redirect to={props.redirectTo} />
 ) : country && (
   <Base title={pageTitle(country.name, 'Photos')}>
-    <PhotosHeader heading={country.name} />
+    <PhotosHeader heading={country.name} crumb="Country" />
     <GalleryGrid galleries={galleries} />
   </Base>
 )}

@@ -95,3 +95,20 @@ test('every preserved live URL of the old site still builds, as a page or a redi
     .filter((path) => !existsSync(`dist${path}${path.endsWith('/') ? 'index.html' : ''}`));
   expect(missing).toEqual([]);
 });
+
+describe('breadcrumbs', () => {
+  const crumb = (section: string, href: string, kind: string) =>
+    new RegExp(`<nav class="crumb mono[^"]*"[^>]*aria-label="Breadcrumb"[^>]*><a href="${href}"[^>]*>${section}</a> <span aria-hidden="true"[^>]*>/</span> ${kind}</nav>`);
+
+  test('a genre, a country and a gallery say they belong to Photos', () => {
+    expect(read('dist/photos/genre/old-film-cameras/index.html')).toMatch(crumb('Photos', '/photos/', 'Genre'));
+    expect(read('dist/photos/country/russia/index.html')).toMatch(crumb('Photos', '/photos/', 'Country'));
+    expect(read('dist/gallery/smena-symbol-soviet-35mm-rangefinder-film-camera/index.html')).toMatch(crumb('Photos', '/photos/', 'Gallery'));
+    expect(read('dist/photos/index.html')).not.toContain('aria-label="Breadcrumb"'); // the section itself has none
+  });
+
+  test('a trip says it belongs to Outdoors, and whether it is a hike or a ride', () => {
+    expect(read('dist/outdoors/airasca-moretta/index.html')).toMatch(crumb('Outdoors', '/outdoors/', '(Hike|Ride)'));
+    expect(read('dist/outdoors/index.html')).not.toContain('aria-label="Breadcrumb"');
+  });
+});

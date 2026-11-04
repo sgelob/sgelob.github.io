@@ -1,4 +1,5 @@
 ---
+import Breadcrumb from './Breadcrumb.astro';
 import Pic from './Pic.astro';
 
 interface Props {
@@ -10,9 +11,11 @@ interface Props {
   coverAlt: string;
   /** The cover is light where the text sits: the scrims get stronger. */
   darkHeader: boolean;
+  /** The section and the kind of page, for the breadcrumb above the title: Photos / Gallery, Outdoors / Hike. */
+  crumb?: { section: { label: string; href: string }; kind: string };
 }
 
-const { title, cover, width, height, coverAlt, darkHeader } = Astro.props;
+const { title, cover, width, height, coverAlt, darkHeader, crumb } = Astro.props;
 ---
 
 <header class="hero" data-dark-header={darkHeader ? '' : undefined}>
@@ -27,6 +30,7 @@ const { title, cover, width, height, coverAlt, darkHeader } = Astro.props;
     fetchpriority="high"
   />
   <div class="caption wrap">
+    {crumb && <Breadcrumb section={crumb.section} kind={crumb.kind} onPhoto />}
     <h1 class="title" data-pagefind-meta="title">{title}</h1>
     {/* The spaces between the items keep them apart as words for the search index; the flex gap lays them out. */}
     <p class="meta mono"><slot /></p>
