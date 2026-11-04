@@ -18,4 +18,4 @@ I enjoy being part of communities where people share ideas, learn from each othe
 
 **[Get in touch](mailto:44_tildes_agog@icloud.com?subject=Message%20from%20olegs.be) and let’s talk!**
 
-You can also find me on [LinkedIn](https://www.linkedin.com/in/olegsbelousovs/) and [GitHub](https://github.com/sgelob).
+You can also find me on [LinkedIn](https://www.linkedin.com/in/olegsbelousovs/) and [GitHub](https://github.com/sgelob). Curious how this site is made? See the [colophon](/colophon/).

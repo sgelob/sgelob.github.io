@@ -8,15 +8,19 @@ interface Props {
 
 const { lang = 'en' } = Astro.props;
 const year = new Date().getFullYear();
+const en = lang === 'en' ? undefined : 'en';
+// Three groups, by what they are: me and how to reach me, my profiles elsewhere, and this site.
 ---
 
-<footer class="footer wrap mono">
-  <p>© {year} {SITE.author}</p>
-  <ul class="links" lang={lang === 'en' ? undefined : 'en'}>
-    <li><a href={SITE.mailto}>Email</a></li>
-    <li><a href="/feed.xml">RSS</a></li>
+<footer class="footer wrap mono" lang={en}>
+  <p class="me">© {year} {SITE.author} <span aria-hidden="true">·</span> <a href={SITE.mailto}>Email</a></p>
+  <ul class="links" aria-label="Elsewhere">
     <li><a href={SITE.linkedin} rel="me">LinkedIn</a></li>
     <li><a href={SITE.github} rel="me">GitHub</a></li>
+  </ul>
+  <ul class="links" aria-label="This site">
+    <li><a href="/feed.xml">RSS</a></li>
+    <li><a href="/colophon/">Colophon</a></li>
   </ul>
 </footer>
 
@@ -25,29 +29,35 @@ const year = new Date().getFullYear();
     display: flex;
     flex-wrap: wrap;
     align-items: baseline;
-    justify-content: space-between;
-    gap: 12px 24px;
+    gap: 12px 48px;
     margin-top: 120px;
     padding-block: 24px 32px;
     border-top: 1px solid var(--rule);
     color: var(--muted);
   }
 
+  /* Name and email on the left; the two link groups pushed to the right, side by side. */
+  .me { margin-right: auto; }
+
   .links {
     display: flex;
-    flex-wrap: wrap;
-    gap: 8px 24px;
+    gap: 24px;
     padding: 0;
     list-style: none;
   }
 
   /* Padded to a 24 px target; the margin keeps the row where it was. */
-  .links a {
+  .footer a {
     display: inline-block;
     padding-block: 5px;
     margin-block: -5px;
     transition: color 120ms ease;
   }
 
-  .links a:hover { color: var(--fg); }
+  .footer a:hover { color: var(--fg); }
+
+  /* On a phone the three groups stack, one per line. */
+  @media (max-width: 719px) {
+    .footer { flex-direction: column; gap: 12px; }
+  }
 </style>
