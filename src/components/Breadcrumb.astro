@@ -1,0 +1,15 @@
+---
+// Styled in global.css (no scoped style, so no per-element scope attributes on every page that has one).
+// The mono line above a page heading that says which section the page belongs to and what kind of page it is:
+// «Blog / Category», «Photos / Gallery», «Outdoors / Hike». The section links to its index; the kind is plain text.
+interface Props {
+  section: { label: string; href: string };
+  kind: string;
+  /** Over a cover photo (the gallery and trip heroes): light text with a shadow, as the hero's own meta line. */
+  onPhoto?: boolean;
+}
+
+const { section, kind, onPhoto = false } = Astro.props;
+---
+
+<nav class:list={['crumb mono', { 'on-photo': onPhoto }]} aria-label="Breadcrumb" lang="en"><a href={section.href}>{section.label}</a> <span aria-hidden="true">/</span> {kind}</nav>

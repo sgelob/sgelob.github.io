@@ -15,7 +15,7 @@ const size = coverSize(gallery);
 const coverAlt = photos.some((photo) => photo.src === cover) ? '' : title;
 ---
 
-<Hero title={title} cover={cover} width={size?.width} height={size?.height} coverAlt={coverAlt} darkHeader={darkHeader}>
+<Hero title={title} cover={cover} width={size?.width} height={size?.height} coverAlt={coverAlt} darkHeader={darkHeader} crumb={{ section: { label: 'Photos', href: '/photos/' }, kind: 'Gallery' }}>
   <a href={`/photos/country/${country}/`}>{countryName(country)}</a>{' '}
   <a href={`/photos/genre/${genre}/`}>{genreName(genre)}</a>{' '}
   <span>{formatMonthYear(date, 'en')}</span>{' '}

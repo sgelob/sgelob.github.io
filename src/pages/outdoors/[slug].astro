@@ -58,7 +58,7 @@ const moreRow = moreLabels(activity, more);
   overlayNav
   search={search}
 >
-  <Hero title={title} cover={cover} width={size?.width} height={size?.height} coverAlt={coverAlt} darkHeader={darkHeader}>
+  <Hero title={title} cover={cover} width={size?.width} height={size?.height} coverAlt={coverAlt} darkHeader={darkHeader} crumb={{ section: { label: 'Outdoors', href: '/outdoors/' }, kind: trip.data.activity === 'hike' ? 'Hike' : 'Ride' }}>
     {heroMeta(trip.data, photos.length).map((item) => <><span>{item}</span>{' '}</>)}
   </Hero>
   {trip.body?.trim() && (

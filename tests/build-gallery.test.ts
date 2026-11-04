@@ -8,8 +8,10 @@ test('venezia gallery renders 81 photos, hero, neighbours', () => { const html =
 // The spec's budget was HTML + CSS under 50 KB. With the stylesheet inlined the file is both, and the
 // page already came to ~57 KB (49 KB HTML + 8 KB CSS) when the stylesheet was a separate request.
 // Since 2026-10-23 every photo carries a real alt text (content, not chrome): Berlin's 78 alts and its
-// intro added ~6 KB, so the budget is 70 KB. Galleries with 100+ photos are larger still and not asserted.
-test('gallery html with its inlined css stays under 70 KB and has no inline photoswipe', () => { const html = read('dist/gallery/berlin-germany/index.html'); expect(html).not.toContain('rel="stylesheet"'); expect(Buffer.byteLength(html)).toBeLessThan(70 * 1024); expect(html).not.toContain('PhotoSwipeLightbox'); });
+// intro added ~6 KB, so the budget was 70 KB. On 2026-11-04 the page was ~180 bytes under it, and the
+// «Photos / Gallery» breadcrumb (its markup and the shared .crumb rules) added ~470: the budget is now 72 KB.
+// Galleries with 100+ photos are larger still and not asserted.
+test('gallery html with its inlined css stays under 72 KB and has no inline photoswipe', () => { const html = read('dist/gallery/berlin-germany/index.html'); expect(html).not.toContain('rel="stylesheet"'); expect(Buffer.byteLength(html)).toBeLessThan(72 * 1024); expect(html).not.toContain('PhotoSwipeLightbox'); });
 test('old gallery slug builds a redirect page', () => { expect(read('dist/gallery/tarragona-spain/index.html')).toContain('http-equiv="refresh" content="0; url=/gallery/tarragona-catalonia-spain/"'); });
 
 describe('gallery page', () => {
