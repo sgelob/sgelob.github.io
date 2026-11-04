@@ -68,13 +68,13 @@ describe('pages', () => {
     expect(html).not.toContain('](');
   });
 
-  test('books: favourite list keeps reversed numbering, titles and authors as written', () => {
+  test('books: every shelf counts down from its size, titles and authors as written', () => {
     const html = read('dist/books/index.html');
     expect(html).toContain('<title>Books – Olegs Belousovs</title>');
-    expect(html).toContain('<ol reversed');
-    const favourites = books.find((s) => s.title === 'Favourite Books')!.books.length;
-    expect(html).toMatch(new RegExp(`<span class="number mono" aria-hidden="true"[^>]*>${favourites}</span>`)); // counting down, first row
-    expect(count(html, 'class="number mono"')).toBe(favourites);
+    for (const shelf of books) {
+      // Each shelf's first row carries its size: the count restarts on every shelf.
+      expect(html).toMatch(new RegExp(`<span class="number mono" aria-hidden="true"[^>]*>${shelf.books.length}</span>`));
+    }
     expect(html).toMatch(/<span class="title"[^>]*>The Subtle Art of Not Giving a F\*ck<\/span> – <em class="author"[^>]*>Mark Manson<\/em>/);
     expect(html).toMatch(/<span class="title"[^>]*>Rework<\/span> – <em class="author"[^>]*>Jason Fried &amp; David Heinemeier Hansson<\/em>/);
   });
@@ -89,7 +89,8 @@ describe('pages', () => {
     const esc = (t: string) => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     expect(html).toMatch(new RegExp(`<span class="title"[^>]*>${esc(first.title)}</span> – <em class="author"[^>]*>${esc(first.author!)}</em>`));
     expect(books.at(-1)!.books.length).toBeGreaterThan(50);
-    expect(count(html, 'class="number mono"')).toBe(books.find((s) => s.title === 'Favourite Books')!.books.length); // only the favourites are numbered
+    expect(count(html, 'class="number mono"')).toBe(books.reduce((n, s) => n + s.books.length, 0)); // every shelf is numbered
+    expect(count(html, '<ol reversed role="list" class="entries numbered"')).toBe(books.length);
     expect(html).toMatch(/<meta name="description" content="[^"]*reading now[^"]*still to read[^"]*">/);
     expect(html).toMatch(/<p class="lead"[^>]*>[^<]*still waiting to be read/);
   });

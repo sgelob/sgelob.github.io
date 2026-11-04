@@ -25,10 +25,9 @@ const tab = (title: string) => tabs[title] ?? { id: title.toLowerCase().replace(
   </nav>
   <div class="books">
     {books.map(({ title, books: list }) => {
-      const numbered = title === 'Favourite Books';
       const items = list.map((book, i) => (
         <li class="book"><span class="row">
-          {numbered && <span class="number mono" aria-hidden="true">{list.length - i}</span>}
+          <span class="number mono" aria-hidden="true">{list.length - i}</span>
           {book.cover ? (
             <Pic src={book.cover.src} width={book.cover.width} height={book.cover.height} alt="" sizes="40px" maxWidth={480} class="cover" />
           ) : (
@@ -43,7 +42,7 @@ const tab = (title: string) => tabs[title] ?? { id: title.toLowerCase().replace(
       return (
         <section class="group" id={tab(title).id}>
           <h2 class="section mono">{title}</h2>
-          {numbered ? <ol reversed role="list" class="entries numbered">{items}</ol> : <ul class="entries">{items}</ul>}
+          <ol reversed role="list" class="entries numbered">{items}</ol>
         </section>
       );
     })}
@@ -107,7 +106,8 @@ const tab = (title: string) => tabs[title] ?? { id: title.toLowerCase().replace(
 
 
   /* Cover, title and author, year: the cover keeps the book's 2:3 shape, a placeholder where none was found.
-     The favourites write their number as a first column, centred on the row (a list marker would sit on its last line). */
+     Every shelf counts its books down to 1 in a first column, centred on the row (a list marker would sit on its
+     last line), so the top number is how many books the shelf holds. */
   .books .book .row {
     display: grid;
     grid-template-columns: 40px minmax(0, 1fr) auto;
