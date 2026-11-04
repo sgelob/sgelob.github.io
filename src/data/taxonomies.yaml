@@ -53,26 +53,35 @@ countries:
 categories:
   - slug: ai
     name: AI
+    description: "Come l’intelligenza artificiale cambia il lavoro di prodotto, i ruoli e il modo in cui pensiamo e decidiamo."
   - slug: books
     name: Books
     description: Recensioni dei libri che ho letto, dalla mia libreria.
     lead: 'Le recensioni dei libri che ho letto. Tutti i libri, anche quelli che sto leggendo e quelli ancora da leggere, sono sulla mia <a href="/books/" lang="en">Bookshelf</a>.'
   - slug: design
     name: Design
+    description: "Design visivo e di interazione: come si progetta, come se ne discute e perché i dettagli contano."
   - slug: events
     name: Events
+    description: "Note e resoconti da meetup e conferenze: dai meetup del Turin Web Performance Group agli eventi su prodotto, UX e innovazione."
   - slug: organization
     name: Organization
     short: Org
+    description: "Organizzare il lavoro e il tempo: produttività personale, team, metodi agili e obiettivi."
   - slug: personal-growth
     name: Personal Growth
+    description: "Crescita personale: abitudini, decisioni, carriera e le idee che mi aiutano a vivere e lavorare meglio."
   - slug: product-management
     name: Product Management
+    description: "Il lavoro di prodotto: strategia, scoperta, priorità e metriche, per costruire cose che servono davvero alle persone."
   - slug: user-experience
     name: User Experience
     short: UX
+    description: "Esperienza utente: capire le persone, progettare percorsi semplici e misurare se funzionano."
   - slug: web-performance
     name: Web Performance
     short: Web Perf
+    description: "Perché la velocità di un sito conta per chi lo usa e per il business, e come misurarla e migliorarla. Molti post vengono dai talk del Turin Web Performance Group."
   - slug: wordpress
     name: WordPress
+    description: "La community di WordPress, i WordCamp e qualche consiglio tecnico, dagli anni in cui il mio sito era fatto con WordPress."

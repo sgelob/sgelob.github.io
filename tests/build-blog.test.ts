@@ -63,6 +63,14 @@ describe('blog lists', () => {
     expect(read('dist/category/uncategorized/index.html')).toContain('url=/blog/');
   });
 
+  test('a category page says it belongs to the blog and what it is about', () => {
+    const html = read('dist/category/web-performance/index.html');
+    expect(html).toMatch(/<nav class="crumb mono"[^>]*aria-label="Breadcrumb"[^>]*><a href="\/blog\/"[^>]*>Blog<\/a> <span aria-hidden="true"[^>]*>\/<\/span> Category<\/nav>/);
+    expect(html).toMatch(/<p class="lead"[^>]*>Perché la velocità di un sito conta/);
+    expect(html).toMatch(/<meta name="description" content="Perché la velocità di un sito conta/);
+    expect(read('dist/blog/index.html')).not.toContain('class="crumb'); // the blog itself has none
+  });
+
   test('the Books category lists the published reviews', () => {
     const html = read('dist/category/books/index.html');
     expect(html).toMatch(/<h1[^>]*>Books<\/h1>/);

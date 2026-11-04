@@ -15,15 +15,20 @@ interface Props {
   embedded?: boolean;
   /** Shows the row of category filters, with this one current: `all` on /blog/, a category slug on its page. */
   filter?: string;
+  /** On a category page: a breadcrumb above the heading says it is a category of the blog. */
+  crumb?: boolean;
 }
 
-const { posts, heading, lead, embedded = false, filter } = Astro.props;
+const { posts, heading, lead, embedded = false, filter, crumb = false } = Astro.props;
 const filters = filter && !embedded ? blogFilters(await getPosts(), categories) : [];
 // Embedded, the list sits under its section's h2.
 const Title = embedded ? 'h3' : 'h2';
 ---
 
 <section class:list={['post-list wrap', { embedded }]}>
+  {crumb && !embedded && (
+    <nav class="crumb mono" aria-label="Breadcrumb" lang="en"><a href="/blog/">Blog</a> <span aria-hidden="true">/</span> Category</nav>
+  )}
   {heading && !embedded && <h1 class="heading">{heading}</h1>}
   {lead && !embedded && <p class="lead" set:html={lead} />}
   {filters.length > 0 && (
@@ -62,6 +67,12 @@ const Title = embedded ? 'h3' : 'h2';
   .embedded { padding-block: 0; }
 
   .embedded .post-item:first-child { border-top: 0; padding-top: 0; }
+
+  .crumb { margin-bottom: 16px; color: var(--muted); }
+
+  .crumb a { border-bottom: 1px solid currentColor; transition: color 120ms ease; }
+
+  .crumb a:hover { color: var(--fg); }
 
   .lead { margin: -24px 0 40px; color: var(--muted); font-size: 17px; line-height: 1.5; max-width: 60ch; }
 
