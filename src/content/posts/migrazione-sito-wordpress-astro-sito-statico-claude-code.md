@@ -3,8 +3,6 @@ title: Perché ho lasciato WordPress per un sito statico con Astro – e come l�
 date: "2026-10-29T09:41:00"
 categories:
   - wordpress
-  - web-performance
-  - product-management
   - ai
 lang: it
 seoTitle: Da WordPress ad Astro, un sito statico fatto con Claude Code

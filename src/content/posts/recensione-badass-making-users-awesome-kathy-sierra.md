@@ -2,6 +2,7 @@
 title: "«Badass – Making Users Awesome» di Kathy Sierra: non migliorare il prodotto, migliora chi lo usa"
 date: "2017-05-07T19:00:00"
 categories:
+  - books
   - product-management
   - user-experience
 cover: 2017/05/badass-making-users-awesome-kathy-sierra.jpg

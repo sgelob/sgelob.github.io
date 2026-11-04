@@ -2,10 +2,9 @@
 title: Cosa sono le Web Performance e perché devi preoccupartene
 date: "2016-10-13T19:00:19"
 categories:
-  - wordpress
+  - events
   - web-performance
   - user-experience
-  - events
 cover: 2015/02/olegs-belousovs-web-performance.jpg
 lang: it
 oldSlugs: []

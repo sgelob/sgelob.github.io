@@ -2,6 +2,7 @@
 title: "«Blind Spot»: i cinque tipi di valore che il business non vede"
 date: "2017-10-30T19:00:00"
 categories:
+  - books
   - product-management
   - design
 cover: 2017/10/blind-spot-copia-libro.jpg

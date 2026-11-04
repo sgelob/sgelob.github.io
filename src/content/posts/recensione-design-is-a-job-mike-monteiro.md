@@ -2,6 +2,7 @@
 title: "«Design is a Job» di Mike Monteiro: smetti di essere un creativo, comincia a essere un designer"
 date: "2013-01-31T19:00:00"
 categories:
+  - books
   - design
   - organization
 cover: 2013/01/design-is-a-job-copia-libro.jpg

@@ -42,3 +42,5 @@
   to: /photos/genre/world-places/
 - from: /category/meetup/
   to: /category/events/
+- from: /category/uncategorized/
+  to: /blog/

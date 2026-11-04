@@ -4,7 +4,6 @@ import { blogFilters, FILTER_MIN_POSTS } from '../src/lib/blog-filters';
 const terms = [
   { slug: 'ai', name: 'AI' },
   { slug: 'events', name: 'Events' },
-  { slug: 'uncategorized', name: 'Uncategorized' },
   { slug: 'web-performance', name: 'Web Performance', short: 'Web Perf' },
   { slug: 'wordpress', name: 'WordPress' },
 ];

@@ -2,7 +2,7 @@
 title: La mia raccolta di frasi e citazioni preferite sulla vita, il design e il lavoro
 date: "2016-05-15T09:38:19"
 categories:
-  - design
+  - personal-growth
 lang: it
 oldSlugs: []
 excerpt: La mia raccolta di citazioni che ho trovato interessanti e di ispirazione, leggendo i vari libri, gli articoli e sentite dire da altre persone che conosco, sui temi della vita, del design e del lavoro.
