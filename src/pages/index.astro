@@ -5,6 +5,7 @@ import GalleryGrid from '../components/GalleryGrid.astro';
 import SectionLabel from '../components/SectionLabel.astro';
 import PostList from '../components/PostList.astro';
 import QuoteOfTheDay from '../components/QuoteOfTheDay.astro';
+import ReadingNow from '../components/ReadingNow.astro';
 import TrackOfTheDay from '../components/TrackOfTheDay.astro';
 import TripGrid from '../components/TripGrid.astro';
 import { getGalleries, getPosts, getTrips } from '../lib/collections';
@@ -51,6 +52,8 @@ const title = `${SITE.author} – ${SITE.description}`;
     <PostList posts={posts.slice(0, 3)} embedded />
   </section>
 
+  <ReadingNow />
+
   <TrackOfTheDay />
 </Base>
 
@@ -78,7 +81,7 @@ const title = `${SITE.author} – ${SITE.description}`;
 
   .lead :global(a:hover) { color: var(--fg); }
 
-  /* The blog is followed by the track of the day: the same space as under the grids of the other sections. */
+  /* The blog is followed by the books I am reading: the same space as under the grids of the other sections. */
   .blog { padding-bottom: 96px; }
 
   @media (max-width: 719px) {

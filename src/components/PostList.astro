@@ -65,6 +65,10 @@ const Title = embedded ? 'h3' : 'h2';
 
   .lead { margin: -24px 0 40px; color: var(--muted); font-size: 17px; line-height: 1.5; max-width: 60ch; }
 
+  .lead :global(a) { border-bottom: 1px solid currentColor; transition: color 120ms ease; }
+
+  .lead :global(a:hover) { color: var(--fg); }
+
   .heading {
     margin-bottom: 40px;
     font-size: 28px;

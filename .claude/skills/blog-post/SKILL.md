@@ -56,7 +56,7 @@ Reviews of books the user has read and owns follow the same flow, with these rul
 - **Shape:** title «Title» di Author: a short line on the core idea; `seoTitle` «Title» di Author, recensione. Then the opening, the ideas, «La mia lettura» linked to the user’s principles, «A chi lo consiglio», and the italic question with the email invitation (see **Ending**).
 - **Date:** the day the user finished reading the book, which the user gives; when only the month is known, the last day of that month.
 - **Cover:** a photo of the user’s own copy (in hand, on the desk, on the shelf: the book as the subject, not a flat scan) as the post `cover` and the image at the top. The `/books` page keeps the catalogue cover.
-- **Cross-post with Books:** when the review is published, add `review: /YYYY/MM/<slug>/` to that book in `src/data/books.yaml` in the same commit, so its title on `/books` links to the review; and end the review with a link to the page, such as «Gli altri libri della mia libreria sono nella pagina [Books](/books/).». A test checks that every `review` points to a published post.
+- **Cross-post with Books:** when the review is published, add `review: /YYYY/MM/<slug>/` to that book in `src/data/books.yaml` in the same commit, so its title on `/books` links to the review; and end the review with a link to the page, such as «Gli altri libri della mia libreria sono nella pagina [Bookshelf](/books/).». A test checks that every `review` points to a published post.
 - **One at a time:** show each review to the user as a rendered page and publish it only once approved.
 
 ## 4. Build

@@ -67,6 +67,7 @@ describe('blog lists', () => {
     const html = read('dist/category/books/index.html');
     expect(html).toMatch(/<h1[^>]*>Books<\/h1>/);
     expect(html).toContain('href="/2017/05/recensione-badass-making-users-awesome-kathy-sierra/"');
+    expect(html).toMatch(/<p class="lead"[^>]*>[^<]*<a href="\/books\/" lang="en">Bookshelf<\/a>/); // the category leads to the shelf
   });
 });
 

@@ -51,6 +51,6 @@ Il limite, per me, è lo stesso che il libro denuncia: è difficile trasformare 
 
 A chi lavora su prodotto, design e marketing, e a chi deve convincere un’azienda che non tutto quello che conta si vede in un foglio di calcolo.
 
-Gli altri libri della mia libreria sono nella pagina [Books](/books/).
+Gli altri libri della mia libreria sono nella pagina [Bookshelf](/books/).
 
 *E tu, quale prodotto usi più per come ti fa sentire che per quello che fa? Se ti va, [raccontamelo via email](mailto:44_tildes_agog@icloud.com).*

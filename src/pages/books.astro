@@ -14,7 +14,7 @@ const tabs: Record<string, { id: string; name: string }> = {
 const tab = (title: string) => tabs[title] ?? { id: title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''), name: title };
 ---
 
-<Reading section search={{ type: 'other' }} title={pageTitle('Books')} heading="Books" description="Books Olegs Belousovs is reading now, has read (favourites on product, design and work, and a mixed shelf) and still to read on his shelf." lang="en">
+<Reading section search={{ type: 'other' }} title={pageTitle('Bookshelf')} heading="Bookshelf" description="The bookshelf of Olegs Belousovs: the books he is reading now, has read (favourites on product, design and work, and a mixed shelf) and still to read on his shelf." lang="en">
   <p class="lead">What I am reading now, then the books I have read and keep on my shelf, the favourites first and a mixed shelf, and last the ones still waiting to be read. The titles that are links have a review, in Italian, and all the reviews are in the <a href="/category/books/">Books</a> category of the blog.</p>
   <nav class="shelves" aria-label="Shelves">
     <ul class="filters mono">

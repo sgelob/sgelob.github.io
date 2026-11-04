@@ -69,6 +69,6 @@ Il libro mescola idee molto concrete con riferimenti alla scienza dell’apprend
 
 A chi lavora sul prodotto, sul design o sul supporto clienti, e a chiunque scriva documentazione, corsi o percorsi di onboarding. È uno di quei libri che ti fanno cambiare la domanda da «cosa aggiungiamo?» a «cosa riusciranno a fare le persone, grazie a noi, che prima non riuscivano a fare?».
 
-Gli altri libri della mia libreria sono nella pagina [Books](/books/).
+Gli altri libri della mia libreria sono nella pagina [Bookshelf](/books/).
 
 *E tu, quale strumento ti ha fatto diventare più bravo in qualcosa a cui tieni? Se ti va, [raccontamelo via email](mailto:44_tildes_agog@icloud.com).*

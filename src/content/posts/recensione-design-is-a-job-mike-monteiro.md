@@ -61,6 +61,6 @@ Un limite c’è: il tono. Alcune frasi sono volutamente provocatorie e certe re
 
 A chi lavora da freelance o in un piccolo studio, e a chi sta iniziando nel design e non ha ancora imparato a parlare di soldi.
 
-Gli altri libri della mia libreria sono nella pagina [Books](/books/).
+Gli altri libri della mia libreria sono nella pagina [Bookshelf](/books/).
 
 *E tu, qual è la regola sul lavoro con i clienti che hai imparato a tue spese? Se ti va, [raccontamelo via email](mailto:44_tildes_agog@icloud.com).*
