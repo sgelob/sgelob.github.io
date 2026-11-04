@@ -8,6 +8,9 @@ export const SITE = {
   email: EMAIL,
   /** Every Email link: the subject tells the owner the message came from the site. */
   mailto: `mailto:${EMAIL}?subject=${encodeURIComponent('Message from olegs.be')}`,
+  /** My profiles elsewhere, linked from the footer with rel="me" so they and the site are known as the same person. */
+  linkedin: 'https://www.linkedin.com/in/olegsbelousovs/',
+  github: 'https://github.com/sgelob',
 } as const;
 
 export type Lang = 'en' | 'it';

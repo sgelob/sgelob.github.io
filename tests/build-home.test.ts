@@ -191,6 +191,13 @@ describe('home accessibility', () => {
     expect(count(html, '<article class="post-item" lang="it"')).toBe(3);
   });
 
+  test('the footer links my LinkedIn and GitHub profiles with rel="me"', () => {
+    const html = read('dist/index.html');
+    const footer = html.slice(html.indexOf('<footer'));
+    expect(footer).toMatch(/<a href="https:\/\/www\.linkedin\.com\/in\/olegsbelousovs\/" rel="me"[^>]*>LinkedIn<\/a>/);
+    expect(footer).toMatch(/<a href="https:\/\/github\.com\/sgelob" rel="me"[^>]*>GitHub<\/a>/);
+  });
+
   test('the Email link carries the site subject', () => {
     expect(read('dist/index.html')).toContain('href="mailto:44_tildes_agog@icloud.com?subject=Message%20from%20olegs.be"');
   });
