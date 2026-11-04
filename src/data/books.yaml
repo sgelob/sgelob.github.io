@@ -780,11 +780,12 @@
       author: Jonathan Courtney
     - title: Escaping the Build Trap
       author: Melissa Perri
-      year: 2019
+      year: 2018
       cover:
         src: 2026/10/book-escaping-the-build-trap.jpg
         width: 333
         height: 500
+      review: /2021/06/recensione-escaping-build-trap-melissa-perri/
     - title: Fifty Quick Ideas To Improve Your Retrospectives
       author: Tom Roden & Ben Williams
     - title: 97 Things Every Scrum Practitioner Should Know
