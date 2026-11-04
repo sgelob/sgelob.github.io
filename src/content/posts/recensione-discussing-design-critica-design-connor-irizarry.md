@@ -2,6 +2,7 @@
 title: "«Discussing Design»: come fare una critica del design che serve davvero"
 date: "2017-04-30T19:00:00"
 categories:
+  - books
   - design
   - user-experience
 cover: 2017/04/discussing-design-copia-libro.jpg

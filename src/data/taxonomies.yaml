@@ -53,6 +53,9 @@ countries:
 categories:
   - slug: ai
     name: AI
+  - slug: books
+    name: Books
+    description: Recensioni dei libri che ho letto, dalla mia libreria.
   - slug: design
     name: Design
   - slug: events
@@ -63,8 +66,6 @@ categories:
     name: Personal Growth
   - slug: product-management
     name: Product Management
-  - slug: uncategorized
-    name: Uncategorized
   - slug: user-experience
     name: User Experience
     short: UX

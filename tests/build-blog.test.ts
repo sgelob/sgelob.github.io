@@ -5,7 +5,7 @@ import PostList from '../src/components/PostList.astro';
 import { count, read, contentCount } from './helpers/dist';
 import { render } from './helpers/render';
 
-test('blog index lists every post; empty category builds', () => { expect(count(read('dist/blog/index.html'), 'class="post-item"')).toBe(contentCount('posts')); expect(existsSync('dist/category/uncategorized/index.html')).toBe(true); });  // Review Focus 4
+test('blog index lists every post', () => { expect(count(read('dist/blog/index.html'), 'class="post-item"')).toBe(contentCount('posts')); });  // Review Focus 4
 test('post page keeps its videos, as click-to-play facades, and uses its lang', () => { const html = read('dist/2017/04/video-slide-wordpress-wordcamp-torino-2017/index.html'); expect(html).toContain('<a class="video-embed"'); expect(html).toContain('<html lang="it"'); });
 test('year and month archives and feed exist', () => { for (const p of ['dist/2016/index.html','dist/2016/05/index.html','dist/feed.xml']) expect(existsSync(p)).toBe(true); expect(read('dist/feed.xml')).toContain('<item>'); });
 test('old post slug redirects', () => { expect(read('dist/2018/01/web-performance-fattore-ranking-siti-web-carlo-piazzano/index.html')).toContain('url=/2018/01/web-performance-fattore-ranking-seo-siti-web-carlo-piazzano/'); });
@@ -59,8 +59,14 @@ describe('blog lists', () => {
     expect(html).not.toContain('href="/2025/04/podcast-naval-ravikant-dure-verita-felicita-natura-umana/"');
   });
 
-  test('an empty category says so', () => {
-    expect(read('dist/category/uncategorized/index.html')).toMatch(/<p class="mono"[^>]*>No posts yet\.<\/p>/);
+  test('the dropped Uncategorized category redirects to the blog', () => {
+    expect(read('dist/category/uncategorized/index.html')).toContain('url=/blog/');
+  });
+
+  test('the Books category lists the published reviews', () => {
+    const html = read('dist/category/books/index.html');
+    expect(html).toMatch(/<h1[^>]*>Books<\/h1>/);
+    expect(html).toContain('href="/2017/05/recensione-badass-making-users-awesome-kathy-sierra/"');
   });
 });
 

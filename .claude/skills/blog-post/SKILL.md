@@ -23,7 +23,7 @@ Posts are Markdown files in `src/content/posts/`. This is the whole flow run in 
 
 - **Angle:** what the post should leave the reader with, and who it is for, when the source does not settle it. Offer two or three angles, recommending one.
 - **Personal side:** the posts are first person and anchored in Oleg's own experience. Ask for the personal story or example that opens it, if the notes have none. Never make one up.
-- **Category:** one or two slugs from `categories` in `src/data/taxonomies.yaml` (`ai`, `design`, `events`, `organization`, `personal-growth`, `product-management`, `user-experience`, `web-performance`, `wordpress`), recommending one. `events` is for notes from conferences and meetups, next to the post’s topic. A category becomes a filter on /blog/ once it has three posts (`src/lib/blog-filters.ts`); `wordpress` never does.
+- **Category:** one or two slugs from `categories` in `src/data/taxonomies.yaml` (`ai`, `books`, `design`, `events`, `organization`, `personal-growth`, `product-management`, `user-experience`, `web-performance`, `wordpress`), recommending one. `events` is for notes from conferences and meetups and `books` for book reviews, each next to at most two topics. A category becomes a filter on /blog/ once it has three posts (`src/lib/blog-filters.ts`); `wordpress` never does.
 - **Cover:** none, or one of the user's images (a path, or an attachment), or a photo already on the site. People who can be recognised are shown only if the user agrees.
 - **Date:** today unless the user says otherwise.
 
@@ -52,8 +52,9 @@ Reviews of books the user has read and owns follow the same flow, with these rul
 - **Quotes:** one short quote in the original language, with author and source, as the law allows for criticism and review (Italian copyright law, art. 70). The rest in the user’s own words, attributed («secondo l’autrice…»).
 - **Fair to the author:** criticism of the content, never of the person; nothing that could read as defamatory. When an idea seems weakly supported, say how you would read it («lo prenderei come una lente, non come un metodo»), not that the author is wrong.
 - **Links:** to the publisher’s page or the author’s site, never to a store.
-- **Shape:** title «Title» di Author – a short line on the core idea; `seoTitle` «Title» di Author, recensione. Then the opening, the ideas, «La mia lettura» linked to the user’s principles, «A chi lo consiglio», and the italic question with the email invitation (see **Ending**).
-- **Date:** the day the user finished reading the book, which the user gives.
+- **Category:** `books` first, then one or two topic categories (`product-management`, `design`…).
+- **Shape:** title «Title» di Author: a short line on the core idea; `seoTitle` «Title» di Author, recensione. Then the opening, the ideas, «La mia lettura» linked to the user’s principles, «A chi lo consiglio», and the italic question with the email invitation (see **Ending**).
+- **Date:** the day the user finished reading the book, which the user gives; when only the month is known, the last day of that month.
 - **Cover:** a photo of the user’s own copy (in hand, on the desk, on the shelf: the book as the subject, not a flat scan) as the post `cover` and the image at the top. The `/books` page keeps the catalogue cover.
 - **Cross-post with Books:** when the review is published, add `review: /YYYY/MM/<slug>/` to that book in `src/data/books.yaml` in the same commit, so its title on `/books` links to the review; and end the review with a link to the page, such as «Gli altri libri della mia libreria sono nella pagina [Books](/books/).». A test checks that every `review` points to a published post.
 - **One at a time:** show each review to the user as a rendered page and publish it only once approved.
