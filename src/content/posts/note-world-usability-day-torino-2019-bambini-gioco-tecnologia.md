@@ -6,9 +6,9 @@ categories:
   - user-experience
 lang: it
 seoTitle: World Usability Day Torino 2019, le mie note
-seoDescription: "Le mie note dal World Usability Day Torino 2019: tecnologia e creatività dei bambini, giochi tra fisico e digitale, serious game e consenso digitale."
+seoDescription: "Le mie note dal World Usability Day Torino 2019: tecnologia e creatività dei bambini, giochi tra fisico e digitale, Serious Game e consenso digitale."
 oldSlugs: []
-excerpt: Giochi che uniscono il mondo fisico e quello digitale, serious game e il consenso in rete. Ti racconto le mie note dal World Usability Day Torino del 2019.
+excerpt: Giochi che uniscono il mondo fisico e quello digitale, Serious Game e il consenso in rete. Ti racconto le mie note dal World Usability Day Torino del 2019.
 ---
 
 Il 14 novembre sono stato al [World Usability Day](https://worldusabilityday.org/) di Torino, alla Cavallerizza Reale. Molti interventi parlavano di **bambini, gioco e tecnologia**. Queste sono le mie note.
@@ -28,21 +28,21 @@ Molti esempi andavano però nella direzione opposta, a partire dall’adattament
 
 Tra gli altri progetti presentati mi sono segnato Ekō, Gaia e PRODI.
 
-## I serious game, e il broccolo ricoperto di cioccolato
+## I Serious Game, e il broccolo ricoperto di cioccolato
 
-Un intervento ha spiegato bene cosa sono i **serious game**: giochi che non hanno solo lo scopo di intrattenere, ma contengono elementi educativi e obiettivi formativi raggiungibili giocando. Sviluppano abilità da usare nel mondo reale, esercitandosi in un ambiente simulato e protetto.
+Un intervento ha spiegato bene cosa sono i **Serious Game**: giochi che non hanno solo lo scopo di intrattenere, ma contengono elementi educativi e obiettivi formativi raggiungibili giocando. Sviluppano abilità da usare nel mondo reale, esercitandosi in un ambiente simulato e protetto.
 
 Con un avvertimento che mi ha fatto sorridere: il rischio è fare un **broccolo ricoperto di cioccolato**, un esercizio noioso travestito da gioco. 🙂
 
 ## Il consenso in digitale
 
-Si è parlato anche di privacy, con il progetto Social4School: una ricerca di Ipsos e Save the Children sulla percezione del consenso in ambiente digitale tra gli adulti, e la **stanchezza da privacy** (*digital privacy fatigue*), quando le persone smettono di leggere e accettano tutto perché le richieste sono troppe.
+Si è parlato anche di privacy, con il progetto Social4School: una ricerca di Ipsos e Save the Children sulla percezione del consenso in ambiente digitale tra gli adulti, e la **stanchezza da privacy** (*Digital Privacy Fatigue*), quando le persone smettono di leggere e accettano tutto perché le richieste sono troppe.
 
 ## Il corpo e la realtà virtuale
 
 Si è parlato anche di realtà virtuale e di presenza a distanza, con Facebook Horizon e Telexistence, e di progetti come Remo e Wemo e del lavoro di Paolo Ariano di Morecognition.
 
-L’ultimo tema era la **percezione di possedere il proprio corpo** (*body ownership*). Alcuni studi mostrano che è possibile far credere al cervello che una parte finta del corpo sia la propria, come nell’esperimento della mano di gomma.
+L’ultimo tema era la **percezione di possedere il proprio corpo** (*Body Ownership*). Alcuni studi mostrano che è possibile far credere al cervello che una parte finta del corpo sia la propria, come nell’esperimento della mano di gomma.
 
 ## Cosa mi porto a casa
 

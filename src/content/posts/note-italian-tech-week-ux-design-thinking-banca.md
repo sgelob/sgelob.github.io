@@ -1,17 +1,17 @@
 ---
-title: "Note dall’Italian Tech Week: UX e design thinking, il caso buddybank"
+title: "Note dall’Italian Tech Week: UX e Design Thinking, il caso buddybank"
 date: "2019-06-28T19:00:00"
 categories:
   - events
   - user-experience
 lang: it
-seoTitle: Italian Tech Week 2019, note su UX e design thinking
-seoDescription: "Le mie note dall’Italian Tech Week 2019 su UX e design thinking nel caso buddybank: bisogno, modello di business e tecnologia, e una banca che accompagna."
+seoTitle: Italian Tech Week 2019, note su UX e Design Thinking
+seoDescription: "Le mie note dall’Italian Tech Week 2019 su UX e Design Thinking nel caso buddybank: bisogno, modello di business e tecnologia, e una banca che accompagna."
 oldSlugs: []
-excerpt: Una banca che accompagna, semplifica e aiuta, e soldi con cui un giorno parleremo. Ti racconto le mie note da un incontro dell’Italian Tech Week 2019 su UX e design thinking.
+excerpt: Una banca che accompagna, semplifica e aiuta, e soldi con cui un giorno parleremo. Ti racconto le mie note da un incontro dell’Italian Tech Week 2019 su UX e Design Thinking.
 ---
 
-Il 28 giugno sono stato a un incontro dell’[Italian Tech Week](https://www.eventbrite.it/e/biglietti-italian-tech-week-ux-design-thinking-il-caso-buddybank-63104174284) a Torino dedicato a UX e design thinking, raccontati attraverso il caso di [buddybank](https://www.buddybank.com/it/), una banca nata per lo smartphone. Queste sono le mie note.
+Il 28 giugno sono stato a un incontro dell’[Italian Tech Week](https://www.eventbrite.it/e/biglietti-italian-tech-week-ux-design-thinking-il-caso-buddybank-63104174284) a Torino dedicato a UX e Design Thinking, raccontati attraverso il caso di [buddybank](https://www.buddybank.com/it/), una banca nata per lo smartphone. Queste sono le mie note.
 
 ## Bisogno, modello di business e tecnologia
 
@@ -27,7 +27,7 @@ Con una citazione del futurologo Jim Dator:
 
 Il caso partiva dall’unire **la banca e il banking**, in un servizio che vuole essere un compagno di vita (*lifestyle companion*), con tre verbi: **accompagna, semplifica, aiuta**.
 
-L’apertura dei servizi bancari prevista dalla direttiva europea PSD2 (*open banking*) rende possibile questo passaggio, e sposta le banche **da un ruolo informativo a uno comportamentale**. Accanto a buddybank si è parlato di altri modi nuovi di gestire il denaro, come Hype, Revolut e N26.
+L’apertura dei servizi bancari prevista dalla direttiva europea PSD2 (*Open Banking*) rende possibile questo passaggio, e sposta le banche **da un ruolo informativo a uno comportamentale**. Accanto a buddybank si è parlato di altri modi nuovi di gestire il denaro, come Hype, Revolut e N26.
 
 ## Parleremo con i nostri soldi
 

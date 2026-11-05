@@ -83,7 +83,7 @@ Nel suo libro «[High Performance Browser Networking](https://amzn.to/2eZIbBZ)»
 
 Uno studio di Gomez dice che **88% delle persone difficilmente torneranno su un sito web, dopo aver vissuto un’esperienza lenta**… quindi queste persone andranno dalla concorrenza.
 
-Relativo alle **prestazioni percepite**, approfondisci il concetto del [contenuto above-the-fold](https://developers.google.com/speed/docs/insights/PrioritizeVisibleContent?hl=it), la tecnica [critical CSS](https://www.smashingmagazine.com/2015/08/understanding-critical-css/) e così dette [ottimizzazioni del percorso di rendering critico](https://olegs.be/2016/06/ottimizzare-percorso-rendering-critico-migliorare-prestazioni-web-percepite/) (Critical Rendering Path).
+Relativo alle **prestazioni percepite**, approfondisci il concetto del [contenuto above-the-fold](https://developers.google.com/speed/docs/insights/PrioritizeVisibleContent?hl=it), la tecnica [Critical CSS](https://www.smashingmagazine.com/2015/08/understanding-critical-css/) e così dette [ottimizzazioni del percorso di rendering critico](https://olegs.be/2016/06/ottimizzare-percorso-rendering-critico-migliorare-prestazioni-web-percepite/) (Critical Rendering Path).
 
 Quindi oltre al hardware del device c’è da considerare prima di tutto il nostro «processore» e come funziona, cioè il cervello umano. 👾
 
@@ -229,7 +229,7 @@ Se vuoi sapere di più su webpagetest.org, guarda [il video del mio talk](https:
 
 ![screenshot di Google PageSpeed Insights](https://img.olegs.be/uploads/2016/10/cosa-sono-web-performance-perche-devi-preoccupartene-28-960.jpg)
 
-Ti restituisce un numero che è un po’ una *vanity metric*, perché non ti mostra bene i dettagli. Diventa però un’ossessione arrivare a 100% e [io ci riesco](https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Folegs.be%2F) con il mio sito web. 😎
+Ti restituisce un numero che è un po’ una *Vanity Metric*, perché non ti mostra bene i dettagli. Diventa però un’ossessione arrivare a 100% e [io ci riesco](https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Folegs.be%2F) con il mio sito web. 😎
 
 Ti mostra anche una serie di suggerimenti e link agli approfondimenti. Lo strumento fa un test sintetico sia su schermi piccoli che su quelli grandi. Non si conosce però nulla sulla macchina e le impostazioni di dove avviene realmente questo test.
 

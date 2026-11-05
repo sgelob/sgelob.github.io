@@ -15,12 +15,12 @@ A giugno sono stato al [Web Marketing Festival](https://www.webmarketingfestival
 
 ## Innovare con la testa tra le nuvole e i piedi per terra
 
-Un talk era sull’innovazione in Vueling, raccontata da Simone van Neerven, a capo del loro Innovation Lab, e si apriva con una definizione: innovare è avere **la testa tra le nuvole e i piedi per terra**, allo stesso tempo. Al centro della loro strategia di innovazione c’è il design centrato sulle persone, con il service design e il design thinking come metodi.
+Un talk era sull’innovazione in Vueling, raccontata da Simone van Neerven, a capo del loro Innovation Lab, e si apriva con una definizione: innovare è avere **la testa tra le nuvole e i piedi per terra**, allo stesso tempo. Al centro della loro strategia di innovazione c’è il design centrato sulle persone, con il Service Design e il Design Thinking come metodi.
 
 Mi sono segnato tre cose:
 
 - **la visione per orizzonti**: oggi, da due a cinque anni, da cinque a dieci anni;
-- **il design sprint** per arrivare in una settimana a un prototipo da testare, nel loro caso l’imbarco con il riconoscimento facciale all’aeroporto di Barcellona;
+- **il Design Sprint** per arrivare in una settimana a un prototipo da testare, nel loro caso l’imbarco con il riconoscimento facciale all’aeroporto di Barcellona;
 - **le «sedie blu»**: la routine che ci tiene legati al solito modo di lavorare.
 
 E tre consigli: per innovare servono **prospettive nuove sul problema**, i workshop interni aiutano molto, e bisogna pensare soprattutto al **coinvolgimento delle persone** che lavorano in azienda.

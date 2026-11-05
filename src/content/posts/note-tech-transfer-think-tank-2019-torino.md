@@ -15,7 +15,7 @@ Il 4 ottobre sono stato al [Tech Transfer Think Tank](https://techtransferthinkt
 
 ## I brevetti in vetrina
 
-Leonardo ha raccontato il suo modo di fare open innovation: **mettere i propri brevetti in vetrina**, su un [portale dedicato al trasferimento tecnologico](https://techtransfer.leonardocompany.com/) e con un’[offerta di brevetti su MESAP](http://www.mesap.it/brevetti-leonardo/), per farli conoscere e ottenere ricavi attraverso le royalty.
+Leonardo ha raccontato il suo modo di fare Open Innovation: **mettere i propri brevetti in vetrina**, su un [portale dedicato al trasferimento tecnologico](https://techtransfer.leonardocompany.com/) e con un’[offerta di brevetti su MESAP](http://www.mesap.it/brevetti-leonardo/), per farli conoscere e ottenere ricavi attraverso le royalty.
 
 Il modello di business è la **condivisione del rischio**: creare partnership in cui entrambe le parti hanno interesse al successo del progetto.
 
@@ -24,7 +24,7 @@ Il modello di business è la **condivisione del rischio**: creare partnership in
 Mi sono segnato la sequenza del trasferimento tecnologico:
 
 1. offerta del brevetto;
-2. verifica della libertà di utilizzo (*freedom to operate*);
+2. verifica della libertà di utilizzo (*Freedom to Operate*);
 3. business plan e valorizzazione;
 4. analisi tecnica ed economica;
 5. industrializzazione;

@@ -57,7 +57,7 @@ A inizio ottobre 2026 ho ascoltato Melissa Perri dal vivo alla [Product Heroes C
 
 ![Melissa Perri sul palco della Product Heroes Conference 2026 a Milano, davanti alla slide «Escaping The Build Trap»](https://img.olegs.be/uploads/2021/06/melissa-perri-escaping-build-trap-product-heroes-conference-2026-960.webp)
 
-Rileggendo i miei post-it dopo cinque anni, il libro mi sembra più attuale di quando l’ho letto. Con l’intelligenza artificiale e il *vibe coding* costruire una funzionalità costa sempre meno tempo e fatica. Ma se costruire diventa facile, cadere nella trappola diventa ancora più facile: si può riempire una roadmap di funzionalità in pochi giorni, senza sapere se servono a qualcuno.
+Rileggendo i miei post-it dopo cinque anni, il libro mi sembra più attuale di quando l’ho letto. Con l’intelligenza artificiale e il *Vibe Coding* costruire una funzionalità costa sempre meno tempo e fatica. Ma se costruire diventa facile, cadere nella trappola diventa ancora più facile: si può riempire una roadmap di funzionalità in pochi giorni, senza sapere se servono a qualcuno.
 
 **Quando l’output costa poco, conta ancora di più l’outcome**: sapere quale problema stiamo risolvendo, per chi, e come sapremo di averlo risolto. È lo stesso motivo per cui ho scritto che [l’IA non sostituisce chi sa pensare](/2026/10/intelligenza-artificiale-prodotto-premia-chi-sa-pensare/): amplifica chi sa cosa costruire e perché, e aiuta chi non lo sa a sbagliare più in fretta.
 

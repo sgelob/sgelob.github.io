@@ -38,7 +38,7 @@ Sembra poco, ma cambia completamente il tono di una revisione: invece di «non m
 
 Questo libro si lega a un principio che per me è fondamentale: **le persone non sono le loro idee**. Separare la persona dal problema è la condizione perché un team si senta sicuro nel mostrare lavori non finiti, e quindi nel chiedere feedback presto, quando costa poco cambiare.
 
-Mi è piaciuto anche lo spazio dato al pensiero divergente e alle attività collaborative, come la *charrette*, che servono a esplorare più strade prima di sceglierne una.
+Mi è piaciuto anche lo spazio dato al pensiero divergente e alle attività collaborative, come la *Charrette*, che servono a esplorare più strade prima di sceglierne una.
 
 I miei appunti su questo libro sono pochi, ma sono tra quelli che uso di più: a volte un libro vale per una sola idea che ti cambia il modo di lavorare.
 
