@@ -66,7 +66,7 @@
         height: 500
     - title: Radical Focus
       author: Christina Wodtke
-      year: 2015
+      year: 2016
       cover:
         src: 2026/10/book-radical-focus.jpg
         width: 313
@@ -122,7 +122,7 @@
         height: 500
     - title: User Story Mapping
       author: Jeff Patton
-      year: 2013
+      year: 2014
       cover:
         src: 2026/10/book-user-story-mapping.jpg
         width: 333
@@ -1186,11 +1186,11 @@
     - title: Blind Spot
       author: Steve Diller, Nathan Shedroff & Sean Sauber
       year: 2016
-      review: /2017/10/recensione-blind-spot-valore-nascosto-business-diller-shedroff-sauber/
       cover:
         src: 2026/11/book-blind-spot.jpg
         width: 563
         height: 900
+      review: /2017/10/recensione-blind-spot-valore-nascosto-business-diller-shedroff-sauber/
     - title: Discussing Design
       author: Adam Connor & Aaron Irizarry
       year: 2015
@@ -2042,3 +2042,27 @@
         height: 475
     - title: "Make Meaningful Moments: A Toolkit to Upgrade Human Skills in the AI Age"
       author: Daniel Szuc & Josephine Wong
+    - title: "Kanban Just-in-Time at Toyota: Management Begins at the Workplace"
+      author: Japan Management Association
+      year: 1986
+      cover:
+        src: 2026/11/book-kanban-just-in-time-at-toyota-management-begins-at-the-workplace.jpg
+        width: 300
+        height: 475
+    - title: The PayTech Book
+      author: Susanne Chishti, Tony Craddock, Robert Courtneidge & Markos Zachariadis
+      year: 2019
+      cover:
+        src: 2026/11/book-the-paytech-book.jpg
+        width: 400
+        height: 310
+    - title: Lean Analytics
+      author: Alistair Croll & Benjamin Yoskovitz
+      year: 2013
+      cover:
+        src: 2026/11/book-lean-analytics.jpg
+        width: 266
+        height: 400
+    - title: Music and the Brain
+      author: Are Brean & Geir Olve Skeie
+      year: 2019
