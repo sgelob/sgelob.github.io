@@ -49,7 +49,7 @@ describe('search index', () => {
     // Galleries, trips and the English pages; the Italian posts in an index of their own.
     expect(Object.keys(entry.languages).sort()).toEqual(['en', 'it']);
     const pages = Object.values(entry.languages).reduce((sum, l) => sum + l.page_count, 0);
-    expect(pages).toBe(contentCount('galleries') + contentCount('outdoors') + contentCount('posts') + records.length + 4); // galleries, trips, posts, records, and events, books, quotes, about
+    expect(pages).toBe(contentCount('galleries') + contentCount('outdoors') + contentCount('posts') + records.length + 5); // galleries, trips, posts, records, and events, books, quotes, about, colophon
     expect(readdirSync('dist/pagefind/filter').filter((f) => f.endsWith('.pf_filter')).length).toBeGreaterThan(0);
   });
 

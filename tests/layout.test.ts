@@ -119,6 +119,6 @@ describe('accessibility in the layout', () => {
   test('on an Italian page the chrome is marked English and the skip link is Italian', async () => {
     const html = await render(Base, { props: { title: 'T', lang: 'it' }, slots: { default: 'X' } });
     expect(html).toContain('>Vai al contenuto</a>');
-    expect(html.split(' lang="en"').length - 1).toBe(2); // the nav list and the footer links
+    expect(html.split(' lang="en"').length - 1).toBe(2); // the nav list and the footer
   });
 });

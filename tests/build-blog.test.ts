@@ -178,7 +178,7 @@ describe('post accessibility', () => {
     const html = wordcamp();
     expect(html).toContain('<html lang="it"');
     expect(html).toMatch(/<ul class="links mono" lang="en"/);
-    expect(html).toMatch(/<footer[\s\S]*<ul class="links" lang="en"/);
+    expect(html).toMatch(/<footer class="footer wrap mono" lang="en"/);
     expect(html).toContain('aria-label="Altri articoli"');
     expect(html).toMatch(/<span class="visually-hidden"[^>]*>Articolo (precedente|successivo): <\/span>/);
     expect(html).toContain('Vai al contenuto');

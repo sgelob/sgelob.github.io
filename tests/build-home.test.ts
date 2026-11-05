@@ -198,6 +198,18 @@ describe('home accessibility', () => {
     expect(footer).toMatch(/<a href="https:\/\/github\.com\/sgelob" rel="me"[^>]*>GitHub<\/a>/);
   });
 
+  test('the footer groups its links: name and Email, the profiles, then the site links', () => {
+    const footer = read('dist/index.html').split('<footer')[1];
+    expect(footer).toMatch(/<p class="me"[^>]*>© \d{4} Olegs Belousovs <span aria-hidden="true"[^>]*>·<\/span> <a href="mailto:/);
+    expect(footer).toMatch(/aria-label="Elsewhere"[\s\S]*LinkedIn[\s\S]*GitHub[\s\S]*aria-label="This site"[\s\S]*>RSS<[\s\S]*href="\/colophon\/"[^>]*>Colophon</);
+  });
+
+  test('the colophon is a page, linked from the footer, About and the migration post', () => {
+    expect(read('dist/colophon/index.html')).toMatch(/<h1[^>]*>Colophon<\/h1>/);
+    expect(read('dist/about/index.html')).toContain('href="/colophon/"');
+    expect(read('dist/2026/10/migrazione-sito-wordpress-astro-sito-statico-claude-code/index.html')).toContain('href="/colophon/"');
+  });
+
   test('the Email link carries the site subject', () => {
     expect(read('dist/index.html')).toContain('href="mailto:44_tildes_agog@icloud.com?subject=Message%20from%20olegs.be"');
   });
