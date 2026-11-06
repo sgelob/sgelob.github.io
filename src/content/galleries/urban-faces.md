@@ -141,6 +141,10 @@ photos:
     width: 1080
     height: 1080
     alt: Weathered stone wall with narrow barred windows
+  - src: 2026/11/urban-face-paris-01.jpg
+    width: 1932
+    height: 2576
+    alt: Purple tiled frowning face above the door of an electrical substation in Paris
 ---
 
 😬 🙂 😶 🙁 😮
