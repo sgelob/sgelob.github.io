@@ -26,7 +26,7 @@ Possiamo leggere tutti lo stesso documento e capire cose diverse. Le storie serv
 
 L’idea centrale del libro è che le storie utente prendono il nome da **come si usano, non da cosa si scrive**. Non sono una forma scritta dei requisiti: sono discussioni su come risolvere un problema, per l’organizzazione, i clienti e gli utenti, che portano a un accordo su cosa costruire. Una buona conversazione su una storia parla di **chi e perché**, non solo di cosa.
 
-È la stessa idea della triade carta, conversazione e conferma: la carta è solo il promemoria, il valore sta nella conversazione e nell’accordo su come sapremo che il lavoro è finito. Se non ci si incontra per discutere davvero, non si stanno usando le storie.
+È la stessa idea della triade *Card, Conversation, Confirmation*: la *Card* è solo il promemoria, il valore sta nella *Conversation* e nella *Confirmation*, l’accordo su come sapremo che il lavoro è finito. Se non ci si incontra per discutere davvero, non si stanno usando le storie.
 
 Nei miei appunti c’è una nota che spiega perché la mappa funziona così bene: **le parole sono vaghe, un disegno è specifico**. Una mappa costruita insieme e attaccata al muro mostra subito dove non ci siamo capiti. E ha un secondo effetto: le persone sostengono quello che hanno contribuito a creare.
 
