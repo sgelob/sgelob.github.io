@@ -39,4 +39,4 @@ Ma la voce da sola non basta. L’obiettivo è **creare un rapporto di fiducia c
 
 L’idea di partire dal bisogno, e non dalla tecnologia, vale ben oltre il mondo delle banche. E il passaggio da informare a cambiare i comportamenti porta a una buona domanda per qualsiasi prodotto: **cosa fanno di diverso le persone grazie a quello che costruiamo?**
 
-*E tu, cosa vorresti che facesse per te la tua banca? Se ti va, [raccontamelo via email](mailto:44_tildes_agog@icloud.com).*
+*Cosa vorresti che facesse per te la tua banca? [Mandami la tua idea via email](mailto:44_tildes_agog@icloud.com).*

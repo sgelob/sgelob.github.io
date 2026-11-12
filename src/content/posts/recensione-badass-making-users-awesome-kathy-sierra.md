@@ -71,4 +71,4 @@ A chi lavora sul prodotto, sul design o sul supporto clienti, e a chiunque scriv
 
 Gli altri libri della mia libreria sono nella pagina [Bookshelf](/books/).
 
-*E tu, quale strumento ti ha fatto diventare più bravo in qualcosa a cui tieni? Se ti va, [raccontamelo via email](mailto:44_tildes_agog@icloud.com).*
+*Quale strumento ti ha fatto diventare più bravo in qualcosa a cui tieni? [Dimmi qual è via email](mailto:44_tildes_agog@icloud.com).*

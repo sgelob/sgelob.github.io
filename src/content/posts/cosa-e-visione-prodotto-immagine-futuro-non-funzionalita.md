@@ -59,4 +59,4 @@ C’è poi un rischio. Clayton Christensen, in «How Will You Measure Your Life?
 
 Ma senza nessuna visione è peggio. Se non andiamo da nessuna parte, non ci accorgiamo nemmeno di andare nella direzione sbagliata, e ogni occasione per guadagnare qualcosa sembra importante. Per questo la terrei così: **una visione chiara, condivisa da tutto il team, e tenuta leggera**, pronta a cambiare quando i fatti dicono che stiamo sbagliando.
 
-*E tu, sapresti raccontare la visione del tuo prodotto con le parole del bar? Se ti va, [raccontamelo via email](mailto:44_tildes_agog@icloud.com).*
+*Prova a raccontare la visione del tuo prodotto con le parole del bar, senza slide. Se ci riesci, [scrivimela via email](mailto:44_tildes_agog@icloud.com): la leggo volentieri.*

@@ -57,6 +57,7 @@
         src: 2026/10/book-liminal-thinking.jpg
         width: 318
         height: 475
+      review: /2017/01/recensione-liminal-thinking-dave-gray/
     - title: Gamestorming
       author: Dave Gray
       year: 2014
@@ -71,6 +72,7 @@
         src: 2026/10/book-radical-focus.jpg
         width: 313
         height: 500
+      review: /2019/02/recensione-radical-focus-okr-christina-wodtke/
     - title: Build Better Products
       author: Laura Klein
       year: 2016
@@ -127,6 +129,7 @@
         src: 2026/10/book-user-story-mapping.jpg
         width: 333
         height: 499
+      review: /2017/05/recensione-user-story-mapping-jeff-patton/
     - title: You Have Too Much Shit
       author: Chris Ballantine-Thomas
       cover:

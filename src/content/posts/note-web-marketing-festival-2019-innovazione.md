@@ -52,4 +52,4 @@ Da un talk sul marketing mi sono segnato un’idea che vale per il design: nel p
 
 Un orizzonte per la visione, una metrica guida, team che lavorano davvero insieme. E la definizione di innovazione con cui si apriva il talk: **sognare in grande, ma con i piedi per terra**.
 
-*E tu, nel tuo team c’è una «sedia blu» che vi tiene fermi? Se ti va, [raccontamelo via email](mailto:44_tildes_agog@icloud.com).*
+*C’è una «sedia blu» che tiene fermo anche il tuo team? [Raccontami via email](mailto:44_tildes_agog@icloud.com) qual è.*

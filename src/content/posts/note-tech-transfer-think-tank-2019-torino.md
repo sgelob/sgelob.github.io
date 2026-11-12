@@ -53,4 +53,4 @@ E di strumenti pubblici per chi vuole partire:
 
 Un brevetto da solo non è un prodotto: è un’opportunità. Quello che lo trasforma in valore è un processo fatto di verifiche, partnership e rischio condiviso, **non molto diverso da quello con cui si porta un’idea sul mercato**.
 
-*E tu, hai mai lavorato su un prodotto nato da una ricerca o da un brevetto? Se ti va, [raccontamelo via email](mailto:44_tildes_agog@icloud.com).*
+*Hai mai lavorato su un prodotto nato da una ricerca o da un brevetto? [Raccontami via email](mailto:44_tildes_agog@icloud.com) com’è arrivato sul mercato.*

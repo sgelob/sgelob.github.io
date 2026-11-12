@@ -61,4 +61,4 @@ Su questo tema ho in lista «Make Meaningful Moments: A Toolkit to Upgrade Human
 
 Chi accende la testa e conosce a fondo i metodi, con l’IA potrà cucinare piatti che prima non riusciva nemmeno a immaginare.
 
-*E tu, quante delle decisioni nei tuoi ultimi documenti erano davvero tue? Se ti va, [raccontamelo via email](mailto:44_tildes_agog@icloud.com).*
+*Riguarda i tuoi ultimi documenti: quante delle decisioni erano davvero tue? [Fammi sapere via email](mailto:44_tildes_agog@icloud.com) cosa hai scoperto.*

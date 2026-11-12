@@ -67,4 +67,4 @@ A product manager e product owner, soprattutto a chi lavora in aziende dove la r
 
 Gli altri libri della mia libreria sono nella pagina [Bookshelf](/books/).
 
-*E tu, nel tuo team misurate quello che rilasciate o quello che cambia dopo? Se ti va, [raccontamelo via email](mailto:44_tildes_agog@icloud.com).*
+*Nel tuo team misurate quello che rilasciate o quello che cambia dopo? [Scrivimi via email](mailto:44_tildes_agog@icloud.com) come lo fate.*

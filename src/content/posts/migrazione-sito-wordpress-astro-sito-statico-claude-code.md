@@ -78,4 +78,4 @@ Come è fatto il sito oggi, strumento per strumento, lo racconto nel [colophon](
 
 Un grazie speciale a Matteo Breda, mio collega di Carol, che mi ha suggerito Astro 🙂
 
-*E tu, hai un sito che cambia poco ma che continui ad aggiornare? Se ti va, [raccontamelo via email](mailto:44_tildes_agog@icloud.com).*
+*Hai anche tu un sito che cambia poco ma che continui ad aggiornare? [Scrivimi via email](mailto:44_tildes_agog@icloud.com) se stai pensando di semplificarlo.*

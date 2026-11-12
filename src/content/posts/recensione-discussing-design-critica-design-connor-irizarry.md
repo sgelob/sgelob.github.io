@@ -48,4 +48,4 @@ A designer, product manager e sviluppatori che partecipano alle revisioni del de
 
 Gli altri libri della mia libreria sono nella pagina [Bookshelf](/books/).
 
-*E tu, come si svolgono le revisioni del design nel tuo team? Se ti va, [raccontamelo via email](mailto:44_tildes_agog@icloud.com).*
+*Come si svolgono le revisioni del design nel tuo team? [Raccontami via email](mailto:44_tildes_agog@icloud.com) cosa funziona e cosa no.*

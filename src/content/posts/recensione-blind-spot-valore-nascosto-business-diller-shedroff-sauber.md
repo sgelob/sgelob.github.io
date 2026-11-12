@@ -53,4 +53,4 @@ A chi lavora su prodotto, design e marketing, e a chi deve convincere un’azien
 
 Gli altri libri della mia libreria sono nella pagina [Bookshelf](/books/).
 
-*E tu, quale prodotto usi più per come ti fa sentire che per quello che fa? Se ti va, [raccontamelo via email](mailto:44_tildes_agog@icloud.com).*
+*C’è un prodotto che usi più per come ti fa sentire che per quello che fa? [Raccontami via email](mailto:44_tildes_agog@icloud.com) qual è, e perché.*

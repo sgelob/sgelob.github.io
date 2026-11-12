@@ -48,4 +48,4 @@ L’ultimo tema era la **percezione di possedere il proprio corpo** (*Body Owner
 
 La tecnologia per i bambini non è buona o cattiva in sé: dipende da come la progettiamo. A volte **uno schermo in meno e un motivo in più per uscire** è la scelta di design migliore.
 
-*E tu, come usi la tecnologia per giocare con i tuoi figli, o come la usavi da bambino? Se ti va, [raccontamelo via email](mailto:44_tildes_agog@icloud.com).*
+*Come usi la tecnologia per giocare con i tuoi figli, o come la usavi da bambino? Mi piacerebbe saperlo: [scrivimi via email](mailto:44_tildes_agog@icloud.com).*

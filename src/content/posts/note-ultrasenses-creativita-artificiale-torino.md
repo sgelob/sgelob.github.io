@@ -47,4 +47,4 @@ Con Federico Parolotto di MIC – Mobility in Chain si è parlato della città i
 
 L’ultimo talk, di Massimo Di Braccio di KKIENN, proponeva una **riconciliazione tra naturale e artificiale**: l’artificiale interviene sugli aspetti deboli e critici del naturale, per potenziare l’uomo e conservare la vita. E chiudeva con due coppie di parole sul nostro rapporto con l’AI: **fiducia e credibilità, fascino e preoccupazione**.
 
-*E tu, l’AI ti affascina o ti preoccupa di più? Se ti va, [raccontamelo via email](mailto:44_tildes_agog@icloud.com).*
+*L’AI ti affascina o ti preoccupa di più? [Dimmi via email](mailto:44_tildes_agog@icloud.com) da che parte stai.*
