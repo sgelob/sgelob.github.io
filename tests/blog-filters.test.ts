@@ -4,7 +4,7 @@ import { blogFilters, FILTER_MIN_POSTS } from '../src/lib/blog-filters';
 const terms = [
   { slug: 'ai', name: 'AI' },
   { slug: 'events', name: 'Events' },
-  { slug: 'web-performance', name: 'Web Performance', short: 'Web Perf' },
+  { slug: 'web-performance', name: 'Web Performance', short: 'Perf' },
   { slug: 'wordpress', name: 'WordPress' },
 ];
 const post = (...categories: string[]) => ({ data: { categories } });
@@ -19,6 +19,6 @@ test('All first, then the categories with enough posts, by their short name if a
   expect(blogFilters(posts, terms)).toEqual([
     { slug: 'all', name: 'All', href: '/blog/', count: posts.length },
     { slug: 'events', name: 'Events', href: '/category/events/', count: 5 + FILTER_MIN_POSTS },
-    { slug: 'web-performance', name: 'Web Perf', href: '/category/web-performance/', count: 5 },
+    { slug: 'web-performance', name: 'Perf', href: '/category/web-performance/', count: 5 },
   ]);
 });

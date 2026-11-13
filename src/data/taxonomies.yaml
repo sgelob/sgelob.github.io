@@ -71,6 +71,7 @@ categories:
     description: "Organizzare il lavoro e il tempo: produttività personale, team, metodi agili e obiettivi."
   - slug: personal-growth
     name: Personal Growth
+    short: Growth
     description: "Crescita personale: abitudini, decisioni, carriera e le idee che mi aiutano a vivere e lavorare meglio."
   - slug: product-management
     name: Product Management
@@ -82,7 +83,7 @@ categories:
     description: "Esperienza utente: capire le persone, progettare percorsi semplici e misurare se funzionano."
   - slug: web-performance
     name: Web Performance
-    short: Web Perf
+    short: Perf
     description: "Perché la velocità di un sito conta per chi lo usa e per il business, e come misurarla e migliorarla. Molti post vengono dai talk del Turin Web Performance Group."
   - slug: wordpress
     name: WordPress

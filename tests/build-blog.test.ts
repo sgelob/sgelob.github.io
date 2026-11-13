@@ -208,7 +208,7 @@ describe('blog category filters', () => {
     expect(html).toMatch(/<a href="\/blog\/" aria-current="page"[^>]*>All <span class="count"[^>]*>\d+<\/span><\/a>/);
     expect(html).toMatch(/<a href="\/category\/events\/"[^>]*>Events <span/);
     expect(html).not.toContain('href="/category/wordpress/"');
-    expect(html).toMatch(/<a href="\/category\/web-performance\/"[^>]*>Web Perf <span/);
+    expect(html).toMatch(/<a href="\/category\/web-performance\/"[^>]*>Perf <span/);
     expect(html).toMatch(/<a href="\/category\/user-experience\/"[^>]*>UX <span/);
   });
 

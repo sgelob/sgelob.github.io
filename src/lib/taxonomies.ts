@@ -4,7 +4,7 @@ import raw from '../data/taxonomies.yaml?raw';
 export interface Term {
   slug: string;
   name: string;
-  /** A shorter name where space is tight, as in the blog filters ("Web Perf", "UX"). */
+  /** A shorter name where space is tight, as in the blog filters ("Perf", "UX"). */
   short?: string;
   description?: string;
   /** One line under the heading of the category page, in HTML written by us (it may carry a link). */
