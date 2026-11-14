@@ -8,10 +8,10 @@ climb: 32
 area: Île-de-France
 country: france
 track: disneyland-paris.gpx
-cover: 2026/11/disneyland-paris-01.jpg
-coverWidth: 2048
-coverHeight: 1536
-darkHeader: true
+cover: 2026/11/disneyland-paris-13.jpg
+coverWidth: 1932
+coverHeight: 1404
+darkHeader: false
 photos:
   - src: 2026/11/disneyland-paris-04.jpg
     width: 2016
