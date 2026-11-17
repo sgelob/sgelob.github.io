@@ -23,6 +23,10 @@
         height: 500
     - title: "Make Meaningful Moments: A Toolkit to Upgrade Human Skills in the AI Age"
       author: Daniel Szuc & Josephine Wong
+      cover:
+        src: 2026/11/book-make-meaningful-moments-a-toolkit-to-upgrade-human-skills-in-the-ai-age.jpg
+        width: 880
+        height: 1360
 - title: Favourite Books
   books:
     - title: The Culture Map
