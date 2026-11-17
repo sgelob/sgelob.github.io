@@ -21,12 +21,8 @@
         src: 2026/11/book-i-robot.jpg
         width: 327
         height: 500
-    - title: Aligned
-      author: Bruce McCarthy & Melissa Appel
-      cover:
-        src: 2026/11/book-aligned.jpg
-        width: 600
-        height: 787
+    - title: "Make Meaningful Moments: A Toolkit to Upgrade Human Skills in the AI Age"
+      author: Daniel Szuc & Josephine Wong
 - title: Favourite Books
   books:
     - title: The Culture Map
@@ -2043,8 +2039,6 @@
         src: 2026/11/book-the-odyssey.jpg
         width: 318
         height: 475
-    - title: "Make Meaningful Moments: A Toolkit to Upgrade Human Skills in the AI Age"
-      author: Daniel Szuc & Josephine Wong
     - title: "Kanban Just-in-Time at Toyota: Management Begins at the Workplace"
       author: Japan Management Association
       year: 1986
@@ -2069,3 +2063,9 @@
     - title: Music and the Brain
       author: Are Brean & Geir Olve Skeie
       year: 2019
+    - title: Aligned
+      author: Bruce McCarthy & Melissa Appel
+      cover:
+        src: 2026/11/book-aligned.jpg
+        width: 600
+        height: 787
