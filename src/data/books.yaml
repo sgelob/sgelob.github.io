@@ -835,6 +835,7 @@
         src: 2026/10/book-start-with-why.jpg
         width: 375
         height: 500
+      review: /2019/07/recensione-start-with-why-simon-sinek/
     - title: 17 Anti-Procrastination Hacks
       author: Dominic Mann
       year: 2016
@@ -1318,6 +1319,7 @@
         src: 2026/10/book-microinteractions.jpg
         width: 381
         height: 500
+      review: /2017/07/recensione-microinteractions-dan-saffer/
     - title: "Badass: Making Users Awesome"
       author: Kathy Sierra
       year: 2015
