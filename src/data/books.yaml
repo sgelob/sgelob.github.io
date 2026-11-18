@@ -212,6 +212,7 @@
         src: 2026/10/book-inspired.jpg
         width: 331
         height: 500
+      review: /2019/09/recensione-inspired-marty-cagan/
     - title: Atomic Design
       author: Brad Frost
       year: 2016
@@ -284,6 +285,7 @@
         src: 2026/10/book-strategize.jpg
         width: 333
         height: 500
+      review: /2020/03/recensione-strategize-roman-pichler/
     - title: How to Lead in Product Management
       author: Roman Pichler
       year: 2020
