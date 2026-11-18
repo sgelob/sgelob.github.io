@@ -33,7 +33,7 @@ La visione **non è un elenco di funzionalità** su una roadmap, e non è un pia
 
 > Vision describes the ultimate reason for creating the product, the product strategy states how the vision will be realized, and the product roadmap states how the strategy will be implemented.
 
-La visione dice perché creiamo il prodotto, la strategia come realizzeremo la visione, la roadmap come metteremo in pratica la strategia. E il backlog contiene i dettagli per sviluppare il prodotto come descritto nella roadmap.
+La visione dice perché creiamo il prodotto, la [strategia](/2026/11/cosa-e-strategia-prodotto-insieme-scelte-non-roadmap/) come realizzeremo la visione, la roadmap come metteremo in pratica la strategia. E il backlog contiene i dettagli per sviluppare il prodotto come descritto nella roadmap.
 
 Nello stesso libro, Pichler propone alcune domande a cui una buona visione dovrebbe rispondere. A parole mie: chi comprerà il prodotto e chi lo userà? Quali bisogni soddisfa, e che valore aggiunge? Quali caratteristiche sono decisive per il suo successo? Come si confronta con i prodotti che esistono già? Come guadagnerà l’azienda? Ed è fattibile?
 
