@@ -235,6 +235,12 @@
         width: 300
         height: 300
     - title: Intercom on Product Management
+      author: Des Traynor
+      cover:
+        src: 2026/11/book-intercom-on-product-management.jpg
+        width: 749
+        height: 1000
+      review: /2018/03/recensione-intercom-on-product-management-des-traynor/
     - title: Intercom On Starting Up
       year: 2017
       cover:
