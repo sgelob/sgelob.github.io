@@ -1673,6 +1673,14 @@
         src: 2026/10/book-information-is-beautiful.jpg
         width: 375
         height: 500
+    - title: What Is Scrumban?
+      author: Andrew Stellman
+      year: 2019
+      cover:
+        src: 2026/11/book-what-is-scrumban.jpg
+        width: 400
+        height: 600
+      review: /2020/10/recensione-what-is-scrumban-andrew-stellman/
 - title: On the Shelf, To Read
   books:
     - title: Mental Traps
