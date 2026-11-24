@@ -1673,6 +1673,14 @@
         src: 2026/10/book-information-is-beautiful.jpg
         width: 375
         height: 500
+    - title: The Jobs To Be Done Playbook
+      author: Jim Kalbach
+      year: 2020
+      cover:
+        src: 2026/11/book-the-jobs-to-be-done-playbook.jpg
+        width: 332
+        height: 500
+      review: /2023/09/recensione-jobs-to-be-done-playbook-jim-kalbach/
     - title: What Is Scrumban?
       author: Andrew Stellman
       year: 2019
