@@ -7,13 +7,6 @@
         src: 2026/11/book-atomic-habits.jpg
         width: 331
         height: 500
-    - title: Principles for Dealing with the Changing World Order
-      author: Ray Dalio
-      year: 2021
-      cover:
-        src: 2026/11/book-principles-for-dealing-with-the-changing-world-order.jpg
-        width: 263
-        height: 400
     - title: I, Robot
       author: Isaac Asimov
       year: 1950
@@ -21,12 +14,9 @@
         src: 2026/11/book-i-robot.jpg
         width: 327
         height: 500
-    - title: "Make Meaningful Moments: A Toolkit to Upgrade Human Skills in the AI Age"
-      author: Daniel Szuc & Josephine Wong
-      cover:
-        src: 2026/11/book-make-meaningful-moments-a-toolkit-to-upgrade-human-skills-in-the-ai-age.jpg
-        width: 880
-        height: 1360
+    - title: Design for Privacy
+      author: Robert Stribley
+      year: 2025
 - title: Favourite Books
   books:
     - title: The Culture Map
@@ -1693,6 +1683,19 @@
       review: /2020/10/recensione-what-is-scrumban-andrew-stellman/
 - title: On the Shelf, To Read
   books:
+    - title: "Make Meaningful Moments: A Toolkit to Upgrade Human Skills in the AI Age"
+      author: Daniel Szuc & Josephine Wong
+      cover:
+        src: 2026/11/book-make-meaningful-moments-a-toolkit-to-upgrade-human-skills-in-the-ai-age.jpg
+        width: 880
+        height: 1360
+    - title: Principles for Dealing with the Changing World Order
+      author: Ray Dalio
+      year: 2021
+      cover:
+        src: 2026/11/book-principles-for-dealing-with-the-changing-world-order.jpg
+        width: 263
+        height: 400
     - title: Mental Traps
       author: André Kukla
       year: 2006
@@ -1838,9 +1841,6 @@
         src: 2026/11/book-the-plague.jpg
         width: 600
         height: 900
-    - title: Design for Privacy
-      author: Robert Stribley
-      year: 2025
     - title: Can’t Just Stop
       author: Sharon Begley
       year: 2017
