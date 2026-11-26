@@ -1,6 +1,6 @@
 ---
 title: L’intelligenza artificiale eliminerà i manager? Sparirà il router, resterà chi fa crescere le persone
-date: "2026-10-30T19:00:00"
+date: "2026-11-26T11:24:00"
 categories:
   - ai
   - organization
