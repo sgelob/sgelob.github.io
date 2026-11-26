@@ -17,6 +17,10 @@
     - title: Design for Privacy
       author: Robert Stribley
       year: 2025
+      cover:
+        src: 2026/11/book-design-for-privacy.jpg
+        width: 667
+        height: 1000
 - title: Favourite Books
   books:
     - title: The Culture Map
