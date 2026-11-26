@@ -12,7 +12,7 @@ oldSlugs: []
 excerpt: Per decenni una parte del lavoro dei manager è stata far passare le informazioni su e giù per la piramide. Gli agenti di IA lo stanno rendendo inutile. Ti racconto cosa resta, e perché mi chiedo da dove arriveranno i manager di domani.
 ---
 
-Pochi giorni fa a16z ha pubblicato un lungo articolo di Ben Horowitz, [«Databricks & the Future of the Firm»](https://a16z.com/databricks-the-future-of-the-firm/), su come cambieranno le aziende con l’intelligenza artificiale. Non nel senso di «mettiamo l’IA in tutti i processi», ma di come si trasformeranno nel loro insieme, come organismi.
+Qualche settimana fa a16z ha pubblicato un lungo articolo di Ben Horowitz, [«Databricks & the Future of the Firm»](https://a16z.com/databricks-the-future-of-the-firm/), su come cambieranno le aziende con l’intelligenza artificiale. Non nel senso di «mettiamo l’IA in tutti i processi», ma di come si trasformeranno nel loro insieme, come organismi.
 
 Va detto subito che è anche l’elogio di un’azienda in cui il fondo ha investito fin dall’inizio, e che i numeri arrivano da chi ha interesse a raccontarli bene. Ma la domanda che pone è importante, e me l’ha fatta notare anche il commento di una persona che seguo: **i manager serviranno ancora?** E se sì, quali, e per fare cosa?
 
