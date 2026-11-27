@@ -1689,6 +1689,13 @@
       review: /2020/10/recensione-what-is-scrumban-andrew-stellman/
 - title: On the Shelf, To Read
   books:
+    - title: "Super Thinking: The Big Book of Mental Models"
+      author: Gabriel Weinberg & Lauren McCann
+      year: 2019
+      cover:
+        src: 2026/11/book-super-thinking-the-big-book-of-mental-models.jpg
+        width: 380
+        height: 500
     - title: "Make Meaningful Moments: A Toolkit to Upgrade Human Skills in the AI Age"
       author: Daniel Szuc & Josephine Wong
       cover:
