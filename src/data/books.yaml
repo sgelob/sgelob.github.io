@@ -1587,6 +1587,7 @@
         src: 2026/10/book-hooked.jpg
         width: 320
         height: 500
+      review: /2017/05/recensione-hooked-nir-eyal/
     - title: Mobile Usability
       author: Jakob Nielsen & Raluca Budiu
       year: 2013
