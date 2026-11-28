@@ -67,7 +67,7 @@ describe('photos pages', () => {
     const html = read('dist/photos/country/russia/index.html');
     expect(html).toContain('<title>Russia · Photos – Olegs Belousovs</title>');
     expect(html).toMatch(/<h1[^>]*>Russia<\/h1>/);
-    expect(count(html, 'class="gallery-card"')).toBe(13);
+    expect(count(html, 'class="gallery-card"')).toBe(14);
     expect(html).not.toMatch(/<a href="\/photos\/(genre\/[^"]+\/)?" aria-current="page"/);
   });
 
