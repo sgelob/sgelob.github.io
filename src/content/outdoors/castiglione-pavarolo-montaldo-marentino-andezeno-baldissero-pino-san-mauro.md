@@ -1,7 +1,7 @@
 ---
 title: Castiglione – Pavarolo – Montaldo – Marentino – Andezeno – Baldissero – Pino – San Mauro
 date: "2026-11-01T12:00:00"
-order: 5
+order: 4
 activity: ride
 bike: xc
 distance: 48.5
